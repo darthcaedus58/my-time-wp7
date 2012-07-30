@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using Microsoft.Phone.Controls;
+using System.IO.IsolatedStorage;
 
 namespace MyTime
 {
@@ -19,14 +20,17 @@ namespace MyTime
 		private DateTime _timerBase;
 		private TimeSpan _timer;
 		private DispatcherTimer _dt;
+		[System.Xml.Serialization.XmlElement(ElementName = "startTime", DataType = "DateTime")]
+		public System.DateTime startTime { get; set; }
+
 
 		[System.ComponentModel.EditorBrowsable]
 		public Object Icon { get; set; }
-		private enum TimerState
+		private enum TimerState:byte
 		{
-			Stopped,
-			Paused,
-			Running
+			Stopped = 3,
+			Paused = 0,
+			Running = 1
 		};
 
 		private TimerState _timerState = TimerState.Stopped;
@@ -40,8 +44,80 @@ namespace MyTime
 			// Set the data context of the listbox control to the sample data
 			DataContext = App.ViewModel;
 			this.Loaded += new RoutedEventHandler(MainPage_Loaded);
+			if (IsolatedStorageFile.GetUserStoreForApplication().FileExists("restart.bin")) GetRestartTime();
 
+		}
 
+		private void GetRestartTime()
+		{
+			try {
+				using (var restartTime = IsolatedStorageFile.GetUserStoreForApplication().OpenFile("restart.bin", System.IO.FileMode.Open)) {
+					var isRunning = (TimerState)restartTime.ReadByte();
+					
+					_dt = new DispatcherTimer()
+					{
+						Interval = new TimeSpan(0, 0, 0, 1, 0)
+					};
+					_dt.Tick += new EventHandler(dt_Tick);
+					if (isRunning == TimerState.Running) {
+						byte[] time = new byte[sizeof(long)];
+						restartTime.Read(time, 0, sizeof(long));
+						_timerBase = new DateTime(BitConverter.ToInt64(time, 0));
+						_timer = DateTime.Now.Subtract(_timerBase);
+						_timerState = TimerState.Running;
+						_dt.Start();
+					} else if (isRunning == TimerState.Paused) {
+						int hours, minutes, seconds;
+						byte[] ints = new byte[sizeof(int)];
+						restartTime.Read(ints, 0, sizeof(int));
+						hours = BitConverter.ToInt32(ints, 0);
+						restartTime.Read(ints, 0, sizeof(int));
+						minutes = BitConverter.ToInt32(ints, 0);
+						restartTime.Read(ints, 0, sizeof(int));
+						seconds = BitConverter.ToInt32(ints, 0);
+						_timer = new TimeSpan(hours, minutes, seconds);
+						_timerBase = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour - _timer.Hours, DateTime.Now.Minute - _timer.Minutes, DateTime.Now.Second - _timer.Seconds);
+						_timerState = TimerState.Paused;
+					} else {
+						_timer = new TimeSpan(0, 0, 0);
+					}
+					lblTimer.Text = string.Format("{0:0,0}:{1:0,0}:{2:0,0}", _timer.Hours, _timer.Minutes, _timer.Seconds);
+				}
+			} catch {
+				IsolatedStorageFile.GetUserStoreForApplication().DeleteFile("restart.bin");
+			}
+
+		}
+
+		private void SetRestartTime()
+		{
+			IsolatedStorageFile.GetUserStoreForApplication().DeleteFile("restart.bin");
+			try {
+				using (var restart = IsolatedStorageFile.GetUserStoreForApplication().CreateFile("restart.bin")) {
+					if (_timerState == TimerState.Running) {
+						restart.WriteByte((byte)TimerState.Running);
+						byte[] time = BitConverter.GetBytes(_timerBase.Ticks);
+						restart.Write(time, 0, sizeof(long));
+					} else if (_timerState == TimerState.Paused) {
+						restart.WriteByte((byte)TimerState.Paused);
+						byte[] hours = BitConverter.GetBytes(_timer.Hours);
+						byte[] minutes = BitConverter.GetBytes(_timer.Minutes);
+						byte[] seconds = BitConverter.GetBytes(_timer.Seconds);
+						restart.Write(hours, 0, sizeof(int));
+						restart.Write(minutes, 0, sizeof(int));
+						restart.Write(seconds, 0, sizeof(int));
+					} else {
+						restart.WriteByte((byte)TimerState.Stopped);
+					}
+				}
+			} catch { 
+				IsolatedStorageFile.GetUserStoreForApplication().DeleteFile("restart.bin");
+			}
+		}
+
+		private void ClearRestartTime()
+		{
+			IsolatedStorageFile.GetUserStoreForApplication().DeleteFile("restart.bin");
 		}
 
 		// Load data for the ViewModel lbRvItems
@@ -73,6 +149,7 @@ namespace MyTime
 					break;
 			}
 			_timerState = TimerState.Running;
+			SetRestartTime();
 			lblTimer.Text = string.Format("{0:0,0}:{1:0,0}:{2:0,0}", _timer.Hours, _timer.Minutes, _timer.Seconds);
 		}
 
@@ -86,6 +163,7 @@ namespace MyTime
 				default: // TimerState.Running
 					_dt.Stop();
 					_timerState = TimerState.Paused;
+					SetRestartTime();
 					break;
 			}
 		}
@@ -97,6 +175,7 @@ namespace MyTime
 			_timerBase = new DateTime();
 			lblTimer.Text = "00:00:00";
 			_timerState = TimerState.Stopped;
+			ClearRestartTime();
 		}
 
 		private void dt_Tick(object sender, EventArgs e)
