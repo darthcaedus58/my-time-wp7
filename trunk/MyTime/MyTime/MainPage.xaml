@@ -65,7 +65,7 @@
         <!--Panorama item one-->
     		<controls:PanoramaItem Header="time tracking">
     			<StackPanel Grid.Row="1" HorizontalAlignment="Stretch" x:Name="stackPanel1" VerticalAlignment="Stretch">
-    				<TextBlock x:Name="lblTimer" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Top" FontSize="96" TextAlignment="Center"/>
+    				<TextBlock x:Name="lblTimer" TextWrapping="Wrap" Text="00:00:00" FontSize="96" TextAlignment="Center"/>
     				<TextBlock TextWrapping="Wrap" Text="Notes"/>
     				<TextBox Height="180" TextWrapping="Wrap" Opacity="0.385"/>
     			</StackPanel>
