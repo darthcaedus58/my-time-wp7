@@ -50,7 +50,7 @@
     		</controls:Panorama.Background>
     		<!--Panorama item two-->
         <!--Panorama item one-->
-    		<toolkit:WrapPanel>
+    		<toolkit:WrapPanel Orientation="Vertical" MinHeight="522">
                                 <ListBox Margin="0,0,0,0" x:Name="lbMainMenuItems" ItemsSource="{Binding lbMainMenuItems}">
                                 <ListBox.ItemTemplate>
                                         <DataTemplate>
