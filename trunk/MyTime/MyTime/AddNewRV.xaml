@@ -8,6 +8,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:local="clr-namespace:MyTime"
+    local:TiltEffect.IsTiltEnabled="True"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -19,71 +21,124 @@
         <Grid x:Name="LayoutRoot" Background="Transparent">
                 <!--Pivot Control-->
 
-                <controls:Pivot Title="Field Service - Return Visits" SelectionChanged="Pivot_SelectionChanged">
+                <controls:Pivot Title="Field Service - Return Visits" SelectionChanged="Pivot_SelectionChanged" LoadedPivotItem="Pivot_LoadedPivotItem">
                         <controls:PivotItem Header="info">
+                                <Grid>
                                 <ScrollViewer Height="Auto" HorizontalAlignment="Left" Margin="0" Name="stackPanelInfoMain" VerticalAlignment="Top" Width="473">
-                                        <StackPanel Name="spInfo_MapAndInfo" Width="Auto" HorizontalAlignment="Left" Orientation="Horizontal" Margin="10,0,0,0">
-                                                <my:Map Height="100" Width="100" Name="mapInfo" CopyrightVisibility="Collapsed" LogoVisibility="Collapsed">
-                                                        <my:Map.CredentialsProvider>
-                                                                <my:ApplicationIdCredentialsProvider ApplicationId="AkRhgqPR6aujo-xib-KiR8Lt20wsn89GY4R9SP0RA6h4w7QT9mS3kKwYKKxjklfV" />
-                                                        </my:Map.CredentialsProvider>
-                                                </my:Map>
-                                                <StackPanel Height="100" Name="spInfo_NameAndAddress" Width="Auto" Margin="5,0,0,0">
-                                                        <TextBlock Height="30" Name="lblInfo_FullName" Text="{}{0}" />
-                                                        <TextBlock Height="30" Name="lblInfo_Address" Text="{}{0}, {1}" />
-                                                        <TextBlock Height="30" Name="lblInfo_CityStateZip" Text="{}{0}, {1} {2}" />
+                                        <StackPanel Orientation="Vertical">
+                                                <StackPanel Name="spInfo_MapAndInfo" Width="Auto" HorizontalAlignment="Left" Orientation="Horizontal" Margin="10,0,0,0">
+                                                        <my:Map Height="100" Width="100" Name="mapInfo" CopyrightVisibility="Collapsed" LogoVisibility="Collapsed" Tap="mapInfo_Tap">
+                                                                <my:Map.CredentialsProvider>
+                                                                        <my:ApplicationIdCredentialsProvider ApplicationId="AkRhgqPR6aujo-xib-KiR8Lt20wsn89GY4R9SP0RA6h4w7QT9mS3kKwYKKxjklfV" />
+                                                                </my:Map.CredentialsProvider>
+                                                        </my:Map>
+                                                        <StackPanel Height="100" Name="spInfo_NameAndAddress" Width="Auto" Margin="5,0,0,0">
+                                                                <TextBlock Height="30" Name="lblInfo_FullName" Text="{}{0}" />
+                                                                <TextBlock Height="30" Name="lblInfo_Address" Text="{}{0}, {1}" />
+                                                                <TextBlock Height="30" Name="lblInfo_CityStateZip" Text="{}{0}, {1} {2}" />
+                                                        </StackPanel>
                                                 </StackPanel>
+                                                <TextBlock Height="30" Name="textBlock8" Text="Last Visit Notes:" FontSize="24" />
                                         </StackPanel>
                                 </ScrollViewer>
+                                        </Grid>
                         </controls:PivotItem>
                         <!--Pivot item one-->
                         <controls:PivotItem Header="address">
-
-                                <ScrollViewer Height="Auto" HorizontalAlignment="Left" Name="stackPanel1" VerticalAlignment="Top" Width="468">
-                                        <StackPanel>
-                                        <ProgressBar Name="pbGetAddress" />
-                                        <TextBlock Height="30" Name="textBlock1" Text="Full Name" LostFocus="textBlock1_LostFocus" />
-                                        <TextBox Height="71" Name="tbFullName" Text="" Width="460" LostFocus="tbFullName_LostFocus" />
-                                        <TextBlock Height="30" Name="textBlock2" Text="Address 1" />
-                                        <TextBox Height="71" Name="tbAddress1" Text="" Width="460" LostFocus="tbAddress1_LostFocus" />
-                                        <TextBlock Height="30" Name="textBlock3" Text="Address 2" />
-                                        <TextBox Height="71" Name="tbAddress2" Text="" Width="460" LostFocus="tbAddress2_LostFocus" />
-                                        <TextBlock Height="30" Name="textBlock4" Text="City" />
-                                        <TextBox Height="71" Name="tbCity" Text="" Width="460" TextChanged="tbCity_TextChanged" />
-                                        <TextBlock Height="30" Name="textBlock5" Text="State" Margin="0,0,0,-10" />
-                                                <toolkit:ListPicker ItemsSource="{Binding lbStates}" Name="lbiState" LostFocus="lbiState_LostFocus" ListPickerMode="Normal" ItemCountThreshold="60" IsTabStop="False">
-                                                        <toolkit:ListPicker.ItemTemplate>
-                                                                <DataTemplate>
-                                                                        <TextBlock Text="{Binding Text}"/>
-                                                                </DataTemplate>
-                                                        </toolkit:ListPicker.ItemTemplate>
-                                                </toolkit:ListPicker>
-                                        <TextBlock Height="30" Name="textBlock6" Text="ZIP Code" />
-                                        <TextBox Height="71" Name="tbZipCode" Text="" Width="460" LostFocus="tbZipCode_LostFocus" />
-                                        </StackPanel>
-                                </ScrollViewer>
+                                <Grid>
+                                        <ScrollViewer Height="Auto" HorizontalAlignment="Left" Name="stackPanel1" VerticalAlignment="Top" Width="468">
+                                                <StackPanel>
+                                                        <StackPanel Height="Auto" Name="stackPanel4" Width="Auto" Orientation="Horizontal">
+                                                                <TextBlock Height="Auto" Name="textBlock11" Text="Current Address (click map to use):" VerticalAlignment="Bottom" />
+                                                        </StackPanel>
+                                                        <ProgressBar Name="pbGetAddress" />
+                                                        <StackPanel Height="Auto" Name="stackPanel2" Width="Auto" Orientation="Horizontal">
+                                                                <my:Map Height="100" Name="mapCurrentAddress" Width="150" Tap="mapCurrentAddress_Tap" LogoVisibility="Collapsed" CopyrightVisibility="Collapsed" AnimationLevel="None">
+                                                                        <my:Map.CredentialsProvider>
+                                                                                <my:ApplicationIdCredentialsProvider ApplicationId="AkRhgqPR6aujo-xib-KiR8Lt20wsn89GY4R9SP0RA6h4w7QT9mS3kKwYKKxjklfV" />
+                                                                        </my:Map.CredentialsProvider>
+                                                                </my:Map>
+                                                                <StackPanel Height="Auto" Name="stackPanel3" Width="Auto">
+                                                                        <TextBlock Height="30" Name="lblCurrentAddress" Text="" />
+                                                                        <TextBlock Height="30" Name="lblCurrentCityStateZip" Text="" />
+                                                                </StackPanel>
+                                                        </StackPanel>
+                                                        <TextBlock Height="30" Name="textBlock1" Text="Full Name" LostFocus="textBlock1_LostFocus" />
+                                                        <TextBox Height="71" Name="tbFullName" Text="" Width="460" LostFocus="tbFullName_LostFocus" />
+                                                        <TextBlock Height="30" Name="textBlock2" Text="Address 1" />
+                                                        <TextBox Height="71" Name="tbAddress1" Text="" Width="460" LostFocus="tbAddress1_LostFocus" />
+                                                        <TextBlock Height="30" Name="textBlock3" Text="Address 2" />
+                                                        <TextBox Height="71" Name="tbAddress2" Text="" Width="460" LostFocus="tbAddress2_LostFocus" />
+                                                        <TextBlock Height="30" Name="textBlock4" Text="City" />
+                                                        <TextBox Height="71" Name="tbCity" Text="" Width="460" TextChanged="tbCity_TextChanged" />
+                                                        <TextBlock Height="30" Name="textBlock5" Text="State/Province/District" Margin="0,0,0,-10" />
+                                                        <TextBox Height="71" Name="tbDistrict" Text="" Width="460" TextChanged="tbCity_TextChanged" />
+                                                        <TextBlock Height="30" Name="textBlock6" Text="ZIP Code" />
+                                                        <TextBox Height="71" Name="tbZipCode" Text="" Width="460" LostFocus="tbZipCode_LostFocus" />
+                                                        <TextBlock Height="30" Name="textBlock7" Text="Other Notes" />
+                                                        <TextBox Height="200" Name="tbOtherNotes" Text="" Width="460" />
+                                                </StackPanel>
+                                        </ScrollViewer>
+                                </Grid> 
                         </controls:PivotItem>
 
                         <controls:PivotItem Header="visits">
-                                <Grid/>
+                                <Grid>
+                                        <StackPanel Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="stackPanel5" VerticalAlignment="Stretch" Width="Auto">
+                                                <StackPanel Height="Auto" Name="stackPanel6" Width="Auto" Orientation="Horizontal">
+                                                        <Button Content="Add" Height="71" Name="bAddVisit" Width="160" Click="bAddVisit_Click" />
+                                                        <toolkit:DatePicker x:Name="dpVisitDatePicker" Width="292" />
+                                                </StackPanel>
+                                                <TextBox Height="150" Name="tbNotes" Text="Notes..." Width="Auto" GotFocus="tbNotes_GotFocus" LostFocus="tbNotes_LostFocus" />
+                                                <ListBox Height="Auto" Name="lbPreviousVisits" Width="Auto" VerticalContentAlignment="Top" VerticalAlignment="Top" HorizontalContentAlignment="Left" />
+                                        </StackPanel>
+                                </Grid>
                         </controls:PivotItem>
 
                         <controls:PivotItem Header="reminders">
-                                <Grid/>
+                                <Grid>
+                                        <StackPanel Grid.Row="1" Orientation="Vertical">
+                                                <TextBlock Text="Title" />
+                                                <TextBox x:Name="txtTitle" Text="" />
+
+                                                <TextBlock Text="Note" />
+                                                <TextBox x:Name="txtContent" Text="" />
+
+                                                <TextBlock Text="When"/>
+                                                <toolkit:DatePicker x:Name="dpDatePicker" />
+                                                <toolkit:TimePicker x:Name="tpStartTime" />
+                                                
+                                                <StackPanel Orientation="Horizontal">
+                                                        <Button x:Name="btnDone" Content="add" Click="btnDone_Click" />
+                                                </StackPanel>
+                                                <ListBox x:Name="lbReminders" Grid.Row="0">
+                                                        <ListBox.ItemTemplate>
+                                                                <DataTemplate>
+                                                                        <StackPanel Margin="0,0,0,17" Width="432" Height="78">
+                                                                                <TextBlock Text="{Binding Content}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                                                                <TextBlock Text="{Binding BeginTime}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                                                        </StackPanel>
+                                                                </DataTemplate>
+                                                        </ListBox.ItemTemplate>
+                                                </ListBox>
+                                        </StackPanel>
+                                        
+                                </Grid>
                         </controls:PivotItem>
                 </controls:Pivot>
-                
+
         </Grid>
 
         <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton x:Name="appbar_save" IconUri="/icons/appbar.save.rest.png" Text="Save" Click="appbar_save_Click" />
+                <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+                        <shell:ApplicationBarIconButton x:Name="appbar_save" IconUri="/icons/appbar.save.rest.png" Text="Save" Click="appbar_save_Click" />
                         <shell:ApplicationBarIconButton x:Name="appbar_cancel" IconUri="/icons/appbar.cancel.rest.png" Text="Cancel" Click="appbar_cancel_Click" />
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem x:Name="miGetDirection" Text="Get Directions" Click="miGetDirection_Click" />
-                <shell:ApplicationBarMenuItem x:Name="miAddPicture" Text="Add Picture" Click="miAddPicture_Click" />
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
+                        <shell:ApplicationBarIconButton x:Name="appbar_add" IconUri="/icons/appbar.add.rest.png" Text="Add Visit" Click="appbar_addVisit_Click" />
+                        <shell:ApplicationBar.MenuItems>
+                                <shell:ApplicationBarMenuItem x:Name="miGetDirection" Text="Get Directions" Click="miGetDirection_Click" />
+                                <shell:ApplicationBarMenuItem x:Name="miAddPicture" Text="Add Picture" Click="miAddPicture_Click" />
+                        </shell:ApplicationBar.MenuItems>
+                </shell:ApplicationBar>
+        </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>

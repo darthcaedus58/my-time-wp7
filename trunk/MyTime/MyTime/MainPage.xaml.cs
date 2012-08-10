@@ -196,6 +196,9 @@ namespace MyTime
 				case "Add Time":
 					NavigationService.Navigate(new Uri("/ManuallyEnterTime.xaml", UriKind.Relative));
 					break;
+				case "Add Return Visit":
+					NavigationService.Navigate(new Uri("/AddNewRV.xaml", UriKind.Relative));
+					break;
 				default:
 					break;
 			}
