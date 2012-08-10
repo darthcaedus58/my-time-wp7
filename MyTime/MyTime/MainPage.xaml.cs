@@ -45,7 +45,6 @@ namespace MyTime
 			DataContext = App.ViewModel;
 			this.Loaded += new RoutedEventHandler(MainPage_Loaded);
 			if (IsolatedStorageFile.GetUserStoreForApplication().FileExists("restart.bin")) GetRestartTime();
-
 		}
 
 		private void GetRestartTime()
@@ -191,7 +190,16 @@ namespace MyTime
 
 		private void abmiManuallyEnter_Click(object sender, EventArgs e) { NavigationService.Navigate(new Uri("/ManuallyEnterTime.xaml", UriKind.Relative)); }
 
-		public void MenuItem_ClickEvent(object sender, RoutedEventArgs e) { }
+		public void MenuItem_ClickEvent(object sender, RoutedEventArgs e) 
+		{ 
+			switch(((MenuItem)sender).Header.ToString()) {
+				case "Add Time":
+					NavigationService.Navigate(new Uri("/ManuallyEnterTime.xaml", UriKind.Relative));
+					break;
+				default:
+					break;
+			}
+		}
 
 		public void MenuImage_TapEvent(object sender, System.Windows.Input.GestureEventArgs e) { }
 
