@@ -51,6 +51,41 @@ namespace MyTime
 			mapInfo.SetView(e.Position.Location, 12);
 		}
 
+		private void MakeReverseGeocodeRequest()
+		{
+			string Results = "";
+			try {
+				// Set a Bing Maps key before making a request
+				string key = "AkRhgqPR6aujo-xib-KiR8Lt20wsn89GY4R9SP0RA6h4w7QT9mS3kKwYKKxjklfV";
+
+				var reverseGeocodeRequest = new BingMapsGeocodeService.ReverseGeocodeRequest();
+
+				// Set the credentials using a valid Bing Maps key
+				reverseGeocodeRequest.Credentials = new GeocodeService.Credentials();
+				reverseGeocodeRequest.Credentials.ApplicationId = key;
+
+				// Set the point to use to find a matching address
+				BingMapsGeocodeService.GeocodeLocation.Location point = new GeocodeService.Location();
+				point.Latitude = 47.608;
+				point.Longitude = -122.337;
+
+				reverseGeocodeRequest.Location = point;
+
+				// Make the reverse geocode request
+				GeocodeService.GeocodeServiceClient geocodeService =
+				new GeocodeService.GeocodeServiceClient("BasicHttpBinding_IGeocodeService");
+				GeocodeService.GeocodeResponse geocodeResponse = geocodeService.ReverseGeocode(reverseGeocodeRequest);
+
+				Results = geocodeResponse.Results[0].DisplayName;
+
+			} catch (Exception ex) {
+				Results = "An exception occurred: " + ex.Message;
+
+			}
+
+		}
+
+
 		private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
 		{
 			gcw = new System.Device.Location.GeoCoordinateWatcher();
