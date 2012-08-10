@@ -13,100 +13,55 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="True" xmlns:my="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps">
+    shell:SystemTray.IsVisible="True" xmlns:my="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps" Loaded="PhoneApplicationPage_Loaded">
 
         <!--LayoutRoot is the root grid where all page content is placed-->
         <Grid x:Name="LayoutRoot" Background="Transparent">
                 <!--Pivot Control-->
 
-                <controls:Pivot Title="Field Service - Return Visits">
+                <controls:Pivot Title="Field Service - Return Visits" SelectionChanged="Pivot_SelectionChanged">
                         <controls:PivotItem Header="info">
-                                <StackPanel Height="533" HorizontalAlignment="Left" Margin="0" Name="stackPanelInfoMain" VerticalAlignment="Top" Width="473">
+                                <ScrollViewer Height="Auto" HorizontalAlignment="Left" Margin="0" Name="stackPanelInfoMain" VerticalAlignment="Top" Width="473">
                                         <StackPanel Name="spInfo_MapAndInfo" Width="Auto" HorizontalAlignment="Left" Orientation="Horizontal" Margin="10,0,0,0">
-                                                <my:Map Height="100" Width="100" Name="mapInfo" />
+                                                <my:Map Height="100" Width="100" Name="mapInfo" CopyrightVisibility="Collapsed" LogoVisibility="Collapsed">
+                                                        <my:Map.CredentialsProvider>
+                                                                <my:ApplicationIdCredentialsProvider ApplicationId="AkRhgqPR6aujo-xib-KiR8Lt20wsn89GY4R9SP0RA6h4w7QT9mS3kKwYKKxjklfV" />
+                                                        </my:Map.CredentialsProvider>
+                                                </my:Map>
                                                 <StackPanel Height="100" Name="spInfo_NameAndAddress" Width="Auto" Margin="5,0,0,0">
-                                                        <TextBlock Height="30" Name="lblInfo_FullName" Text="{}{Full Name}" />
-                                                        <TextBlock Height="30" Name="lblInfo_Address" Text="{}{Address 1}, {Address 2}" />
-                                                        <TextBlock Height="30" Name="lblInfo_CityStateZip" Text="{}{City}. {State} {Zip}" />
+                                                        <TextBlock Height="30" Name="lblInfo_FullName" Text="{}{0}" />
+                                                        <TextBlock Height="30" Name="lblInfo_Address" Text="{}{0}, {1}" />
+                                                        <TextBlock Height="30" Name="lblInfo_CityStateZip" Text="{}{0}, {1} {2}" />
                                                 </StackPanel>
                                         </StackPanel>
-                                </StackPanel>
+                                </ScrollViewer>
                         </controls:PivotItem>
                         <!--Pivot item one-->
                         <controls:PivotItem Header="address">
-                                
-                <StackPanel Height="607" HorizontalAlignment="Left" Name="stackPanel1" VerticalAlignment="Top" Width="468">
-                        <ProgressBar Name="pbGetAddress" />
-                                        <TextBlock Height="30" Name="textBlock1" Text="Full Name" />
-                                        <TextBox Height="71" Name="tbFullName" Text="" Width="460" />
+
+                                <ScrollViewer Height="Auto" HorizontalAlignment="Left" Name="stackPanel1" VerticalAlignment="Top" Width="468">
+                                        <StackPanel>
+                                        <ProgressBar Name="pbGetAddress" />
+                                        <TextBlock Height="30" Name="textBlock1" Text="Full Name" LostFocus="textBlock1_LostFocus" />
+                                        <TextBox Height="71" Name="tbFullName" Text="" Width="460" LostFocus="tbFullName_LostFocus" />
                                         <TextBlock Height="30" Name="textBlock2" Text="Address 1" />
-                                        <TextBox Height="71" Name="tbAddress1" Text="" Width="460" />
+                                        <TextBox Height="71" Name="tbAddress1" Text="" Width="460" LostFocus="tbAddress1_LostFocus" />
                                         <TextBlock Height="30" Name="textBlock3" Text="Address 2" />
-                                        <TextBox Height="71" Name="tbAddress2" Text="" Width="460" />
+                                        <TextBox Height="71" Name="tbAddress2" Text="" Width="460" LostFocus="tbAddress2_LostFocus" />
                                         <TextBlock Height="30" Name="textBlock4" Text="City" />
-                                        <TextBox Height="71" Name="tbCity" Text="" Width="460" />
+                                        <TextBox Height="71" Name="tbCity" Text="" Width="460" TextChanged="tbCity_TextChanged" />
                                         <TextBlock Height="30" Name="textBlock5" Text="State" Margin="0,0,0,-10" />
-                                        <toolkit:ListPicker>
-                                                <toolkit:ListPickerItem Content="Alabama" Name="lbiState" />
-                                                <toolkit:ListPickerItem Content="Alaska"/>
-                                                <toolkit:ListPickerItem Content="American Samoa"/>
-                                                <toolkit:ListPickerItem Content="Arizona"/>
-                                                <toolkit:ListPickerItem Content="Arkansas"/>
-                                                <toolkit:ListPickerItem Content="California"/>
-                                                <toolkit:ListPickerItem Content="Colorado"/>
-                                                <toolkit:ListPickerItem Content="Connecticut"/>
-                                                <toolkit:ListPickerItem Content="Delaware"/>
-                                                <toolkit:ListPickerItem Content="District of Columbia"/>
-                                                <toolkit:ListPickerItem Content="Florida"/>
-                                                <toolkit:ListPickerItem Content="Georgia"/>
-                                                <toolkit:ListPickerItem Content="Guam"/>
-                                                <toolkit:ListPickerItem Content="Hawaii"/>
-                                                <toolkit:ListPickerItem Content="Idaho"/>
-                                                <toolkit:ListPickerItem Content="Illinois"/>
-                                                <toolkit:ListPickerItem Content="Indiana"/>
-                                                <toolkit:ListPickerItem Content="Iowa"/>
-                                                <toolkit:ListPickerItem Content="Kansas"/>
-                                                <toolkit:ListPickerItem Content="Kentucky"/>
-                                                <toolkit:ListPickerItem Content="Louisiana"/>
-                                                <toolkit:ListPickerItem Content="Maine"/>
-                                                <toolkit:ListPickerItem Content="Maryland"/>
-                                                <toolkit:ListPickerItem Content="Massachusetts"/>
-                                                <toolkit:ListPickerItem Content="Michigan"/>
-                                                <toolkit:ListPickerItem Content="Minnesota"/>
-                                                <toolkit:ListPickerItem Content="Mississippi"/>
-                                                <toolkit:ListPickerItem Content="Missouri"/>
-                                                <toolkit:ListPickerItem Content="Montana"/>
-                                                <toolkit:ListPickerItem Content="Nebraska"/>
-                                                <toolkit:ListPickerItem Content="Nevada"/>
-                                                <toolkit:ListPickerItem Content="New Hampshire"/>
-                                                <toolkit:ListPickerItem Content="New Jersey"/>
-                                                <toolkit:ListPickerItem Content="New Mexico"/>
-                                                <toolkit:ListPickerItem Content="New York"/>
-                                                <toolkit:ListPickerItem Content="North Carolina"/>
-                                                <toolkit:ListPickerItem Content="North Dakota"/>
-                                                <toolkit:ListPickerItem Content="Northern Marianas Islands"/>
-                                                <toolkit:ListPickerItem Content="Ohio"/>
-                                                <toolkit:ListPickerItem Content="Oklahoma"/>
-                                                <toolkit:ListPickerItem Content="Oregon"/>
-                                                <toolkit:ListPickerItem Content="Pennsylvania"/>
-                                                <toolkit:ListPickerItem Content="Puerto Rico"/>
-                                                <toolkit:ListPickerItem Content="Rhode Island"/>
-                                                <toolkit:ListPickerItem Content="South Carolina"/>
-                                                <toolkit:ListPickerItem Content="South Dakota"/>
-                                                <toolkit:ListPickerItem Content="Tennessee"/>
-                                                <toolkit:ListPickerItem Content="Texas"/>
-                                                <toolkit:ListPickerItem Content="Utah"/>
-                                                <toolkit:ListPickerItem Content="Vermont"/>
-                                                <toolkit:ListPickerItem Content="Virginia"/>
-                                                <toolkit:ListPickerItem Content="Virgin Islands"/>
-                                                <toolkit:ListPickerItem Content="Washington"/>
-                                                <toolkit:ListPickerItem Content="West Virginia"/>
-                                                <toolkit:ListPickerItem Content="Wisconsin"/>
-                                                <toolkit:ListPickerItem Content="Wyoming"/>
-                                        </toolkit:ListPicker>
+                                                <toolkit:ListPicker ItemsSource="{Binding lbStates}" Name="lbiState" LostFocus="lbiState_LostFocus" ListPickerMode="Normal" ItemCountThreshold="60" IsTabStop="False">
+                                                        <toolkit:ListPicker.ItemTemplate>
+                                                                <DataTemplate>
+                                                                        <TextBlock Text="{Binding Text}"/>
+                                                                </DataTemplate>
+                                                        </toolkit:ListPicker.ItemTemplate>
+                                                </toolkit:ListPicker>
                                         <TextBlock Height="30" Name="textBlock6" Text="ZIP Code" />
-                                        <TextBox Height="71" Name="tbZipCode" Text="" Width="460" />
-                                </StackPanel>
+                                        <TextBox Height="71" Name="tbZipCode" Text="" Width="460" LostFocus="tbZipCode_LostFocus" />
+                                        </StackPanel>
+                                </ScrollViewer>
                         </controls:PivotItem>
 
                         <controls:PivotItem Header="visits">
@@ -122,11 +77,11 @@
 
         <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton x:Name="appbar_save" IconUri="/icons/save.png" Text="Save"/>
-                        <shell:ApplicationBarIconButton x:Name="appbar_cancel" IconUri="/icons/appbar.cancel.rest.png" Text="Cancel"/>
+            <shell:ApplicationBarIconButton x:Name="appbar_save" IconUri="/icons/appbar.save.rest.png" Text="Save" Click="appbar_save_Click" />
+                        <shell:ApplicationBarIconButton x:Name="appbar_cancel" IconUri="/icons/appbar.cancel.rest.png" Text="Cancel" Click="appbar_cancel_Click" />
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem x:Name="miGetDirection" Text="Get Directions"/>
-                <shell:ApplicationBarMenuItem x:Name="miAddPicture" Text="Add Picture"/>
+                <shell:ApplicationBarMenuItem x:Name="miGetDirection" Text="Get Directions" Click="miGetDirection_Click" />
+                <shell:ApplicationBarMenuItem x:Name="miAddPicture" Text="Add Picture" Click="miAddPicture_Click" />
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

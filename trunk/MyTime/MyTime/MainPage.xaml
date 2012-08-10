@@ -26,78 +26,78 @@
 		<StaticResource ResourceKey="PhoneForegroundBrush"/>
 	</phone:PhoneApplicationPage.Foreground>
 		<phone:PhoneApplicationPage.ApplicationBar>
-                <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-                        <shell:ApplicationBar.MenuItems>
-                        	<shell:ApplicationBarMenuItem x:Name="abmiManuallyEnter" Text="manually enter" Click="abmiManuallyEnter_Click" />
-                                <shell:ApplicationBarMenuItem x:Name="abmiSettings" Text="settings"/>
-                                <shell:ApplicationBarMenuItem x:Name="abmiQuit" Text="quit"/>
-                        </shell:ApplicationBar.MenuItems>
-                        <shell:ApplicationBarIconButton x:Name="abibStart" IconUri="/icons/play.png" Text="Start" Click="abibStart_Click" />
-                        <shell:ApplicationBarIconButton x:Name="abibPause" IconUri="/icons/appbar.transport.pause.rest.png" Text="Pause" Click="abibPause_Click" />
-                        <shell:ApplicationBarIconButton x:Name="abibStop" IconUri="/icons/appbar.stop.rest.png" Text="Stop" Click="abibStop_Click" />
-                        <shell:ApplicationBarIconButton x:Name="abibAddIt" IconUri="/icons/appbar.add.rest.png" Text="Add It"/>
-                </shell:ApplicationBar>
-        </phone:PhoneApplicationPage.ApplicationBar>
+		<shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+			<shell:ApplicationBar.MenuItems>
+				<shell:ApplicationBarMenuItem x:Name="abmiManuallyEnter" Text="manually enter" Click="abmiManuallyEnter_Click" />
+				<shell:ApplicationBarMenuItem x:Name="abmiSettings" Text="settings"/>
+				<shell:ApplicationBarMenuItem x:Name="abmiQuit" Text="quit"/>
+			</shell:ApplicationBar.MenuItems>
+			<shell:ApplicationBarIconButton x:Name="abibStart" IconUri="/icons/play.png" Text="Start" Click="abibStart_Click" />
+			<shell:ApplicationBarIconButton x:Name="abibPause" IconUri="/icons/appbar.transport.pause.rest.png" Text="Pause" Click="abibPause_Click" />
+			<shell:ApplicationBarIconButton x:Name="abibStop" IconUri="/icons/appbar.stop.rest.png" Text="Stop" Click="abibStop_Click" />
+			<shell:ApplicationBarIconButton x:Name="abibAddIt" IconUri="/icons/appbar.add.rest.png" Text="Add It"/>
+		</shell:ApplicationBar>
+	</phone:PhoneApplicationPage.ApplicationBar>
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-                <Grid.ColumnDefinitions>
-                	<ColumnDefinition Width="26*" />
-                	<ColumnDefinition Width="454*" />
-                </Grid.ColumnDefinitions>
-    	<controls:Panorama Title="Field Service" Foreground="#FFCEC674" Grid.Column="1" Margin="0,0,-26,0">
-    		<controls:Panorama.Background>
-    			<ImageBrush ImageSource="PanoramaBackground.png"/>
-    		</controls:Panorama.Background>
-    		<!--Panorama item two-->
-        <!--Panorama item one-->
-    		<toolkit:WrapPanel Orientation="Vertical" MinHeight="522">
-                                <ListBox Margin="0,0,0,0" x:Name="lbMainMenuItems" ItemsSource="{Binding lbMainMenuItems}">
-                                <ListBox.ItemTemplate>
-                                        <DataTemplate>
-                                                <StackPanel Orientation="Horizontal" Margin="20,-5,0,-5">
-                                                                <Image Source="{Binding IconUri}" Margin="-5,-5,-10,-5" Tap="MenuImage_TapEvent"/>
-                                                                <toolkit:MenuItem Header="{Binding MenuText}" Margin="-10,-5,-5,-5" Click="MenuItem_ClickEvent"/>
-                                                </StackPanel>
-                                        </DataTemplate>
-                                </ListBox.ItemTemplate>
-                        </ListBox>
-                </toolkit:WrapPanel>
-        <!--Panorama item one-->
-    		<controls:PanoramaItem Header="time tracking">
-    			<StackPanel Grid.Row="1" HorizontalAlignment="Stretch" x:Name="stackPanel1" VerticalAlignment="Stretch">
-    				<TextBlock x:Name="lblTimer" TextWrapping="Wrap" Text="00:00:00" FontSize="96" TextAlignment="Center"/>
-    				<TextBlock TextWrapping="Wrap" Text="Notes"/>
-    				<TextBox Height="180" TextWrapping="Wrap" Opacity="0.385"/>
-    			</StackPanel>
-    			<!--Double line list with text wrapping-->
-    		</controls:PanoramaItem>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="26*" />
+			<ColumnDefinition Width="454*" />
+		</Grid.ColumnDefinitions>
+	<controls:Panorama Title="Field Service" Foreground="#FFCEC674" Grid.Column="1" Margin="0,0,-26,0">
+		<controls:Panorama.Background>
+			<ImageBrush ImageSource="PanoramaBackground.png"/>
+		</controls:Panorama.Background>
+		<!--Panorama item two-->
+	<!--Panorama item one-->
+		<toolkit:WrapPanel Orientation="Vertical" MinHeight="522" Height="Auto" Name="wpMainOptions">
+				<ListBox Margin="0,0,0,0" x:Name="lbMainMenuItems" ItemsSource="{Binding lbMainMenuItems}" MinHeight="522">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal" Margin="20,-5,0,-5">
+								<Image Source="{Binding IconUri}" Margin="-5,-5,-10,-5" Tap="MenuImage_TapEvent"/>
+								<toolkit:MenuItem Header="{Binding MenuText}" Margin="-10,-5,-5,-5" Click="MenuItem_ClickEvent"/>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+		</toolkit:WrapPanel>
+	<!--Panorama item one-->
+		<controls:PanoramaItem Header="time tracking">
+			<StackPanel Grid.Row="1" HorizontalAlignment="Stretch" x:Name="stackPanel1" VerticalAlignment="Stretch">
+				<TextBlock x:Name="lblTimer" TextWrapping="Wrap" Text="00:00:00" FontSize="96" TextAlignment="Center"/>
+				<TextBlock TextWrapping="Wrap" Text="Notes"/>
+				<TextBox Height="180" TextWrapping="Wrap" Opacity="0.385"/>
+			</StackPanel>
+			<!--Double line list with text wrapping-->
+		</controls:PanoramaItem>
  
 <!--Use 'Orientation="Horizontal"' to enable a panel that lays out horizontally-->
-    		<controls:PanoramaItem>
-                                <controls:PanoramaItem.Header>
-                                        <StackPanel Orientation="Horizontal">
-                                                <TextBlock>return visits</TextBlock>
-                                                <Image Name="imgAddReturnVisit" Source="/MyTime;component/Images/add.png" Height="56" Width="40" HorizontalAlignment="Right" Tap="imgAddReturnVisit_Tap" Margin="9,23,0,0" />
-                                        </StackPanel>
-                                </controls:PanoramaItem.Header>
-                                <StackPanel Grid.Row="1" HorizontalAlignment="Left" Name="stackPanel2" VerticalAlignment="Top">
-                                        <TextBox Text="Search..." Width="432" Tap="TextBox_Tap" Name="tbSearchRvs" LostFocus="tbSearchRvs_LostFocus" />
-                                        <ListBox Margin="0,0,-12,0" ItemsSource="{Binding lbRvItems}">
-                                                <ListBox.ItemTemplate>
-                                                        <DataTemplate>
-                                                                <StackPanel Orientation="Horizontal" Margin="0,0,0,17">
-                                                                        <!--Replace rectangle with image-->
-                                                                        <Rectangle Height="100" Width="100" Fill="#FFE5001b" Margin="12,0,9,0"/>
-                                                                        <StackPanel Width="311">
-                                                                                <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                                                                <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                                                        </StackPanel>
-                                                                </StackPanel>
-                                                        </DataTemplate>
-                                                </ListBox.ItemTemplate>
-                                        </ListBox>
-                                </StackPanel>
-                        </controls:PanoramaItem>
-    	</controls:Panorama>
-        </Grid>
+		<controls:PanoramaItem>
+				<controls:PanoramaItem.Header>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Tap="imgAddReturnVisit_Tap">return visits</TextBlock>
+						<Image Name="imgAddReturnVisit" Source="/MyTime;component/Images/add.png" Height="56" Width="40" HorizontalAlignment="Right" Tap="imgAddReturnVisit_Tap" Margin="9,23,0,0" />
+					</StackPanel>
+				</controls:PanoramaItem.Header>
+				<StackPanel Grid.Row="1" HorizontalAlignment="Left" Name="stackPanel2" VerticalAlignment="Top">
+					<TextBox Text="Search..." Width="432" Tap="TextBox_Tap" Name="tbSearchRvs" LostFocus="tbSearchRvs_LostFocus" />
+					<ListBox Margin="0,0,-12,0" ItemsSource="{Binding lbRvItems}">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<StackPanel Orientation="Horizontal" Margin="0,0,0,17">
+									<!--Replace rectangle with image-->
+									<Rectangle Height="100" Width="100" Fill="#FFE5001b" Margin="12,0,9,0"/>
+									<StackPanel Width="311">
+										<TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+										<TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+									</StackPanel>
+								</StackPanel>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+				</StackPanel>
+			</controls:PanoramaItem>
+	</controls:Panorama>
+	</Grid>
 </phone:PhoneApplicationPage>

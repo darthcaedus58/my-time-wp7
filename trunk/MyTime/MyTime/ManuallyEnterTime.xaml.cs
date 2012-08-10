@@ -19,5 +19,15 @@ namespace MyTime
 		{
 			InitializeComponent();
 		}
+
+		private void abibSave_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void abibCancel_Click(object sender, EventArgs e)
+		{
+			NavigationService.GoBack();
+		}
 	}
 }
