@@ -12,6 +12,11 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using Microsoft.Phone.Controls;
 using System.IO.IsolatedStorage;
+using System.Data.Linq;
+using System.Data.Linq.Mapping;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
+using MyTimeDatabaseLib;
 
 namespace MyTime
 {
@@ -222,6 +227,21 @@ namespace MyTime
 			{
 				tbSearchRvs.Text = "Search...";
 			}
+		}
+
+		private void StackPanel_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+		{
+
+		}
+
+		private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			if (((ListBox)sender).SelectedIndex < 0) return;
+			try {
+				var rv = (ItemViewModel)((ListBox)sender).SelectedItem;
+				((ListBox)sender).SelectedIndex = -1;
+				NavigationService.Navigate(new Uri(string.Format("/AddNewRV.xaml?id={0}", rv.ItemId.ToString()), UriKind.Relative));
+			} catch { }
 		}
 	}
 }

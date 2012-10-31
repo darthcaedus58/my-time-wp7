@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using MyTime.ViewModels;
+using MyTimeDatabaseLib;
+using System.IO;
 
 
 namespace MyTime
@@ -45,23 +47,34 @@ namespace MyTime
 		public void LoadData()
 		{
 			// Sample data; replace with real data
-			lbRvItems.Add(new ItemViewModel() { Name = "runtime one", LineOne = "Maecenas praesent accumsan bibendum", LineTwo = "Facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis senectus sociosqu" });
-			lbRvItems.Add(new ItemViewModel() { Name = "runtime two", LineOne = "Dictumst eleifend facilisi faucibus", LineTwo = "Suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus" });
-			lbRvItems.Add(new ItemViewModel() { Name = "runtime three", LineOne = "Habitant inceptos interdum lobortis", LineTwo = "Habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent" });
-			lbRvItems.Add(new ItemViewModel() { Name = "runtime four", LineOne = "Nascetur pharetra placerat pulvinar", LineTwo = "Ultrices vehicula volutpat maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos" });
-			lbRvItems.Add(new ItemViewModel() { Name = "runtime five", LineOne = "Maecenas praesent accumsan bibendum", LineTwo = "Maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur" });
-			lbRvItems.Add(new ItemViewModel() { Name = "runtime six", LineOne = "Dictumst eleifend facilisi faucibus", LineTwo = "Pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent" });
-			lbRvItems.Add(new ItemViewModel() { Name = "runtime seven", LineOne = "Habitant inceptos interdum lobortis", LineTwo = "Accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat" });
-			lbRvItems.Add(new ItemViewModel() { Name = "runtime eight", LineOne = "Nascetur pharetra placerat pulvinar", LineTwo = "Pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum" });
-			lbRvItems.Add(new ItemViewModel() { Name = "runtime nine", LineOne = "Maecenas praesent accumsan bibendum", LineTwo = "Facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis senectus sociosqu" });
-			lbRvItems.Add(new ItemViewModel() { Name = "runtime ten", LineOne = "Dictumst eleifend facilisi faucibus", LineTwo = "Suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus" });
-			lbRvItems.Add(new ItemViewModel() { Name = "runtime eleven", LineOne = "Habitant inceptos interdum lobortis", LineTwo = "Habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent" });
-			lbRvItems.Add(new ItemViewModel() { Name = "runtime twelve", LineOne = "Nascetur pharetra placerat pulvinar", LineTwo = "Ultrices vehicula volutpat maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos" });
-			lbRvItems.Add(new ItemViewModel() { Name = "runtime thirteen", LineOne = "Maecenas praesent accumsan bibendum", LineTwo = "Maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur" });
-			lbRvItems.Add(new ItemViewModel() { Name = "runtime fourteen", LineOne = "Dictumst eleifend facilisi faucibus", LineTwo = "Pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent" });
-			lbRvItems.Add(new ItemViewModel() { Name = "runtime fifteen", LineOne = "Habitant inceptos interdum lobortis", LineTwo = "Accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat" });
-			lbRvItems.Add(new ItemViewModel() { Name = "runtime sixteen", LineOne = "Nascetur pharetra placerat pulvinar", LineTwo = "Pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum" });
+			var rvs = ReturnVisitsInterface.GetReturnVisits(SortOrder.DateFirstToLast, 1);
 
+			var wb = new System.Windows.Media.Imaging.WriteableBitmap(100, 100);
+			for(int i = 0; i < wb.Pixels.Length; i++) {
+				wb.Pixels[i] = (int)0xFF3300;
+			}
+			BitmapImage bmp = new BitmapImage();
+			using (MemoryStream ms = new MemoryStream()) {
+				wb.SaveJpeg(ms, 100, 100, 0, 100);
+				bmp.SetSource(ms);
+			}
+
+			foreach (var r in rvs) {
+				var bi = new BitmapImage();
+				if (r.ImageSrc != null && r.ImageSrc.Length >= 0) {
+					var ris = new WriteableBitmap(100, 100);
+					for (int i = 0; i < ris.Pixels.Length; i++) {
+						ris.Pixels[i] = r.ImageSrc[i];
+					}
+						using (var ms = new MemoryStream()) {
+							ris.SaveJpeg(ms, 100, 100, 0, 100);
+							bi.SetSource(ms);
+						}
+				} else {
+					bi = bmp;
+				}
+				lbRvItems.Add(new ItemViewModel() { ItemId = r.ItemId, ImageSource = bi, Name = r.FullName, LineOne = string.Format("{0} {1}", r.AddressOne, r.AddressTwo), LineTwo = string.Format("{0}, {1} {2}", r.City, r.StateProvince, r.PostalCode) });
+			}
 			this.IsDataLoaded = true;
 		}
 

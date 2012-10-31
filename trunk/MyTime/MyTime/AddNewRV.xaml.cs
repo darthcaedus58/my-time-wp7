@@ -11,6 +11,10 @@ using Microsoft.Phone.Scheduler;
 using Microsoft.Phone.Tasks;
 using MyTime.BingMapsGeocodeService;
 using GestureEventArgs = System.Windows.Input.GestureEventArgs;
+using MyTimeDatabaseLib;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace MyTime
 {
@@ -22,6 +26,8 @@ namespace MyTime
 		private GeocodeResult _currentBingGeocodeLocation;
 		private GeoCoordinateWatcher gcw;
 
+		private ReturnVisitData _currentReturnVisitData = null;
+
 		public AddNewRV()
 		{
 			InitializeComponent();
@@ -30,6 +36,28 @@ namespace MyTime
 			_fullName = lblInfo_FullName.Text;
 			_cityStateZip = lblInfo_CityStateZip.Text;
 			SetInfoText();
+		}
+
+		protected override void OnNavigatedTo(NavigationEventArgs e)
+		{
+			base.OnNavigatedTo(e);
+			RefreshReminderList();
+			if (!NavigationContext.QueryString.ContainsKey("id")) return;
+			string id = NavigationContext.QueryString["id"];
+			if (string.IsNullOrEmpty(id)) return;
+			try {
+				int ItemID = int.Parse(id);
+				ReturnVisitData rv = ReturnVisitsInterface.GetReturnVisit(ItemID);
+				_currentReturnVisitData = rv;
+				tbAddress1.Text = rv.AddressOne;
+				tbAddress2.Text = rv.AddressTwo;
+				tbCity.Text = rv.City;
+				tbDistrict.Text = rv.StateProvince;
+				tbFullName.Text = rv.FullName;
+				tbNotes.Text = rv.OtherNotes;
+				tbZipCode.Text = rv.PostalCode;
+				SetInfoText();
+			} catch { }
 		}
 
 		#region Events
@@ -44,7 +72,38 @@ namespace MyTime
 
 		private void Pivot_LoadedPivotItem(object sender, PivotItemEventArgs e) { Focus(); }
 		private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e) { SetInfoText(); }
-		private void appbar_addVisit_Click(object sender, EventArgs e) { }
+		
+		private void appbar_addVisit_Click(object sender, EventArgs e)
+		{
+			try {
+				var wb = new WriteableBitmap(100, 100);
+				wb.Render(mapInfo, new TranslateTransform());
+				wb.Invalidate();
+
+				var newRv = new ReturnVisitData()
+				{
+					AddressOne = tbAddress1.Text,
+					AddressTwo = tbAddress2.Text,
+					City = tbCity.Text,
+					Country = _currentBingGeocodeLocation.Address.CountryRegion,
+					StateProvince = tbDistrict.Text,
+					PostalCode = tbZipCode.Text,
+					Age = "21",
+					Gender = "Male",
+					FullName = tbFullName.Text,
+					DateCreated = DateTime.Now,
+					OtherNotes = tbNotes.Text,
+					PhysicalDescription = "Whatevers",
+					ImageSrc = wb.Pixels
+				};
+
+				ReturnVisitsInterface.AddNewReturnVisit(newRv);
+				MessageBox.Show("Visit Added.");
+			} catch {
+				MessageBox.Show("Can't Add.");
+			}
+		}
+
 		private void appbar_cancel_Click(object sender, EventArgs e) { NavigationService.GoBack(); }
 		private void appbar_save_Click(object sender, EventArgs e) { }
 		private void btnCancel_Click(object sender, RoutedEventArgs e) { }
@@ -95,6 +154,7 @@ namespace MyTime
 
 		private void geocodeService_GeocodeCompleted(object sender, GeocodeCompletedEventArgs e)
 		{
+			if (e.Result.Results == null || e.Result.Results.Count == 0) return;
 			var p = new Pushpin {Location = e.Result.Results[0].Locations[0]};
 			mapInfo.Children.Clear();
 			mapInfo.Children.Add(p);
@@ -144,13 +204,6 @@ namespace MyTime
 		private void textBlock1_LostFocus(object sender, RoutedEventArgs e) { }
 
 		#endregion
-
-		protected override void OnNavigatedTo(NavigationEventArgs e)
-		{
-			base.OnNavigatedTo(e);
-
-			RefreshReminderList();
-		}
 
 		private void RefreshReminderList()
 		{
@@ -211,7 +264,7 @@ namespace MyTime
 			lblInfo_FullName.Text = string.Format(_fullName, tbFullName.Text);
 			lblInfo_CityStateZip.Text = string.Format(_cityStateZip, tbCity.Text, tbDistrict.Text, tbZipCode.Text);
 			if (!string.IsNullOrEmpty(tbAddress1.Text) && !string.IsNullOrEmpty(tbCity.Text) && !string.IsNullOrEmpty(tbDistrict.Text))
-				MakeGeocodeRequest(new Address {AddressLine = tbAddress1.Text, AdminDistrict = tbDistrict.Text, Locality = tbCity.Text, PostalCode = tbZipCode.Text, CountryRegion = _currentBingGeocodeLocation.Address.CountryRegion});
+				MakeGeocodeRequest(new Address {AddressLine = tbAddress1.Text, AdminDistrict = tbDistrict.Text, Locality = tbCity.Text, PostalCode = tbZipCode.Text, CountryRegion = _currentBingGeocodeLocation != null ? _currentBingGeocodeLocation.Address.CountryRegion : _currentReturnVisitData.Country });
 		}
 
 		private void tbNotes_GotFocus(object sender, RoutedEventArgs e)
@@ -227,11 +280,7 @@ namespace MyTime
 
 		private void bAddVisit_Click(object sender, RoutedEventArgs e)
 		{
-			try {
-				
-			} finally {
-				MessageBox.Show("Visit Added.");
-			}
+			
 		}
 	}
 }
