@@ -32,15 +32,16 @@ namespace MyTimeDatabaseLib
 		{
 			var rvs = new List<ReturnVisitData>();
 			using (var db = new ReturnVisitDataContext(ReturnVisitDataContext.DBConnectionString)) {
-				var qry = db.ReturnVisitItems.OrderBy(o => o.DateCreated);
-				int x = db.ReturnVisitItems.Count();
-				IQueryable<ReturnVisitDataItem> q;
-				if (so == SortOrder.DateFirstToLast)
-					q = qry.Take(maxReturnCount > 0 ? maxReturnCount : 25);
-				else 
-					q = qry.Take(maxReturnCount > 0 ? maxReturnCount : 25);
+				
+				var q = db.ReturnVisitItems.OrderBy(o => o.DateCreated).Take(maxReturnCount > 0 ? maxReturnCount : 25);
+				ReturnVisitDataItem[] dem_RVs;
 
-				foreach (var r in qry) {
+				if (so == SortOrder.DateFirstToLast)
+					dem_RVs = q.ToArray().Reverse().ToArray();
+				else
+					dem_RVs = q.ToArray();
+				 
+				foreach (var r in dem_RVs) {
 					var rr = new ReturnVisitData()
 					{
 						ItemId = r.ItemId,

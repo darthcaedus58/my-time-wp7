@@ -78,7 +78,7 @@
                 <controls:PanoramaItem>
                                 <controls:PanoramaItem.Header>
                                         <StackPanel Orientation="Horizontal">
-                                                <TextBlock Tap="imgAddReturnVisit_Tap">return visits</TextBlock>
+                                                <TextBlock>return visits</TextBlock>
                                                 <Image Name="imgAddReturnVisit" Source="/MyTime;component/icons/Images/add.png" Height="56" Width="40" HorizontalAlignment="Right" Tap="imgAddReturnVisit_Tap" Margin="9,23,0,0" />
                                         </StackPanel>
                                 </controls:PanoramaItem.Header>
