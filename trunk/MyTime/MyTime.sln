@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTime", "MyTime\MyTime.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTimeDatabaseLib", "MyTimeDatabaseLib\MyTimeDatabaseLib.csproj", "{A1C548DC-5636-4CC8-B680-A818350BA8C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "Controls\Controls.csproj", "{7C0E2130-D087-43E2-BDF1-686A4CDB88ED}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -25,6 +27,10 @@ Global
 		{A1C548DC-5636-4CC8-B680-A818350BA8C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1C548DC-5636-4CC8-B680-A818350BA8C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1C548DC-5636-4CC8-B680-A818350BA8C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C0E2130-D087-43E2-BDF1-686A4CDB88ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C0E2130-D087-43E2-BDF1-686A4CDB88ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C0E2130-D087-43E2-BDF1-686A4CDB88ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C0E2130-D087-43E2-BDF1-686A4CDB88ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
