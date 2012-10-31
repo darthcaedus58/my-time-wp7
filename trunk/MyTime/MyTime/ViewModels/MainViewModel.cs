@@ -47,7 +47,7 @@ namespace MyTime
 		public void LoadData()
 		{
 			// Sample data; replace with real data
-			var rvs = ReturnVisitsInterface.GetReturnVisits(SortOrder.DateFirstToLast, 1);
+			var rvs = ReturnVisitsInterface.GetReturnVisits(SortOrder.DateFirstToLast, 25);
 
 			var wb = new System.Windows.Media.Imaging.WriteableBitmap(100, 100);
 			for(int i = 0; i < wb.Pixels.Length; i++) {
