@@ -53,12 +53,12 @@
                 <!--Panorama item two-->
         <!--Panorama item one-->
                 <toolkit:WrapPanel Orientation="Vertical" MinHeight="522" Height="Auto" Name="wpMainOptions">
-                                <ListBox Margin="0,0,0,0" x:Name="lbMainMenuItems" ItemsSource="{Binding lbMainMenuItems}" MinHeight="522">
+                                <ListBox Margin="0,0,0,0" x:Name="lbMainMenuItems" ItemsSource="{Binding lbMainMenuItems}" MinHeight="522" >
                                 <ListBox.ItemTemplate>
                                         <DataTemplate>
-                                                <StackPanel Orientation="Horizontal" Margin="20,-5,0,-5">
+                                                <StackPanel Orientation="Horizontal" Margin="20,5,5,-5">
                                                                 <Image Source="{Binding IconUri}" Margin="-5,-5,-10,-5" Tap="MenuImage_TapEvent"/>
-                                                                <toolkit:MenuItem Header="{Binding MenuText}" Margin="-10,-5,-5,-5" Click="MenuItem_ClickEvent"/>
+                                                                <toolkit:MenuItem Header="{Binding MenuText}" Margin="-10,-5,-5,-5" Click="MenuItem_ClickEvent" FontSize="35"/>
                                                 </StackPanel>
                                         </DataTemplate>
                                 </ListBox.ItemTemplate>
@@ -91,7 +91,7 @@
                                                                         <!--Replace rectangle with image-->
                                                                         <Image Source="{Binding ImageSource}" Height="100" Width="100" />
                                                                         <StackPanel Width="311">
-                                                                                <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                                                                <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
                                                                                 <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
                                                                                 <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
                                                                         </StackPanel>

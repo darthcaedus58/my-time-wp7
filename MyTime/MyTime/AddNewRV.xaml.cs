@@ -23,6 +23,7 @@ namespace MyTime
 		private readonly string _address;
 		private readonly string _cityStateZip;
 		private readonly string _fullName;
+		private readonly string _phNum, _age;
 		private GeocodeResult _currentBingGeocodeLocation;
 		private GeoCoordinateWatcher gcw;
 
@@ -35,6 +36,12 @@ namespace MyTime
 			_address = lblInfo_Address.Text;
 			_fullName = lblInfo_FullName.Text;
 			_cityStateZip = lblInfo_CityStateZip.Text;
+			_phNum = lblInfo_telephone.Text;
+			_age = lblInfo_Age.Text;
+			dlsAge.SelectedItem = 30;
+			string[] genders = { "Male", "Female" };
+			lpGender.ItemsSource = genders;
+			lpGender.SelectedIndex = 0;
 			SetInfoText();
 		}
 
@@ -54,7 +61,7 @@ namespace MyTime
 				tbCity.Text = rv.City;
 				tbDistrict.Text = rv.StateProvince;
 				tbFullName.Text = rv.FullName;
-				tbNotes.Text = rv.OtherNotes;
+				tbOtherNotes.Text = rv.OtherNotes;
 				tbZipCode.Text = rv.PostalCode;
 				SetInfoText();
 			} catch { }
@@ -73,7 +80,13 @@ namespace MyTime
 		private void Pivot_LoadedPivotItem(object sender, PivotItemEventArgs e) { Focus(); }
 		private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e) { SetInfoText(); }
 		
-		private void appbar_addVisit_Click(object sender, EventArgs e)
+		private void appbar_DeleteRv_Click(object sender, EventArgs e)
+		{
+			
+		}
+
+		private void appbar_cancel_Click(object sender, EventArgs e) { NavigationService.GoBack(); }
+		private void appbar_save_Click(object sender, EventArgs e)
 		{
 			try {
 				var wb = new WriteableBitmap(100, 100);
@@ -88,12 +101,12 @@ namespace MyTime
 					Country = _currentBingGeocodeLocation.Address.CountryRegion,
 					StateProvince = tbDistrict.Text,
 					PostalCode = tbZipCode.Text,
-					Age = "21",
-					Gender = "Male",
+					Age = dlsAge.SelectedItem.ToString(),
+					Gender = lpGender.SelectedItem.ToString(),
 					FullName = tbFullName.Text,
 					DateCreated = DateTime.Now,
-					OtherNotes = tbNotes.Text,
-					PhysicalDescription = "Whatevers",
+					OtherNotes = tbOtherNotes.Text,
+					PhysicalDescription = tbDescription.Text,
 					ImageSrc = wb.Pixels
 				};
 
@@ -104,8 +117,6 @@ namespace MyTime
 			}
 		}
 
-		private void appbar_cancel_Click(object sender, EventArgs e) { NavigationService.GoBack(); }
-		private void appbar_save_Click(object sender, EventArgs e) { }
 		private void btnCancel_Click(object sender, RoutedEventArgs e) { }
 		
 		private void btnDone_Click(object sender, RoutedEventArgs e)
@@ -163,6 +174,7 @@ namespace MyTime
 
 		private void geocodeService_ReverseGeocodeCompleted(object sender, ReverseGeocodeCompletedEventArgs e)
 		{
+			if (e.Result.Results == null || e.Result.Results.Count == 0) return;
 			GeocodeResult Results = e.Result.Results[0];
 			foreach (GeocodeResult r in e.Result.Results) {
 				if (r.Confidence == Confidence.High) Results = r;
@@ -263,19 +275,10 @@ namespace MyTime
 			lblInfo_Address.Text = string.Format(_address, tbAddress1.Text, tbAddress2.Text);
 			lblInfo_FullName.Text = string.Format(_fullName, tbFullName.Text);
 			lblInfo_CityStateZip.Text = string.Format(_cityStateZip, tbCity.Text, tbDistrict.Text, tbZipCode.Text);
+			lblInfo_Age.Text = string.Format("{0} year old {1}", dlsAge.SelectedItem, lpGender.SelectedItem);
+			lblInfo_telephone.Text = string.Format(_phNum, tbPhoneNumber.Text);
 			if (!string.IsNullOrEmpty(tbAddress1.Text) && !string.IsNullOrEmpty(tbCity.Text) && !string.IsNullOrEmpty(tbDistrict.Text))
 				MakeGeocodeRequest(new Address {AddressLine = tbAddress1.Text, AdminDistrict = tbDistrict.Text, Locality = tbCity.Text, PostalCode = tbZipCode.Text, CountryRegion = _currentBingGeocodeLocation != null ? _currentBingGeocodeLocation.Address.CountryRegion : _currentReturnVisitData.Country });
-		}
-
-		private void tbNotes_GotFocus(object sender, RoutedEventArgs e)
-		{
-			if(tbNotes.Text.Equals("Notes...", StringComparison.InvariantCultureIgnoreCase))
-				tbNotes.Text = string.Empty;
-		}
-
-		private void tbNotes_LostFocus(object sender, RoutedEventArgs e)
-		{
-			if (tbNotes.Text.Length <= 0) tbNotes.Text = "Notes...";
 		}
 
 		private void bAddVisit_Click(object sender, RoutedEventArgs e)

@@ -52,6 +52,12 @@ namespace MyTime
 			if (IsolatedStorageFile.GetUserStoreForApplication().FileExists("restart.bin")) GetRestartTime();
 		}
 
+		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+		{
+			base.OnNavigatedTo(e);
+
+		}
+
 		private void GetRestartTime()
 		{
 			try {
@@ -127,10 +133,12 @@ namespace MyTime
 		// Load data for the ViewModel lbRvItems
 		private void MainPage_Loaded(object sender, RoutedEventArgs e)
 		{
-			if (!App.ViewModel.IsDataLoaded) {
-				App.ViewModel.LoadData();
-				App.ViewModel.LoadMainMenu();
+			if (App.ViewModel.IsDataLoaded) {
+				App.ViewModel.lbRvItems.Clear();
+				App.ViewModel.lbMainMenuItems.Clear();
 			}
+			App.ViewModel.LoadReturnVisitList();
+			App.ViewModel.LoadMainMenu();
 		}
 
 		private void abibStart_Click(object sender, EventArgs e) 
@@ -238,7 +246,7 @@ namespace MyTime
 		{
 			if (((ListBox)sender).SelectedIndex < 0) return;
 			try {
-				var rv = (ItemViewModel)((ListBox)sender).SelectedItem;
+				var rv = (ReturnVisitItemViewModel)((ListBox)sender).SelectedItem;
 				((ListBox)sender).SelectedIndex = -1;
 				NavigationService.Navigate(new Uri(string.Format("/AddNewRV.xaml?id={0}", rv.ItemId.ToString()), UriKind.Relative));
 			} catch { }

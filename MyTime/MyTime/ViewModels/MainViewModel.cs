@@ -23,15 +23,17 @@ namespace MyTime
 	{
 		public MainViewModel()
 		{
-			this.lbRvItems = new ObservableCollection<ItemViewModel>();
+			lbRvPreviousItems = new ObservableCollection<PreviousVisitViewModel>();
+			lbRvItems = new ObservableCollection<ReturnVisitItemViewModel>();
 			lbMainMenuItems = new ObservableCollection<MainMenuViewModel>();
 		}
 
 		/// <summary>
-		/// A collection for ItemViewModel objects.
+		/// A collection for ReturnVisitItemViewModel objects.
 		/// </summary>
-		public ObservableCollection<ItemViewModel> lbRvItems { get; private set; }
+		public ObservableCollection<ReturnVisitItemViewModel> lbRvItems { get; private set; }
 		public ObservableCollection<MainMenuViewModel> lbMainMenuItems { get; private set; }
+		public ObservableCollection<PreviousVisitViewModel> lbRvPreviousItems { get; private set; }
 
 		public bool IsDataLoaded
 		{
@@ -39,12 +41,15 @@ namespace MyTime
 			private set;
 		}
 
+		public void LoadPreviousVisits(int rvId)
+		{
 
+		}
 
 		/// <summary>
-		/// Creates and adds a few ItemViewModel objects into the lbRvItems collection.
+		/// Creates and adds a few ReturnVisitItemViewModel objects into the lbRvItems collection.
 		/// </summary>
-		public void LoadData()
+		public void LoadReturnVisitList()
 		{
 			// Sample data; replace with real data
 			var rvs = ReturnVisitsInterface.GetReturnVisits(SortOrder.DateFirstToLast, 25);
@@ -73,7 +78,7 @@ namespace MyTime
 				} else {
 					bi = bmp;
 				}
-				lbRvItems.Add(new ItemViewModel() { ItemId = r.ItemId, ImageSource = bi, Name = r.FullName, LineOne = string.Format("{0} {1}", r.AddressOne, r.AddressTwo), LineTwo = string.Format("{0}, {1} {2}", r.City, r.StateProvince, r.PostalCode) });
+				lbRvItems.Add(new ReturnVisitItemViewModel() { ItemId = r.ItemId, ImageSource = bi, Name = string.IsNullOrEmpty(r.FullName) ? string.Format("{0} year old {1}",r.Age, r.Gender) : r.FullName, LineOne = string.Format("{0} {1}", r.AddressOne, r.AddressTwo), LineTwo = string.Format("{0}, {1} {2}", r.City, r.StateProvince, r.PostalCode) });
 			}
 			this.IsDataLoaded = true;
 		}
