@@ -15,7 +15,7 @@ using System.IO;
 
 namespace MyTime
 {
-	public class ItemViewModel : INotifyPropertyChanged
+	public class ReturnVisitItemViewModel : INotifyPropertyChanged
 	{
 		private BitmapImage _image;
 		/// <summary>
