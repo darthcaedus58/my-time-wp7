@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using MyTimeDatabaseLib;
 
 namespace MyTime
 {
@@ -74,7 +75,8 @@ namespace MyTime
 				// and consume battery power when the user is not using the phone.
 				PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
 			}
-
+			TimeDataInterface.CheckDatabase();
+			ReturnVisitsInterface.CheckDatabase();
 		}
 
 		// Code to execute when the application is launching (eg, from Start)

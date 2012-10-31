@@ -9,12 +9,35 @@ using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace MyTime
 {
 	public class ItemViewModel : INotifyPropertyChanged
 	{
+		private BitmapImage _image;
+		/// <summary>
+		/// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+		/// </summary>
+		/// <returns></returns>
+		public BitmapImage ImageSource
+		{
+			get
+			{
+				return _image;
+			}
+
+			set
+			{
+				if (value != _image) {
+					_image = value;
+					NotifyPropertyChanged("ImageSource");
+				}
+			}
+		}
+
 		private string _name;
 		/// <summary>
 		/// Sample ViewModel property; this property is used in the view to display its value using a Binding.
@@ -30,7 +53,7 @@ namespace MyTime
 			{
 				if (value != _name) {
 					_name = value;
-					NotifyPropertyChanged("LineOne");
+					NotifyPropertyChanged("Name");
 				}
 			}
 		}
@@ -75,6 +98,20 @@ namespace MyTime
 			}
 		}
 
+		private int _itemID;
+
+		public int ItemId
+		{
+			get { return _itemID; }
+			set
+			{
+				if (value != _itemID) {
+					_itemID = value;
+					NotifyPropertyChanged("ItemId");
+				}
+			}
+		}
+
 		public event PropertyChangedEventHandler PropertyChanged;
 		private void NotifyPropertyChanged(String propertyName)
 		{
@@ -84,4 +121,5 @@ namespace MyTime
 			}
 		}
 	}
+
 }

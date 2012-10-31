@@ -84,8 +84,6 @@
     <Compile Include="ManuallyEnterTime.xaml.cs">
       <DependentUpon>ManuallyEnterTime.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\ReturnVisitDataContext.cs" />
-    <Compile Include="Model\TimeDataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\BingMapsGeocodeService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -222,6 +220,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\BingMapsGeocodeService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyTimeDatabaseLib\MyTimeDatabaseLib.csproj">
+      <Project>{A1C548DC-5636-4CC8-B680-A818350BA8C5}</Project>
+      <Name>MyTimeDatabaseLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
