@@ -44,6 +44,23 @@ namespace MyTimeDatabaseLib.Model
 			}
 		}
 
+		private string _phNum;
+
+		[Column]
+		public string PhoneNumber
+		{
+			get { return _phNum; }
+			set
+			{
+				if (_phNum != value) {
+					NotifyPropertyChanging("PhoneNumber");
+					_phNum = value;
+					NotifyPropertyChanged("PhoneNumber");
+				}
+			}
+		}
+		
+
 		private string _fullName;
 
 		[Column]

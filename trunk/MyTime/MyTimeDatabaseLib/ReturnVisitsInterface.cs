@@ -57,7 +57,8 @@ namespace MyTimeDatabaseLib
 						PhysicalDescription = r.PhysicalDescription,
 						PostalCode = r.PostalCode,
 						StateProvince = r.StateProvince,
-						ImageSrc = r.ImageSrc
+						ImageSrc = r.ImageSrc,
+						PhoneNumber = r.PhoneNumber
 					};
 					rvs.Add(rr);
 				}
@@ -88,7 +89,8 @@ namespace MyTimeDatabaseLib
 					PhysicalDescription = newRv.PhysicalDescription,
 					PostalCode = newRv.PostalCode,
 					StateProvince = newRv.StateProvince,
-					ImageSrc = newRv.ImageSrc
+					ImageSrc = newRv.ImageSrc,
+					PhoneNumber = newRv.PhoneNumber
 				};
 				try {
 						
@@ -123,10 +125,10 @@ namespace MyTimeDatabaseLib
 			using (var db = new ReturnVisitDataContext(ReturnVisitDataContext.DBConnectionString)) {
 				if (db.DatabaseExists() == false)
 					db.CreateDatabase();
-				//else {
-				//    db.DeleteDatabase();
-				//    db.CreateDatabase();
-				//}
+				else {
+					db.DeleteDatabase();
+					db.CreateDatabase();
+				}
 					
 			}
 		}
@@ -151,7 +153,8 @@ namespace MyTimeDatabaseLib
 						PhysicalDescription = r.PhysicalDescription,
 						PostalCode = r.PostalCode,
 						StateProvince = r.StateProvince,
-						ImageSrc = r.ImageSrc
+						ImageSrc = r.ImageSrc,
+						PhoneNumber = r.PhoneNumber
 					};
 					return rr;
 				} catch {
@@ -208,6 +211,12 @@ namespace MyTimeDatabaseLib
 		}
 
 		public string AddressOne
+		{
+			get;
+			set;
+		}
+
+		public string PhoneNumber
 		{
 			get;
 			set;
