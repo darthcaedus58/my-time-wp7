@@ -54,6 +54,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\..\..\..\..\..\Downloads\HtmlAgilityPack.1.4.6\sl4-windowsphone71\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls" />
     <Reference Include="Microsoft.Phone.Controls.Maps, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
@@ -70,6 +73,9 @@
     <Reference Include="System.Net" />
     <Reference Include="System.Xml" />
     <Reference Include="mscorlib.extensions" />
+    <Reference Include="System.Xml.XPath">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.Xml.XPath.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddNewRV.xaml.cs">
@@ -84,12 +90,16 @@
     <Compile Include="ManuallyEnterTime.xaml.cs">
       <DependentUpon>ManuallyEnterTime.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ModifyCall.xaml.cs">
+      <DependentUpon>ModifyCall.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\BingMapsGeocodeService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="SocietyScraper.cs" />
     <Compile Include="TiltEffect.cs" />
     <Compile Include="ViewModels\ReturnVisitItemViewModel.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
@@ -101,6 +111,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="ModifyCall.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddNewRV.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -85,13 +85,13 @@ namespace MyTime
 
 		public void LoadMainMenu()
 		{
-			lbMainMenuItems.Add(new MainMenuViewModel() { MenuText = "Add Time", MenuItemName = "miAddTime", IconUri = "/icons/add.png", MenuImageName = "AddTimeImage" });
-			lbMainMenuItems.Add(new MainMenuViewModel() { MenuText = "Add Return Visit", MenuItemName = "miAddRv", IconUri = "/icons/phone.png", MenuImageName = "AddReturnVisitImage" });
-			lbMainMenuItems.Add(new MainMenuViewModel() { MenuText = "Find Nearest RV", MenuItemName = "miFindNearRv", IconUri = "/icons/search.png", MenuImageName = "FindNearestRv" });
-			lbMainMenuItems.Add(new MainMenuViewModel() { MenuText = "Send Service Report", MenuItemName = "miSendReport", IconUri = "/icons/mail.png", MenuImageName = "SemdReportImage" });
-			lbMainMenuItems.Add(new MainMenuViewModel() { MenuText = string.Format("{0} Report",DateTime.Today.ToString("MMMM")), MenuItemName = "miThisMonthReport", IconUri = "/icons/favs.png", MenuImageName = "ThisMonthImage" });
-			lbMainMenuItems.Add(new MainMenuViewModel() { MenuText = string.Format("{0} Report",DateTime.Today.Year), MenuItemName = "miThisYearReport", IconUri = "/icons/favs.png", MenuImageName = "ThisYearImage" });
-			lbMainMenuItems.Add(new MainMenuViewModel() { MenuText = "Custom Report", MenuItemName = "miCustomReport", IconUri = "/icons/search.png", MenuImageName = "CustomReportImage" });
+			lbMainMenuItems.Add(new MainMenuViewModel() { MenuText = "add time", MenuItemName = "miAddTime", IconUri = "/icons/add.png", MenuImageName = "AddTimeImage" });
+			lbMainMenuItems.Add(new MainMenuViewModel() { MenuText = "add return visit", MenuItemName = "miAddRv", IconUri = "/icons/phone.png", MenuImageName = "AddReturnVisitImage" });
+			lbMainMenuItems.Add(new MainMenuViewModel() { MenuText = "find nearest rv", MenuItemName = "miFindNearRv", IconUri = "/icons/search.png", MenuImageName = "FindNearestRv" });
+			lbMainMenuItems.Add(new MainMenuViewModel() { MenuText = "send service report", MenuItemName = "miSendReport", IconUri = "/icons/mail.png", MenuImageName = "SemdReportImage" });
+			lbMainMenuItems.Add(new MainMenuViewModel() { MenuText = string.Format("{0} report",DateTime.Today.ToString("MMMM").ToLower()), MenuItemName = "miThisMonthReport", IconUri = "/icons/favs.png", MenuImageName = "ThisMonthImage" });
+			lbMainMenuItems.Add(new MainMenuViewModel() { MenuText = string.Format("{0} report",DateTime.Today.Year), MenuItemName = "miThisYearReport", IconUri = "/icons/favs.png", MenuImageName = "ThisYearImage" });
+			lbMainMenuItems.Add(new MainMenuViewModel() { MenuText = "custom report", MenuItemName = "miCustomReport", IconUri = "/icons/search.png", MenuImageName = "CustomReportImage" });
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;

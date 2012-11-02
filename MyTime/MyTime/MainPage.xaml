@@ -53,19 +53,19 @@
                 <!--Panorama item two-->
         <!--Panorama item one-->
                 <toolkit:WrapPanel Orientation="Vertical" MinHeight="522" Height="Auto" Name="wpMainOptions">
-                                <ListBox Margin="0,0,0,0" x:Name="lbMainMenuItems" ItemsSource="{Binding lbMainMenuItems}" MinHeight="522" >
-                                <ListBox.ItemTemplate>
-                                        <DataTemplate>
-                                                <StackPanel Orientation="Horizontal" Margin="20,5,5,-5">
-                                                                <Image Source="{Binding IconUri}" Margin="-5,-5,-10,-5" Tap="MenuImage_TapEvent"/>
-                                                                <toolkit:MenuItem Header="{Binding MenuText}" Margin="-10,-5,-5,-5" Click="MenuItem_ClickEvent" FontSize="35"/>
-                                                </StackPanel>
-                                        </DataTemplate>
-                                </ListBox.ItemTemplate>
-                        </ListBox>
-                </toolkit:WrapPanel>
+                                <ItemsControl Margin="0,0,0,0" Name="lbMainMenuItems" ItemsSource="{Binding lbMainMenuItems}" MinHeight="522" >
+                                        <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                        <StackPanel Orientation="Horizontal" Margin="20,5,5,-5">
+                                                                <Image Tag="{Binding MenuText}" Source="{Binding IconUri}" Margin="-5,-5,-10,-5" Tap="MenuImage_TapEvent"/>
+                                                                <toolkit:MenuItem Header="{Binding MenuText}" Margin="-10,-10,0,-5" Click="MenuItem_ClickEvent" FontFamily="{StaticResource PhoneFontFamilySemiLight}" FontSize="37"/>
+                                                        </StackPanel>
+                                                </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                        </toolkit:WrapPanel>
         <!--Panorama item one-->
-                <controls:PanoramaItem Header="time tracking">
+                <controls:PanoramaItem Header="time">
                         <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" x:Name="stackPanel1" VerticalAlignment="Stretch">
                                 <TextBlock x:Name="lblTimer" TextWrapping="Wrap" Text="00:00:00" FontSize="96" TextAlignment="Center"/>
                                 <TextBlock TextWrapping="Wrap" Text="Notes"/>
@@ -73,8 +73,19 @@
                         </StackPanel>
                         <!--Double line list with text wrapping-->
                 </controls:PanoramaItem>
- 
-<!--Use 'Orientation="Horizontal"' to enable a panel that lays out horizontally-->
+                        <controls:PanoramaItem Header="daily text">
+                                <StackPanel Orientation="Vertical" Margin="0,-30,0,0">
+                                        <TextBlock Name="lblDailyTextDate" Style="{StaticResource PhoneTextLargeStyle}" Margin="0,0,0,0" />
+                                        <TextBlock FontStyle="Italic" Name="lblDailyText" TextWrapping="Wrap" />
+                                        <ScrollViewer Height="280">
+                                                <StackPanel Orientation="Vertical" >
+                                                        <TextBlock Name="lblDTSummary" TextWrapping="Wrap" Margin="0,10,0,0" />
+                                                </StackPanel>
+                                        </ScrollViewer>
+                                        <TextBlock TextWrapping="Wrap" Text="THE ABOVE IS COPYRIGHT © 2012 WATCH TOWER BIBLE AND TRACT SOCIETY OF PENNSYLVANIA, INC. ALL RIGHTS RESERVED." FontSize="{StaticResource PhoneFontSizeSmall}" Style="{StaticResource PhoneTextSubtleStyle}" />
+                                </StackPanel>
+                        </controls:PanoramaItem>
+                                <!--Use 'Orientation="Horizontal"' to enable a panel that lays out horizontally-->
                 <controls:PanoramaItem>
                                 <controls:PanoramaItem.Header>
                                         <StackPanel Orientation="Horizontal">

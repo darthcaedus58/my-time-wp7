@@ -56,6 +56,19 @@ namespace MyTime
 		{
 			base.OnNavigatedTo(e);
 
+			lblDailyTextDate.Text = DateTime.Now.ToLongDateString();
+
+			var ss = new DailyTextScraper();
+
+			ss.DailyTextRetrieved += new DailyTextScraper.DailyTextRetrievedEventHandler(ss_DailyTextRetrieved);
+
+			ss.StartDailyTextRetrieval(DateTime.Now);
+		}
+
+		public void ss_DailyTextRetrieved(DailyText dt)
+		{
+			lblDailyText.Text = dt.Scripture;
+			lblDTSummary.Text = dt.SummaryText;
 		}
 
 		private void GetRestartTime()
@@ -205,11 +218,17 @@ namespace MyTime
 
 		public void MenuItem_ClickEvent(object sender, RoutedEventArgs e) 
 		{ 
-			switch(((MenuItem)sender).Header.ToString()) {
-				case "Add Time":
+			string v = ((MenuItem)sender).Header.ToString().ToLower();
+			NavigateMainMenu(v);
+		}
+
+		private void NavigateMainMenu(string v)
+		{
+			switch (v) {
+				case "add time":
 					NavigationService.Navigate(new Uri("/ManuallyEnterTime.xaml", UriKind.Relative));
 					break;
-				case "Add Return Visit":
+				case "add return visit":
 					NavigationService.Navigate(new Uri("/AddNewRV.xaml", UriKind.Relative));
 					break;
 				default:
@@ -217,7 +236,10 @@ namespace MyTime
 			}
 		}
 
-		public void MenuImage_TapEvent(object sender, System.Windows.Input.GestureEventArgs e) { }
+		public void MenuImage_TapEvent(object sender, System.Windows.Input.GestureEventArgs e) {
+			string v = ((Image)sender).Tag.ToString().ToLower();
+			NavigateMainMenu(v);
+		}
 
 		private void imgAddReturnVisit_Tap(object sender, System.Windows.Input.GestureEventArgs e) { NavigationService.Navigate(new Uri("/AddNewRV.xaml", UriKind.Relative)); }
 

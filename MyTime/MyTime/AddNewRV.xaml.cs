@@ -283,7 +283,7 @@ namespace MyTime
 
 		private void bAddVisit_Click(object sender, RoutedEventArgs e)
 		{
-			
+			NavigationService.Navigate(new Uri("/ModifyCall.xaml", UriKind.Relative));
 		}
 	}
 }
