@@ -47,19 +47,9 @@ namespace MyTime
         private readonly string _age;
 
         /// <summary>
-        /// The _city state zip
-        /// </summary>
-        private readonly string _cityStateZip;
-
-        /// <summary>
         /// The _full name
         /// </summary>
         private readonly string _fullName;
-
-        /// <summary>
-        /// The _PH num
-        /// </summary>
-        private readonly string _phNum;
 
         /// <summary>
         /// The _current bing geocode location
@@ -86,9 +76,8 @@ namespace MyTime
             DataContext = App.ViewModel;
 
             pbGetAddress.IsIndeterminate = true;
-            _address = lblInfo_Address.Text;
+            _address = lblInfo_AddressFull.Content.ToString();
             _fullName = lblInfo_FullName.Text;
-            _cityStateZip = lblInfo_CityStateZip.Text;
             _age = lblInfo_Age.Text;
             dlsAge.SelectedItem = 30;
             string[] genders = {"Male", "Female"};
@@ -326,19 +315,6 @@ namespace MyTime
         }
 
         /// <summary>
-        /// Handles the Tap event of the mapInfo control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="GestureEventArgs" /> instance containing the event data.</param>
-        private void mapInfo_Tap(object sender, GestureEventArgs e)
-        {
-            var bmt = new BingMapsTask();
-            bmt.Center = mapInfo.Center;
-            bmt.ZoomLevel = 18;
-            bmt.Show();
-        }
-
-        /// <summary>
         /// Handles the Click event of the miAddPicture control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -533,9 +509,8 @@ namespace MyTime
         /// </summary>
         private void SetInfoText()
         {
-            lblInfo_Address.Text = string.Format(_address, tbAddress1.Text, tbAddress2.Text);
+            lblInfo_AddressFull.Content = string.Format(_address, tbAddress1.Text, tbAddress2.Text, tbCity.Text, tbDistrict.Text, tbZipCode.Text,"\n");
             lblInfo_FullName.Text = string.Format(_fullName, tbFullName.Text);
-            lblInfo_CityStateZip.Text = string.Format(_cityStateZip, tbCity.Text, tbDistrict.Text, tbZipCode.Text);
             lblInfo_Age.Text = string.Format("{0} year old {1}", dlsAge.SelectedItem, lpGender.SelectedItem);
             lblInfo_telephone.Content = tbPhoneNumber.Text;
             if (!string.IsNullOrEmpty(tbAddress1.Text) && !string.IsNullOrEmpty(tbCity.Text) && !string.IsNullOrEmpty(tbDistrict.Text))
@@ -548,6 +523,14 @@ namespace MyTime
                                                 PhoneNumber = tbPhoneNumber.Text
                                             };
             phone.Show();
+        }
+
+        private void mapInfo_Tap(object sender, RoutedEventArgs e)
+        {
+            var bmt = new BingMapsTask();
+            bmt.Center = mapInfo.Center;
+            bmt.ZoomLevel = 18;
+            bmt.Show();
         }
     }
 }
