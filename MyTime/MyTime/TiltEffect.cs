@@ -44,7 +44,7 @@ namespace MyTime
         static TiltEffect()
         {
             // The tiltable items list.
-            TiltableItems = new List<Type>() { typeof(ButtonBase), typeof(ListBoxItem), typeof(Image)};
+            TiltableItems = new List<Type>() { typeof(ButtonBase), typeof(ListBoxItem), typeof(MenuItem), typeof(Image)};
             UseLogarithmicEase = false;
         }
 

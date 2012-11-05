@@ -26,24 +26,47 @@
             <TextBlock x:Name="ApplicationTitle" Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock x:Name="PageTitle" Text="enter time" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
-                <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" Name="stackPanel1" VerticalAlignment="Stretch">
-                        <TextBlock Height="30" Name="textBlock1" Text="Date" />
-                        <toolkit:DatePicker x:Name="dpDatePicker" />
-                        <TextBlock Height="30" Name="textBlock2" Text="Start Time" />
-                        <toolkit:TimePicker x:Name="tpStartTime" />
-                        <TextBlock Height="30" Name="textBlock3" Text="End Time" />
-                        <toolkit:TimePicker x:Name="tpEndTime" />
-                        <TextBlock Height="30" Name="textBlock4" Text="Notes" />
-                        <TextBox Height="180" Name="tbNotes" Width="460" />
+        <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" Name="stackPanel1" VerticalAlignment="Stretch">
+            <ScrollViewer Height="530">
+                <StackPanel>
+                    <TextBlock Height="30" Name="textBlock1" Text="DATE" />
+                    <toolkit:DatePicker x:Name="dpDatePicker" />
+                    <TextBlock Height="30" Name="textBlock2" Text="START TIME" />
+                    <toolkit:TimePicker x:Name="tpStartTime" />
+                    <TextBlock Height="30" Name="textBlock3" Text="END TIME" />
+                    <toolkit:TimePicker x:Name="tpEndTime" />
+                    <TextBlock Text="PLACEMENTS" />
+                    <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
+                        <TextBox Width="75" Margin="0,0,0,0" Name="tbMags" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                        <TextBlock Margin="0,0,0,0" Text="Magazines" VerticalAlignment="Center" />
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                        <TextBox Width="75" Margin="0,0,0,0" Name="tbBrochures" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                        <TextBlock Margin="0,0,0,0" Text="Brochures" VerticalAlignment="Center" />
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                        <TextBox Width="75" Margin="0,0,0,0" Name="tbBooks" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                        <TextBlock Margin="0,0,0,0" Text="Books" VerticalAlignment="Center" />
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
+                        <TextBox Width="75" Margin="0,0,0,0" Name="tbReturnVisits" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                        <TextBlock Margin="0,0,0,0" Text="Return Visits" VerticalAlignment="Center" />
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
+                        <TextBox Width="75" Margin="0,0,0,0" Name="tbBibleStudies" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                        <TextBlock Margin="0,0,0,0" Text="Bible Studies" VerticalAlignment="Center" />
+                    </StackPanel>
+                    <TextBlock TextWrapping="Wrap" Text="NOTES"/>
+                    <TextBox Height="180" TextWrapping="Wrap" Opacity="0.385"/>
                 </StackPanel>
-                <!--ContentPanel - place additional content here-->
-        </Grid>
- 
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
+
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-                        <shell:ApplicationBarIconButton Text="Save" IconUri="/icons/appbar.check.rest.png" x:Name="abibSave" Click="abibSave_Click" />
-                        <shell:ApplicationBarIconButton Text="Cancel" IconUri="/icons/appbar.cancel.rest.png" x:Name="abibCancel" Click="abibCancel_Click" />
-                </shell:ApplicationBar>
+            <shell:ApplicationBarIconButton Text="Save" IconUri="/icons/appbar.check.rest.png" x:Name="abibSave" Click="abibSave_Click" />
+        </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>

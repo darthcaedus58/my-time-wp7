@@ -51,10 +51,10 @@
                                 <Grid>
                                         <ScrollViewer Height="450" HorizontalAlignment="Left" Margin="0" Name="stackPanelInfoPersonal" VerticalAlignment="Top">
                                                 <StackPanel Orientation="Vertical">
-                                                        <TextBlock Height="30" Name="textBlock1" Text="Full Name" LostFocus="textBlock1_LostFocus" />
+                                                        <TextBlock Height="30" Name="textBlock1" Text="FULL NAME" LostFocus="textBlock1_LostFocus" />
                                                         <TextBox Height="71" Name="tbFullName" Text="" Width="460" LostFocus="tbFullName_LostFocus" />
                                                         <StackPanel Orientation="Horizontal" Height="100">
-                                                                <TextBlock Height="30" Text="Age:  " VerticalAlignment="Center" LostFocus="textBlock1_LostFocus" />
+                                                                <TextBlock Height="30" Text="AGE  " VerticalAlignment="Center" LostFocus="textBlock1_LostFocus" />
                                                                 <cntrls:DigitLoopingSelector SelectedItem="{Binding WidthMeter}" ItemMargin="6,3" HorizontalAlignment="Right" Margin="0,0,25,0" Width="75" IsExpanded="True" ItemSize="75,50" MinValue="1" MaxValue="120" Step="1" Name="dlsAge" DefaultValue="30">
                                                                         <cntrls:DigitLoopingSelector.ItemTemplate>
                                                                                 <DataTemplate>
@@ -62,13 +62,13 @@
                                                                                 </DataTemplate>
                                                                         </cntrls:DigitLoopingSelector.ItemTemplate>
                                                                 </cntrls:DigitLoopingSelector>
-                                                                <TextBlock Height="30" Text=" years" />
+                                                                <TextBlock Height="30" Text=" YEARS" />
                                                         </StackPanel>
-                                                        <TextBlock Height="30" Text="Gender" LostFocus="textBlock1_LostFocus" />
-                                                        <toolkit:ListPicker Name="lpGender"></toolkit:ListPicker>
-                                                        <TextBlock Height="30" Text="Phone Number" LostFocus="textBlock1_LostFocus" />
+                                                        <TextBlock Height="30" Text="GENDER" LostFocus="textBlock1_LostFocus" />
+                                                        <toolkit:ListPicker Margin="10,0,0,0" HorizontalAlignment="Left" Width="440" Name="lpGender"></toolkit:ListPicker>
+                                                        <TextBlock Height="30" Text="PHONE NUMBER" LostFocus="textBlock1_LostFocus" />
                                                         <TextBox Height="71" Name="tbPhoneNumber" Text="" Width="460" LostFocus="tbFullName_LostFocus" />
-                                                        <TextBlock Height="30" Text="Description" LostFocus="textBlock1_LostFocus" />
+                                                        <TextBlock Height="30" Text="DESCRIPTION" LostFocus="textBlock1_LostFocus" />
                                                         <TextBox Height="200" Name="tbDescription" Text="" Width="460" LostFocus="tbFullName_LostFocus" />
                                                 </StackPanel>
                                         </ScrollViewer>
@@ -97,19 +97,19 @@
                                                 </StackPanel>
                                                 <ScrollViewer Height="400" HorizontalAlignment="Left" Name="stackPanel1" VerticalAlignment="Top" Width="468">
                                                         <StackPanel Orientation="Vertical" Margin="0,10,10,0">
-                                                                <TextBlock Height="30" Name="textBlock2" Text="Address 1" />
+                                                                <TextBlock Height="30" Name="textBlock2" Text="ADDRESS 1" />
                                                                 <TextBox Height="71" Name="tbAddress1" Text="" Width="460" LostFocus="tbAddress1_LostFocus" />
-                                                                <TextBlock Height="30" Name="textBlock3" Text="Address 2" />
+                                                                <TextBlock Height="30" Name="textBlock3" Text="ADDRESS 2" />
                                                                 <TextBox Height="71" Name="tbAddress2" Text="" Width="460" LostFocus="tbAddress2_LostFocus" />
-                                                                <TextBlock Height="30" Name="textBlock4" Text="City" />
+                                                                <TextBlock Height="30" Name="textBlock4" Text="CITY" />
                                                                 <TextBox Height="71" Name="tbCity" Text="" Width="460" TextChanged="tbCity_TextChanged" />
-                                                                <TextBlock Height="30" Name="textBlock5" Text="State/Province/District" Margin="0,0,0,-10" />
+                                                                <TextBlock Height="30" Name="textBlock5" Text="STATE/PROVINCE/DISTRICT" Margin="0,0,0,-10" />
                                                                 <TextBox Height="71" Name="tbDistrict" Text="" Width="460" TextChanged="tbCity_TextChanged" />
-                                                                <TextBlock Height="30" Name="textBlock6" Text="ZIP Code" />
+                                                                <TextBlock Height="30" Name="textBlock6" Text="POSTAL CODE" />
                                                                 <TextBox Height="71" Name="tbZipCode" Text="" Width="460" LostFocus="tbZipCode_LostFocus" />
-                                                                <TextBlock Height="30" Name="textBlock8" Text="Country" />
+                                                                <TextBlock Height="30" Name="textBlock8" Text="COUNTRY" />
                                                                 <TextBox Height="71" Name="tbCountry" Text="" Width="460" LostFocus="tbZipCode_LostFocus" />
-                                                                <TextBlock Height="30" Name="textBlock7" Text="Other Notes" />
+                                                                <TextBlock Height="30" Name="textBlock7" Text="OTHER NOTES" />
                                                                 <TextBox Height="200" Name="tbOtherNotes" Text="" Width="460" />
                                                         </StackPanel>
                                                 </ScrollViewer>
@@ -140,13 +140,13 @@
                         <controls:PivotItem Header="reminders">
                                 <Grid>
                                         <StackPanel Grid.Row="1" Orientation="Vertical">
-                                                <TextBlock Text="Title" />
+                                                <TextBlock Text="TITLE" />
                                                 <TextBox x:Name="txtTitle" Text="" />
 
-                                                <TextBlock Text="Note" />
+                                                <TextBlock Text="NOTES" />
                                                 <TextBox x:Name="txtContent" Text="" />
 
-                                                <TextBlock Text="When"/>
+                                                <TextBlock Text="WHEN"/>
                                                 <toolkit:DatePicker x:Name="dpDatePicker" />
                                                 <toolkit:TimePicker x:Name="tpStartTime" />
 
@@ -174,9 +174,8 @@
         <phone:PhoneApplicationPage.ApplicationBar>
                 <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
                         <shell:ApplicationBarIconButton x:Name="appbar_save" IconUri="/icons/appbar.save.rest.png" Text="Save" Click="appbar_save_Click" />
-                        <shell:ApplicationBarIconButton x:Name="appbar_cancel" IconUri="/icons/appbar.cancel.rest.png" Text="Cancel" Click="appbar_cancel_Click" />
-                        <shell:ApplicationBarIconButton x:Name="appbar_delete" IconUri="/icons/delete.png" Text="Delete RV" Click="appbar_DeleteRv_Click" />
                         <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="appbar_delete" Text="Delete Return Visit" Click="appbar_DeleteRv_Click" />
                                 <shell:ApplicationBarMenuItem x:Name="miGetDirection" Text="Get Directions" Click="miGetDirection_Click" />
                                 <shell:ApplicationBarMenuItem x:Name="miAddPicture" Text="Add Picture" Click="miAddPicture_Click" />
                         </shell:ApplicationBar.MenuItems>
