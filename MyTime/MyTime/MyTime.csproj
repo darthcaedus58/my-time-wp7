@@ -249,6 +249,10 @@
       <Project>{A1C548DC-5636-4CC8-B680-A818350BA8C5}</Project>
       <Name>MyTimeDatabaseLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PixelLab\PixelLab.csproj">
+      <Project>{DA7FA58C-B262-4FAF-A9C3-9B9690AE2EC5}</Project>
+      <Name>PixelLab</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

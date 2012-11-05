@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MyTimeDatabaseLib
 {
-	class ReturnVisitAlreadyExistsException : Exception
+	public class ReturnVisitAlreadyExistsException : Exception
 	{
 		public int ItemId
 		{

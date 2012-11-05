@@ -33,9 +33,9 @@ namespace MyTime
         }
 
 
-        private DateTime _lastVisitDate;
+        private string _lastVisitDate;
 
-        public DateTime LastVisitDate
+        public string LastVisitDate
         {
             get { return _lastVisitDate; }
             set
@@ -57,6 +57,20 @@ namespace MyTime
                 if (value != _placements) {
                     _placements = value;
                     NotifyPropertyChanged("Placements");
+                }
+            }
+        }
+
+        private string _desc;
+
+        public string Description
+        {
+            get { return _desc; }
+            set
+            {
+                if (value != _desc) {
+                    _desc = value;
+                    NotifyPropertyChanged("Description");
                 }
             }
         }
