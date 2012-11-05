@@ -73,7 +73,7 @@ namespace MyTime
 			{
 				if (value != _lineOne) {
 					_lineOne = value;
-					NotifyPropertyChanged("LineTwo");
+					NotifyPropertyChanged("LineOne");
 				}
 			}
 		}
@@ -93,7 +93,7 @@ namespace MyTime
 			{
 				if (value != _lineTwo) {
 					_lineTwo = value;
-					NotifyPropertyChanged("LineThree");
+					NotifyPropertyChanged("LineTwo");
 				}
 			}
 		}
