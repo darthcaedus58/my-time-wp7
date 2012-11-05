@@ -31,22 +31,28 @@
                 <!--ContentPanel - place additional content here-->
                 <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
                         <StackPanel>
+                <ScrollViewer Height="530">
+                    <StackPanel>
                                 <TextBlock Text="DATE" />
                                 <toolkit:DatePicker x:Name="dpDatePicker" />
                                 <TextBlock Text="PLACEMENTS" />
-                                <StackPanel Orientation="Horizontal">
-                                        <cntrls:DigitLoopingSelector SelectedItem="{Binding WidthMeter}" ItemMargin="6,3" HorizontalAlignment="Right" Margin="20,0,25,0" Width="75" IsExpanded="True" ItemSize="75,50" MinValue="1" MaxValue="120" Step="1" Name="dlsAge" DefaultValue="30">
-                                                <cntrls:DigitLoopingSelector.ItemTemplate>
-                                                        <DataTemplate>
-                                                                <TextBlock Text="{Binding BindsDirectlyToSource=True}" FontSize="24" TextAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource PhoneFontFamilySemiBold}"/>
-                                                        </DataTemplate>
-                                                </cntrls:DigitLoopingSelector.ItemTemplate>
-                                        </cntrls:DigitLoopingSelector>
-                                        <toolkit:ListPicker Name="lpPlacement" Width="330"></toolkit:ListPicker>
-                                </StackPanel>
-                                <TextBlock Text="OTHER NOTES" />
-                                <TextBox Name="tbOtherNotes" Height="250" />
+                        <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
+                            <TextBox Width="75" Margin="0,0,0,0" Name="tbMags" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                            <TextBlock Margin="0,0,0,0" Text="Magazines" VerticalAlignment="Center" />
                         </StackPanel>
+                        <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                            <TextBox Width="75" Margin="0,0,0,0" Name="tbBrochures" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                            <TextBlock Margin="0,0,0,0" Text="Brochures" VerticalAlignment="Center" />
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                            <TextBox Width="75" Margin="0,0,0,0" Name="tbBooks" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                            <TextBlock Margin="0,0,0,0" Text="Books" VerticalAlignment="Center" />
+                        </StackPanel>
+                        <TextBlock TextWrapping="Wrap" Text="NOTES"/>
+                        <TextBox Name="tbNotes" Height="180" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
                 </Grid>
         </Grid>
 
@@ -55,7 +61,7 @@
                         <shell:ApplicationBar.MenuItems>
                                 <shell:ApplicationBarMenuItem Text="delete call" Click="abmiDeleteCall_Click" />
                         </shell:ApplicationBar.MenuItems>
-                        <shell:ApplicationBarIconButton IconUri="/icons/save.png" Text="save"/>
+                        <shell:ApplicationBarIconButton IconUri="/icons/save.png" Text="save" Click="ApplicationBarIconButtonSave_Click" />
                 </shell:ApplicationBar>
         </phone:PhoneApplicationPage.ApplicationBar>
 

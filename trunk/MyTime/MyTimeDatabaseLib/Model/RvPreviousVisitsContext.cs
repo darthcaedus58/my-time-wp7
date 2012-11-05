@@ -64,22 +64,67 @@ namespace MyTimeDatabaseLib.Model
 			}
 		}
 
-		// Define completion value: private field, public property, and database column.
-		private XDocument _placements;
+        private int _mags;
 
-		[Column]
-		public XDocument Placements
-		{
-			get { return _placements; }
-			set
-			{
-				if (_placements != value) {
-					NotifyPropertyChanging("Placements");
-					_placements = value;
-					NotifyPropertyChanged("Placements");
-				}
-			}
-		}
+        [Column]
+        public int Magazines
+        {
+            get
+            {
+                return _mags;
+            }
+
+            set
+            {
+                if (_mags != value) {
+                    NotifyPropertyChanging("Magazines");
+                    _mags = value;
+                    NotifyPropertyChanged("Magazines");
+                }
+            }
+        }
+
+        private int _books;
+
+        [Column]
+        public int Books
+        {
+            get
+            {
+                return _books;
+            }
+
+            set
+            {
+                if (_books != value) {
+                    NotifyPropertyChanging("Books");
+                    _books = value;
+                    NotifyPropertyChanged("Books");
+                }
+            }
+        }
+
+        private int _brochures;
+
+        [Column]
+        public int Brochures
+        {
+            get
+            {
+                return _brochures;
+            }
+
+            set
+            {
+                if (_brochures != value) {
+                    NotifyPropertyChanging("Brochures");
+                    _brochures = value;
+                    NotifyPropertyChanged("Brochures");
+                }
+            }
+        }
+
+        private int _rvs;
 
 		// Define completion value: private field, public property, and database column.
 		private string _notes;

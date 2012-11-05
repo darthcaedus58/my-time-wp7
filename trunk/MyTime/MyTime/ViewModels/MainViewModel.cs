@@ -41,10 +41,14 @@ namespace MyTime
 			private set;
 		}
 
-		public void LoadPreviousVisits(int rvId)
-		{
-
-		}
+        public void UpdatePreviousVisits(MyTimeDatabaseLib.RvPreviousVisitData[] visits)
+        {
+            lbRvPreviousItems.Clear();
+            foreach (var v in visits) {
+                string placements = string.Empty;
+                lbRvPreviousItems.Add(new PreviousVisitViewModel() { LastVisitDate = v.Date, ItemId = v.ItemId, Placements = "" });
+            }
+        }
 
 		/// <summary>
 		/// Creates and adds a few ReturnVisitItemViewModel objects into the lbRvItems collection.
