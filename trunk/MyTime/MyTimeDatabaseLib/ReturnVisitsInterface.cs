@@ -49,14 +49,10 @@ namespace MyTimeDatabaseLib
             var rvs = new List<ReturnVisitData>();
             using (var db = new ReturnVisitDataContext(ReturnVisitDataContext.DBConnectionString)) {
                 IQueryable<ReturnVisitDataItem> q = db.ReturnVisitItems.OrderBy(o => o.DateCreated).Take(maxReturnCount > 0 ? maxReturnCount : 25);
-                ReturnVisitDataItem[] dem_RVs;
+                //var visits = so == SortOrder.DateNewestToOldest ? qry.ToArray().Reverse() : qry.ToArray();
+                var demRVs = so == SortOrder.DateNewestToOldest ? q.ToArray().Reverse() : q.ToArray();
 
-                if (so == SortOrder.DateOldestToNewest)
-                    dem_RVs = q.ToArray().Reverse().ToArray();
-                else
-                    dem_RVs = q.ToArray();
-
-                foreach (ReturnVisitDataItem r in dem_RVs) {
+                foreach (ReturnVisitDataItem r in demRVs) {
                     var rr = new ReturnVisitData {
                                                      ItemId = r.ItemId,
                                                      DateCreated = r.DateCreated,
@@ -84,7 +80,7 @@ namespace MyTimeDatabaseLib
         /// Adds the new return visit.
         /// </summary>
         /// <param name="newRv">The new rv.</param>
-        /// <returns><c>True</c> if successful and <c>False</c> if unsucessful.</returns>
+        /// <returns><c>True</c> if successful and <c>False</c> if unsuccessful.</returns>
         /// <exception cref="MyTimeDatabaseLib.ReturnVisitAlreadyExistsException">The Return Visit already exists.</exception>
         public static int AddNewReturnVisit(ReturnVisitData newRv)
         {
