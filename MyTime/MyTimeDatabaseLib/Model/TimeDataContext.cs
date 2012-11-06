@@ -163,6 +163,22 @@ namespace MyTimeDatabaseLib.Model
             }
         }
 
+        private string _notes;
+
+        [Column]
+        public string Notes
+        {
+            get { return _notes; }
+            set
+            {
+                if (_notes != value) {
+                    NotifyPropertyChanging("Notes");
+                    _notes = value;
+                    NotifyPropertyChanged("Notes");
+                }
+            }
+        }
+
         // Version column aids update performance.
         [Column(IsVersion = true)]
         private Binary _version;
