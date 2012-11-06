@@ -10,11 +10,14 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using MyTimeDatabaseLib;
 
 namespace MyTime
 {
     public partial class ManuallyEnterTime : PhoneApplicationPage
     {
+        private int _itemId = -1;
+
         public ManuallyEnterTime()
         {
             InitializeComponent();
@@ -22,12 +25,36 @@ namespace MyTime
 
         private void abibSave_Click(object sender, EventArgs e)
         {
+            var t = (TimeSpan) tspTime.Value;
 
-        }
+            var minutes = (int)t.TotalMinutes;
 
-        private void abibCancel_Click(object sender, EventArgs e)
-        {
-            NavigationService.GoBack();
+            var td = new TimeData() {
+                                       Date = (DateTime) dpDatePicker.Value,
+                                       Minutes = minutes,
+                                       Magazines = string.IsNullOrEmpty(tbMags.Text) ? 0 : int.Parse(tbMags.Text),
+                                       Brochures = string.IsNullOrEmpty(tbBrochures.Text) ? 0 : int.Parse(tbBrochures.Text),
+                                       Books = string.IsNullOrEmpty(tbBooks.Text) ? 0 : int.Parse(tbBooks.Text),
+                                       BibleStudies = string.IsNullOrEmpty(tbBibleStudies.Text) ? 0 : int.Parse(tbBibleStudies.Text),
+                                       ReturnVisits = string.IsNullOrEmpty(tbReturnVisits.Text) ? 0 : int.Parse(tbReturnVisits.Text),
+                                       Notes = tbNotes.Text
+                                   };
+            try {
+                if (_itemId >= 0) {
+                    TimeDataInterface.UpdateTime(_itemId, td);
+                    App.ToastMe("Time Updated.");
+                } else {
+                    TimeDataInterface.AddTime(td);
+                    App.ToastMe(string.Format("Time ({0} hrs & {1} min) added.", t.Hours, t.Minutes));
+                }
+            } catch(TimeDataItemNotFoundException) {
+                TimeDataInterface.AddTime(td);
+                App.ToastMe(string.Format("Time ({0} hrs & {1} min) added.", t.Hours, t.Minutes));
+            }catch (Exception ee) {
+                //TODO:Exception handler
+                MessageBox.Show("Couldn't add time.\n\nException: " + ee.Message);
+            }
+
         }
 
 
@@ -41,6 +68,32 @@ namespace MyTime
                 e.Handled = true;
                 return;
             }
+        }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (!NavigationContext.QueryString.ContainsKey("id")) return;
+
+            try {
+                int id = int.Parse(NavigationContext.QueryString["id"]);
+
+                TimeData td = TimeDataInterface.GetTimeDataItem(id);
+
+                if (td != null) SetText(td);
+            } catch { }
+        }
+
+        private void SetText(TimeData td)
+        {
+            tbBibleStudies.Text = td.BibleStudies.ToString();
+            tbBooks.Text = td.Books.ToString();
+            tbBrochures.Text = td.Brochures.ToString();
+            tbMags.Text = td.Magazines.ToString();
+            tbNotes.Text = td.Notes;
+            tbReturnVisits.Text = td.ReturnVisits.ToString();
+            dpDatePicker.Value = td.Date;
+            tspTime.Value = new TimeSpan(0,0,td.Minutes,0,0);
+            _itemId = td.ItemId;
         }
     }
 }

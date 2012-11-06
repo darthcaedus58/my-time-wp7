@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Windows;
@@ -8,11 +9,14 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using MyTimeDatabaseLib;
+using Microsoft.Phone.Controls;
+using Coding4Fun.Phone.Controls;
 
 namespace MyTime
 {
@@ -58,9 +62,9 @@ namespace MyTime
             InitializePhoneApplication();
 
             // Show graphics profiling information while debugging.
-            if (System.Diagnostics.Debugger.IsAttached) {
+            if (Debugger.IsAttached) {
                 // Display the current frame rate counters.
-                Application.Current.Host.Settings.EnableFrameRateCounter = true;
+                Current.Host.Settings.EnableFrameRateCounter = true;
 
                 // Show the areas of the app that are being redrawn in each frame.
                 //Application.Current.Host.Settings.EnableRedrawRegions = true;
@@ -91,8 +95,8 @@ namespace MyTime
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
             // Ensure that application state is restored appropriately
-            if (!App.ViewModel.IsDataLoaded) {
-                App.ViewModel.LoadReturnVisitList();
+            if (!ViewModel.IsRvDataLoaded) {
+                ViewModel.LoadReturnVisitList();
             }
         }
 
@@ -112,18 +116,18 @@ namespace MyTime
         // Code to execute if a navigation fails
         private void RootFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
         {
-            if (System.Diagnostics.Debugger.IsAttached) {
+            if (Debugger.IsAttached) {
                 // A navigation has failed; break into the debugger
-                System.Diagnostics.Debugger.Break();
+                Debugger.Break();
             }
         }
 
         // Code to execute on Unhandled Exceptions
         private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
         {
-            if (System.Diagnostics.Debugger.IsAttached) {
+            if (Debugger.IsAttached) {
                 // An unhandled exception has occurred; break into the debugger
-                System.Diagnostics.Debugger.Break();
+                Debugger.Break();
             }
         }
 
@@ -162,5 +166,16 @@ namespace MyTime
         }
 
         #endregion
+
+        public static void ToastMe(string content, string title = "Field Service")
+        {
+            ToastPrompt toast = new ToastPrompt() {
+
+                                                      Title = title,
+                                                      Message = content
+                                                  };
+
+            toast.Show();
+        }
     }
 }

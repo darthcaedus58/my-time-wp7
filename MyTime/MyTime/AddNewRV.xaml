@@ -53,15 +53,8 @@
                             <TextBlock Height="30" Name="textBlock1" Text="FULL NAME" LostFocus="textBlock1_LostFocus" />
                             <TextBox Height="71" Name="tbFullName" Text="" Width="460" LostFocus="tbFullName_LostFocus" />
                             <StackPanel Orientation="Horizontal" Height="100">
-                                <TextBlock Height="30" Text="AGE  " VerticalAlignment="Center" LostFocus="textBlock1_LostFocus" />
-                                <cntrls:DigitLoopingSelector SelectedItem="{Binding WidthMeter}" ItemMargin="6,3" HorizontalAlignment="Right" Margin="0,0,25,0" Width="75" IsExpanded="True" ItemSize="75,50" MinValue="1" MaxValue="120" Step="1" Name="dlsAge" DefaultValue="30">
-                                    <cntrls:DigitLoopingSelector.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding BindsDirectlyToSource=True}" FontSize="24" TextAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource PhoneFontFamilySemiBold}"/>
-                                        </DataTemplate>
-                                    </cntrls:DigitLoopingSelector.ItemTemplate>
-                                </cntrls:DigitLoopingSelector>
-                                <TextBlock Height="30" Text=" YEARS" />
+                                <TextBlock Height="30" Text="AGE" />
+                                <TextBox Height="71" Width="100" Name="dlsAge" InputScope="Digits" />
                             </StackPanel>
                             <TextBlock Height="30" Text="GENDER" LostFocus="textBlock1_LostFocus" />
                             <toolkit:ListPicker Margin="10,0,0,0" HorizontalAlignment="Left" Width="440" Name="lpGender"></toolkit:ListPicker>
