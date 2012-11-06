@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
 using System.Linq;
 using System.Windows;
@@ -30,6 +31,7 @@ namespace MyTime
         /// The _call id
         /// </summary>
         private int _callId = -1;
+
         /// <summary>
         /// The _RV item id
         /// </summary>
@@ -49,7 +51,6 @@ namespace MyTime
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void ApplicationBarIconButtonSave_Click(object sender, EventArgs e)
         {
-            
             var call = new RvPreviousVisitData();
             if (_callId >= 0) call = RvPreviousVisitsDataInterface.GetCall(_callId);
             call.RvItemId = _rvItemId;
@@ -58,11 +59,11 @@ namespace MyTime
             call.Magazines = string.IsNullOrEmpty(tbMags.Text) ? 0 : int.Parse(tbMags.Text);
             call.Notes = tbNotes.Text;
             call.Date = (dpDatePicker.Value ?? DateTime.Now);
-                                               
-            
+
+
             try {
                 _callId = RvPreviousVisitsDataInterface.SaveCall(call, true);
-                MessageBox.Show(string.Format("Call {0}.",_callId >= 0 ? "Saved" : "Added"));
+                MessageBox.Show(string.Format("Call {0}.", _callId >= 0 ? "Saved" : "Added"));
             } catch (Exception ee) {
                 MessageBox.Show("Couldn't save call.\n\n\nException: " + ee.Message);
             }

@@ -15,15 +15,18 @@
 using System;
 using System.Collections.Generic;
 using System.Device.Location;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using Coding4Fun.Phone.Controls;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Controls.Maps;
 using Microsoft.Phone.Controls.Maps.Platform;
 using Microsoft.Phone.Scheduler;
+using Microsoft.Phone.Shell;
 using Microsoft.Phone.Tasks;
 using MyTime.BingMapsGeocodeService;
 using MyTimeDatabaseLib;
@@ -79,7 +82,7 @@ namespace MyTime
             _address = lblInfo_AddressFull.Content.ToString();
             _fullName = lblInfo_FullName.Text;
             _age = lblInfo_Age.Text;
-            dlsAge.SelectedItem = 30;
+            dlsAge.Text = "30";
             string[] genders = {"Male", "Female"};
             lpGender.ItemsSource = genders;
             lpGender.SelectedIndex = 0;
@@ -111,9 +114,9 @@ namespace MyTime
         {
             Focus();
             if (e.Item.Header.ToString() == "reminders") {
-                ApplicationBar.Mode = Microsoft.Phone.Shell.ApplicationBarMode.Minimized;
+                ApplicationBar.Mode = ApplicationBarMode.Minimized;
             } else {
-                ApplicationBar.Mode = Microsoft.Phone.Shell.ApplicationBarMode.Default;
+                ApplicationBar.Mode = ApplicationBarMode.Default;
             }
         }
 
@@ -133,7 +136,8 @@ namespace MyTime
         {
             if (_currentReturnVisitData != null && MessageBox.Show("Are you sure you want to delete this return visit?", "FIELD SERVICE", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
                 ReturnVisitsInterface.DeleteReturnVisit(_currentReturnVisitData.ItemId);
-                MessageBox.Show("The Return Visit has been delete.");
+                App.ToastMe("The Return Visit has been delete.", "Field Service");
+                //MessageBox.Show("");
                 NavigationService.GoBack();
             }
         }
@@ -148,7 +152,7 @@ namespace MyTime
             ReturnVisitData newRv = null;
             try {
                 if (!ValidateRVData()) {
-                    MessageBox.Show("At a minimum you must a valid address filled out to save an rv.");
+                    App.ToastMe("At a minimum you must a valid address filled out to save an rv.");
                     return;
                 }
                 var wb = new WriteableBitmap(100, 100);
@@ -163,7 +167,7 @@ namespace MyTime
                                                 Country = _currentBingGeocodeLocation.Address.CountryRegion,
                                                 StateProvince = tbDistrict.Text,
                                                 PostalCode = tbZipCode.Text,
-                                                Age = dlsAge.SelectedItem.ToString(),
+                                                Age = dlsAge.Text,
                                                 Gender = lpGender.SelectedItem.ToString(),
                                                 FullName = tbFullName.Text,
                                                 DateCreated = DateTime.Now,
@@ -174,12 +178,12 @@ namespace MyTime
                                             };
 
                 ReturnVisitsInterface.AddNewReturnVisit(newRv);
-                MessageBox.Show(string.Format("Return Visit {0}.", _currentReturnVisitData == null ? "Added" : "Saved"));
+                App.ToastMe(String.Format("Return Visit {0}.", _currentReturnVisitData == null ? "Added" : "Saved"));
                 _currentReturnVisitData = newRv;
             } catch (ReturnVisitAlreadyExistsException ee) {
                 if (_currentReturnVisitData != null && newRv != null) {
                     ReturnVisitsInterface.UpdateReturnVisit(_currentReturnVisitData.ItemId, newRv);
-                    MessageBox.Show("Return Visit Saved.");
+                    App.ToastMe("Return Visit Saved.");
                     _currentReturnVisitData = newRv;
                 } else {
                     MessageBox.Show("Can't Add.\n\nException:\n" + ee.Message);
@@ -194,7 +198,7 @@ namespace MyTime
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
-        private void bAddVisit_Click(object sender, RoutedEventArgs e) { NavigationService.Navigate(new Uri(string.Format("/ModifyCall.xaml?rvid={0}", _currentReturnVisitData == null ? "-1" : _currentReturnVisitData.ItemId.ToString()), UriKind.Relative)); }
+        private void bAddVisit_Click(object sender, RoutedEventArgs e) { NavigationService.Navigate(new Uri(String.Format("/ModifyCall.xaml?rvid={0}", _currentReturnVisitData == null ? "-1" : _currentReturnVisitData.ItemId.ToString()), UriKind.Relative)); }
 
         /// <summary>
         /// Handles the Click event of the btnDone control.
@@ -223,10 +227,10 @@ namespace MyTime
 
                 ScheduledActionService.Add(reminder);
 
-                MessageBox.Show(string.Format("Reminder: '{0}' added.", txtTitle.Text), "Field Service App", MessageBoxButton.OK);
+                App.ToastMe(String.Format("Reminder: '{0}' added.", txtTitle.Text));
 
-                txtTitle.Text = string.Empty;
-                txtContent.Text = string.Empty;
+                txtTitle.Text = String.Empty;
+                txtContent.Text = String.Empty;
                 dpDatePicker.Value = DateTime.Now;
                 tpStartTime.Value = DateTime.Now;
             } catch {
@@ -277,8 +281,8 @@ namespace MyTime
                 if (r.Confidence == Confidence.High) Results = r;
             }
 
-            lblCurrentAddress.Text = string.Format("{0}", Results.Address.AddressLine);
-            lblCurrentCityStateZip.Text = string.Format("{0}, {1} {2}", Results.Address.Locality, Results.Address.AdminDistrict, Results.Address.PostalCode);
+            lblCurrentAddress.Text = String.Format("{0}", Results.Address.AddressLine);
+            lblCurrentCityStateZip.Text = String.Format("{0}, {1} {2}", Results.Address.Locality, Results.Address.AdminDistrict, Results.Address.PostalCode);
             _currentBingGeocodeLocation = Results;
         }
 
@@ -292,7 +296,7 @@ namespace MyTime
             try {
                 var call = (PreviousVisitViewModel) lbRvPrevItems.SelectedItem;
                 NavigationService.Navigate(new Uri(
-                                               string.Format("/ModifyCall.xaml?rvid={0}&id={1}",
+                                               String.Format("/ModifyCall.xaml?rvid={0}&id={1}",
                                                              _currentReturnVisitData == null ? "-1" : _currentReturnVisitData.ItemId.ToString(),
                                                              call.ItemId),
                                                UriKind.Relative));
@@ -386,12 +390,12 @@ namespace MyTime
                 return;
             }
             string id = NavigationContext.QueryString["id"];
-            if (string.IsNullOrEmpty(id)) {
+            if (String.IsNullOrEmpty(id)) {
                 //appbar_delete.IsEnabled = false;
                 return;
             }
             try {
-                int ItemID = int.Parse(id);
+                int ItemID = Int32.Parse(id);
                 ReturnVisitData rv = ReturnVisitsInterface.GetReturnVisit(ItemID);
                 _currentReturnVisitData = rv;
                 tbAddress1.Text = rv.AddressOne;
@@ -403,7 +407,7 @@ namespace MyTime
                 tbZipCode.Text = rv.PostalCode;
                 tbPhoneNumber.Text = rv.PhoneNumber;
                 lpGender.SelectedItem = rv.Gender;
-                dlsAge.SelectedItem = int.Parse(rv.Age);
+                dlsAge.Text = rv.Age;
                 SetInfoText();
                 //appbar_delete.IsEnabled = true;
             } catch {}
@@ -427,9 +431,9 @@ namespace MyTime
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
         private bool ValidateRVData()
         {
-            if (string.IsNullOrEmpty(tbAddress1.Text) ||
-                string.IsNullOrEmpty(tbCity.Text) ||
-                string.IsNullOrEmpty(tbDistrict.Text)) return false;
+            if (String.IsNullOrEmpty(tbAddress1.Text) ||
+                String.IsNullOrEmpty(tbCity.Text) ||
+                String.IsNullOrEmpty(tbDistrict.Text)) return false;
             return true;
         }
 
@@ -509,12 +513,26 @@ namespace MyTime
         /// </summary>
         private void SetInfoText()
         {
-            lblInfo_AddressFull.Content = string.Format(_address, tbAddress1.Text, tbAddress2.Text, tbCity.Text, tbDistrict.Text, tbZipCode.Text,"\n");
-            lblInfo_FullName.Text = string.Format(_fullName, tbFullName.Text);
-            lblInfo_Age.Text = string.Format("{0} year old {1}", dlsAge.SelectedItem, lpGender.SelectedItem);
-            lblInfo_telephone.Content = tbPhoneNumber.Text;
-            if (!string.IsNullOrEmpty(tbAddress1.Text) && !string.IsNullOrEmpty(tbCity.Text) && !string.IsNullOrEmpty(tbDistrict.Text))
+            lblInfo_AddressFull.Content = String.Format(_address, tbAddress1.Text, tbAddress2.Text, tbCity.Text, tbDistrict.Text, tbZipCode.Text,"\n");
+            lblInfo_FullName.Text = String.Format(_fullName, tbFullName.Text);
+            lblInfo_Age.Text = String.Format("{0} year old {1}", dlsAge.Text, lpGender.SelectedItem);
+            lblInfo_telephone.Content = BeautifyPhoneNumber(tbPhoneNumber.Text);
+            if (!String.IsNullOrEmpty(tbAddress1.Text) && !String.IsNullOrEmpty(tbCity.Text) && !String.IsNullOrEmpty(tbDistrict.Text))
                 MakeGeocodeRequest(new Address {AddressLine = tbAddress1.Text, AdminDistrict = tbDistrict.Text, Locality = tbCity.Text, PostalCode = tbZipCode.Text, CountryRegion = _currentBingGeocodeLocation != null ? _currentBingGeocodeLocation.Address.CountryRegion : _currentReturnVisitData.Country});
+        }
+
+        private string BeautifyPhoneNumber(string phNum)
+        {
+            var ss = String.Empty;
+            foreach (var s in phNum) {
+                if (Char.IsDigit(s)) ss += s;
+            }
+            //TODO: make this a user option.
+            //TODO: internationalization?
+            if (ss.Length == 10 || ss.Length == 11)
+                return Regex.Replace(ss, @"^(\d{1})?(\d{3})(\d{3})(\d{4})$", @"$1($2) $3-$4");
+
+            return phNum;
         }
 
         private void lblInfo_telephone_Click(object sender, RoutedEventArgs e)

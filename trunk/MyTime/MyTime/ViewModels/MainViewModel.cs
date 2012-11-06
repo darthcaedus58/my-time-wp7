@@ -27,6 +27,8 @@ namespace MyTime
             lbRvPreviousItems = new ObservableCollection<PreviousVisitViewModel>();
             lbRvItems = new ObservableCollection<ReturnVisitItemViewModel>();
             lbMainMenuItems = new ObservableCollection<MainMenuViewModel>();
+            icReport = new ObservableCollection<TimeReportSummaryViewModel>();
+            lbTimeEntries = new ObservableCollection<TimeReportEntryViewModel>();
         }
 
         /// <summary>
@@ -35,8 +37,16 @@ namespace MyTime
         public ObservableCollection<ReturnVisitItemViewModel> lbRvItems { get; private set; }
         public ObservableCollection<MainMenuViewModel> lbMainMenuItems { get; private set; }
         public ObservableCollection<PreviousVisitViewModel> lbRvPreviousItems { get; private set; }
+        public ObservableCollection<TimeReportSummaryViewModel> icReport { get; private set; }
+        public ObservableCollection<TimeReportEntryViewModel> lbTimeEntries { get; private set; }
 
-        public bool IsDataLoaded
+        public bool IsRvDataLoaded
+        {
+            get;
+            private set;
+        }
+
+        public bool IsTimeReportDataLoaded
         {
             get;
             private set;
@@ -90,7 +100,7 @@ namespace MyTime
                 }
                 lbRvItems.Add(new ReturnVisitItemViewModel() { ItemId = r.ItemId, ImageSource = bi, Name = string.IsNullOrEmpty(r.FullName) ? string.Format("{0} year old {1}",r.Age, r.Gender) : r.FullName, LineOne = string.Format("{0} {1}", r.AddressOne, r.AddressTwo), LineTwo = string.Format("{0}, {1} {2}", r.City, r.StateProvince, r.PostalCode) });
             }
-            this.IsDataLoaded = true;
+            this.IsRvDataLoaded = true;
         }
 
         public void LoadMainMenu()
@@ -111,6 +121,49 @@ namespace MyTime
             if (null != handler) {
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        public void LoadTimeReport(TimeData[] entries)
+        {
+            int minutes = 0;
+            int month = 0;
+            if (entries.Length <= 0) return;
+            if (IsTimeReportDataLoaded) {
+                IsTimeReportDataLoaded = false;
+                icReport.Clear();
+                lbTimeEntries.Clear();
+            }
+            month = entries[0].Date.Month;
+            var summary = new TimeReportSummaryViewModel();
+            foreach (var td in entries) {
+                if (month != td.Date.Month) {
+                    var t = new TimeSpan(0, minutes, 0);
+                    summary.Time = string.Format("{0} Hour(s) & {1} Minutes", t.Hours, t.Minutes);
+                    icReport.Add(summary);
+                    summary = new TimeReportSummaryViewModel();
+                    month = td.Date.Month;
+                    minutes = 0;
+                }
+                summary.Month = td.Date.ToString("MMMM").ToUpper();
+                summary.Days++;
+                minutes += td.Minutes;
+                summary.Magazines += td.Magazines;
+                summary.BibleStudies += td.BibleStudies;
+                summary.Books += td.Books;
+                summary.Brochures += td.Brochures;
+                summary.ReturnVisits += td.ReturnVisits;
+
+                var t2 = new TimeSpan(0, td.Minutes, 0);
+                lbTimeEntries.Add(new TimeReportEntryViewModel() {
+                                                                     Date = td.Date.ToLongDateString(),
+                                                                     Hours = string.Format("{0} Hour(s) & {1} Minutes", t2.Hours, t2.Minutes),
+                                                                     ItemId = td.ItemId
+                                                                 });
+            }
+            var t3 = new TimeSpan(0, minutes, 0);
+            summary.Time = string.Format("{0} Hour(s) & {1} Minutes", t3.Hours, t3.Minutes);
+            icReport.Add(summary);
+            IsTimeReportDataLoaded = true;
         }
     }
 }
