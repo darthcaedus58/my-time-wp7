@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -72,7 +73,13 @@ namespace MyTime
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!NavigationContext.QueryString.ContainsKey("id")) return;
+            
+        }
+
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if (!NavigationContext.QueryString.ContainsKey("id") || _itemId > 0) return;
 
             try {
                 int id = int.Parse(NavigationContext.QueryString["id"]);
@@ -94,6 +101,15 @@ namespace MyTime
             dpDatePicker.Value = td.Date;
             tspTime.Value = new TimeSpan(0,0,td.Minutes,0,0);
             _itemId = td.ItemId;
+        }
+
+        private void abmiDelete_Click(object sender, EventArgs e)
+        {
+            if (_itemId < 0) return;
+            TimeDataInterface.DeleteTime(_itemId);
+            App.ToastMe("Time Deleted.");
+            Thread.Sleep(500);
+            NavigationService.GoBack();
         }
     }
 }

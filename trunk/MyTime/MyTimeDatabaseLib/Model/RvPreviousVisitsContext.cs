@@ -9,60 +9,60 @@ using System.Xml.Linq;
 
 namespace MyTimeDatabaseLib.Model
 {
-	[Table]
-	internal class RvPreviousVisitItem : INotifyPropertyChanged, INotifyPropertyChanging
-	{
+    [Table]
+    internal class RvPreviousVisitItem : INotifyPropertyChanged, INotifyPropertyChanging
+    {
 
-		// Define ID: private field, public property, and database column.
-		private int _itemId;
+        // Define ID: private field, public property, and database column.
+        private int _itemId;
 
-		[Column(IsPrimaryKey = true, IsDbGenerated = true, DbType = "INT NOT NULL Identity", CanBeNull = false, AutoSync = AutoSync.OnInsert)]
-		public int ItemId
-		{
-			get { return _itemId; }
-			set
-			{
-				if (_itemId != value) {
-					NotifyPropertyChanging("ItemId");
-					_itemId = value;
-					NotifyPropertyChanged("ItemId");
-				}
-			}
-		}
+        [Column(IsPrimaryKey = true, IsDbGenerated = true, DbType = "INT NOT NULL Identity", CanBeNull = false, AutoSync = AutoSync.OnInsert)]
+        public int ItemId
+        {
+            get { return _itemId; }
+            set
+            {
+                if (_itemId != value) {
+                    NotifyPropertyChanging("ItemId");
+                    _itemId = value;
+                    NotifyPropertyChanged("ItemId");
+                }
+            }
+        }
 
-		// Define item name: private field, public property, and database column.
-		private DateTime _date;
+        // Define item name: private field, public property, and database column.
+        private DateTime _date;
 
-		[Column]
-		public DateTime Date
-		{
-			get { return _date; }
-			set
-			{
-				if (_date != value) {
-					NotifyPropertyChanging("Date");
-					_date = value;
-					NotifyPropertyChanged("Date");
-				}
-			}
-		}
+        [Column]
+        public DateTime Date
+        {
+            get { return _date; }
+            set
+            {
+                if (_date != value) {
+                    NotifyPropertyChanging("Date");
+                    _date = value;
+                    NotifyPropertyChanged("Date");
+                }
+            }
+        }
 
-		// Define completion value: private field, public property, and database column.
-		private int _rvItemId;
+        // Define completion value: private field, public property, and database column.
+        private int _rvItemId;
 
-		[Column]
-		public int RvItemId
-		{
-			get { return _rvItemId; }
-			set
-			{
-				if (_rvItemId != value) {
-					NotifyPropertyChanging("RvItemId");
-					_rvItemId = value;
-					NotifyPropertyChanged("RvItemId");
-				}
-			}
-		}
+        [Column]
+        public int RvItemId
+        {
+            get { return _rvItemId; }
+            set
+            {
+                if (_rvItemId != value) {
+                    NotifyPropertyChanging("RvItemId");
+                    _rvItemId = value;
+                    NotifyPropertyChanged("RvItemId");
+                }
+            }
+        }
 
         private int _mags;
 
@@ -126,66 +126,66 @@ namespace MyTimeDatabaseLib.Model
 
         private int _rvs;
 
-		// Define completion value: private field, public property, and database column.
-		private string _notes;
+        // Define completion value: private field, public property, and database column.
+        private string _notes;
 
-		[Column]
-		public string Notes
-		{
-			get { return _notes; }
-			set
-			{
-				if (_notes != value) {
-					NotifyPropertyChanging("Notes");
-					_notes = value;
-					NotifyPropertyChanged("Notes");
-				}
-			}
-		}
+        [Column]
+        public string Notes
+        {
+            get { return _notes; }
+            set
+            {
+                if (_notes != value) {
+                    NotifyPropertyChanging("Notes");
+                    _notes = value;
+                    NotifyPropertyChanged("Notes");
+                }
+            }
+        }
 
-		// Version column aids update performance.
-		[Column(IsVersion = true)]
-		private Binary _version;
+        // Version column aids update performance.
+        [Column(IsVersion = true)]
+        private Binary _version;
 
-		#region INotifyPropertyChanged Members
+        #region INotifyPropertyChanged Members
 
-		public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-		// Used to notify that a property changed
-		private void NotifyPropertyChanged(string propertyName)
-		{
-			if (PropertyChanged != null) {
-				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
+        // Used to notify that a property changed
+        private void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null) {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
-		#endregion
+        #endregion
 
-		#region INotifyPropertyChanging Members
+        #region INotifyPropertyChanging Members
 
-		public event PropertyChangingEventHandler PropertyChanging;
+        public event PropertyChangingEventHandler PropertyChanging;
 
-		// Used to notify that a property is about to change
-		private void NotifyPropertyChanging(string propertyName)
-		{
-			if (PropertyChanging != null) {
-				PropertyChanging(this, new PropertyChangingEventArgs(propertyName));
-			}
-		}
+        // Used to notify that a property is about to change
+        private void NotifyPropertyChanging(string propertyName)
+        {
+            if (PropertyChanging != null) {
+                PropertyChanging(this, new PropertyChangingEventArgs(propertyName));
+            }
+        }
 
-		#endregion
-	}
+        #endregion
+    }
 
 
-	internal class RvPreviousVisitsContext : DataContext
-	{
-		// Specify the connection string as a static, used in main page and app.xaml.
-		public static string DBConnectionString = "Data Source=isostore:/RvPreviousVisits.sdf";
+    internal class RvPreviousVisitsContext : DataContext
+    {
+        // Specify the connection string as a static, used in main page and app.xaml.
+        public static string DBConnectionString = "Data Source=isostore:/RvPreviousVisits.sdf";
 
-		// Pass the connection string to the base class.
-		public RvPreviousVisitsContext(string connectionString) : base(connectionString) { }
+        // Pass the connection string to the base class.
+        public RvPreviousVisitsContext(string connectionString) : base(connectionString) { }
 
-		// Specify a single table for the items.
-		public Table<RvPreviousVisitItem> RvPreviousVisitItems;
-	}
+        // Specify a single table for the items.
+        public Table<RvPreviousVisitItem> RvPreviousVisitItems;
+    }
 }

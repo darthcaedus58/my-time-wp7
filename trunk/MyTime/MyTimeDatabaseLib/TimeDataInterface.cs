@@ -72,12 +72,12 @@ namespace MyTimeDatabaseLib
 
         }
 
-        public static void UpdateTime(int itemId, TimeData td)
+        public static int UpdateTime(int itemId, TimeData td)
         {
             using (var db = new TimeDataContext(TimeDataContext.DBConnectionString)) {
                 try {
                     var tdi = db.TimeDataItems.Single(s => s.ItemId == itemId);
-                    if (tdi != null) {
+
                         tdi.BibleStudies = td.BibleStudies;
                         tdi.Books = td.Books;
                         tdi.Brochures = td.Brochures;
@@ -88,7 +88,7 @@ namespace MyTimeDatabaseLib
                         tdi.ReturnVisits = td.ReturnVisits;
 
                         db.SubmitChanges();
-                    }
+                    return tdi.ItemId;
                 } catch {
                     throw new TimeDataItemNotFoundException("Couldn't find the time data with that id.");
                 }
@@ -129,6 +129,18 @@ namespace MyTimeDatabaseLib
                 } catch (Exception ee) {
                     throw ee;
                 }
+            }
+        }
+
+        public static void DeleteTime(int itemId)
+        {
+            using (var db = new TimeDataContext(TimeDataContext.DBConnectionString)) {
+                try {
+                    var t = db.TimeDataItems.Single(s => s.ItemId == itemId);
+
+                    db.TimeDataItems.DeleteOnSubmit(t);
+                    db.SubmitChanges();
+                } catch (InvalidOperationException) {}
             }
         }
     }

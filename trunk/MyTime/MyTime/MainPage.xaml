@@ -35,10 +35,10 @@
                 <shell:ApplicationBarMenuItem x:Name="abmiSettings" Text="settings"/>
                 <shell:ApplicationBarMenuItem x:Name="abmiQuit" Text="quit"/>
             </shell:ApplicationBar.MenuItems>
-            <shell:ApplicationBarIconButton x:Name="abibStart" IconUri="/icons/play.png" Text="Start" Click="abibStart_Click" />
-            <shell:ApplicationBarIconButton x:Name="abibPause" IconUri="/icons/appbar.transport.pause.rest.png" Text="Pause" Click="abibPause_Click" />
-            <shell:ApplicationBarIconButton x:Name="abibStop" IconUri="/icons/appbar.stop.rest.png" Text="Stop" Click="abibStop_Click" />
-            <shell:ApplicationBarIconButton x:Name="abibAddIt" IconUri="/icons/appbar.add.rest.png" Text="Add It"/>
+            <shell:ApplicationBarIconButton x:Name="abibStart" IconUri="/icons/play.png" Text="start" Click="abibStart_Click" />
+            <shell:ApplicationBarIconButton x:Name="abibPause" IconUri="/icons/appbar.transport.pause.rest.png" Text="pause" Click="abibPause_Click" />
+            <shell:ApplicationBarIconButton x:Name="abibStop" IconUri="/icons/appbar.stop.rest.png" Text="stop" Click="abibStop_Click" />
+            <shell:ApplicationBarIconButton x:Name="abibAddIt" IconUri="/icons/appbar.add.rest.png" Text="add time" Click="abibAddIt_Click"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -73,27 +73,27 @@
                     <ScrollViewer Height="250">
                         <StackPanel>
                             <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
-                                <TextBox Width="75" Margin="0,0,0,0" Name="tbMags" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                                <TextBox Opacity="0.385" Width="75" Margin="0,0,0,0" Name="tbMags" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
                                 <TextBlock Margin="0,0,0,0" Text="Magazines" VerticalAlignment="Center" />
                             </StackPanel>
                             <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
-                                <TextBox Width="75" Margin="0,0,0,0" Name="tbBrochures" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                                <TextBox Opacity="0.385" Width="75" Margin="0,0,0,0" Name="tbBrochures" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
                                 <TextBlock Margin="0,0,0,0" Text="Brochures" VerticalAlignment="Center" />
                             </StackPanel>
                             <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
-                                <TextBox Width="75" Margin="0,0,0,0" Name="tbBooks" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                                <TextBox Opacity="0.385" Width="75" Margin="0,0,0,0" Name="tbBooks" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
                                 <TextBlock Margin="0,0,0,0" Text="Books" VerticalAlignment="Center" />
                             </StackPanel>
                             <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
-                                <TextBox Width="75" Margin="0,0,0,0" Name="tbReturnVisits" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                                <TextBox Opacity="0.385" Width="75" Margin="0,0,0,0" Name="tbReturnVisits" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
                                 <TextBlock Margin="0,0,0,0" Text="Return Visits" VerticalAlignment="Center" />
                             </StackPanel>
                             <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
-                                <TextBox Width="75" Margin="0,0,0,0" Name="tbBibleStudies" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                                <TextBox Opacity="0.385" Width="75" Margin="0,0,0,0" Name="tbBibleStudies" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
                                 <TextBlock Margin="0,0,0,0" Text="Bible Studies" VerticalAlignment="Center" />
                             </StackPanel>
                             <TextBlock TextWrapping="Wrap" Text="Notes"/>
-                            <TextBox Height="180" TextWrapping="Wrap" Opacity="0.385"/>
+                            <TextBox Height="180" TextWrapping="Wrap" Opacity="0.385" Name="tbNotes"/>
                         </StackPanel>
                     </ScrollViewer>
                 </StackPanel>

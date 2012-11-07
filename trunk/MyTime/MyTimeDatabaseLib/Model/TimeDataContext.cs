@@ -179,6 +179,7 @@ namespace MyTimeDatabaseLib.Model
             }
         }
 
+
         // Version column aids update performance.
         [Column(IsVersion = true)]
         private Binary _version;

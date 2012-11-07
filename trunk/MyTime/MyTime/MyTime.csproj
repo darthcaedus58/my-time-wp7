@@ -91,6 +91,13 @@
     <Reference Include="system" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\Downloads\DataViz\DataVisualizationOnWindowsPhone\System.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=2.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Downloads\DataViz\DataVisualizationOnWindowsPhone\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="mscorlib.extensions" />
     <Reference Include="System.Xml.XPath">
@@ -113,6 +120,7 @@
     <Compile Include="ModifyCall.xaml.cs">
       <DependentUpon>ModifyCall.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ObjectCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\BingMapsGeocodeService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -150,6 +158,10 @@
     <Page Include="ManuallyEnterTime.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PhoneDataVisualizationResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="TimeReport.xaml">
       <SubType>Designer</SubType>
@@ -195,7 +207,6 @@
     <Content Include="icons\delete.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="README_FIRST.txt" />
     <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>

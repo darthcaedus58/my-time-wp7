@@ -43,6 +43,19 @@ namespace MyTime
             }
         }
 
+        private int _min;
+        public int Minutes
+        {
+            get { return _min; }
+
+            set
+            {
+                if (_min != value) {
+                    _min = value;
+                    NotifyPropertyChanged("Minutes");
+                }
+            }
+        }
         private int _days;
 
         public int Days
@@ -159,6 +172,21 @@ namespace MyTime
                 }
             }
         }
+
+        private int _min;
+        public int Minutes
+        {
+            get { return _min; }
+
+            set
+            {
+                if (_min != value) {
+                    _min = value;
+                    NotifyPropertyChanged("Minutes");
+                }
+            }
+        }
+
 
         private string _date;
 

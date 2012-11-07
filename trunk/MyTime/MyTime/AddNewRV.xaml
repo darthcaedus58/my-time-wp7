@@ -35,7 +35,7 @@
                                 </my:Map>
                                 <StackPanel Height="Auto" Name="spInfo_NameAndAddress" Width="Auto" Margin="5,0,0,0">
                                     <TextBlock Height="Auto" Text="ADDRESS" FontFamily="Segoe WP" FontSize="18" FontWeight="Bold" Margin="0,10,5,0"/>
-                                <HyperlinkButton Name="lblInfo_AddressFull" Margin="-10,0,0,0" Content="{}{0} {1}{5}{2} {3} {4}" FontFamily="Segoe WP" FontSize="25" Click="mapInfo_Tap"/>
+                                <HyperlinkButton Name="lblInfo_AddressFull" Margin="-10,0,0,0" HorizontalAlignment="Left" Content="{}{0} {1}{5}{2} {3} {4}" FontFamily="Segoe WP" FontSize="25" Click="mapInfo_Tap"/>
                                     <TextBlock Height="Auto" Text="PERSONAL INFO" FontFamily="Segoe WP" FontSize="20" FontWeight="Bold" Margin="0,10,5,0" />
                                     <TextBlock Height="Auto" Name="lblInfo_FullName" Text="{}{0}" FontFamily="Segoe WP" FontSize="25" />
                                     <HyperlinkButton Height="30" Name="lblInfo_telephone" Margin="-10,0,0,0" HorizontalAlignment="Left" FontFamily="Segoe WP" FontSize="25" Click="lblInfo_telephone_Click" />
