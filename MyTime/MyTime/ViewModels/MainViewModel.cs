@@ -137,8 +137,8 @@ namespace MyTime
             var summary = new TimeReportSummaryViewModel();
             foreach (var td in entries) {
                 if (month != td.Date.Month) {
-                    var t = new TimeSpan(0, minutes, 0);
-                    summary.Time = string.Format("{0} Hour(s) & {1} Minutes", t.Hours, t.Minutes);
+                    summary.Time = string.Format("{0:0.00} Hour(s)", ((double) minutes/60.0));
+                    summary.Minutes = minutes;
                     icReport.Add(summary);
                     summary = new TimeReportSummaryViewModel();
                     month = td.Date.Month;
@@ -153,15 +153,15 @@ namespace MyTime
                 summary.Brochures += td.Brochures;
                 summary.ReturnVisits += td.ReturnVisits;
 
-                var t2 = new TimeSpan(0, td.Minutes, 0);
                 lbTimeEntries.Add(new TimeReportEntryViewModel() {
                                                                      Date = td.Date.ToLongDateString(),
-                                                                     Hours = string.Format("{0} Hour(s) & {1} Minutes", t2.Hours, t2.Minutes),
-                                                                     ItemId = td.ItemId
+                                                                     Hours = string.Format("{0:0.00} Hour(s)", ((double)td.Minutes/60.0)),
+                                                                     ItemId = td.ItemId,
+                                                                     Minutes = td.Minutes
                                                                  });
             }
-            var t3 = new TimeSpan(0, minutes, 0);
-            summary.Time = string.Format("{0} Hour(s) & {1} Minutes", t3.Hours, t3.Minutes);
+            summary.Time = string.Format("{0:0.00} Hour(s)", ((double)minutes / 60.0));
+            summary.Minutes = minutes;
             icReport.Add(summary);
             IsTimeReportDataLoaded = true;
         }

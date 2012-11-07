@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using MyTimeDatabaseLib;
-using Microsoft.Phone.Controls;
 using Coding4Fun.Phone.Controls;
 
 namespace MyTime

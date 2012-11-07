@@ -8,6 +8,12 @@
 
     <!--Application Resources-->
     <Application.Resources>
+        <!-- Merge resources from PhoneDataVisualizationResources.xaml (Build Action=Page) -->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/MyTime;component/PhoneDataVisualizationResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

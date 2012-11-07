@@ -106,11 +106,16 @@ namespace MyTime
                     abibStart_Click(sender, e);
                     break;
                 default: // TimerState.Running
-                    _dt.Stop();
-                    _timerState = TimerState.Paused;
-                    SetRestartTime();
+                    PauseTimer();
                     break;
             }
+        }
+
+        private void PauseTimer()
+        {
+            _dt.Stop();
+            _timerState = TimerState.Paused;
+            SetRestartTime();
         }
 
         private void abibStart_Click(object sender, EventArgs e)
@@ -137,7 +142,11 @@ namespace MyTime
             lblTimer.Text = string.Format("{0:0,0}:{1:0,0}:{2:0,0}", _timer.Hours, _timer.Minutes, _timer.Seconds);
         }
 
-        private void abibStop_Click(object sender, EventArgs e)
+        private void abibStop_Click(object sender, EventArgs e) {
+            StopTimer();
+        }
+
+        private void StopTimer()
         {
             _dt.Stop();
             _timer = new TimeSpan();
@@ -155,10 +164,12 @@ namespace MyTime
                 _dt.Stop();
                 return;
             }
-            _timer = DateTime.Now.Subtract(_timerBase);
+            _timer = TimerTimeSpan;
 
             lblTimer.Text = string.Format("{0:0,0}:{1:0,0}:{2:0,0}", _timer.Hours, _timer.Minutes, _timer.Seconds);
         }
+
+        private TimeSpan TimerTimeSpan { get { return DateTime.Now.Subtract(_timerBase); } }
 
         private void imgAddReturnVisit_Tap(object sender, GestureEventArgs e) { NavigationService.Navigate(new Uri("/AddNewRV.xaml", UriKind.Relative)); }
 
@@ -260,7 +271,7 @@ namespace MyTime
         private void NavigateMainMenu(string v)
         {
             string month = DateTime.Today.ToString("MMMM").ToLower() + " report";
-            string yearly = DateTime.Today.ToString("YYYY").ToLower() + " report"; 
+            string yearly = DateTime.Today.Year.ToString() + " report"; 
             switch (v) {
                 case "add time":
                     NavigationService.Navigate(new Uri("/ManuallyEnterTime.xaml", UriKind.Relative));
@@ -280,8 +291,8 @@ namespace MyTime
 
         private void ShowYearlyReport()
         {
-            DateTime from = new DateTime(DateTime.Today.Year,DateTime.Today.Month,1);
-            DateTime to = DateTime.Today;
+            DateTime from = new DateTime(DateTime.Today.Year,1,1);
+            DateTime to = DateTime.Now;
 
             TimeData[] entries = TimeDataInterface.GetEntries(from, to, SortOrder.DateOldestToNewest);
             App.ViewModel.LoadTimeReport(entries);
@@ -310,5 +321,45 @@ namespace MyTime
         };
 
         #endregion
+
+        private void abibAddIt_Click(object sender, EventArgs e)
+        {
+            PauseTimer();
+            var t = TimerTimeSpan;
+
+            var minutes = (int)t.TotalMinutes;
+
+            var td = new TimeData()
+            {
+                Date = DateTime.Now,
+                Minutes = minutes,
+                Magazines = string.IsNullOrEmpty(tbMags.Text) ? 0 : int.Parse(tbMags.Text),
+                Brochures = string.IsNullOrEmpty(tbBrochures.Text) ? 0 : int.Parse(tbBrochures.Text),
+                Books = string.IsNullOrEmpty(tbBooks.Text) ? 0 : int.Parse(tbBooks.Text),
+                BibleStudies = string.IsNullOrEmpty(tbBibleStudies.Text) ? 0 : int.Parse(tbBibleStudies.Text),
+                ReturnVisits = string.IsNullOrEmpty(tbReturnVisits.Text) ? 0 : int.Parse(tbReturnVisits.Text),
+                Notes = tbNotes.Text
+            };
+
+            try {
+                TimeDataInterface.AddTime(td);
+                App.ToastMe(string.Format("Time ({0} hrs & {1} min) added.", t.Hours, t.Minutes));
+                StopTimer();
+                ResetText();
+            } catch (Exception ee) {
+                //TODO:Exception handler
+                MessageBox.Show("Couldn't add time.\n\nException: " + ee.Message);
+            }
+        }
+
+        private void ResetText()
+        {
+            tbBibleStudies.Text = string.Empty;
+            tbBooks.Text = string.Empty;
+            tbBrochures.Text = string.Empty;
+            tbMags.Text = string.Empty;
+            tbNotes.Text = string.Empty;
+            tbReturnVisits.Text = string.Empty;
+        }
     }
 }
