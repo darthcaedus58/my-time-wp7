@@ -24,13 +24,13 @@ namespace MyTimeDatabaseLib
     public enum SortOrder
     {
         /// <summary>
-        /// The date oldest to newest
-        /// </summary>
-        DateOldestToNewest,
-        /// <summary>
         /// The date newest to oldest
         /// </summary>
-        DateNewestToOldest
+        DateNewestToOldest = 0,
+        /// <summary>
+        /// The date oldest to newest
+        /// </summary>
+        DateOldestToNewest = 1
     }
 
     /// <summary>
@@ -53,7 +53,15 @@ namespace MyTimeDatabaseLib
                 var demRVs = so == SortOrder.DateNewestToOldest ? q.ToArray().Reverse() : q.ToArray();
 
                 foreach (ReturnVisitDataItem r in demRVs) {
+                    DateTime lv = DateTime.MinValue;
+                    try {
+                        var x = RvPreviousVisitsDataInterface.GetPreviousVisits(r.ItemId, SortOrder.DateNewestToOldest);
+                        if (x.Any()) {
+                            lv = x.First().Date;
+                        }
+                    } catch { }
                     var rr = new ReturnVisitData {
+                                                     LastVisitDate = lv,
                                                      ItemId = r.ItemId,
                                                      DateCreated = r.DateCreated,
                                                      AddressOne = r.AddressOne,
@@ -153,7 +161,15 @@ namespace MyTimeDatabaseLib
             using (var db = new ReturnVisitDataContext(ReturnVisitDataContext.DBConnectionString)) {
                 try {
                     ReturnVisitDataItem r = db.ReturnVisitItems.Single(s => s.ItemId == ItemID);
+                    DateTime lv = DateTime.MinValue;
+                    try {
+                        var x = RvPreviousVisitsDataInterface.GetPreviousVisits(r.ItemId, SortOrder.DateNewestToOldest);
+                        if (x.Any()) {
+                            lv = x.First().Date;
+                        }
+                    } catch {}
                     var rr = new ReturnVisitData {
+                                                     LastVisitDate = lv,
                                                      ItemId = r.ItemId,
                                                      DateCreated = r.DateCreated,
                                                      AddressOne = r.AddressOne,
@@ -231,6 +247,7 @@ namespace MyTimeDatabaseLib
     /// </summary>
     public class ReturnVisitData
     {
+        public DateTime LastVisitDate { get; internal set; }
         /// <summary>
         /// The _image
         /// </summary>

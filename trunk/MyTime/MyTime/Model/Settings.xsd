@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.inputstudiowp7.com/schemas" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.inputstudiowp7.com/schemas">
+    <xsd:element name="Settings">
+        <xsd:annotation>
+            <xsd:documentation>
+                A sample element
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Setting" maxOccurs="unbounded" type="Setting" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="Setting">
+        <xsd:sequence>
+            <xsd:element name="StringItem" maxOccurs="unbounded" minOccurs="0" type="StringItem" />
+        </xsd:sequence>
+        <xsd:attribute name="Name" type="xsd:string" use="required" />
+        <xsd:attribute name="Type" type="eDataType" use="required" />
+        <xsd:attribute name="Xaml" type="xsd:string" />
+        <xsd:attribute name="Value" type="xsd:string" />
+    </xsd:complexType>
+    <xsd:simpleType name="eDataType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Boolean" />
+            <xsd:enumeration value="DateTime" />
+            <xsd:enumeration value="Decimal" />
+            <xsd:enumeration value="Integer" />
+            <xsd:enumeration value="StringArray" />
+            <xsd:enumeration value="String" />
+            <xsd:enumeration value="Note" />
+            <xsd:enumeration value="ContactChooser" />
+            <xsd:enumeration value="Header" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="StringItem">
+        <xsd:attribute name="Value" type="xsd:string" use="required" />
+    </xsd:complexType>
+</xsd:schema>
