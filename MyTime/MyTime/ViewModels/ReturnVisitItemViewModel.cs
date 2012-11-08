@@ -15,111 +15,121 @@ using System.IO;
 
 namespace MyTime
 {
-	public class ReturnVisitItemViewModel : INotifyPropertyChanged
-	{
-		private BitmapImage _image;
-		/// <summary>
-		/// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-		/// </summary>
-		/// <returns></returns>
-		public BitmapImage ImageSource
-		{
-			get
-			{
-				return _image;
-			}
+    public class ReturnVisitItemViewModel : INotifyPropertyChanged
+    {
+        private BitmapImage _image;
+        /// <summary>
+        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+        /// </summary>
+        /// <returns></returns>
+        public BitmapImage ImageSource
+        {
+            get
+            {
+                return _image;
+            }
 
-			set
-			{
-				if (value != _image) {
-					_image = value;
-					NotifyPropertyChanged("ImageSource");
-				}
-			}
-		}
+            set
+            {
+                if (value != _image) {
+                    _image = value;
+                    NotifyPropertyChanged("ImageSource");
+                }
+            }
+        }
 
-		private string _name;
-		/// <summary>
-		/// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-		/// </summary>
-		/// <returns></returns>
-		public string Name
-		{
-			get
-			{
-				return _name;
-			}
-			set
-			{
-				if (value != _name) {
-					_name = value;
-					NotifyPropertyChanged("Name");
-				}
-			}
-		}
+        private string _name;
+        /// <summary>
+        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+        /// </summary>
+        /// <returns></returns>
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                if (value != _name) {
+                    _name = value;
+                    NotifyPropertyChanged("Name");
+                }
+            }
+        }
 
-		private string _lineOne;
-		/// <summary>
-		/// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-		/// </summary>
-		/// <returns></returns>
-		public string LineOne
-		{
-			get
-			{
-				return _lineOne;
-			}
-			set
-			{
-				if (value != _lineOne) {
-					_lineOne = value;
-					NotifyPropertyChanged("LineOne");
-				}
-			}
-		}
+        private string _lineOne;
+        /// <summary>
+        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+        /// </summary>
+        /// <returns></returns>
+        public string LineOne
+        {
+            get
+            {
+                return _lineOne;
+            }
+            set
+            {
+                if (value != _lineOne) {
+                    _lineOne = value;
+                    NotifyPropertyChanged("LineOne");
+                }
+            }
+        }
 
-		private string _lineTwo;
-		/// <summary>
-		/// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-		/// </summary>
-		/// <returns></returns>
-		public string LineTwo
-		{
-			get
-			{
-				return _lineTwo;
-			}
-			set
-			{
-				if (value != _lineTwo) {
-					_lineTwo = value;
-					NotifyPropertyChanged("LineTwo");
-				}
-			}
-		}
+        private string _lineTwo;
+        /// <summary>
+        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+        /// </summary>
+        /// <returns></returns>
+        public string LineTwo
+        {
+            get
+            {
+                return _lineTwo;
+            }
+            set
+            {
+                if (value != _lineTwo) {
+                    _lineTwo = value;
+                    NotifyPropertyChanged("LineTwo");
+                }
+            }
+        }
 
-		private int _itemID;
+        private string _lineThree;
 
-		public int ItemId
-		{
-			get { return _itemID; }
-			set
-			{
-				if (value != _itemID) {
-					_itemID = value;
-					NotifyPropertyChanged("ItemId");
-				}
-			}
-		}
+        public string LineThree { get { return _lineThree; } set
+        {
+            if (_lineThree != value) {
+                _lineThree = value;
+                NotifyPropertyChanged("LineThree");
+            }
+        } }
 
-		public event PropertyChangedEventHandler PropertyChanged;
-		private void NotifyPropertyChanged(String propertyName)
-		{
-			PropertyChangedEventHandler handler = PropertyChanged;
-			if (null != handler) {
-				handler(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
+        private int _itemID;
+
+        public int ItemId
+        {
+            get { return _itemID; }
+            set
+            {
+                if (value != _itemID) {
+                    _itemID = value;
+                    NotifyPropertyChanged("ItemId");
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(String propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (null != handler) {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
 
 }

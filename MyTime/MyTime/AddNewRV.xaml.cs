@@ -155,9 +155,10 @@ namespace MyTime
                     App.ToastMe("At a minimum you must a valid address filled out to save an rv.");
                     return;
                 }
-                var wb = new WriteableBitmap(100, 100);
-                var t = new TranslateTransform {X = -((mapInfo.Width/2) - 50), Y = -((mapInfo.Height/2) - 50)};
-                wb.Render(mapInfo, t);
+                
+                var wb = new WriteableBitmap((int)mapInfo.Width, (int)mapInfo.Height);
+                //var t = new TranslateTransform {X = -((mapInfo.Width/2) - 50), Y = -((mapInfo.Height/2) - 50)};
+                wb.Render(mapInfo, new TranslateTransform());
                 wb.Invalidate();
 
                 newRv = new ReturnVisitData {
@@ -211,7 +212,6 @@ namespace MyTime
                 string reminderName = Guid.NewGuid().ToString();
                 // use guid for reminder name, since reminder names must be unique
                 var reminder = new Reminder(reminderName);
-                // NOTE: setting the Title property is supported for reminders 
                 // in contrast to alarms where setting the Title property is not supported
                 reminder.Title = txtTitle.Text;
                 reminder.Content = txtContent.Text;
@@ -546,6 +546,7 @@ namespace MyTime
         private void mapInfo_Tap(object sender, RoutedEventArgs e)
         {
             var bmt = new BingMapsTask();
+            bmt.SearchTerm = lblInfo_AddressFull.Content.ToString().Replace("\n", " ");
             bmt.Center = mapInfo.Center;
             bmt.ZoomLevel = 18;
             bmt.Show();

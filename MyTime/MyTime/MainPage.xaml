@@ -1,44 +1,33 @@
-﻿<phone:PhoneApplicationPage
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:cntrls="clr-namespace:Controls.Primitives;assembly=Controls"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-    xmlns:local="clr-namespace:MyTime"
-    local:TiltEffect.IsTiltEnabled="True"
-    x:Class="MyTime.MainPage" 
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="728"
-    SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="False">
+﻿<phone:PhoneApplicationPage x:Class="MyTime.MainPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:cntrls="clr-namespace:Controls.Primitives;assembly=Controls" 
+                            xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" 
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:MyTime" 
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone" 
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone" 
+                            xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
+                            Orientation="Portrait" SupportedOrientations="Portrait" local:TiltEffect.IsTiltEnabled="True" 
+                            mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="728" shell:SystemTray.IsVisible="False">
     <phone:PhoneApplicationPage.Resources>
-        <Storyboard x:Name="Storyboard1"/>
+        <Storyboard x:Name="Storyboard1" />
     </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <phone:PhoneApplicationPage.FontFamily>
-        <StaticResource ResourceKey="PhoneFontFamilyNormal"/>
+        <StaticResource ResourceKey="PhoneFontFamilyNormal" />
     </phone:PhoneApplicationPage.FontFamily>
     <phone:PhoneApplicationPage.FontSize>
-        <StaticResource ResourceKey="PhoneFontSizeNormal"/>
+        <StaticResource ResourceKey="PhoneFontSizeNormal" />
     </phone:PhoneApplicationPage.FontSize>
     <phone:PhoneApplicationPage.Foreground>
-        <StaticResource ResourceKey="PhoneForegroundBrush"/>
+        <StaticResource ResourceKey="PhoneForegroundBrush" />
     </phone:PhoneApplicationPage.Foreground>
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem x:Name="abmiManuallyEnter" Text="manually enter" Click="abmiManuallyEnter_Click" />
-                <shell:ApplicationBarMenuItem x:Name="abmiSettings" Text="settings"/>
-                <shell:ApplicationBarMenuItem x:Name="abmiQuit" Text="quit"/>
-            </shell:ApplicationBar.MenuItems>
-            <shell:ApplicationBarIconButton x:Name="abibStart" IconUri="/icons/play.png" Text="start" Click="abibStart_Click" />
-            <shell:ApplicationBarIconButton x:Name="abibPause" IconUri="/icons/appbar.transport.pause.rest.png" Text="pause" Click="abibPause_Click" />
-            <shell:ApplicationBarIconButton x:Name="abibStop" IconUri="/icons/appbar.stop.rest.png" Text="stop" Click="abibStop_Click" />
-            <shell:ApplicationBarIconButton x:Name="abibAddIt" IconUri="/icons/appbar.add.rest.png" Text="add time" Click="abibAddIt_Click"/>
+        <shell:ApplicationBar IsMenuEnabled="True" IsVisible="True">
+            <shell:ApplicationBarIconButton x:Name="abibStart" Click="abibStart_Click" IconUri="/icons/play.png" Text="start" />
+            <shell:ApplicationBarIconButton x:Name="abibPause" Click="abibPause_Click" IconUri="/icons/appbar.transport.pause.rest.png" Text="pause" />
+            <shell:ApplicationBarIconButton x:Name="abibStop" Click="abibStop_Click" IconUri="/icons/appbar.stop.rest.png" Text="stop" />
+            <shell:ApplicationBarIconButton x:Name="abibAddIt" Click="abibAddIt_Click" IconUri="/icons/appbar.add.rest.png" Text="add time" />
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -47,97 +36,110 @@
             <ColumnDefinition Width="26*" />
             <ColumnDefinition Width="454*" />
         </Grid.ColumnDefinitions>
-        <controls:Panorama Title="Field Service" Foreground="#FFCEC674" Grid.Column="1" Margin="0,0,-26,0">
+        <controls:Panorama Grid.Column="1" Margin="0,0,-26,0" Foreground="#FFCEC674" Title="Field Service">
             <controls:Panorama.Background>
-                <ImageBrush ImageSource="PanoramaBackground.png"/>
+                <ImageBrush ImageSource="PanoramaBackground.png" />
             </controls:Panorama.Background>
-            <!--Panorama item two-->
-            <!--Panorama item one-->
-            <toolkit:WrapPanel Orientation="Vertical" MinHeight="522" Height="Auto" Name="wpMainOptions">
-                <ItemsControl Margin="0,0,0,0" Name="lbMainMenuItems" ItemsSource="{Binding lbMainMenuItems}" MinHeight="522" >
+            <toolkit:WrapPanel Height="Auto" MinHeight="522" Name="wpMainOptions" Orientation="Vertical">
+                <ItemsControl Margin="0,0,0,0" ItemsSource="{Binding lbMainMenuItems}" MinHeight="522" Name="lbMainMenuItems">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="20,5,5,-5">
-                                <Image Tag="{Binding MenuText}" Source="{Binding IconUri}" Margin="-5,-5,-10,-5" Tap="MenuImage_TapEvent"/>
-                                <toolkit:MenuItem Header="{Binding MenuText}" Margin="-10,-10,0,-5" Click="MenuItem_ClickEvent" FontFamily="{StaticResource PhoneFontFamilySemiLight}" FontSize="37"/>
+                            <StackPanel Margin="20,5,5,-5" Orientation="Horizontal">
+                                <Image Margin="-5,-5,-10,-5" Source="{Binding IconUri}" Tag="{Binding MenuText}" Tap="MenuImage_TapEvent" />
+                                <toolkit:MenuItem Margin="-10,-10,0,-5" Click="MenuItem_ClickEvent" FontFamily="{StaticResource PhoneFontFamilySemiLight}" FontSize="37" Header="{Binding MenuText}" />
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </toolkit:WrapPanel>
-            <!--Panorama item one-->
+            <controls:PanoramaItem Orientation="Horizontal" Width="850">
+                <controls:PanoramaItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>return visits</TextBlock>
+                        <Image Height="56" Margin="25,23,0,0" Width="40" HorizontalAlignment="Right" Name="imgShowAllReturnVisits" Source="/icons/Images/overflowdots.png" Tap="imgShowAllReturnVisit_Tap" />
+                    </StackPanel>
+                </controls:PanoramaItem.Header>
+                <StackPanel Grid.Row="1" HorizontalAlignment="Left" Name="stackPanel2" VerticalAlignment="Top" Margin="0,0,-42,0">
+                    <ListBox Height="350" ItemsSource="{Binding lbRvItems}" SelectionChanged="ListBox_SelectionChanged" VerticalContentAlignment="Top">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <toolkit:WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="0,0,0,17" Orientation="Horizontal">
+                                    <Image Height="100" Width="100" Source="{Binding ImageSource}" />
+                                    <StackPanel Width="311">
+                                        <TextBlock Style="{StaticResource PhoneTextLargeStyle}" Text="{Binding Name}" TextWrapping="Wrap" />
+                                        <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Margin="12,-6,12,0" Text="{Binding LineOne}" TextWrapping="Wrap" />
+                                        <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Margin="12,-6,12,0" Text="{Binding LineTwo}" TextWrapping="Wrap" />
+                                        <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Margin="12,-6,12,0" Text="{Binding LineThree}" Foreground="PaleVioletRed"  TextWrapping="Wrap" />
+                                    </StackPanel>
+                                </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </controls:PanoramaItem>
+            <controls:PanoramaItem Header="daily text">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid Margin="0,-30,0,0" Row="0">
+                        <StackPanel Orientation="Vertical">                        
+                            <TextBlock Style="{StaticResource PhoneTextLargeStyle}" Margin="0,0,0,0" Name="lblDailyTextDate" />
+                            <TextBlock FontStyle="Italic" Name="lblDailyText" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Grid>
+                    <Grid Row="1">
+                        <ScrollViewer Height="280">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Margin="0,10,0,0" Name="lblDTSummary" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                    <Grid Row="2">
+                        <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" FontSize="{StaticResource PhoneFontSizeSmall}" Text="THE ABOVE IS COPYRIGHT © 2012 WATCH TOWER BIBLE AND TRACT SOCIETY OF PENNSYLVANIA, INC. ALL RIGHTS RESERVED." TextWrapping="Wrap" />
+                    </Grid>
+                </Grid>
+            </controls:PanoramaItem>
             <controls:PanoramaItem Header="time">
 
-                <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" x:Name="stackPanel1" VerticalAlignment="Stretch">
-                    <TextBlock x:Name="lblTimer" TextWrapping="Wrap" Text="00:00:00" FontSize="96" TextAlignment="Center"/>
+                <StackPanel x:Name="stackPanel1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <TextBlock x:Name="lblTimer" FontSize="96" Text="00:00:00" TextAlignment="Center" TextWrapping="Wrap" />
                     <ScrollViewer Height="250">
                         <StackPanel>
-                            <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
-                                <TextBox Opacity="0.385" Width="75" Margin="0,0,0,0" Name="tbMags" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                            <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                                <TextBox Margin="0,-5,0,0" Width="75" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" Name="tbMags" Opacity="0.385" />
                                 <TextBlock Margin="0,0,0,0" Text="Magazines" VerticalAlignment="Center" />
                             </StackPanel>
                             <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
-                                <TextBox Opacity="0.385" Width="75" Margin="0,0,0,0" Name="tbBrochures" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                                <TextBox Margin="0,-5,0,0" Width="75" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" Name="tbBrochures" Opacity="0.385" />
                                 <TextBlock Margin="0,0,0,0" Text="Brochures" VerticalAlignment="Center" />
                             </StackPanel>
                             <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
-                                <TextBox Opacity="0.385" Width="75" Margin="0,0,0,0" Name="tbBooks" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                                <TextBox Margin="0,-5,0,0" Width="75" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" Name="tbBooks" Opacity="0.385" />
                                 <TextBlock Margin="0,0,0,0" Text="Books" VerticalAlignment="Center" />
                             </StackPanel>
-                            <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
-                                <TextBox Opacity="0.385" Width="75" Margin="0,0,0,0" Name="tbReturnVisits" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                            <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                                <TextBox Margin="0,-5,0,0" Width="75" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" Name="tbReturnVisits" Opacity="0.385" />
                                 <TextBlock Margin="0,0,0,0" Text="Return Visits" VerticalAlignment="Center" />
                             </StackPanel>
-                            <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
-                                <TextBox Opacity="0.385" Width="75" Margin="0,0,0,0" Name="tbBibleStudies" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
+                            <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                                <TextBox Margin="0,-5,0,0" Width="75" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" Name="tbBibleStudies" Opacity="0.385" />
                                 <TextBlock Margin="0,0,0,0" Text="Bible Studies" VerticalAlignment="Center" />
                             </StackPanel>
-                            <TextBlock TextWrapping="Wrap" Text="Notes"/>
-                            <TextBox Height="180" TextWrapping="Wrap" Opacity="0.385" Name="tbNotes"/>
+                            <TextBlock Text="Notes" TextWrapping="Wrap" />
+                            <TextBox Height="180" Name="tbNotes" Opacity="0.385" TextWrapping="Wrap" />
                         </StackPanel>
                     </ScrollViewer>
                 </StackPanel>
 
                 <!--Double line list with text wrapping-->
-            </controls:PanoramaItem>
-            <controls:PanoramaItem Header="daily text">
-                <StackPanel Orientation="Vertical" Margin="0,-30,0,0">
-                    <TextBlock Name="lblDailyTextDate" Style="{StaticResource PhoneTextLargeStyle}" Margin="0,0,0,0" />
-                    <TextBlock FontStyle="Italic" Name="lblDailyText" TextWrapping="Wrap" />
-                    <ScrollViewer Height="280">
-                        <StackPanel Orientation="Vertical" >
-                            <TextBlock Name="lblDTSummary" TextWrapping="Wrap" Margin="0,10,0,0" />
-                        </StackPanel>
-                    </ScrollViewer>
-                    <TextBlock TextWrapping="Wrap" Text="THE ABOVE IS COPYRIGHT © 2012 WATCH TOWER BIBLE AND TRACT SOCIETY OF PENNSYLVANIA, INC. ALL RIGHTS RESERVED." FontSize="{StaticResource PhoneFontSizeSmall}" Style="{StaticResource PhoneTextSubtleStyle}" />
-                </StackPanel>
-            </controls:PanoramaItem>
-            <!--Use 'Orientation="Horizontal"' to enable a panel that lays out horizontally-->
-            <controls:PanoramaItem>
-                <controls:PanoramaItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock>return visits</TextBlock>
-                        <Image Name="imgAddReturnVisit" Source="/MyTime;component/icons/Images/add.png" Height="56" Width="40" HorizontalAlignment="Right" Tap="imgAddReturnVisit_Tap" Margin="9,23,0,0" />
-                    </StackPanel>
-                </controls:PanoramaItem.Header>
-                <StackPanel Grid.Row="1" HorizontalAlignment="Left" Name="stackPanel2" VerticalAlignment="Top">
-                    <TextBox Text="Search..." Width="432" Tap="TextBox_Tap" Name="tbSearchRvs" LostFocus="tbSearchRvs_LostFocus" />
-                    <ListBox Margin="0,0,-12,0" ItemsSource="{Binding lbRvItems}" SelectionChanged="ListBox_SelectionChanged" VerticalContentAlignment="Top" Height="350">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,17" >
-                                    <!--Replace rectangle with image-->
-                                    <Image Source="{Binding ImageSource}" Height="100" Width="100" />
-                                    <StackPanel Width="311">
-                                        <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                        <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                        <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </StackPanel>
             </controls:PanoramaItem>
         </controls:Panorama>
     </Grid>

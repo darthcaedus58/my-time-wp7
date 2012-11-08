@@ -95,7 +95,7 @@ namespace MyTime
         {
             // Ensure that application state is restored appropriately
             if (!ViewModel.IsRvDataLoaded) {
-                ViewModel.LoadReturnVisitList();
+                ViewModel.LoadReturnVisitList(SortOrder.DateOldestToNewest);
             }
         }
 

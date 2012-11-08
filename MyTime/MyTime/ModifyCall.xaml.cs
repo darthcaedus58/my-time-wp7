@@ -63,7 +63,7 @@ namespace MyTime
 
             try {
                 _callId = RvPreviousVisitsDataInterface.SaveCall(call, true);
-                MessageBox.Show(string.Format("Call {0}.", _callId >= 0 ? "Saved" : "Added"));
+                App.ToastMe(string.Format("Call {0}.", _callId >= 0 ? "Saved" : "Added"));
             } catch (Exception ee) {
                 MessageBox.Show("Couldn't save call.\n\n\nException: " + ee.Message);
             }
@@ -97,7 +97,7 @@ namespace MyTime
         {
             if (_callId < 0 || MessageBox.Show("Are you sure you want to delete this call?", "FIELD SERVICE", MessageBoxButton.OKCancel) != MessageBoxResult.OK) return;
             RvPreviousVisitsDataInterface.DeleteCall(_callId);
-            MessageBox.Show("Call Deleted.");
+            App.ToastMe("Call Deleted.");
             NavigationService.GoBack();
         }
 

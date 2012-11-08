@@ -10,6 +10,7 @@ using System.Windows.Navigation;
 using System.Windows.Threading;
 using System.Xml.Serialization;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Tasks;
 using MyTimeDatabaseLib;
 using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
@@ -42,6 +43,8 @@ namespace MyTime
         [EditorBrowsable]
         public Object Icon { get; set; }
 
+        private TimeSpan TimerTimeSpan { get { return DateTime.Now.Subtract(_timerBase); } }
+
         #region Events
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -61,8 +64,10 @@ namespace MyTime
                 App.ViewModel.lbRvItems.Clear();
                 App.ViewModel.lbMainMenuItems.Clear();
             }
-            App.ViewModel.LoadReturnVisitList();
+            App.ViewModel.LoadReturnVisitList(SortOrder.DateOldestToNewest);
             App.ViewModel.LoadMainMenu();
+
+            //NavigationService.Navigate(new Uri("/SettingsPage.xaml", UriKind.Relative));
         }
 
         public void MenuImage_TapEvent(object sender, GestureEventArgs e)
@@ -91,10 +96,32 @@ namespace MyTime
             }
         }
 
-        private void TextBox_Tap(object sender, GestureEventArgs e)
+        private void abibAddIt_Click(object sender, EventArgs e)
         {
-            if (tbSearchRvs.Text.Equals("Search...", StringComparison.InvariantCultureIgnoreCase)) {
-                tbSearchRvs.Text = string.Empty;
+            PauseTimer();
+            TimeSpan t = TimerTimeSpan;
+
+            var minutes = (int) t.TotalMinutes;
+
+            var td = new TimeData {
+                                      Date = DateTime.Now,
+                                      Minutes = minutes,
+                                      Magazines = string.IsNullOrEmpty(tbMags.Text) ? 0 : int.Parse(tbMags.Text),
+                                      Brochures = string.IsNullOrEmpty(tbBrochures.Text) ? 0 : int.Parse(tbBrochures.Text),
+                                      Books = string.IsNullOrEmpty(tbBooks.Text) ? 0 : int.Parse(tbBooks.Text),
+                                      BibleStudies = string.IsNullOrEmpty(tbBibleStudies.Text) ? 0 : int.Parse(tbBibleStudies.Text),
+                                      ReturnVisits = string.IsNullOrEmpty(tbReturnVisits.Text) ? 0 : int.Parse(tbReturnVisits.Text),
+                                      Notes = tbNotes.Text
+                                  };
+
+            try {
+                TimeDataInterface.AddTime(td);
+                App.ToastMe(string.Format("Time ({0} hrs & {1} min) added.", t.Hours, t.Minutes));
+                StopTimer();
+                ResetText();
+            } catch (Exception ee) {
+                //TODO:Exception handler
+                MessageBox.Show("Couldn't add time.\n\nException: " + ee.Message);
             }
         }
 
@@ -109,13 +136,6 @@ namespace MyTime
                     PauseTimer();
                     break;
             }
-        }
-
-        private void PauseTimer()
-        {
-            _dt.Stop();
-            _timerState = TimerState.Paused;
-            SetRestartTime();
         }
 
         private void abibStart_Click(object sender, EventArgs e)
@@ -142,21 +162,7 @@ namespace MyTime
             lblTimer.Text = string.Format("{0:0,0}:{1:0,0}:{2:0,0}", _timer.Hours, _timer.Minutes, _timer.Seconds);
         }
 
-        private void abibStop_Click(object sender, EventArgs e) {
-            StopTimer();
-        }
-
-        private void StopTimer()
-        {
-            _dt.Stop();
-            _timer = new TimeSpan();
-            _timerBase = new DateTime();
-            lblTimer.Text = "00:00:00";
-            _timerState = TimerState.Stopped;
-            ClearRestartTime();
-        }
-
-        private void abmiManuallyEnter_Click(object sender, EventArgs e) { NavigationService.Navigate(new Uri("/ManuallyEnterTime.xaml", UriKind.Relative)); }
+        private void abibStop_Click(object sender, EventArgs e) { StopTimer(); }
 
         private void dt_Tick(object sender, EventArgs e)
         {
@@ -169,9 +175,7 @@ namespace MyTime
             lblTimer.Text = string.Format("{0:0,0}:{1:0,0}:{2:0,0}", _timer.Hours, _timer.Minutes, _timer.Seconds);
         }
 
-        private TimeSpan TimerTimeSpan { get { return DateTime.Now.Subtract(_timerBase); } }
-
-        private void imgAddReturnVisit_Tap(object sender, GestureEventArgs e) { NavigationService.Navigate(new Uri("/AddNewRV.xaml", UriKind.Relative)); }
+        private void imgShowAllReturnVisit_Tap(object sender, GestureEventArgs e) { NavigationService.Navigate(new Uri("/AddNewRV.xaml", UriKind.Relative)); }
 
         public void ss_DailyTextRetrieved(DailyText dt)
         {
@@ -179,20 +183,33 @@ namespace MyTime
             lblDTSummary.Text = dt.SummaryText;
         }
 
-        private void tbSearchRvs_LostFocus(object sender, RoutedEventArgs e)
+        #endregion
+
+        private void PauseTimer()
         {
-            if (string.IsNullOrEmpty(tbSearchRvs.Text)) {
-                tbSearchRvs.Text = "Search...";
-            }
+            _dt.Stop();
+            _timerState = TimerState.Paused;
+            SetRestartTime();
         }
 
-        #endregion
+        private void StopTimer()
+        {
+            _dt.Stop();
+            _timer = new TimeSpan();
+            _timerBase = new DateTime();
+            lblTimer.Text = "00:00:00";
+            _timerState = TimerState.Stopped;
+            ClearRestartTime();
+        }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
             lblDailyTextDate.Text = DateTime.Now.ToLongDateString();
+            if (lblDailyTextDate.Text.Length >= 26) {
+                lblDailyTextDate.Text = string.Format("{0:ddd} {0:MMM}. {0:dd}, {0:yyyy}", DateTime.Today);
+            }
 
             var ss = new DailyTextScraper();
 
@@ -271,7 +288,7 @@ namespace MyTime
         private void NavigateMainMenu(string v)
         {
             string month = DateTime.Today.ToString("MMMM").ToLower() + " report";
-            string yearly = DateTime.Today.Year.ToString() + " report"; 
+            string yearly = DateTime.Today.Year.ToString() + " report";
             switch (v) {
                 case "add time":
                     NavigationService.Navigate(new Uri("/ManuallyEnterTime.xaml", UriKind.Relative));
@@ -279,37 +296,129 @@ namespace MyTime
                 case "add return visit":
                     NavigationService.Navigate(new Uri("/AddNewRV.xaml", UriKind.Relative));
                     break;
+                case "watchtower library":
+                    var wbTask = new WebBrowserTask();
+                    wbTask.Uri = new Uri("http://wol.jw.org", UriKind.RelativeOrAbsolute);
+                    wbTask.Show();
+                    break;
+                case "service year report":
+                    ShowYearlyReport();
+                    break;
+                case "send service report":
+                    SendServiceReport();
+                    break;
+                case "settings":
+                    NavigationService.Navigate(new Uri("/SettingsPage.xaml", UriKind.Relative));
+                    break;
                 default:
                     if (v.Equals(month)) {
                         ShowMonthlyReport();
-                    } else if (v.Equals(yearly)) {
-                        ShowYearlyReport();
                     }
                     break;
             }
         }
 
+        private void SendServiceReport()
+        {
+           
+            var entries = GetThisMonthsTimeReport();
+            string body = string.Format("Here is my field service report for {0:MMMM}, {0:yyyy}:\n\n", DateTime.Now);
+            
+            int tTime =0;
+            int tMags=0;
+            int tBks=0;
+            int tBros=0;
+            int tRv=0;
+            int tBs = 0;
+            foreach (var e in entries) {
+                tTime += e.Minutes;
+                tMags += e.Magazines;
+                tBks += e.Books;
+                tBros += e.Brochures;
+                tRv += e.ReturnVisits;
+                tBs += e.BibleStudies;
+            }
+            body += string.Format("Hours:\t\t{0:0.00}\nMagazines:\t{1}\nBooks:\t\t{2}\nBrochures:\t{3}\nReturn Visits:\t{4}\nBible Studies:\t{5}",
+                                  ((double) tTime/60.0),
+                                  tMags,
+                                  tBks,
+                                  tBros,
+                                  tRv,
+                                  tBs);
+
+            body += "\n\nThanks";
+
+            string sendType = "Email";
+            string sendTo = string.Empty;
+            try {
+                var nickName = App.ViewModel.Settings.Setting.Single(s => s.Name == "Nick Name");
+                body += string.Format(",\n{0}", nickName.Value);
+                var send = App.ViewModel.Settings.Setting.Single(s => s.Name == "Service Report Send Method");
+                sendType = send.Value;
+
+                var to = App.ViewModel.Settings.Setting.Single(s => s.Name == "Congregation Service Overseer");
+                sendTo = to.Value;
+
+            } catch {}
+
+            if (sendType.Equals("Email", StringComparison.CurrentCultureIgnoreCase)) {
+                body += "\n\n\n\nP.S. - This report was generated by the \"Field Service\" App on my Windows Phone! If you would like to try this app you can download it from the Marketplace!";
+                var emailcomposer = new EmailComposeTask();
+                emailcomposer.Subject = string.Format("{0:MMMM} {0:yyyy} Service Report", DateTime.Today);
+                emailcomposer.Body = body;
+                emailcomposer.To = sendTo;
+                emailcomposer.Show();
+                return;
+            }
+            SmsComposeTask composeSMS = new SmsComposeTask();
+            composeSMS.Body = body;
+            composeSMS.To = sendTo;
+            composeSMS.Show(); 
+        }
+
         private void ShowYearlyReport()
         {
-            DateTime from = new DateTime(DateTime.Today.Year,1,1);
-            DateTime to = DateTime.Now;
-
-            TimeData[] entries = TimeDataInterface.GetEntries(from, to, SortOrder.DateOldestToNewest);
+            var entries = GetThisYearsTimeReport();
             App.ViewModel.LoadTimeReport(entries);
             NavigationService.Navigate(new Uri("/TimeReport.xaml", UriKind.Relative));
+        }
+
+        private TimeData[] GetThisYearsTimeReport()
+        {
+            DateTime from = DateTime.Today.Month >= 9 ? new DateTime(DateTime.Today.Year, 9, 1) : new DateTime(DateTime.Today.Year - 1, 9, 1);
+            DateTime to = DateTime.Now;
+
+            TimeData[] entries = TimeDataInterface.GetEntries(@from, to, SortOrder.DateOldestToNewest);
+            return entries;
         }
 
         private void ShowMonthlyReport()
         {
-            DateTime from = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
-            DateTime to = new DateTime(from.Year, from.Month, 1).AddMonths(1).AddDays(-1); 
-
-            TimeData[] entries = TimeDataInterface.GetEntries(from, to, SortOrder.DateOldestToNewest);
+            var entries = GetThisMonthsTimeReport();
             App.ViewModel.LoadTimeReport(entries);
             NavigationService.Navigate(new Uri("/TimeReport.xaml", UriKind.Relative));
         }
 
+        private TimeData[] GetThisMonthsTimeReport()
+        {
+            var from = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            DateTime to = new DateTime(@from.Year, @from.Month, 1).AddMonths(1).AddDays(-1);
+
+            TimeData[] entries = TimeDataInterface.GetEntries(@from, to, SortOrder.DateOldestToNewest);
+            return entries;
+        }
+
         private void StackPanel_Tap(object sender, GestureEventArgs e) { }
+
+        private void ResetText()
+        {
+            tbBibleStudies.Text = string.Empty;
+            tbBooks.Text = string.Empty;
+            tbBrochures.Text = string.Empty;
+            tbMags.Text = string.Empty;
+            tbNotes.Text = string.Empty;
+            tbReturnVisits.Text = string.Empty;
+        }
 
         #region Nested type: TimerState
 
@@ -321,45 +430,5 @@ namespace MyTime
         };
 
         #endregion
-
-        private void abibAddIt_Click(object sender, EventArgs e)
-        {
-            PauseTimer();
-            var t = TimerTimeSpan;
-
-            var minutes = (int)t.TotalMinutes;
-
-            var td = new TimeData()
-            {
-                Date = DateTime.Now,
-                Minutes = minutes,
-                Magazines = string.IsNullOrEmpty(tbMags.Text) ? 0 : int.Parse(tbMags.Text),
-                Brochures = string.IsNullOrEmpty(tbBrochures.Text) ? 0 : int.Parse(tbBrochures.Text),
-                Books = string.IsNullOrEmpty(tbBooks.Text) ? 0 : int.Parse(tbBooks.Text),
-                BibleStudies = string.IsNullOrEmpty(tbBibleStudies.Text) ? 0 : int.Parse(tbBibleStudies.Text),
-                ReturnVisits = string.IsNullOrEmpty(tbReturnVisits.Text) ? 0 : int.Parse(tbReturnVisits.Text),
-                Notes = tbNotes.Text
-            };
-
-            try {
-                TimeDataInterface.AddTime(td);
-                App.ToastMe(string.Format("Time ({0} hrs & {1} min) added.", t.Hours, t.Minutes));
-                StopTimer();
-                ResetText();
-            } catch (Exception ee) {
-                //TODO:Exception handler
-                MessageBox.Show("Couldn't add time.\n\nException: " + ee.Message);
-            }
-        }
-
-        private void ResetText()
-        {
-            tbBibleStudies.Text = string.Empty;
-            tbBooks.Text = string.Empty;
-            tbBrochures.Text = string.Empty;
-            tbMags.Text = string.Empty;
-            tbNotes.Text = string.Empty;
-            tbReturnVisits.Text = string.Empty;
-        }
     }
 }

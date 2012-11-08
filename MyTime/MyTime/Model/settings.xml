@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings xmlns="http://www.inputstudiowp7.com/schemas">
+    <Setting Name="" Type="Header" Value="Sharing Options" />
+    <Setting Name="Congregation Service Overseer" Type="String" Value="" />
+    <Setting Name="" Type="Note" Value="Tap the button above to choose the contact record of your CSO." />
+    <Setting Name="Service Report Send Method" Type="StringArray" Value="Email">
+        <StringItem Value="Email" />
+        <StringItem Value="Text Message (SMS)" />
+    </Setting>
+    <Setting Name="" Type="Header" Value="Personal Settings" />
+    <Setting Name="Nick Name" Type="String" Value="" />
+    <Setting Name="Default Age" Type="Integer" Value="18" />
+    <Setting Name="" Type="Header" Value="Application Setting" />
+    <Setting Name="Use Location" Type="Boolean" Value="True" />
+</Settings>

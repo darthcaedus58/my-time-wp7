@@ -1,67 +1,49 @@
-﻿<phone:PhoneApplicationPage 
-    x:Class="MyTime.AddNewRV"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-    xmlns:local="clr-namespace:MyTime"
-    local:TiltEffect.IsTiltEnabled="True"
-        xmlns:cntrls="clr-namespace:Controls.Primitives;assembly=Controls"
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
-    FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="True" xmlns:my="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps" Loaded="PhoneApplicationPage_Loaded">
+﻿<phone:PhoneApplicationPage x:Class="MyTime.AddNewRV" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:cntrls="clr-namespace:Controls.Primitives;assembly=Controls" xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:MyTime" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:my="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps" xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone" xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone" xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" FontFamily="{StaticResource PhoneFontFamilyNormal}" FontSize="{StaticResource PhoneFontSizeNormal}" Foreground="{StaticResource PhoneForegroundBrush}" Loaded="PhoneApplicationPage_Loaded" Orientation="Portrait" SupportedOrientations="Portrait" local:TiltEffect.IsTiltEnabled="True" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696" shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Pivot Control-->
 
-        <controls:Pivot Title="Field Service - Return Visits" SelectionChanged="Pivot_SelectionChanged" LoadedPivotItem="Pivot_LoadedPivotItem">
+        <controls:Pivot LoadedPivotItem="Pivot_LoadedPivotItem" SelectionChanged="Pivot_SelectionChanged" Title="Field Service - Return Visits">
             <controls:PivotItem Header="info">
                 <Grid>
                     <!--ScrollViewer Height="Auto" HorizontalAlignment="Left" Margin="0" Name="stackPanelInfoMain" VerticalAlignment="Top" Width="473"-->
-                        <StackPanel Orientation="Vertical">
-                            <StackPanel Name="spInfo_MapAndInfo" Width="Auto" HorizontalAlignment="Left" Orientation="Vertical" Margin="10,0,0,0">
-                                <my:Map Height="250" Width="450" Name="mapInfo" CopyrightVisibility="Collapsed" LogoVisibility="Collapsed" >
-                                    <my:Map.CredentialsProvider>
-                                        <my:ApplicationIdCredentialsProvider ApplicationId="AkRhgqPR6aujo-xib-KiR8Lt20wsn89GY4R9SP0RA6h4w7QT9mS3kKwYKKxjklfV" />
-                                    </my:Map.CredentialsProvider>
-                                </my:Map>
-                                <StackPanel Height="Auto" Name="spInfo_NameAndAddress" Width="Auto" Margin="5,0,0,0">
-                                    <TextBlock Height="Auto" Text="ADDRESS" FontFamily="Segoe WP" FontSize="18" FontWeight="Bold" Margin="0,10,5,0"/>
-                                <HyperlinkButton Name="lblInfo_AddressFull" Margin="-10,0,0,0" HorizontalAlignment="Left" Content="{}{0} {1}{5}{2} {3} {4}" FontFamily="Segoe WP" FontSize="25" Click="mapInfo_Tap"/>
-                                    <TextBlock Height="Auto" Text="PERSONAL INFO" FontFamily="Segoe WP" FontSize="20" FontWeight="Bold" Margin="0,10,5,0" />
-                                    <TextBlock Height="Auto" Name="lblInfo_FullName" Text="{}{0}" FontFamily="Segoe WP" FontSize="25" />
-                                    <HyperlinkButton Height="30" Name="lblInfo_telephone" Margin="-10,0,0,0" HorizontalAlignment="Left" FontFamily="Segoe WP" FontSize="25" Click="lblInfo_telephone_Click" />
-                                    <TextBlock Height="30" Name="lblInfo_Age" Text="{}{0}" FontFamily="Segoe WP" FontSize="25" />
-                                </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Margin="10,0,0,0" Width="Auto" HorizontalAlignment="Left" Name="spInfo_MapAndInfo" Orientation="Vertical">
+                            <my:Map Height="250" Width="450" CopyrightVisibility="Collapsed" LogoVisibility="Collapsed" Name="mapInfo">
+                                <my:Map.CredentialsProvider>
+                                    <my:ApplicationIdCredentialsProvider ApplicationId="AkRhgqPR6aujo-xib-KiR8Lt20wsn89GY4R9SP0RA6h4w7QT9mS3kKwYKKxjklfV" />
+                                </my:Map.CredentialsProvider>
+                            </my:Map>
+                            <StackPanel Height="Auto" Margin="5,0,0,0" Width="Auto" Name="spInfo_NameAndAddress">
+                                <TextBlock Height="Auto" Margin="0,10,5,0" FontFamily="Segoe WP" FontSize="18" FontWeight="Bold" Text="ADDRESS" />
+                                <HyperlinkButton Margin="-10,0,0,0" Click="mapInfo_Tap" Content="{}{0} {1}{5}{2} {3} {4}" FontFamily="Segoe WP" FontSize="25" HorizontalAlignment="Left" Name="lblInfo_AddressFull" />
+                                <TextBlock Height="Auto" Margin="0,10,5,0" FontFamily="Segoe WP" FontSize="20" FontWeight="Bold" Text="PERSONAL INFO" />
+                                <TextBlock Height="Auto" FontFamily="Segoe WP" FontSize="25" Name="lblInfo_FullName" Text="{}{0}" />
+                                <HyperlinkButton Height="30" Margin="-10,0,0,0" Click="lblInfo_telephone_Click" FontFamily="Segoe WP" FontSize="25" HorizontalAlignment="Left" Name="lblInfo_telephone" />
+                                <TextBlock Height="30" FontFamily="Segoe WP" FontSize="25" Name="lblInfo_Age" Text="{}{0}" />
                             </StackPanel>
                         </StackPanel>
+                    </StackPanel>
                     <!--/ScrollViewer-->
                 </Grid>
             </controls:PivotItem>
             <controls:PivotItem Header="personal">
                 <Grid>
-                    <ScrollViewer Height="450" HorizontalAlignment="Left" Margin="0" Name="stackPanelInfoPersonal" VerticalAlignment="Top">
+                    <ScrollViewer Height="450" Margin="0" HorizontalAlignment="Left" Name="stackPanelInfoPersonal" VerticalAlignment="Top">
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Height="30" Name="textBlock1" Text="FULL NAME" LostFocus="textBlock1_LostFocus" />
-                            <TextBox Height="71" Name="tbFullName" Text="" Width="460" LostFocus="tbFullName_LostFocus" />
-                            <StackPanel Orientation="Horizontal" Height="100">
+                            <TextBlock Height="30" LostFocus="textBlock1_LostFocus" Name="textBlock1" Text="FULL NAME" />
+                            <TextBox Height="71" Width="460" LostFocus="tbFullName_LostFocus" Name="tbFullName" Text="" />
+                            <StackPanel Height="100" Orientation="Horizontal">
                                 <TextBlock Height="30" Text="AGE" />
-                                <TextBox Height="71" Width="100" Name="dlsAge" InputScope="Digits" />
+                                <TextBox Height="71" Width="100" InputScope="Digits" Name="dlsAge" />
                             </StackPanel>
-                            <TextBlock Height="30" Text="GENDER" LostFocus="textBlock1_LostFocus" />
-                            <toolkit:ListPicker Margin="10,0,0,0" HorizontalAlignment="Left" Width="440" Name="lpGender"></toolkit:ListPicker>
-                            <TextBlock Height="30" Text="PHONE NUMBER" LostFocus="textBlock1_LostFocus" />
-                            <TextBox Height="71" Name="tbPhoneNumber" Text="" Width="460" LostFocus="tbFullName_LostFocus" />
-                            <TextBlock Height="30" Text="DESCRIPTION" LostFocus="textBlock1_LostFocus" />
-                            <TextBox Height="200" Name="tbDescription" Text="" Width="460" LostFocus="tbFullName_LostFocus" />
+                            <TextBlock Height="30" LostFocus="textBlock1_LostFocus" Text="GENDER" />
+                            <toolkit:ListPicker Margin="10,0,0,0" Width="440" HorizontalAlignment="Left" Name="lpGender"></toolkit:ListPicker>
+                            <TextBlock Height="30" LostFocus="textBlock1_LostFocus" Text="PHONE NUMBER" />
+                            <TextBox Height="71" Width="460" LostFocus="tbFullName_LostFocus" Name="tbPhoneNumber" Text="" />
+                            <TextBlock Height="30" LostFocus="textBlock1_LostFocus" Text="DESCRIPTION" />
+                            <TextBox Height="200" Width="460" LostFocus="tbFullName_LostFocus" Name="tbDescription" Text="" />
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
@@ -71,38 +53,38 @@
                 <Grid>
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Vertical">
-                            <StackPanel Height="Auto" Name="stackPanel4" Width="Auto" Orientation="Horizontal">
+                            <StackPanel Height="Auto" Width="Auto" Name="stackPanel4" Orientation="Horizontal">
                                 <TextBlock Height="Auto" Name="textBlock11" Text="Current Address (click map to use):" VerticalAlignment="Bottom" />
                             </StackPanel>
                             <ProgressBar Name="pbGetAddress" />
-                            <StackPanel Height="Auto" Name="stackPanel2" Width="Auto" Orientation="Horizontal">
-                                <my:Map Height="100" Name="mapCurrentAddress" Width="150" Tap="mapCurrentAddress_Tap" LogoVisibility="Collapsed" CopyrightVisibility="Collapsed" AnimationLevel="None">
+                            <StackPanel Height="Auto" Width="Auto" Name="stackPanel2" Orientation="Horizontal">
+                                <my:Map Height="100" Width="150" AnimationLevel="None" CopyrightVisibility="Collapsed" LogoVisibility="Collapsed" Name="mapCurrentAddress" Tap="mapCurrentAddress_Tap">
                                     <my:Map.CredentialsProvider>
                                         <my:ApplicationIdCredentialsProvider ApplicationId="AkRhgqPR6aujo-xib-KiR8Lt20wsn89GY4R9SP0RA6h4w7QT9mS3kKwYKKxjklfV" />
                                     </my:Map.CredentialsProvider>
                                 </my:Map>
-                                <StackPanel Height="Auto" Name="stackPanel3" Width="Auto">
+                                <StackPanel Height="Auto" Width="Auto" Name="stackPanel3">
                                     <TextBlock Height="30" Name="lblCurrentAddress" Text="" />
                                     <TextBlock Height="30" Name="lblCurrentCityStateZip" Text="" />
                                 </StackPanel>
                             </StackPanel>
                         </StackPanel>
-                        <ScrollViewer Height="400" HorizontalAlignment="Left" Name="stackPanel1" VerticalAlignment="Top" Width="468">
-                            <StackPanel Orientation="Vertical" Margin="0,10,10,0">
+                        <ScrollViewer Height="400" Width="468" HorizontalAlignment="Left" Name="stackPanel1" VerticalAlignment="Top">
+                            <StackPanel Margin="0,10,10,0" Orientation="Vertical">
                                 <TextBlock Height="30" Name="textBlock2" Text="ADDRESS 1" />
-                                <TextBox Height="71" Name="tbAddress1" Text="" Width="460" LostFocus="tbAddress1_LostFocus" />
+                                <TextBox Height="71" Width="460" LostFocus="tbAddress1_LostFocus" Name="tbAddress1" Text="" />
                                 <TextBlock Height="30" Name="textBlock3" Text="ADDRESS 2" />
-                                <TextBox Height="71" Name="tbAddress2" Text="" Width="460" LostFocus="tbAddress2_LostFocus" />
+                                <TextBox Height="71" Width="460" LostFocus="tbAddress2_LostFocus" Name="tbAddress2" Text="" />
                                 <TextBlock Height="30" Name="textBlock4" Text="CITY" />
-                                <TextBox Height="71" Name="tbCity" Text="" Width="460" TextChanged="tbCity_TextChanged" />
-                                <TextBlock Height="30" Name="textBlock5" Text="STATE/PROVINCE/DISTRICT" Margin="0,0,0,-10" />
-                                <TextBox Height="71" Name="tbDistrict" Text="" Width="460" TextChanged="tbCity_TextChanged" />
+                                <TextBox Height="71" Width="460" Name="tbCity" Text="" TextChanged="tbCity_TextChanged" />
+                                <TextBlock Height="30" Margin="0,0,0,-10" Name="textBlock5" Text="STATE/PROVINCE/DISTRICT" />
+                                <TextBox Height="71" Width="460" Name="tbDistrict" Text="" TextChanged="tbCity_TextChanged" />
                                 <TextBlock Height="30" Name="textBlock6" Text="POSTAL CODE" />
-                                <TextBox Height="71" Name="tbZipCode" Text="" Width="460" LostFocus="tbZipCode_LostFocus" />
+                                <TextBox Height="71" Width="460" LostFocus="tbZipCode_LostFocus" Name="tbZipCode" Text="" />
                                 <TextBlock Height="30" Name="textBlock8" Text="COUNTRY" />
-                                <TextBox Height="71" Name="tbCountry" Text="" Width="460" LostFocus="tbZipCode_LostFocus" />
+                                <TextBox Height="71" Width="460" LostFocus="tbZipCode_LostFocus" Name="tbCountry" Text="" />
                                 <TextBlock Height="30" Name="textBlock7" Text="OTHER NOTES" />
-                                <TextBox Height="200" Name="tbOtherNotes" Text="" Width="460" />
+                                <TextBox Height="200" Width="460" Name="tbOtherNotes" Text="" />
                             </StackPanel>
                         </ScrollViewer>
                     </StackPanel>
@@ -111,15 +93,15 @@
 
             <controls:PivotItem Header="visits">
                 <Grid>
-                    <StackPanel Margin="0,0,0,0" Name="stackPanel5" HorizontalAlignment="Left">
-                        <Button HorizontalAlignment="Left" Content="Add" Height="71" Name="bAddVisit" Width="160" Click="bAddVisit_Click" />
-                        <ListBox ItemsSource="{Binding lbRvPreviousItems}" Name="lbRvPrevItems" Height="450" Width="450" VerticalContentAlignment="Top" VerticalAlignment="Top" HorizontalContentAlignment="Left" SelectionChanged="lbRvPrevItems_SelectionChanged">
+                    <StackPanel Margin="0,0,0,0" HorizontalAlignment="Left" Name="stackPanel5">
+                        <Button Height="71" Width="160" Click="bAddVisit_Click" Content="Add" HorizontalAlignment="Left" Name="bAddVisit" />
+                        <ListBox Height="450" Width="450" HorizontalContentAlignment="Left" ItemsSource="{Binding lbRvPreviousItems}" Name="lbRvPrevItems" SelectionChanged="lbRvPrevItems_SelectionChanged" VerticalAlignment="Top" VerticalContentAlignment="Top">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Vertical" Margin="0,0,0,0">
-                                        <TextBlock Text="{Binding LastVisitDate}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                        <TextBlock Text="{Binding Placements}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                        <TextBlock Text="{Binding Description}" TextWrapping="NoWrap" TextTrimming="WordEllipsis" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                    <StackPanel Margin="0,0,0,0" Orientation="Vertical">
+                                        <TextBlock Style="{StaticResource PhoneTextLargeStyle}" Text="{Binding LastVisitDate}" TextWrapping="Wrap" />
+                                        <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Placements}" TextWrapping="Wrap" />
+                                        <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Description}" TextTrimming="WordEllipsis" TextWrapping="NoWrap" />
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
@@ -137,19 +119,19 @@
                         <TextBlock Text="NOTES" />
                         <TextBox x:Name="txtContent" Text="" />
 
-                        <TextBlock Text="WHEN"/>
+                        <TextBlock Text="WHEN" />
                         <toolkit:DatePicker x:Name="dpDatePicker" />
                         <toolkit:TimePicker x:Name="tpStartTime" />
 
                         <StackPanel Orientation="Horizontal">
-                            <Button x:Name="btnDone" Content="add" Click="btnDone_Click" />
+                            <Button x:Name="btnDone" Click="btnDone_Click" Content="add" />
                         </StackPanel>
                         <ListBox x:Name="lbReminders" Grid.Row="0">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Margin="0,0,0,17" Width="432" Height="78">
-                                        <TextBlock Text="{Binding Content}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                        <TextBlock Text="{Binding BeginTime}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                    <StackPanel Height="78" Margin="0,0,0,17" Width="432">
+                                        <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="{Binding Content}" TextWrapping="Wrap" />
+                                        <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Margin="12,-6,12,0" Text="{Binding BeginTime}" TextWrapping="Wrap" />
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
@@ -163,12 +145,12 @@
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton x:Name="appbar_save" IconUri="/icons/appbar.save.rest.png" Text="Save" Click="appbar_save_Click" />
+        <shell:ApplicationBar IsMenuEnabled="True" IsVisible="True">
+            <shell:ApplicationBarIconButton x:Name="appbar_save" Click="appbar_save_Click" IconUri="/icons/appbar.save.rest.png" Text="Save" />
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem x:Name="appbar_delete" Text="Delete Return Visit" Click="appbar_DeleteRv_Click" />
-                <shell:ApplicationBarMenuItem x:Name="miGetDirection" Text="Get Directions" Click="miGetDirection_Click" />
-                <shell:ApplicationBarMenuItem x:Name="miAddPicture" Text="Add Picture" Click="miAddPicture_Click" />
+                <shell:ApplicationBarMenuItem x:Name="appbar_delete" Click="appbar_DeleteRv_Click" Text="Delete Return Visit" />
+                <!--<shell:ApplicationBarMenuItem x:Name="miGetDirection" Text="Get Directions" Click="miGetDirection_Click" />-->
+                <!--<shell:ApplicationBarMenuItem x:Name="miAddPicture" Text="Add Picture" Click="miAddPicture_Click" />-->
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
