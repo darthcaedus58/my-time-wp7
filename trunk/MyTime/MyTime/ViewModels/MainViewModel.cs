@@ -19,14 +19,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Xml;
-using System.Xml.Serialization;
 using MyTime.ViewModels;
 using MyTimeDatabaseLib;
-using GalaSoft.MvvmLight;
-using System.IO.IsolatedStorage;
-using MvvmSettings;
-using System.Xml;
+
 
 namespace MyTime
 {
@@ -45,7 +40,6 @@ namespace MyTime
             lbMainMenuItems = new ObservableCollection<MainMenuViewModel>();
             icReport = new ObservableCollection<TimeReportSummaryViewModel>();
             lbTimeEntries = new ObservableCollection<TimeReportEntryViewModel>();
-            loadSettings();
         }
 
         /// <summary>
@@ -300,68 +294,7 @@ namespace MyTime
             IsTimeReportDataLoaded = true;
         }
 
-        public Settings Settings { get; private set; }
-
-        private void loadSettings()
-        {
-#if DEBUG
-            IsolatedStorageFile.GetUserStoreForApplication().DeleteFile("settings.xml");
-#endif
-            this.Settings = this.readFromFile(IsolatedStorageFile.GetUserStoreForApplication(), "settings.xml");
-        }
-
-        protected Settings readFromFile(IsolatedStorageFile isoStore, string fileName)
-        {
-            try {
-                if (isoStore.FileExists(fileName)) {
-                    XmlSerializer ser = new XmlSerializer(typeof(Settings), "http://www.inputstudiowp7.com/schemas");
-                    using (StreamReader reader = new StreamReader(new IsolatedStorageFileStream(fileName, FileMode.Open, isoStore))) {
-                        //buffer used to remove extra characters added by serializer?
-                        string buffer = reader.ReadToEnd();
-                        buffer = buffer.Substring(0, buffer.IndexOf("/Settings>") + "/Settings>".Length);
-                        //using (XmlReader rdr = XmlReader.Create(new StringReader(reader.ReadToEnd())))
-                        using (XmlReader rdr = XmlReader.Create(new StringReader(buffer))) {
-                            return (Settings)ser.Deserialize(rdr);
-                        }
-                    }
-                } else {
-                    Settings settings = (Settings)new XmlSerializer(typeof(Settings))
-                               .Deserialize(XmlReader.Create("Model/settings.xml"));
-                    this.writeToFile(isoStore, settings, "settings.xml");
-                    return settings;
-                }
-            } catch (Exception e) {
-                MessageBox.Show(e.StackTrace, e.Message, MessageBoxButton.OK);
-            }
-
-            return null;
-        }
-
-        protected bool writeToFile(IsolatedStorageFile isoStore, Settings settings, string fileName)
-        {
-            try {
-                XmlSerializer ser = new XmlSerializer(typeof(Settings), "http://www.inputstudiowp7.com/schemas");
-                using (StreamWriter writer = new StreamWriter(new IsolatedStorageFileStream(fileName, FileMode.OpenOrCreate, isoStore))) {
-                    XmlWriterSettings setts = new XmlWriterSettings();
-                    setts.Indent = true;
-                    using (XmlWriter wtr = XmlWriter.Create(writer, setts)) {
-                        ser.Serialize(wtr, settings);
-                    }
-
-                    writer.Close();
-                    return true;
-                }
-            } catch (Exception e) {
-                MessageBox.Show(e.StackTrace, e.Message, MessageBoxButton.OK);
-            }
-
-            return false;
-        }
-
-        public bool saveSettings()
-        {
-            return this.writeToFile(IsolatedStorageFile.GetUserStoreForApplication(), this.Settings, "settings.xml");
-        }
+        
     }
 
 }

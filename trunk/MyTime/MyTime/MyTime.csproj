@@ -147,6 +147,7 @@
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SettingsProvider.cs" />
     <Compile Include="SocietyScraper.cs" />
     <Compile Include="TiltEffect.cs" />
     <Compile Include="TimeReport.xaml.cs">

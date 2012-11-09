@@ -82,7 +82,7 @@ namespace MyTime
             _address = lblInfo_AddressFull.Content.ToString();
             _fullName = lblInfo_FullName.Text;
             _age = lblInfo_Age.Text;
-            dlsAge.Text = "30";
+            dlsAge.Text = App.AppSettings["dfltAgeValue"] == null ? "30" : App.AppSettings["dfltAgeValue"].Value;
             string[] genders = {"Male", "Female"};
             lpGender.ItemsSource = genders;
             lpGender.SelectedIndex = 0;
@@ -523,14 +523,25 @@ namespace MyTime
 
         private string BeautifyPhoneNumber(string phNum)
         {
+            bool beautifyPhoneNumber = true;
+            var beautifyRegEx = @"^(\d{1})?(\d{3})(\d{3})(\d{4})$";
+            var beautifyMask = @"$1($2) $3-$4";
+
+            try {
+                beautifyPhoneNumber = bool.Parse(App.AppSettings["beautifyPhoneNumber"].Value);
+                beautifyRegEx = App.AppSettings["beautifyPhNumRegEx"].Value;
+                beautifyMask = App.AppSettings["beautifyPhNumMask"].Value;
+            } catch { return phNum; }
+
+            if (!beautifyPhoneNumber) return phNum;
+
             var ss = String.Empty;
             foreach (var s in phNum) {
                 if (Char.IsDigit(s)) ss += s;
             }
-            //TODO: make this a user option.
-            //TODO: internationalization?
-            if (ss.Length == 10 || ss.Length == 11)
-                return Regex.Replace(ss, @"^(\d{1})?(\d{3})(\d{3})(\d{4})$", @"$1($2) $3-$4");
+            if (ss.Length == 10 || ss.Length == 11) {
+                return Regex.Replace(ss, beautifyRegEx, beautifyMask);
+            }
 
             return phNum;
         }

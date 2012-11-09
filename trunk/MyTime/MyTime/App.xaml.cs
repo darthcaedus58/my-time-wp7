@@ -21,6 +21,12 @@ namespace MyTime
 {
     public partial class App : Application
     {
+        private static SettingsProvider _settings = null;
+
+        public static SettingsProvider AppSettings
+        {
+            get { return _settings ?? new SettingsProvider(); }
+        }
         
         private static MainViewModel viewModel = null;
 
@@ -33,10 +39,7 @@ namespace MyTime
             get
             {
                 // Delay creation of the view model until necessary
-                if (viewModel == null)
-                    viewModel = new MainViewModel();
-
-                return viewModel;
+                return viewModel ?? (viewModel = new MainViewModel());
             }
         }
 
@@ -51,6 +54,7 @@ namespace MyTime
         /// </summary>
         public App()
         {
+            _settings = new SettingsProvider();
             // Global handler for uncaught exceptions. 
             UnhandledException += Application_UnhandledException;
 

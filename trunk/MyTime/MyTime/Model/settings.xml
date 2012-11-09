@@ -1,15 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Settings xmlns="http://www.inputstudiowp7.com/schemas">
     <Setting Name="" Type="Header" Value="Sharing Options" />
-    <Setting Name="Congregation Service Overseer" Type="String" Value="" />
+    <Setting Name="csoEmail" FriendlyName="Congregation Service Overseer" Type="ContactChooser" Value="" AddressType="Email" ContactDisplayName="" />
     <Setting Name="" Type="Note" Value="Tap the button above to choose the contact record of your CSO." />
-    <Setting Name="Service Report Send Method" Type="StringArray" Value="Email">
+    <!--<Setting Name="SOSendMethod" FriendlyName="Service Report Send Method" Type="StringArray" Value="Email">
         <StringItem Value="Email" />
         <StringItem Value="Text Message (SMS)" />
-    </Setting>
+    </Setting>-->
     <Setting Name="" Type="Header" Value="Personal Settings" />
-    <Setting Name="Nick Name" Type="String" Value="" />
-    <Setting Name="Default Age" Type="Integer" Value="18" />
+    <Setting Name="NickName" FriendlyName="Nick Name" Type="String" Value="" />
+    <Setting Name ="dfltAgeValue" FriendlyName="Default Age" Type="Integer" Value="18" />
     <Setting Name="" Type="Header" Value="Application Setting" />
-    <Setting Name="Use Location" Type="Boolean" Value="True" />
+    <Setting Name="LocationEnabled" FriendlyName="Use Location" Type="Boolean" Value="True" />
+    <Setting Name="beautifyPhoneNumber" FriendlyName="Beautify Phone Numbers (US Only)" Type="Boolean" Value="True" />
+    <Setting Name="beautifyPhNumRegEx" Type="String" Value="^(\d{1})?(\d{3})(\d{3})(\d{4})$" ShowInSettingsPage="false" />
+    <Setting Name="beautifyPhNumMask" Type="String" Value="$1($2) $3-$4" ShowInSettingsPage="false" />
 </Settings>

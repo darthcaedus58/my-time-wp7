@@ -1426,29 +1426,38 @@ namespace MyTime.BingMapsGeocodeService {
             }
             
             public System.IAsyncResult BeginGeocode(MyTime.BingMapsGeocodeService.GeocodeRequest request, System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[1];
-                _args[0] = request;
-                System.IAsyncResult _result = base.BeginInvoke("Geocode", _args, callback, asyncState);
-                return _result;
+                try {
+                    object[] _args = new object[1];
+
+                    _args[0] = request;
+                    System.IAsyncResult _result = base.BeginInvoke("Geocode", _args, callback, asyncState);
+                    return _result;
+                } catch { return null;}
             }
             
             public MyTime.BingMapsGeocodeService.GeocodeResponse EndGeocode(System.IAsyncResult result) {
-                object[] _args = new object[0];
-                MyTime.BingMapsGeocodeService.GeocodeResponse _result = ((MyTime.BingMapsGeocodeService.GeocodeResponse)(base.EndInvoke("Geocode", _args, result)));
-                return _result;
+                try {
+                    object[] _args = new object[0];
+                    MyTime.BingMapsGeocodeService.GeocodeResponse _result = ((MyTime.BingMapsGeocodeService.GeocodeResponse)(base.EndInvoke("Geocode", _args, result)));
+                    return _result;
+                } catch { return null; }
             }
             
             public System.IAsyncResult BeginReverseGeocode(MyTime.BingMapsGeocodeService.ReverseGeocodeRequest request, System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[1];
-                _args[0] = request;
-                System.IAsyncResult _result = base.BeginInvoke("ReverseGeocode", _args, callback, asyncState);
-                return _result;
+                try {
+                    object[] _args = new object[1];
+                    _args[0] = request;
+                    System.IAsyncResult _result = base.BeginInvoke("ReverseGeocode", _args, callback, asyncState);
+                    return _result;
+                } catch { return null; }
             }
             
             public MyTime.BingMapsGeocodeService.GeocodeResponse EndReverseGeocode(System.IAsyncResult result) {
-                object[] _args = new object[0];
-                MyTime.BingMapsGeocodeService.GeocodeResponse _result = ((MyTime.BingMapsGeocodeService.GeocodeResponse)(base.EndInvoke("ReverseGeocode", _args, result)));
-                return _result;
+                try {
+                    object[] _args = new object[0];
+                    MyTime.BingMapsGeocodeService.GeocodeResponse _result = ((MyTime.BingMapsGeocodeService.GeocodeResponse)(base.EndInvoke("ReverseGeocode", _args, result)));
+                    return _result;
+                } catch { return null; }
             }
         }
     }

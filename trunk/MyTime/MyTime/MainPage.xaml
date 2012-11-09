@@ -108,10 +108,16 @@
                 </Grid>
             </controls:PanoramaItem>
             <controls:PanoramaItem Header="time">
-
-                <StackPanel x:Name="stackPanel1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Row="0">
                     <TextBlock x:Name="lblTimer" FontSize="96" Text="00:00:00" TextAlignment="Center" TextWrapping="Wrap" />
-                    <ScrollViewer Height="250">
+                    </Grid>
+                    <Grid Row="1">
+                        <ScrollViewer Height="Auto" VerticalAlignment="Stretch">
                         <StackPanel>
                             <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
                                 <TextBox Margin="0,-5,0,0" Width="75" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" Name="tbMags" Opacity="0.385" />
@@ -137,9 +143,8 @@
                             <TextBox Height="180" Name="tbNotes" Opacity="0.385" TextWrapping="Wrap" />
                         </StackPanel>
                     </ScrollViewer>
-                </StackPanel>
-
-                <!--Double line list with text wrapping-->
+                    </Grid>
+                </Grid>
             </controls:PanoramaItem>
         </controls:Panorama>
     </Grid>
