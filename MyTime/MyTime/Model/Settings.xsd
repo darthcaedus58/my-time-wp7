@@ -20,6 +20,10 @@
         <xsd:attribute name="Type" type="eDataType" use="required" />
         <xsd:attribute name="Xaml" type="xsd:string" />
         <xsd:attribute name="Value" type="xsd:string" />
+        <xsd:attribute name="FriendlyName" type="xsd:string" />
+        <xsd:attribute name="ShowInSettingsPage" type="xsd:boolean" default="true" />
+        <xsd:attribute name="ContactDisplayName" type="xsd:string" />
+        <xsd:attribute name="AddressType" type="addressType" />
     </xsd:complexType>
     <xsd:simpleType name="eDataType">
         <xsd:restriction base="xsd:string">
@@ -37,4 +41,10 @@
     <xsd:complexType name="StringItem">
         <xsd:attribute name="Value" type="xsd:string" use="required" />
     </xsd:complexType>
+    <xsd:simpleType name="addressType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Email" />
+            <xsd:enumeration value="Sms" />
+        </xsd:restriction>
+    </xsd:simpleType>
 </xsd:schema>

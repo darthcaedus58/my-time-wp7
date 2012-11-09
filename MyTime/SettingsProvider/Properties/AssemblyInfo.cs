@@ -6,22 +6,22 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Field Service")]
+[assembly: AssemblyTitle("SettingsProvider")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Square.HipToBe")]
-[assembly: AssemblyProduct("Field Service")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SettingsProvider")]
 [assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// SettingsCollection ComVisible to false makes the types in this assembly not visible 
+// Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("440e1e8f-5900-438f-9921-5fed1c2aa004")]
+[assembly: Guid("0486c261-6db0-4d55-bbee-ac8a3d34d86c")]
 
 // Version information for an assembly consists of the following four values:
 //
