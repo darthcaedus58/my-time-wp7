@@ -326,11 +326,55 @@ namespace MyTime
         private void miAddPicture_Click(object sender, EventArgs e) { }
 
         /// <summary>
-        /// Handles the Click event of the miGetDirection control.
+        /// Handles the Click event of the miShareContact control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void miGetDirection_Click(object sender, EventArgs e) { }
+        private void miShareContact_Click(object sender, EventArgs e)
+        {
+            string body = string.Format("Name: {0}\n" +
+                                        "Phone Number: {1}\n" +
+                                        "Address 1: {2}\n" +
+                                        "Address 2: {3}\n" +
+                                        "City/State/Zip: {4}, {5} {6}\n" +
+                                        "Country: {7}\n" +
+                                        "Loc Description: {8}\n\n" +
+                                        "Age: {9}\n" +
+                                        "Gender: {10}\n" +
+                                        "Physical Description: {11}\n",
+                                        tbFullName.Text,
+                                        BeautifyPhoneNumber(tbPhoneNumber.Text),
+                                        tbAddress1.Text,
+                                        tbAddress2.Text,
+                                        tbCity.Text, tbDistrict.Text, tbZipCode.Text,
+                                        tbCountry.Text,
+                                        tbOtherNotes.Text,
+                                        dlsAge.Text,
+                                        lpGender.SelectedItem.ToString(),
+                                        tbDescription.Text);
+
+            if(MessageBox.Show("Include All Visits?","Field Service", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
+                body += "\n\nVisits:\n";
+                foreach(var p in lbRvPrevItems.Items) {
+                    if(p is PreviousVisitViewModel) {
+                        var pp = (PreviousVisitViewModel) p;
+                        var pv = RvPreviousVisitsDataInterface.GetCall(pp.ItemId);
+                        body += string.Format("Date: {0}\n" +
+                                              "Placements: {1} Mg's, {2} Bk's, {3} Br's\n" +
+                                              "Notes: {4}\n\n\n",
+                                              pv.Date.ToShortDateString(),
+                                              pv.Magazines, pv.Books, pv.Brochures,
+                                              pv.Notes);
+                    }
+                }
+            }
+            body += "\n\n";
+            
+            var emailcomposer = new EmailComposeTask();
+                emailcomposer.Subject = string.Format("{0:MMMM} {0:yyyy} Service Report", DateTime.Today);
+                emailcomposer.Body = body;
+                emailcomposer.Show();
+        }
 
 
         /// <summary>
