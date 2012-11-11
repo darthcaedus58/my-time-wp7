@@ -4,13 +4,14 @@
 // Created          : 11-03-2012
 //
 // Last Modified By : trevo_000
-// Last Modified On : 11-05-2012
+// Last Modified On : 11-10-2012
 // ***********************************************************************
 // <copyright file="ReturnVisitsInterface.cs" company="">
 //     Copyright (c) . All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,11 +28,18 @@ namespace MyTimeDatabaseLib
         /// The date newest to oldest
         /// </summary>
         DateNewestToOldest = 0,
+
         /// <summary>
         /// The date oldest to newest
         /// </summary>
         DateOldestToNewest = 1,
+        /// <summary>
+        /// The city A to Z
+        /// </summary>
         CityAToZ = 2,
+        /// <summary>
+        /// The city Z to A
+        /// </summary>
         CityZToA = 3
     }
 
@@ -50,20 +58,20 @@ namespace MyTimeDatabaseLib
         {
             var rvs = new List<ReturnVisitData>();
             using (var db = new ReturnVisitDataContext(ReturnVisitDataContext.DBConnectionString)) {
-                if(maxReturnCount == -1) maxReturnCount = db.ReturnVisitItems.Count();
+                if (maxReturnCount == -1) maxReturnCount = db.ReturnVisitItems.Count();
                 IQueryable<ReturnVisitDataItem> q;
                 IEnumerable<ReturnVisitDataItem> demRVs = null;
-                if(so == SortOrder.DateNewestToOldest || so == SortOrder.DateOldestToNewest) {
+                if (so == SortOrder.DateNewestToOldest || so == SortOrder.DateOldestToNewest) {
                     q = from x in db.ReturnVisitItems
-                    orderby x.DateCreated
-                    select x;
-
+                        orderby x.DateCreated
+                        select x;
+                    q = q.Take(maxReturnCount);
                     demRVs = so == SortOrder.DateNewestToOldest ? q.ToArray().Reverse() : q.ToArray();
-                } else if(so == SortOrder.CityAToZ || so == SortOrder.CityZToA) {
+                } else if (so == SortOrder.CityAToZ || so == SortOrder.CityZToA) {
                     q = from x in db.ReturnVisitItems
                         orderby x.City
                         select x;
-
+                    q = q.Take(maxReturnCount);
                     demRVs = so == SortOrder.CityZToA ? q.ToArray().Reverse() : q.ToArray();
                 }
 
@@ -71,11 +79,11 @@ namespace MyTimeDatabaseLib
                     foreach (ReturnVisitDataItem r in demRVs) {
                         DateTime lv = DateTime.MinValue;
                         try {
-                            var x = RvPreviousVisitsDataInterface.GetPreviousVisits(r.ItemId, SortOrder.DateNewestToOldest);
+                            RvPreviousVisitData[] x = RvPreviousVisitsDataInterface.GetPreviousVisits(r.ItemId, SortOrder.DateNewestToOldest);
                             if (x.Any()) {
                                 lv = x.First().Date;
                             }
-                        } catch { }
+                        } catch (Exception) {}
                         var rr = new ReturnVisitData {
                                                          LastVisitDate = lv,
                                                          ItemId = r.ItemId,
@@ -125,31 +133,22 @@ namespace MyTimeDatabaseLib
                                                     ImageSrc = newRv.ImageSrc,
                                                     PhoneNumber = newRv.PhoneNumber
                                                 };
-                try {
-                    IQueryable<ReturnVisitDataItem> qry = from x in db.ReturnVisitItems
-                                                          where x.AddressOne.Equals(r.AddressOne) &&
-                                                                x.AddressTwo.Equals(r.AddressTwo) &&
-                                                                x.City.Equals(r.City) &&
-                                                                x.Country.Equals(r.Country) &&
-                                                                x.StateProvince.Equals(r.StateProvince) &&
-                                                                x.PostalCode.Equals(r.PostalCode) &&
-                                                                x.FullName.Equals(r.FullName)
-                                                          select x;
-                    if (qry.Any())
-                        throw new ReturnVisitAlreadyExistsException("The Return Visit already exists.", qry.First().ItemId);
-                    else {
-                        db.ReturnVisitItems.InsertOnSubmit(r);
-                        int x = db.ChangeConflicts.Count;
-                        db.SubmitChanges();
-                        return x == db.ChangeConflicts.Count ? r.ItemId : -1;
-                    }
-                } catch (ReturnVisitAlreadyExistsException e) {
-                    throw e;
-                } catch (Exception e) {
-                    throw e;
-                }
+                IQueryable<ReturnVisitDataItem> qry = from x in db.ReturnVisitItems
+                                                      where x.AddressOne.Equals(r.AddressOne) &&
+                                                            x.AddressTwo.Equals(r.AddressTwo) &&
+                                                            x.City.Equals(r.City) &&
+                                                            x.Country.Equals(r.Country) &&
+                                                            x.StateProvince.Equals(r.StateProvince) &&
+                                                            x.PostalCode.Equals(r.PostalCode) &&
+                                                            x.FullName.Equals(r.FullName)
+                                                      select x;
+                if (qry.Any())
+                    throw new ReturnVisitAlreadyExistsException("The Return Visit already exists.", qry.First().ItemId);
+                db.ReturnVisitItems.InsertOnSubmit(r);
+                int xx = db.ChangeConflicts.Count;
+                db.SubmitChanges();
+                return xx == db.ChangeConflicts.Count ? r.ItemId : -1;
             }
-            return -1;
         }
 
         /// <summary>
@@ -170,20 +169,20 @@ namespace MyTimeDatabaseLib
         /// <summary>
         /// Gets the return visit.
         /// </summary>
-        /// <param name="ItemID">The item ID.</param>
+        /// <param name="itemID">The item ID.</param>
         /// <returns>ReturnVisitData.</returns>
-        public static ReturnVisitData GetReturnVisit(int ItemID)
+        public static ReturnVisitData GetReturnVisit(int itemID)
         {
             using (var db = new ReturnVisitDataContext(ReturnVisitDataContext.DBConnectionString)) {
                 try {
-                    ReturnVisitDataItem r = db.ReturnVisitItems.Single(s => s.ItemId == ItemID);
+                    ReturnVisitDataItem r = db.ReturnVisitItems.Single(s => s.ItemId == itemID);
                     DateTime lv = DateTime.MinValue;
                     try {
-                        var x = RvPreviousVisitsDataInterface.GetPreviousVisits(r.ItemId, SortOrder.DateNewestToOldest);
+                        RvPreviousVisitData[] x = RvPreviousVisitsDataInterface.GetPreviousVisits(r.ItemId, SortOrder.DateNewestToOldest);
                         if (x.Any()) {
                             lv = x.First().Date;
                         }
-                    } catch {}
+                    } catch (Exception) {}
                     var rr = new ReturnVisitData {
                                                      LastVisitDate = lv,
                                                      ItemId = r.ItemId,
@@ -219,7 +218,7 @@ namespace MyTimeDatabaseLib
         {
             using (var db = new ReturnVisitDataContext(ReturnVisitDataContext.DBConnectionString)) {
                 try {
-                    var rv = db.ReturnVisitItems.Single(s => s.ItemId == itemId);
+                    ReturnVisitDataItem rv = db.ReturnVisitItems.Single(s => s.ItemId == itemId);
 
                     rv.AddressOne = newRv.AddressOne;
                     rv.AddressTwo = newRv.AddressTwo;
@@ -242,18 +241,20 @@ namespace MyTimeDatabaseLib
             }
         }
 
+        /// <summary>
+        /// Deletes the return visit.
+        /// </summary>
+        /// <param name="itemId">The item id.</param>
         public static void DeleteReturnVisit(int itemId)
         {
             using (var db = new ReturnVisitDataContext(ReturnVisitDataContext.DBConnectionString)) {
                 try {
-                    var rv = db.ReturnVisitItems.Single(s => s.ItemId == itemId);
+                    ReturnVisitDataItem rv = db.ReturnVisitItems.Single(s => s.ItemId == itemId);
 
                     db.ReturnVisitItems.DeleteOnSubmit(rv);
                     db.SubmitChanges();
                     RvPreviousVisitsDataInterface.DeleteAllCallsFromRv(itemId);
-                } catch (InvalidOperationException) {
-                    return;
-                }
+                } catch (InvalidOperationException) {}
             }
         }
     }
@@ -263,11 +264,12 @@ namespace MyTimeDatabaseLib
     /// </summary>
     public class ReturnVisitData
     {
-        public DateTime LastVisitDate { get; internal set; }
         /// <summary>
-        /// The _image
+        /// Gets the last visit date.
         /// </summary>
-        public int[] _image;
+        /// <value>The last visit date.</value>
+        public DateTime LastVisitDate { get; internal set; }
+
         /// <summary>
         /// Gets or sets the item id.
         /// </summary>
