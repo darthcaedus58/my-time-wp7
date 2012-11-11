@@ -11,14 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
-using System.ComponentModel;
-using System.Data.Linq;
-using System.Data.Linq.Mapping;
-using MyTimeDatabaseLib.Model;
-using System.Linq;
-using System.Xml.Linq;
 using System.Collections.Generic;
+using System.Linq;
+using MyTimeDatabaseLib.Model;
 
 namespace MyTimeDatabaseLib
 {
@@ -37,25 +34,23 @@ namespace MyTimeDatabaseLib
         {
             var rvVists = new List<RvPreviousVisitData>();
             using (var db = new RvPreviousVisitsContext(RvPreviousVisitsContext.DBConnectionString)) {
-
-                var qry = from x in db.RvPreviousVisitItems
-                          where x.RvItemId == rvItemId
-                          orderby x.Date
-                          select x;
+                IOrderedQueryable<RvPreviousVisitItem> qry = from x in db.RvPreviousVisitItems
+                                                             where x.RvItemId == rvItemId
+                                                             orderby x.Date
+                                                             select x;
 
                 if (qry.Any()) {
-                    var visits = so == SortOrder.DateNewestToOldest ? qry.ToArray().Reverse() : qry.ToArray();
-                    foreach (var v in visits) {
-                        var visit = new RvPreviousVisitData()
-                        {
-                            ItemId = v.ItemId,
-                            RvItemId = v.RvItemId,
-                            Date = v.Date,
-                            Notes = v.Notes,
-                            Magazines = v.Magazines,
-                            Books = v.Books,
-                            Brochures = v.Brochures
-                        };
+                    IEnumerable<RvPreviousVisitItem> visits = so == SortOrder.DateNewestToOldest ? qry.ToArray().Reverse() : qry.ToArray();
+                    foreach (RvPreviousVisitItem v in visits) {
+                        var visit = new RvPreviousVisitData {
+                                                                ItemId = v.ItemId,
+                                                                RvItemId = v.RvItemId,
+                                                                Date = v.Date,
+                                                                Notes = v.Notes,
+                                                                Magazines = v.Magazines,
+                                                                Books = v.Books,
+                                                                Brochures = v.Brochures
+                                                            };
                         rvVists.Add(visit);
                     }
                     return rvVists.ToArray();
@@ -84,12 +79,12 @@ namespace MyTimeDatabaseLib
         /// <exception cref="System.ArgumentNullException">rvItemId;Rv Item Id can't be null</exception>
         public static int SaveCall(RvPreviousVisitData call, bool overwrite)
         {
-            if (call.RvItemId < 0) throw new ArgumentNullException("rvItemId", "Rv Item Id can't be null");
+            if (call.RvItemId < 0) throw new ArgumentNullException("call", "Rv Item Id can't be null");
 
             using (var db = new RvPreviousVisitsContext(RvPreviousVisitsContext.DBConnectionString)) {
                 if (db.RvPreviousVisitItems.Any(s => s.ItemId == call.ItemId) && overwrite) {
-                    var c = db.RvPreviousVisitItems.Single(s => s.ItemId == call.ItemId);
-                    
+                    RvPreviousVisitItem c = db.RvPreviousVisitItems.Single(s => s.ItemId == call.ItemId);
+
                     c.RvItemId = call.RvItemId;
                     c.Magazines = call.Magazines;
                     c.Books = call.Books;
@@ -99,17 +94,16 @@ namespace MyTimeDatabaseLib
 
                     db.SubmitChanges();
                     return c.ItemId; // existing call saved.
-                } 
+                }
 
-                var cc = new RvPreviousVisitItem()
-                {
-                    RvItemId = call.RvItemId,
-                    Magazines = call.Magazines,
-                    Books = call.Books,
-                    Brochures = call.Brochures,
-                    Date = call.Date,
-                    Notes = call.Notes
-                };
+                var cc = new RvPreviousVisitItem {
+                                                     RvItemId = call.RvItemId,
+                                                     Magazines = call.Magazines,
+                                                     Books = call.Books,
+                                                     Brochures = call.Brochures,
+                                                     Date = call.Date,
+                                                     Notes = call.Notes
+                                                 };
 
                 db.RvPreviousVisitItems.InsertOnSubmit(cc);
                 db.SubmitChanges();
@@ -120,25 +114,25 @@ namespace MyTimeDatabaseLib
         /// <summary>
         /// Gets the call.
         /// </summary>
-        /// <param name="_callId">The _call id.</param>
+        /// <param name="callId">The call id.</param>
         /// <returns>RvPreviousVisitData.</returns>
+        /// <exception cref="MyTimeDatabaseLib.RvPreviousVisitNotFoundException">The Call was not found.</exception>
         /// <exception cref="RvPreviousVisitNotFoundException">The Call was not found.</exception>
-        public static RvPreviousVisitData GetCall(int _callId)
+        public static RvPreviousVisitData GetCall(int callId)
         {
             using (var db = new RvPreviousVisitsContext(RvPreviousVisitsContext.DBConnectionString)) {
                 try {
-                    var call = db.RvPreviousVisitItems.Single(s => s.ItemId == _callId);
+                    RvPreviousVisitItem call = db.RvPreviousVisitItems.Single(s => s.ItemId == callId);
 
-                    var c = new RvPreviousVisitData()
-                    {
-                        ItemId = call.ItemId,
-                        RvItemId = call.RvItemId,
-                        Books = call.Books,
-                        Brochures = call.Brochures,
-                        Date = call.Date,
-                        Magazines = call.Magazines,
-                        Notes = call.Notes
-                    };
+                    var c = new RvPreviousVisitData {
+                                                        ItemId = call.ItemId,
+                                                        RvItemId = call.RvItemId,
+                                                        Books = call.Books,
+                                                        Brochures = call.Brochures,
+                                                        Date = call.Date,
+                                                        Magazines = call.Magazines,
+                                                        Notes = call.Notes
+                                                    };
                     return c;
                 } catch {
                     throw new RvPreviousVisitNotFoundException("The Call was not found.");
@@ -154,27 +148,31 @@ namespace MyTimeDatabaseLib
         {
             using (var db = new RvPreviousVisitsContext(RvPreviousVisitsContext.DBConnectionString)) {
                 try {
-                    var call = db.RvPreviousVisitItems.Single(s => s.ItemId == callId);
+                    RvPreviousVisitItem call = db.RvPreviousVisitItems.Single(s => s.ItemId == callId);
 
                     db.RvPreviousVisitItems.DeleteOnSubmit(call);
                     db.SubmitChanges();
                     return;
-                } catch { }
+                } catch (Exception) {}
                 //TODO: Error Handling
             }
         }
 
+        /// <summary>
+        /// Deletes all calls from rv.
+        /// </summary>
+        /// <param name="itemId">The item id.</param>
         public static void DeleteAllCallsFromRv(int itemId)
         {
             using (var db = new RvPreviousVisitsContext(RvPreviousVisitsContext.DBConnectionString)) {
                 try {
-                    var calls = from x in db.RvPreviousVisitItems
-                                where x.RvItemId == itemId
-                                select x;
+                    IQueryable<RvPreviousVisitItem> calls = from x in db.RvPreviousVisitItems
+                                                            where x.RvItemId == itemId
+                                                            select x;
 
                     db.RvPreviousVisitItems.DeleteAllOnSubmit(calls);
                     db.SubmitChanges();
-                } catch {}
+                } catch (Exception) {}
             }
         }
     }
@@ -188,13 +186,13 @@ namespace MyTimeDatabaseLib
         /// Gets or sets the item id.
         /// </summary>
         /// <value>The item id.</value>
-        public int ItemId {	internal set; get; }
+        public int ItemId { internal set; get; }
 
         /// <summary>
         /// Gets or sets the rv item id.
         /// </summary>
         /// <value>The rv item id.</value>
-        public int RvItemId	{ get; set;	}
+        public int RvItemId { get; set; }
 
         /// <summary>
         /// Gets or sets the notes.
