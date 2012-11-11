@@ -176,7 +176,7 @@ namespace MyTime
             lblTimer.Text = string.Format("{0:0,0}:{1:0,0}:{2:0,0}", _timer.Hours, _timer.Minutes, _timer.Seconds);
         }
 
-        private void imgShowAllReturnVisit_Tap(object sender, GestureEventArgs e) { NavigationService.Navigate(new Uri("/ReturnVistFullList.xaml", UriKind.Relative)); }
+        private void imgShowAllReturnVisit_Tap(object sender, GestureEventArgs e) { NavigationService.Navigate(new Uri("/ReturnVisitFullList.xaml", UriKind.Relative)); }
 
         public void ss_DailyTextRetrieved(DailyText dt)
         {

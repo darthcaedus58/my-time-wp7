@@ -139,8 +139,8 @@
       <DependentUpon>PanoramaPage1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReturnVistFullList.xaml.cs">
-      <DependentUpon>ReturnVistFullList.xaml</DependentUpon>
+    <Compile Include="ReturnVisitFullList.xaml.cs">
+      <DependentUpon>ReturnVisitFullList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Service References\BingMapsGeocodeService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -192,7 +192,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ReturnVistFullList.xaml">
+    <Page Include="ReturnVisitFullList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
