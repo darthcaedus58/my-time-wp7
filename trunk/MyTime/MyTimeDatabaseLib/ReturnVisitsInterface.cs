@@ -30,7 +30,9 @@ namespace MyTimeDatabaseLib
         /// <summary>
         /// The date oldest to newest
         /// </summary>
-        DateOldestToNewest = 1
+        DateOldestToNewest = 1,
+        CityAToZ = 2,
+        CityZToA = 3
     }
 
     /// <summary>
@@ -44,42 +46,56 @@ namespace MyTimeDatabaseLib
         /// <param name="so">The sort order.</param>
         /// <param name="maxReturnCount">The max return count. -1 for all.</param>
         /// <returns><c>ReturnVisitData</c> Array</returns>
-        public static ReturnVisitData[] GetReturnVisits(SortOrder so, int maxReturnCount)
+        public static ReturnVisitData[] GetReturnVisits(SortOrder so, int maxReturnCount = 25)
         {
             var rvs = new List<ReturnVisitData>();
             using (var db = new ReturnVisitDataContext(ReturnVisitDataContext.DBConnectionString)) {
-                IQueryable<ReturnVisitDataItem> q = db.ReturnVisitItems.OrderBy(o => o.DateCreated).Take(maxReturnCount > 0 ? maxReturnCount : 25);
-                //var visits = so == SortOrder.DateNewestToOldest ? qry.ToArray().Reverse() : qry.ToArray();
-                var demRVs = so == SortOrder.DateNewestToOldest ? q.ToArray().Reverse() : q.ToArray();
+                if(maxReturnCount == -1) maxReturnCount = db.ReturnVisitItems.Count();
+                IQueryable<ReturnVisitDataItem> q;
+                IEnumerable<ReturnVisitDataItem> demRVs = null;
+                if(so == SortOrder.DateNewestToOldest || so == SortOrder.DateOldestToNewest) {
+                    q = from x in db.ReturnVisitItems
+                    orderby x.DateCreated
+                    select x;
 
-                foreach (ReturnVisitDataItem r in demRVs) {
-                    DateTime lv = DateTime.MinValue;
-                    try {
-                        var x = RvPreviousVisitsDataInterface.GetPreviousVisits(r.ItemId, SortOrder.DateNewestToOldest);
-                        if (x.Any()) {
-                            lv = x.First().Date;
-                        }
-                    } catch { }
-                    var rr = new ReturnVisitData {
-                                                     LastVisitDate = lv,
-                                                     ItemId = r.ItemId,
-                                                     DateCreated = r.DateCreated,
-                                                     AddressOne = r.AddressOne,
-                                                     AddressTwo = r.AddressTwo,
-                                                     Age = r.Age,
-                                                     City = r.City,
-                                                     Country = r.Country,
-                                                     FullName = r.FullName,
-                                                     Gender = r.Gender,
-                                                     OtherNotes = r.OtherNotes,
-                                                     PhysicalDescription = r.PhysicalDescription,
-                                                     PostalCode = r.PostalCode,
-                                                     StateProvince = r.StateProvince,
-                                                     ImageSrc = r.ImageSrc,
-                                                     PhoneNumber = r.PhoneNumber
-                                                 };
-                    rvs.Add(rr);
+                    demRVs = so == SortOrder.DateNewestToOldest ? q.ToArray().Reverse() : q.ToArray();
+                } else if(so == SortOrder.CityAToZ || so == SortOrder.CityZToA) {
+                    q = from x in db.ReturnVisitItems
+                        orderby x.City
+                        select x;
+
+                    demRVs = so == SortOrder.CityZToA ? q.ToArray().Reverse() : q.ToArray();
                 }
+
+                if (demRVs != null)
+                    foreach (ReturnVisitDataItem r in demRVs) {
+                        DateTime lv = DateTime.MinValue;
+                        try {
+                            var x = RvPreviousVisitsDataInterface.GetPreviousVisits(r.ItemId, SortOrder.DateNewestToOldest);
+                            if (x.Any()) {
+                                lv = x.First().Date;
+                            }
+                        } catch { }
+                        var rr = new ReturnVisitData {
+                                                         LastVisitDate = lv,
+                                                         ItemId = r.ItemId,
+                                                         DateCreated = r.DateCreated,
+                                                         AddressOne = r.AddressOne,
+                                                         AddressTwo = r.AddressTwo,
+                                                         Age = r.Age,
+                                                         City = r.City,
+                                                         Country = r.Country,
+                                                         FullName = r.FullName,
+                                                         Gender = r.Gender,
+                                                         OtherNotes = r.OtherNotes,
+                                                         PhysicalDescription = r.PhysicalDescription,
+                                                         PostalCode = r.PostalCode,
+                                                         StateProvince = r.StateProvince,
+                                                         ImageSrc = r.ImageSrc,
+                                                         PhoneNumber = r.PhoneNumber
+                                                     };
+                        rvs.Add(rr);
+                    }
             }
             return rvs.ToArray();
         }
