@@ -34,6 +34,9 @@ namespace MyTime
             if (null == grid) return;
             var sp = App.AppSettings.BuildXaml();
             grid.Children.Add(sp);
+
+            tbAppVersion.Text = App.GetVersion();
+            tbCoreVersion.Text = MyTimeDatabaseLib.Main.GetVersion();
         }
 
         protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
@@ -55,5 +58,20 @@ namespace MyTime
             
         }
 
+        private void HyperlinkButtonRateApp_Click(object sender, RoutedEventArgs e)
+        {
+            var marketplaceReviewTask = new MarketplaceReviewTask();
+
+            marketplaceReviewTask.Show();
+        }
+
+        private void HyperlinkButtonHelpMeQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            var emailcomposer = new EmailComposeTask();
+            emailcomposer.Subject = "Field Service App Help";
+            emailcomposer.To = "help@square-hiptobe.com";
+            emailcomposer.Body = string.Format("Description of Problem:\n\nSteps to Reproduce:\n\nI hereby give you my permission to contact me regarding this issue.\n\nApplication Version: {0}\nCore Version: {1}", tbAppVersion.Text, tbCoreVersion.Text);
+            emailcomposer.Show();
+        }
     }
 }
