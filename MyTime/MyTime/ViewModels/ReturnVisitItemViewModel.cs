@@ -1,33 +1,61 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : MyTime
+// Author           : trevo_000
+// Created          : 11-03-2012
+//
+// Last Modified By : trevo_000
+// Last Modified On : 11-07-2012
+// ***********************************************************************
+// <copyright file="ReturnVisitItemViewModel.cs" company="">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.IO;
 
 namespace MyTime
 {
+    /// <summary>
+    /// Class ReturnVisitItemViewModel
+    /// </summary>
     public class ReturnVisitItemViewModel : INotifyPropertyChanged
     {
+        /// <summary>
+        /// The _image
+        /// </summary>
         private BitmapImage _image;
+        /// <summary>
+        /// The _item ID
+        /// </summary>
+        private int _itemID;
+        /// <summary>
+        /// The _line one
+        /// </summary>
+        private string _lineOne;
+        /// <summary>
+        /// The _line three
+        /// </summary>
+        private string _lineThree;
+        /// <summary>
+        /// The _line two
+        /// </summary>
+        private string _lineTwo;
+
+        /// <summary>
+        /// The _name
+        /// </summary>
+        private string _name;
+
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
+        /// <value>The image source.</value>
         /// <returns></returns>
         public BitmapImage ImageSource
         {
-            get
-            {
-                return _image;
-            }
+            get { return _image; }
 
             set
             {
@@ -38,17 +66,14 @@ namespace MyTime
             }
         }
 
-        private string _name;
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
+        /// <value>The name.</value>
         /// <returns></returns>
         public string Name
         {
-            get
-            {
-                return _name;
-            }
+            get { return _name; }
             set
             {
                 if (value != _name) {
@@ -58,17 +83,14 @@ namespace MyTime
             }
         }
 
-        private string _lineOne;
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
+        /// <value>The line one.</value>
         /// <returns></returns>
         public string LineOne
         {
-            get
-            {
-                return _lineOne;
-            }
+            get { return _lineOne; }
             set
             {
                 if (value != _lineOne) {
@@ -78,17 +100,14 @@ namespace MyTime
             }
         }
 
-        private string _lineTwo;
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
+        /// <value>The line two.</value>
         /// <returns></returns>
         public string LineTwo
         {
-            get
-            {
-                return _lineTwo;
-            }
+            get { return _lineTwo; }
             set
             {
                 if (value != _lineTwo) {
@@ -98,18 +117,26 @@ namespace MyTime
             }
         }
 
-        private string _lineThree;
-
-        public string LineThree { get { return _lineThree; } set
+        /// <summary>
+        /// Gets or sets the line three.
+        /// </summary>
+        /// <value>The line three.</value>
+        public string LineThree
         {
-            if (_lineThree != value) {
-                _lineThree = value;
-                NotifyPropertyChanged("LineThree");
+            get { return _lineThree; }
+            set
+            {
+                if (_lineThree != value) {
+                    _lineThree = value;
+                    NotifyPropertyChanged("LineThree");
+                }
             }
-        } }
+        }
 
-        private int _itemID;
-
+        /// <summary>
+        /// Gets or sets the item id.
+        /// </summary>
+        /// <value>The item id.</value>
         public int ItemId
         {
             get { return _itemID; }
@@ -122,7 +149,19 @@ namespace MyTime
             }
         }
 
+        #region INotifyPropertyChanged Members
+
+        /// <summary>
+        /// Occurs when [property changed].
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion
+
+        /// <summary>
+        /// Notifies the property changed.
+        /// </summary>
+        /// <param name="propertyName">Name of the property.</param>
         private void NotifyPropertyChanged(String propertyName)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -131,5 +170,4 @@ namespace MyTime
             }
         }
     }
-
 }

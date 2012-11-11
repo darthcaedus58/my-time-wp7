@@ -4,7 +4,7 @@
 // Created          : 11-03-2012
 //
 // Last Modified By : trevo_000
-// Last Modified On : 11-05-2012
+// Last Modified On : 11-11-2012
 // ***********************************************************************
 // <copyright file="AddNewRV.xaml.cs" company="">
 //     Copyright (c) . All rights reserved.
@@ -15,13 +15,13 @@
 using System;
 using System.Collections.Generic;
 using System.Device.Location;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using Coding4Fun.Phone.Controls;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Controls.Maps;
 using Microsoft.Phone.Controls.Maps.Platform;
@@ -43,11 +43,6 @@ namespace MyTime
         /// The _address
         /// </summary>
         private readonly string _address;
-
-        /// <summary>
-        /// The _age
-        /// </summary>
-        private readonly string _age;
 
         /// <summary>
         /// The _full name
@@ -81,7 +76,6 @@ namespace MyTime
             pbGetAddress.IsIndeterminate = true;
             _address = lblInfo_AddressFull.Content.ToString();
             _fullName = lblInfo_FullName.Text;
-            _age = lblInfo_Age.Text;
             dlsAge.Text = App.AppSettings["dfltAgeValue"] == null ? "30" : App.AppSettings["dfltAgeValue"].Value;
             string[] genders = {"Male", "Female"};
             lpGender.ItemsSource = genders;
@@ -136,7 +130,7 @@ namespace MyTime
         {
             if (_currentReturnVisitData != null && MessageBox.Show("Are you sure you want to delete this return visit?", "FIELD SERVICE", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
                 ReturnVisitsInterface.DeleteReturnVisit(_currentReturnVisitData.ItemId);
-                App.ToastMe("The Return Visit has been delete.", "Field Service");
+                App.ToastMe("The Return Visit has been delete.");
                 //MessageBox.Show("");
                 NavigationService.GoBack();
             }
@@ -155,8 +149,8 @@ namespace MyTime
                     App.ToastMe("At a minimum you must a valid address filled out to save an rv.");
                     return;
                 }
-                
-                var wb = new WriteableBitmap((int)mapInfo.Width, (int)mapInfo.Height);
+
+                var wb = new WriteableBitmap((int) mapInfo.Width, (int) mapInfo.Height);
                 //var t = new TranslateTransform {X = -((mapInfo.Width/2) - 50), Y = -((mapInfo.Height/2) - 50)};
                 wb.Render(mapInfo, new TranslateTransform());
                 wb.Invalidate();
@@ -199,7 +193,14 @@ namespace MyTime
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
-        private void bAddVisit_Click(object sender, RoutedEventArgs e) { NavigationService.Navigate(new Uri(String.Format("/ModifyCall.xaml?rvid={0}", _currentReturnVisitData == null ? "-1" : _currentReturnVisitData.ItemId.ToString()), UriKind.Relative)); }
+        private void bAddVisit_Click(object sender, RoutedEventArgs e)
+        {
+            if (_currentReturnVisitData == null || _currentReturnVisitData.ItemId < 0) {
+                App.ToastMe("Please save this contact record before trying to add a visit.");
+                return;
+            }
+            NavigationService.Navigate(new Uri(String.Format("/ModifyCall.xaml?rvid={0}", _currentReturnVisitData == null ? "-1" : _currentReturnVisitData.ItemId.ToString(CultureInfo.InvariantCulture)), UriKind.Relative));
+        }
 
         /// <summary>
         /// Handles the Click event of the btnDone control.
@@ -211,16 +212,16 @@ namespace MyTime
             try {
                 string reminderName = Guid.NewGuid().ToString();
                 // use guid for reminder name, since reminder names must be unique
-                var reminder = new Reminder(reminderName);
+                var reminder = new Reminder(reminderName) {Title = txtTitle.Text, Content = txtContent.Text};
                 // in contrast to alarms where setting the Title property is not supported
-                reminder.Title = txtTitle.Text;
-                reminder.Content = txtContent.Text;
 
-                var remindNow = new DateTime(dpDatePicker.Value.Value.Year, dpDatePicker.Value.Value.Month, dpDatePicker.Value.Value.Day, tpStartTime.Value.Value.Hour, tpStartTime.Value.Value.Minute, tpStartTime.Value.Value.Second);
+                if (dpDatePicker.Value != null) {
+                    var remindNow = new DateTime(dpDatePicker.Value.Value.Year, dpDatePicker.Value.Value.Month, dpDatePicker.Value.Value.Day, tpStartTime.Value.Value.Hour, tpStartTime.Value.Value.Minute, tpStartTime.Value.Value.Second);
 
-                TimeSpan span = remindNow - DateTime.Now;
+                    TimeSpan span = remindNow - DateTime.Now;
 
-                reminder.BeginTime = DateTime.Now.AddSeconds(span.TotalSeconds);
+                    reminder.BeginTime = DateTime.Now.AddSeconds(span.TotalSeconds);
+                }
 
                 reminder.ExpirationTime = reminder.BeginTime.AddSeconds(5.0);
                 reminder.RecurrenceType = RecurrenceInterval.None;
@@ -276,14 +277,15 @@ namespace MyTime
         private void geocodeService_ReverseGeocodeCompleted(object sender, ReverseGeocodeCompletedEventArgs e)
         {
             if (e.Result.Results == null || e.Result.Results.Count == 0) return;
-            GeocodeResult Results = e.Result.Results[0];
+            GeocodeResult results = e.Result.Results[0];
+            if (results == null) return;
             foreach (GeocodeResult r in e.Result.Results) {
-                if (r.Confidence == Confidence.High) Results = r;
+                if (r.Confidence == Confidence.High) results = r;
             }
 
-            lblCurrentAddress.Text = String.Format("{0}", Results.Address.AddressLine);
-            lblCurrentCityStateZip.Text = String.Format("{0}, {1} {2}", Results.Address.Locality, Results.Address.AdminDistrict, Results.Address.PostalCode);
-            _currentBingGeocodeLocation = Results;
+            lblCurrentAddress.Text = String.Format("{0}", results.Address.AddressLine);
+            lblCurrentCityStateZip.Text = String.Format("{0}, {1} {2}", results.Address.Locality, results.Address.AdminDistrict, results.Address.PostalCode);
+            _currentBingGeocodeLocation = results;
         }
 
         /// <summary>
@@ -297,12 +299,25 @@ namespace MyTime
                 var call = (PreviousVisitViewModel) lbRvPrevItems.SelectedItem;
                 NavigationService.Navigate(new Uri(
                                                String.Format("/ModifyCall.xaml?rvid={0}&id={1}",
-                                                             _currentReturnVisitData == null ? "-1" : _currentReturnVisitData.ItemId.ToString(),
+                                                             _currentReturnVisitData == null ? "-1" : _currentReturnVisitData.ItemId.ToString(CultureInfo.InvariantCulture),
                                                              call.ItemId),
                                                UriKind.Relative));
-            } catch {} finally {
+            } catch (Exception) {} finally {
                 lbRvPrevItems.SelectedIndex = -1;
             }
+        }
+
+        /// <summary>
+        /// Handles the Click event of the lblInfo_telephone control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
+        private void lblInfo_telephone_Click(object sender, RoutedEventArgs e)
+        {
+            var phone = new PhoneCallTask {
+                                              PhoneNumber = tbPhoneNumber.Text
+                                          };
+            phone.Show();
         }
 
         /// <summary>
@@ -319,11 +334,48 @@ namespace MyTime
         }
 
         /// <summary>
-        /// Handles the Click event of the miAddPicture control.
+        /// Handles the Tap event of the mapInfo control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
+        private void mapInfo_Tap(object sender, RoutedEventArgs e)
+        {
+            var bmt = new BingMapsTask();
+            bmt.SearchTerm = lblInfo_AddressFull.Content.ToString().Replace("\n", " ");
+            bmt.Center = mapInfo.Center;
+            bmt.ZoomLevel = 18;
+            bmt.Show();
+        }
+
+        /// <summary>
+        /// Handles the Click event of the miCreateContact control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void miAddPicture_Click(object sender, EventArgs e) { }
+        private void miExportContact_Click(object sender, EventArgs e)
+        {
+            //
+            //
+            var newContact = new SaveContactTask();
+            newContact.FirstName = tbFullName.Text;
+            newContact.HomeAddressCity = tbCity.Text;
+            newContact.HomeAddressCountry = tbCountry.Text;
+            newContact.HomeAddressState = tbDistrict.Text;
+            newContact.HomeAddressStreet = string.Format("{0} {1}", tbAddress1.Text, tbAddress2.Text);
+            newContact.HomeAddressZipCode = tbZipCode.Text;
+            newContact.HomePhone = tbPhoneNumber.Text;
+            newContact.Notes = string.Format("Age: {0}\nGender: {1}\nPhysical Description: {2}\nOther Notes: {3}",
+                                             dlsAge.Text,
+                                             lpGender.SelectedItem,
+                                             tbDescription.Text,
+                                             tbOtherNotes.Text);
+
+            if (MessageBox.Show("Do you want to include all visits?", "FIELD SERVICE", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
+                newContact.Notes += GetVisitsListAsString();
+            }
+
+            newContact.Show();
+        }
 
         /// <summary>
         /// Handles the Click event of the miShareContact control.
@@ -350,30 +402,16 @@ namespace MyTime
                                         tbCountry.Text,
                                         tbOtherNotes.Text,
                                         dlsAge.Text,
-                                        lpGender.SelectedItem.ToString(),
+                                        lpGender.SelectedItem,
                                         tbDescription.Text);
 
-            if(MessageBox.Show("Include All Visits?","Field Service", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
-                body += "\n\nVisits:\n";
-                foreach(var p in lbRvPrevItems.Items) {
-                    if(p is PreviousVisitViewModel) {
-                        var pp = (PreviousVisitViewModel) p;
-                        var pv = RvPreviousVisitsDataInterface.GetCall(pp.ItemId);
-                        body += string.Format("Date: {0}\n" +
-                                              "Placements: {1} Mg's, {2} Bk's, {3} Br's\n" +
-                                              "Notes: {4}\n\n\n",
-                                              pv.Date.ToShortDateString(),
-                                              pv.Magazines, pv.Books, pv.Brochures,
-                                              pv.Notes);
-                    }
-                }
+            if (MessageBox.Show("Include All Visits?", "Field Service", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
+                body += GetVisitsListAsString();
             }
             body += "\n\n";
-            
-            var emailcomposer = new EmailComposeTask();
-                emailcomposer.Subject = string.Format("{0:MMMM} {0:yyyy} Service Report", DateTime.Today);
-                emailcomposer.Body = body;
-                emailcomposer.Show();
+
+            var emailcomposer = new EmailComposeTask {Subject = string.Format("{0:MMMM} {0:yyyy} Service Report", DateTime.Today), Body = body};
+            emailcomposer.Show();
         }
 
 
@@ -422,6 +460,30 @@ namespace MyTime
         #endregion
 
         /// <summary>
+        /// Gets the visits list as string.
+        /// </summary>
+        /// <returns>System.String.</returns>
+        private string GetVisitsListAsString()
+        {
+            string body = string.Empty;
+            body += "\n\nVisits:\n";
+            foreach (object p in lbRvPrevItems.Items) {
+                var pp = p as PreviousVisitViewModel;
+                if (pp != null) {
+                    RvPreviousVisitData pv = RvPreviousVisitsDataInterface.GetCall(pp.ItemId);
+                    if (pv != null)
+                        body += string.Format("Date: {0}\n" +
+                                              "Placements: {1} Mg's, {2} Bk's, {3} Br's\n" +
+                                              "Notes: {4}\n\n\n",
+                                              pv.Date.ToShortDateString(),
+                                              pv.Magazines, pv.Books, pv.Brochures,
+                                              pv.Notes);
+                }
+            }
+            return body;
+        }
+
+        /// <summary>
         /// Called when a page becomes the active page in a frame.
         /// </summary>
         /// <param name="e">An object that contains the event data.</param>
@@ -439,8 +501,8 @@ namespace MyTime
                 return;
             }
             try {
-                int ItemID = Int32.Parse(id);
-                ReturnVisitData rv = ReturnVisitsInterface.GetReturnVisit(ItemID);
+                int itemID = Int32.Parse(id);
+                ReturnVisitData rv = ReturnVisitsInterface.GetReturnVisit(itemID);
                 _currentReturnVisitData = rv;
                 tbAddress1.Text = rv.AddressOne;
                 tbAddress2.Text = rv.AddressTwo;
@@ -454,7 +516,7 @@ namespace MyTime
                 dlsAge.Text = rv.Age;
                 SetInfoText();
                 //appbar_delete.IsEnabled = true;
-            } catch {}
+            } catch (Exception) {}
         }
 
         /// <summary>
@@ -480,13 +542,6 @@ namespace MyTime
                 String.IsNullOrEmpty(tbDistrict.Text)) return false;
             return true;
         }
-
-        /// <summary>
-        /// Handles the Click event of the btnCancel control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
-        private void btnCancel_Click(object sender, RoutedEventArgs e) { }
 
         /// <summary>
         /// Refreshes the reminder list.
@@ -538,10 +593,7 @@ namespace MyTime
 
                 // Set the credentials using a valid Bing Maps key
                 // Set the point to use to find a matching address
-                var geocodeRequest = new GeocodeRequest {Credentials = new Credentials {ApplicationId = KEY}};
-
-                geocodeRequest.Address = a;
-                geocodeRequest.UserProfile = new UserProfile {DeviceType = DeviceType.Mobile};
+                var geocodeRequest = new GeocodeRequest {Credentials = new Credentials {ApplicationId = KEY}, Address = a, UserProfile = new UserProfile {DeviceType = DeviceType.Mobile}};
 
                 // Make the reverse geocode request
                 var geocodeService = new GeocodeServiceClient("BasicHttpBinding_IGeocodeService");
@@ -557,7 +609,7 @@ namespace MyTime
         /// </summary>
         private void SetInfoText()
         {
-            lblInfo_AddressFull.Content = String.Format(_address, tbAddress1.Text, tbAddress2.Text, tbCity.Text, tbDistrict.Text, tbZipCode.Text,"\n");
+            lblInfo_AddressFull.Content = String.Format(_address, tbAddress1.Text, tbAddress2.Text, tbCity.Text, tbDistrict.Text, tbZipCode.Text, "\n");
             lblInfo_FullName.Text = String.Format(_fullName, tbFullName.Text);
             lblInfo_Age.Text = String.Format("{0} year old {1}", dlsAge.Text, lpGender.SelectedItem);
             lblInfo_telephone.Content = BeautifyPhoneNumber(tbPhoneNumber.Text);
@@ -565,22 +617,29 @@ namespace MyTime
                 MakeGeocodeRequest(new Address {AddressLine = tbAddress1.Text, AdminDistrict = tbDistrict.Text, Locality = tbCity.Text, PostalCode = tbZipCode.Text, CountryRegion = _currentBingGeocodeLocation != null ? _currentBingGeocodeLocation.Address.CountryRegion : _currentReturnVisitData.Country});
         }
 
+        /// <summary>
+        /// Beautifies the phone number.
+        /// </summary>
+        /// <param name="phNum">The ph num.</param>
+        /// <returns>System.String.</returns>
         private string BeautifyPhoneNumber(string phNum)
         {
             bool beautifyPhoneNumber = true;
-            var beautifyRegEx = @"^(\d{1})?(\d{3})(\d{3})(\d{4})$";
-            var beautifyMask = @"$1($2) $3-$4";
+            string beautifyRegEx = @"^(\d{1})?(\d{3})(\d{3})(\d{4})$";
+            string beautifyMask = @"$1($2) $3-$4";
 
             try {
                 beautifyPhoneNumber = bool.Parse(App.AppSettings["beautifyPhoneNumber"].Value);
                 beautifyRegEx = App.AppSettings["beautifyPhNumRegEx"].Value;
                 beautifyMask = App.AppSettings["beautifyPhNumMask"].Value;
-            } catch { return phNum; }
+            } catch {
+                return phNum;
+            }
 
             if (!beautifyPhoneNumber) return phNum;
 
-            var ss = String.Empty;
-            foreach (var s in phNum) {
+            string ss = String.Empty;
+            foreach (char s in phNum) {
                 if (Char.IsDigit(s)) ss += s;
             }
             if (ss.Length == 10 || ss.Length == 11) {
@@ -588,23 +647,6 @@ namespace MyTime
             }
 
             return phNum;
-        }
-
-        private void lblInfo_telephone_Click(object sender, RoutedEventArgs e)
-        {
-            var phone = new PhoneCallTask() {
-                                                PhoneNumber = tbPhoneNumber.Text
-                                            };
-            phone.Show();
-        }
-
-        private void mapInfo_Tap(object sender, RoutedEventArgs e)
-        {
-            var bmt = new BingMapsTask();
-            bmt.SearchTerm = lblInfo_AddressFull.Content.ToString().Replace("\n", " ");
-            bmt.Center = mapInfo.Center;
-            bmt.ZoomLevel = 18;
-            bmt.Show();
         }
     }
 }
