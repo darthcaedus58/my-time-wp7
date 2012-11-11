@@ -1,29 +1,54 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : MyTime
+// Author           : trevo_000
+// Created          : 11-10-2012
+//
+// Last Modified By : trevo_000
+// Last Modified On : 11-10-2012
+// ***********************************************************************
+// <copyright file="ReturnVisitLongListViewModel.cs" company="">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MyTime.ViewModels
 {
+    /// <summary>
+    /// Class ReturnVisitLLItemModel
+    /// </summary>
     public class ReturnVisitLLItemModel : INotifyPropertyChanged
     {
-        private string _text;
+        /// <summary>
+        /// The _address1
+        /// </summary>
         private string _address1;
+        /// <summary>
+        /// The _address2
+        /// </summary>
         private string _address2;
-        private BitmapImage _image; 
+        /// <summary>
+        /// The _image
+        /// </summary>
+        private BitmapImage _image;
+        /// <summary>
+        /// The _item ID
+        /// </summary>
         private int _itemID;
+        /// <summary>
+        /// The _text
+        /// </summary>
+        private string _text;
 
+        /// <summary>
+        /// Gets or sets the item id.
+        /// </summary>
+        /// <value>The item id.</value>
         public int ItemId
         {
             get { return _itemID; }
@@ -35,16 +60,15 @@ namespace MyTime.ViewModels
                 }
             }
         }
+
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
+        /// <value>The image source.</value>
         /// <returns></returns>
         public BitmapImage ImageSource
         {
-            get
-            {
-                return _image;
-            }
+            get { return _image; }
 
             set
             {
@@ -56,6 +80,10 @@ namespace MyTime.ViewModels
         }
 
 
+        /// <summary>
+        /// Gets or sets the text.
+        /// </summary>
+        /// <value>The text.</value>
         public string Text
         {
             get { return _text; }
@@ -67,6 +95,10 @@ namespace MyTime.ViewModels
             }
         }
 
+        /// <summary>
+        /// Gets or sets the address1.
+        /// </summary>
+        /// <value>The address1.</value>
         public string Address1
         {
             get { return _address1; }
@@ -79,6 +111,10 @@ namespace MyTime.ViewModels
             }
         }
 
+        /// <summary>
+        /// Gets or sets the address2.
+        /// </summary>
+        /// <value>The address2.</value>
         public string Address2
         {
             get { return _address2; }
@@ -90,7 +126,19 @@ namespace MyTime.ViewModels
             }
         }
 
+        #region INotifyPropertyChanged Members
+
+        /// <summary>
+        /// Occurs when [property changed].
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion
+
+        /// <summary>
+        /// Notifies the property changed.
+        /// </summary>
+        /// <param name="propertyName">Name of the property.</param>
         private void NotifyPropertyChanged(String propertyName)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -100,35 +148,74 @@ namespace MyTime.ViewModels
         }
     }
 
+    /// <summary>
+    /// Class ReturnVistLLCategory
+    /// </summary>
     public class ReturnVistLLCategory : IEnumerable
     {
-        public ReturnVistLLCategory() { Items = new ObservableCollection<ReturnVisitLLItemModel>(); }
+        /// <summary>
+        /// The _name
+        /// </summary>
         private string _name;
 
+        /// <summary>
+        /// The _RV items
+        /// </summary>
+        private ObservableCollection<ReturnVisitLLItemModel> _rvItems;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ReturnVistLLCategory" /> class.
+        /// </summary>
+        public ReturnVistLLCategory() { Items = new ObservableCollection<ReturnVisitLLItemModel>(); }
+
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>The name.</value>
         public string Name
         {
-            get {return _name;}
+            get { return _name; }
             set
             {
-                if(_name == value) return;
+                if (_name == value) return;
                 _name = value;
                 NotifyPropertyChanged("Name");
             }
         }
 
-        private ObservableCollection<ReturnVisitLLItemModel> _rvItems;
-
-        public ObservableCollection<ReturnVisitLLItemModel> Items { get { return _rvItems; } 
+        /// <summary>
+        /// Gets or sets the items.
+        /// </summary>
+        /// <value>The items.</value>
+        public ObservableCollection<ReturnVisitLLItemModel> Items
+        {
+            get { return _rvItems; }
             set
             {
-                if(_rvItems == value) return;
+                if (_rvItems == value) return;
                 _rvItems = value;
                 NotifyPropertyChanged("llReturnVisitFullListItems");
-            } }
+            }
+        }
 
+        #region IEnumerable Members
+
+        /// <summary>
+        /// Returns an enumerator that iterates through a collection.
+        /// </summary>
+        /// <returns>An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.</returns>
         public IEnumerator GetEnumerator() { return _rvItems.GetEnumerator(); }
 
+        #endregion
+
+        /// <summary>
+        /// Occurs when [property changed].
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Notifies the property changed.
+        /// </summary>
+        /// <param name="propertyName">Name of the property.</param>
         private void NotifyPropertyChanged(String propertyName)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

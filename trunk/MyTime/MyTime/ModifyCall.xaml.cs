@@ -4,7 +4,7 @@
 // Created          : 11-03-2012
 //
 // Last Modified By : trevo_000
-// Last Modified On : 11-05-2012
+// Last Modified On : 11-07-2012
 // ***********************************************************************
 // <copyright file="ModifyCall.xaml.cs" company="">
 //     Copyright (c) . All rights reserved.
@@ -13,6 +13,7 @@
 // ***********************************************************************
 
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -76,15 +77,14 @@ namespace MyTime
         /// <param name="e">The <see cref="KeyEventArgs" /> instance containing the event data.</param>
         private void TextBoxMasking_KeyDown(object sender, KeyEventArgs e)
         {
-            Key[] GoodKeys = {
+            Key[] goodKeys = {
                                  Key.D0, Key.D1, Key.D2, Key.D3, Key.D4,
                                  Key.D5, Key.D6, Key.D7, Key.D8, Key.D9,
                                  Key.NumPad0, Key.NumPad1, Key.NumPad2, Key.NumPad3, Key.NumPad4,
                                  Key.NumPad5, Key.NumPad6, Key.NumPad7, Key.NumPad8, Key.NumPad9
                              };
-            if (!GoodKeys.Contains(e.Key)) {
+            if (!goodKeys.Contains(e.Key)) {
                 e.Handled = true;
-                return;
             }
         }
 
@@ -125,21 +125,21 @@ namespace MyTime
                 _callId = string.IsNullOrEmpty(callId) ? -1 : int.Parse(callId);
 
                 if (_callId >= 0) RetrieveCallInfo(_callId);
-            } catch {}
+            } catch (Exception) {}
         }
 
         /// <summary>
         /// Retrieves the call info.
         /// </summary>
-        /// <param name="_callId">The _call id.</param>
-        private void RetrieveCallInfo(int _callId)
+        /// <param name="callId">The call id.</param>
+        private void RetrieveCallInfo(int callId)
         {
             try {
-                RvPreviousVisitData call = RvPreviousVisitsDataInterface.GetCall(_callId);
+                RvPreviousVisitData call = RvPreviousVisitsDataInterface.GetCall(callId);
 
-                tbBooks.Text = call.Books.ToString();
-                tbBrochures.Text = call.Brochures.ToString();
-                tbMags.Text = call.Magazines.ToString();
+                tbBooks.Text = call.Books.ToString(CultureInfo.InvariantCulture);
+                tbBrochures.Text = call.Brochures.ToString(CultureInfo.InvariantCulture);
+                tbMags.Text = call.Magazines.ToString(CultureInfo.InvariantCulture);
                 tbNotes.Text = call.Notes;
                 dpDatePicker.Value = call.Date;
                 _callId = call.ItemId;

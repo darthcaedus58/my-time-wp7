@@ -162,7 +162,7 @@
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem x:Name="appbar_delete" Click="appbar_DeleteRv_Click" Text="Delete Return Visit" />
                 <shell:ApplicationBarMenuItem x:Name="miShareContact" Text="email return visit" Click="miShareContact_Click" />
-                <!--<shell:ApplicationBarMenuItem x:Name="miAddPicture" Text="Add Picture" Click="miAddPicture_Click" />-->
+                <shell:ApplicationBarMenuItem x:Name="miCreateContact" Text="export to contact record" Click="miExportContact_Click" />
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

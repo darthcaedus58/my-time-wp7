@@ -2,8 +2,9 @@
 // Assembly         : MyTime
 // Author           : trevo_000
 // Created          : 11-03-2012
+//
 // Last Modified By : trevo_000
-// Last Modified On : 11-07-2012
+// Last Modified On : 11-11-2012
 // ***********************************************************************
 // <copyright file="MainViewModel.cs" company="">
 //     Copyright (c) . All rights reserved.
@@ -15,13 +16,11 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using MyTime.ViewModels;
 using MyTimeDatabaseLib;
-
 
 namespace MyTime
 {
@@ -44,6 +43,10 @@ namespace MyTime
             llReturnVisitFullListCategory = new ObservableCollection<ReturnVistLLCategory>();
         }
 
+        /// <summary>
+        /// Gets the ll return visit full list category.
+        /// </summary>
+        /// <value>The ll return visit full list category.</value>
         public ObservableCollection<ReturnVistLLCategory> llReturnVisitFullListCategory { get; private set; }
 
 
@@ -101,6 +104,12 @@ namespace MyTime
         /// <value><c>true</c> if this instance is previous visits loaded; otherwise, <c>false</c>.</value>
         public bool IsPreviousVisitsLoaded { get; private set; }
 
+        /// <summary>
+        /// Gets a value indicating whether this instance is rv full list loaded.
+        /// </summary>
+        /// <value><c>true</c> if this instance is rv full list loaded; otherwise, <c>false</c>.</value>
+        public bool IsRvFullListLoaded { get; private set; }
+
         #region INotifyPropertyChanged Members
 
         /// <summary>
@@ -119,7 +128,6 @@ namespace MyTime
             if (IsPreviousVisitsLoaded) lbRvPreviousItems.Clear();
             IsPreviousVisitsLoaded = false;
             foreach (RvPreviousVisitData v in visits) {
-                string placements = string.Empty;
                 lbRvPreviousItems.Add(new PreviousVisitViewModel {
                                                                      LastVisitDate = v.Date.ToShortDateString(),
                                                                      ItemId = v.ItemId,
@@ -140,7 +148,7 @@ namespace MyTime
             if (IsRvDataLoaded) lbRvItems.Clear();
             IsRvDataLoaded = false;
             // Sample data; replace with real data
-            ReturnVisitData[] rvs = ReturnVisitsInterface.GetReturnVisits(so, 25);
+            ReturnVisitData[] rvs = ReturnVisitsInterface.GetReturnVisits(so);
 
             var wb = new WriteableBitmap(100, 100);
             for (int i = 0; i < wb.Pixels.Length; i++) {
@@ -155,46 +163,44 @@ namespace MyTime
             foreach (ReturnVisitData r in rvs) {
                 var bi = new BitmapImage();
                 if (r.ImageSrc != null && r.ImageSrc.Length >= 0) {
-                    var ris = new WriteableBitmap(450,250);
-                    
+                    var ris = new WriteableBitmap(450, 250);
+
                     //get image from database
-                    for (int i = 0; i < r.ImageSrc.Length; i++) { 
+                    for (int i = 0; i < r.ImageSrc.Length; i++) {
                         ris.Pixels[i] = r.ImageSrc[i];
                     }
-                   
+
                     //put the image in a WritableBitmap
-                    using (var ms = new MemoryStream()) { 
+                    using (var ms = new MemoryStream()) {
                         ris.SaveJpeg(ms, 450, 250, 0, 100);
                         bi.SetSource(ms);
-                    } 
-                    
+                    }
+
                     //crop the image to 100x100 and centered
-                    var img = new Image() {
-                                              Source = bi,
-                                              Width = 450,
-                                              Height = 250
-                                          };
+                    var img = new Image {
+                                            Source = bi,
+                                            Width = 450,
+                                            Height = 250
+                                        };
                     var wb2 = new WriteableBitmap(100, 100);
-                    var t = new CompositeTransform() {
-                                                          ScaleX = 0.5,
-                                                          ScaleY = 0.5,
-                                                          TranslateX = -((450/2)/2 - 50),
-                                                          TranslateY = -((250/2)/2 - 50)
-                                                      };
+                    var t = new CompositeTransform {
+                                                       ScaleX = 0.5,
+                                                       ScaleY = 0.5,
+                                                       TranslateX = -((450/2)/2 - 50),
+                                                       TranslateY = -((250/2)/2 - 50)
+                                                   };
                     wb2.Render(img, t);
                     wb2.Invalidate();
                     bi = new BitmapImage();
-                    using (var ms = new MemoryStream()) { 
+                    using (var ms = new MemoryStream()) {
                         wb2.SaveJpeg(ms, 100, 100, 0, 100);
                         bi.SetSource(ms);
                     }
                     //BitmapImage bi is now cropped
-
                 } else {
                     bi = bmp; //Default image.
                 }
-                string lv = string.Empty;
-                lv = r.LastVisitDate == DateTime.MinValue ? "No visit recorded" : string.Format("{0} day(s) since last visit", (DateTime.Now - r.LastVisitDate).Days);
+                string lv = r.LastVisitDate == DateTime.MinValue ? "No visit recorded" : string.Format("{0} day(s) since last visit", (DateTime.Now - r.LastVisitDate).Days);
                 lbRvItems.Add(new ReturnVisitItemViewModel {
                                                                ItemId = r.ItemId,
                                                                ImageSource = bi,
@@ -227,11 +233,10 @@ namespace MyTime
                                                           IconUri = "/icons/phone.png",
                                                           MenuImageName = "AddReturnVisitImage"
                                                       });
-            lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "find nearest rv", MenuItemName = "miFindNearRv", IconUri = "/icons/search.png", MenuImageName = "FindNearestRv"});
             lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "send service report", MenuItemName = "miSendReport", IconUri = "/icons/mail.png", MenuImageName = "SemdReportImage"});
             lbMainMenuItems.Add(new MainMenuViewModel {MenuText = string.Format("{0} report", DateTime.Today.ToString("MMMM").ToLower()), MenuItemName = "miThisMonthReport", IconUri = "/icons/favs.png", MenuImageName = "ThisMonthImage"});
             lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "service year report", MenuItemName = "miThisYearReport", IconUri = "/icons/favs.png", MenuImageName = "ThisYearImage"});
-            lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "custom report", MenuItemName = "miCustomReport", IconUri = "/icons/search.png", MenuImageName = "CustomReportImage"});
+            //lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "custom report", MenuItemName = "miCustomReport", IconUri = "/icons/search.png", MenuImageName = "CustomReportImage"});
 
             lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "watchtower library", MenuItemName = "miWtLib", IconUri = "/icons/share.png", MenuImageName = "OpenWtLibImage"});
 
@@ -259,14 +264,13 @@ namespace MyTime
         public void LoadTimeReport(TimeData[] entries)
         {
             int minutes = 0;
-            int month = 0;
             if (entries.Length <= 0) return;
             if (IsTimeReportDataLoaded) {
                 IsTimeReportDataLoaded = false;
                 icReport.Clear();
                 lbTimeEntries.Clear();
             }
-            month = entries[0].Date.Month;
+            int month = entries[0].Date.Month;
             var summary = new TimeReportSummaryViewModel();
             foreach (TimeData td in entries) {
                 if (month != td.Date.Month) {
@@ -299,6 +303,9 @@ namespace MyTime
             IsTimeReportDataLoaded = true;
         }
 
+        /// <summary>
+        /// Loads the return visit full list.
+        /// </summary>
         public void LoadReturnVisitFullList()
         {
             if (IsRvFullListLoaded) {
@@ -316,16 +323,15 @@ namespace MyTime
                 bmp.SetSource(ms);
             }
 
-            var RVs = ReturnVisitsInterface.GetReturnVisits(SortOrder.CityAToZ, -1);
-            if (RVs.Length <= 0) return;
-            string lastCity = RVs[0].City;
-            var cityCat = new ReturnVistLLCategory();
-            cityCat.Name = lastCity;
-            foreach (var r in RVs) {
+            ReturnVisitData[] rVs = ReturnVisitsInterface.GetReturnVisits(SortOrder.CityAToZ, -1);
+            if (rVs == null) return;
+            if (rVs.Length <= 0) return;
+            string lastCity = rVs[0].City;
+            var cityCat = new ReturnVistLLCategory {Name = lastCity};
+            foreach (ReturnVisitData r in rVs) {
                 if (r.City != lastCity) {
                     llReturnVisitFullListCategory.Add(cityCat);
-                    cityCat = new ReturnVistLLCategory();
-                    cityCat.Name = r.City;
+                    cityCat = new ReturnVistLLCategory {Name = r.City};
                 }
 
                 var bi = new BitmapImage();
@@ -344,20 +350,18 @@ namespace MyTime
                     }
 
                     //crop the image to 100x100 and centered
-                    var img = new Image()
-                    {
-                        Source = bi,
-                        Width = 450,
-                        Height = 250
-                    };
+                    var img = new Image {
+                                            Source = bi,
+                                            Width = 450,
+                                            Height = 250
+                                        };
                     var wb2 = new WriteableBitmap(100, 100);
-                    var t = new CompositeTransform()
-                    {
-                        ScaleX = 0.5,
-                        ScaleY = 0.5,
-                        TranslateX = -((450 / 2) / 2 - 50),
-                        TranslateY = -((250 / 2) / 2 - 50)
-                    };
+                    var t = new CompositeTransform {
+                                                       ScaleX = 0.5,
+                                                       ScaleY = 0.5,
+                                                       TranslateX = -((450/2)/2 - 50),
+                                                       TranslateY = -((250/2)/2 - 50)
+                                                   };
                     wb2.Render(img, t);
                     wb2.Invalidate();
                     bi = new BitmapImage();
@@ -366,27 +370,21 @@ namespace MyTime
                         bi.SetSource(ms);
                     }
                     //BitmapImage bi is now cropped
-
                 } else {
                     bi = bmp; //Default image.
                 }
 
                 lastCity = r.City;
-                cityCat.Items.Add(new ReturnVisitLLItemModel() {
-                                                                   Text = string.IsNullOrEmpty(r.FullName) ? string.Format("{0} year old {1}", r.Age, r.Gender) : r.FullName,
-                                                                   Address1 = string.Format("{0} {1}", r.AddressOne, r.AddressTwo),
-                                                                   Address2 = string.Format("{0}, {1} {2}", r.City, r.StateProvince, r.Country),
-                                                                   ImageSource = bi,
-                                                                   ItemId = r.ItemId
-
-                                                               });
+                cityCat.Items.Add(new ReturnVisitLLItemModel {
+                                                                 Text = string.IsNullOrEmpty(r.FullName) ? string.Format("{0} year old {1}", r.Age, r.Gender) : r.FullName,
+                                                                 Address1 = string.Format("{0} {1}", r.AddressOne, r.AddressTwo),
+                                                                 Address2 = string.Format("{0}, {1} {2}", r.City, r.StateProvince, r.Country),
+                                                                 ImageSource = bi,
+                                                                 ItemId = r.ItemId
+                                                             });
             }
             llReturnVisitFullListCategory.Add(cityCat);
             IsRvFullListLoaded = true;
         }
-
-
-        public bool IsRvFullListLoaded { get; private set; }
     }
-
 }

@@ -1,9 +1,22 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : MyTime
+// Author           : trevo_000
+// Created          : 11-03-2012
+//
+// Last Modified By : trevo_000
+// Last Modified On : 11-11-2012
+// ***********************************************************************
+// <copyright file="MainPage.xaml.cs" company="">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Linq;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -17,16 +30,34 @@ using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
 namespace MyTime
 {
+    /// <summary>
+    /// Class MainPage
+    /// </summary>
     public partial class MainPage : PhoneApplicationPage
     {
+        /// <summary>
+        /// The _DT
+        /// </summary>
         private DispatcherTimer _dt;
+        /// <summary>
+        /// The _timer
+        /// </summary>
         private TimeSpan _timer;
+        /// <summary>
+        /// The _timer base
+        /// </summary>
         private DateTime _timerBase;
 
+        /// <summary>
+        /// The _timer state
+        /// </summary>
         private TimerState _timerState = TimerState.Stopped;
 
 
         // Constructor
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainPage" /> class.
+        /// </summary>
         public MainPage()
         {
             InitializeComponent();
@@ -37,28 +68,50 @@ namespace MyTime
             if (IsolatedStorageFile.GetUserStoreForApplication().FileExists("restart.bin")) GetRestartTime();
         }
 
+        /// <summary>
+        /// Gets or sets the start time.
+        /// </summary>
+        /// <value>The start time.</value>
         [XmlElement(ElementName = "startTime", DataType = "DateTime")]
-        public DateTime startTime { get; set; }
+        public DateTime StartTime { get; set; }
 
 
+        /// <summary>
+        /// Gets or sets the icon.
+        /// </summary>
+        /// <value>The icon.</value>
         [EditorBrowsable]
         public Object Icon { get; set; }
 
+        /// <summary>
+        /// Gets the timer time span.
+        /// </summary>
+        /// <value>The timer time span.</value>
         private TimeSpan TimerTimeSpan { get { return DateTime.Now.Subtract(_timerBase); } }
 
         #region Events
 
+        /// <summary>
+        /// Handles the SelectionChanged event of the ListBox control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="SelectionChangedEventArgs" /> instance containing the event data.</param>
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (((ListBox) sender).SelectedIndex < 0) return;
             try {
                 var rv = (ReturnVisitItemViewModel) ((ListBox) sender).SelectedItem;
                 ((ListBox) sender).SelectedIndex = -1;
-                NavigationService.Navigate(new Uri(string.Format("/AddNewRV.xaml?id={0}", rv.ItemId.ToString()), UriKind.Relative));
+                NavigationService.Navigate(new Uri(string.Format("/AddNewRV.xaml?id={0}", rv.ItemId.ToString(CultureInfo.InvariantCulture)), UriKind.Relative));
             } catch {}
         }
 
         // Load data for the ViewModel lbRvItems
+        /// <summary>
+        /// Handles the Loaded event of the MainPage control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             if (App.ViewModel.IsRvDataLoaded) {
@@ -71,32 +124,51 @@ namespace MyTime
             //NavigationService.Navigate(new Uri("/SettingsPage.xaml", UriKind.Relative));
         }
 
+        /// <summary>
+        /// Handles the TapEvent event of the MenuImage control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="GestureEventArgs" /> instance containing the event data.</param>
         public void MenuImage_TapEvent(object sender, GestureEventArgs e)
         {
             string v = ((Image) sender).Tag.ToString().ToLower();
             NavigateMainMenu(v);
         }
 
+        /// <summary>
+        /// Handles the ClickEvent event of the MenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         public void MenuItem_ClickEvent(object sender, RoutedEventArgs e)
         {
             string v = ((MenuItem) sender).Header.ToString().ToLower();
             NavigateMainMenu(v);
         }
 
+        /// <summary>
+        /// Handles the KeyDown event of the TextBoxMasking control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="KeyEventArgs" /> instance containing the event data.</param>
         private void TextBoxMasking_KeyDown(object sender, KeyEventArgs e)
         {
-            Key[] GoodKeys = {
+            Key[] goodKeys = {
                                  Key.D0, Key.D1, Key.D2, Key.D3, Key.D4,
                                  Key.D5, Key.D6, Key.D7, Key.D8, Key.D9,
                                  Key.NumPad0, Key.NumPad1, Key.NumPad2, Key.NumPad3, Key.NumPad4,
                                  Key.NumPad5, Key.NumPad6, Key.NumPad7, Key.NumPad8, Key.NumPad9
                              };
-            if (!GoodKeys.Contains(e.Key)) {
+            if (!goodKeys.Contains(e.Key)) {
                 e.Handled = true;
-                return;
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the abibAddIt control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void abibAddIt_Click(object sender, EventArgs e)
         {
             PauseTimer();
@@ -126,6 +198,11 @@ namespace MyTime
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the abibPause control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void abibPause_Click(object sender, EventArgs e)
         {
             switch (_timerState) {
@@ -139,6 +216,11 @@ namespace MyTime
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the abibStart control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void abibStart_Click(object sender, EventArgs e)
         {
             switch (_timerState) {
@@ -163,8 +245,18 @@ namespace MyTime
             lblTimer.Text = string.Format("{0:0,0}:{1:0,0}:{2:0,0}", _timer.Hours, _timer.Minutes, _timer.Seconds);
         }
 
+        /// <summary>
+        /// Handles the Click event of the abibStop control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void abibStop_Click(object sender, EventArgs e) { StopTimer(); }
 
+        /// <summary>
+        /// Handles the Tick event of the dt control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void dt_Tick(object sender, EventArgs e)
         {
             if (_timerState != TimerState.Running) {
@@ -176,8 +268,17 @@ namespace MyTime
             lblTimer.Text = string.Format("{0:0,0}:{1:0,0}:{2:0,0}", _timer.Hours, _timer.Minutes, _timer.Seconds);
         }
 
+        /// <summary>
+        /// Handles the Tap event of the imgShowAllReturnVisit control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="GestureEventArgs" /> instance containing the event data.</param>
         private void imgShowAllReturnVisit_Tap(object sender, GestureEventArgs e) { NavigationService.Navigate(new Uri("/ReturnVisitFullList.xaml", UriKind.Relative)); }
 
+        /// <summary>
+        /// SS_s the daily text retrieved.
+        /// </summary>
+        /// <param name="dt">The dt.</param>
         public void ss_DailyTextRetrieved(DailyText dt)
         {
             lblDailyText.Text = dt.Scripture;
@@ -186,6 +287,9 @@ namespace MyTime
 
         #endregion
 
+        /// <summary>
+        /// Pauses the timer.
+        /// </summary>
         private void PauseTimer()
         {
             _dt.Stop();
@@ -193,6 +297,9 @@ namespace MyTime
             SetRestartTime();
         }
 
+        /// <summary>
+        /// Stops the timer.
+        /// </summary>
         private void StopTimer()
         {
             _dt.Stop();
@@ -203,6 +310,10 @@ namespace MyTime
             ClearRestartTime();
         }
 
+        /// <summary>
+        /// Called when a page becomes the active page in a frame.
+        /// </summary>
+        /// <param name="e">An object that contains the event data.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -219,6 +330,9 @@ namespace MyTime
             ss.StartDailyTextRetrieval(DateTime.Now);
         }
 
+        /// <summary>
+        /// Gets the restart time.
+        /// </summary>
         private void GetRestartTime()
         {
             try {
@@ -237,14 +351,13 @@ namespace MyTime
                         _timerState = TimerState.Running;
                         _dt.Start();
                     } else if (isRunning == TimerState.Paused) {
-                        int hours, minutes, seconds;
                         var ints = new byte[sizeof (int)];
                         restartTime.Read(ints, 0, sizeof (int));
-                        hours = BitConverter.ToInt32(ints, 0);
+                        int hours = BitConverter.ToInt32(ints, 0);
                         restartTime.Read(ints, 0, sizeof (int));
-                        minutes = BitConverter.ToInt32(ints, 0);
+                        int minutes = BitConverter.ToInt32(ints, 0);
                         restartTime.Read(ints, 0, sizeof (int));
-                        seconds = BitConverter.ToInt32(ints, 0);
+                        int seconds = BitConverter.ToInt32(ints, 0);
                         _timer = new TimeSpan(hours, minutes, seconds);
                         _timerBase = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour - _timer.Hours, DateTime.Now.Minute - _timer.Minutes, DateTime.Now.Second - _timer.Seconds);
                         _timerState = TimerState.Paused;
@@ -258,6 +371,9 @@ namespace MyTime
             }
         }
 
+        /// <summary>
+        /// Sets the restart time.
+        /// </summary>
         private void SetRestartTime()
         {
             IsolatedStorageFile.GetUserStoreForApplication().DeleteFile("restart.bin");
@@ -284,12 +400,18 @@ namespace MyTime
             }
         }
 
+        /// <summary>
+        /// Clears the restart time.
+        /// </summary>
         private void ClearRestartTime() { IsolatedStorageFile.GetUserStoreForApplication().DeleteFile("restart.bin"); }
 
+        /// <summary>
+        /// Navigates the main menu.
+        /// </summary>
+        /// <param name="v">The v.</param>
         private void NavigateMainMenu(string v)
         {
             string month = DateTime.Today.ToString("MMMM").ToLower() + " report";
-            string yearly = DateTime.Today.Year.ToString() + " report";
             switch (v) {
                 case "add time":
                     NavigationService.Navigate(new Uri("/ManuallyEnterTime.xaml", UriKind.Relative));
@@ -298,8 +420,7 @@ namespace MyTime
                     NavigationService.Navigate(new Uri("/AddNewRV.xaml", UriKind.Relative));
                     break;
                 case "watchtower library":
-                    var wbTask = new WebBrowserTask();
-                    wbTask.Uri = new Uri("http://wol.jw.org", UriKind.RelativeOrAbsolute);
+                    var wbTask = new WebBrowserTask {Uri = new Uri("http://wol.jw.org", UriKind.RelativeOrAbsolute)};
                     wbTask.Show();
                     break;
                 case "service year report":
@@ -319,19 +440,21 @@ namespace MyTime
             }
         }
 
+        /// <summary>
+        /// Sends the service report.
+        /// </summary>
         private void SendServiceReport()
         {
-           
-            var entries = GetThisMonthsTimeReport();
+            TimeData[] entries = GetThisMonthsTimeReport();
             string body = string.Format("Here is my field service report for {0:MMMM}, {0:yyyy}:\n\n", DateTime.Now);
-            
-            int tTime =0;
-            int tMags=0;
-            int tBks=0;
-            int tBros=0;
-            int tRv=0;
+
+            int tTime = 0;
+            int tMags = 0;
+            int tBks = 0;
+            int tBros = 0;
+            int tRv = 0;
             int tBs = 0;
-            foreach (var e in entries) {
+            foreach (TimeData e in entries) {
                 tTime += e.Minutes;
                 tMags += e.Magazines;
                 tBks += e.Books;
@@ -349,38 +472,40 @@ namespace MyTime
 
             body += "\n\nThanks";
 
-            addressType sendType = addressType.Email;
+            var sendType = addressType.Email;
             string sendTo = string.Empty;
             try {
-                var nickName = App.AppSettings["NickName"];
+                Setting nickName = App.AppSettings["NickName"];
                 body += string.Format(",\n{0}", nickName.Value);
-                var to = App.AppSettings["csoEmail"];
+                Setting to = App.AppSettings["csoEmail"];
                 sendType = to.AddressType;
                 sendTo = to.Value;
-            } catch {}
+            } catch (Exception) {}
 
             if (sendType == addressType.Email) {
                 body += "\n\n\n\nP.S. - This report was generated by the \"Field Service\" App on my Windows Phone! If you would like to try this app you can download it from the Marketplace!";
-                var emailcomposer = new EmailComposeTask();
-                emailcomposer.Subject = string.Format("{0:MMMM} {0:yyyy} Service Report", DateTime.Today);
-                emailcomposer.Body = body;
-                emailcomposer.To = sendTo;
+                var emailcomposer = new EmailComposeTask {Subject = string.Format("{0:MMMM} {0:yyyy} Service Report", DateTime.Today), Body = body, To = sendTo};
                 emailcomposer.Show();
                 return;
             }
-            SmsComposeTask composeSMS = new SmsComposeTask();
-            composeSMS.Body = body;
-            composeSMS.To = sendTo;
-            composeSMS.Show(); 
+            var composeSms = new SmsComposeTask {Body = body, To = sendTo};
+            composeSms.Show();
         }
 
+        /// <summary>
+        /// Shows the yearly report.
+        /// </summary>
         private void ShowYearlyReport()
         {
-            var entries = GetThisYearsTimeReport();
+            TimeData[] entries = GetThisYearsTimeReport();
             App.ViewModel.LoadTimeReport(entries);
             NavigationService.Navigate(new Uri("/TimeReport.xaml", UriKind.Relative));
         }
 
+        /// <summary>
+        /// Gets the this years time report.
+        /// </summary>
+        /// <returns>TimeData[][].</returns>
         private TimeData[] GetThisYearsTimeReport()
         {
             DateTime from = DateTime.Today.Month >= 9 ? new DateTime(DateTime.Today.Year, 9, 1) : new DateTime(DateTime.Today.Year - 1, 9, 1);
@@ -390,13 +515,20 @@ namespace MyTime
             return entries;
         }
 
+        /// <summary>
+        /// Shows the monthly report.
+        /// </summary>
         private void ShowMonthlyReport()
         {
-            var entries = GetThisMonthsTimeReport();
+            TimeData[] entries = GetThisMonthsTimeReport();
             App.ViewModel.LoadTimeReport(entries);
             NavigationService.Navigate(new Uri("/TimeReport.xaml", UriKind.Relative));
         }
 
+        /// <summary>
+        /// Gets the this months time report.
+        /// </summary>
+        /// <returns>TimeData[][].</returns>
         private TimeData[] GetThisMonthsTimeReport()
         {
             var from = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
@@ -406,8 +538,9 @@ namespace MyTime
             return entries;
         }
 
-        private void StackPanel_Tap(object sender, GestureEventArgs e) { }
-
+        /// <summary>
+        /// Resets the text.
+        /// </summary>
         private void ResetText()
         {
             tbBibleStudies.Text = string.Empty;
@@ -420,10 +553,22 @@ namespace MyTime
 
         #region Nested type: TimerState
 
+        /// <summary>
+        /// Enum TimerState
+        /// </summary>
         private enum TimerState : byte
         {
+            /// <summary>
+            /// The stopped
+            /// </summary>
             Stopped = 3,
+            /// <summary>
+            /// The paused
+            /// </summary>
             Paused = 0,
+            /// <summary>
+            /// The running
+            /// </summary>
             Running = 1
         };
 

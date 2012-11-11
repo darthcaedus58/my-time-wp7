@@ -1,13 +1,22 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : MyTime
+// Author           : trevo_000
+// Created          : 11-07-2012
+//
+// Last Modified By : trevo_000
+// Last Modified On : 11-10-2012
+// ***********************************************************************
+// <copyright file="SettingsPage.xaml.cs" company="">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
-using MvvmSettings.ViewModel;
-using System.Windows.Controls;
-using System.Windows;
-using System.Windows.Data;
-using System.Windows.Input;
-using System.Collections.Generic;
-using System.Linq;
+using MyTimeDatabaseLib;
 
 namespace MyTime
 {
@@ -16,8 +25,6 @@ namespace MyTime
     /// </summary>
     public partial class SettingsPage : PhoneApplicationPage
     {
-        
-
         /// <summary>
         /// Initializes a new instance of the Settings class.
         /// </summary>
@@ -25,39 +32,31 @@ namespace MyTime
         {
             DataContext = App.ViewModel;
             InitializeComponent();
-            this.Loaded += new System.Windows.RoutedEventHandler(Settings_Loaded);
+            Loaded += Settings_Loaded;
         }
 
-        void Settings_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        #region Events
+
+        /// <summary>
+        /// Handles the Click event of the HyperlinkButtonHelpMeQuestion control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
+        private void HyperlinkButtonHelpMeQuestion_Click(object sender, RoutedEventArgs e)
         {
-            var grid = this.FindName("SettingsRoot") as Grid;
-            if (null == grid) return;
-            var sp = App.AppSettings.BuildXaml();
-            grid.Children.Add(sp);
-
-            tbAppVersion.Text = App.GetVersion();
-            tbCoreVersion.Text = MyTimeDatabaseLib.Main.GetVersion();
+            var emailcomposer = new EmailComposeTask {
+                                                         Subject = "Field Service App Help",
+                                                         To = "help@square-hiptobe.com",
+                                                         Body = string.Format("Description of Problem:\n\nSteps to Reproduce:\n\nI hereby give you my permission to contact me regarding this issue.\n\nApplication Version: {0}\nCore Version: {1}", tbAppVersion.Text, tbCoreVersion.Text)
+                                                     };
+            emailcomposer.Show();
         }
 
-        protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
-        {
-            App.AppSettings.SaveSettings();
-
-            base.OnNavigatedFrom(e);
-        }
-
-        private void button1_Click(object sender, RoutedEventArgs e) 
-        { 
-            PhoneNumberChooserTask ph = new PhoneNumberChooserTask();
-            ph.Show();
-            ph.Completed +=new EventHandler<PhoneNumberResult>(ph_Completed);
-        }
-
-        private void ph_Completed(object sender, PhoneNumberResult e)
-        {
-            
-        }
-
+        /// <summary>
+        /// Handles the Click event of the HyperlinkButtonRateApp control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void HyperlinkButtonRateApp_Click(object sender, RoutedEventArgs e)
         {
             var marketplaceReviewTask = new MarketplaceReviewTask();
@@ -65,13 +64,40 @@ namespace MyTime
             marketplaceReviewTask.Show();
         }
 
-        private void HyperlinkButtonHelpMeQuestion_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Handles the Loaded event of the Settings control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
+        private void Settings_Loaded(object sender, RoutedEventArgs e)
         {
-            var emailcomposer = new EmailComposeTask();
-            emailcomposer.Subject = "Field Service App Help";
-            emailcomposer.To = "help@square-hiptobe.com";
-            emailcomposer.Body = string.Format("Description of Problem:\n\nSteps to Reproduce:\n\nI hereby give you my permission to contact me regarding this issue.\n\nApplication Version: {0}\nCore Version: {1}", tbAppVersion.Text, tbCoreVersion.Text);
-            emailcomposer.Show();
+            var grid = FindName("SettingsRoot") as Grid;
+            if (null == grid) return;
+            StackPanel sp = App.AppSettings.BuildXaml();
+            grid.Children.Add(sp);
+
+            tbAppVersion.Text = App.GetVersion();
+            tbCoreVersion.Text = Main.GetVersion();
+        }
+
+        /// <summary>
+        /// PH_s the completed.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The e.</param>
+        private void ph_Completed(object sender, PhoneNumberResult e) { }
+
+        #endregion
+
+        /// <summary>
+        /// Called when a page is no longer the active page in a frame.
+        /// </summary>
+        /// <param name="e">An object that contains the event data.</param>
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            App.AppSettings.SaveSettings();
+
+            base.OnNavigatedFrom(e);
         }
     }
 }
