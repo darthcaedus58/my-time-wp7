@@ -18,7 +18,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
 using MyTimeDatabaseLib;
 
-namespace MyTime
+namespace FieldService
 {
     /// <summary>
     /// Description for Settings.

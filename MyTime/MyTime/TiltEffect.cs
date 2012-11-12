@@ -22,7 +22,7 @@ using System.Windows.Controls.Primitives;
 using Microsoft.Phone.Controls;
 #endif
 
-namespace MyTime
+namespace FieldService
 {
     /// <summary>
     /// This code provides attached properties for adding a 'tilt' effect to all controls within a container.

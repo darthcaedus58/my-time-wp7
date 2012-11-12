@@ -21,7 +21,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using MyTimeDatabaseLib;
 
-namespace MyTime
+namespace FieldService
 {
     /// <summary>
     /// Class ManuallyEnterTime

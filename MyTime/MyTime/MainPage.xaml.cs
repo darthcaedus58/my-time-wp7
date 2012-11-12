@@ -28,7 +28,7 @@ using Microsoft.Phone.Tasks;
 using MyTimeDatabaseLib;
 using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
-namespace MyTime
+namespace FieldService
 {
     /// <summary>
     /// Class MainPage

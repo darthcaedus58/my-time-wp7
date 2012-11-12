@@ -14,7 +14,7 @@
 using System;
 using System.ComponentModel;
 
-namespace MyTime
+namespace FieldService
 {
     /// <summary>
     /// Class TimeReportSummaryViewModel

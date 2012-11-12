@@ -19,7 +19,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Phone.Controls;
 
-namespace MyTime
+namespace FieldService
 {
     /// <summary>
     /// Class TimeReport

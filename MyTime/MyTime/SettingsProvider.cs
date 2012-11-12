@@ -27,7 +27,7 @@ using System.Xml.Serialization;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
 
-namespace MyTime
+namespace FieldService
 {
     /// <summary>
     /// Class SettingsProvider

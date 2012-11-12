@@ -13,10 +13,10 @@
 // ***********************************************************************
 using System;
 using System.Windows.Controls;
+using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
-using MyTime.ViewModels;
 
-namespace MyTime
+namespace FieldService
 {
     /// <summary>
     /// Class ReturnVistFullList
