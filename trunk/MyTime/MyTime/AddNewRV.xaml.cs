@@ -28,11 +28,11 @@ using Microsoft.Phone.Controls.Maps.Platform;
 using Microsoft.Phone.Scheduler;
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.Tasks;
-using MyTime.BingMapsGeocodeService;
+using FieldService.BingMapsGeocodeService;
 using MyTimeDatabaseLib;
 using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
-namespace MyTime
+namespace FieldService
 {
     /// <summary>
     /// Class AddNewRV

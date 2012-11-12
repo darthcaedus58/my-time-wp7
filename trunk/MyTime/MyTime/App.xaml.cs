@@ -21,7 +21,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using MyTimeDatabaseLib;
 
-namespace MyTime
+namespace FieldService
 {
     /// <summary>
     /// Class App

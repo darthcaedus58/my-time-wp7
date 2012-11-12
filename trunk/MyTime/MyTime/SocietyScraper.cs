@@ -14,7 +14,7 @@
 using System;
 using HtmlAgilityPack;
 
-namespace MyTime
+namespace FieldService
 {
     /// <summary>
     /// Class DailyTextScraper

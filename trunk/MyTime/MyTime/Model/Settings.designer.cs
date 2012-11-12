@@ -7,7 +7,7 @@
 
 using System.ComponentModel;
 
-namespace MyTime {
+namespace FieldService {
     using System.Collections.ObjectModel;
     using GalaSoft.MvvmLight;     
     

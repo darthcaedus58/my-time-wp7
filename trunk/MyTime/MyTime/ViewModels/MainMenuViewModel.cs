@@ -14,7 +14,7 @@
 using System;
 using System.ComponentModel;
 
-namespace MyTime.ViewModels
+namespace FieldService.ViewModels
 {
     /// <summary>
     /// Class MainMenuViewModel
