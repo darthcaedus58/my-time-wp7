@@ -22,6 +22,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Controls.Maps;
 using Microsoft.Phone.Controls.Maps.Platform;
@@ -76,7 +77,7 @@ namespace FieldService
             pbGetAddress.IsIndeterminate = true;
             _address = lblInfo_AddressFull.Content.ToString();
             _fullName = lblInfo_FullName.Text;
-            dlsAge.Text = App.AppSettings["dfltAgeValue"] == null ? "30" : App.AppSettings["dfltAgeValue"].Value;
+            dlsAge.Text = App.AppSettingsProvider["dfltAgeValue"] == null ? "30" : App.AppSettingsProvider["dfltAgeValue"].Value;
             string[] genders = {"Male", "Female"};
             lpGender.ItemsSource = genders;
             lpGender.SelectedIndex = 0;
@@ -629,9 +630,9 @@ namespace FieldService
             string beautifyMask = @"$1($2) $3-$4";
 
             try {
-                beautifyPhoneNumber = bool.Parse(App.AppSettings["beautifyPhoneNumber"].Value);
-                beautifyRegEx = App.AppSettings["beautifyPhNumRegEx"].Value;
-                beautifyMask = App.AppSettings["beautifyPhNumMask"].Value;
+                beautifyPhoneNumber = bool.Parse(App.AppSettingsProvider["beautifyPhoneNumber"].Value);
+                beautifyRegEx = App.AppSettingsProvider["beautifyPhNumRegEx"].Value;
+                beautifyMask = App.AppSettingsProvider["beautifyPhNumMask"].Value;
             } catch {
                 return phNum;
             }

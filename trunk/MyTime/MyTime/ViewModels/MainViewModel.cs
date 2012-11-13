@@ -19,10 +19,9 @@ using System.IO;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using FieldService.ViewModels;
 using MyTimeDatabaseLib;
 
-namespace FieldService
+namespace FieldService.ViewModels
 {
     /// <summary>
     /// Class MainViewModel

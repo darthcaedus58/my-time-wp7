@@ -1,6 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{8b3bcb2e-a061-480b-95be-0daec811077f}" Title="Field Service" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="MyTime author" Description="Sample description" Publisher="MyTime">
+  <App xmlns="" ProductID="{8b3bcb2e-a061-480b-95be-0daec811077f}" 
+       Title="Field Service" 
+       RuntimeType="Silverlight" 
+       Version="1.0.0.0" 
+       Genre="apps.normal" 
+       Author="Square.HipToBe" 
+       Description="Field Service Application for Jehovah's Witnesses to manage their ministry." 
+       Publisher="Square.HipToBe">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES" />
