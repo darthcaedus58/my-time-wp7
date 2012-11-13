@@ -525,8 +525,8 @@ namespace FieldService
         /// </summary>
         private void RefreshVisitList()
         {
+            if(App.ViewModel.IsPreviousVisitsLoaded) App.ViewModel.lbRvPreviousItems.Clear();
             if (_currentReturnVisitData == null) return;
-            App.ViewModel.lbRvPreviousItems.Clear();
 
             RvPreviousVisitData[] visits = RvPreviousVisitsDataInterface.GetPreviousVisits(_currentReturnVisitData.ItemId, SortOrder.DateNewestToOldest);
             App.ViewModel.UpdatePreviousVisits(visits);
