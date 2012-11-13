@@ -19,6 +19,7 @@ using System.IO.IsolatedStorage;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Navigation;
 using Coding4Fun.Phone.Controls;
 using FieldService.ViewModels;
@@ -76,7 +77,9 @@ namespace FieldService
         /// </summary>
         public App()
         {
-
+            (App.Current.Resources["PhoneAccentBrush"] as SolidColorBrush).Color = Color.FromArgb(0xFF, 0xD2, 0xDA, 0x86);
+            (App.Current.Resources["PhoneForegroundBrush"] as SolidColorBrush).Color = Color.FromArgb(0xFF, 0x4C, 0x44, 0x78);
+            (App.Current.Resources["PhoneBackgroundBrush"] as SolidColorBrush).Color = Color.FromArgb(0xFF, 0x8F, 0xCC, 0xF8/*0xD2, 0xDA, 0x86*/);
             _settingsProvider = new SettingsProvider();
             // Global handler for uncaught exceptions. 
             UnhandledException += Application_UnhandledException;
