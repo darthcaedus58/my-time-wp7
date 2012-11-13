@@ -44,7 +44,8 @@ namespace MyTimeDatabaseLib.Model
         /// <summary>
         /// The _category id
         /// </summary>
-        [Column] internal int CategoryId;
+        [Column] 
+        internal int CategoryId;
         /// <summary>
         /// The _city
         /// </summary>
