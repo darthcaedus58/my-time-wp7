@@ -13,7 +13,7 @@
     </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <phone:PhoneApplicationPage.FontFamily>
+    <!--<phone:PhoneApplicationPage.FontFamily>
         <StaticResource ResourceKey="PhoneFontFamilyNormal" />
     </phone:PhoneApplicationPage.FontFamily>
     <phone:PhoneApplicationPage.FontSize>
@@ -21,7 +21,7 @@
     </phone:PhoneApplicationPage.FontSize>
     <phone:PhoneApplicationPage.Foreground>
         <StaticResource ResourceKey="PhoneForegroundBrush" />
-    </phone:PhoneApplicationPage.Foreground>
+    </phone:PhoneApplicationPage.Foreground>-->
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsMenuEnabled="True" IsVisible="True">
             <shell:ApplicationBarIconButton x:Name="abibStart" Click="abibStart_Click" IconUri="/icons/play.png" Text="start" />
@@ -36,7 +36,7 @@
             <ColumnDefinition Width="26*" />
             <ColumnDefinition Width="454*" />
         </Grid.ColumnDefinitions>
-        <controls:Panorama Grid.Column="1" Margin="0,0,-26,0" Foreground="#FFCEC674" Title="Field Service">
+        <controls:Panorama Grid.Column="1" Margin="0,0,-26,0" Foreground="{StaticResource PhoneAccentBrush}" Title="Field Service">
             <controls:Panorama.Background>
                 <ImageBrush ImageSource="PanoramaBackground.png" />
             </controls:Panorama.Background>
@@ -46,7 +46,7 @@
                         <DataTemplate>
                             <StackPanel Margin="20,5,5,-5" Orientation="Horizontal">
                                 <Image Margin="-5,-5,-10,-5" Source="{Binding IconUri}" Tag="{Binding MenuText}" Tap="MenuImage_TapEvent" />
-                                <toolkit:MenuItem Margin="-10,-10,0,-5" Click="MenuItem_ClickEvent" FontFamily="{StaticResource PhoneFontFamilySemiLight}" FontSize="37" Header="{Binding MenuText}" />
+                                <toolkit:MenuItem Margin="-10,-10,0,-5" Click="MenuItem_ClickEvent" FontFamily="{StaticResource PhoneFontFamilySemiLight}" Foreground="{StaticResource PhoneAccentBrush}" FontSize="37" Header="{Binding MenuText}" />
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

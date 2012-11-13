@@ -1447,7 +1447,10 @@ namespace FieldService.BingMapsGeocodeService {
             
             public FieldService.BingMapsGeocodeService.GeocodeResponse EndReverseGeocode(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                FieldService.BingMapsGeocodeService.GeocodeResponse _result = ((FieldService.BingMapsGeocodeService.GeocodeResponse)(base.EndInvoke("ReverseGeocode", _args, result)));
+                FieldService.BingMapsGeocodeService.GeocodeResponse _result = null;
+                try {
+                    _result = ((FieldService.BingMapsGeocodeService.GeocodeResponse)(base.EndInvoke("ReverseGeocode", _args, result)));
+                } catch { } 
                 return _result;
             }
         }
