@@ -23,6 +23,8 @@ using System.Windows.Input;
 using System.Windows.Navigation;
 using System.Windows.Threading;
 using System.Xml.Serialization;
+using FieldService.SocietyScraper;
+using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
 using MyTimeDatabaseLib;
@@ -60,6 +62,9 @@ namespace FieldService
         /// </summary>
         public MainPage()
         {
+            LittleWatson.CheckForPreviousException();
+            //CheckForCrashFile();
+
             InitializeComponent();
 
             // Set the data context of the listbox control to the sample data
@@ -475,9 +480,9 @@ namespace FieldService
             var sendType = addressType.Email;
             string sendTo = string.Empty;
             try {
-                Setting nickName = App.AppSettings["NickName"];
+                Setting nickName = App.AppSettingsProvider["NickName"];
                 body += string.Format(",\n{0}", nickName.Value);
-                Setting to = App.AppSettings["csoEmail"];
+                Setting to = App.AppSettingsProvider["csoEmail"];
                 sendType = to.AddressType;
                 sendTo = to.Value;
             } catch (Exception) {}

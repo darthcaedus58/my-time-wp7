@@ -11,14 +11,20 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
+using System;
 using System.Diagnostics;
+using System.IO;
+using System.IO.IsolatedStorage;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Navigation;
 using Coding4Fun.Phone.Controls;
+using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Microsoft.Phone.Tasks;
 using MyTimeDatabaseLib;
 
 namespace FieldService
@@ -29,9 +35,9 @@ namespace FieldService
     public partial class App : Application
     {
         /// <summary>
-        /// The _settings
+        /// The _settingsProvider
         /// </summary>
-        private static SettingsProvider _settings;
+        private static SettingsProvider _settingsProvider;
 
         /// <summary>
         /// The view model
@@ -39,11 +45,39 @@ namespace FieldService
         private static MainViewModel _viewModel;
 
         /// <summary>
+        /// Checks for crash file.
+        /// </summary>
+        private void CheckForCrashFile()
+        {
+            using (IsolatedStorageFile file = IsolatedStorageFile.GetUserStoreForApplication()) {
+                bool fileExists = false;
+                try {
+                    if ((fileExists = file.FileExists("crash.log"))) {
+                        using (StreamReader reader = new StreamReader(file.OpenFile("crash.log", FileMode.Open, FileAccess.Read))) {
+                            string errorLog = reader.ReadToEnd();
+                            if (MessageBox.Show("Application has failed. Do you want to notify the support group?", "Application failed", MessageBoxButton.OKCancel).Equals(MessageBoxResult.OK)) {
+                                EmailComposeTask em = new EmailComposeTask();
+                                em.To = "x.y@z.com";
+                                em.Subject = "application has failed!";
+                                em.Body = errorLog;
+                                em.Show();
+                            }
+                        }
+                    }
+                } catch (IsolatedStorageException) { } finally {
+                    if (fileExists)
+                        file.DeleteFile("crash.log");
+                }
+            }
+        }
+
+        /// <summary>
         /// Constructor for the Application object.
         /// </summary>
         public App()
         {
-            _settings = new SettingsProvider();
+
+            _settingsProvider = new SettingsProvider();
             // Global handler for uncaught exceptions. 
             UnhandledException += Application_UnhandledException;
 
@@ -80,7 +114,7 @@ namespace FieldService
         /// Gets the app settings.
         /// </summary>
         /// <value>The app settings.</value>
-        public static SettingsProvider AppSettings { get { return _settings ?? new SettingsProvider(); } }
+        public static SettingsProvider AppSettingsProvider { get { return _settingsProvider ?? new SettingsProvider(); } }
 
         /// <summary>
         /// A static ViewModel used by the views to bind against.
@@ -148,7 +182,11 @@ namespace FieldService
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="LaunchingEventArgs" /> instance containing the event data.</param>
-        private void Application_Launching(object sender, LaunchingEventArgs e) { }
+        private void Application_Launching(object sender, LaunchingEventArgs e)
+        {
+            
+            LittleWatson.CheckForPreviousException();
+        }
 
         // Code to execute if a navigation fails
 
@@ -160,6 +198,7 @@ namespace FieldService
         /// <param name="e">The <see cref="ApplicationUnhandledExceptionEventArgs" /> instance containing the event data.</param>
         private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
         {
+            LittleWatson.ReportException(e.ExceptionObject, DateTime.Now.ToShortDateString());
             if (Debugger.IsAttached) {
                 // An unhandled exception has occurred; break into the debugger
                 Debugger.Break();
@@ -204,6 +243,7 @@ namespace FieldService
         /// </summary>
         private void InitializePhoneApplication()
         {
+            LittleWatson.CheckForPreviousException();
             if (_phoneApplicationInitialized)
                 return;
 
@@ -228,6 +268,8 @@ namespace FieldService
         /// <param name="e">The <see cref="NavigationFailedEventArgs" /> instance containing the event data.</param>
         private void RootFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
         {
+            LittleWatson.ReportException(e.Exception, DateTime.Now.ToShortDateString());
+
             if (Debugger.IsAttached) {
                 // A navigation has failed; break into the debugger
                 Debugger.Break();

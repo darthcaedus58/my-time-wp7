@@ -73,7 +73,7 @@ namespace FieldService
         {
             var grid = FindName("SettingsRoot") as Grid;
             if (null == grid) return;
-            StackPanel sp = App.AppSettings.BuildXaml();
+            StackPanel sp = App.AppSettingsProvider.BuildXaml();
             grid.Children.Add(sp);
 
             tbAppVersion.Text = App.GetVersion();
@@ -95,7 +95,7 @@ namespace FieldService
         /// <param name="e">An object that contains the event data.</param>
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            App.AppSettings.SaveSettings();
+            App.AppSettingsProvider.SaveSettings();
 
             base.OnNavigatedFrom(e);
         }

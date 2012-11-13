@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : MyTime
 // Author           : trevo_000
 // Created          : 11-03-2012
@@ -11,10 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
 using HtmlAgilityPack;
 
-namespace FieldService
+namespace FieldService.SocietyScraper
 {
     /// <summary>
     /// Class DailyTextScraper

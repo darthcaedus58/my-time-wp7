@@ -5,12 +5,11 @@
 //  </auto-generated>
 // ------------------------------------------------------------------------------
 
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using GalaSoft.MvvmLight;
 
 namespace FieldService {
-    using System.Collections.ObjectModel;
-    using GalaSoft.MvvmLight;     
-    
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.inputstudiowp7.com/schemas")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace="http://www.inputstudiowp7.com/schemas", IsNullable=false)]
     public partial class Settings : ViewModelBase {

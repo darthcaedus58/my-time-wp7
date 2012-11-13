@@ -11,11 +11,12 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
 using System.ComponentModel;
 using System.Windows.Media.Imaging;
 
-namespace FieldService
+namespace FieldService.ViewModels
 {
     /// <summary>
     /// Class ReturnVisitItemViewModel

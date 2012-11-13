@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <xsd:schema xmlns="http://www.inputstudiowp7.com/schemas" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.inputstudiowp7.com/schemas">
     <xsd:element name="Settings">
         <xsd:annotation>

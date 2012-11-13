@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -52,7 +53,7 @@ namespace FieldService
         private Settings Settings { get; set; }
 
         /// <summary>
-        /// Gets or sets the <see cref="Setting" /> with the specified key.
+        /// Gets or sets the <see cref="FieldService.Setting" /> with the specified key.
         /// </summary>
         /// <param name="key">The key.</param>
         /// <returns>Setting.</returns>
@@ -300,7 +301,7 @@ namespace FieldService
                 p.Children.Add(bButton);
 
                 var tbCc = new TextBox {
-                                           Name = String.Format("txt{0}", setting.Name.Replace(" ", String.Empty)),
+                                           Name = String.Format((string) "txt{0}", (object) setting.Name.Replace(" ", String.Empty)),
                                            Height = 72,
                                            MaxLength = 50,
                                            TextWrapping = TextWrapping.NoWrap
@@ -335,7 +336,7 @@ namespace FieldService
         /// </summary>
         /// <param name="setting">The setting.</param>
         /// <returns>TextBlock.</returns>
-        private static TextBlock MakeCaption(Setting setting) { return new TextBlock {Text = String.Format("{0}", setting.FriendlyName.Trim()), Margin = new Thickness(12, 20, 0, 0), TextWrapping = TextWrapping.Wrap}; }
+        private static TextBlock MakeCaption(Setting setting) { return new TextBlock {Text = String.Format((string) "{0}", (object) setting.FriendlyName.Trim()), Margin = new Thickness(12, 20, 0, 0), TextWrapping = TextWrapping.Wrap}; }
 
         /// <summary>
         /// Makes the list picker.
@@ -345,10 +346,10 @@ namespace FieldService
         private static ListPicker MakeListPicker(Setting setting)
         {
             var lpValue = new ListPicker {
-                                             Header = String.Format("{0}", setting.FriendlyName.Trim())
+                                             Header = String.Format((string) "{0}", (object) setting.FriendlyName.Trim())
                                          };
 
-            var items = setting.StringItem.Select(item => item.Value).ToList();
+            var items = Enumerable.ToList<string>(setting.StringItem.Select(item => item.Value));
 
             lpValue.ItemsSource = items;
             lpValue.SetBinding(ListPicker.SelectedItemProperty, new Binding("Value") {Mode = BindingMode.TwoWay, Source = setting});
@@ -363,7 +364,7 @@ namespace FieldService
         private static TextBox MakeTextBox(Setting setting)
         {
             var txtValue = new TextBox {
-                                           Name = String.Format("txt{0}", setting.Name.Replace(" ", String.Empty)),
+                                           Name = String.Format((string) "txt{0}", (object) setting.Name.Replace(" ", String.Empty)),
                                            Height = 72,
                                            MaxLength = 50,
                                            TextWrapping = TextWrapping.NoWrap
@@ -389,7 +390,7 @@ namespace FieldService
         private static ToggleSwitch MakeToggleSwitch(Setting setting)
         {
             var tsOption = new ToggleSwitch {
-                                                Name = String.Format("ts{0}", setting.Name.Replace(" ", String.Empty)), Header = setting.FriendlyName
+                                                Name = String.Format((string) "ts{0}", (object) setting.Name.Replace(" ", String.Empty)), Header = setting.FriendlyName
                                             };
             tsOption.SetBinding(ToggleSwitch.IsCheckedProperty, new Binding("Value") {Mode = BindingMode.TwoWay, Source = setting});
             return tsOption;
