@@ -84,7 +84,7 @@ namespace MyTimeDatabaseLib
                                               ReturnVisits = tdi.ReturnVisits
                                           };
                     return td;
-                } catch (InvalidOperationException) {
+                } catch (InvalidOperationException e) {
                     return null;
                 }
             }

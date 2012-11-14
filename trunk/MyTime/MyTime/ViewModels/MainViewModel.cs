@@ -222,24 +222,24 @@ namespace FieldService.ViewModels
             lbMainMenuItems.Add(new MainMenuViewModel {
                                                           MenuText = "add time",
                                                           MenuItemName = "miAddTime",
-                                                          IconUri = "/icons/add.png",
+                                                          IconUri = "/icons/clock.png",
                                                           MenuImageName = "AddTimeImage"
                                                       });
 
             lbMainMenuItems.Add(new MainMenuViewModel {
                                                           MenuText = "add return visit",
                                                           MenuItemName = "miAddRv",
-                                                          IconUri = "/icons/phone.png",
+                                                          IconUri = "/icons/add-user.png",
                                                           MenuImageName = "AddReturnVisitImage"
                                                       });
-            lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "send service report", MenuItemName = "miSendReport", IconUri = "/icons/mail.png", MenuImageName = "SemdReportImage"});
-            lbMainMenuItems.Add(new MainMenuViewModel {MenuText = string.Format("{0} report", DateTime.Today.ToString("MMMM").ToLower()), MenuItemName = "miThisMonthReport", IconUri = "/icons/favs.png", MenuImageName = "ThisMonthImage"});
-            lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "service year report", MenuItemName = "miThisYearReport", IconUri = "/icons/favs.png", MenuImageName = "ThisYearImage"});
+            lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "send service report", MenuItemName = "miSendReport", IconUri = "/icons/message.png", MenuImageName = "SemdReportImage"});
+            lbMainMenuItems.Add(new MainMenuViewModel {MenuText = string.Format("{0} report", DateTime.Today.ToString("MMMM").ToLower()), MenuItemName = "miThisMonthReport", IconUri = "/icons/calendar.png", MenuImageName = "ThisMonthImage"});
+            lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "service year report", MenuItemName = "miThisYearReport", IconUri = "/icons/calendar.png", MenuImageName = "ThisYearImage"});
             //lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "custom report", MenuItemName = "miCustomReport", IconUri = "/icons/search.png", MenuImageName = "CustomReportImage"});
 
-            lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "watchtower library", MenuItemName = "miWtLib", IconUri = "/icons/share.png", MenuImageName = "OpenWtLibImage"});
+            lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "watchtower library", MenuItemName = "miWtLib", IconUri = "/icons/webinar.png", MenuImageName = "OpenWtLibImage"});
 
-            lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "settings", MenuItemName = "abmiManuallyEnter", MenuImageName = "SettingsImage", IconUri = "/icons/settings.png"});
+            lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "settings", MenuItemName = "abmiManuallyEnter", MenuImageName = "SettingsImage", IconUri = "/icons/tasks.png"});
             IsMainMenuLoaded = true;
         }
 
@@ -262,13 +262,15 @@ namespace FieldService.ViewModels
         /// <param name="entries">The entries.</param>
         public void LoadTimeReport(TimeData[] entries)
         {
-            int minutes = 0;
-            if (entries.Length <= 0) return;
             if (IsTimeReportDataLoaded) {
                 IsTimeReportDataLoaded = false;
                 icReport.Clear();
                 lbTimeEntries.Clear();
             }
+            
+            int minutes = 0;
+            if (entries.Length <= 0) return;
+
             int month = entries[0].Date.Month;
             var summary = new TimeReportSummaryViewModel();
             foreach (TimeData td in entries) {

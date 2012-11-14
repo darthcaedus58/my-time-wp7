@@ -70,6 +70,7 @@ namespace FieldService
             // Set the data context of the listbox control to the sample data
             DataContext = App.ViewModel;
             Loaded += MainPage_Loaded;
+            _timerState = TimerState.Stopped;
             if (IsolatedStorageFile.GetUserStoreForApplication().FileExists("restart.bin")) GetRestartTime();
         }
 
@@ -92,7 +93,7 @@ namespace FieldService
         /// Gets the timer time span.
         /// </summary>
         /// <value>The timer time span.</value>
-        private TimeSpan TimerTimeSpan { get { return DateTime.Now.Subtract(_timerBase); } }
+        private TimeSpan TimerTimeSpan { get { return _timerState == TimerState.Stopped ? new TimeSpan() : DateTime.Now.Subtract(_timerBase); } }
 
         #region Events
 
@@ -136,7 +137,9 @@ namespace FieldService
         /// <param name="e">The <see cref="GestureEventArgs" /> instance containing the event data.</param>
         public void MenuImage_TapEvent(object sender, GestureEventArgs e)
         {
-            string v = ((Image) sender).Tag.ToString().ToLower();
+            var r = sender as System.Windows.Shapes.Rectangle;
+            if (r == null) return;
+            var v = r.Tag.ToString().ToLower();
             NavigateMainMenu(v);
         }
 
@@ -147,7 +150,9 @@ namespace FieldService
         /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         public void MenuItem_ClickEvent(object sender, RoutedEventArgs e)
         {
-            string v = ((MenuItem) sender).Header.ToString().ToLower();
+            var mi = sender as MenuItem;
+            if (mi == null) return;
+            string v = mi.Header.ToString().ToLower();
             NavigateMainMenu(v);
         }
 
@@ -180,7 +185,7 @@ namespace FieldService
 
         private void TimeAdditClickTapEvent()
         {
-            PauseTimer();
+            if(_timerState == TimerState.Running) PauseTimer();
             TimeSpan t = TimerTimeSpan;
 
             if (t.TotalMinutes <= 0) {
@@ -331,9 +336,12 @@ namespace FieldService
         /// </summary>
         private void PauseTimer()
         {
-            _dt.Stop();
-            _timerState = TimerState.Paused;
-            SetRestartTime();
+            try {
+                _dt.Stop();
+                SetRestartTime();
+            } catch { } finally {
+                _timerState = TimerState.Paused;
+            }
         }
 
         /// <summary>
@@ -341,12 +349,16 @@ namespace FieldService
         /// </summary>
         private void TimerStopClickTapEvent()
         {
-            _dt.Stop();
-            _timer = new TimeSpan();
-            _timerBase = new DateTime();
-            lblTimer.Text = "00:00:00";
-            _timerState = TimerState.Stopped;
-            ClearRestartTime();
+            try {
+                _dt.Stop();
+                _timer = new TimeSpan(0,0,0);
+                _timerBase = new DateTime();
+                lblTimer.Text = "00:00:00";
+            } catch { } finally {
+                _timerState = TimerState.Stopped;
+                ClearRestartTime();
+            }
+
         }
 
         /// <summary>
@@ -484,7 +496,10 @@ namespace FieldService
         /// </summary>
         private void SendServiceReport()
         {
-            TimeData[] entries = GetThisMonthsTimeReport();
+            var from = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            DateTime tod = new DateTime(@from.Year, @from.Month, 1).AddMonths(1).AddDays(-1);
+
+            TimeData[] entries = TimeDataInterface.GetEntries(from, tod, SortOrder.DateNewestToOldest);
             string body = string.Format("Here is my field service report for {0:MMMM}, {0:yyyy}:\n\n", DateTime.Now);
 
             int tTime = 0;
@@ -540,22 +555,10 @@ namespace FieldService
         /// </summary>
         private void ShowYearlyReport()
         {
-            TimeData[] entries = GetThisYearsTimeReport();
-            App.ViewModel.LoadTimeReport(entries);
-            NavigationService.Navigate(new Uri("/TimeReport.xaml", UriKind.Relative));
-        }
-
-        /// <summary>
-        /// Gets the this years time report.
-        /// </summary>
-        /// <returns>TimeData[][].</returns>
-        private TimeData[] GetThisYearsTimeReport()
-        {
             DateTime from = DateTime.Today.Month >= 9 ? new DateTime(DateTime.Today.Year, 9, 1) : new DateTime(DateTime.Today.Year - 1, 9, 1);
-            DateTime to = from.AddYears(1);
+            DateTime to = from.AddYears(1).AddDays(-1);
 
-            TimeData[] entries = TimeDataInterface.GetEntries(@from, to, SortOrder.DateOldestToNewest);
-            return entries;
+            NavigationService.Navigate(new Uri(string.Format("/TimeReport.xaml?from={0}&to={1}", from.ToString("MM-dd-yyyy"), to.ToString("MM-dd-yyyy")), UriKind.Relative));
         }
 
         /// <summary>
@@ -563,22 +566,10 @@ namespace FieldService
         /// </summary>
         private void ShowMonthlyReport()
         {
-            TimeData[] entries = GetThisMonthsTimeReport();
-            App.ViewModel.LoadTimeReport(entries);
-            NavigationService.Navigate(new Uri("/TimeReport.xaml", UriKind.Relative));
-        }
-
-        /// <summary>
-        /// Gets the this months time report.
-        /// </summary>
-        /// <returns>TimeData[][].</returns>
-        private TimeData[] GetThisMonthsTimeReport()
-        {
             var from = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
             DateTime to = new DateTime(@from.Year, @from.Month, 1).AddMonths(1).AddDays(-1);
-
-            TimeData[] entries = TimeDataInterface.GetEntries(@from, to, SortOrder.DateOldestToNewest);
-            return entries;
+            
+            NavigationService.Navigate(new Uri(string.Format("/TimeReport.xaml?from={0}&to={1}", from.ToString("MM-dd-yyyy"), to.ToString("MM-dd-yyyy")), UriKind.Relative));
         }
 
         /// <summary>
