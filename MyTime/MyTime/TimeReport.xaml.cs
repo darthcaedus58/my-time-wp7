@@ -19,6 +19,7 @@ using System.Windows;
 using System.Windows.Controls;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
+using MyTimeDatabaseLib;
 
 namespace FieldService
 {
@@ -27,6 +28,9 @@ namespace FieldService
     /// </summary>
     public partial class TimeReport : PhoneApplicationPage
     {
+        private DateTime _fromDate;
+        private DateTime _toDate;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeReport" /> class.
         /// </summary>
@@ -51,6 +55,31 @@ namespace FieldService
             myChart.InvalidateMeasure();
             myChart.InvalidateArrange();
             myChart.UpdateLayout();
+        }
+
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            try {
+                string fromStr = string.Empty;
+                string toStr = string.Empty;
+                if (!NavigationContext.QueryString.TryGetValue("from", out fromStr) || !NavigationContext.QueryString.TryGetValue("to", out toStr))
+                    NavigationService.GoBack();
+                _fromDate = DateTime.ParseExact(fromStr, "MM-dd-yyyy", CultureInfo.InvariantCulture);
+                _toDate = DateTime.ParseExact(toStr, "MM-dd-yyyy", CultureInfo.InvariantCulture);
+                RefreshTimeReport();
+            } catch {
+                NavigationService.GoBack();
+            }
+        }
+
+        private void RefreshTimeReport()
+        {
+            TimeData[] entries = TimeDataInterface.GetEntries(_fromDate, _toDate, SortOrder.DateOldestToNewest);
+            App.ViewModel.LoadTimeReport(entries);
+
+            tbFromDate.Text = string.Format("FROM:\t\t{0}", _fromDate.ToShortDateString());
+            tbToDate.Text = string.Format("TO:\t\t\t{0}", _toDate.ToShortDateString());
         }
 
         /// <summary>
