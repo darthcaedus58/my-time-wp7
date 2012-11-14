@@ -32,8 +32,8 @@ namespace FieldService
         /// </summary>
         public TimeReport()
         {
-            InitializeComponent();
             DataContext = App.ViewModel;
+            InitializeComponent();
         }
 
         #region Events
@@ -45,6 +45,9 @@ namespace FieldService
         /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
+            if (App.ViewModel.icReport.Count > 1) {
+                tbDisclaimer.Text = "Reminder: Service Year Begins in September.";
+            }
             myChart.InvalidateMeasure();
             myChart.InvalidateArrange();
             myChart.UpdateLayout();

@@ -46,40 +46,15 @@ namespace FieldService
         private static MainViewModel _viewModel;
 
         /// <summary>
-        /// Checks for crash file.
-        /// </summary>
-        private void CheckForCrashFile()
-        {
-            using (IsolatedStorageFile file = IsolatedStorageFile.GetUserStoreForApplication()) {
-                bool fileExists = false;
-                try {
-                    if ((fileExists = file.FileExists("crash.log"))) {
-                        using (StreamReader reader = new StreamReader(file.OpenFile("crash.log", FileMode.Open, FileAccess.Read))) {
-                            string errorLog = reader.ReadToEnd();
-                            if (MessageBox.Show("Application has failed. Do you want to notify the support group?", "Application failed", MessageBoxButton.OKCancel).Equals(MessageBoxResult.OK)) {
-                                EmailComposeTask em = new EmailComposeTask();
-                                em.To = "x.y@z.com";
-                                em.Subject = "application has failed!";
-                                em.Body = errorLog;
-                                em.Show();
-                            }
-                        }
-                    }
-                } catch (IsolatedStorageException) { } finally {
-                    if (fileExists)
-                        file.DeleteFile("crash.log");
-                }
-            }
-        }
-
-        /// <summary>
         /// Constructor for the Application object.
         /// </summary>
         public App()
         {
             (App.Current.Resources["PhoneAccentBrush"] as SolidColorBrush).Color = Color.FromArgb(0xFF, 0xD2, 0xDA, 0x86);
             (App.Current.Resources["PhoneForegroundBrush"] as SolidColorBrush).Color = Color.FromArgb(0xFF, 0x4C, 0x44, 0x78);
-            (App.Current.Resources["PhoneBackgroundBrush"] as SolidColorBrush).Color = Color.FromArgb(0xFF, 0x8F, 0xCC, 0xF8/*0xD2, 0xDA, 0x86*/);
+            (App.Current.Resources["PhoneBackgroundBrush"] as SolidColorBrush).Color = Color.FromArgb(0xFF, 0x8F, 0xCC, 0xF8);
+
+
             _settingsProvider = new SettingsProvider();
             // Global handler for uncaught exceptions. 
             UnhandledException += Application_UnhandledException;

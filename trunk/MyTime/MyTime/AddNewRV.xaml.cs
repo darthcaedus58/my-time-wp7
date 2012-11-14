@@ -235,8 +235,8 @@ namespace FieldService
                 txtContent.Text = String.Empty;
                 dpDatePicker.Value = DateTime.Now;
                 tpStartTime.Value = DateTime.Now;
-            } catch {
-                MessageBox.Show("Could Not Add Reminder.");
+            } catch (Exception ee) {
+                App.ToastMe("Could Not Add Reminder.");
             } finally {
                 RefreshReminderList();
             }
@@ -411,7 +411,7 @@ namespace FieldService
             }
             body += "\n\n";
 
-            var emailcomposer = new EmailComposeTask {Subject = string.Format("{0:MMMM} {0:yyyy} Service Report", DateTime.Today), Body = body};
+            var emailcomposer = new EmailComposeTask {Subject = "Return Visit", Body = body};
             emailcomposer.Show();
         }
 

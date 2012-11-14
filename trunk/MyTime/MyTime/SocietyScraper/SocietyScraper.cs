@@ -47,6 +47,7 @@ namespace FieldService.SocietyScraper
         protected void hw_LoadCompleted(object o, HtmlDocumentLoadCompleted e)
         {
             HtmlDocument doc = e.Document;
+            if (doc == null) return;
             HtmlNode docNode = doc.DocumentNode;
 
             HtmlNodeCollection tags = docNode.SelectNodes(".//p[@class='sa']");
@@ -54,6 +55,8 @@ namespace FieldService.SocietyScraper
 
             tags = docNode.SelectNodes(".//p[@class='sb']");
             string summaryText = tags.Count > 0 ? tags[0].InnerText : string.Empty;
+
+            summaryText = summaryText.Replace("&nbsp;", " ");
 
             var dt = new DailyText {
                                        Scripture = scripture,
