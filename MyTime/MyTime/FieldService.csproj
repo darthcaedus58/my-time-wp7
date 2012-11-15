@@ -199,9 +199,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Background.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="icons\add-user.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -239,6 +236,7 @@
     <Content Include="icons\webinar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Background.png" />
     <Content Include="Model\settings.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

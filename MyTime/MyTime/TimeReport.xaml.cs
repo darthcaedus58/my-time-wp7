@@ -20,6 +20,7 @@ using System.Windows.Controls;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
 using MyTimeDatabaseLib;
+using System.Windows.Controls.DataVisualization.Charting;
 
 namespace FieldService
 {
@@ -68,7 +69,7 @@ namespace FieldService
                 _fromDate = DateTime.ParseExact(fromStr, "MM-dd-yyyy", CultureInfo.InvariantCulture);
                 _toDate = DateTime.ParseExact(toStr, "MM-dd-yyyy", CultureInfo.InvariantCulture);
                 RefreshTimeReport();
-            } catch {
+            } catch (Exception ee) {
                 NavigationService.GoBack();
             }
         }
@@ -80,6 +81,16 @@ namespace FieldService
 
             tbFromDate.Text = string.Format("FROM:\t\t{0}", _fromDate.ToShortDateString());
             tbToDate.Text = string.Format("TO:\t\t\t{0}", _toDate.ToShortDateString());
+
+            myChart.Series.Clear();
+            myChart.Series.Add(new LineSeries() {
+                                                    ItemsSource = new ChartData(),
+                                                    DependentValuePath = "Time",
+                                                    IndependentValuePath = "Header",
+                                                    Title = "Time in Hours",
+                                                });
+
+            //myChartMainSeries.ItemsSource = new ChartData();
         }
 
         /// <summary>

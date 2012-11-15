@@ -145,9 +145,6 @@ namespace FieldService
         /// </summary>
         private void LoadSettings()
         {
-#if DEBUG
-            IsolatedStorageFile.GetUserStoreForApplication().DeleteFile("settings.xml");
-#endif
             Settings = ReadFromFile(IsolatedStorageFile.GetUserStoreForApplication(), "settings.xml");
         }
 
