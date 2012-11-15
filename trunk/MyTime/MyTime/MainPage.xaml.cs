@@ -55,6 +55,8 @@ namespace FieldService
         /// </summary>
         private TimerState _timerState = TimerState.Stopped;
 
+        private BackgroundWorker _bwLoadRvs;
+
 
         // Constructor
         /// <summary>
@@ -70,9 +72,14 @@ namespace FieldService
             // Set the data context of the listbox control to the sample data
             DataContext = App.ViewModel;
             Loaded += MainPage_Loaded;
-            _timerState = TimerState.Stopped;
-            if (IsolatedStorageFile.GetUserStoreForApplication().FileExists("restart.bin")) GetRestartTime();
+
+
+            _bwLoadRvs = new BackgroundWorker();
+
+            _bwLoadRvs.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+
         }
+
 
         /// <summary>
         /// Gets or sets the start time.
@@ -120,14 +127,31 @@ namespace FieldService
         /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
+            _bwLoadRvs.RunWorkerAsync();
+        }
+
+        private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
             if (App.ViewModel.IsRvDataLoaded) {
                 App.ViewModel.lbRvItems.Clear();
-                App.ViewModel.lbMainMenuItems.Clear();
             }
-            App.ViewModel.LoadReturnVisitList(SortOrder.DateOldestToNewest);
-            App.ViewModel.LoadMainMenu();
 
-            //NavigationService.Navigate(new Uri("/SettingsPage.xaml", UriKind.Relative));
+            App.ViewModel.LoadMainMenu();
+            App.ViewModel.LoadReturnVisitList(SortOrder.DateOldestToNewest);
+            
+            _timerState = TimerState.Stopped;
+            if (IsolatedStorageFile.GetUserStoreForApplication().FileExists("restart.bin")) GetRestartTime();
+
+            lblDailyTextDate.Text = DateTime.Now.ToLongDateString();
+            if (lblDailyTextDate.Text.Length >= 26) {
+                lblDailyTextDate.Text = string.Format("{0:ddd} {0:MMM}. {0:dd}, {0:yyyy}", DateTime.Today);
+            }
+
+            var ss = new DailyTextScraper();
+
+            ss.DailyTextRetrieved += ss_DailyTextRetrieved;
+
+            ss.StartDailyTextRetrieval(DateTime.Now);
         }
 
         /// <summary>
@@ -359,26 +383,6 @@ namespace FieldService
                 ClearRestartTime();
             }
 
-        }
-
-        /// <summary>
-        /// Called when a page becomes the active page in a frame.
-        /// </summary>
-        /// <param name="e">An object that contains the event data.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-
-            lblDailyTextDate.Text = DateTime.Now.ToLongDateString();
-            if (lblDailyTextDate.Text.Length >= 26) {
-                lblDailyTextDate.Text = string.Format("{0:ddd} {0:MMM}. {0:dd}, {0:yyyy}", DateTime.Today);
-            }
-
-            var ss = new DailyTextScraper();
-
-            ss.DailyTextRetrieved += ss_DailyTextRetrieved;
-
-            ss.StartDailyTextRetrieval(DateTime.Now);
         }
 
         /// <summary>

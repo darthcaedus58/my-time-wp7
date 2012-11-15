@@ -9,6 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "Controls\Contro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelLab", "PixelLab\PixelLab.csproj", "{DA7FA58C-B262-4FAF-A9C3-9B9690AE2EC5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MarketPlaceItems", "MarketPlaceItems", "{D04E7F98-733D-46D7-A8C4-821E9DF08591}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tiles", "Tiles", "{58A3327B-B04A-4C80-B7A7-8124D4FAC791}"
+	ProjectSection(SolutionItems) = preProject
+		MyTime\ApplicationIcon.png = MyTime\ApplicationIcon.png
+		MyTime\MarketplaceIcon.png = MyTime\MarketplaceIcon.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -40,5 +48,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{58A3327B-B04A-4C80-B7A7-8124D4FAC791} = {D04E7F98-733D-46D7-A8C4-821E9DF08591}
 	EndGlobalSection
 EndGlobal

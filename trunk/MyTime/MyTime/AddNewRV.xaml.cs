@@ -113,6 +113,7 @@ namespace FieldService
             } else {
                 ApplicationBar.Mode = ApplicationBarMode.Default;
             }
+            SetInfoText();
         }
 
         /// <summary>
@@ -147,7 +148,7 @@ namespace FieldService
             ReturnVisitData newRv = null;
             try {
                 if (!ValidateRVData()) {
-                    App.ToastMe("At a minimum you must a valid address filled out to save an rv.");
+                    App.ToastMe("At a minimum you must a valid address to save.");
                     return;
                 }
 
@@ -197,7 +198,7 @@ namespace FieldService
         private void bAddVisit_Click(object sender, RoutedEventArgs e)
         {
             if (_currentReturnVisitData == null || _currentReturnVisitData.ItemId < 0) {
-                App.ToastMe("Please save this contact record before trying to add a visit.");
+                App.ToastMe("Please save this contact record first.");
                 return;
             }
             NavigationService.Navigate(new Uri(String.Format("/ModifyCall.xaml?rvid={0}", _currentReturnVisitData == null ? "-1" : _currentReturnVisitData.ItemId.ToString(CultureInfo.InvariantCulture)), UriKind.Relative));
