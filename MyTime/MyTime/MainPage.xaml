@@ -32,7 +32,7 @@
                 <ImageBrush ImageSource="PanoramaBackground.png" />
             </controls:Panorama.Background>
             <toolkit:WrapPanel Height="Auto" MinHeight="522" Name="wpMainOptions" Orientation="Vertical">
-                <ItemsControl Margin="0,0,0,0" ItemsSource="{Binding lbMainMenuItems}" MinHeight="522" Name="lbMainMenuItems">
+                <ItemsControl Tap="lbMainMenuItems_Tap" Margin="0,0,0,0" ItemsSource="{Binding lbMainMenuItems}" MinHeight="522" Name="lbMainMenuItems" >
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="20,10,10,-5" Orientation="Horizontal">
@@ -71,7 +71,7 @@
                                 <StackPanel Margin="0,0,0,17" Orientation="Horizontal">
                                     <Image Height="100" Width="100" Source="{Binding ImageSource}" />
                                     <StackPanel Width="311">
-                                        <TextBlock Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" Text="{Binding Name}" TextWrapping="Wrap" />
+                                        <TextBlock FontWeight="ExtraBold"  Style="{StaticResource PhoneTextLargeStyle}" Foreground="Black"  Text="{Binding Name}" TextWrapping="Wrap" />
                                         <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Margin="12,-6,12,0" Text="{Binding LineOne}" TextWrapping="Wrap" />
                                         <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Margin="12,-6,12,0" Text="{Binding LineTwo}" TextWrapping="Wrap" />
                                         <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Margin="12,-6,12,0" Foreground="PaleVioletRed" Text="{Binding LineThree}" TextWrapping="Wrap" />
