@@ -50,6 +50,10 @@
                             <TextBlock Name="tbCoreVersion" />
                         </StackPanel>
                         <TextBlock Text="Copyright © Square.HipToBe 2012" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Name="tbIsTrial" />
+                            <HyperlinkButton FontSize="22" Name="bBuyMePleasePleaseBuyMe" Visibility="Collapsed" HorizontalAlignment="Left" Content="(Buy me)" Click="bBuyMePleasePleaseBuyMe_Click" />
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
                 <Grid Row="1">

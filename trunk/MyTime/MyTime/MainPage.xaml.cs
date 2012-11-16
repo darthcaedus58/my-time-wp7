@@ -127,16 +127,13 @@ namespace FieldService
         /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
+            if (!App.ViewModel.IsMainMenuLoaded) App.ViewModel.LoadMainMenu();
+
             _bwLoadRvs.RunWorkerAsync();
         }
 
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (App.ViewModel.IsRvDataLoaded) {
-                App.ViewModel.lbRvItems.Clear();
-            }
-
-            App.ViewModel.LoadMainMenu();
             App.ViewModel.LoadReturnVisitList(SortOrder.DateOldestToNewest);
             
             _timerState = TimerState.Stopped;
@@ -619,5 +616,10 @@ namespace FieldService
         private void abibStop_Tap(object sender, GestureEventArgs e) { TimerStopClickTapEvent(); }
 
         private void abibAddIt_Tap(object sender, GestureEventArgs e) { TimeAdditClickTapEvent(); }
+
+        private void lbMainMenuItems_Tap(object sender, GestureEventArgs e)
+        {
+
+        }
     }
 }

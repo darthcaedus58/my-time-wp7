@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
 using MyTimeDatabaseLib;
+using Microsoft.Phone.Marketplace;
 
 namespace FieldService
 {
@@ -25,6 +26,8 @@ namespace FieldService
     /// </summary>
     public partial class SettingsPage : PhoneApplicationPage
     {
+        private bool _isTrial;
+
         /// <summary>
         /// Initializes a new instance of the Settings class.
         /// </summary>
@@ -33,6 +36,7 @@ namespace FieldService
             DataContext = App.ViewModel;
             InitializeComponent();
             Loaded += Settings_Loaded;
+            _isTrial = (new LicenseInformation()).IsTrial();
         }
 
         #region Events
@@ -78,6 +82,8 @@ namespace FieldService
 
             tbAppVersion.Text = App.GetVersion();
             tbCoreVersion.Text = Main.GetVersion();
+            tbIsTrial.Text = string.Format("Version Type:\t{0}", _isTrial ? "Trial Mode" : "Paid Mode (Thank You!!)");
+            bBuyMePleasePleaseBuyMe.Visibility = _isTrial ? Visibility.Visible : Visibility.Collapsed;
         }
 
         /// <summary>
@@ -98,6 +104,12 @@ namespace FieldService
             App.AppSettingsProvider.SaveSettings();
 
             base.OnNavigatedFrom(e);
+        }
+
+        private void bBuyMePleasePleaseBuyMe_Click(object sender, RoutedEventArgs e)
+        {
+            var mdt = new MarketplaceDetailTask();
+            mdt.Show();
         }
     }
 }

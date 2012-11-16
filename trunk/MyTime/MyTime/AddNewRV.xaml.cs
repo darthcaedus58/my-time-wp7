@@ -146,47 +146,53 @@ namespace FieldService
         private void appbar_save_Click(object sender, EventArgs e)
         {
             ReturnVisitData newRv = null;
+            int rvItemId = -1;
             try {
                 if (!ValidateRVData()) {
                     App.ToastMe("At a minimum you must a valid address to save.");
                     return;
                 }
 
-                var wb = new WriteableBitmap((int) mapInfo.Width, (int) mapInfo.Height);
+                var wb = new WriteableBitmap((int)mapInfo.Width, (int)mapInfo.Height);
                 //var t = new TranslateTransform {X = -((mapInfo.Width/2) - 50), Y = -((mapInfo.Height/2) - 50)};
                 wb.Render(mapInfo, new TranslateTransform());
                 wb.Invalidate();
 
-                newRv = new ReturnVisitData {
-                                                AddressOne = tbAddress1.Text,
-                                                AddressTwo = tbAddress2.Text,
-                                                City = tbCity.Text,
-                                                Country = _currentBingGeocodeLocation.Address.CountryRegion,
-                                                StateProvince = tbDistrict.Text,
-                                                PostalCode = tbZipCode.Text,
-                                                Age = dlsAge.Text,
-                                                Gender = lpGender.SelectedItem.ToString(),
-                                                FullName = tbFullName.Text,
-                                                DateCreated = DateTime.Now,
-                                                OtherNotes = tbOtherNotes.Text,
-                                                PhysicalDescription = tbDescription.Text,
-                                                ImageSrc = wb.Pixels,
-                                                PhoneNumber = tbPhoneNumber.Text
-                                            };
-
-                ReturnVisitsInterface.AddNewReturnVisit(newRv);
+                newRv = new ReturnVisitData
+                {
+                    AddressOne = tbAddress1.Text,
+                    AddressTwo = tbAddress2.Text,
+                    City = tbCity.Text,
+                    Country = _currentBingGeocodeLocation.Address.CountryRegion,
+                    StateProvince = tbDistrict.Text,
+                    PostalCode = tbZipCode.Text,
+                    Age = dlsAge.Text,
+                    Gender = lpGender.SelectedItem.ToString(),
+                    FullName = tbFullName.Text,
+                    DateCreated = DateTime.Now,
+                    OtherNotes = tbOtherNotes.Text,
+                    PhysicalDescription = tbDescription.Text,
+                    ImageSrc = wb.Pixels,
+                    PhoneNumber = tbPhoneNumber.Text
+                };
+                if (_currentReturnVisitData != null && _currentReturnVisitData.ItemId >= 0) {
+                    rvItemId = ReturnVisitsInterface.UpdateReturnVisit(_currentReturnVisitData.ItemId, newRv);
+                } else {
+                    rvItemId = ReturnVisitsInterface.AddNewReturnVisit(newRv);
+                }
                 App.ToastMe(String.Format("Return Visit {0}.", _currentReturnVisitData == null ? "Added" : "Saved"));
-                _currentReturnVisitData = newRv;
             } catch (ReturnVisitAlreadyExistsException ee) {
                 if (_currentReturnVisitData != null && newRv != null) {
                     ReturnVisitsInterface.UpdateReturnVisit(_currentReturnVisitData.ItemId, newRv);
                     App.ToastMe("Return Visit Saved.");
-                    _currentReturnVisitData = newRv;
                 } else {
                     MessageBox.Show("Can't Add.\n\nException:\n" + ee.Message);
                 }
             } catch (Exception ee) {
                 MessageBox.Show("Can't Add.\n\nException:\n" + ee.Message);
+            } finally {
+                if (rvItemId >= 0)
+                    _currentReturnVisitData = ReturnVisitsInterface.GetReturnVisit(rvItemId);
             }
         }
 
@@ -268,7 +274,7 @@ namespace FieldService
             var p = new Pushpin {Location = e.Result.Results[0].Locations[0]};
             mapInfo.Children.Clear();
             mapInfo.Children.Add(p);
-            mapInfo.SetView(p.Location, 11);
+            mapInfo.SetView(p.Location, 15);
         }
 
         /// <summary>
