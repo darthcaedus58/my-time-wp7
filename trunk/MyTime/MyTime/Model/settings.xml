@@ -3,7 +3,7 @@
     <Setting Name="" Type="Header" Value="Sharing Options" />
     <Setting Name="csoEmail" FriendlyName="Congregation Service Overseer" Type="ContactChooser" Value="" AddressType="Email" ContactDisplayName="" />
     <Setting Name="" Type="Note" Value="Tap the button above to choose the contact record of your CSO." />
-    <Setting Name="sharefsapp" FriendlyName="Include 'Feild Service' Signature" Type="Boolean" Value="True" />
+    <Setting Name="sharefsapp" FriendlyName="Include 'Field Service' Signature" Type="Boolean" Value="True" />
     <Setting Name="" Type="Note" Value="Signature only included on emailed reports. Its left off of SMS reports." />
     <!--<Setting Name="SOSendMethod" FriendlyName="Service Report Send Method" Type="StringArray" Value="Email">
         <StringItem Value="Email" />
