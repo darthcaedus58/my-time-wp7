@@ -77,7 +77,9 @@ namespace FieldService
             pbGetAddress.IsIndeterminate = true;
             _address = lblInfo_AddressFull.Content.ToString();
             _fullName = lblInfo_FullName.Text;
-            dlsAge.Text = App.AppSettingsProvider["dfltAgeValue"] == null ? "30" : App.AppSettingsProvider["dfltAgeValue"].Value;
+            try {
+                dlsAge.Text = App.AppSettingsProvider["dfltAgeValue"] == null ? "30" : App.AppSettingsProvider["dfltAgeValue"].Value;
+            } catch { }
             string[] genders = {"Male", "Female"};
             lpGender.ItemsSource = genders;
             lpGender.SelectedIndex = 0;
@@ -270,7 +272,7 @@ namespace FieldService
         /// <param name="e">The <see cref="GeocodeCompletedEventArgs" /> instance containing the event data.</param>
         private void geocodeService_GeocodeCompleted(object sender, GeocodeCompletedEventArgs e)
         {
-            if (e.Result.Results == null || e.Result.Results.Count == 0) return;
+            if (e.Result == null || e.Result.Results == null || e.Result.Results.Count == 0) return;
             var p = new Pushpin {Location = e.Result.Results[0].Locations[0]};
             mapInfo.Children.Clear();
             mapInfo.Children.Add(p);
@@ -284,7 +286,7 @@ namespace FieldService
         /// <param name="e">The <see cref="ReverseGeocodeCompletedEventArgs" /> instance containing the event data.</param>
         private void geocodeService_ReverseGeocodeCompleted(object sender, ReverseGeocodeCompletedEventArgs e)
         {
-            if (e.Result.Results == null || e.Result.Results.Count == 0) return;
+            if (e.Result == null || e.Result.Results == null || e.Result.Results.Count == 0) return;
             GeocodeResult results = e.Result.Results[0];
             if (results == null) return;
             foreach (GeocodeResult r in e.Result.Results) {
