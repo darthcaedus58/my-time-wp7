@@ -22,14 +22,14 @@
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>-->
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.ColumnDefinitions>
+    <Grid x:Name="LayoutRoot" Background="WhiteSmoke">
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="26*" />
             <ColumnDefinition Width="454*" />
-        </Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>-->
         <controls:Panorama Grid.Column="1" Margin="0,0,-26,0" Foreground="{StaticResource PhoneForegroundBrush}" Title="Field Service">
             <controls:Panorama.Background>
-                <ImageBrush ImageSource="PanoramaBackground.png" />
+                <ImageBrush ImageSource="PanoramaBackground.png" Opacity="0.6" />
             </controls:Panorama.Background>
             <toolkit:WrapPanel Height="Auto" MinHeight="522" Name="wpMainOptions" Orientation="Vertical">
                 <ItemsControl Tap="lbMainMenuItems_Tap" Margin="0,0,0,0" ItemsSource="{Binding lbMainMenuItems}" MinHeight="522" Name="lbMainMenuItems" >
