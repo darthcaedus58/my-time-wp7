@@ -484,6 +484,9 @@ namespace FieldService
                 case "settings":
                     NavigationService.Navigate(new Uri("/SettingsPage.xaml", UriKind.Relative));
                     break;
+                case "backup & restore":
+                    NavigationService.Navigate(new Uri("/BackupAndRestorePage.xaml", UriKind.Relative));
+                    break;
                 default:
                     if (v.Equals(month)) {
                         ShowMonthlyReport();
