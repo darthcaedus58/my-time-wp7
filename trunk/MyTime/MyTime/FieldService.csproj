@@ -83,6 +83,8 @@
       <HintPath>..\..\..\..\..\Downloads\MvvmSettings\MvvmSettings\Bin\Debug\IsolatedStorageExplorer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Devices.Sensors" />
+    <Reference Include="Microsoft.Live, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Live.Controls, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls" />
     <Reference Include="Microsoft.Phone.Controls.Maps, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
@@ -123,6 +125,9 @@
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BackupAndRestorePage.xaml.cs">
+      <DependentUpon>BackupAndRestorePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="LittleWatson.cs" />
     <Compile Include="SettingsProvider.cs" />
@@ -165,6 +170,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="BackupAndRestorePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ModifyCall.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -209,6 +218,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="icons\clock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\cloud.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="icons\download.png">
@@ -356,6 +368,10 @@
     <WCFMetadataStorage Include="Service References\BingMapsGeocodeService\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Downloads\slsharpziplib-99885\trunk\SharpZipLib.Silverlight\SharpZipLib.WindowsPhone7.csproj">
+      <Project>{7B257BE0-BAA4-4877-800C-05DDDAFB6443}</Project>
+      <Name>SharpZipLib.WindowsPhone7</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Controls\Controls.csproj">
       <Project>{7C0E2130-D087-43E2-BDF1-686A4CDB88ED}</Project>
       <Name>Controls</Name>

@@ -23,6 +23,7 @@ using System.Windows.Media;
 using System.Windows.Navigation;
 using Coding4Fun.Phone.Controls;
 using FieldService.ViewModels;
+using Microsoft.Live;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.Tasks;
@@ -114,6 +115,8 @@ namespace FieldService
         /// <value>The root frame.</value>
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
+
+        public static LiveConnectSession LiveSession { get; set; }
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched

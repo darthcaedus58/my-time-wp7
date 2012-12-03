@@ -238,7 +238,11 @@ namespace FieldService.ViewModels
             //lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "custom report", MenuItemName = "miCustomReport", IconUri = "/icons/search.png", MenuImageName = "CustomReportImage"});
 
             lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "watchtower library", MenuItemName = "miWtLib", IconUri = "/icons/webinar.png", MenuImageName = "OpenWtLibImage"});
-
+#if DEBUG
+            lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "backup & restore", MenuImageName = "miBupReStr", IconUri = "/icons/cloud.png", MenuItemName = "CloudBackupImg"});
+#else
+            lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "buy cloud backup", MenuItemName = "miBuyCloud", IconUri = "/icons/cloud.png", MenuImageName = "BuyCloudImg"});
+#endif
             lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "settings", MenuItemName = "abmiManuallyEnter", MenuImageName = "SettingsImage", IconUri = "/icons/tasks.png"});
             IsMainMenuLoaded = true;
         }
