@@ -76,9 +76,8 @@ namespace FieldService
 
         private void RefreshTimeReport()
         {
-            TimeData[] entries = TimeDataInterface.GetEntries(_fromDate, _toDate, SortOrder.DateOldestToNewest);
-            App.ViewModel.LoadTimeReport(entries);
-
+            App.ViewModel.LoadTimeReport(Reporting.BuildTimeReport(_fromDate, _toDate, SortOrder.DateOldestToNewest));
+            
             tbFromDate.Text = string.Format("FROM:\t\t{0}", _fromDate.ToShortDateString());
             tbToDate.Text = string.Format("TO:\t\t\t{0}", _toDate.ToShortDateString());
 
@@ -89,9 +88,8 @@ namespace FieldService
                                                     IndependentValuePath = "Header",
                                                     Title = "Time in Hours",
                                                 });
-
-            //myChartMainSeries.ItemsSource = new ChartData();
         }
+
 
         /// <summary>
         /// Handles the SelectionChanged event of the lbEntries control.
@@ -103,6 +101,26 @@ namespace FieldService
             if (lbEntries.SelectedIndex < 0) return;
             NavigationService.Navigate(new Uri("/ManuallyEnterTime.xaml?id=" + ((TimeReportEntryViewModel) lbEntries.SelectedItem).ItemId.ToString(CultureInfo.InvariantCulture), UriKind.Relative));
             lbEntries.SelectedIndex = -1;
+        }
+
+        private void miShareReport_Click(object sender, EventArgs e)
+        {
+            //
+            var entries = new ChartData();
+
+            string body = string.Empty;
+            foreach (var entry in App.ViewModel.icReport) {
+                body += string.Format("Report for {0}:\n\n", entry.Month);
+                body += string.Format("Hours:\t\t{0:0.00}\n", ((double)entry.Minutes / 60.0));
+                body += entry.Magazines > 0 ? string.Format("Magazines:\t{0}\n", entry.Magazines) : string.Empty;
+                body += entry.Books > 0 ? string.Format("Books:\t\t{0}\n", entry.Books) : string.Empty;
+                body += entry.Brochures > 0 ? string.Format("Brochures:\t{0}\n", entry.Brochures) : string.Empty;
+                body += entry.ReturnVisits > 0 ? string.Format("Return Visits:\t{0}\n", entry.ReturnVisits) : string.Empty;
+                body += entry.BibleStudies > 0 ? string.Format("Bible Studies:\t{0}", entry.BibleStudies) : string.Empty;
+                body += "\n\n";
+            }
+
+            Reporting.SendReport(body);
         }
 
         #endregion

@@ -45,7 +45,14 @@ namespace FieldService
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
-        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e) { }
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            bool countCalls = bool.Parse(App.AppSettingsProvider["AddCallPlacements"].Value);
+            if (countCalls) {
+                tbReturnVisits.Visibility = Visibility.Collapsed;
+                lblReturnVisits.Visibility = Visibility.Collapsed;
+            }
+        }
 
         /// <summary>
         /// Handles the KeyDown event of the TextBoxMasking control.

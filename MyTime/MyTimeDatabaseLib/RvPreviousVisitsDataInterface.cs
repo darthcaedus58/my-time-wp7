@@ -175,6 +175,36 @@ namespace MyTimeDatabaseLib
                 } catch (Exception) {}
             }
         }
+
+        public static RvPreviousVisitData[] GetCallsByDate(DateTime @from, DateTime tod)
+        {
+            //
+            using (var db = new RvPreviousVisitsContext(RvPreviousVisitsContext.DBConnectionString)) {
+                try {
+                    var calls = from x in db.RvPreviousVisitItems
+                                where x.Date >= @from && x.Date <= tod
+                                select x;
+                    if (calls.Any()) {
+                        List<RvPreviousVisitData> retCalls = new List<RvPreviousVisitData>();
+                        foreach (var c in calls) {
+                            retCalls.Add(new RvPreviousVisitData() {
+                                                                       Books = c.Books,
+                                                                       Brochures = c.Brochures,
+                                                                       Date = c.Date,
+                                                                       ItemId = c.ItemId,
+                                                                       Magazines = c.Magazines,
+                                                                       Notes = c.Notes,
+                                                                       RvItemId = c.RvItemId
+                                                                   });
+                        }
+                        return retCalls.ToArray();
+                    }
+                } catch {
+                    return null;
+                }
+            }
+            return null;
+        }
     }
 
     /// <summary>

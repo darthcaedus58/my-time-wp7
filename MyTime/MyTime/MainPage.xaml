@@ -143,7 +143,7 @@
                                 </StackPanel>
                                 <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
                                     <TextBox Margin="0,-5,0,0" Width="75" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" Name="tbReturnVisits" />
-                                    <TextBlock Margin="0,0,0,0" Text="Return Visits" VerticalAlignment="Center" />
+                                    <TextBlock Name="lblReturnVisits" Margin="0,0,0,0" Text="Return Visits" VerticalAlignment="Center" />
                                 </StackPanel>
                                 <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
                                     <TextBox Margin="0,-5,0,0" Width="75" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" Name="tbBibleStudies" />

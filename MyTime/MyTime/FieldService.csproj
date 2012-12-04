@@ -130,6 +130,7 @@
       <DependentUpon>BackupAndRestorePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="LittleWatson.cs" />
+    <Compile Include="Reporting.cs" />
     <Compile Include="SettingsProvider.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

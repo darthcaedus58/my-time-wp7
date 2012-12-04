@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Settings xmlns="http://www.inputstudiowp7.com/schemas">
-    <Setting Name="" Type="Header" Value="Sharing Options" />
+    <Setting Name="shareOptsHdr" Type="Header" Value="Sharing Options" />
     <Setting Name="csoEmail" FriendlyName="Congregation Service Overseer" Type="ContactChooser" Value="" AddressType="Email" ContactDisplayName="" />
-    <Setting Name="" Type="Note" Value="Tap the button above to choose the contact record of your CSO." />
+    <Setting Name="contactNotes" Type="Note" Value="Tap the button above to choose the contact record of your CSO." />
     <Setting Name="sharefsapp" FriendlyName="Include 'Field Service' Signature" Type="Boolean" Value="True" />
-    <Setting Name="" Type="Note" Value="Signature only included on emailed reports. Its left off of SMS reports." />
+    <Setting Name="SiggyNotes" Type="Note" Value="Signature only included on emailed reports. Its left off of SMS reports." />
     <!--<Setting Name="SOSendMethod" FriendlyName="Service Report Send Method" Type="StringArray" Value="Email">
         <StringItem Value="Email" />
         <StringItem Value="Text Message (SMS)" />
     </Setting>-->
-    <Setting Name="" Type="Header" Value="Personal Settings" />
+    <Setting Name="PersonalSettingsHdr" Type="Header" Value="Personal Settings" />
     <Setting Name="NickName" FriendlyName="Nick Name" Type="String" Value="" />
     <Setting Name ="dfltAgeValue" FriendlyName="Default Age" Type="Integer" Value="18" />
-    <Setting Name="" Type="Header" Value="Application Setting" />
-    <Setting Name="AddCallPlacements" FriendlyName="Add Call Placements" Type="Boolean" Value="False"/>
-    <Setting Name="" Type="Note" Value="If set to 'on' placements recorded on a return visit call will count towards your monthly report. If you set this to 'off' you will have to enter your placements twice (on the call and on the add time screen)."
+    <Setting Name="AppSettingsHdr" Type="Header" Value="Application Setting" />
+    <Setting Name="AddCallPlacements" FriendlyName="Add Call Placements" Type="Boolean" Value="True"/>
+    <Setting Name="AddCallPlacementsHdr" Type="Note" Value="If set to 'on' placements recorded on a return visit call will count towards your monthly report. If you set this to 'off' you will have to enter your placements twice (on the call and on the add time screen)." />
     <Setting Name="cloudPurchased" FriendlyName="" ShowInSettingsPage="false" Type="Boolean" Value="False"/>
     <Setting Name="beautifyPhoneNumber" FriendlyName="Beautify Phone Numbers (US Only)" Type="Boolean" Value="True" />
     <Setting Name="roundtime" FriendlyName="Round Time (15 Minute Increments)" Type="Boolean" Value="True" />
