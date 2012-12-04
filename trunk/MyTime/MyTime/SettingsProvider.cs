@@ -160,15 +160,19 @@ namespace FieldService
             try {
                 if (isoStore.FileExists(fileName)) {
                     var ser = new XmlSerializer(typeof (Settings), "http://www.inputstudiowp7.com/schemas");
+                    Settings Current;
                     using (var reader = new StreamReader(new IsolatedStorageFileStream(fileName, FileMode.Open, isoStore))) {
                         //buffer used to remove extra characters added by serializer?
                         string buffer = reader.ReadToEnd();
                         buffer = buffer.Substring(0, buffer.IndexOf("/Settings>", StringComparison.Ordinal) + "/Settings>".Length);
                         //using (XmlReader rdr = XmlReader.Create(new StringReader(reader.ReadToEnd())))
                         using (XmlReader rdr = XmlReader.Create(new StringReader(buffer))) {
-                            return (Settings) ser.Deserialize(rdr);
+                            var current = (Settings) ser.Deserialize(rdr);
+                            Current = CheckSettingsUpgrade(isoStore, current); //check for upgraded setttings
                         }
                     }
+                    WriteToFile(isoStore, Current, "settings.xml"); //upgrade the settings file
+                    return Current;
                 }
                 var settings = (Settings) new XmlSerializer(typeof (Settings))
                                               .Deserialize(XmlReader.Create("Model/settings.xml"));
@@ -179,6 +183,30 @@ namespace FieldService
             }
 
             return null;
+        }
+
+        private Settings CheckSettingsUpgrade(IsolatedStorageFile isoStore, Settings current)
+        {
+            var previous = (Settings) new XmlSerializer(typeof (Settings)).Deserialize(XmlReader.Create("Model/settings.xml"));
+            if (current.SettingsCollection == null) {
+                return previous;
+            }
+            foreach (var s in previous.SettingsCollection) {
+                bool found = false;
+                foreach (var c in current.SettingsCollection) {
+                    if (s.Name.Equals(c.Name)) {
+                        found = true;
+                        c.FriendlyName = s.FriendlyName;
+                        c.ShowInSettingsPage = s.ShowInSettingsPage;
+                        c.Type = s.Type;
+                        if (c.Type == eDataType.Header || c.Type == eDataType.Note)
+                            c.Value = s.Value;
+                        break;
+                    }
+                }
+                if (!found) current.SettingsCollection.Add(s);
+            }
+            return current;
         }
 
         /// <summary>

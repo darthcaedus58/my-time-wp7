@@ -19,6 +19,7 @@ using System.IO;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Microsoft.Phone.Marketplace;
 using MyTimeDatabaseLib;
 
 namespace FieldService.ViewModels
@@ -241,7 +242,10 @@ namespace FieldService.ViewModels
 #if DEBUG
             lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "backup & restore", MenuImageName = "miBupReStr", IconUri = "/icons/cloud.png", MenuItemName = "CloudBackupImg"});
 #else
-            lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "buy cloud backup", MenuItemName = "miBuyCloud", IconUri = "/icons/cloud.png", MenuImageName = "BuyCloudImg"});
+            if((new LicenseInformation()).IsTrial())
+                lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "buy cloud backup", MenuItemName = "miBuyCloud", IconUri = "/icons/cloud.png", MenuImageName = "BuyCloudImg"});
+            else 
+                lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "backup & restore", MenuImageName = "miBupReStr", IconUri = "/icons/cloud.png", MenuItemName = "CloudBackupImg"});
 #endif
             lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "settings", MenuItemName = "abmiManuallyEnter", MenuImageName = "SettingsImage", IconUri = "/icons/tasks.png"});
             IsMainMenuLoaded = true;

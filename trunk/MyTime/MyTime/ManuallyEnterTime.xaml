@@ -51,7 +51,7 @@
                     </StackPanel>
                     <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
                         <TextBox Width="75" Margin="0,0,0,0" Name="tbReturnVisits" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
-                        <TextBlock Margin="0,0,0,0" Text="Return Visits" VerticalAlignment="Center" />
+                        <TextBlock Name="lblReturnVisits" Margin="0,0,0,0" Text="Return Visits" VerticalAlignment="Center" />
                     </StackPanel>
                     <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
                         <TextBox Width="75" Margin="0,0,0,0" Name="tbBibleStudies" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />

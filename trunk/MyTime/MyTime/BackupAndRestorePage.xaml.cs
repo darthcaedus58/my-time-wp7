@@ -110,8 +110,8 @@ namespace FieldService
             //
             using (var store = IsolatedStorageFile.GetUserStoreForApplication()) {
                 using (var zip = new ZipInputStream(file)) {
-                    while (true) {
-                        try {
+                    try {
+                        while (true) {
                             var ze = zip.GetNextEntry();
                             if (ze == null) break;
                             using (var f = new IsolatedStorageFileStream(ze.Name, FileMode.Create, store)) {
@@ -119,11 +119,13 @@ namespace FieldService
                                 zip.Read(fs, 0, fs.Length);
                                 f.Write(fs, 0, fs.Length);
                             }
-                        } catch {
-                            lblLastBackup.Text = "Restore Failed.";
-                            App.ToastMe("Restore Failed.");
-                            return;
                         }
+                    } catch {
+                        lblLastBackup.Text = "Restore Failed.";
+                        App.ToastMe("Restore Failed.");
+                        return;
+                    } finally {
+                        file.Close();
                     }
                 }
             }
