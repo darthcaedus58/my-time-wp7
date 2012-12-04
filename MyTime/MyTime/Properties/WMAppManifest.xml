@@ -3,7 +3,7 @@
   <App xmlns="" ProductID="{8b3bcb2e-a061-480b-95be-0daec811077f}" 
        Title="Field Service" 
        RuntimeType="Silverlight" 
-       Version="1.0.2.0" 
+       Version="1.0.4.0" 
        Genre="apps.normal" 
        Author="Square.HipToBe" 
        Description="Field Service Application for Jehovah's Witnesses to manage their ministry." 
