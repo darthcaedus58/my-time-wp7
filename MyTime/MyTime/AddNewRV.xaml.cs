@@ -65,6 +65,8 @@ namespace FieldService
         /// </summary>
         private GeoCoordinateWatcher _gcw;
 
+        private bool _useLocationServices = true;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="AddNewRV" /> class.
         /// </summary>
@@ -79,6 +81,7 @@ namespace FieldService
             _fullName = lblInfo_FullName.Text;
             try {
                 dlsAge.Text = App.AppSettingsProvider["dfltAgeValue"] == null ? "30" : App.AppSettingsProvider["dfltAgeValue"].Value;
+                _useLocationServices = bool.TrueString.Equals(App.AppSettingsProvider["UseLocationServices"].Value, StringComparison.InvariantCultureIgnoreCase) ? true : false;
             } catch { }
             string[] genders = {"Male", "Female"};
             lpGender.ItemsSource = genders;
@@ -95,10 +98,14 @@ namespace FieldService
         /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
-            _gcw = new GeoCoordinateWatcher();
             mapInfo.SetView(new GeoCoordinate(40, -95), 4);
-            _gcw.PositionChanged += currentLocation_PositionChanged;
-            _gcw.Start(true);
+            if (_useLocationServices) {
+                _gcw = new GeoCoordinateWatcher();
+                _gcw.PositionChanged += currentLocation_PositionChanged;
+                _gcw.Start(true);
+            } else {
+                spAddressFinder.Visibility = Visibility.Collapsed;
+            }
             RefreshVisitList();
         }
 
