@@ -13,6 +13,8 @@
     <Setting Name="NickName" FriendlyName="Nick Name" Type="String" Value="" />
     <Setting Name ="dfltAgeValue" FriendlyName="Default Age" Type="Integer" Value="18" />
     <Setting Name="AppSettingsHdr" Type="Header" Value="Application Setting" />
+    <Setting Name="UseLocationServices" FriendlyName="Use Location Services" Type="Boolean" Value="True" />
+    <Setting Name="PrivacyPolicy" Type="Note" Value="Privacy Policy: This app uses location services to find your address when entering a new return visit. While the address you enter is stored, the GPS location data recorded while searching for an address is never stored or transmitted." />
     <Setting Name="AddCallPlacements" FriendlyName="Add Call Placements" Type="Boolean" Value="True"/>
     <Setting Name="AddCallPlacementsHdr" Type="Note" Value="If set to 'on' placements recorded on a return visit call will count towards your monthly report. If you set this to 'off' you will have to enter your placements twice (on the call and on the add time screen)." />
     <Setting Name="cloudPurchased" FriendlyName="" ShowInSettingsPage="false" Type="Boolean" Value="False"/>
