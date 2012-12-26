@@ -348,6 +348,7 @@ namespace FieldService
             tbCity.Text = _currentBingGeocodeLocation.Address.Locality;
             tbZipCode.Text = _currentBingGeocodeLocation.Address.PostalCode;
             tbDistrict.Text = _currentBingGeocodeLocation.Address.AdminDistrict;
+            tbCountry.Text = _currentBingGeocodeLocation.Address.CountryRegion;
         }
 
         /// <summary>
@@ -525,12 +526,14 @@ namespace FieldService
                 tbAddress2.Text = rv.AddressTwo;
                 tbCity.Text = rv.City;
                 tbDistrict.Text = rv.StateProvince;
-                tbFullName.Text = rv.FullName;
+                tbCountry.Text = rv.Country;
                 tbOtherNotes.Text = rv.OtherNotes;
+                tbFullName.Text = rv.FullName;
                 tbZipCode.Text = rv.PostalCode;
                 tbPhoneNumber.Text = rv.PhoneNumber;
                 lpGender.SelectedItem = rv.Gender;
                 dlsAge.Text = rv.Age;
+                tbDescription.Text = rv.PhysicalDescription;
                 SetInfoText();
                 //appbar_delete.IsEnabled = true;
             } catch (Exception) {}
@@ -630,8 +633,8 @@ namespace FieldService
             lblInfo_FullName.Text = String.Format(_fullName, tbFullName.Text);
             lblInfo_Age.Text = String.Format("{0} year old {1}", dlsAge.Text, lpGender.SelectedItem);
             lblInfo_telephone.Content = BeautifyPhoneNumber(tbPhoneNumber.Text);
-            if (!String.IsNullOrEmpty(tbAddress1.Text) && !String.IsNullOrEmpty(tbCity.Text) && !String.IsNullOrEmpty(tbDistrict.Text))
-                MakeGeocodeRequest(new Address {AddressLine = tbAddress1.Text, AdminDistrict = tbDistrict.Text, Locality = tbCity.Text, PostalCode = tbZipCode.Text, CountryRegion = _currentBingGeocodeLocation != null ? _currentBingGeocodeLocation.Address.CountryRegion : _currentReturnVisitData.Country});
+            if (!String.IsNullOrEmpty(tbAddress1.Text) && !String.IsNullOrEmpty(tbCity.Text))
+                MakeGeocodeRequest(new Address {AddressLine = tbAddress1.Text, AdminDistrict = tbDistrict.Text, Locality = tbCity.Text, PostalCode = tbZipCode.Text, CountryRegion = string.IsNullOrEmpty(tbCountry.Text) ? _currentBingGeocodeLocation != null ? _currentBingGeocodeLocation.Address.CountryRegion : _currentReturnVisitData.Country : tbCountry.Text});
         }
 
         /// <summary>
@@ -664,6 +667,11 @@ namespace FieldService
             }
 
             return phNum;
+        }
+
+        private void tbDistrict_LostFocus(object sender, RoutedEventArgs e)
+        {
+            SetInfoText();
         }
     }
 }
