@@ -1,6 +1,6 @@
 = Field Service for Windows Phone=
 
-[ReleaseNotes]
+[ReleaseNotes Latest Release Notes]
 
 == Getting Started ==
 
@@ -11,4 +11,3 @@ Notes for pulling code:
  * For some reason you have to manually remove and re-add the Service References for the Geocoding Service from Bing Maps. 
 ** Add the following URL: http://dev.virtualearth.net/webservices/v1/geocodeservice/geocodeservice.svc/mex
 ** Use the following namespace: BingMapsGeocodeService
-
