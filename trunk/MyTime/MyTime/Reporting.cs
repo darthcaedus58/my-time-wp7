@@ -54,26 +54,45 @@ namespace FieldService
                 if (countCalls) {
                     RvPreviousVisitData[] calls = RvPreviousVisitsDataInterface.GetCallsByDate(fromDate, toDate);
                     if (calls != null) {
+                        List<int> rvList = new List<int>();
+                        int month = fromDate.Month;
                         List<TimeData> entriesMore = new List<TimeData>(entries);
                         foreach (var c in calls) {
+                            if (c.Date.Month != month) {
+                                month = c.Date.Month;
+                                rvList = new List<int>();
+                            }
                             bool found = false;
                             foreach (var e in entries) {
-                                if (e.Date.Date != c.Date.Date) continue;
+                                if (e.Date.Date != c.Date.Date) continue; 
+                                // Check for call data which happened on the same date as another service day
+                                // If it did, add the values, otherwise continue
                                 e.Magazines += c.Magazines;
                                 e.Books += c.Books;
                                 e.Brochures += c.Brochures;
-                                e.ReturnVisits++;
+                                if (!rvList.Contains(c.RvItemId)) { // don't double count the rv for the month.
+                                    e.ReturnVisits++;
+                                    rvList.Add(c.RvItemId);
+                                }
                                 found = true;
                                 break;
                             }
-                            if (!found)
-                                entriesMore.Add(new TimeData() {
-                                                                   Magazines = c.Magazines,
-                                                                   Books = c.Books,
-                                                                   Brochures = c.Brochures,
-                                                                   Date = c.Date,
-                                                                   ReturnVisits = 1
-                                                               });
+                            if (!found) {        // We found a call, but no service time was recorded on this date
+                                var rvCnt = 0;
+                                if (!rvList.Contains(c.RvItemId)) {
+                                    rvCnt = 1;
+                                    rvList.Add(c.RvItemId);
+                                }
+
+                                entriesMore.Add(new TimeData()
+                                {
+                                    Magazines = c.Magazines,
+                                    Books = c.Books,
+                                    Brochures = c.Brochures,
+                                    Date = c.Date,
+                                    ReturnVisits = rvCnt
+                                });
+                            }
                         }
                         entries = entriesMore.OrderBy(s => s.Date).ToArray();
                     }

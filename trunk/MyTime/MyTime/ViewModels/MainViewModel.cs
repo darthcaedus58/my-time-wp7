@@ -281,6 +281,7 @@ namespace FieldService.ViewModels
 
             int month = entries[0].Date.Month;
             var summary = new TimeReportSummaryViewModel();
+            //ListBox<int> rvList = new ListBox<int>();
             foreach (TimeData td in entries) {
                 if (month != td.Date.Month) {
                     summary.Time = string.Format("{0:0.00} Hour(s)", (minutes/60.0));
