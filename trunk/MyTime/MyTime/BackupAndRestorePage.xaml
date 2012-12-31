@@ -9,14 +9,14 @@
     xmlns:live="clr-namespace:Microsoft.Live.Controls;assembly=Microsoft.Live.Controls"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}"
-     Background="{StaticResource PhoneBackgroundBrush}"
+    Foreground="{StaticResource AppForegroundBrush}"
+     Background="{StaticResource AppBackgroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
+    <Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -24,19 +24,19 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="FIELD SERVICE" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="manage cloud" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Foreground="{StaticResource AppForegroundBrush}" x:Name="ApplicationTitle" Text="FIELD SERVICE" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Foreground="{StaticResource AppForegroundBrush}" x:Name="PageTitle" Text="manage cloud" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel HorizontalAlignment="Left" Name="stackPanel1" VerticalAlignment="Top" >
                 <ProgressBar Name="pbProgress" Visibility="Collapsed" />
-                <TextBlock Text="Please sign-in and allow access to your SkyDrive!" Style="{StaticResource PhoneTextLargeStyle}" TextWrapping="Wrap" />
-                <live:SignInButton SessionChanged="bLiveSignIn_SessionChanged" Name="bLiveSignIn" ClientId="00000000440E1E4C" Scopes="wl.signin wl.basic wl.skydrive wl.skydrive_update" Branding="Skydrive" TextType="SignIn" HorizontalAlignment="Center" />
-                <TextBlock Height="30" Name="lblLoginResult" Text="Not signed in." Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneAccentBrush}" HorizontalAlignment="Center" />
+                <TextBlock Foreground="{StaticResource AppForegroundBrush}" Text="Please sign-in and allow access to your SkyDrive!" Style="{StaticResource PhoneTextLargeStyle}" TextWrapping="Wrap" />
+                <live:SignInButton Foreground="{StaticResource AppForegroundBrush}" BorderBrush="{StaticResource AppForegroundBrush}" SessionChanged="bLiveSignIn_SessionChanged" Name="bLiveSignIn" ClientId="00000000440E1E4C" Scopes="wl.signin wl.basic wl.skydrive wl.skydrive_update" Branding="Skydrive" TextType="SignIn" HorizontalAlignment="Center" />
+                <TextBlock Height="30" Name="lblLoginResult" Text="Not signed in." Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource AppAccentBrush}" HorizontalAlignment="Center" />
                 <Button Click="bBackup_Click" Content="Backup" Height="71" Name="bBackup" Width="160" Visibility="Collapsed" />
-                <TextBlock Height="30" Name="lblLastBackup" Text="Last Backup Date." Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneAccentBrush}" HorizontalAlignment="Center" Visibility="Collapsed" />
+                <TextBlock Height="30" Name="lblLastBackup" Text="Last Backup Date." Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource AppAccentBrush}" HorizontalAlignment="Center" Visibility="Collapsed" />
                 <Button Click="bRestore_Click"  Content="Restore" Height="71" Name="bRestore" Width="160" Visibility="Collapsed" />
             </StackPanel>
         </Grid>

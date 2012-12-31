@@ -1,4 +1,4 @@
-﻿<phone:PhoneApplicationPage Background="{StaticResource PhoneBackgroundBrush}" 
+﻿<phone:PhoneApplicationPage Background="{StaticResource AppBackgroundBrush}" 
                             x:Class="FieldService.ReturnVistFullList" 
                             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
                             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
@@ -9,13 +9,18 @@
                             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
                             FontFamily="{StaticResource PhoneFontFamilyNormal}" 
                             FontSize="{StaticResource PhoneFontSizeNormal}" 
-                            Foreground="{StaticResource PhoneForegroundBrush}" 
+                            Foreground="{StaticResource AppForegroundBrush}" 
                             Orientation="Portrait" SupportedOrientations="Portrait" 
                             mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480" 
                             shell:SystemTray.IsVisible="False">
 
+    <phone:PhoneApplicationPage.Resources>
+        <SolidColorBrush Color="#FF4C4478" x:Key="AppForegroundColor"/>
+        <SolidColorBrush Color="#FF8FCCF8" x:Key="AppBackgroundColor"/>
+        <SolidColorBrush  Color="#FFD2DA86" x:Key="AppAccentColor"/>
+    </phone:PhoneApplicationPage.Resources>
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
+    <Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -23,13 +28,13 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Style="{StaticResource PhoneTextNormalStyle}" x:Name="ApplicationTitle" Text="FIELD SERVICE" />
-            <TextBlock Style="{StaticResource PhoneTextTitle1Style}" x:Name="PageTitle" Margin="9,-7,0,0" Text="return visits" />
+            <TextBlock Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextNormalStyle}" x:Name="ApplicationTitle" Text="FIELD SERVICE" />
+            <TextBlock Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextTitle1Style}" x:Name="PageTitle" Margin="9,-7,0,0" Text="return visits" />
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <toolkit:LongListSelector Name="llsAllReturnVisits" SelectionChanged="llsAllReturnVisits_SelectionChanged" >
+        <Grid x:Name="ContentPanel" Background="{StaticResource AppBackgroundBrush}" Grid.Row="1" Margin="12,0,12,0">
+            <toolkit:LongListSelector Foreground="{StaticResource AppForegroundBrush}" Background="{StaticResource AppBackgroundBrush}" Name="llsAllReturnVisits" SelectionChanged="llsAllReturnVisits_SelectionChanged" >
                 <toolkit:LongListSelector.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -44,14 +49,14 @@
                 </toolkit:LongListSelector.ItemTemplate>
                 <toolkit:LongListSelector.GroupHeaderTemplate>
                     <DataTemplate>
-                        <Border Padding="{StaticResource PhoneTouchTargetOverhang}" Background="{StaticResource PhoneAccentBrush}">
+                        <Border Padding="{StaticResource PhoneTouchTargetOverhang}" Background="{StaticResource AppAccentBrush}">
                             <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Text="{Binding Name}" />
                         </Border>
                     </DataTemplate>
                 </toolkit:LongListSelector.GroupHeaderTemplate>
                 <toolkit:LongListSelector.GroupItemTemplate>
                     <DataTemplate>
-                        <Border Margin="{StaticResource PhoneTouchTargetOverhang}" Padding="{StaticResource PhoneTouchTargetOverhang}" Background="{StaticResource PhoneAccentBrush}">
+                        <Border Margin="{StaticResource PhoneTouchTargetOverhang}" Padding="{StaticResource PhoneTouchTargetOverhang}" Background="{StaticResource AppAccentBrush}">
                             <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Text="{Binding Name}" />
                         </Border>
                     </DataTemplate>
