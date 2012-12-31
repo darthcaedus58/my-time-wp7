@@ -110,7 +110,7 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock Style="{StaticResource PhoneTextLargeStyle}" Text="{Binding Date}" />
+                                    <TextBlock Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextLargeStyle}" Text="{Binding Date}" />
                                     <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Hours}" />
                                 </StackPanel>
                             </DataTemplate>

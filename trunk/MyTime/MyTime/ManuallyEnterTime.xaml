@@ -68,7 +68,7 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar BackgroundColor="{StaticResource PhoneForegroundColor}" ForegroundColor="{StaticResource PhoneBackgroundColor}" IsMenuEnabled="True" IsVisible="True">
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem x:Name="abmiManuallyEnter" Text="delete" Click="abmiDelete_Click" />
+                <shell:ApplicationBarMenuItem x:Name="abmiDelete" Text="delete" Click="abmiDelete_Click" />
             </shell:ApplicationBar.MenuItems>
 
             <shell:ApplicationBarIconButton Text="Save" IconUri="/icons/appbar.save.rest.png" x:Name="abibSave" Click="abibSave_Click" />
