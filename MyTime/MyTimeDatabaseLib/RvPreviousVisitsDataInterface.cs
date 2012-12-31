@@ -205,6 +205,27 @@ namespace MyTimeDatabaseLib
             }
             return null;
         }
+
+        public static bool IsInitialCall(RvPreviousVisitData call)
+        {
+            //
+            using (var db = new RvPreviousVisitsContext(RvPreviousVisitsContext.DBConnectionString)) {
+                try {
+                    var qry = from x in db.RvPreviousVisitItems
+                              where x.RvItemId == call.RvItemId
+                              orderby x.Date
+                              select x;
+                    if (qry.Any()) {
+                        if (qry.Count() <= 1) return true;
+                        var c = qry.ToArray().Last();
+                        if (c.ItemId == call.ItemId) return true;
+                    }
+                    return false;
+                } catch (Exception e) {
+                    return false;
+                }
+            } 
+        }
     }
 
     /// <summary>
