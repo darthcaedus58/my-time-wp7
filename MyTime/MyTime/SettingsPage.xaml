@@ -8,14 +8,17 @@
                             xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone" 
                             FontFamily="{StaticResource PhoneFontFamilyNormal}" 
                             FontSize="{StaticResource PhoneFontSizeNormal}" 
-                            Foreground="{StaticResource PhoneForegroundBrush}" 
+                            Foreground="{StaticResource AppForegroundBrush}" 
                             Orientation="Portrait" SupportedOrientations="Portrait" 
                             mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800" 
                             shell:SystemTray.IsVisible="False"
-                            Background="{StaticResource PhoneBackgroundBrush}">
+                            Background="{StaticResource AppBackgroundBrush}">
     <phone:PhoneApplicationPage.Resources>
+        <SolidColorBrush Color="#FF4C4478" x:Key="AppForegroundColor"/>
+        <SolidColorBrush Color="#FF8FCCF8" x:Key="AppBackgroundColor"/>
+        <SolidColorBrush  Color="#FFD2DA86" x:Key="AppAccentColor"/>
     </phone:PhoneApplicationPage.Resources>
-    <controls:Pivot Title="FIELD SERVICE" Background="{StaticResource PhoneBackgroundBrush}">
+    <controls:Pivot Foreground="{StaticResource AppForegroundBrush}" Title="FIELD SERVICE" Background="{StaticResource AppBackgroundBrush}">
         <controls:PivotItem Header="settings">
             <Grid x:Name="LayoutRoot" Background="Transparent">
                 <Grid.RowDefinitions>

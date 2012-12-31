@@ -2,17 +2,34 @@
     x:Class="FieldService.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone" 
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:FieldService="clr-namespace:FieldService">
 
     <Application.Resources>
         <ResourceDictionary>
+            <SolidColorBrush Color="#FF4C4478" x:Key="AppForegroundBrush"/>
+            <SolidColorBrush Color="#FF8FCCF8" x:Key="AppBackgroundBrush"/>
+            <SolidColorBrush  Color="#FFD2DA86" x:Key="AppAccentBrush"/>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{StaticResource AppForegroundBrush}" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Foreground" Value="{StaticResource AppForegroundBrush}" />
+                <Setter Property="BorderBrush" Value="{StaticResource AppForegroundBrush}" />
+            </Style>
+            <Style TargetType="HyperlinkButton">
+                <Setter Property="Foreground" Value="{StaticResource AppForegroundBrush}" />
+            </Style>
+            <SolidColorBrush x:Key="ToggleSwitchCurtainBackgroundThemeBrush" Color="#FF8FCCF8" />
+            <SolidColorBrush x:Key="ToggleSwitchCurtainPointerOverBackgroundThemeBrush" Color="#FF8FCCF8" />
+            <SolidColorBrush x:Key="ToggleSwitchCurtainPressedBackgroundThemeBrush" Color="#FF8FCCF8" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/FieldService;component/PhoneDataVisualizationResources.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
+
 
     <Application.ApplicationLifetimeObjects>
         <shell:PhoneApplicationService 
