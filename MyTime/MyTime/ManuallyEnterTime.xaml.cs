@@ -138,10 +138,12 @@ namespace FieldService
 
             try {
                 int id = int.Parse(NavigationContext.QueryString["id"]);
-
+                
                 TimeData td = TimeDataInterface.GetTimeDataItem(id);
 
-                if (td != null) SetText(td);
+                if (td != null) {
+                    SetText(td);
+                }
             } catch (Exception) {}
         }
 
