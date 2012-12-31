@@ -114,7 +114,7 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Margin="0,0,0,0" Orientation="Vertical">
-                                        <TextBlock Style="{StaticResource PhoneTextLargeStyle}" Text="{Binding LastVisitDate}" TextWrapping="Wrap" />
+                                        <TextBlock Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextLargeStyle}" Text="{Binding LastVisitDate}" TextWrapping="Wrap" />
                                         <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Placements}" TextWrapping="Wrap" />
                                         <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Description}" TextTrimming="WordEllipsis" TextWrapping="NoWrap" />
                                     </StackPanel>
