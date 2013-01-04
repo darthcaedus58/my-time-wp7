@@ -79,6 +79,7 @@ namespace FieldService
 
             _bwLoadRvs.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
 
+            //selector.DataSource = new IntLoopingDataSource() {MinValue = 0, MaxValue = 100, SelectedItem = 0};
         }
 
 
@@ -131,7 +132,6 @@ namespace FieldService
             bool countCalls = bool.Parse(App.AppSettingsProvider["AddCallPlacements"].Value);
             if (countCalls) {
                 tbReturnVisits.Visibility = Visibility.Collapsed;
-                lblReturnVisits.Visibility = Visibility.Collapsed;
             }
             if (!App.ViewModel.IsMainMenuLoaded) App.ViewModel.LoadMainMenu();
 
@@ -240,11 +240,11 @@ namespace FieldService
             var td = new TimeData {
                                       Date = DateTime.Now,
                                       Minutes = minutes,
-                                      Magazines = string.IsNullOrEmpty(tbMags.Text) ? 0 : int.Parse(tbMags.Text),
-                                      Brochures = string.IsNullOrEmpty(tbBrochures.Text) ? 0 : int.Parse(tbBrochures.Text),
-                                      Books = string.IsNullOrEmpty(tbBooks.Text) ? 0 : int.Parse(tbBooks.Text),
-                                      BibleStudies = string.IsNullOrEmpty(tbBibleStudies.Text) ? 0 : int.Parse(tbBibleStudies.Text),
-                                      ReturnVisits = string.IsNullOrEmpty(tbReturnVisits.Text) ? 0 : int.Parse(tbReturnVisits.Text),
+                                      Magazines = (int)tbMags.Value,
+                                      Brochures = (int) tbBrochures.Value,
+                                      Books = (int) tbBooks.Value,
+                                      BibleStudies = (int) tbBibleStudies.Value,
+                                      ReturnVisits = (int) tbReturnVisits.Value,
                                       Notes = tbNotes.Text
                                   };
 
@@ -510,8 +510,8 @@ namespace FieldService
         /// </summary>
         private void SendServiceReport()
         {
-            var from = new DateTime(DateTime.Today.Year, DateTime.Today.Month-1, 1);
-            DateTime tod = new DateTime(@from.Year, @from.Month, 1).AddMonths(1).AddDays(-1);
+            var from = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1).AddMonths(-1);
+            DateTime tod = new DateTime(from.Year, from.Month, 1).AddMonths(1).AddDays(-1);
 
             string body = string.Format("Here is my field service report for {0:MMMM}, {0:yyyy}:\n\n", from);
             TimeData[] entries = Reporting.BuildTimeReport(from, tod, SortOrder.DateOldestToNewest);
@@ -569,12 +569,12 @@ namespace FieldService
         /// </summary>
         private void ResetText()
         {
-            tbBibleStudies.Text = string.Empty;
-            tbBooks.Text = string.Empty;
-            tbBrochures.Text = string.Empty;
-            tbMags.Text = string.Empty;
+            tbBibleStudies.Value = 0;
+            tbBooks.Value = 0;
+            tbBrochures.Value = 0;
+            tbMags.Value = 0;
             tbNotes.Text = string.Empty;
-            tbReturnVisits.Text = string.Empty;
+            tbReturnVisits.Value = 0;
         }
 
         #region Nested type: TimerState

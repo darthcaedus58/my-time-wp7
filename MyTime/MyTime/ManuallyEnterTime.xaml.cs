@@ -50,7 +50,6 @@ namespace FieldService
             bool countCalls = bool.Parse(App.AppSettingsProvider["AddCallPlacements"].Value);
             if (countCalls) {
                 tbReturnVisits.Visibility = Visibility.Collapsed;
-                lblReturnVisits.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -87,11 +86,11 @@ namespace FieldService
             var td = new TimeData {
                                       Date = (DateTime) dpDatePicker.Value,
                                       Minutes = minutes,
-                                      Magazines = string.IsNullOrEmpty(tbMags.Text) ? 0 : int.Parse(tbMags.Text),
-                                      Brochures = string.IsNullOrEmpty(tbBrochures.Text) ? 0 : int.Parse(tbBrochures.Text),
-                                      Books = string.IsNullOrEmpty(tbBooks.Text) ? 0 : int.Parse(tbBooks.Text),
-                                      BibleStudies = string.IsNullOrEmpty(tbBibleStudies.Text) ? 0 : int.Parse(tbBibleStudies.Text),
-                                      ReturnVisits = string.IsNullOrEmpty(tbReturnVisits.Text) ? 0 : int.Parse(tbReturnVisits.Text),
+                                      Magazines = (int) tbMags.Value,
+                                      Brochures = (int) tbBrochures.Value,
+                                      Books = (int) tbBooks.Value,
+                                      BibleStudies = (int) tbBibleStudies.Value,
+                                      ReturnVisits = (int) tbReturnVisits.Value,
                                       Notes = tbNotes.Text
                                   };
             try {
@@ -153,12 +152,12 @@ namespace FieldService
         /// <param name="td">The td.</param>
         private void SetText(TimeData td)
         {
-            tbBibleStudies.Text = td.BibleStudies.ToString(CultureInfo.InvariantCulture);
-            tbBooks.Text = td.Books.ToString(CultureInfo.InvariantCulture);
-            tbBrochures.Text = td.Brochures.ToString(CultureInfo.InvariantCulture);
-            tbMags.Text = td.Magazines.ToString(CultureInfo.InvariantCulture);
+            tbBibleStudies.Value = td.BibleStudies;
+            tbBooks.Value = td.Books;
+            tbBrochures.Value = td.Brochures;
+            tbMags.Value = td.Magazines;
             tbNotes.Text = td.Notes;
-            tbReturnVisits.Text = td.ReturnVisits.ToString(CultureInfo.InvariantCulture);
+            tbReturnVisits.Value = td.ReturnVisits;
             dpDatePicker.Value = td.Date;
             tspTime.Value = new TimeSpan(0, 0, td.Minutes, 0, 0);
             _itemId = td.ItemId;
