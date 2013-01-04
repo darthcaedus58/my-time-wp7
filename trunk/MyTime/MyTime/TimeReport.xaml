@@ -123,7 +123,7 @@
 
     <!--Sample code showing usage of ApplicationBar-->
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar Mode="Minimized" x:Name="myAppBar" IsVisible="True" IsMenuEnabled="True">
+        <shell:ApplicationBar BackgroundColor="{StaticResource PhoneForegroundColor}" ForegroundColor="{StaticResource PhoneBackgroundColor}" Mode="Minimized" x:Name="myAppBar" IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Click="miShareReport_Click" x:Name="miShareReport" Text="Share.."/>
             </shell:ApplicationBar.MenuItems>
