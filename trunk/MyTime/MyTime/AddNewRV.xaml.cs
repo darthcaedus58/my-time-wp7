@@ -41,9 +41,9 @@ namespace FieldService
     public partial class AddNewRV : PhoneApplicationPage
     {
         /// <summary>
-        /// The _address
+        /// The _USaddressLayout
         /// </summary>
-        private readonly string _address;
+        private readonly string _USaddressLayout = "{0} {1}\n{2} {3} {4}";
 
         /// <summary>
         /// The _full name
@@ -77,7 +77,6 @@ namespace FieldService
             DataContext = App.ViewModel;
 
             pbGetAddress.IsIndeterminate = true;
-            _address = lblInfo_AddressFull.Content.ToString();
             _fullName = lblInfo_FullName.Text;
             try {
                 dlsAge.Text = App.AppSettingsProvider["dfltAgeValue"] == null ? "30" : App.AppSettingsProvider["dfltAgeValue"].Value;
@@ -172,7 +171,7 @@ namespace FieldService
                     AddressOne = tbAddress1.Text,
                     AddressTwo = tbAddress2.Text,
                     City = tbCity.Text,
-                    Country = _currentBingGeocodeLocation.Address.CountryRegion,
+                    Country = string.IsNullOrEmpty(tbCountry.Text) ? _currentBingGeocodeLocation.Address.CountryRegion : tbCountry.Text,
                     StateProvince = tbDistrict.Text,
                     PostalCode = tbZipCode.Text,
                     Age = dlsAge.Text,
@@ -344,11 +343,29 @@ namespace FieldService
         /// <param name="e">The <see cref="GestureEventArgs" /> instance containing the event data.</param>
         private void mapCurrentAddress_Tap(object sender, GestureEventArgs e)
         {
-            tbAddress1.Text = _currentBingGeocodeLocation.Address.AddressLine;
-            tbCity.Text = _currentBingGeocodeLocation.Address.Locality;
-            tbZipCode.Text = _currentBingGeocodeLocation.Address.PostalCode;
-            tbDistrict.Text = _currentBingGeocodeLocation.Address.AdminDistrict;
-            tbCountry.Text = _currentBingGeocodeLocation.Address.CountryRegion;
+            switch (_currentBingGeocodeLocation.Address.CountryRegion.ToLower()) {
+                case "england":
+                case "uk":
+                case "britian":
+                case "gb":
+                case "great britian":
+                case "united kingdom":
+                    tbAddress1.Text = _currentBingGeocodeLocation.Address.AddressLine;
+                    tbAddress2.Text = string.Empty;
+                    tbCity.Text = _currentBingGeocodeLocation.Address.Locality;
+                    tbDistrict.Text = string.Empty;
+                    tbZipCode.Text = _currentBingGeocodeLocation.Address.PostalCode;
+                    tbCountry.Text = _currentBingGeocodeLocation.Address.CountryRegion;
+                    break;
+                default: //United States
+                    tbAddress1.Text = _currentBingGeocodeLocation.Address.AddressLine;
+                    tbAddress2.Text = string.Empty;
+                    tbCity.Text = _currentBingGeocodeLocation.Address.Locality;
+                    tbDistrict.Text = _currentBingGeocodeLocation.Address.AdminDistrict;
+                    tbZipCode.Text = _currentBingGeocodeLocation.Address.PostalCode;
+                    tbCountry.Text = _currentBingGeocodeLocation.Address.CountryRegion;
+                    break;
+            }
         }
 
         /// <summary>
@@ -557,9 +574,24 @@ namespace FieldService
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
         private bool ValidateRVData()
         {
-            if (String.IsNullOrEmpty(tbAddress1.Text) ||
-                String.IsNullOrEmpty(tbCity.Text) ||
-                String.IsNullOrEmpty(tbDistrict.Text)) return false;
+            string country = string.IsNullOrEmpty(tbCountry.Text) ? _currentBingGeocodeLocation.Address.CountryRegion : tbCountry.Text;
+            if(string.IsNullOrEmpty(country)) return false;
+            switch(country.ToLower()) {
+                case "england":
+                case "uk":
+                case "britian":
+                case "gb":
+                case "great britian":
+                case "united kingdom":
+                    if (String.IsNullOrEmpty(tbAddress1.Text) ||
+                        string.IsNullOrEmpty(tbCity.Text)) return false;
+                    break;
+                default: // USA
+                    if (String.IsNullOrEmpty(tbAddress1.Text) ||
+                        String.IsNullOrEmpty(tbCity.Text) ||
+                        String.IsNullOrEmpty(tbDistrict.Text)) return false;
+                    break;
+            }
             return true;
         }
 
@@ -629,12 +661,51 @@ namespace FieldService
         /// </summary>
         private void SetInfoText()
         {
-            lblInfo_AddressFull.Content = String.Format(_address, tbAddress1.Text, tbAddress2.Text, tbCity.Text, tbDistrict.Text, tbZipCode.Text, "\n");
             lblInfo_FullName.Text = String.Format(_fullName, tbFullName.Text);
             lblInfo_Age.Text = String.Format("{0} year old {1}", dlsAge.Text, lpGender.SelectedItem);
-            lblInfo_telephone.Content = BeautifyPhoneNumber(tbPhoneNumber.Text);
+
+            Address geocodeAddress = new Address();
+
+            switch (tbCountry.Text.ToLower()) {
+                case "england":
+                case "uk":
+                case "britian":
+                case "gb":
+                case "great britian":
+                case "united kingdom":
+                    lblInfo_AddressFull.Content = String.Format("{0} {1}\n{2} {4} {5}", tbAddress1.Text, tbAddress2.Text, tbCity.Text, tbDistrict.Text, tbZipCode.Text, tbCountry.Text);
+                    lblInfo_telephone.Content = BeautifyPhoneNumber(tbPhoneNumber.Text);
+                    try {
+                        geocodeAddress = new Address {
+                                                         AddressLine = tbAddress1.Text,
+                                                         Locality = tbCity.Text,
+                                                         CountryRegion = string.IsNullOrEmpty(tbCountry.Text) ? _currentBingGeocodeLocation != null ? _currentBingGeocodeLocation.Address.CountryRegion : _currentReturnVisitData.Country : tbCountry.Text
+                                                     };
+                    } catch {
+                        return;
+                    }
+                    break;
+
+                default:
+                    lblInfo_AddressFull.Content = String.Format(_USaddressLayout, tbAddress1.Text, tbAddress2.Text, tbCity.Text, tbDistrict.Text, tbZipCode.Text, tbCountry.Text);
+                    lblInfo_telephone.Content = BeautifyPhoneNumber(tbPhoneNumber.Text);
+                    try {
+                        geocodeAddress = new Address {
+                                                         AddressLine = tbAddress1.Text,
+                                                         AdminDistrict = tbDistrict.Text,
+                                                         Locality = tbCity.Text,
+                                                         PostalCode = tbZipCode.Text,
+                                                         CountryRegion = string.IsNullOrEmpty(tbCountry.Text) ? _currentBingGeocodeLocation != null ? _currentBingGeocodeLocation.Address.CountryRegion : _currentReturnVisitData.Country : tbCountry.Text
+                                                     };
+                    } catch {
+                        return;
+                    }
+                    break;
+
+            }
             if (!String.IsNullOrEmpty(tbAddress1.Text) && !String.IsNullOrEmpty(tbCity.Text))
-                MakeGeocodeRequest(new Address {AddressLine = tbAddress1.Text, AdminDistrict = tbDistrict.Text, Locality = tbCity.Text, PostalCode = tbZipCode.Text, CountryRegion = string.IsNullOrEmpty(tbCountry.Text) ? _currentBingGeocodeLocation != null ? _currentBingGeocodeLocation.Address.CountryRegion : _currentReturnVisitData.Country : tbCountry.Text});
+                    MakeGeocodeRequest(geocodeAddress);
+            
         }
 
         /// <summary>
