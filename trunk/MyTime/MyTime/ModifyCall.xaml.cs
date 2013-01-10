@@ -55,9 +55,9 @@ namespace FieldService
             var call = new RvPreviousVisitData();
             if (_callId >= 0) call = RvPreviousVisitsDataInterface.GetCall(_callId);
             call.RvItemId = _rvItemId;
-            call.Books = string.IsNullOrEmpty(tbBooks.Text) ? 0 : int.Parse(tbBooks.Text);
-            call.Brochures = string.IsNullOrEmpty(tbBrochures.Text) ? 0 : int.Parse(tbBrochures.Text);
-            call.Magazines = string.IsNullOrEmpty(tbMags.Text) ? 0 : int.Parse(tbMags.Text);
+            call.Books = (int) tbBooks.Value;
+            call.Brochures = (int) tbBrochures.Value;
+            call.Magazines = (int) tbMags.Value;
             call.Notes = tbNotes.Text;
             call.Date = (dpDatePicker.Value ?? DateTime.Now);
 
@@ -114,6 +114,7 @@ namespace FieldService
                 NavigationService.GoBack();
                 return;
             }
+            if (_callId >= 0) return; //we have already loaded the call data and the user is just modifying it before saving it.
             string rvItemId = NavigationContext.QueryString["rvid"];
             string callId = NavigationContext.QueryString.ContainsKey("id") ? NavigationContext.QueryString["id"] : string.Empty;
             if (string.IsNullOrEmpty(rvItemId)) {
@@ -137,9 +138,9 @@ namespace FieldService
             try {
                 RvPreviousVisitData call = RvPreviousVisitsDataInterface.GetCall(callId);
 
-                tbBooks.Text = call.Books.ToString(CultureInfo.InvariantCulture);
-                tbBrochures.Text = call.Brochures.ToString(CultureInfo.InvariantCulture);
-                tbMags.Text = call.Magazines.ToString(CultureInfo.InvariantCulture);
+                tbBooks.Value = call.Books;
+                tbBrochures.Value = call.Brochures;
+                tbMags.Value = call.Magazines;
                 tbNotes.Text = call.Notes;
                 dpDatePicker.Value = call.Date;
                 _callId = call.ItemId;
