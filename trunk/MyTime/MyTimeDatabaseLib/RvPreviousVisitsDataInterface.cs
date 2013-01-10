@@ -217,7 +217,7 @@ namespace MyTimeDatabaseLib
                               select x;
                     if (qry.Any()) {
                         if (qry.Count() <= 1) return true;
-                        var c = qry.ToArray().Last();
+                        var c = qry.ToArray().First();
                         if (c.ItemId == call.ItemId) return true;
                     }
                     return false;

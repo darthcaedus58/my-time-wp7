@@ -148,7 +148,7 @@
                         <ScrollViewer Height="Auto" VerticalAlignment="Stretch">
                             <StackPanel>
                                     <telerik:RadNumericUpDown Suffix="Magazines"  Value="0" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbMags" />
-                                    <telerik:RadNumericUpDown Suffix="Brochues"  Value="0" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbBrochures" />
+                                    <telerik:RadNumericUpDown Suffix="Brochures"  Value="0" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbBrochures" />
                                     <telerik:RadNumericUpDown Suffix="Books"  Value="0" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbBooks" />
                                     <telerik:RadNumericUpDown Suffix="Return Visits"  Value="0" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbReturnVisits" />
                                     <telerik:RadNumericUpDown Suffix="Bible Studies"  Value="0" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbBibleStudies" />
