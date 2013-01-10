@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:cntrls="clr-namespace:Controls.Primitives;assembly=Controls"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource AppForegroundBrush}"
@@ -25,8 +26,8 @@
 
                 <!--TitlePanel contains the name of the application and page title-->
                 <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-                        <TextBlock x:Name="ApplicationTitle" Text="FIELD SERVICE" Style="{StaticResource PhoneTextNormalStyle}"/>
-                        <TextBlock x:Name="PageTitle" Text="call" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+                    <TextBlock Foreground="{StaticResource AppForegroundBrush}" x:Name="ApplicationTitle" Text="FIELD SERVICE" Style="{StaticResource PhoneTextNormalStyle}"/>
+                    <TextBlock Foreground="{StaticResource AppForegroundBrush}" x:Name="PageTitle" Text="call" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
                 </StackPanel>
 
                 <!--ContentPanel - place additional content here-->
@@ -37,18 +38,9 @@
                                 <TextBlock Text="DATE" />
                                 <toolkit:DatePicker x:Name="dpDatePicker" />
                                 <TextBlock Text="PLACEMENTS" />
-                        <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
-                            <TextBox Width="75" Margin="0,0,0,0" Name="tbMags" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
-                            <TextBlock Margin="0,0,0,0" Text="Magazines" VerticalAlignment="Center" />
-                        </StackPanel>
-                        <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
-                            <TextBox Width="75" Margin="0,0,0,0" Name="tbBrochures" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
-                            <TextBlock Margin="0,0,0,0" Text="Brochures" VerticalAlignment="Center" />
-                        </StackPanel>
-                        <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
-                            <TextBox Width="75" Margin="0,0,0,0" Name="tbBooks" InputScope="Digits" KeyDown="TextBoxMasking_KeyDown" />
-                            <TextBlock Margin="0,0,0,0" Text="Books" VerticalAlignment="Center" />
-                        </StackPanel>
+                        <telerik:RadNumericUpDown Suffix="Magazines"  Value="0" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbMags" />
+                        <telerik:RadNumericUpDown Suffix="Brochures"  Value="0" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbBrochures" />
+                        <telerik:RadNumericUpDown Suffix="Books"  Value="0" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbBooks" />
                         <TextBlock TextWrapping="Wrap" Text="NOTES"/>
                         <TextBox Name="tbNotes" Height="180" TextWrapping="Wrap"/>
                     </StackPanel>
