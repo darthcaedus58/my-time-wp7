@@ -69,7 +69,7 @@
                                 <TextBlock Height="30" LostFocus="textBlock1_LostFocus" Text="PHONE NUMBER" />
                                 <TextBox Height="71" Width="460" InputScope="TelephoneNumber" LostFocus="tbFullName_LostFocus" Name="tbPhoneNumber" Text="" />
                                 <TextBlock Height="30" LostFocus="textBlock1_LostFocus" Text="DESCRIPTION" />
-                                <TextBox Height="200" Width="460" InputScope="Text" LostFocus="tbFullName_LostFocus" Name="tbDescription" Text="" />
+                                <TextBox TextWrapping="Wrap" Height="200" Width="460" InputScope="Text" LostFocus="tbFullName_LostFocus" Name="tbDescription" Text="" />
                             </StackPanel>
                         </ScrollViewer>
                     </Grid>
@@ -114,7 +114,7 @@
                                 <TextBlock Height="30" Name="textBlock8" Text="COUNTRY" />
                                 <TextBox Height="71" Width="460" InputScope="AddressCountryShortName" LostFocus="tbZipCode_LostFocus" Name="tbCountry" Text="" />
                                 <TextBlock Height="30" Name="textBlock7" Text="OTHER NOTES" />
-                                <TextBox Height="200" Width="460" InputScope="Text" Name="tbOtherNotes" Text="" />
+                                <TextBox TextWrapping="Wrap" Height="200" Width="460" InputScope="Text" Name="tbOtherNotes" Text="" />
                             </StackPanel>
                         </ScrollViewer>
                     </Grid>
