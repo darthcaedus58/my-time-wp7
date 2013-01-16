@@ -111,5 +111,12 @@ namespace FieldService
             var mdt = new MarketplaceDetailTask();
             mdt.Show();
         }
+
+        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            var web = new WebBrowserTask();
+            web.URL = "http://code.google.com/p/my-time-wp7/issues/entry?template=Defect%20report%20from%20user";
+            web.Show();
+        }
     }
 }

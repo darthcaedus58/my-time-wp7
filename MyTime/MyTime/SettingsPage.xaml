@@ -64,6 +64,7 @@
                         <TextBlock Margin="0,10,0,0" FontWeight="Bold" Text="LINKS" />
                         <HyperlinkButton Click="HyperlinkButtonRateApp_Click" Content="Rate This App!" HorizontalAlignment="Left" />
                         <HyperlinkButton Click="HyperlinkButtonHelpMeQuestion_Click" Content="Help!" HorizontalAlignment="Left" />
+                        <HyperlinkButton Click="HyperlinkButton_Click" Content="Report Issue" HorizontalAlignment="Left" />
                     </StackPanel>
                 </Grid>
                 <Grid Row="2">
