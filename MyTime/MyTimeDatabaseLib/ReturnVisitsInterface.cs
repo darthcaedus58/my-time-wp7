@@ -232,6 +232,7 @@ namespace MyTimeDatabaseLib
                     rv.PhysicalDescription = newRv.PhysicalDescription;
                     rv.PostalCode = newRv.PostalCode;
                     rv.StateProvince = newRv.StateProvince;
+                    rv.Gender = newRv.Gender;
 
                     db.SubmitChanges();
                     return rv.ItemId;
