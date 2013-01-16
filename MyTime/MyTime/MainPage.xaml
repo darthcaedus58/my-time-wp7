@@ -77,8 +77,8 @@
                         <!--<Image Height="56" Margin="25,23,0,0" Width="40" HorizontalAlignment="Right" Name="imgShowAllReturnVisits" Source="" Tap="imgShowAllReturnVisit_Tap" />-->
                     </StackPanel>
                 </controls:PanoramaItem.Header>
-                <StackPanel Grid.Row="1" Margin="0,0,-42,0" HorizontalAlignment="Left" Name="stackPanel2" VerticalAlignment="Top">
-                    <ListBox ItemsSource="{Binding lbRvItems}" SelectionChanged="ListBox_SelectionChanged" VerticalContentAlignment="Top">
+                <Grid Grid.Row="1" Margin="0,0,-42,0" >
+                    <ListBox ItemsSource="{Binding lbRvItems}" SelectionChanged="ListBox_SelectionChanged">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <toolkit:WrapPanel />
@@ -98,7 +98,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                </StackPanel>
+                </Grid>
             </controls:PanoramaItem>
             <controls:PanoramaItem Header="daily text">
                 <Grid>
