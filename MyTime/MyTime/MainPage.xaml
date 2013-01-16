@@ -19,14 +19,6 @@
         <Storyboard x:Name="Storyboard1" />
     </phone:PhoneApplicationPage.Resources>
 
-    <!--LayoutRoot is the root grid where all page content is placed-->
-    <!--<phone:PhoneApplicationPage.FontFamily>
-        <StaticResource ResourceKey="PhoneFontFamilyNormal" />
-    </phone:PhoneApplicationPage.FontFamily>
-    <phone:PhoneApplicationPage.FontSize>
-        <StaticResource ResourceKey="PhoneFontSizeNormal" />
-    </phone:PhoneApplicationPage.FontSize>-->
-
     <phone:PhoneApplicationPage.Foreground>
         <StaticResource ResourceKey="PhoneForegroundBrush" />
     </phone:PhoneApplicationPage.Foreground>
@@ -147,13 +139,13 @@
                     <Grid Row="2">
                         <ScrollViewer Height="Auto" VerticalAlignment="Stretch">
                             <StackPanel>
-                                    <telerik:RadNumericUpDown Suffix="Magazines"  Value="0" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbMags" />
-                                    <telerik:RadNumericUpDown Suffix="Brochures"  Value="0" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbBrochures" />
-                                    <telerik:RadNumericUpDown Suffix="Books"  Value="0" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbBooks" />
-                                    <telerik:RadNumericUpDown Suffix="Return Visits"  Value="0" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbReturnVisits" />
-                                    <telerik:RadNumericUpDown Suffix="Bible Studies"  Value="0" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbBibleStudies" />
+                                <telerik:RadNumericUpDown Suffix="Magazines" Value="{Binding MainPageMagazines, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbMags"/>
+                                    <telerik:RadNumericUpDown Suffix="Brochures"  Value="{Binding MainPageBrochures, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbBrochures" />
+                                    <telerik:RadNumericUpDown Suffix="Books"  Value="{Binding MainPageBooks, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbBooks" />
+                                    <telerik:RadNumericUpDown Suffix="Return Visits"  Value="{Binding MainPageReturnVisits, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbReturnVisits" />
+                                    <telerik:RadNumericUpDown Suffix="Bible Studies"  Value="{Binding MainPageBibleStudies, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" Name="tbBibleStudies" />
                                 <TextBlock Text="Notes" TextWrapping="Wrap" FontSize="26.667" />
-                                <TextBox Height="180" Name="tbNotes" TextWrapping="Wrap" />
+                                <TextBox Height="180" Name="tbNotes" TextWrapping="Wrap" Text="{Binding MainPageNotes, Mode=TwoWay}" />
                             </StackPanel>
                         </ScrollViewer>
                     </Grid>

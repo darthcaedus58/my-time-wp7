@@ -14,6 +14,7 @@
 using System;
 using System.ComponentModel;
 using System.Globalization;
+using System.Windows.Data;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Linq;
@@ -30,6 +31,7 @@ using Microsoft.Phone.Tasks;
 using MyTimeDatabaseLib;
 using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 using Microsoft.Phone.Marketplace;
+using TimeData = MyTimeDatabaseLib.TimeData;
 
 namespace FieldService
 {
@@ -382,6 +384,12 @@ namespace FieldService
                 _timerBase = new DateTime();
                 lblTimer.Text = "00:00:00";
             } catch { } finally {
+                tbMags.Value = 0;
+                tbBrochures.Value = 0;
+                tbBooks.Value = 0;
+                tbBibleStudies.Value = 0;
+                tbReturnVisits.Value = 0;
+                tbNotes.Text = string.Empty;
                 _timerState = TimerState.Stopped;
                 ClearRestartTime();
             }
