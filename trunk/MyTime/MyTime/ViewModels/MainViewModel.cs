@@ -16,9 +16,14 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.IO.IsolatedStorage;
+using System.Text;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 using Microsoft.Phone.Marketplace;
 using MyTimeDatabaseLib;
 
@@ -41,7 +46,17 @@ namespace FieldService.ViewModels
             lbTimeEntries = new ObservableCollection<TimeReportEntryViewModel>();
 
             llReturnVisitFullListCategory = new ObservableCollection<ReturnVistLLCategory>();
+
+            if (!IsolatedStorageFile.GetUserStoreForApplication().FileExists("mainpage.xml")) {
+                using(var iso = IsolatedStorageFile.GetUserStoreForApplication()) {
+                    using (var file = new IsolatedStorageFileStream("mainpage.xml", FileMode.CreateNew, iso)) {
+                        byte[] b = Encoding.UTF8.GetBytes("<?xml version=\"1.0\" encoding=\"utf-8\" ?><items><magazines>0</magazines><brochures>0</brochures><books>0</books><rvs>0</rvs><bs>0</bs><notes> </notes></items>");
+                        file.Write(b, 0, b.Length);
+                    }
+                }
+            }
         }
+
 
         /// <summary>
         /// Gets the ll return visit full list category.
@@ -110,7 +125,85 @@ namespace FieldService.ViewModels
         /// <value><c>true</c> if this instance is rv full list loaded; otherwise, <c>false</c>.</value>
         public bool IsRvFullListLoaded { get; private set; }
 
-        #region INotifyPropertyChanged Members
+        public double MainPageMagazines { get { return GetMainPageDouble("magazines"); } set { SetMainPageValue(value, "magazines"); } }
+
+        public double MainPageBrochures { get { return GetMainPageDouble("brochures"); } set { SetMainPageValue(value, "brochures"); } }
+
+        public double MainPageBooks { get { return GetMainPageDouble("books"); } set { SetMainPageValue(value, "books"); } }
+
+        public double MainPageReturnVisits { get { return GetMainPageDouble("rvs"); } set { SetMainPageValue(value, "rvs"); } }
+
+        public double MainPageBibleStudies { get { return GetMainPageDouble("bs"); } set { SetMainPageValue(value, "bs"); } }
+
+        public string MainPageNotes { get { return GetMainPageString("notes"); } set { SetMainPageString(value, "notes"); } }
+
+        private static string GetMainPageString(string elementName)
+        {
+            using (var iso = IsolatedStorageFile.GetUserStoreForApplication()) {
+                using (var file = new IsolatedStorageFileStream("mainpage.xml", FileMode.Open, iso)) {
+                    byte[] bb = new byte[file.Length];
+                    file.Read(bb, 0, bb.Length);
+                    using (MemoryStream oStream = new MemoryStream(bb)) {
+                        var xDoc = XDocument.Load(oStream);
+                        return xDoc.Element("items").Element(elementName).Value;
+                    }
+                }
+            }
+        }
+
+        private static double GetMainPageDouble(string elementName)
+        {
+            using (var iso = IsolatedStorageFile.GetUserStoreForApplication()) {
+                using (var file = new IsolatedStorageFileStream("mainpage.xml", FileMode.Open, iso)) {
+                    byte[] bb = new byte[file.Length];
+                    file.Read(bb, 0, bb.Length);
+                    using(MemoryStream oStream = new MemoryStream(bb)) {
+                        var xDoc = XDocument.Load(oStream);
+                        return Convert.ToDouble(xDoc.Element("items").Element(elementName).Value);
+                    }
+                }
+            }
+        }
+
+        private static void SetMainPageString(string value, string elementName)
+        {
+            using (var iso = IsolatedStorageFile.GetUserStoreForApplication()) {
+                XDocument xDoc;
+                using (var file = new IsolatedStorageFileStream("mainpage.xml", FileMode.Open, iso)) {
+                    byte[] bb = new byte[file.Length];
+                    file.Read(bb, 0, bb.Length);
+                    using (var oStream = new MemoryStream(bb)) {
+                        xDoc = XDocument.Load(oStream);
+                        xDoc.Element("items").Element(elementName).Value = value;
+                    }
+                }
+                using (var file = new IsolatedStorageFileStream("mainpage.xml", FileMode.Create, iso)) {
+                    byte[] bb = Encoding.UTF8.GetBytes(xDoc.ToString());
+                    file.Write(bb, 0, bb.Length);
+                }
+            }
+        }
+
+        private static void SetMainPageValue(double value, string elementName)
+        {
+            using (var iso = IsolatedStorageFile.GetUserStoreForApplication()) {
+                XDocument xDoc;
+                using (var file = new IsolatedStorageFileStream("mainpage.xml", FileMode.Open, iso)) {
+                    byte[] bb = new byte[file.Length];
+                    file.Read(bb, 0, bb.Length);
+                    using (var oStream = new MemoryStream(bb)) {
+                        xDoc = XDocument.Load(oStream);
+                        xDoc.Element("items").Element(elementName).Value = value.ToString();
+                    }
+                }
+                using (var file = new IsolatedStorageFileStream("mainpage.xml", FileMode.Create, iso)) {
+                    byte[] bb = Encoding.UTF8.GetBytes(xDoc.ToString());
+                    file.Write(bb, 0, bb.Length);
+                }
+            }
+        }
+
+    #region INotifyPropertyChanged Members
 
         /// <summary>
         /// Occurs when [property changed].
@@ -268,7 +361,7 @@ namespace FieldService.ViewModels
         /// Loads the time report.
         /// </summary>
         /// <param name="entries">The entries.</param>
-        public void LoadTimeReport(TimeData[] entries)
+        public void LoadTimeReport(MyTimeDatabaseLib.TimeData[] entries)
         {
             if (IsTimeReportDataLoaded) {
                 IsTimeReportDataLoaded = false;
@@ -282,7 +375,7 @@ namespace FieldService.ViewModels
             int month = entries[0].Date.Month;
             var summary = new TimeReportSummaryViewModel();
             //ListBox<int> rvList = new ListBox<int>();
-            foreach (TimeData td in entries) {
+            foreach (MyTimeDatabaseLib.TimeData td in entries) {
                 if (month != td.Date.Month) {
                     summary.Time = string.Format("{0:0.00} Hour(s)", (minutes/60.0));
                     summary.Minutes = minutes;
