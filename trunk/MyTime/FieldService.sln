@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FieldService", "MyTime\FieldService.csproj", "{29CBB6B5-6565-4FCB-8B8A-A2E8B388E442}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTimeDatabaseLib", "MyTimeDatabaseLib\MyTimeDatabaseLib.csproj", "{A1C548DC-5636-4CC8-B680-A818350BA8C5}"
