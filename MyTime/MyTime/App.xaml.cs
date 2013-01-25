@@ -88,6 +88,7 @@ namespace FieldService
 			TimeDataInterface.CheckDatabase();
 			ReturnVisitsInterface.CheckDatabase();
 			RvPreviousVisitsDataInterface.CheckDatabase();
+			RBCTimeDataInterface.CheckDatabase();
 		}
 
 		/// <summary>
