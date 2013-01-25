@@ -118,7 +118,7 @@ namespace FieldService
 			try {
 				var rv = (ReturnVisitItemViewModel) ((ListBox) sender).SelectedItem;
 				((ListBox) sender).SelectedIndex = -1;
-				NavigationService.Navigate(new Uri(string.Format("/AddNewRV.xaml?id={0}", rv.ItemId.ToString(CultureInfo.InvariantCulture)), UriKind.Relative));
+				NavigationService.Navigate(new Uri(string.Format("/View/AddNewRV.xaml?id={0}", rv.ItemId.ToString(CultureInfo.InvariantCulture)), UriKind.Relative));
 			} catch {}
 		}
 
@@ -345,7 +345,7 @@ namespace FieldService
 		/// </summary>
 		/// <param name="sender">The source of the event.</param>
 		/// <param name="e">The <see cref="GestureEventArgs" /> instance containing the event data.</param>
-		private void imgShowAllReturnVisit_Tap(object sender, GestureEventArgs e) { NavigationService.Navigate(new Uri("/ReturnVisitFullList.xaml", UriKind.Relative)); }
+		private void imgShowAllReturnVisit_Tap(object sender, GestureEventArgs e) { NavigationService.Navigate(new Uri("/View/ReturnVisitFullList.xaml", UriKind.Relative)); }
 
 		/// <summary>
 		/// SS_s the daily text retrieved.
@@ -479,10 +479,13 @@ namespace FieldService
 			string month = DateTime.Today.ToString("MMMM").ToLower() + " report";
 			switch (v) {
 				case "add time":
-					NavigationService.Navigate(new Uri("/ManuallyEnterTime.xaml", UriKind.Relative));
+					NavigationService.Navigate(new Uri("/View/ManuallyEnterTime.xaml", UriKind.Relative));
+					break;
+				case "add rbc time":
+					NavigationService.Navigate(new Uri("/View/AddRBCTime.xaml", UriKind.Relative));
 					break;
 				case "add return visit":
-					NavigationService.Navigate(new Uri("/AddNewRV.xaml", UriKind.Relative));
+					NavigationService.Navigate(new Uri("/View/AddNewRV.xaml", UriKind.Relative));
 					break;
 				case "watchtower library":
 					var wbTask = new WebBrowserTask {Uri = new Uri("http://wol.jw.org", UriKind.RelativeOrAbsolute)};
@@ -495,14 +498,14 @@ namespace FieldService
 					SendServiceReport();
 					break;
 				case "settings":
-					NavigationService.Navigate(new Uri("/SettingsPage.xaml", UriKind.Relative));
+					NavigationService.Navigate(new Uri("/View/SettingsPage.xaml", UriKind.Relative));
 					break;
 				case "buy cloud backup":
 					var mdt = new MarketplaceDetailTask();
 					mdt.Show();
 					break;
 				case "backup & restore":
-					NavigationService.Navigate(new Uri("/BackupAndRestorePage.xaml", UriKind.Relative));
+					NavigationService.Navigate(new Uri("/View/BackupAndRestorePage.xaml", UriKind.Relative));
 					break;
 				default:
 					if (v.Equals(month)) {
@@ -557,7 +560,7 @@ namespace FieldService
 			DateTime from = DateTime.Today.Month >= 9 ? new DateTime(DateTime.Today.Year, 9, 1) : new DateTime(DateTime.Today.Year - 1, 9, 1);
 			DateTime to = from.AddYears(1).AddDays(-1);
 
-			NavigationService.Navigate(new Uri(string.Format("/TimeReport.xaml?from={0}&to={1}", from.ToString("MM-dd-yyyy"), to.ToString("MM-dd-yyyy")), UriKind.Relative));
+			NavigationService.Navigate(new Uri(string.Format("/View/TimeReport.xaml?from={0}&to={1}", from.ToString("MM-dd-yyyy"), to.ToString("MM-dd-yyyy")), UriKind.Relative));
 		}
 
 		/// <summary>
@@ -567,8 +570,8 @@ namespace FieldService
 		{
 			var from = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
 			DateTime to = new DateTime(@from.Year, @from.Month, 1).AddMonths(1).AddDays(-1);
-			
-			NavigationService.Navigate(new Uri(string.Format("/TimeReport.xaml?from={0}&to={1}", from.ToString("MM-dd-yyyy"), to.ToString("MM-dd-yyyy")), UriKind.Relative));
+
+			NavigationService.Navigate(new Uri(string.Format("/View/TimeReport.xaml?from={0}&to={1}", from.ToString("MM-dd-yyyy"), to.ToString("MM-dd-yyyy")), UriKind.Relative));
 		}
 
 		/// <summary>

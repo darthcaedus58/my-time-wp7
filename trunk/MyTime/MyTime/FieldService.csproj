@@ -153,11 +153,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MinutesToTimeSpanValueConverter.cs" />
+    <Compile Include="ViewModels\AddModifyRBCTimeViewModel.cs" />
     <Compile Include="View\AddNewRV.xaml.cs">
       <DependentUpon>AddNewRV.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddRBCTime.xaml.cs">
+      <DependentUpon>AddRBCTime.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\BackupAndRestorePage.xaml.cs">
       <DependentUpon>BackupAndRestorePage.xaml</DependentUpon>
@@ -203,6 +208,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="View\AddRBCTime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\BackupAndRestorePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

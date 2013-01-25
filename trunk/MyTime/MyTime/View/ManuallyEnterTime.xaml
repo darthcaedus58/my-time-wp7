@@ -29,7 +29,7 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Foreground="{StaticResource AppForegroundBrush}" x:Name="ApplicationTitle" Text="FIELD SERVICE" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Foreground="{StaticResource AppForegroundBrush}" x:Name="PageTitle" Text="enter time" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Foreground="{StaticResource AppForegroundBrush}" x:Name="PageTitle" Text="time" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
         <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" Name="stackPanel1" VerticalAlignment="Stretch">
             <ScrollViewer Height="530">
@@ -54,6 +54,7 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar BackgroundColor="{StaticResource PhoneForegroundColor}" ForegroundColor="{StaticResource PhoneBackgroundColor}" IsMenuEnabled="True" IsVisible="True">
             <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="abmiConvertToRbc" Text="convert to rbc time" Click="abmiConvertToRbc_Click_1" />
                 <shell:ApplicationBarMenuItem x:Name="abmiDelete" Text="delete" Click="abmiDelete_Click" />
             </shell:ApplicationBar.MenuItems>
 
