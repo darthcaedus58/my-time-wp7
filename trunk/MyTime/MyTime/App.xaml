@@ -3,7 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone" 
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-    xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:FieldService="clr-namespace:FieldService" xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input" 
+    xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:FieldService="clr-namespace:FieldService" 
+    xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input" 
     x:Class="FieldService.App"
     >
 
