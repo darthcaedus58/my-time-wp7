@@ -58,7 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
+    <Compile Include="Model\RBCTimeDataContext.cs" />
     <Compile Include="Model\RvPreviousVisitsContext.cs" />
+    <Compile Include="RBCTimeDataInterface.cs" />
     <Compile Include="ReturnVisitAlreadyExistsException.cs" />
     <Compile Include="RvPreviousVisitNotFoundException.cs" />
     <Compile Include="RvPreviousVisitsDataInterface.cs" />
