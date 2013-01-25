@@ -163,7 +163,6 @@ namespace FieldService
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
             
-            LittleWatson.CheckForPreviousException();
         }
 
         // Code to execute if a navigation fails
@@ -176,7 +175,6 @@ namespace FieldService
         /// <param name="e">The <see cref="ApplicationUnhandledExceptionEventArgs" /> instance containing the event data.</param>
         private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
         {
-            LittleWatson.ReportException(e.ExceptionObject, DateTime.Now.ToShortDateString());
             if (Debugger.IsAttached) {
                 // An unhandled exception has occurred; break into the debugger
                 Debugger.Break();
@@ -221,7 +219,6 @@ namespace FieldService
         /// </summary>
         private void InitializePhoneApplication()
         {
-            LittleWatson.CheckForPreviousException();
             if (_phoneApplicationInitialized)
                 return;
 
@@ -246,7 +243,6 @@ namespace FieldService
         /// <param name="e">The <see cref="NavigationFailedEventArgs" /> instance containing the event data.</param>
         private void RootFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
         {
-            LittleWatson.ReportException(e.Exception, DateTime.Now.ToShortDateString());
 
             if (Debugger.IsAttached) {
                 // A navigation has failed; break into the debugger

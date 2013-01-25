@@ -67,7 +67,6 @@ namespace FieldService
         /// </summary>
         public MainPage()
         {
-            LittleWatson.CheckForPreviousException();
             //CheckForCrashFile();
 
             InitializeComponent();

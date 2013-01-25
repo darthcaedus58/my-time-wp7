@@ -162,7 +162,6 @@
     <Compile Include="View\BackupAndRestorePage.xaml.cs">
       <DependentUpon>BackupAndRestorePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LittleWatson.cs" />
     <Compile Include="Reporting.cs" />
     <Compile Include="SettingsProvider.cs" />
     <Compile Include="View\MainPage.xaml.cs">
