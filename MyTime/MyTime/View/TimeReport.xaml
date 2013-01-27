@@ -21,6 +21,8 @@
     d:DesignWidth="480" d:DesignHeight="728" 
     shell:SystemTray.IsVisible="False">
     <phone:PhoneApplicationPage.Resources>
+        <my:DoubleToVisibilityValueConverter x:Key="DoubleToVisibilityValueConverter"/>
+        <my:DoubleToVisibilityValueConverter x:Key="IntToVisibilityValueConverter"/>
         <!-- Data -->
         <my:ChartData x:Key="ChartData" />
     </phone:PhoneApplicationPage.Resources>
@@ -76,6 +78,7 @@
                                                 <TextBlock Width="Auto" Text="{Binding Days}" />
                                                 <TextBlock Width="Auto" Text=" day(s)" />
                                             </StackPanel>
+                                            <TextBlock Width="Auto" Visibility="{Binding RBCHours, Converter={StaticResource DoubleToVisibilityValueConverter}}" Text="{Binding RBCHours, StringFormat=\{0:0.0\} R/B/C Hours}" />
                                             <TextBlock Margin="0,15,5,0" Width="Auto" FontSize="18" FontWeight="Bold" Text="PLACEMENTS" />
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Width="Auto" Text="{Binding Magazines}" />
@@ -110,7 +113,7 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextLargeStyle}" Text="{Binding Date}" />
+                                    <TextBlock Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextLargeStyle}" Text="{Binding Date, StringFormat=\{0:D\}}" />
                                     <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Hours}" />
                                 </StackPanel>
                             </DataTemplate>

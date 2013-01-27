@@ -108,6 +108,38 @@ namespace MyTimeDatabaseLib
 				} catch { return false; }
 			}
 		}
+
+		public static int GetRBCTimeTotal(DateTime dt)
+		{
+			//throw new NotImplementedException();
+			using (var db = new RBCTimeDataContext()) {
+				try {
+					var rtd = from x in db.RBCTimeDataItems
+							  where x.Date >= dt && x.Date <= dt.AddMonths(1).AddDays(-1)
+							  select x;
+					return !rtd.Any() ? 0 : Enumerable.Sum(rtd, t => t.Minutes);
+				} catch {
+					return 0;
+				}
+			}
+		}
+
+		public static RBCTimeData[] GetRBCTimeEntries(DateTime fromDate, DateTime toDate) { return GetRBCTimeEntries(fromDate, toDate, SortOrder.DateNewestToOldest); }
+
+		public static RBCTimeData[] GetRBCTimeEntries(DateTime fromDate, DateTime toDate, SortOrder sortOrder)
+		{
+			//throw new NotImplementedException();
+			using (var db = new RBCTimeDataContext()) {
+				try {
+					var rtd = from x in db.RBCTimeDataItems
+							  where x.Date >= fromDate && x.Date <= toDate
+							  orderby x.Date
+							  select x;
+
+					return !rtd.Any() ? null : rtd.Select(i => RBCTimeData.Copy(i)).ToArray();
+				} catch { return null; }
+			}
+		}
 	}
 
 	public class RBCTimeData
