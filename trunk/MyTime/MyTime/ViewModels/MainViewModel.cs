@@ -13,10 +13,12 @@
 // ***********************************************************************
 
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.IO.IsolatedStorage;
+using System.Linq;
 using System.Text;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -403,7 +405,7 @@ namespace FieldService.ViewModels
 		/// Loads the time report.
 		/// </summary>
 		/// <param name="entries">The entries.</param>
-		public void LoadTimeReport(MyTimeDatabaseLib.TimeData[] entries)
+		public void LoadTimeReport(TimeData[] entries)
 		{
 			if (IsTimeReportDataLoaded) {
 				IsTimeReportDataLoaded = false;
@@ -415,15 +417,21 @@ namespace FieldService.ViewModels
 			if (entries.Length <= 0) return;
 
 			int month = entries[0].Date.Month;
+			int year = entries[0].Date.Year;
 			var summary = new TimeReportSummaryViewModel();
+			List<RBCTimeData> rtdEntries = new List<RBCTimeData>(); 
 			//ListBox<int> rvList = new ListBox<int>();
-			foreach (MyTimeDatabaseLib.TimeData td in entries) {
+			foreach (TimeData td in entries) {
 				if (month != td.Date.Month) {
 					summary.Time = string.Format("{0:0.00} Hour(s)", (minutes/60.0));
 					summary.Minutes = minutes;
+					summary.RBCHours = RBCTimeDataInterface.GetRBCTimeTotal(new DateTime(year, month, 1));
+					var eee = RBCTimeDataInterface.GetRBCTimeEntries(new DateTime(year, month, 1), new DateTime(year, month, 1).AddMonths(1).AddDays(-1), SortOrder.DateNewestToOldest);
+					if (eee != null) rtdEntries.AddRange(eee);
 					icReport.Add(summary);
 					summary = new TimeReportSummaryViewModel();
 					month = td.Date.Month;
+					year = td.Date.Year;
 					minutes = 0;
 				}
 				summary.Month = td.Date.ToString("MMMM").ToUpper();
@@ -436,15 +444,30 @@ namespace FieldService.ViewModels
 				summary.ReturnVisits += td.ReturnVisits;
 
 				lbTimeEntries.Add(new TimeReportEntryViewModel {
-																   Date = td.Date.ToLongDateString(),
+																   Date = td.Date,
 																   Hours = string.Format("{0:0.00} Hour(s)", (td.Minutes/60.0)),
 																   ItemId = td.ItemId,
-																   Minutes = td.Minutes
+																   Minutes = td.Minutes,
+																   EditLink = string.Format("/View/ManuallyEnterTime.xaml?id=", td.ItemId)
 															   });
 			}
+			var ee = RBCTimeDataInterface.GetRBCTimeEntries(new DateTime(year, month, 1), new DateTime(year, month, 1).AddMonths(1).AddDays(-1), SortOrder.DateNewestToOldest);
+			if (ee != null) rtdEntries.AddRange(ee);
+			summary.RBCHours = ((double)RBCTimeDataInterface.GetRBCTimeTotal(new DateTime(year, month, 1)) / 60.0);
 			summary.Time = string.Format("{0:0.00} Hour(s)", (minutes/60.0));
 			summary.Minutes = minutes;
 			icReport.Add(summary);
+
+			foreach (var e in rtdEntries)
+				lbTimeEntries.Add(new TimeReportEntryViewModel {
+					                                               Date = e.Date,
+					                                               Hours = string.Format("{0:0.00} R/B/C Hour(s)", e.Hours),
+					                                               ItemId = e.ItemID,
+					                                               Minutes = e.Minutes,
+					                                               EditLink = string.Format("/View/AddRBCTime.xaml?id={0}", e.ItemID)
+				                                               });
+			lbTimeEntries.OrderBy(s => s.Date.Date);
+
 			IsTimeReportDataLoaded = true;
 		}
 

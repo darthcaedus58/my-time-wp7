@@ -153,7 +153,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MinutesToTimeSpanValueConverter.cs" />
+    <Compile Include="ValueConverters.cs" />
     <Compile Include="ViewModels\AddModifyRBCTimeViewModel.cs" />
     <Compile Include="View\AddNewRV.xaml.cs">
       <DependentUpon>AddNewRV.xaml</DependentUpon>
