@@ -113,12 +113,6 @@ namespace FieldService.ViewModels
 		/// <value><c>true</c> if this instance is previous visits loaded; otherwise, <c>false</c>.</value>
 		public bool IsPreviousVisitsLoaded { get; private set; }
 
-		/// <summary>
-		/// Gets a value indicating whether this instance is rv full list loaded.
-		/// </summary>
-		/// <value><c>true</c> if this instance is rv full list loaded; otherwise, <c>false</c>.</value>
-		public bool IsRvFullListLoaded { get; private set; }
-
 		public double MainPageMagazines { get { return GetMainPageDouble("magazines"); } set { SetMainPageValue(value, "magazines"); } }
 
 		public double MainPageBrochures { get { return GetMainPageDouble("brochures"); } set { SetMainPageValue(value, "brochures"); } }

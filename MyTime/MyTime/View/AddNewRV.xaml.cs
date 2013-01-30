@@ -216,7 +216,7 @@ namespace FieldService.View
                 App.ToastMe("Please save this contact record first.");
                 return;
             }
-            NavigationService.Navigate(new Uri(String.Format("/ModifyCall.xaml?rvid={0}", _currentReturnVisitData == null ? "-1" : _currentReturnVisitData.ItemId.ToString(CultureInfo.InvariantCulture)), UriKind.Relative));
+            NavigationService.Navigate(new Uri(String.Format("/View/ModifyCall.xaml?rvid={0}", _currentReturnVisitData == null ? "-1" : _currentReturnVisitData.ItemId.ToString(CultureInfo.InvariantCulture)), UriKind.Relative));
         }
 
         /// <summary>
@@ -315,7 +315,7 @@ namespace FieldService.View
             try {
                 var call = (PreviousVisitModel) lbRvPrevItems.SelectedItem;
                 NavigationService.Navigate(new Uri(
-                                               String.Format("/ModifyCall.xaml?rvid={0}&id={1}",
+                                               String.Format("/View/ModifyCall.xaml?rvid={0}&id={1}",
                                                              _currentReturnVisitData == null ? "-1" : _currentReturnVisitData.ItemId.ToString(CultureInfo.InvariantCulture),
                                                              call.ItemId),
                                                UriKind.Relative));
