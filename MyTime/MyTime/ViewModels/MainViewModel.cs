@@ -448,7 +448,7 @@ namespace FieldService.ViewModels
 																   Hours = string.Format("{0:0.00} Hour(s)", (td.Minutes/60.0)),
 																   ItemId = td.ItemId,
 																   Minutes = td.Minutes,
-																   EditLink = string.Format("/View/ManuallyEnterTime.xaml?id={0}", td.ItemId)
+																   EditLink = string.Format("/View/RegularTime.xaml?id={0}", td.ItemId)
 															   });
 			}
 			var ee = RBCTimeDataInterface.GetRBCTimeEntries(new DateTime(year, month, 1), new DateTime(year, month, 1).AddMonths(1).AddDays(-1), SortOrder.DateNewestToOldest);

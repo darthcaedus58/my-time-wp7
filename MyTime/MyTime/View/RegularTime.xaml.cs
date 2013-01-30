@@ -6,7 +6,7 @@
 // Last Modified By : trevo_000
 // Last Modified On : 11-07-2012
 // ***********************************************************************
-// <copyright file="ManuallyEnterTime.xaml.cs" company="">
+// <copyright file="RegularTime.xaml.cs" company="">
 //     Copyright (c) . All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -23,14 +23,14 @@ using Microsoft.Phone.Controls;
 namespace FieldService
 {
 	/// <summary>
-	/// Class ManuallyEnterTime
+	/// Class RegularTime
 	/// </summary>
-	public partial class ManuallyEnterTime : PhoneApplicationPage
+	public partial class RegularTime : PhoneApplicationPage
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ManuallyEnterTime" /> class.
+		/// Initializes a new instance of the <see cref="RegularTime" /> class.
 		/// </summary>
-		public ManuallyEnterTime()
+		public RegularTime()
 		{
 			DataContext = new AddModifyTimeViewModel();
 			InitializeComponent();

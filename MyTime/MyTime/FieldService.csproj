@@ -173,8 +173,8 @@
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ManuallyEnterTime.xaml.cs">
-      <DependentUpon>ManuallyEnterTime.xaml</DependentUpon>
+    <Compile Include="View\RegularTime.xaml.cs">
+      <DependentUpon>RegularTime.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ModifyCall.xaml.cs">
       <DependentUpon>ModifyCall.xaml</DependentUpon>
@@ -229,7 +229,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ManuallyEnterTime.xaml">
+    <Page Include="View\RegularTime.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
