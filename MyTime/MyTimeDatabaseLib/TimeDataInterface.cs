@@ -171,7 +171,11 @@ namespace MyTimeDatabaseLib
 	/// </summary>
 	public class TimeData
 	{
-		public TimeData() { ItemId = -1; }
+
+		public TimeData()
+		{
+			ItemId = -1;
+		}
 
 		/// <summary>
 		/// Gets the item id.
@@ -183,7 +187,11 @@ namespace MyTimeDatabaseLib
 		/// Gets or sets the minutes.
 		/// </summary>
 		/// <value>The minutes.</value>
-		public int Minutes { get; set; }
+		public int Minutes { get { return (int)TotalTime.TotalMinutes; } set { TotalTime = TimeSpan.FromMinutes(value); } }
+
+		public double Hours { get { return TotalTime.TotalHours; } set { TotalTime = TimeSpan.FromHours(value); } }
+
+		public TimeSpan TotalTime { get; set; }
 
 		/// <summary>
 		/// Gets or sets the date.
@@ -226,8 +234,6 @@ namespace MyTimeDatabaseLib
 		/// </summary>
 		/// <value>The notes.</value>
 		public string Notes { get; set; }
-
-		public double Hours { get { return ((double) Minutes)/60.0; } set { Minutes = Convert.ToInt32(value*60); } }
 
 		internal static TimeDataItem Copy(TimeData d)
 		{

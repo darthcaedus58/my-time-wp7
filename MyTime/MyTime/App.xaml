@@ -6,6 +6,7 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:FieldService="clr-namespace:FieldService" 
     xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input" 
     xmlns:telerik1="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Core" xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives" 
+    xmlns:Toolkit="clr-namespace:Coding4Fun.Phone.Controls.Toolkit;assembly=Coding4Fun.Phone.Controls.Toolkit" 
     x:Class="FieldService.App"
     >
 
@@ -198,15 +199,15 @@
                 </Setter>
             </Style>
 
-            <telerik1:RadPlaneProjectionAnimation x:Key="CloseAnimation" Axes="X" StartAngleX="0" EndAngleX="90" Duration="0:0:.2">
+            <telerik1:RadPlaneProjectionAnimation x:Key="CloseAnimation" Axes="X" Duration="0:0:.2" EndAngleX="90" StartAngleX="0">
                 <telerik1:RadPlaneProjectionAnimation.Easing>
-                    <ExponentialEase Exponent="4" EasingMode="EaseIn"/>
+                    <ExponentialEase EasingMode="EaseIn" Exponent="4"/>
                 </telerik1:RadPlaneProjectionAnimation.Easing>
             </telerik1:RadPlaneProjectionAnimation>
 
-            <telerik1:RadPlaneProjectionAnimation x:Key="OpenAnimation" Axes="X" StartAngleX="-90" EndAngleX="0" Duration="0:0:.2">
+            <telerik1:RadPlaneProjectionAnimation x:Key="OpenAnimation" Axes="X" Duration="0:0:.2" EndAngleX="0" StartAngleX="-90">
                 <telerik1:RadPlaneProjectionAnimation.Easing>
-                    <ExponentialEase Exponent="4" EasingMode="EaseOut"/>
+                    <ExponentialEase EasingMode="EaseOut" Exponent="4"/>
                 </telerik1:RadPlaneProjectionAnimation.Easing>
             </telerik1:RadPlaneProjectionAnimation>
 
@@ -214,18 +215,13 @@
                 <telerikPrimitives:RadPickerBox x:Name="PART_PickerBox" 
         			HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
         			VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-        			PopupOpenAnimation="{StaticResource OpenAnimation}"
-        			PopupCloseAnimation="{StaticResource CloseAnimation}"
-        			Header="{TemplateBinding Header}"
-        			HeaderTemplate="{TemplateBinding HeaderTemplate}"
-        			HeaderStyle="{TemplateBinding HeaderStyle}"
         			ContentTemplate="{TemplateBinding EmptyContentTemplate}"
-        			PickerButtonStyle="{TemplateBinding PickerButtonStyle}">
+        			HeaderTemplate="{TemplateBinding HeaderTemplate}" HeaderStyle="{TemplateBinding HeaderStyle}" Header="{TemplateBinding Header}" PopupCloseAnimation="{StaticResource CloseAnimation}" PickerButtonStyle="{TemplateBinding PickerButtonStyle}" PopupOpenAnimation="{StaticResource OpenAnimation}">
 
                     <telerikPrimitives:RadPickerBox.ApplicationBarInfo>
                         <telerikPrimitives:ApplicationBarInfo x:Name="PART_AppBarInfo" BackgroundColor="#FF4C4478">
-                            <telerikPrimitives:ApplicationBarButton x:Name="PART_OKButton" />
-                            <telerikPrimitives:ApplicationBarButton x:Name="PART_CancelButton" />
+                            <telerikPrimitives:ApplicationBarButton x:Name="PART_OKButton"/>
+                            <telerikPrimitives:ApplicationBarButton x:Name="PART_CancelButton"/>
                         </telerikPrimitives:ApplicationBarInfo>
                     </telerikPrimitives:RadPickerBox.ApplicationBarInfo>
                     <Grid Background="{StaticResource AppBackgroundBrush}">
@@ -233,30 +229,8 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <ContentControl 
-        					Margin="24, 55, 0, 24"
-        					FontFamily="{StaticResource PhoneFontFamilySemiBold}"
-        					FontWeight="SemiBold"
-        					FontSize="{StaticResource PhoneFontSizeMedium}"
-        					Grid.Row="0"
-                            Background="{StaticResource AppBackgroundBrush}"
-        					x:Name="PART_PopupHeader"
-        					Content="{TemplateBinding PopupHeader}"
-        					ContentTemplate="{TemplateBinding PopupHeaderTemplate}"
-        					HorizontalContentAlignment="Left"
-                                    />
-                        <telerik:RadDateSelector 
-        					Grid.Row="1"
-        					x:Name="PART_Selector"
-        					Step="{TemplateBinding Step}"
-                            Foreground="{StaticResource AppForegroundBrush}"
-                            Background="{StaticResource AppBackgroundBrush}"
-        					DayStepBehavior="{TemplateBinding DayStepBehavior}"
-        					MonthStepBehavior="{TemplateBinding MonthStepBehavior}"
-        					YearStepBehavior="{TemplateBinding YearStepBehavior}"
-        					ItemTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-        					AppointmentSource="{TemplateBinding AppointmentSource}"
-        					Style="{TemplateBinding SelectorStyle}"/>
+                        <ContentControl x:Name="PART_PopupHeader" Background="{StaticResource AppBackgroundBrush}" ContentTemplate="{TemplateBinding PopupHeaderTemplate}" Content="{TemplateBinding PopupHeader}" FontWeight="SemiBold" FontSize="{StaticResource PhoneFontSizeMedium}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" HorizontalContentAlignment="Left" Margin="24, 55, 0, 24" Grid.Row="0"/>
+                        <telerik:RadDateSelector x:Name="PART_Selector" AppointmentSource="{TemplateBinding AppointmentSource}" Background="{StaticResource AppBackgroundBrush}" DayStepBehavior="{TemplateBinding DayStepBehavior}" Foreground="{StaticResource AppForegroundBrush}" ItemTemplateSelector="{TemplateBinding ItemTemplateSelector}" MonthStepBehavior="{TemplateBinding MonthStepBehavior}" Grid.Row="1" Style="{TemplateBinding SelectorStyle}" Step="{TemplateBinding Step}" YearStepBehavior="{TemplateBinding YearStepBehavior}"/>
                     </Grid>
                 </telerikPrimitives:RadPickerBox>
             </ControlTemplate>

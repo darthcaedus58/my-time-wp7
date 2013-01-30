@@ -64,7 +64,7 @@
                     <TextBlock Height="30" x:Name="textBlock1" Text="DATE" />
                     <telerik:RadDatePicker x:Name="dpDatePicker" Value="{Binding TimeData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
                     <TextBlock Height="30" Text="TIME" />
-                    <c4f:TimeSpanPicker x:Name="tspTime" Step="0:15:0" Value="{Binding TimeData.Minutes, Converter={StaticResource MinutesToTimeSpanValueConverter}, Mode=TwoWay}" />
+                    <c4f:TimeSpanPicker ValueStringFormat="{}{0:h} Hours and {0:m} Minutes" x:Name="tspTime" Step="0:15:0" Value="{Binding TimeData.TotalTime, Mode=TwoWay}" />
                     <TextBlock Text="PLACEMENTS" />
                     <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags" Suffix="Magazines" Value="{Binding TimeData.Magazines, Mode=TwoWay}" />
                     <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" Suffix="Brochures" Value="{Binding TimeData.Brochures, Mode=TwoWay}" />
