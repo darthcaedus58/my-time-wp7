@@ -6,7 +6,7 @@
 // Last Modified By : trevo_000
 // Last Modified On : 11-07-2012
 // ***********************************************************************
-// <copyright file="RegularTime.xaml.cs" company="">
+// <copyright file="RegularTimePage.xaml.cs" company="">
 //     Copyright (c) . All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -23,14 +23,14 @@ using Microsoft.Phone.Controls;
 namespace FieldService
 {
 	/// <summary>
-	/// Class RegularTime
+	/// Class RegularTimePage
 	/// </summary>
-	public partial class RegularTime : PhoneApplicationPage
+	public partial class RegularTimePage : PhoneApplicationPage
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="RegularTime" /> class.
+		/// Initializes a new instance of the <see cref="RegularTimePage" /> class.
 		/// </summary>
-		public RegularTime()
+		public RegularTimePage()
 		{
 			DataContext = new AddModifyTimeViewModel();
 			InitializeComponent();
