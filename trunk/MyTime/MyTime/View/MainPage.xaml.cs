@@ -250,7 +250,7 @@ namespace FieldService
 								  };
 
 			try {
-				TimeDataInterface.AddTime(td);
+				TimeDataInterface.AddTime(ref td);
 				App.ToastMe(string.Format("Time ({0} hrs & {1} min) added.", t.Hours, t.Minutes));
 				TimerStopClickTapEvent();
 				ResetText();

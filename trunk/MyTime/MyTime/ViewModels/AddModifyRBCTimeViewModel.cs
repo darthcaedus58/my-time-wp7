@@ -33,6 +33,7 @@ namespace FieldService.ViewModels
 			{
 				if (value < 0) return;
 				_rbcTimeData = RBCTimeDataInterface.GetRBCTimeData(value);
+				OnPropertyChanged("RBCTimeData");
 			}
 		}
 
@@ -49,16 +50,25 @@ namespace FieldService.ViewModels
 		}
 
 		public bool AddOrUpdateTime() { return RBCTimeDataInterface.AddOrUpdateTime(ref _rbcTimeData); }
-		public bool DeleteTime() { return _rbcTimeData.ItemID >= 0 && RBCTimeDataInterface.DeleteTime(RBCTimeData); }
 
 		public bool ConvertToRegularTime()
 		{
-			return DeleteTime() && TimeDataInterface.AddTime(new TimeData()
-			                                                 {
-				                                                 Date = _rbcTimeData.Date,
-				                                                 Minutes = _rbcTimeData.Minutes,
-				                                                 Notes = _rbcTimeData.Notes
-			                                                 }) >= 0;
+			var td = new TimeData {
+				                      Date = _rbcTimeData.Date,
+				                      Minutes = _rbcTimeData.Minutes,
+				                      Notes = _rbcTimeData.Notes
+			                      };
+			return DeleteTime() && TimeDataInterface.AddTime(ref td);
+		}
+
+		public bool DeleteTime()
+		{
+			bool v = _rbcTimeData.ItemID >= 0 && RBCTimeDataInterface.DeleteTime(RBCTimeData);
+			if (v) {
+				_rbcTimeData = null;
+				OnPropertyChanged("RBCTimeData");
+			}
+			return v;
 		}
 	}
 }
