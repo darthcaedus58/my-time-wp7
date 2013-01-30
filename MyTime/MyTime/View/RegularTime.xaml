@@ -62,7 +62,7 @@
             <ScrollViewer Height="530">
                 <StackPanel>
                     <TextBlock Height="30" x:Name="textBlock1" Text="DATE" />
-                    <toolkit:DatePicker x:Name="dpDatePicker" Value="{Binding TimeData.Date, Mode=TwoWay}" />
+                    <telerik:RadDatePicker x:Name="dpDatePicker" Value="{Binding TimeData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
                     <TextBlock Height="30" Text="TIME" />
                     <c4f:TimeSpanPicker x:Name="tspTime" Step="0:15:0" Value="{Binding TimeData.Minutes, Converter={StaticResource MinutesToTimeSpanValueConverter}, Mode=TwoWay}" />
                     <TextBlock Text="PLACEMENTS" />
