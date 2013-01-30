@@ -46,18 +46,18 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-                <ScrollViewer>
-                    <StackPanel>
-                        <FieldService:HeaderControl IconSource="/icons/calendar.png" HeaderText="DATE" Margin="15,0,0,0" />
-                        <telerik:RadDatePicker x:Name="dpDatePicker" Value="{Binding PreviousVisitData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
-                        <FieldService:HeaderControl IconSource="/icons/clock.png" HeaderText="TIME" Margin="15,0,0,0" />
-                        <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags" Suffix="Magazines" Value="{Binding PreviousVisitData.Magazines, Mode=TwoWay}" />
-                        <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" Suffix="Brochures" Value="{Binding PreviousVisitData.Brochures, Mode=TwoWay}" />
-                        <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBooks" Suffix="Books" Value="{Binding PreviousVisitData.Books, Mode=TwoWay}" />
-                        <FieldService:HeaderControl IconSource="/icons/tasks.png" HeaderText="NOTES" Margin="15,0,0,0" />
-                        <TextBox x:Name="tbNotes" Height="180" TextWrapping="Wrap" InputScope="Text" Text="{Binding PreviousVisitData.Notes, Mode=TwoWay}"/>
-                    </StackPanel>
-                </ScrollViewer>
+            <ScrollViewer>
+                <StackPanel>
+                    <FieldService:HeaderControl IconSource="/icons/calendar.png" HeaderText="DATE" Margin="15,0,0,0" />
+                    <telerik:RadDatePicker x:Name="dpDatePicker" Value="{Binding PreviousVisitData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
+                    <FieldService:HeaderControl IconSource="/icons/clock.png" HeaderText="TIME" Margin="15,0,0,0" />
+                    <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags" Suffix="Magazines" Value="{Binding PreviousVisitData.Magazines, Mode=TwoWay}" />
+                    <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" Suffix="Brochures" Value="{Binding PreviousVisitData.Brochures, Mode=TwoWay}" />
+                    <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBooks" Suffix="Books" Value="{Binding PreviousVisitData.Books, Mode=TwoWay}" />
+                    <FieldService:HeaderControl IconSource="/icons/tasks.png" HeaderText="NOTES" Margin="15,0,0,0" />
+                    <TextBox x:Name="tbNotes" Height="180" TextWrapping="Wrap" InputScope="Text" Text="{Binding PreviousVisitData.Notes, Mode=TwoWay}"/>
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
     </Grid>
 
