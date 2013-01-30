@@ -11,17 +11,16 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
 using System.ComponentModel;
 using System.Globalization;
-using System.Windows.Data;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Navigation;
 using System.Windows.Threading;
 using System.Xml.Serialization;
 using FieldService.SocietyScraper;
@@ -30,10 +29,8 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
 using MyTimeDatabaseLib;
 using GestureEventArgs = System.Windows.Input.GestureEventArgs;
-using Microsoft.Phone.Marketplace;
-using TimeData = MyTimeDatabaseLib.TimeData;
 
-namespace FieldService
+namespace FieldService.View
 {
 	/// <summary>
 	/// Class MainPage

@@ -20,7 +20,7 @@ using System.Windows.Navigation;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
 
-namespace FieldService
+namespace FieldService.View
 {
 	/// <summary>
 	/// Class RegularTimePage

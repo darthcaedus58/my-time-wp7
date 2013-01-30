@@ -1,5 +1,5 @@
 ﻿<phone:PhoneApplicationPage 
-    x:Class="FieldService.AddNewRV" 
+    x:Class="FieldService.View.AddNewRV" 
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:cntrls="clr-namespace:Controls.Primitives;assembly=Controls" 

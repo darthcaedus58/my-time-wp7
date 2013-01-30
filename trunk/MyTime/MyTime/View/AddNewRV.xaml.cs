@@ -33,7 +33,7 @@ using FieldService.BingMapsGeocodeService;
 using MyTimeDatabaseLib;
 using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
-namespace FieldService
+namespace FieldService.View
 {
     /// <summary>
     /// Class AddNewRV

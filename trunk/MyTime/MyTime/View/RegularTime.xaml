@@ -9,7 +9,7 @@
     xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls.Toolkit;assembly=Coding4Fun.Phone.Controls.Toolkit"
     xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
     xmlns:local="clr-namespace:FieldService" xmlns:ViewModels="clr-namespace:FieldService.ViewModels" 
-    x:Class="FieldService.RegularTimePage"
+    x:Class="FieldService.View.RegularTimePage"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="728" d:DesignWidth="480"
     shell:SystemTray.IsVisible="False"

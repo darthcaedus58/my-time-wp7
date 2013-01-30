@@ -24,7 +24,7 @@ using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
 using MyTimeDatabaseLib;
 
-namespace FieldService
+namespace FieldService.View
 {
 	/// <summary>
 	/// Class TimeReport
