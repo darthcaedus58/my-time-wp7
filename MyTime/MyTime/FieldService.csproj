@@ -178,8 +178,8 @@
     <Compile Include="View\RegularTime.xaml.cs">
       <DependentUpon>RegularTime.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ModifyCall.xaml.cs">
-      <DependentUpon>ModifyCall.xaml</DependentUpon>
+    <Compile Include="View\PreviousCall.xaml.cs">
+      <DependentUpon>PreviousCall.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\ReturnVisitFullList.xaml.cs">
@@ -219,7 +219,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ModifyCall.xaml">
+    <Page Include="View\PreviousCall.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
