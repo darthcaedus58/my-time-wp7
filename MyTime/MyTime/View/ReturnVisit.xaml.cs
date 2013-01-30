@@ -6,7 +6,7 @@
 // Last Modified By : trevo_000
 // Last Modified On : 11-11-2012
 // ***********************************************************************
-// <copyright file="AddNewRV.xaml.cs" company="">
+// <copyright file="ReturnVisitPage.xaml.cs" company="">
 //     Copyright (c) . All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -37,9 +37,9 @@ using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 namespace FieldService.View
 {
     /// <summary>
-    /// Class AddNewRV
+    /// Class ReturnVisitPage
     /// </summary>
-    public partial class AddNewRV : PhoneApplicationPage
+    public partial class ReturnVisitPage : PhoneApplicationPage
     {
         /// <summary>
         /// The _USaddressLayout
@@ -69,9 +69,9 @@ namespace FieldService.View
         private bool _useLocationServices = true;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AddNewRV" /> class.
+        /// Initializes a new instance of the <see cref="ReturnVisitPage" /> class.
         /// </summary>
-        public AddNewRV()
+        public ReturnVisitPage()
         {
             InitializeComponent();
 

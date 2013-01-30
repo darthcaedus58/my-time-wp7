@@ -115,7 +115,7 @@ namespace FieldService.View
 			try {
 				var rv = (ReturnVisitItemModel) ((ListBox) sender).SelectedItem;
 				((ListBox) sender).SelectedIndex = -1;
-				NavigationService.Navigate(new Uri(string.Format("/View/AddNewRV.xaml?id={0}", rv.ItemId.ToString(CultureInfo.InvariantCulture)), UriKind.Relative));
+				NavigationService.Navigate(new Uri(string.Format("/View/ReturnVisit.xaml?id={0}", rv.ItemId.ToString(CultureInfo.InvariantCulture)), UriKind.Relative));
 			} catch {}
 		}
 
@@ -482,7 +482,7 @@ namespace FieldService.View
 					NavigationService.Navigate(new Uri("/View/RBCTime.xaml", UriKind.Relative));
 					break;
 				case "add return visit":
-					NavigationService.Navigate(new Uri("/View/AddNewRV.xaml", UriKind.Relative));
+					NavigationService.Navigate(new Uri("/View/ReturnVisit.xaml", UriKind.Relative));
 					break;
 				case "watchtower library":
 					var wbTask = new WebBrowserTask {Uri = new Uri("http://wol.jw.org", UriKind.RelativeOrAbsolute)};
