@@ -6,7 +6,7 @@
 // Last Modified By : trevo_000
 // Last Modified On : 11-07-2012
 // ***********************************************************************
-// <copyright file="ModifyCall.xaml.cs" company="">
+// <copyright file="PreviousCallPage.xaml.cs" company="">
 //     Copyright (c) . All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -24,16 +24,16 @@ using MyTimeDatabaseLib;
 namespace FieldService.View
 {
 	/// <summary>
-	/// Class ModifyCall
+	/// Class PreviousCallPage
 	/// </summary>
-	public partial class ModifyCall : PhoneApplicationPage
+	public partial class PreviousCallPage : PhoneApplicationPage
 	{
 		private PreviousVisitViewModel ViewModel { get { return ((PreviousVisitViewModel) DataContext); } }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ModifyCall" /> class.
+		/// Initializes a new instance of the <see cref="PreviousCallPage" /> class.
 		/// </summary>
-		public ModifyCall() { InitializeComponent(); }
+		public PreviousCallPage() { InitializeComponent(); }
 
 		#region Events
 

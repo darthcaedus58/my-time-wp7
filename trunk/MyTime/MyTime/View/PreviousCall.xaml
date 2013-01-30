@@ -9,7 +9,7 @@
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
     xmlns:ViewModels="clr-namespace:FieldService.ViewModels" 
-    x:Class="FieldService.View.ModifyCall"
+    x:Class="FieldService.View.PreviousCallPage"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource AppForegroundBrush}"
