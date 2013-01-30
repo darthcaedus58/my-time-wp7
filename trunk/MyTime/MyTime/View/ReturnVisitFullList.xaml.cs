@@ -48,7 +48,7 @@ namespace FieldService.View
 		{
 			var returnVisitLlItemModel = llsAllReturnVisits.SelectedItem as ReturnVisitLLItemModel;
 			if (returnVisitLlItemModel != null) {
-				NavigationService.Navigate(new Uri(string.Format("/View/AddNewRV.xaml?id={0}", returnVisitLlItemModel.ItemId), UriKind.Relative));
+				NavigationService.Navigate(new Uri(string.Format("/View/ReturnVisit.xaml?id={0}", returnVisitLlItemModel.ItemId), UriKind.Relative));
 			}
 		}
 
