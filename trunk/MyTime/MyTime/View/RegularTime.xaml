@@ -8,7 +8,8 @@
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls.Toolkit;assembly=Coding4Fun.Phone.Controls.Toolkit"
     xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
-    xmlns:local="clr-namespace:FieldService" xmlns:ViewModels="clr-namespace:FieldService.ViewModels" 
+    xmlns:telerikPrim="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:local="clr-namespace:FieldService" xmlns:ViewModels="clr-namespace:FieldService.ViewModels" x:Name="phoneApplicationPage" 
     x:Class="FieldService.View.RegularTimePage"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="728" d:DesignWidth="480"
@@ -32,11 +33,11 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar BackgroundColor="{StaticResource PhoneForegroundColor}" ForegroundColor="{StaticResource PhoneBackgroundColor}" IsMenuEnabled="True" IsVisible="True">
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem x:Name="abmiConvertToRbc" Text="convert to rbc time" Click="abmiConvertToRbc_Click_1" />
-                <shell:ApplicationBarMenuItem x:Name="abmiDelete" Text="delete" Click="abmiDelete_Click" />
+                <shell:ApplicationBarMenuItem x:Name="abmiConvertToRbc" Text="convert to rbc time" Click="abmiConvertToRbc_Click_1" IsEnabled="True" />
+                <shell:ApplicationBarMenuItem x:Name="abmiDelete" Text="delete" Click="abmiDelete_Click" IsEnabled="True" />
             </shell:ApplicationBar.MenuItems>
 
-            <shell:ApplicationBarIconButton Text="Save" IconUri="/icons/appbar.save.rest.png" x:Name="abibSave" Click="abibSave_Click" />
+            <shell:ApplicationBarIconButton Text="Save" IconUri="/icons/appbar.save.rest.png" x:Name="abibSave" Click="abibSave_Click" IsEnabled="True" />
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 
@@ -58,24 +59,24 @@
             <TextBlock Foreground="{StaticResource AppForegroundBrush}" x:Name="ApplicationTitle" Text="FIELD SERVICE" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock Foreground="{StaticResource AppForegroundBrush}" x:Name="PageTitle" Text="time" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" x:Name="stackPanel1" VerticalAlignment="Stretch">
-            <ScrollViewer Height="530">
+        <Grid Row="1">
+            <ScrollViewer>
                 <StackPanel>
-                    <TextBlock Height="30" x:Name="textBlock1" Text="DATE" />
+                    <local:HeaderControl IconSource="/icons/calendar.png" HeaderText="DATE" Margin="15,0,0,0" />
                     <telerik:RadDatePicker x:Name="dpDatePicker" Value="{Binding TimeData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
-                    <TextBlock Height="30" Text="TIME" />
+                    <local:HeaderControl IconSource="/icons/clock.png" HeaderText="TIME" Margin="15,0,0,0" />
                     <c4f:TimeSpanPicker ValueStringFormat="{}{0:h} Hours and {0:m} Minutes" x:Name="tspTime" Step="0:15:0" Value="{Binding TimeData.TotalTime, Mode=TwoWay}" />
-                    <TextBlock Text="PLACEMENTS" />
+                    <local:HeaderControl IconSource="/icons/books.png" HeaderText="PLACEMENTS" Margin="15,0,0,0" />
                     <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags" Suffix="Magazines" Value="{Binding TimeData.Magazines, Mode=TwoWay}" />
                     <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" Suffix="Brochures" Value="{Binding TimeData.Brochures, Mode=TwoWay}" />
                     <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBooks" Suffix="Books" Value="{Binding TimeData.Books, Mode=TwoWay}" />
                     <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbReturnVisits" Suffix="Return Visits" Value="{Binding TimeData.ReturnVisits, Mode=TwoWay}" />
                     <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBibleStudies" Suffix="Bible Studies" Value="{Binding TimeData.BibleStudies, Mode=TwoWay}" />
-                    <TextBlock TextWrapping="Wrap" Text="NOTES"/>
-                    <TextBox InputScope="Text" Height="180" x:Name="tbNotes" TextWrapping="Wrap" Text="{Binding TimeData.Notes, Mode=TwoWay}" />
+                    <local:HeaderControl IconSource="/icons/tasks.png" HeaderText="NOTES" Margin="15,0,0,0" />
+                     <TextBox InputScope="Text" Height="180" x:Name="tbNotes" TextWrapping="Wrap" Text="{Binding TimeData.Notes, Mode=TwoWay}" />
                 </StackPanel>
             </ScrollViewer>
-        </StackPanel>
+        </Grid>
     </Grid>
 
 </phone:PhoneApplicationPage>
