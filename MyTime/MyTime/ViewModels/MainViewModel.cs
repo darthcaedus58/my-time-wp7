@@ -48,8 +48,6 @@ namespace FieldService.ViewModels
 			icReport = new ObservableCollection<TimeReportSummaryModel>();
 			lbTimeEntries = new ObservableCollection<TimeReportEntryViewModel>();
 
-			llReturnVisitFullListCategory = new ObservableCollection<ReturnVistLLCategory>();
-
 			if (!IsolatedStorageFile.GetUserStoreForApplication().FileExists("mainpage.xml")) {
 				using(var iso = IsolatedStorageFile.GetUserStoreForApplication()) {
 					using (var file = new IsolatedStorageFileStream("mainpage.xml", FileMode.CreateNew, iso)) {
@@ -59,13 +57,6 @@ namespace FieldService.ViewModels
 				}
 			}
 		}
-
-
-		/// <summary>
-		/// Gets the ll return visit full list category.
-		/// </summary>
-		/// <value>The ll return visit full list category.</value>
-		public ObservableCollection<ReturnVistLLCategory> llReturnVisitFullListCategory { get; private set; }
 
 
 		/// <summary>
@@ -472,90 +463,6 @@ namespace FieldService.ViewModels
 			foreach (var l in lte) lbTimeEntries.Add(l);
 
 			IsTimeReportDataLoaded = true;
-		}
-
-		/// <summary>
-		/// Loads the return visit full list.
-		/// </summary>
-		public void LoadReturnVisitFullList()
-		{
-			if (IsRvFullListLoaded) {
-				llReturnVisitFullListCategory = new ObservableCollection<ReturnVistLLCategory>();
-			}
-			IsRvFullListLoaded = false;
-
-			var wb = new WriteableBitmap(100, 100);
-			for (int i = 0; i < wb.Pixels.Length; i++) {
-				wb.Pixels[i] = 0xFF3300;
-			}
-			var bmp = new BitmapImage();
-			using (var ms = new MemoryStream()) {
-				wb.SaveJpeg(ms, 100, 100, 0, 100);
-				bmp.SetSource(ms);
-			}
-
-			ReturnVisitData[] rVs = ReturnVisitsInterface.GetReturnVisits(SortOrder.CityAToZ, -1);
-			if (rVs == null) return;
-			if (rVs.Length <= 0) return;
-			string lastCity = rVs[0].City;
-			var cityCat = new ReturnVistLLCategory {Name = lastCity};
-			foreach (ReturnVisitData r in rVs) {
-				if (r.City != lastCity) {
-					llReturnVisitFullListCategory.Add(cityCat);
-					cityCat = new ReturnVistLLCategory {Name = r.City};
-				}
-
-				var bi = new BitmapImage();
-				if (r.ImageSrc != null && r.ImageSrc.Length >= 0) {
-					var ris = new WriteableBitmap(450, 250);
-
-					//get image from database
-					for (int i = 0; i < r.ImageSrc.Length; i++) {
-						ris.Pixels[i] = r.ImageSrc[i];
-					}
-
-					//put the image in a WritableBitmap
-					using (var ms = new MemoryStream()) {
-						ris.SaveJpeg(ms, 450, 250, 0, 100);
-						bi.SetSource(ms);
-					}
-
-					//crop the image to 100x100 and centered
-					var img = new Image {
-											Source = bi,
-											Width = 450,
-											Height = 250
-										};
-					var wb2 = new WriteableBitmap(100, 100);
-					var t = new CompositeTransform {
-													   ScaleX = 0.5,
-													   ScaleY = 0.5,
-													   TranslateX = -((450/2)/2 - 50),
-													   TranslateY = -((250/2)/2 - 50)
-												   };
-					wb2.Render(img, t);
-					wb2.Invalidate();
-					bi = new BitmapImage();
-					using (var ms = new MemoryStream()) {
-						wb2.SaveJpeg(ms, 100, 100, 0, 100);
-						bi.SetSource(ms);
-					}
-					//BitmapImage bi is now cropped
-				} else {
-					bi = bmp; //Default image.
-				}
-
-				lastCity = r.City;
-				cityCat.Items.Add(new ReturnVisitLLItemModel {
-																 Text = string.IsNullOrEmpty(r.FullName) ? string.Format("{0} year old {1}", r.Age, r.Gender) : r.FullName,
-																 Address1 = string.Format("{0} {1}", r.AddressOne, r.AddressTwo),
-																 Address2 = string.Format("{0}, {1} {2}", r.City, r.StateProvince, r.Country),
-																 ImageSource = bi,
-																 ItemId = r.ItemId
-															 });
-			}
-			llReturnVisitFullListCategory.Add(cityCat);
-			IsRvFullListLoaded = true;
 		}
 	}
 }

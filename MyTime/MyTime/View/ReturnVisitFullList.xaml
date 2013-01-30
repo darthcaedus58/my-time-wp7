@@ -7,6 +7,7 @@
                             xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone" 
                             xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone" 
                             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
+                            xmlns:ViewModels="clr-namespace:FieldService.ViewModels"
                             FontFamily="{StaticResource PhoneFontFamilyNormal}" 
                             FontSize="{StaticResource PhoneFontSizeNormal}" 
                             Foreground="{StaticResource AppForegroundBrush}" 
@@ -19,7 +20,11 @@
         <SolidColorBrush Color="#FF8FCCF8" x:Key="AppBackgroundColor"/>
         <SolidColorBrush  Color="#FFD2DA86" x:Key="AppAccentColor"/>
     </phone:PhoneApplicationPage.Resources>
-    <!--LayoutRoot is the root grid where all page content is placed-->
+    <phone:PhoneApplicationPage.DataContext>
+        <ViewModels:ReturnVisitFullListViewModel />
+    </phone:PhoneApplicationPage.DataContext>
+    
+        <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -34,7 +39,7 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Background="{StaticResource AppBackgroundBrush}" Grid.Row="1" Margin="12,0,12,0">
-            <toolkit:LongListSelector Foreground="{StaticResource AppForegroundBrush}" Background="{StaticResource AppBackgroundBrush}" Name="llsAllReturnVisits" SelectionChanged="llsAllReturnVisits_SelectionChanged" >
+            <toolkit:LongListSelector Foreground="{StaticResource AppForegroundBrush}" Background="{StaticResource AppBackgroundBrush}" Name="llsAllReturnVisits" SelectionChanged="llsAllReturnVisits_SelectionChanged" ItemsSource="{Binding llReturnVisitFullListCategory}" >
                 <toolkit:LongListSelector.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
