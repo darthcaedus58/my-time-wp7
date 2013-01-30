@@ -197,12 +197,12 @@
     <Compile Include="View\TimeReport.xaml.cs">
       <DependentUpon>TimeReport.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\ReturnVisitItemViewModel.cs" />
-    <Compile Include="ViewModels\MainMenuViewModel.cs" />
+    <Compile Include="Model\ReturnVisitItemModel.cs" />
+    <Compile Include="Model\MainMenuModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\PreviousVisitViewModel.cs" />
-    <Compile Include="ViewModels\ReturnVisitLongListViewModel.cs" />
-    <Compile Include="ViewModels\TimeReportSummaryViewModel.cs" />
+    <Compile Include="Model\PreviousVisitModel.cs" />
+    <Compile Include="Model\ReturnVisitLongListModel.cs" />
+    <Compile Include="Model\TimeReportSummaryModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

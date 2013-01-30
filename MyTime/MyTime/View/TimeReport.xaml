@@ -24,7 +24,7 @@
         <my:DoubleToVisibilityValueConverter x:Key="DoubleToVisibilityValueConverter"/>
         <my:DoubleToVisibilityValueConverter x:Key="IntToVisibilityValueConverter"/>
         <!-- Data -->
-        <my:ChartData x:Key="ChartData" />
+        <View:ChartData x:Key="ChartData" />
     </phone:PhoneApplicationPage.Resources>
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">

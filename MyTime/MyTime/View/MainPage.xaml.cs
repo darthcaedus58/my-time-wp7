@@ -23,8 +23,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 using System.Xml.Serialization;
+using FieldService.Model;
 using FieldService.SocietyScraper;
-using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
 using MyTimeDatabaseLib;
@@ -113,7 +113,7 @@ namespace FieldService.View
 		{
 			if (((ListBox) sender).SelectedIndex < 0) return;
 			try {
-				var rv = (ReturnVisitItemViewModel) ((ListBox) sender).SelectedItem;
+				var rv = (ReturnVisitItemModel) ((ListBox) sender).SelectedItem;
 				((ListBox) sender).SelectedIndex = -1;
 				NavigationService.Navigate(new Uri(string.Format("/View/AddNewRV.xaml?id={0}", rv.ItemId.ToString(CultureInfo.InvariantCulture)), UriKind.Relative));
 			} catch {}

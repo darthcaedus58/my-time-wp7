@@ -15,12 +15,12 @@
 using System;
 using System.ComponentModel;
 
-namespace FieldService.ViewModels
+namespace FieldService.Model
 {
 	/// <summary>
 	/// Class TimeReportSummaryViewModel
 	/// </summary>
-	public class TimeReportSummaryViewModel : INotifyPropertyChanged
+	public class TimeReportSummaryModel : INotifyPropertyChanged
 	{
 		/// <summary>
 		/// The _BKS

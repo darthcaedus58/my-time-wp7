@@ -11,13 +11,14 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Media.Imaging;
 
-namespace FieldService.ViewModels
+namespace FieldService.Model
 {
     /// <summary>
     /// Class ReturnVisitLLItemModel

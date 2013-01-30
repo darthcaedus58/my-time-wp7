@@ -16,12 +16,12 @@ using System;
 using System.ComponentModel;
 using System.Windows.Media.Imaging;
 
-namespace FieldService.ViewModels
+namespace FieldService.Model
 {
     /// <summary>
     /// Class ReturnVisitItemViewModel
     /// </summary>
-    public class ReturnVisitItemViewModel : INotifyPropertyChanged
+    public class ReturnVisitItemModel : INotifyPropertyChanged
     {
         /// <summary>
         /// The _image
