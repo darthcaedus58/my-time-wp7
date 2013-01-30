@@ -50,7 +50,7 @@
                 <ScrollViewer Height="530">
                     <StackPanel>
                         <TextBlock Text="DATE" />
-                        <toolkit:DatePicker x:Name="dpDatePicker" Value="{Binding PreviousVisitData.Date, Mode=TwoWay}" />
+                        <telerik:RadDatePicker x:Name="dpDatePicker" Value="{Binding PreviousVisitData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
                         <TextBlock Text="PLACEMENTS" />
                         <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags" Suffix="Magazines" Value="{Binding PreviousVisitData.Magazines, Mode=TwoWay}" />
                         <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" Suffix="Brochures" Value="{Binding PreviousVisitData.Brochures, Mode=TwoWay}" />
