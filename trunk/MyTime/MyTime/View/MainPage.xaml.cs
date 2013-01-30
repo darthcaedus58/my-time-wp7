@@ -482,7 +482,7 @@ namespace FieldService
 					NavigationService.Navigate(new Uri("/View/RegularTime.xaml", UriKind.Relative));
 					break;
 				case "add rbc time":
-					NavigationService.Navigate(new Uri("/View/AddRBCTime.xaml", UriKind.Relative));
+					NavigationService.Navigate(new Uri("/View/RBCTime.xaml", UriKind.Relative));
 					break;
 				case "add return visit":
 					NavigationService.Navigate(new Uri("/View/AddNewRV.xaml", UriKind.Relative));

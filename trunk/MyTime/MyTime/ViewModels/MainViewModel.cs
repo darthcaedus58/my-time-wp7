@@ -464,7 +464,7 @@ namespace FieldService.ViewModels
 					                                               Hours = string.Format("{0:0.00} R/B/C Hour(s)", e.Hours),
 					                                               ItemId = e.ItemID,
 					                                               Minutes = e.Minutes,
-					                                               EditLink = string.Format("/View/AddRBCTime.xaml?id={0}", e.ItemID)
+					                                               EditLink = string.Format("/View/RBCTime.xaml?id={0}", e.ItemID)
 				                                               });
 			var lte = lbTimeEntries.OrderBy(s => s.Date.Date).ToArray();
 			lbTimeEntries.Clear();

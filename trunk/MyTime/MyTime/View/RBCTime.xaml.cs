@@ -6,10 +6,10 @@ using FieldService.ViewModels;
 
 namespace FieldService.View
 {
-	public partial class AddRBCTime : PhoneApplicationPage
+	public partial class RBCTimePage : PhoneApplicationPage
 	{
 		private AddModifyRBCTimeViewModel ViewModel { get { return ((ViewModels.AddModifyRBCTimeViewModel) DataContext); } }
-		public AddRBCTime()
+		public RBCTimePage()
 		{
 			DataContext = new AddModifyRBCTimeViewModel();
 			InitializeComponent();

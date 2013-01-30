@@ -11,7 +11,7 @@
 	xmlns:ViewModels="clr-namespace:FieldService.ViewModels"
 	xmlns:telerikDataVisualization="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.DataVisualization"
 	xmlns:FieldService="clr-namespace:FieldService"
-	x:Class="FieldService.View.AddRBCTime" 
+	x:Class="FieldService.View.RBCTimePage" 
 	SupportedOrientations="Portrait" Orientation="Portrait"
 	mc:Ignorable="d">
 	
