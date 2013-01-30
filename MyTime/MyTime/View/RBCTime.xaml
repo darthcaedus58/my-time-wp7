@@ -52,7 +52,7 @@
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 			<StackPanel Grid.Row="0" Orientation="Vertical">
 				<TextBlock Foreground="{StaticResource AppForegroundBrush}" Height="30" x:Name="textBlock1" Text="DATE" />
-				<toolkit:DatePicker x:Name="dpDatePicker" Value="{Binding RBCTimeData.Date, Mode=TwoWay}" />
+				<telerikInput:RadDatePicker x:Name="dpDatePicker" Value="{Binding RBCTimeData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
 				<TextBlock Foreground="{StaticResource AppForegroundBrush}" Height="30" Text="TIME" />
 				<c4f:TimeSpanPicker x:Name="tspTime" Step="0:15:0" Value="{Binding RBCTimeData.Minutes, Converter={StaticResource MinutesToTimeSpanValueConverter}, Mode=TwoWay}" />
 				<TextBlock TextWrapping="Wrap" Text="NOTES"/>
