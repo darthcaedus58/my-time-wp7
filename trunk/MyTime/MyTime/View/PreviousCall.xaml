@@ -8,7 +8,7 @@
     xmlns:cntrls="clr-namespace:Controls.Primitives;assembly=Controls"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
-    xmlns:ViewModels="clr-namespace:FieldService.ViewModels" 
+    xmlns:ViewModels="clr-namespace:FieldService.ViewModels" xmlns:FieldService="clr-namespace:FieldService"
     x:Class="FieldService.View.PreviousCallPage"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -46,20 +46,18 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <StackPanel>
-                <ScrollViewer Height="530">
+                <ScrollViewer>
                     <StackPanel>
-                        <TextBlock Text="DATE" />
+                        <FieldService:HeaderControl IconSource="/icons/calendar.png" HeaderText="DATE" Margin="15,0,0,0" />
                         <telerik:RadDatePicker x:Name="dpDatePicker" Value="{Binding PreviousVisitData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
-                        <TextBlock Text="PLACEMENTS" />
+                        <FieldService:HeaderControl IconSource="/icons/clock.png" HeaderText="TIME" Margin="15,0,0,0" />
                         <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags" Suffix="Magazines" Value="{Binding PreviousVisitData.Magazines, Mode=TwoWay}" />
                         <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" Suffix="Brochures" Value="{Binding PreviousVisitData.Brochures, Mode=TwoWay}" />
                         <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBooks" Suffix="Books" Value="{Binding PreviousVisitData.Books, Mode=TwoWay}" />
-                        <TextBlock TextWrapping="Wrap" Text="NOTES"/>
+                        <FieldService:HeaderControl IconSource="/icons/tasks.png" HeaderText="NOTES" Margin="15,0,0,0" />
                         <TextBox x:Name="tbNotes" Height="180" TextWrapping="Wrap" InputScope="Text" Text="{Binding PreviousVisitData.Notes, Mode=TwoWay}"/>
                     </StackPanel>
                 </ScrollViewer>
-            </StackPanel>
         </Grid>
     </Grid>
 
