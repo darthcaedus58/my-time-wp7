@@ -425,7 +425,7 @@ namespace FieldService.ViewModels
 				if (month != td.Date.Month) {
 					summary.Time = string.Format("{0:0.00} Hour(s)", (minutes/60.0));
 					summary.Minutes = minutes;
-					summary.RBCHours = RBCTimeDataInterface.GetRBCTimeTotal(new DateTime(year, month, 1));
+					summary.RBCHours = ((double)RBCTimeDataInterface.GetMonthRBCTimeTotal(new DateTime(year, month, 1)))/60.0;
 					var eee = RBCTimeDataInterface.GetRBCTimeEntries(new DateTime(year, month, 1), new DateTime(year, month, 1).AddMonths(1).AddDays(-1), SortOrder.DateNewestToOldest);
 					if (eee != null) rtdEntries.AddRange(eee);
 					icReport.Add(summary);
@@ -448,12 +448,12 @@ namespace FieldService.ViewModels
 																   Hours = string.Format("{0:0.00} Hour(s)", (td.Minutes/60.0)),
 																   ItemId = td.ItemId,
 																   Minutes = td.Minutes,
-																   EditLink = string.Format("/View/ManuallyEnterTime.xaml?id=", td.ItemId)
+																   EditLink = string.Format("/View/ManuallyEnterTime.xaml?id={0}", td.ItemId)
 															   });
 			}
 			var ee = RBCTimeDataInterface.GetRBCTimeEntries(new DateTime(year, month, 1), new DateTime(year, month, 1).AddMonths(1).AddDays(-1), SortOrder.DateNewestToOldest);
 			if (ee != null) rtdEntries.AddRange(ee);
-			summary.RBCHours = ((double)RBCTimeDataInterface.GetRBCTimeTotal(new DateTime(year, month, 1)) / 60.0);
+			summary.RBCHours = ((double)RBCTimeDataInterface.GetMonthRBCTimeTotal(new DateTime(year, month, 1)) / 60.0);
 			summary.Time = string.Format("{0:0.00} Hour(s)", (minutes/60.0));
 			summary.Minutes = minutes;
 			icReport.Add(summary);
@@ -466,7 +466,9 @@ namespace FieldService.ViewModels
 					                                               Minutes = e.Minutes,
 					                                               EditLink = string.Format("/View/AddRBCTime.xaml?id={0}", e.ItemID)
 				                                               });
-			lbTimeEntries.OrderBy(s => s.Date.Date);
+			var lte = lbTimeEntries.OrderBy(s => s.Date.Date).ToArray();
+			lbTimeEntries.Clear();
+			foreach (var l in lte) lbTimeEntries.Add(l);
 
 			IsTimeReportDataLoaded = true;
 		}

@@ -109,7 +109,7 @@ namespace MyTimeDatabaseLib
 			}
 		}
 
-		public static int GetRBCTimeTotal(DateTime dt)
+		public static int GetMonthRBCTimeTotal(DateTime dt)
 		{
 			//throw new NotImplementedException();
 			using (var db = new RBCTimeDataContext()) {

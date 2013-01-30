@@ -42,7 +42,7 @@
                 <ImageBrush ImageSource="PanoramaBackground.png" Opacity="0.6" />
             </controls:Panorama.Background>
             <toolkit:WrapPanel Height="Auto" MinHeight="522" Name="wpMainOptions" Orientation="Vertical">
-                <ItemsControl Tap="lbMainMenuItems_Tap" Margin="0,0,0,0" ItemsSource="{Binding lbMainMenuItems}" MinHeight="522" Name="lbMainMenuItems" >
+                <ItemsControl Margin="0,0,0,0" ItemsSource="{Binding lbMainMenuItems}" MinHeight="522" Name="lbMainMenuItems" >
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="20,10,10,-5" Orientation="Horizontal">

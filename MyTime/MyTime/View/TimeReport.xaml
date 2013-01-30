@@ -108,8 +108,8 @@
 
             <!--Pivot item two-->
             <controls:PivotItem Header="entries">
-                <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <ListBox Height="480" ItemsSource="{Binding lbTimeEntries}" Name="lbEntries" SelectionChanged="lbEntries_SelectionChanged">
+                <Grid x:Name="grid" >
+                    <ListBox ItemsSource="{Binding lbTimeEntries}" Name="lbEntries" SelectionChanged="lbEntries_SelectionChanged" Height="{Binding ActualHeight, ElementName=grid, Mode=OneWay}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
