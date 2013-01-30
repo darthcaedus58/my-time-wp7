@@ -22,6 +22,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using FieldService.Model;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Controls.Maps;
@@ -312,7 +313,7 @@ namespace FieldService.View
         private void lbRvPrevItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try {
-                var call = (PreviousVisitViewModel) lbRvPrevItems.SelectedItem;
+                var call = (PreviousVisitModel) lbRvPrevItems.SelectedItem;
                 NavigationService.Navigate(new Uri(
                                                String.Format("/ModifyCall.xaml?rvid={0}&id={1}",
                                                              _currentReturnVisitData == null ? "-1" : _currentReturnVisitData.ItemId.ToString(CultureInfo.InvariantCulture),
@@ -503,7 +504,7 @@ namespace FieldService.View
             string body = string.Empty;
             body += "\n\nVisits:\n";
             foreach (object p in lbRvPrevItems.Items) {
-                var pp = p as PreviousVisitViewModel;
+                var pp = p as PreviousVisitModel;
                 if (pp != null) {
                     RvPreviousVisitData pv = RvPreviousVisitsDataInterface.GetCall(pp.ItemId);
                     if (pv != null)

@@ -15,12 +15,12 @@
 using System;
 using System.ComponentModel;
 
-namespace FieldService.ViewModels
+namespace FieldService.Model
 {
     /// <summary>
     /// Class PreviousVisitViewModel
     /// </summary>
-    public class PreviousVisitViewModel : INotifyPropertyChanged
+    public class PreviousVisitModel : INotifyPropertyChanged
     {
         /// <summary>
         /// The _desc

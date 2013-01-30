@@ -26,6 +26,7 @@ using System.Windows.Media.Imaging;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using FieldService.Model;
 using Microsoft.Phone.Marketplace;
 using MyTimeDatabaseLib;
 
@@ -41,10 +42,10 @@ namespace FieldService.ViewModels
 		/// </summary>
 		public MainViewModel()
 		{
-			lbRvPreviousItems = new ObservableCollection<PreviousVisitViewModel>();
-			lbRvItems = new ObservableCollection<ReturnVisitItemViewModel>();
-			lbMainMenuItems = new ObservableCollection<MainMenuViewModel>();
-			icReport = new ObservableCollection<TimeReportSummaryViewModel>();
+			lbRvPreviousItems = new ObservableCollection<PreviousVisitModel>();
+			lbRvItems = new ObservableCollection<ReturnVisitItemModel>();
+			lbMainMenuItems = new ObservableCollection<MainMenuModel>();
+			icReport = new ObservableCollection<TimeReportSummaryModel>();
 			lbTimeEntries = new ObservableCollection<TimeReportEntryViewModel>();
 
 			llReturnVisitFullListCategory = new ObservableCollection<ReturnVistLLCategory>();
@@ -71,25 +72,25 @@ namespace FieldService.ViewModels
 		/// A collection for ReturnVisitItemViewModel objects.
 		/// </summary>
 		/// <value>The lb rv items.</value>
-		public ObservableCollection<ReturnVisitItemViewModel> lbRvItems { get; private set; }
+		public ObservableCollection<ReturnVisitItemModel> lbRvItems { get; private set; }
 
 		/// <summary>
 		/// Gets the lb main menu items.
 		/// </summary>
 		/// <value>The lb main menu items.</value>
-		public ObservableCollection<MainMenuViewModel> lbMainMenuItems { get; private set; }
+		public ObservableCollection<MainMenuModel> lbMainMenuItems { get; private set; }
 
 		/// <summary>
 		/// Gets the lb rv previous items.
 		/// </summary>
 		/// <value>The lb rv previous items.</value>
-		public ObservableCollection<PreviousVisitViewModel> lbRvPreviousItems { get; private set; }
+		public ObservableCollection<PreviousVisitModel> lbRvPreviousItems { get; private set; }
 
 		/// <summary>
 		/// Gets the ic report.
 		/// </summary>
 		/// <value>The ic report.</value>
-		public ObservableCollection<TimeReportSummaryViewModel> icReport { get; private set; }
+		public ObservableCollection<TimeReportSummaryModel> icReport { get; private set; }
 
 		/// <summary>
 		/// Gets the lb time entries.
@@ -223,7 +224,7 @@ namespace FieldService.ViewModels
 			if (IsPreviousVisitsLoaded) lbRvPreviousItems.Clear();
 			IsPreviousVisitsLoaded = false;
 			foreach (RvPreviousVisitData v in visits) {
-				lbRvPreviousItems.Add(new PreviousVisitViewModel {
+				lbRvPreviousItems.Add(new PreviousVisitModel {
 																	 LastVisitDate = v.Date.ToShortDateString(),
 																	 ItemId = v.ItemId,
 																	 Placements = string.Format("{0} Mg's, {1} Bk's, {2} Bro's", v.Magazines, v.Books, v.Brochures),
@@ -296,7 +297,7 @@ namespace FieldService.ViewModels
 					bi = bmp; //Default image.
 				}
 				string lv = r.LastVisitDate == DateTime.MinValue ? "No visit recorded" : string.Format("{0} day(s) since last visit", (DateTime.Now - r.LastVisitDate).Days);
-				lbRvItems.Add(new ReturnVisitItemViewModel {
+				lbRvItems.Add(new ReturnVisitItemModel {
 															   ItemId = r.ItemId,
 															   ImageSource = bi,
 															   Name = string.IsNullOrEmpty(r.FullName) ? string.Format("{0} year old {1}", r.Age, r.Gender) : r.FullName,
@@ -315,39 +316,39 @@ namespace FieldService.ViewModels
 		{
 			if (IsMainMenuLoaded) lbMainMenuItems.Clear();
 			IsMainMenuLoaded = false;
-			lbMainMenuItems.Add(new MainMenuViewModel {
+			lbMainMenuItems.Add(new MainMenuModel {
 														  MenuText = "add time",
 														  MenuItemName = "miAddTime",
 														  IconUri = "/icons/clock.png",
 														  MenuImageName = "AddTimeImage"
 													  });
-			lbMainMenuItems.Add(new MainMenuViewModel {
+			lbMainMenuItems.Add(new MainMenuModel {
 														  MenuText = "add rbc time",
 														  MenuItemName = "miAddTime",
 														  IconUri = "/icons/Tools.png",
 														  MenuImageName = "AddRBCTimeImage"
 													  });
 
-			lbMainMenuItems.Add(new MainMenuViewModel {
+			lbMainMenuItems.Add(new MainMenuModel {
 														  MenuText = "add return visit",
 														  MenuItemName = "miAddRv",
 														  IconUri = "/icons/add-user.png",
 														  MenuImageName = "AddReturnVisitImage"
 													  });
-			lbMainMenuItems.Add(new MainMenuViewModel {
+			lbMainMenuItems.Add(new MainMenuModel {
 				                                          MenuText = "send service report",
 														  MenuItemName = "miSendReport", 
 														  IconUri = "/icons/message.png", 
 														  MenuImageName = "SemdReportImage"
 			                                          });
-			lbMainMenuItems.Add(new MainMenuViewModel {
+			lbMainMenuItems.Add(new MainMenuModel {
 				                                          MenuText = string.Format("{0} report", 
 														  DateTime.Today.ToString("MMMM").ToLower()), 
 														  MenuItemName = "miThisMonthReport", 
 														  IconUri = "/icons/Graph2.png", 
 														  MenuImageName = "ThisMonthImage"
 			                                          });
-			lbMainMenuItems.Add(new MainMenuViewModel {
+			lbMainMenuItems.Add(new MainMenuModel {
 				                                          MenuText = "service year report", 
 														  MenuItemName = "miThisYearReport", 
 														  IconUri = "/icons/Graph2.png", 
@@ -355,7 +356,7 @@ namespace FieldService.ViewModels
 			                                          });
 			//lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "custom report", MenuItemName = "miCustomReport", IconUri = "/icons/search.png", MenuImageName = "CustomReportImage"});
 
-			lbMainMenuItems.Add(new MainMenuViewModel {
+			lbMainMenuItems.Add(new MainMenuModel {
 				                                          MenuText = "watchtower library", 
 														  MenuItemName = "miWtLib", 
 														  IconUri = "/icons/books.png", 
@@ -365,21 +366,21 @@ namespace FieldService.ViewModels
 			lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "backup & restore", MenuImageName = "miBupReStr", IconUri = "/icons/cloud.png", MenuItemName = "CloudBackupImg"});
 #else
 			if((new LicenseInformation()).IsTrial())
-				lbMainMenuItems.Add(new MainMenuViewModel {
+				lbMainMenuItems.Add(new MainMenuModel {
 					                                          MenuText = "buy cloud backup", 
 															  MenuItemName = "miBuyCloud", 
 															  IconUri = "/icons/cloud.png", 
 															  MenuImageName = "BuyCloudImg"
 				                                          });
 			else 
-				lbMainMenuItems.Add(new MainMenuViewModel {
+				lbMainMenuItems.Add(new MainMenuModel {
 					                                          MenuText = "backup & restore", 
 															  MenuImageName = "miBupReStr", 
 															  IconUri = "/icons/Cloud-Refresh.png", 
 															  MenuItemName = "CloudBackupImg"
 				                                          });
 #endif
-			lbMainMenuItems.Add(new MainMenuViewModel {
+			lbMainMenuItems.Add(new MainMenuModel {
 				                                          MenuText = "settings", 
 														  MenuItemName = "abmiManuallyEnter", 
 														  MenuImageName = "SettingsImage", 
@@ -418,7 +419,7 @@ namespace FieldService.ViewModels
 
 			int month = entries[0].Date.Month;
 			int year = entries[0].Date.Year;
-			var summary = new TimeReportSummaryViewModel();
+			var summary = new TimeReportSummaryModel();
 			List<RBCTimeData> rtdEntries = new List<RBCTimeData>(); 
 			//ListBox<int> rvList = new ListBox<int>();
 			foreach (TimeData td in entries) {
@@ -429,7 +430,7 @@ namespace FieldService.ViewModels
 					var eee = RBCTimeDataInterface.GetRBCTimeEntries(new DateTime(year, month, 1), new DateTime(year, month, 1).AddMonths(1).AddDays(-1), SortOrder.DateNewestToOldest);
 					if (eee != null) rtdEntries.AddRange(eee);
 					icReport.Add(summary);
-					summary = new TimeReportSummaryViewModel();
+					summary = new TimeReportSummaryModel();
 					month = td.Date.Month;
 					year = td.Date.Year;
 					minutes = 0;

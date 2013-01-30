@@ -20,6 +20,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Navigation;
+using FieldService.Model;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
 using MyTimeDatabaseLib;
@@ -81,7 +82,7 @@ namespace FieldService.View
 			var entries = new ChartData();
 
 			string body = string.Empty;
-			foreach (TimeReportSummaryViewModel entry in App.ViewModel.icReport) {
+			foreach (TimeReportSummaryModel entry in App.ViewModel.icReport) {
 				body += string.Format("Report for {0}:\n\n", entry.Month);
 				body += string.Format("Hours:\t\t{0:0.00}\n", (entry.Minutes/60.0));
 				body += entry.Magazines > 0 ? string.Format("Magazines:\t{0}\n", entry.Magazines) : string.Empty;
@@ -161,7 +162,7 @@ namespace FieldService.View
 		public ChartData()
 		{
 			if (App.ViewModel.icReport.Count > 1) {
-				foreach (TimeReportSummaryViewModel v in App.ViewModel.icReport) {
+				foreach (TimeReportSummaryModel v in App.ViewModel.icReport) {
 					Add(new TimeChartInfo {Header = new String(v.Month.Take(3).ToArray()), Time = (v.Minutes/60.0)});
 				}
 			} else {

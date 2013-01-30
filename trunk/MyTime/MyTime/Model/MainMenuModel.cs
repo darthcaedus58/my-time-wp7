@@ -11,15 +11,16 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
 using System.ComponentModel;
 
-namespace FieldService.ViewModels
+namespace FieldService.Model
 {
     /// <summary>
     /// Class MainMenuViewModel
     /// </summary>
-    public class MainMenuViewModel : INotifyPropertyChanged
+    public class MainMenuModel : INotifyPropertyChanged
     {
         /// <summary>
         /// The _icon
