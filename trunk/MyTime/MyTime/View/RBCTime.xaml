@@ -51,12 +51,12 @@
 
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 			<StackPanel Grid.Row="0" Orientation="Vertical">
-				<TextBlock Foreground="{StaticResource AppForegroundBrush}" Height="30" x:Name="textBlock1" Text="DATE" />
+				<FieldService:HeaderControl IconSource="/icons/calendar.png" HeaderText="DATE" Margin="15,0,0,0" />
 				<telerikInput:RadDatePicker x:Name="dpDatePicker" Value="{Binding RBCTimeData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
-				<TextBlock Foreground="{StaticResource AppForegroundBrush}" Height="30" Text="TIME" />
-                <c4f:TimeSpanPicker ValueStringFormat="{}{0:h} Hours and {0:m} Minutes" x:Name="tspTime" Step="0:15:0" Value="{Binding RBCTimeData.Minutes, Converter={StaticResource MinutesToTimeSpanValueConverter}, Mode=TwoWay}" />
-				<TextBlock TextWrapping="Wrap" Text="NOTES"/>
-				<TextBox InputScope="Text" Height="180" x:Name="tbNotes" TextWrapping="Wrap" Text="{Binding RBCTimeData.Notes, Mode=TwoWay}" />
+				<FieldService:HeaderControl IconSource="/icons/clock.png" HeaderText="TIME" Margin="15,0,0,0" />
+				<c4f:TimeSpanPicker ValueStringFormat="{}{0:h} Hours and {0:m} Minutes" x:Name="tspTime" Step="0:15:0" Value="{Binding RBCTimeData.Minutes, Converter={StaticResource MinutesToTimeSpanValueConverter}, Mode=TwoWay}" />
+				<FieldService:HeaderControl IconSource="/icons/tasks.png" HeaderText="NOTES" Margin="15,0,0,0" />
+				<TextBox InputScope="Text" Height="291" x:Name="tbNotes" TextWrapping="Wrap" Text="{Binding RBCTimeData.Notes, Mode=TwoWay}" />
 			</StackPanel>
 		</Grid>
 	</Grid>
