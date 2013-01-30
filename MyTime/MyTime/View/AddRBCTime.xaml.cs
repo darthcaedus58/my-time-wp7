@@ -43,6 +43,7 @@ namespace FieldService.View
 			Thread.Sleep(500);
 			NavigationService.GoBack();
 		}
+
 		private void abmiDelete_Click_1(object sender, EventArgs e)
 		{
 			if (ViewModel.RBCTimeDataItemId < 0) return; //You can't delete what is not saved. durr.
