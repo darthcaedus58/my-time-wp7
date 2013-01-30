@@ -10,7 +10,7 @@ using Microsoft.Live;
 using Microsoft.Live.Controls;
 using Microsoft.Phone.Controls;
 
-namespace FieldService
+namespace FieldService.View
 {
     public partial class BackupAndRestorePage : PhoneApplicationPage
     {

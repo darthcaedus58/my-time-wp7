@@ -1,4 +1,4 @@
-﻿<phone:PhoneApplicationPage x:Class="FieldService.SettingsPage" 
+﻿<phone:PhoneApplicationPage x:Class="FieldService.View.SettingsPage" 
                             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
                             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
                             xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" 

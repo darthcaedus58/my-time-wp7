@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -19,7 +20,7 @@ using Microsoft.Phone.Tasks;
 using MyTimeDatabaseLib;
 using Microsoft.Phone.Marketplace;
 
-namespace FieldService
+namespace FieldService.View
 {
     /// <summary>
     /// Description for Settings.

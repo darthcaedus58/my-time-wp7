@@ -13,7 +13,6 @@
 // ***********************************************************************
 
 using System;
-using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -21,7 +20,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using MyTimeDatabaseLib;
 
-namespace FieldService
+namespace FieldService.View
 {
     /// <summary>
     /// Class ModifyCall

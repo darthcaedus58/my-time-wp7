@@ -1,5 +1,5 @@
 ﻿<phone:PhoneApplicationPage 
-    x:Class="FieldService.TimeReport" 
+    x:Class="FieldService.View.TimeReport" 
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:charting="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
@@ -11,8 +11,8 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone" 
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone" 
     xmlns:system="clr-namespace:System;assembly=mscorlib" 
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
-    Background="{StaticResource AppBackgroundBrush}" 
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:View="clr-namespace:FieldService.View" Background="{StaticResource AppBackgroundBrush}" 
     FontFamily="{StaticResource PhoneFontFamilyNormal}" 
     FontSize="{StaticResource PhoneFontSizeNormal}" 
     Foreground="{StaticResource AppForegroundBrush}" 

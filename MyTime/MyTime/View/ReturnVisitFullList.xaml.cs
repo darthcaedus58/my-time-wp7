@@ -11,12 +11,13 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
 using System.Windows.Controls;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
 
-namespace FieldService
+namespace FieldService.View
 {
     /// <summary>
     /// Class ReturnVistFullList
