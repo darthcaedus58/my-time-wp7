@@ -479,7 +479,7 @@ namespace FieldService
 			string month = DateTime.Today.ToString("MMMM").ToLower() + " report";
 			switch (v) {
 				case "add time":
-					NavigationService.Navigate(new Uri("/View/ManuallyEnterTime.xaml", UriKind.Relative));
+					NavigationService.Navigate(new Uri("/View/RegularTime.xaml", UriKind.Relative));
 					break;
 				case "add rbc time":
 					NavigationService.Navigate(new Uri("/View/AddRBCTime.xaml", UriKind.Relative));
