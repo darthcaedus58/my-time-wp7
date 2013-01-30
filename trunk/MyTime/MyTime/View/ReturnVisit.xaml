@@ -10,7 +10,8 @@
     xmlns:my="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps" 
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone" 
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone" 
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
     Background="{StaticResource AppBackgroundBrush}" 
     Foreground="{StaticResource AppForegroundBrush}" 
     FontFamily="{StaticResource PhoneFontFamilyNormal}" 
@@ -161,7 +162,7 @@
                             <TextBox x:Name="txtContent" InputScope="Text" Text="" />
 
                             <TextBlock Text="WHEN" />
-                            <toolkit:DatePicker x:Name="dpDatePicker" />
+                            <telerikInput:RadDatePicker x:Name="dpDatePicker" Template="{StaticResource RadDatePickerControlTemplateApp}" />
                             <toolkit:TimePicker x:Name="tpStartTime" />
 
                             <Button x:Name="btnDone" Click="btnDone_Click" Content="add" />
