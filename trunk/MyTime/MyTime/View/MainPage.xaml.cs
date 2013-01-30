@@ -542,6 +542,8 @@ namespace FieldService
 			}
 
 			body += string.Format("Hours:\t\t{0:0.00}\n", ((double) tTime/60.0));
+			var x = RBCTimeDataInterface.GetMonthRBCTimeTotal(from);
+			body += x > 0 ? string.Format("R/B/C Hours: \t{0:0.0}\n", ((double) x/60.0)) : string.Empty;
 			body += tMags > 0 ? string.Format("Magazines:\t{0}\n", tMags) : string.Empty;
 			body += tBks  > 0 ? string.Format("Books:\t\t{0}\n", tBks) : string.Empty;
 			body += tBros > 0 ? string.Format("Brochures:\t{0}\n",tBros) : string.Empty;
@@ -617,10 +619,5 @@ namespace FieldService
 		private void abibStop_Tap(object sender, GestureEventArgs e) { TimerStopClickTapEvent(); }
 
 		private void abibAddIt_Tap(object sender, GestureEventArgs e) { TimeAdditClickTapEvent(); }
-
-		private void lbMainMenuItems_Tap(object sender, GestureEventArgs e)
-		{
-
-		}
 	}
 }
