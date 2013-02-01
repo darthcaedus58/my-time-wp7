@@ -42,7 +42,6 @@ namespace FieldService.ViewModels
 		/// </summary>
 		public MainViewModel()
 		{
-			lbRvPreviousItems = new ObservableCollection<PreviousVisitModel>();
 			lbRvItems = new ObservableCollection<ReturnVisitItemModel>();
 			lbMainMenuItems = new ObservableCollection<MainMenuModel>();
 			icReport = new ObservableCollection<TimeReportSummaryModel>();
@@ -70,12 +69,6 @@ namespace FieldService.ViewModels
 		/// </summary>
 		/// <value>The lb main menu items.</value>
 		public ObservableCollection<MainMenuModel> lbMainMenuItems { get; private set; }
-
-		/// <summary>
-		/// Gets the lb rv previous items.
-		/// </summary>
-		/// <value>The lb rv previous items.</value>
-		public ObservableCollection<PreviousVisitModel> lbRvPreviousItems { get; private set; }
 
 		/// <summary>
 		/// Gets the ic report.
@@ -106,12 +99,6 @@ namespace FieldService.ViewModels
 		/// </summary>
 		/// <value><c>true</c> if this instance is main menu loaded; otherwise, <c>false</c>.</value>
 		public bool IsMainMenuLoaded { get; private set; }
-
-		/// <summary>
-		/// Gets a value indicating whether this instance is previous visits loaded.
-		/// </summary>
-		/// <value><c>true</c> if this instance is previous visits loaded; otherwise, <c>false</c>.</value>
-		public bool IsPreviousVisitsLoaded { get; private set; }
 
 		public double MainPageMagazines { get { return GetMainPageDouble("magazines"); } set { SetMainPageValue(value, "magazines"); } }
 
@@ -199,26 +186,6 @@ namespace FieldService.ViewModels
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		#endregion
-
-		/// <summary>
-		/// Updates the previous visits.
-		/// </summary>
-		/// <param name="visits">The visits.</param>
-		public void UpdatePreviousVisits(RvPreviousVisitData[] visits)
-		{
-			if (IsPreviousVisitsLoaded) lbRvPreviousItems.Clear();
-			IsPreviousVisitsLoaded = false;
-			foreach (RvPreviousVisitData v in visits) {
-				lbRvPreviousItems.Add(new PreviousVisitModel {
-																	 LastVisitDate = v.Date.ToShortDateString(),
-																	 ItemId = v.ItemId,
-																	 Placements = string.Format("{0} Mg's, {1} Bk's, {2} Bro's", v.Magazines, v.Books, v.Brochures),
-																	 Description = v.Notes
-																 }
-					);
-			}
-			IsPreviousVisitsLoaded = true;
-		}
 
 		/// <summary>
 		/// Creates and adds a few ReturnVisitItemViewModel objects into the lbRvItems collection.

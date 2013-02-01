@@ -42,16 +42,7 @@ namespace MyTimeDatabaseLib
 				if (qry.Any()) {
 					IEnumerable<RvPreviousVisitItem> visits = so == SortOrder.DateNewestToOldest ? qry.ToArray().Reverse() : qry.ToArray();
 					foreach (RvPreviousVisitItem v in visits) {
-						var visit = new RvPreviousVisitData {
-																ItemId = v.ItemId,
-																RvItemId = v.RvItemId,
-																Date = v.Date,
-																Notes = v.Notes,
-																Magazines = v.Magazines,
-																Books = v.Books,
-																Brochures = v.Brochures
-															};
-						rvVists.Add(visit);
+						rvVists.Add(RvPreviousVisitData.Copy(v));
 					}
 					return rvVists.ToArray();
 				}
@@ -145,17 +136,18 @@ namespace MyTimeDatabaseLib
 		/// Deletes all calls from rv.
 		/// </summary>
 		/// <param name="itemId">The item id.</param>
-		public static void DeleteAllCallsFromRv(int itemId)
+		public static bool DeleteAllCallsFromRv(int itemId)
 		{
 			using (var db = new RvPreviousVisitsContext(RvPreviousVisitsContext.DBConnectionString)) {
 				try {
-					IQueryable<RvPreviousVisitItem> calls = from x in db.RvPreviousVisitItems
-															where x.RvItemId == itemId
-															select x;
+					var calls = from x in db.RvPreviousVisitItems
+					            where x.RvItemId == itemId
+					            select x;
 
 					db.RvPreviousVisitItems.DeleteAllOnSubmit(calls);
 					db.SubmitChanges();
-				} catch (Exception) {}
+					return true;
+				} catch (Exception) { return false; } 
 			}
 		}
 
@@ -168,19 +160,7 @@ namespace MyTimeDatabaseLib
 								where x.Date >= @from && x.Date <= tod
 								select x;
 					if (calls.Any()) {
-						List<RvPreviousVisitData> retCalls = new List<RvPreviousVisitData>();
-						foreach (var c in calls) {
-							retCalls.Add(new RvPreviousVisitData() {
-																	   Books = c.Books,
-																	   Brochures = c.Brochures,
-																	   Date = c.Date,
-																	   ItemId = c.ItemId,
-																	   Magazines = c.Magazines,
-																	   Notes = c.Notes,
-																	   RvItemId = c.RvItemId
-																   });
-						}
-						return retCalls.ToArray();
+						return calls.Select(c => RvPreviousVisitData.Copy(c)).ToArray();
 					}
 				} catch {
 					return null;
@@ -204,7 +184,7 @@ namespace MyTimeDatabaseLib
 						if (c.ItemId == call.ItemId) return true;
 					}
 					return false;
-				} catch (Exception e) {
+				} catch (Exception) {
 					return false;
 				}
 			} 

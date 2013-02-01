@@ -119,37 +119,15 @@
     <Reference Include="System.Xml.XPath">
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.Xml.XPath.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Windows.Behaviors, Version=2012.3.1311.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\AppData\Roaming\Telerik\Updates\RadControls_for_WindowsPhone7_2012_3_1311_DEV_hotfix\Binaries\WindowsPhone\Telerik.Windows.Behaviors.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Controls.Chart, Version=2012.3.1311.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\AppData\Roaming\Telerik\Updates\RadControls_for_WindowsPhone7_2012_3_1311_DEV_hotfix\Binaries\WindowsPhone\Telerik.Windows.Controls.Chart.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Controls.Data, Version=2012.3.1311.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\AppData\Roaming\Telerik\Updates\RadControls_for_WindowsPhone7_2012_3_1311_DEV_hotfix\Binaries\WindowsPhone\Telerik.Windows.Controls.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Controls.DataVisualization, Version=2012.3.1311.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\AppData\Roaming\Telerik\Updates\RadControls_for_WindowsPhone7_2012_3_1311_DEV_hotfix\Binaries\WindowsPhone\Telerik.Windows.Controls.DataVisualization.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Controls.Input, Version=2012.3.1311.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\AppData\Roaming\Telerik\Updates\RadControls_for_WindowsPhone7_2012_3_1311_DEV_hotfix\Binaries\WindowsPhone\Telerik.Windows.Controls.Input.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Controls.Primitives, Version=2012.3.1311.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\AppData\Roaming\Telerik\Updates\RadControls_for_WindowsPhone7_2012_3_1311_DEV_hotfix\Binaries\WindowsPhone\Telerik.Windows.Controls.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Core, Version=2012.3.1311.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\AppData\Roaming\Telerik\Updates\RadControls_for_WindowsPhone7_2012_3_1311_DEV_hotfix\Binaries\WindowsPhone\Telerik.Windows.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Data, Version=2012.3.1311.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\AppData\Roaming\Telerik\Updates\RadControls_for_WindowsPhone7_2012_3_1311_DEV_hotfix\Binaries\WindowsPhone\Telerik.Windows.Data.dll</HintPath>
+    <Reference Include="Telerik.Windows.Behaviors, Version=2012.3.1311.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Data, Version=2012.3.1311.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.DataVisualization, Version=2012.3.1311.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2012.3.1311.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Primitives, Version=2012.3.1311.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Core, Version=2012.3.1311.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Data, Version=2012.3.1311.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="WatermarkedTextBoxControl">
+      <HintPath>..\..\..\..\..\Downloads\Waterdemo\WatermarkedTextBoxControl.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +137,7 @@
     <Compile Include="ValueConverters.cs" />
     <Compile Include="ViewModels\AddModifyRBCTimeViewModel.cs" />
     <Compile Include="ViewModels\AddModifyTimeViewModel.cs" />
+    <Compile Include="ViewModels\EditReturnVisitViewModel.cs" />
     <Compile Include="ViewModels\PreviousVisitViewModel.cs" />
     <Compile Include="ViewModels\ReturnVisitFullListViewModel.cs" />
     <Compile Include="View\ReturnVisit.xaml.cs">
@@ -281,6 +260,9 @@
     <Content Include="icons\cloud.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="icons\diamond.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="icons\download.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -288,6 +270,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="icons\Images\overflowdots.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\Maps.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="icons\message.png">
