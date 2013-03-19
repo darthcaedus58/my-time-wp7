@@ -23,9 +23,7 @@ using System.Text;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 using FieldService.Model;
 using Microsoft.Phone.Marketplace;
 using MyTimeDatabaseLib;
@@ -37,18 +35,20 @@ namespace FieldService.ViewModels
 	/// </summary>
 	public class MainViewModel : INotifyPropertyChanged
 	{
+		private ReturnVisitViewModel _returnVisitData;
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="MainViewModel" /> class.
 		/// </summary>
 		public MainViewModel()
 		{
-			lbRvItems = new ObservableCollection<ReturnVisitItemModel>();
+			lbRvItems = new ObservableCollection<ReturnVisitViewModel>();
 			lbMainMenuItems = new ObservableCollection<MainMenuModel>();
 			icReport = new ObservableCollection<TimeReportSummaryModel>();
 			lbTimeEntries = new ObservableCollection<TimeReportEntryViewModel>();
 
 			if (!IsolatedStorageFile.GetUserStoreForApplication().FileExists("mainpage.xml")) {
-				using(var iso = IsolatedStorageFile.GetUserStoreForApplication()) {
+				using (IsolatedStorageFile iso = IsolatedStorageFile.GetUserStoreForApplication()) {
 					using (var file = new IsolatedStorageFileStream("mainpage.xml", FileMode.CreateNew, iso)) {
 						byte[] b = Encoding.UTF8.GetBytes("<?xml version=\"1.0\" encoding=\"utf-8\" ?><items><magazines>0</magazines><brochures>0</brochures><books>0</books><rvs>0</rvs><bs>0</bs><notes> </notes></items>");
 						file.Write(b, 0, b.Length);
@@ -62,7 +62,7 @@ namespace FieldService.ViewModels
 		/// A collection for ReturnVisitItemViewModel objects.
 		/// </summary>
 		/// <value>The lb rv items.</value>
-		public ObservableCollection<ReturnVisitItemModel> lbRvItems { get; private set; }
+		public ObservableCollection<ReturnVisitViewModel> lbRvItems { get; private set; }
 
 		/// <summary>
 		/// Gets the lb main menu items.
@@ -81,6 +81,17 @@ namespace FieldService.ViewModels
 		/// </summary>
 		/// <value>The lb time entries.</value>
 		public ObservableCollection<TimeReportEntryViewModel> lbTimeEntries { get; private set; }
+
+		public ReturnVisitViewModel ReturnVisitData
+		{
+			get { return  _returnVisitData ?? (_returnVisitData = new ReturnVisitViewModel()); } 
+			set
+			{
+				if (_returnVisitData == value) return;
+				_returnVisitData = value;
+				NotifyPropertyChanged("ReturnVisitData");
+			}
+		}
 
 		/// <summary>
 		/// Gets a value indicating whether this instance is rv data loaded.
@@ -112,14 +123,23 @@ namespace FieldService.ViewModels
 
 		public string MainPageNotes { get { return GetMainPageString("notes"); } set { SetMainPageString(value, "notes"); } }
 
+		#region INotifyPropertyChanged Members
+
+		/// <summary>
+		/// Occurs when [property changed].
+		/// </summary>
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		#endregion
+
 		private static string GetMainPageString(string elementName)
 		{
-			using (var iso = IsolatedStorageFile.GetUserStoreForApplication()) {
+			using (IsolatedStorageFile iso = IsolatedStorageFile.GetUserStoreForApplication()) {
 				using (var file = new IsolatedStorageFileStream("mainpage.xml", FileMode.Open, iso)) {
-					byte[] bb = new byte[file.Length];
+					var bb = new byte[file.Length];
 					file.Read(bb, 0, bb.Length);
-					using (MemoryStream oStream = new MemoryStream(bb)) {
-						var xDoc = XDocument.Load(oStream);
+					using (var oStream = new MemoryStream(bb)) {
+						XDocument xDoc = XDocument.Load(oStream);
 						return xDoc.Element("items").Element(elementName).Value;
 					}
 				}
@@ -128,12 +148,12 @@ namespace FieldService.ViewModels
 
 		private static double GetMainPageDouble(string elementName)
 		{
-			using (var iso = IsolatedStorageFile.GetUserStoreForApplication()) {
+			using (IsolatedStorageFile iso = IsolatedStorageFile.GetUserStoreForApplication()) {
 				using (var file = new IsolatedStorageFileStream("mainpage.xml", FileMode.Open, iso)) {
-					byte[] bb = new byte[file.Length];
+					var bb = new byte[file.Length];
 					file.Read(bb, 0, bb.Length);
-					using(MemoryStream oStream = new MemoryStream(bb)) {
-						var xDoc = XDocument.Load(oStream);
+					using (var oStream = new MemoryStream(bb)) {
+						XDocument xDoc = XDocument.Load(oStream);
 						return Convert.ToDouble(xDoc.Element("items").Element(elementName).Value);
 					}
 				}
@@ -142,10 +162,10 @@ namespace FieldService.ViewModels
 
 		private static void SetMainPageString(string value, string elementName)
 		{
-			using (var iso = IsolatedStorageFile.GetUserStoreForApplication()) {
+			using (IsolatedStorageFile iso = IsolatedStorageFile.GetUserStoreForApplication()) {
 				XDocument xDoc;
 				using (var file = new IsolatedStorageFileStream("mainpage.xml", FileMode.Open, iso)) {
-					byte[] bb = new byte[file.Length];
+					var bb = new byte[file.Length];
 					file.Read(bb, 0, bb.Length);
 					using (var oStream = new MemoryStream(bb)) {
 						xDoc = XDocument.Load(oStream);
@@ -161,10 +181,10 @@ namespace FieldService.ViewModels
 
 		private static void SetMainPageValue(double value, string elementName)
 		{
-			using (var iso = IsolatedStorageFile.GetUserStoreForApplication()) {
+			using (IsolatedStorageFile iso = IsolatedStorageFile.GetUserStoreForApplication()) {
 				XDocument xDoc;
 				using (var file = new IsolatedStorageFileStream("mainpage.xml", FileMode.Open, iso)) {
-					byte[] bb = new byte[file.Length];
+					var bb = new byte[file.Length];
 					file.Read(bb, 0, bb.Length);
 					using (var oStream = new MemoryStream(bb)) {
 						xDoc = XDocument.Load(oStream);
@@ -178,87 +198,99 @@ namespace FieldService.ViewModels
 			}
 		}
 
-	#region INotifyPropertyChanged Members
-
-		/// <summary>
-		/// Occurs when [property changed].
-		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		#endregion
-
 		/// <summary>
 		/// Creates and adds a few ReturnVisitItemViewModel objects into the lbRvItems collection.
 		/// </summary>
 		/// <param name="so">The so.</param>
 		public void LoadReturnVisitList(SortOrder so)
 		{
-			if (IsRvDataLoaded) lbRvItems.Clear();
-			IsRvDataLoaded = false;
-			// Sample data; replace with real data
-			ReturnVisitData[] rvs = ReturnVisitsInterface.GetReturnVisits(so);
-
-			var wb = new WriteableBitmap(100, 100);
-			for (int i = 0; i < wb.Pixels.Length; i++) {
-				wb.Pixels[i] = 0xFF3300;
-			}
-			var bmp = new BitmapImage();
-			using (var ms = new MemoryStream()) {
-				wb.SaveJpeg(ms, 100, 100, 0, 100);
-				bmp.SetSource(ms);
+			if (IsRvDataLoaded) {
+				lbRvItems.Clear();
+				IsRvDataLoaded = false;
 			}
 
-			foreach (ReturnVisitData r in rvs) {
-				var bi = new BitmapImage();
-				if (r.ImageSrc != null && r.ImageSrc.Length >= 0) {
-					var ris = new WriteableBitmap(450, 250);
-
-					//get image from database
-					for (int i = 0; i < r.ImageSrc.Length; i++) {
-						ris.Pixels[i] = r.ImageSrc[i];
-					}
-
-					//put the image in a WritableBitmap
-					using (var ms = new MemoryStream()) {
-						ris.SaveJpeg(ms, 450, 250, 0, 100);
-						bi.SetSource(ms);
-					}
-
-					//crop the image to 100x100 and centered
-					var img = new Image {
-											Source = bi,
-											Width = 450,
-											Height = 250
-										};
-					var wb2 = new WriteableBitmap(100, 100);
-					var t = new CompositeTransform {
-													   ScaleX = 0.5,
-													   ScaleY = 0.5,
-													   TranslateX = -((450/2)/2 - 50),
-													   TranslateY = -((250/2)/2 - 50)
-												   };
-					wb2.Render(img, t);
-					wb2.Invalidate();
-					bi = new BitmapImage();
-					using (var ms = new MemoryStream()) {
-						wb2.SaveJpeg(ms, 100, 100, 0, 100);
-						bi.SetSource(ms);
-					}
-					//BitmapImage bi is now cropped
-				} else {
-					bi = bmp; //Default image.
-				}
-				string lv = r.LastVisitDate == DateTime.MinValue ? "No visit recorded" : string.Format("{0} day(s) since last visit", (DateTime.Now - r.LastVisitDate).Days);
-				lbRvItems.Add(new ReturnVisitItemModel {
-															   ItemId = r.ItemId,
-															   ImageSource = bi,
-															   Name = string.IsNullOrEmpty(r.FullName) ? string.Format("{0} year old {1}", r.Age, r.Gender) : r.FullName,
-															   LineOne = string.Format("{0} {1}", r.AddressOne, r.AddressTwo),
-															   LineTwo = string.Format("{0}, {1} {2}", r.City, r.StateProvince, r.PostalCode),
-															   LineThree = lv
-														   });
+			var rvs = ReturnVisitsInterface.GetReturnVisits(SortOrder.DateOldestToNewest, -1);
+			var sorted = new List<ReturnVisitViewModel>();
+			foreach (var rv in rvs) {
+				sorted.Add(new ReturnVisitViewModel() {ItemId = rv.ItemId});
+			}
+			foreach(var rv in sorted.OrderByDescending(d => d.DaysSinceLastVisit).Take(8)) {
+				lbRvItems.Add(rv);
 			}
 			IsRvDataLoaded = true;
+
+
+			#region Old Code
+
+			//if (IsRvDataLoaded) lbRvItems.Clear();
+			//IsRvDataLoaded = false;
+			//// Sample data; replace with real data
+			//ReturnVisitData[] rvs = ReturnVisitsInterface.GetReturnVisits(so);
+
+			//var wb = new WriteableBitmap(100, 100);
+			//for (int i = 0; i < wb.Pixels.Length; i++) {
+			//	wb.Pixels[i] = 0xFF3300;
+			//}
+			//var bmp = new BitmapImage();
+			//using (var ms = new MemoryStream()) {
+			//	wb.SaveJpeg(ms, 100, 100, 0, 100);
+			//	bmp.SetSource(ms);
+			//}
+
+			//foreach (ReturnVisitData r in rvs) {
+			//	var bi = new BitmapImage();
+			//	if (r.ImageSrc != null && r.ImageSrc.Length >= 0) {
+			//		var ris = new WriteableBitmap(450, 250);
+
+			//		//get image from database
+			//		for (int i = 0; i < r.ImageSrc.Length; i++) {
+			//			ris.Pixels[i] = r.ImageSrc[i];
+			//		}
+
+			//		//put the image in a WritableBitmap
+			//		using (var ms = new MemoryStream()) {
+			//			ris.SaveJpeg(ms, 450, 250, 0, 100);
+			//			bi.SetSource(ms);
+			//		}
+
+			//		//crop the image to 100x100 and centered
+			//		var img = new Image {
+			//								Source = bi,
+			//								Width = 450,
+			//								Height = 250
+			//							};
+			//		var wb2 = new WriteableBitmap(100, 100);
+			//		var t = new CompositeTransform {
+			//										   ScaleX = 0.5,
+			//										   ScaleY = 0.5,
+			//										   TranslateX = -((450/2)/2 - 50),
+			//										   TranslateY = -((250/2)/2 - 50)
+			//									   };
+			//		wb2.Render(img, t);
+			//		wb2.Invalidate();
+			//		bi = new BitmapImage();
+			//		using (var ms = new MemoryStream()) {
+			//			wb2.SaveJpeg(ms, 100, 100, 0, 100);
+			//			bi.SetSource(ms);
+			//		}
+			//		//BitmapImage bi is now cropped
+			//	} else {
+			//		bi = bmp; //Default image.
+			//	}
+
+			//	string lv = r.LastVisitDate == DateTime.MinValue ? "No visit recorded" : string.Format("{0} day(s) since last visit", (DateTime.Now - r.LastVisitDate).Days);
+			//	lbRvItems.Add(new ReturnVisitItemModel {
+			//											   ItemId = r.ItemId,
+			//											   ImageSource = bi,
+			//											   Name = string.IsNullOrEmpty(r.FullName) ? string.Format("{0} year old {1}", r.Age, r.Gender) : r.FullName,
+			//											   LineOne = string.Format("{0} {1}", r.AddressOne, r.AddressTwo),
+			//											   LineTwo = string.Format("{0}, {1} {2}", r.City, r.StateProvince, r.PostalCode),
+			//											   LineThree = lv
+			//										   });
+			//}
+			//IsRvDataLoaded = true; 
+
+			#endregion
 		}
 
 		/// <summary>
@@ -269,75 +301,65 @@ namespace FieldService.ViewModels
 			if (IsMainMenuLoaded) lbMainMenuItems.Clear();
 			IsMainMenuLoaded = false;
 			lbMainMenuItems.Add(new MainMenuModel {
-														  MenuText = "add time",
-														  MenuItemName = "miAddTime",
-														  IconUri = "/icons/clock.png",
-														  MenuImageName = "AddTimeImage"
-													  });
+				                                      MenuText = "add time",
+				                                      IconUri = "/icons/clock.png",
+													  NavigateToPage = "/View/RegularTime.xaml"
+			                                      });
 			lbMainMenuItems.Add(new MainMenuModel {
-														  MenuText = "add rbc time",
-														  MenuItemName = "miAddTime",
-														  IconUri = "/icons/Tools.png",
-														  MenuImageName = "AddRBCTimeImage"
-													  });
+				                                      MenuText = "add rbc time",
+				                                      IconUri = "/icons/Tools.png",
+													  NavigateToPage = "/View/RBCTime.xaml"
+			                                      });
 
 			lbMainMenuItems.Add(new MainMenuModel {
-														  MenuText = "add return visit",
-														  MenuItemName = "miAddRv",
-														  IconUri = "/icons/add-user.png",
-														  MenuImageName = "AddReturnVisitImage"
-													  });
+				                                      MenuText = "add return visit",
+				                                      IconUri = "/icons/add-user.png",
+													  NavigateToPage = "/View/EditReturnVisit.xaml"
+			                                      });
 			lbMainMenuItems.Add(new MainMenuModel {
-				                                          MenuText = "send service report",
-														  MenuItemName = "miSendReport", 
-														  IconUri = "/icons/message.png", 
-														  MenuImageName = "SemdReportImage"
-			                                          });
+				                                      MenuText = "send service report",
+													  IconUri = "/icons/message.png",
+													  NavigateToPage = ""
+			                                      });
 			lbMainMenuItems.Add(new MainMenuModel {
-				                                          MenuText = string.Format("{0} report", 
-														  DateTime.Today.ToString("MMMM").ToLower()), 
-														  MenuItemName = "miThisMonthReport", 
-														  IconUri = "/icons/Graph2.png", 
-														  MenuImageName = "ThisMonthImage"
-			                                          });
+				                                      MenuText = string.Format("{0} report",
+				                                                               DateTime.Today.ToString("MMMM").ToLower()),
+													  IconUri = "/icons/Graph1.png",
+													  NavigateToPage = ""
+			                                      });
 			lbMainMenuItems.Add(new MainMenuModel {
-				                                          MenuText = "service year report", 
-														  MenuItemName = "miThisYearReport", 
-														  IconUri = "/icons/Graph2.png", 
-														  MenuImageName = "ThisYearImage"
-			                                          });
-			//lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "custom report", MenuItemName = "miCustomReport", IconUri = "/icons/search.png", MenuImageName = "CustomReportImage"});
+				                                      MenuText = "service year report",
+													  IconUri = "/icons/Graph2.png",
+													  NavigateToPage = ""
+			                                      });
+			//lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "custom report", IconUri = "/icons/search.png"});
 
 			lbMainMenuItems.Add(new MainMenuModel {
-				                                          MenuText = "watchtower library", 
-														  MenuItemName = "miWtLib", 
-														  IconUri = "/icons/books.png", 
-														  MenuImageName = "OpenWtLibImage"
-			                                          });
+				                                      MenuText = "watchtower library",
+													  IconUri = "/icons/books.png",
+													  NavigateToPage = ""
+			                                      });
 #if DEBUG
-			lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "backup & restore", MenuImageName = "miBupReStr", IconUri = "/icons/cloud.png", MenuItemName = "CloudBackupImg"});
+			lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "backup & restore", MenuImageName = "miBupReStr", IconUri = "/icons/Cloud-Refresh.png", MenuItemName = "CloudBackupImg"});
 #else
-			if((new LicenseInformation()).IsTrial())
+			if ((new LicenseInformation()).IsTrial())
 				lbMainMenuItems.Add(new MainMenuModel {
-					                                          MenuText = "buy cloud backup", 
-															  MenuItemName = "miBuyCloud", 
-															  IconUri = "/icons/cloud.png", 
-															  MenuImageName = "BuyCloudImg"
-				                                          });
-			else 
+					                                      MenuText = "buy cloud backup",
+					                                      IconUri = "/icons/Cloud-Refresh.png",
+														  NavigateToPage = ""
+				                                      });
+			else
 				lbMainMenuItems.Add(new MainMenuModel {
-					                                          MenuText = "backup & restore", 
-															  MenuImageName = "miBupReStr", 
-															  IconUri = "/icons/Cloud-Refresh.png", 
-															  MenuItemName = "CloudBackupImg"
-				                                          });
+					                                      MenuText = "backup & restore",
+					                                      IconUri = "/icons/Cloud-Refresh.png",
+														  NavigateToPage = "/View/BackupAndRestorePage.xaml"
+				                                      });
 #endif
 			lbMainMenuItems.Add(new MainMenuModel {
-				                                          MenuText = "settings", 
-														  MenuItemName = "abmiManuallyEnter", 
-														  MenuImageName = "SettingsImage", 
-														  IconUri = "/icons/settings.png"
-			                                          });
+				                                      MenuText = "settings",
+				                                      IconUri = "/icons/settings.png",
+													  NavigateToPage = "/View/SettingsPage.xaml"
+			                                      });
 			IsMainMenuLoaded = true;
 		}
 
@@ -365,21 +387,21 @@ namespace FieldService.ViewModels
 				icReport.Clear();
 				lbTimeEntries.Clear();
 			}
-			
+
 			int minutes = 0;
 			if (entries.Length <= 0) return;
 
 			int month = entries[0].Date.Month;
 			int year = entries[0].Date.Year;
 			var summary = new TimeReportSummaryModel();
-			List<RBCTimeData> rtdEntries = new List<RBCTimeData>(); 
+			var rtdEntries = new List<RBCTimeData>();
 			//ListBox<int> rvList = new ListBox<int>();
 			foreach (TimeData td in entries) {
 				if (month != td.Date.Month) {
 					summary.Time = string.Format("{0:0.00} Hour(s)", (minutes/60.0));
 					summary.Minutes = minutes;
-					summary.RBCHours = ((double)RBCTimeDataInterface.GetMonthRBCTimeTotal(new DateTime(year, month, 1)))/60.0;
-					var eee = RBCTimeDataInterface.GetRBCTimeEntries(new DateTime(year, month, 1), new DateTime(year, month, 1).AddMonths(1).AddDays(-1), SortOrder.DateNewestToOldest);
+					summary.RBCHours = (RBCTimeDataInterface.GetMonthRBCTimeTotal(new DateTime(year, month, 1)))/60.0;
+					RBCTimeData[] eee = RBCTimeDataInterface.GetRBCTimeEntries(new DateTime(year, month, 1), new DateTime(year, month, 1).AddMonths(1).AddDays(-1), SortOrder.DateNewestToOldest);
 					if (eee != null) rtdEntries.AddRange(eee);
 					icReport.Add(summary);
 					summary = new TimeReportSummaryModel();
@@ -397,21 +419,21 @@ namespace FieldService.ViewModels
 				summary.ReturnVisits += td.ReturnVisits;
 
 				lbTimeEntries.Add(new TimeReportEntryViewModel {
-																   Date = td.Date,
-																   Hours = string.Format("{0:0.00} Hour(s)", (td.Minutes/60.0)),
-																   ItemId = td.ItemId,
-																   Minutes = td.Minutes,
-																   EditLink = string.Format("/View/RegularTime.xaml?id={0}", td.ItemId)
-															   });
+					                                               Date = td.Date,
+					                                               Hours = string.Format("{0:0.00} Hour(s)", (td.Minutes/60.0)),
+					                                               ItemId = td.ItemId,
+					                                               Minutes = td.Minutes,
+					                                               EditLink = string.Format("/View/RegularTime.xaml?id={0}", td.ItemId)
+				                                               });
 			}
-			var ee = RBCTimeDataInterface.GetRBCTimeEntries(new DateTime(year, month, 1), new DateTime(year, month, 1).AddMonths(1).AddDays(-1), SortOrder.DateNewestToOldest);
+			RBCTimeData[] ee = RBCTimeDataInterface.GetRBCTimeEntries(new DateTime(year, month, 1), new DateTime(year, month, 1).AddMonths(1).AddDays(-1), SortOrder.DateNewestToOldest);
 			if (ee != null) rtdEntries.AddRange(ee);
-			summary.RBCHours = ((double)RBCTimeDataInterface.GetMonthRBCTimeTotal(new DateTime(year, month, 1)) / 60.0);
+			summary.RBCHours = (RBCTimeDataInterface.GetMonthRBCTimeTotal(new DateTime(year, month, 1))/60.0);
 			summary.Time = string.Format("{0:0.00} Hour(s)", (minutes/60.0));
 			summary.Minutes = minutes;
 			icReport.Add(summary);
 
-			foreach (var e in rtdEntries)
+			foreach (RBCTimeData e in rtdEntries)
 				lbTimeEntries.Add(new TimeReportEntryViewModel {
 					                                               Date = e.Date,
 					                                               Hours = string.Format("{0:0.00} R/B/C Hour(s)", e.Hours),
@@ -419,9 +441,9 @@ namespace FieldService.ViewModels
 					                                               Minutes = e.Minutes,
 					                                               EditLink = string.Format("/View/RBCTime.xaml?id={0}", e.ItemID)
 				                                               });
-			var lte = lbTimeEntries.OrderBy(s => s.Date.Date).ToArray();
+			TimeReportEntryViewModel[] lte = lbTimeEntries.OrderBy(s => s.Date.Date).ToArray();
 			lbTimeEntries.Clear();
-			foreach (var l in lte) lbTimeEntries.Add(l);
+			foreach (TimeReportEntryViewModel l in lte) lbTimeEntries.Add(l);
 
 			IsTimeReportDataLoaded = true;
 		}

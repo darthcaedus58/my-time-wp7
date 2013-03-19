@@ -240,7 +240,6 @@ namespace MyTimeDatabaseLib
 					db.SubmitChanges();
 					return RvPreviousVisitsDataInterface.DeleteAllCallsFromRv(itemId);
 				} catch (InvalidOperationException) { return false; }
-				return false;
 			}
 		}
 
