@@ -1,0 +1,52 @@
+﻿<phone:PhoneApplicationPage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone" xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ViewModels="clr-namespace:FieldService.ViewModels"
+							xmlns:FieldService="clr-namespace:FieldService"
+							x:Class="FieldService.View.ViewPreviousVisit"
+	FontFamily="{StaticResource PhoneFontFamilyNormal}"
+	FontSize="{StaticResource PhoneFontSizeNormal}"
+	Foreground="{StaticResource AppForegroundBrush}"
+	SupportedOrientations="Portrait" Orientation="Portrait" mc:Ignorable="d">
+
+	<phone:PhoneApplicationPage.DataContext>
+		<ViewModels:PreviousVisitViewModel/>
+	</phone:PhoneApplicationPage.DataContext>
+
+	<!--LayoutRoot is the root grid where all page content is placed-->
+	<Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Grid Row="0">
+		<StackPanel Margin="12,17,0,28">
+			<TextBlock Foreground="{StaticResource AppForegroundBrush}" Text="{Binding Date, StringFormat=\{0:M\}\, \{0:yyyy\}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+		</StackPanel>
+		</Grid>
+		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+			<StackPanel>
+				<FieldService:HeaderControl IconSource="/icons/Maps.png" HeaderText="RETURN VISIT" />
+				<StackPanel Orientation="Horizontal" Margin="12,0,0,0">
+					<Image Height="100" Width="100" Source="{Binding ParentRv.Image}" />
+					<StackPanel Width="311">
+						<TextBlock FontWeight="ExtraBold"  Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource AppAccentBrush}"  Text="{Binding ParentRv.NameOrDescription}" TextWrapping="Wrap" />
+						<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Foreground="{StaticResource AppForegroundBrush}" Margin="12,-6,12,0" Text="{Binding ParentRv.FormattedAddress}" TextWrapping="Wrap" />
+					</StackPanel>
+				</StackPanel>
+				<FieldService:HeaderControl IconSource="/icons/Books.png" HeaderText="PLACEMENTS" />
+				<TextBlock Text="{Binding Magazines, StringFormat=\{0\} Magazines}" Margin="12,0,0,0" />
+				<TextBlock Text="{Binding Brochures, StringFormat=\{0\} Brochures}" Margin="12,0,0,0" />
+				<TextBlock Text="{Binding Books, StringFormat=\{0\} Books}" Margin="12,0,0,0" />
+				<FieldService:HeaderControl IconSource="/icons/tasks.png" HeaderText="NOTES"/>
+				<ScrollViewer VerticalAlignment="Top">
+					<TextBlock Text="{Binding Notes}" TextWrapping="Wrap" Margin="12,0,0,0" />
+				</ScrollViewer>
+			</StackPanel>
+		</Grid>
+	</Grid>
+
+	<phone:PhoneApplicationPage.ApplicationBar>
+		<shell:ApplicationBar BackgroundColor="{StaticResource PhoneForegroundColor}" ForegroundColor="{StaticResource PhoneBackgroundColor}" IsMenuEnabled="True" IsVisible="True">
+			<shell:ApplicationBarIconButton x:Name="appbar_save" IconUri="/icons/Edit.png" Text="Edit" Click="appbar_save_Click_1" />
+		</shell:ApplicationBar>
+	</phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

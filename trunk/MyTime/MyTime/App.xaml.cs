@@ -52,9 +52,9 @@ namespace FieldService
 		/// </summary>
 		public App()
 		{
-			//var radDiagnostics = new RadDiagnostics();
-			//radDiagnostics.EmailTo = "help@square-hiptobe.com";
-			//radDiagnostics.Init();
+			var radDiagnostics = new RadDiagnostics();
+			radDiagnostics.EmailTo = "help@square-hiptobe.com";
+			radDiagnostics.Init();
 			(App.Current.Resources["PhoneAccentBrush"] as SolidColorBrush).Color = Color.FromArgb(0xFF, 0xD2, 0xDA, 0x86);
 
 			_settingsProvider = new SettingsProvider();
@@ -132,7 +132,7 @@ namespace FieldService
 		/// <param name="e">The <see cref="ActivatedEventArgs" /> instance containing the event data.</param>
 		private void Application_Activated(object sender, ActivatedEventArgs e)
 		{
-			//ApplicationUsageHelper.OnApplicationActivated();
+			ApplicationUsageHelper.OnApplicationActivated();
 			// Ensure that application state is restored appropriately
 			if (!ViewModel.IsRvDataLoaded) {
 				ViewModel.LoadReturnVisitList(SortOrder.DateOldestToNewest);

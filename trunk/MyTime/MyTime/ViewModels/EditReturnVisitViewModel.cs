@@ -211,7 +211,8 @@ namespace FieldService.ViewModels
 		/// <summary>
 		/// Updates the previous visits.
 		/// </summary>
-		public void UpdatePreviousVisits()
+		/// <param name="rvPreviousVisitDatas"> </param>
+		public void UpdatePreviousVisits(RvPreviousVisitData[] rvPreviousVisitDatas)
 		{
 			if (ReturnVisitData.ItemId < 0) return;
 			RvPreviousVisitData[] visits = RvPreviousVisitsDataInterface.GetPreviousVisits(_returnVisitData.ItemId, SortOrder.DateNewestToOldest);

@@ -25,6 +25,7 @@ using System.Windows.Threading;
 using System.Xml.Serialization;
 using FieldService.Model;
 using FieldService.SocietyScraper;
+using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
 using MyTimeDatabaseLib;
@@ -109,13 +110,14 @@ namespace FieldService.View
 		/// </summary>
 		/// <param name="sender">The source of the event.</param>
 		/// <param name="e">The <see cref="SelectionChangedEventArgs" /> instance containing the event data.</param>
-		private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		private void ReturnVisitItemsControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			if (((ListBox) sender).SelectedIndex < 0) return;
+			if (((ListBox)sender).SelectedIndex < 0) return;
 			try {
-				var rv = (ReturnVisitItemModel) ((ListBox) sender).SelectedItem;
+				var rv = ((ListBox)sender).SelectedItem as ReturnVisitViewModel;
+				if (rv == null) return;
 				((ListBox) sender).SelectedIndex = -1;
-				NavigationService.Navigate(new Uri(string.Format("/View/ReturnVisit.xaml?id={0}", rv.ItemId.ToString(CultureInfo.InvariantCulture)), UriKind.Relative));
+				NavigationService.Navigate(new Uri(string.Format("/View/EditReturnVisit.xaml?id={0}", rv.ItemId.ToString(CultureInfo.InvariantCulture)), UriKind.Relative));
 			} catch {}
 		}
 
@@ -177,26 +179,8 @@ namespace FieldService.View
 		{
 			var mi = sender as MenuItem;
 			if (mi == null) return;
-			string v = mi.Header.ToString().ToLower();
+			string v = mi.Tag.ToString();
 			NavigateMainMenu(v);
-		}
-
-		/// <summary>
-		/// Handles the KeyDown event of the TextBoxMasking control.
-		/// </summary>
-		/// <param name="sender">The source of the event.</param>
-		/// <param name="e">The <see cref="KeyEventArgs" /> instance containing the event data.</param>
-		private void TextBoxMasking_KeyDown(object sender, KeyEventArgs e)
-		{
-			Key[] goodKeys = {
-								 Key.D0, Key.D1, Key.D2, Key.D3, Key.D4,
-								 Key.D5, Key.D6, Key.D7, Key.D8, Key.D9,
-								 Key.NumPad0, Key.NumPad1, Key.NumPad2, Key.NumPad3, Key.NumPad4,
-								 Key.NumPad5, Key.NumPad6, Key.NumPad7, Key.NumPad8, Key.NumPad9
-							 };
-			if (!goodKeys.Contains(e.Key)) {
-				e.Handled = true;
-			}
 		}
 
 		/// <summary>
@@ -475,15 +459,15 @@ namespace FieldService.View
 		{
 			string month = DateTime.Today.ToString("MMMM").ToLower() + " report";
 			switch (v) {
-				case "add time":
-					NavigationService.Navigate(new Uri("/View/RegularTime.xaml", UriKind.Relative));
-					break;
-				case "add rbc time":
-					NavigationService.Navigate(new Uri("/View/RBCTime.xaml", UriKind.Relative));
-					break;
-				case "add return visit":
-					NavigationService.Navigate(new Uri("/View/ReturnVisit.xaml", UriKind.Relative));
-					break;
+				//case "add time":
+				//	NavigationService.Navigate(new Uri("/View/RegularTime.xaml", UriKind.Relative));
+				//	break;
+				//case "add rbc time":
+				//	NavigationService.Navigate(new Uri("/View/RBCTime.xaml", UriKind.Relative));
+				//	break;
+				//case "add return visit":
+				//	NavigationService.Navigate(new Uri("/View/EditReturnVisit.xaml", UriKind.Relative));
+				//	break;
 				case "watchtower library":
 					var wbTask = new WebBrowserTask {Uri = new Uri("http://wol.jw.org", UriKind.RelativeOrAbsolute)};
 					wbTask.Show();
@@ -494,16 +478,16 @@ namespace FieldService.View
 				case "send service report":
 					SendServiceReport();
 					break;
-				case "settings":
-					NavigationService.Navigate(new Uri("/View/SettingsPage.xaml", UriKind.Relative));
-					break;
+				//case "settings":
+				//	NavigationService.Navigate(new Uri("/View/SettingsPage.xaml", UriKind.Relative));
+				//	break;
 				case "buy cloud backup":
 					var mdt = new MarketplaceDetailTask();
 					mdt.Show();
 					break;
-				case "backup & restore":
-					NavigationService.Navigate(new Uri("/View/BackupAndRestorePage.xaml", UriKind.Relative));
-					break;
+				//case "backup & restore":
+				//	NavigationService.Navigate(new Uri("/View/BackupAndRestorePage.xaml", UriKind.Relative));
+				//	break;
 				default:
 					if (v.Equals(month)) {
 						ShowMonthlyReport();
