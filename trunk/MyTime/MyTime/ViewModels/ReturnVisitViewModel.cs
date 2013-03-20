@@ -448,10 +448,10 @@ namespace FieldService.ViewModels
 			return ReturnVisitsInterface.AddOrUpdateRV(ref _returnVisitData);
 		}
 
-		public bool Delete()
+		public bool Delete(bool deleteCalls)
 		{
 			//throw new System.NotImplementedException();
-			return ReturnVisitsInterface.DeleteReturnVisit(_returnVisitData.ItemId);
+			return ReturnVisitsInterface.DeleteReturnVisit(_returnVisitData.ItemId, deleteCalls);
 		}
 	}
 }
