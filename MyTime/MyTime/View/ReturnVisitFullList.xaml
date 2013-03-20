@@ -43,9 +43,9 @@
                 <toolkit:LongListSelector.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <Image Height="100" Width="100" Source="{Binding ImageSource}" />
+                            <Image Height="100" Width="100" Source="{Binding ImageSource}" Margin="15,10,10,0" />
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Padding="{StaticResource PhoneTouchTargetOverhang}" FontSize="{StaticResource PhoneFontSizeMediumLarge}" Text="{Binding Text}" />
+                                <TextBlock FontSize="{StaticResource PhoneFontSizeMediumLarge}" Text="{Binding Text}" />
                                 <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Address1}" />
                                 <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Address2}" />
                             </StackPanel>
