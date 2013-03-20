@@ -49,7 +49,7 @@
                 <StackPanel>
                     <FieldService:HeaderControl IconSource="/icons/calendar.png" HeaderText="DATE" Margin="15,0,0,0" />
                     <telerikInput:RadDatePicker x:Name="dpDatePicker" Value="{Binding PreviousVisitData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
-                    <FieldService:HeaderControl IconSource="/icons/clock.png" HeaderText="TIME" Margin="15,0,0,0" />
+                    <FieldService:HeaderControl IconSource="/icons/Books.png" HeaderText="PLACEMENTS" Margin="15,0,0,0" />
                     <telerikInput:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags" Suffix="Magazines" Value="{Binding PreviousVisitData.Magazines, Mode=TwoWay}" />
                     <telerikInput:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" Suffix="Brochures" Value="{Binding PreviousVisitData.Brochures, Mode=TwoWay}" />
                     <telerikInput:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBooks" Suffix="Books" Value="{Binding PreviousVisitData.Books, Mode=TwoWay}" />
