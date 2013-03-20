@@ -335,8 +335,13 @@ namespace FieldService
 		private void appbar_delete_Click_1(object sender, EventArgs e)
 		{
 			if (App.ViewModel.ReturnVisitData.ItemId < 0) return;
-			if (MessageBox.Show("Are you sure you want to delete this return visit and all its calls?") == MessageBoxResult.Cancel) return;
-			App.ToastMe(App.ViewModel.ReturnVisitData.Delete() ? "RV Deleted." : "RV Delete Failed.");
+			if (MessageBox.Show("Are you sure you want to delete the return visit?","Field Service", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel) return;
+			try {
+				var deleteCalls = bool.Parse(App.AppSettingsProvider["deleteCallsAndRV"].Value);
+				App.ToastMe(App.ViewModel.ReturnVisitData.Delete(deleteCalls) ? "RV Deleted." : "RV Delete Failed.");
+			} catch {
+				App.ToastMe(App.ViewModel.ReturnVisitData.Delete(MessageBox.Show("Do you want to delete the return visit's calls?") == MessageBoxResult.OK) ? "RV Deleted." : "RV Delete Failed.");
+			}
 		}
 
 		private void miShareContact_Click_1(object sender, EventArgs e)

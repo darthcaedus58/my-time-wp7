@@ -230,7 +230,7 @@ namespace MyTimeDatabaseLib
 		/// Deletes the return visit.
 		/// </summary>
 		/// <param name="itemId">The item id.</param>
-		public static bool DeleteReturnVisit(int itemId)
+		public static bool DeleteReturnVisit(int itemId, bool deleteCalls)
 		{
 			using (var db = new ReturnVisitDataContext(ReturnVisitDataContext.DBConnectionString)) {
 				try {
@@ -238,7 +238,8 @@ namespace MyTimeDatabaseLib
 
 					db.ReturnVisitItems.DeleteOnSubmit(rv);
 					db.SubmitChanges();
-					return RvPreviousVisitsDataInterface.DeleteAllCallsFromRv(itemId);
+					if(deleteCalls) return RvPreviousVisitsDataInterface.DeleteAllCallsFromRv(itemId);
+					return true;
 				} catch (InvalidOperationException) { return false; }
 			}
 		}
