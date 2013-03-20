@@ -242,6 +242,11 @@ namespace FieldService
 					tbCurrentCityStateZip.Text = string.Format("{0} {1}", a.Locality, a.PostalCode);
 					tbCurrentCountry.Text = a.CountryRegion;
 					break;
+				case "th":
+					tbCurrentAddress.Text = a.AddressLine;
+					tbCurrentCityStateZip.Text = string.Format("{0} {1}", a.Locality, a.AdminDistrict);
+					tbCurrentCountry.Text = a.CountryRegion;
+					break;
 				case "us":
 				default:
 					tbCurrentAddress.Text = a.AddressLine;

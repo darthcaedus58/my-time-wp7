@@ -262,12 +262,14 @@ namespace FieldService.ViewModels
 			{
 				var country = AddressCountryCode;
 				switch(country) {
-					case "it":
+					case "it": //italy
 						return string.Format("{0} {1}\n{2} {3} {4}", _returnVisitData.AddressOne, _returnVisitData.AddressTwo, _returnVisitData.PostalCode, _returnVisitData.City, _returnVisitData.StateProvince);
-					case "gb":
+					case "gb": //england
 						return string.Format("{0} {1}\n{2} {3}", _returnVisitData.AddressOne, _returnVisitData.AddressTwo, _returnVisitData.City, _returnVisitData.PostalCode);
+					case "th": //thailand
+						return string.Format("{0} {1}\n{2} {3}", _returnVisitData.AddressOne, _returnVisitData.AddressTwo, _returnVisitData.City, _returnVisitData.StateProvince);
 					default:
-					case "us":
+					case "us": //usa
 						return string.Format("{0} {1}\n{2},{3} {4}", _returnVisitData.AddressOne, _returnVisitData.AddressTwo, _returnVisitData.City, _returnVisitData.StateProvince, _returnVisitData.PostalCode);
 				}
 			}
@@ -288,6 +290,9 @@ namespace FieldService.ViewModels
 			switch (country.ToLower()) {
 				case "":
 					country = CultureInfo.CurrentCulture.Name.Remove(0, 3).ToLower();
+					break;
+				case "thailand":
+					country = "th";
 					break;
 				case "italy":
 				case "italia":
@@ -326,6 +331,8 @@ namespace FieldService.ViewModels
 					case "gb":
 						return !(string.IsNullOrEmpty(Address1) ||string.IsNullOrEmpty(City));
 					case "us":
+					case "it":
+					case "th":
 					default:
 						return !(string.IsNullOrEmpty(Address1) || string.IsNullOrEmpty(City) || string.IsNullOrEmpty(StateProvinceDistrict)); 
 				}
@@ -344,6 +351,13 @@ namespace FieldService.ViewModels
 							Locality = City,
 							CountryRegion = string.IsNullOrEmpty(Country) ? "England" : Country
 						};
+					case "th":
+						return new Address {
+							                   AddressLine = string.Format("{0}{1}", _returnVisitData.AddressOne, string.IsNullOrEmpty(_returnVisitData.AddressTwo) ? string.Empty : string.Format(" {0}", _returnVisitData.AddressTwo)),
+							                   Locality = City,
+							                   AdminDistrict = StateProvinceDistrict,
+							                   CountryRegion = string.IsNullOrEmpty(Country) ? "Thailand" : Country
+						                   };
 					case "it":
 					case "us":
 					default:
