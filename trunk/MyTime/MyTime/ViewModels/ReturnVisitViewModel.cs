@@ -16,7 +16,7 @@ namespace FieldService.ViewModels
 	{
 		public ReturnVisitViewModel()
 		{
-			_returnVisitData = new ReturnVisitData() {
+			_returnVisitData = new ReturnVisitData {
 				                                         DateCreated = DateTime.Now
 			                                         };
 
