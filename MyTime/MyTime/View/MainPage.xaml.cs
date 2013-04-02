@@ -137,6 +137,23 @@ namespace FieldService.View
 			if (!App.ViewModel.IsMainMenuLoaded) App.ViewModel.LoadMainMenu();
 
 			_bwLoadRvs.RunWorkerAsync();
+
+			try {
+				var b = bool.Parse(App.AppSettingsProvider["askForDonation"].Value);
+				if (b) {
+					if (MessageBox.Show("This app is free to use. Submitting apps to the WP app store isn't. Would you consider a donation?", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
+						var donate = new WebBrowserTask()
+						{
+							URL = @"https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=tk%40square%2dhiptobe%2ecom&lc=US&item_name=Field%20Service%20App%20%28Square%2eHipToBe%29&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHostedGuest"
+						};
+						donate.Show();
+					} else {
+						App.ToastMe("You can donate in settings>about later.");
+					}
+					App.AppSettingsProvider["askForDonation"].Value = "false";
+					App.AppSettingsProvider.SaveSettings();
+				}
+			} catch {}
 		}
 
 		private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
