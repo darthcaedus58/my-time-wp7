@@ -28,20 +28,30 @@
 		<controls:Pivot Title="ADD OR MODIFY RETURN VISIT" Foreground="{StaticResource AppForegroundBrush}" LoadedPivotItem="Pivot_LoadedPivotItem_1">
 			<controls:PivotItem Header="info">
 				<Grid>
-					<StackPanel>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="250" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+						<Grid Row="0">
 						<Maps:Map Name="mapInfo" LogoVisibility="Collapsed" CopyrightVisibility="Collapsed">
 							<Maps:Map.CredentialsProvider>
 								<Maps:ApplicationIdCredentialsProvider ApplicationId="AkRhgqPR6aujo-xib-KiR8Lt20wsn89GY4R9SP0RA6h4w7QT9mS3kKwYKKxjklfV"/>
 							</Maps:Map.CredentialsProvider>
 						</Maps:Map>
-						<local:HeaderControl HeaderText="ADDRESS" IconSource="/icons/Maps.png"/>
-						<HyperlinkButton Click="ShowBingMapHyperlinkButton_Click" Content="{Binding ReturnVisitData.FormattedAddress}" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="-10,0,0,0" FontSize="20"/>
-						<TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.LocationNotes}"/>
-						<local:HeaderControl HeaderText="PERSONAL INFO" IconSource="/icons/add-user.png"/>
-						<TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.NameOrDescription}"/>
-						<HyperlinkButton Click="PhoneNumberHyperlinkButton_Click" Content="{Binding ReturnVisitData.PhoneNumber}" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="-10,0,0,0" FontSize="20"/>
-						<TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.PhysicalDescription}"/>
-					</StackPanel>
+						</Grid>
+						<Grid Row="1">
+							<ScrollViewer>
+								<StackPanel>
+									<local:HeaderControl HeaderText="ADDRESS" IconSource="/icons/Maps.png"/>
+									<HyperlinkButton Click="ShowBingMapHyperlinkButton_Click" Content="{Binding ReturnVisitData.FormattedAddress}" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="-10,0,0,0" FontSize="20"/>
+									<TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.LocationNotes}"/>
+									<local:HeaderControl HeaderText="PERSONAL INFO" IconSource="/icons/add-user.png"/>
+									<TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.NameOrDescription}"/>
+									<HyperlinkButton Click="PhoneNumberHyperlinkButton_Click" Content="{Binding ReturnVisitData.PhoneNumber}" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="-10,0,0,0" FontSize="20"/>
+									<TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.PhysicalDescription}"/>
+								</StackPanel>
+							</ScrollViewer>
+						</Grid>
 				</Grid>
 			</controls:PivotItem>
 			<controls:PivotItem Header="personal">
