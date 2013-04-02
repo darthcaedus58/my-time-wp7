@@ -54,7 +54,7 @@
                     <telerikInput:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" Suffix="Brochures" Value="{Binding PreviousVisitData.Brochures, Mode=TwoWay}" />
                     <telerikInput:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBooks" Suffix="Books" Value="{Binding PreviousVisitData.Books, Mode=TwoWay}" />
                     <FieldService:HeaderControl IconSource="/icons/tasks.png" HeaderText="NOTES" Margin="15,0,0,0" />
-                    <TextBox x:Name="tbNotes" Height="180" TextWrapping="Wrap" InputScope="Text" Text="{Binding PreviousVisitData.Notes, Mode=TwoWay}"/>
+                    <TextBox x:Name="tbNotes" Height="180" TextWrapping="Wrap" InputScope="Text" Text="{Binding PreviousVisitData.Notes, Mode=TwoWay}" AcceptsReturn="True"/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>
