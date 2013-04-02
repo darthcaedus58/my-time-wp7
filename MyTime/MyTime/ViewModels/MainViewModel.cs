@@ -20,6 +20,7 @@ using System.IO;
 using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -209,16 +210,15 @@ namespace FieldService.ViewModels
 				IsRvDataLoaded = false;
 			}
 
-			var rvs = ReturnVisitsInterface.GetReturnVisits(SortOrder.DateOldestToNewest, -1);
-			var sorted = new List<ReturnVisitViewModel>();
-			foreach (var rv in rvs) {
-				sorted.Add(new ReturnVisitViewModel() {ItemId = rv.ItemId});
-			}
-			foreach(var rv in sorted.OrderByDescending(d => d.DaysSinceLastVisit).Take(8)) {
-				lbRvItems.Add(rv);
-			}
-			IsRvDataLoaded = true;
-
+			var bw = new BackgroundWorker();
+			bw.RunWorkerCompleted += (obt, e) => {
+				                         var rvs = ReturnVisitsInterface.GetReturnVisitByLastVisitDate(SortOrder.DateOldestToNewest, -1);
+				                         foreach (var rv in rvs) {
+					                         lbRvItems.Add(new ReturnVisitViewModel() {ItemId = rv});
+				                         }
+				                         IsRvDataLoaded = true;
+			                         };
+			bw.RunWorkerAsync();
 
 			#region Old Code
 
@@ -292,6 +292,7 @@ namespace FieldService.ViewModels
 
 			#endregion
 		}
+
 
 		/// <summary>
 		/// Loads the main menu.
