@@ -71,7 +71,7 @@
                     <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbReturnVisits" Suffix="Return Visits" Value="{Binding TimeData.ReturnVisits, Mode=TwoWay}" />
                     <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBibleStudies" Suffix="Bible Studies" Value="{Binding TimeData.BibleStudies, Mode=TwoWay}" />
                     <local:HeaderControl IconSource="/icons/tasks.png" HeaderText="NOTES" Margin="15,0,0,0" />
-                     <TextBox InputScope="Text" Height="180" x:Name="tbNotes" TextWrapping="Wrap" Text="{Binding TimeData.Notes, Mode=TwoWay}" />
+                     <TextBox InputScope="Text" Height="180" x:Name="tbNotes" TextWrapping="Wrap" Text="{Binding TimeData.Notes, Mode=TwoWay}" AcceptsReturn="True" />
                 </StackPanel>
             </ScrollViewer>
         </Grid>
