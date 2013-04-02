@@ -54,7 +54,7 @@
 				<FieldService:HeaderControl IconSource="/icons/clock.png" HeaderText="TIME" Margin="15,0,0,0" />
 				<c4f:TimeSpanPicker ValueStringFormat="{}{0:h} Hours and {0:m} Minutes" x:Name="tspTime" Step="0:15:0" Value="{Binding RBCTimeData.Minutes, Converter={StaticResource MinutesToTimeSpanValueConverter}, Mode=TwoWay}" />
 				<FieldService:HeaderControl IconSource="/icons/tasks.png" HeaderText="NOTES" Margin="15,0,0,0" />
-				<TextBox InputScope="Text" Height="291" x:Name="tbNotes" TextWrapping="Wrap" Text="{Binding RBCTimeData.Notes, Mode=TwoWay}" />
+				<TextBox InputScope="Text" Height="291" x:Name="tbNotes" TextWrapping="Wrap" Text="{Binding RBCTimeData.Notes, Mode=TwoWay}" AcceptsReturn="True" />
 			</StackPanel>
 		</Grid>
 	</Grid>
