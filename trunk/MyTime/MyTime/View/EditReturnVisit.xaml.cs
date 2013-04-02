@@ -304,7 +304,10 @@ namespace FieldService
 		private void appbar_save_Click_1(object sender, EventArgs e)
 		{
 			UpdateViewModel();
-
+			if (!App.ViewModel.ReturnVisitData.IsAddressValid) {
+				App.ToastMe("Please fill in address before saving.");
+				return;
+			}
 			if (App.ViewModel.ReturnVisitData.SaveOrUpdate()) {
 				App.ToastMe("Return Visit Saved.");
 			} else {

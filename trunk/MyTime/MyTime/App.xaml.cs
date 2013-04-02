@@ -54,6 +54,7 @@ namespace FieldService
 		{
 			var radDiagnostics = new RadDiagnostics();
 			radDiagnostics.EmailTo = "help@square-hiptobe.com";
+			radDiagnostics.IncludeScreenshot = true;
 			radDiagnostics.Init();
 			(App.Current.Resources["PhoneAccentBrush"] as SolidColorBrush).Color = Color.FromArgb(0xFF, 0xD2, 0xDA, 0x86);
 

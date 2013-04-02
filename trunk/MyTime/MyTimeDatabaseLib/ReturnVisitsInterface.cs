@@ -253,6 +253,41 @@ namespace MyTimeDatabaseLib
 				return UpdateReturnVisit(ref rv);
 			}
 		}
+
+		public static int[] GetReturnVisitByLastVisitDate(SortOrder so, int maxReturnCount = 8)
+		{
+			//throw new NotImplementedException();
+			using (var db = new ReturnVisitDataContext(ReturnVisitDataContext.DBConnectionString)) {
+				try {
+					using (var visitDb = new RvPreviousVisitsContext(RvPreviousVisitsContext.DBConnectionString)) {
+						if (so == SortOrder.DateOldestToNewest) {
+							var qry = from x in visitDb.RvPreviousVisitItems
+									  orderby x.Date
+									  orderby x.RvItemId 
+									  select x;
+							if (qry.Any()) {
+								var rvs = new List<RvPreviousVisitItem>();
+								int id = qry.First().RvItemId;
+								rvs.Add(qry.First());
+								foreach (var r in qry) {
+									if (id != r.RvItemId) {
+										id = r.RvItemId;
+										rvs.Add(r);
+									}
+								}
+								if (maxReturnCount < 0) maxReturnCount = rvs.Count();
+								var sorted = rvs.OrderBy(s => s.Date).Take(maxReturnCount);
+								return sorted.Select(i => i.RvItemId).ToArray();
+							}
+							return new int[0];
+						}
+					}
+				} catch {
+					return null;
+				}
+			}
+			return null;
+		}
 	}
 
 	/// <summary>
