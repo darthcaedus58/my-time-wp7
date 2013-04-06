@@ -214,6 +214,7 @@ namespace FieldService.ViewModels
 			bw.RunWorkerCompleted += (obt, e) => {
 				                         var rvs = ReturnVisitsInterface.GetReturnVisitByLastVisitDate(SortOrder.DateOldestToNewest, -1);
 				                         foreach (var rv in rvs) {
+											 if (!ReturnVisitsInterface.IdExists(rv)) continue;
 					                         lbRvItems.Add(new ReturnVisitViewModel() {ItemId = rv});
 				                         }
 				                         IsRvDataLoaded = true;
