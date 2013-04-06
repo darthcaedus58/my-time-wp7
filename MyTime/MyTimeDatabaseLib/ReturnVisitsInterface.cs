@@ -288,6 +288,21 @@ namespace MyTimeDatabaseLib
 			}
 			return null;
 		}
+
+		public static bool IdExists(int rv)
+		{
+			//throw new NotImplementedException();
+			using (var db = new ReturnVisitDataContext(ReturnVisitDataContext.DBConnectionString)) {
+				try {
+					var b = db.ReturnVisitItems.Single(s => s.ItemId == rv);
+					if (b == null) return false;
+					return true;
+				} catch {
+					return false;
+				}
+
+			}
+		}
 	}
 
 	/// <summary>
