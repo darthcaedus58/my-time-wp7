@@ -247,6 +247,7 @@ namespace MyTimeDatabaseLib
 		public static bool AddOrUpdateRV(ref ReturnVisitData rv)
 		{
 			try {
+				
 				if (rv.ItemId < 0) return AddNewReturnVisit(ref rv);
 				return UpdateReturnVisit(ref rv);
 			} catch (ReturnVisitAlreadyExistsException) {
@@ -256,37 +257,56 @@ namespace MyTimeDatabaseLib
 
 		public static int[] GetReturnVisitByLastVisitDate(SortOrder so, int maxReturnCount = 8)
 		{
-			//throw new NotImplementedException();
-			using (var db = new ReturnVisitDataContext(ReturnVisitDataContext.DBConnectionString)) {
-				try {
-					using (var visitDb = new RvPreviousVisitsContext(RvPreviousVisitsContext.DBConnectionString)) {
-						if (so == SortOrder.DateOldestToNewest) {
-							var qry = from x in visitDb.RvPreviousVisitItems
-									  orderby x.Date
-									  orderby x.RvItemId 
-									  select x;
-							if (qry.Any()) {
-								var rvs = new List<RvPreviousVisitItem>();
-								int id = qry.First().RvItemId;
-								rvs.Add(qry.First());
-								foreach (var r in qry) {
-									if (id != r.RvItemId) {
-										id = r.RvItemId;
-										rvs.Add(r);
+			try {
+				using (var visitDb = new RvPreviousVisitsContext(RvPreviousVisitsContext.DBConnectionString)) {
+					if (so == SortOrder.DateOldestToNewest) {
+						var qry = from x in visitDb.RvPreviousVisitItems
+								  orderby x.Date
+								  group x by x.RvItemId into dates
+								  select dates;
+						if (maxReturnCount == -1) maxReturnCount = qry.Count();
+						if(qry.Any()) {
+							var rvList = new List<RvPreviousVisitItem>();
+							foreach (var rv in qry) {
+								var r = so == SortOrder.DateOldestToNewest ? rv.Last() : rv.First();
+								if (rvList.Count() == maxReturnCount) {
+									if (so == SortOrder.DateOldestToNewest && rvList.Select(x => x.Date > r.Date).Any()) {
+										rvList.Remove(rvList.Last());
+										rvList.Add(r);
+										rvList = rvList.OrderBy(s => s.Date).ToList();
+									} else if (rvList.Select(x => x.Date < r.Date).Any()) {
+										rvList.Remove(rvList.First());
+										rvList.Add(r);
+										rvList = rvList.OrderBy(s => s.Date).ToList();
 									}
+								} else {
+									rvList.Add(r);
+									rvList = rvList.OrderBy(s => s.Date).ToList();
 								}
-								if (maxReturnCount < 0) maxReturnCount = rvs.Count();
-								var sorted = rvs.OrderBy(s => s.Date).Take(maxReturnCount);
-								return sorted.Select(i => i.RvItemId).ToArray();
 							}
-							return new int[0];
+							return rvList.Select(r => r.RvItemId).ToArray();
 						}
+						//if (qry.Any()) {
+						//	var rvs = new List<RvPreviousVisitItem>();
+						//	int id = qry.First().RvItemId;
+						//	rvs.Add(qry.First());
+						//	foreach (var r in qry) {
+						//		if (id != r.RvItemId) {
+						//			id = r.RvItemId;
+						//			rvs.Add(r);
+						//		}
+						//	}
+						//	if (maxReturnCount < 0) maxReturnCount = rvs.Count();
+						//	var sorted = rvs.OrderBy(s => s.Date).Take(maxReturnCount);
+						//	return sorted.Select(i => i.RvItemId).ToArray();
+						//}
+						return new int[0];
 					}
-				} catch {
-					return null;
+					return new int[0];
 				}
+			} catch {
+				return null;
 			}
-			return null;
 		}
 
 		public static bool IdExists(int rv)
