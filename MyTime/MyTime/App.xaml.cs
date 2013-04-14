@@ -135,7 +135,7 @@ namespace FieldService
 		{
 			ApplicationUsageHelper.OnApplicationActivated();
 			// Ensure that application state is restored appropriately
-			if (!ViewModel.IsRvDataLoaded) {
+			if (!ViewModel.IsRvDataChanged) {
 				ViewModel.LoadReturnVisitList(SortOrder.DateOldestToNewest);
 			}
 		}
