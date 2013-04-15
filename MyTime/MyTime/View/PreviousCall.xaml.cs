@@ -45,7 +45,12 @@ namespace FieldService.View
 		private void ApplicationBarIconButtonSave_Click(object sender, EventArgs e)
 		{
 			tbNotes.GetBindingExpression(PhoneTextBox.TextProperty).UpdateSource();
-			App.ToastMe(ViewModel.AddOrUpdateItem() ? "Call Saved." : "Call Saving Failed.");
+			if(ViewModel.AddOrUpdateItem()) {
+				App.ToastMe("Call Saved.");
+				App.ViewModel.IsRvDataChanged = true;
+			} else {
+				App.ToastMe("Call Saving Failed.");
+			}
 		}
 
 		/// <summary>
