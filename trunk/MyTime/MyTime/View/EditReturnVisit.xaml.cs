@@ -310,7 +310,6 @@ namespace FieldService
 			}
 			if (App.ViewModel.ReturnVisitData.SaveOrUpdate()) {
 				App.ToastMe("Return Visit Saved.");
-				App.ViewModel.IsRvDataChanged = true;
 			} else {
 				App.ToastMe("Return Visit Saving Failed.");
 			}

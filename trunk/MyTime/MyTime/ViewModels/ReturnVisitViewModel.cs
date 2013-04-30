@@ -459,12 +459,14 @@ namespace FieldService.ViewModels
 		public bool SaveOrUpdate()
 		{
 			if (_returnVisitData.DateCreated <= DateTime.MinValue || _returnVisitData.DateCreated >= DateTime.MaxValue) _returnVisitData.DateCreated = DateTime.Now;	
+			App.ViewModel.IsRvDataChanged = true;
 			return ReturnVisitsInterface.AddOrUpdateRV(ref _returnVisitData);
 		}
 
 		public bool Delete(bool deleteCalls)
 		{
 			//throw new System.NotImplementedException();
+			App.ViewModel.IsRvDataChanged = true;
 			return ReturnVisitsInterface.DeleteReturnVisit(_returnVisitData.ItemId, deleteCalls);
 		}
 	}
