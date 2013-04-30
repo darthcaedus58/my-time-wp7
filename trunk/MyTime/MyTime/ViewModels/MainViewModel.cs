@@ -37,6 +37,7 @@ namespace FieldService.ViewModels
 	public class MainViewModel : INotifyPropertyChanged
 	{
 		private ReturnVisitViewModel _returnVisitData;
+		private List<ReturnVisitViewModel>_rvs;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="MainViewModel" /> class.
@@ -214,18 +215,24 @@ namespace FieldService.ViewModels
 			}
 
 			var bw = new BackgroundWorker();
-			bw.RunWorkerCompleted += (obt, e) => {
-				                         var rvs = ReturnVisitsInterface.GetReturnVisitByLastVisitDate(SortOrder.DateOldestToNewest, -1);
-				                         foreach (var rv in rvs) {
-											 if (!ReturnVisitsInterface.IdExists(rv)) continue;
-					                         lbRvItems.Add(new ReturnVisitViewModel() {ItemId = rv});
+			bw.DoWork += (obt, e) => {
+				             _rvs = new List<ReturnVisitViewModel>();
+				             foreach (var r in ReturnVisitsInterface.GetReturnVisitByLastVisitDate(SortOrder.DateOldestToNewest, -1)) {
+								 if (!ReturnVisitsInterface.IdExists(r)) continue;
+					             _rvs.Add(new ReturnVisitViewModel() {ItemId = r});
+				             }
+
+			             };
+			bw.RunWorkerCompleted += (obj, e) => {
+				                         foreach (var rv in _rvs) {
+					                         lbRvItems.Add(rv);
 				                         }
 				                         IsRvDataChanged = false;
 			                         };
 			bw.RunWorkerAsync();
 		}
 
-
+		
 		/// <summary>
 		/// Loads the main menu.
 		/// </summary>
