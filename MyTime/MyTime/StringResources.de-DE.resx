@@ -699,4 +699,7 @@
   <data name="MainPage_Messages_DonatePlease" xml:space="preserve">
     <value>This app is free to use. Submitting apps to the WP app store isn't. Would you consider a donation?</value>
   </data>
+  <data name="AddRBCTimePage_Note" xml:space="preserve">
+    <value>Auxiliary time is any type of time that is not field service related, but that can be reported on your field service report - e.g. for some appointed brothers &amp; sisters time spent at regional building committee sites building kingdom halls can be noted on their report.  Please see your congregation service overseer for details.</value>
+  </data>
 </root>
