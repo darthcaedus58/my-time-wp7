@@ -66,6 +66,34 @@ namespace FieldService
 			var bwPageLoaded = new BackgroundWorker();
 			bwPageLoaded.RunWorkerCompleted += bwPageLoaded_RunWorkerCompleted;
 			bwPageLoaded.RunWorkerAsync();
+
+
+			var delete = ApplicationBar.MenuItems[0] as ApplicationBarMenuItem;
+			var email = ApplicationBar.MenuItems[1] as ApplicationBarMenuItem;
+			var export = ApplicationBar.MenuItems[2] as ApplicationBarMenuItem;
+
+			var save = ApplicationBar.Buttons[0] as ApplicationBarButton;
+			var add = ApplicationBar.Buttons[1] as ApplicationBarButton;
+			var clean = ApplicationBar.Buttons[2] as ApplicationBarButton;
+
+			if (delete != null) {
+				delete.Text = StringResources.RVPage_Menu_Delete;
+			}
+			if (email != null) {
+				email.Text = StringResources.RVPage_Menu_Email;
+			}
+			if (export != null) {
+				export.Text = StringResources.RVPage_Menu_Export;
+			}
+			if (save != null) {
+				save.Text = StringResources.RVPage_Menu_Save;
+			}
+			if (add != null) {
+				add.Text = StringResources.RVPage_Menu_AddVisit;
+			}
+			if (clean != null) {
+				clean.Text = StringResources.RVPage_Menu_Reset;
+			}
 		}
 
 		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)

@@ -3,6 +3,7 @@ using System.Threading;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
 using FieldService.ViewModels;
+using Microsoft.Phone.Shell;
 
 namespace FieldService.View
 {
@@ -55,5 +56,23 @@ namespace FieldService.View
 		}
 
 		#endregion
+
+		private void PhoneApplicationPage_Loaded(object sender, System.Windows.RoutedEventArgs e)
+		{
+			//
+			var convert = ApplicationBar.MenuItems[0] as ApplicationBarMenuItem;
+			var delete = ApplicationBar.MenuItems[1] as ApplicationBarMenuItem;
+			var save = ApplicationBar.Buttons[0] as ApplicationBarIconButton;
+
+			if (convert != null) {
+				convert.Text = StringResources.AddRBCTimePage_ConvertMenuItem;
+			}
+			if(delete != null) {
+				delete.Text = StringResources.AddRBCTimePage_Delete;
+			}
+			if(save != null) {
+				save.Text = StringResources.AddRBCTimePage_Save;
+			}
+		}
 	}
 }

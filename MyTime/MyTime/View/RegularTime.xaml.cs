@@ -19,6 +19,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
 
 namespace FieldService.View
 {
@@ -51,6 +52,19 @@ namespace FieldService.View
 			if (countCalls) {
 				tbReturnVisits.Visibility = Visibility.Collapsed;
 			}
+			var convert = ApplicationBar.MenuItems[0] as ApplicationBarMenuItem;
+			var delete = ApplicationBar.MenuItems[1] as ApplicationBarMenuItem;
+			var save = ApplicationBar.Buttons[0] as ApplicationBarIconButton;
+
+			if (convert != null) {
+				convert.Text = StringResources.AddTimePage_ConvertMenuItem;
+			}
+			if (delete != null) {
+				delete.Text = StringResources.AddTimePage_DeleteMenuItem;
+			}
+			if (save != null) {
+				save.Text = StringResources.AddTimePage_Save;
+			}
 		}
 
 		/// <summary>
@@ -61,14 +75,14 @@ namespace FieldService.View
 		private void abibSave_Click(object sender, EventArgs e)
 		{
 			tbNotes.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-			App.ToastMe(ViewModel.AddOrUpdateTime() ? string.Format("Time: {0} Hours Saved.", ViewModel.TimeData.Hours) : "Failed to save time.");
+			App.ToastMe(ViewModel.AddOrUpdateTime() ? string.Format(StringResources.AddTimePage_Messages_SaveCompleted, ViewModel.TimeData.Hours) : StringResources.AddTimePage_Messages_SaveFailed);
 		}
 
 		private void abmiConvertToRbc_Click_1(object sender, EventArgs e)
 		{
 			bool v = ViewModel.ConvertToRBCTime();
 
-			App.ToastMe(v ? "Time Converted to RBC." : "Conversion Failed.");
+			App.ToastMe(v ? StringResources.AddTimePage_Messages_RBCConvertSuccess : StringResources.AddTimePage_Messages_RBCConvertFailed);
 			if (!v) return;
 			Thread.Sleep(500);
 			NavigationService.GoBack();
@@ -83,7 +97,7 @@ namespace FieldService.View
 		{
 			if (ViewModel.TimeDataItemId < 0) return;
 			bool v = ViewModel.DeleteTime();
-			App.ToastMe(v ? "Time deleted." : "Time delete failed.");
+			App.ToastMe(v ? StringResources.AddTimePage_Messages_TimeDeleteSuccess : StringResources.AddTimePage_Messages_TimeDeleteFailed);
 			if (!v) return;
 			Thread.Sleep(500);
 			NavigationService.GoBack();

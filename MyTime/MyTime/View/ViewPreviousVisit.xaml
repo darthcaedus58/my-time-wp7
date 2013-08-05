@@ -4,7 +4,8 @@
 	FontFamily="{StaticResource PhoneFontFamilyNormal}"
 	FontSize="{StaticResource PhoneFontSizeNormal}"
 	Foreground="{StaticResource AppForegroundBrush}"
-	SupportedOrientations="Portrait" Orientation="Portrait" mc:Ignorable="d">
+	SupportedOrientations="Portrait" Orientation="Portrait" mc:Ignorable="d" d:DesignHeight="728" d:DesignWidth="480"
+							Loaded="PhoneApplicationPage_Loaded">
 
 	<phone:PhoneApplicationPage.DataContext>
 		<ViewModels:PreviousVisitViewModel/>
@@ -23,7 +24,9 @@
 		</Grid>
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 			<StackPanel>
-				<FieldService:HeaderControl IconSource="/icons/Maps.png" HeaderText="RETURN VISIT" />
+				<FieldService:HeaderControl 
+					IconSource="/icons/Maps.png" 
+					HeaderText="{Binding Path=StringResources.ViewPreviousVisitPage_Rv, Source={StaticResource LocalizedStrings}}" />
 				<StackPanel Orientation="Horizontal" Margin="12,0,0,0">
 					<Image Height="100" Width="100" Source="{Binding ParentRv.Image}" />
 					<StackPanel Width="311">
@@ -31,11 +34,20 @@
 						<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Foreground="{StaticResource AppForegroundBrush}" Margin="12,-6,12,0" Text="{Binding ParentRv.FormattedAddress}" TextWrapping="Wrap" />
 					</StackPanel>
 				</StackPanel>
-				<FieldService:HeaderControl IconSource="/icons/Books.png" HeaderText="PLACEMENTS" />
-				<TextBlock Text="{Binding Magazines, StringFormat=\{0\} Magazines}" Margin="12,0,0,0" />
-				<TextBlock Text="{Binding Brochures, StringFormat=\{0\} Brochures}" Margin="12,0,0,0" />
-				<TextBlock Text="{Binding Books, StringFormat=\{0\} Books}" Margin="12,0,0,0" />
-				<FieldService:HeaderControl IconSource="/icons/tasks.png" HeaderText="NOTES"/>
+				<FieldService:HeaderControl IconSource="/icons/Books.png" HeaderText="{Binding Path=StringResources.ViewPreviousVisitPage_Placements, Source={StaticResource LocalizedStrings}}" />
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="{Binding Magazines, StringFormat=\{0\} Magazines}" Margin="12,0,0,0" />
+					<TextBlock Text="{Binding Path=StringResources.ViewPreviousVisitPage_Magazines, Source={StaticResource LocalizedStrings}}" Margin="12,0,0,0" />
+				</StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="{Binding Brochures, StringFormat=\{0\} Brochures}" Margin="12,0,0,0" />
+					<TextBlock Text="{Binding Path=StringResources.ViewPreviousVisitPage_Brochures, Source={StaticResource LocalizedStrings}}" Margin="12,0,0,0" />
+				</StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="{Binding Books, StringFormat=\{0\} Books}" Margin="12,0,0,0" />
+					<TextBlock Text="{Binding Path=StringResources.ViewPreviousVisitPage_Books, Source={StaticResource LocalizedStrings}}" Margin="12,0,0,0" />
+				</StackPanel>
+				<FieldService:HeaderControl IconSource="/icons/tasks.png" HeaderText="{Binding Path=StringResources.ViewPreviousVisitPage_Notes, Source={StaticResource LocalizedStrings}}"/>
 				<ScrollViewer VerticalAlignment="Top">
 					<TextBlock Text="{Binding Notes}" TextWrapping="Wrap" Margin="12,0,0,0" />
 				</ScrollViewer>
@@ -45,7 +57,7 @@
 
 	<phone:PhoneApplicationPage.ApplicationBar>
 		<shell:ApplicationBar BackgroundColor="{StaticResource PhoneForegroundColor}" ForegroundColor="{StaticResource PhoneBackgroundColor}" IsMenuEnabled="True" IsVisible="True">
-			<shell:ApplicationBarIconButton x:Name="appbar_save" IconUri="/icons/Edit.png" Text="Edit" Click="appbar_save_Click_1" />
+			<shell:ApplicationBarIconButton x:Name="appbar_save" IconUri="/icons/Edit.png" Text="edit" Click="appbar_save_Click_1" />
 		</shell:ApplicationBar>
 	</phone:PhoneApplicationPage.ApplicationBar>
 

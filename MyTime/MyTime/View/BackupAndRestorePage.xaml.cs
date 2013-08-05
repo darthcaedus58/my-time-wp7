@@ -38,7 +38,7 @@ namespace FieldService.View
 			bRestore.IsEnabled = false;
 			pbProgress.Visibility = Visibility.Visible;
 			pbProgress.Value = e.ProgressPercentage;
-			lblLastBackup.Text = string.Format("{0:0,0} of {1:0,0} uploaded.", e.BytesSent, e.TotalBytesToSend);
+			lblLastBackup.Text = string.Format(StringResources.BackupAndRestorePage_Messages_Progress, e.BytesSent, e.TotalBytesToSend);
 		}
 
 		private void _client_DownloadCompleted(object sender, LiveDownloadCompletedEventArgs e)
@@ -48,7 +48,7 @@ namespace FieldService.View
 
 			pbProgress.Visibility = Visibility.Collapsed;
 
-			lblLastBackup.Text = "Restoring Now...";
+			lblLastBackup.Text = StringResources.BackupAndRestorePage_Messages_Restoring;
 			MemoryStream fs = e.Result as MemoryStream;
 			if (fs != null) RestoreFromFile(fs);
 			//try {
@@ -64,16 +64,33 @@ namespace FieldService.View
 			bRestore.IsEnabled = false;
 			pbProgress.Visibility = Visibility.Visible;
 			pbProgress.Value = e.ProgressPercentage;
-			lblLastBackup.Text = string.Format("{0:0,0} of {1:0,0} downloaded.", e.BytesReceived, e.TotalBytesToReceive);
+			lblLastBackup.Text = string.Format(StringResources.BackupAndRestorePage_Messages_DwnlProgress, e.BytesReceived, e.TotalBytesToReceive);
 		}
 
 		private void bBackup_Click(object sender, RoutedEventArgs e)
 		{
 			try {
+				ClearOldBackupFiles();
 				BackupFilesAndUpload(string.Format("fieldservicebackup_{0:MM-dd-yyyy}.zip", DateTime.Now));
 			} catch {
-				MessageBox.Show("Can't upload your backup data. Please log out and try again.");
+				MessageBox.Show(StringResources.BackupAndRestorePage_Messages_UploadFailed);
 				NavigationService.GoBack();
+			}
+		}
+
+		private void ClearOldBackupFiles()
+		{
+			//othrow new NotImplementedException();
+			try {
+				using (IsolatedStorageFile store = IsolatedStorageFile.GetUserStoreForApplication()) {
+					foreach (string f in store.GetFileNames()) {
+						if (f.EndsWith("zip")) {
+							store.DeleteFile(f);
+						}
+					}
+				}
+			} catch { 
+				//and release
 			}
 		}
 
@@ -98,7 +115,7 @@ namespace FieldService.View
 			switch (_processing) {
 				case ProcessType.Login:
 					try {
-						lblLoginResult.Text = string.Format("Welcome {0} {1}",
+						lblLoginResult.Text = string.Format(StringResources.BackupAndRestorePage_Messages_Welcome,
 															e.Result.ContainsKey("first_name") && e.Result["first_name"] != null ? e.Result["first_name"].ToString() : "",
 															e.Result.ContainsKey("last_name") && e.Result["last_name"] != null ? e.Result["last_name"].ToString() : "").TrimEnd() + "!";
 					} catch {
@@ -108,7 +125,7 @@ namespace FieldService.View
 					try {
 						_client.GetAsync("/me/skydrive/files");
 					} catch (Exception ee) {
-						MessageBox.Show("Unable to retrieve SkyDrive file list. Verify your internet connection and try again. If you continue to have a problem please report an issue on the settings page.");
+						MessageBox.Show(StringResources.BackupAndRestorePage_Messages_SkyDriveListingFailed);
 						NavigationService.GoBack();
 					}
 					return;
@@ -138,16 +155,16 @@ namespace FieldService.View
 							}
 						}
 					} catch {
-						lblLastBackup.Text = "Restore Failed.";
-						App.ToastMe("Restore Failed.");
+						lblLastBackup.Text = StringResources.BackupAndRestorePage_Messages_RestoreFailed;
+						App.ToastMe(StringResources.BackupAndRestorePage_Messages_RestoreFailed);
 						return;
 					} finally {
 						file.Close();
 					}
 				}
 			}
-			lblLastBackup.Text = "Restore Completed!";
-			App.ToastMe("Restore Completed!");
+			lblLastBackup.Text = StringResources.BackupAndRestorePage_Messages_RestoreSuccess;
+			App.ToastMe(StringResources.BackupAndRestorePage_Messages_RestoreSuccess);
 		}
 
 		private void DownloadLatestBackupFile()
@@ -224,7 +241,7 @@ namespace FieldService.View
 			bBackup.Visibility = Visibility.Visible;
 			lblLastBackup.Visibility = Visibility.Visible;
 			if (string.IsNullOrEmpty(_newestFile)) {
-				lblLastBackup.Text = "Never Backed Up!";
+				lblLastBackup.Text = StringResources.BackupAndRestorePage_Messages_NeverBackedUp;
 				bRestore.Visibility = Visibility.Collapsed;
 			} else {
 				lblLastBackup.Text = string.Format("{0:MM/dd/yyyy}", newestDate);

@@ -23,6 +23,7 @@ using System.Windows.Navigation;
 using FieldService.Model;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
 using MyTimeDatabaseLib;
 
 namespace FieldService.View
@@ -53,12 +54,15 @@ namespace FieldService.View
 		/// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
 		private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
 		{
-			if (App.ViewModel.icReport.Count > 1) {
-				tbDisclaimer.Text = "Reminder: Service Year Begins in September.";
-			}
+			tbDisclaimer.Visibility = App.ViewModel.icReport.Count > 1 ? Visibility.Visible : Visibility.Collapsed;
 			myChart.InvalidateMeasure();
 			myChart.InvalidateArrange();
 			myChart.UpdateLayout();
+
+			var menuItem = ApplicationBar.MenuItems[0] as ApplicationBarMenuItem;
+			if (menuItem != null) {
+				menuItem.Text = StringResources.ReportingPage_Share;
+			}
 		}
 
 
@@ -119,15 +123,15 @@ namespace FieldService.View
 		{
 			App.ViewModel.LoadTimeReport(Reporting.BuildTimeReport(_fromDate, _toDate, SortOrder.DateOldestToNewest));
 
-			tbFromDate.Text = string.Format("FROM:\t\t{0}", _fromDate.ToShortDateString());
-			tbToDate.Text = string.Format("TO:\t\t\t{0}", _toDate.ToShortDateString());
+			tbFromDate.Text = string.Format(StringResources.ReportingPage_Report_From, _fromDate.ToShortDateString());
+			tbToDate.Text = string.Format(StringResources.ReportingPage_Report_To, _toDate.ToShortDateString());
 
 			myChart.Series.Clear();
 			myChart.Series.Add(new LineSeries {
 				                                  ItemsSource = new ChartData(),
 				                                  DependentValuePath = "Time",
 				                                  IndependentValuePath = "Header",
-				                                  Title = "Time in Hours",
+				                                  Title = StringResources.ReportingPage_Report_ChartTitle,
 			                                  });
 		}
 	}

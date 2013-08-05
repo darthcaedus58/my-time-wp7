@@ -33,7 +33,7 @@
 			<ColumnDefinition Width="26*" />
 			<ColumnDefinition Width="454*" />
 		</Grid.ColumnDefinitions>-->
-		<controls:Panorama Grid.Column="1" Margin="0,0,-26,0" Foreground="{StaticResource AppForegroundBrush}" Title="Field Service">
+		<controls:Panorama Grid.Column="1" Margin="0,0,-26,0" Foreground="{StaticResource AppForegroundBrush}" Title="{Binding Path=StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}">
 			<controls:Panorama.Background>
 				<ImageBrush ImageSource="../PanoramaBackground.png" Opacity="0.6" />
 			</controls:Panorama.Background>
@@ -66,7 +66,7 @@
 				<controls:PanoramaItem.Header>
 					<StackPanel Orientation="Horizontal">
 						<TextBlock>
-							<Run Text="return visits"/>
+							<Run Text="{Binding Path=StringResources.MainPage_RvHeadline, Source={StaticResource LocalizedStrings}}"/>
 </TextBlock>
 						<Rectangle Height="40" Margin="25,23,0,0" Width="40" HorizontalAlignment="Right" Tap="imgShowAllReturnVisit_Tap" Fill="{StaticResource AppForegroundBrush}">
 							<Rectangle.OpacityMask>
@@ -90,7 +90,10 @@
 									<StackPanel Width="311">
 										<TextBlock FontWeight="ExtraBold"  Style="{StaticResource PhoneTextLargeStyle}" Foreground="Black"  Text="{Binding NameOrDescription}" TextWrapping="Wrap" />
 										<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Foreground="{StaticResource AppForegroundBrush}" Margin="12,-6,12,0" Text="{Binding FormattedAddress}" TextWrapping="Wrap" />
-										<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Margin="12,-6,12,0" Foreground="PaleVioletRed" Text="{Binding DaysSinceLastVisit, StringFormat=\{0\} Day(s) Since Last Visit}" TextWrapping="Wrap" />
+										<StackPanel Orientation="Horizontal">
+											<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Margin="12,-6,12,0" Foreground="PaleVioletRed" Text="{Binding DaysSinceLastVisit}" TextWrapping="Wrap" />
+											<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Margin="12,-6,12,0" Foreground="PaleVioletRed" Text="{Binding Path=StringResources.MainPage_RV_DaysSince, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" />
+										</StackPanel>
 									</StackPanel>
 								</StackPanel>
 							</DataTemplate>
@@ -98,7 +101,7 @@
 					</ListBox>
 				</Grid>
 			</controls:PanoramaItem>
-			<controls:PanoramaItem Header="daily text">
+			<controls:PanoramaItem Header="{Binding Path=StringResources.MainPage_DT_Headline, Source={StaticResource LocalizedStrings}}">
 				<Grid>
 					<Grid.RowDefinitions>
 						<RowDefinition Height="Auto" />
@@ -108,7 +111,7 @@
 					<Grid Margin="0,-30,0,0" Grid.Row="0">
 						<StackPanel Orientation="Vertical">
 							<TextBlock Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextLargeStyle}" Margin="0,0,0,0" x:Name="lblDailyTextDate" />
-							<TextBlock FontStyle="Italic" Foreground="Black" x:Name="lblDailyText" Text="You must be connected to the internet to view the daily text." TextWrapping="Wrap" />
+							<TextBlock FontStyle="Italic" Foreground="Black" x:Name="lblDailyText" Text="{Binding Path=StringResources.MainPage_DT_ErrorText, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" />
 						</StackPanel>
 					</Grid>
 					<Grid Grid.Row="1">
@@ -120,11 +123,11 @@
 						</ScrollViewer>
 					</Grid>
 					<Grid Grid.Row="2">
-						<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" FontSize="{StaticResource PhoneFontSizeSmall}" Text="THE ABOVE IS COPYRIGHT © 2012 WATCH TOWER BIBLE AND TRACT SOCIETY OF PENNSYLVANIA, INC. ALL RIGHTS RESERVED." TextWrapping="Wrap" />
+						<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" FontSize="{StaticResource PhoneFontSizeSmall}" Text="{Binding Path=StringResources.MainPage_DT_Copyright, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" />
 					</Grid>
 				</Grid>
 			</controls:PanoramaItem>
-			<controls:PanoramaItem Header="time">
+			<controls:PanoramaItem Header="{Binding Path=StringResources.MainPage_Time_Headline, Source={StaticResource LocalizedStrings}}">
 				<Grid>
 					<Grid.RowDefinitions>
 						<RowDefinition Height="Auto" />
@@ -145,11 +148,11 @@
 					<Grid Grid.Row="2">
 						<ScrollViewer Height="Auto" VerticalAlignment="Stretch">
 							<StackPanel>
-								<telerik:RadNumericUpDown Suffix="Magazines" Value="{Binding MainPageMagazines, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags"/>
-									<telerik:RadNumericUpDown Suffix="Brochures"  Value="{Binding MainPageBrochures, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" />
-									<telerik:RadNumericUpDown Suffix="Books"  Value="{Binding MainPageBooks, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBooks" />
-									<telerik:RadNumericUpDown Suffix="Return Visits"  Value="{Binding MainPageReturnVisits, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbReturnVisits" />
-									<telerik:RadNumericUpDown Suffix="Bible Studies"  Value="{Binding MainPageBibleStudies, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBibleStudies" />
+								<telerik:RadNumericUpDown Suffix="{Binding Path=StringResources.MainPage_Time_Magazines, Source={StaticResource LocalizedStrings}}" Value="{Binding MainPageMagazines, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags"/>
+								<telerik:RadNumericUpDown Suffix="{Binding Path=StringResources.MainPage_Time_Brochures, Source={StaticResource LocalizedStrings}}"  Value="{Binding MainPageBrochures, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" />
+								<telerik:RadNumericUpDown Suffix="{Binding Path=StringResources.MainPage_Time_Books, Source={StaticResource LocalizedStrings}}"  Value="{Binding MainPageBooks, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBooks" />
+								<telerik:RadNumericUpDown Suffix="{Binding Path=StringResources.MainPage_Time_ReturnVisits, Source={StaticResource LocalizedStrings}}"  Value="{Binding MainPageReturnVisits, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbReturnVisits" />
+								<telerik:RadNumericUpDown Suffix="{Binding Path=StringResources.MainPage_Time_BibleStudies, Source={StaticResource LocalizedStrings}}"  Value="{Binding MainPageBibleStudies, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBibleStudies" />
 								<TextBlock Text="Notes" TextWrapping="Wrap" FontSize="26.667" />
 								<TextBox Height="180" x:Name="tbNotes" TextWrapping="Wrap" Text="{Binding MainPageNotes, Mode=TwoWay}" />
 							</StackPanel>

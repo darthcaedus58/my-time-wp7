@@ -11,7 +11,8 @@
 	xmlns:FieldService="clr-namespace:FieldService"
 	x:Class="FieldService.View.RBCTimePage" 
 	SupportedOrientations="Portrait" Orientation="Portrait"
-	mc:Ignorable="d">
+	mc:Ignorable="d" d:DesignHeight="728" d:DesignWidth="480"
+	Loaded="PhoneApplicationPage_Loaded">
 	
 
 	<phone:PhoneApplicationPage.Resources>
@@ -43,17 +44,17 @@
 
 		<!--TitlePanel contains the name of the application and page title-->
 		<StackPanel Grid.Row="0" Margin="12,17,0,28">
-			<TextBlock Foreground="{StaticResource AppForegroundBrush}" Text="FIELD SERVICE" Style="{StaticResource PhoneTextNormalStyle}"/>
-			<TextBlock Foreground="{StaticResource AppForegroundBrush}" Text="rbc time" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+			<TextBlock Foreground="{StaticResource AppForegroundBrush}" Text="{Binding Path=StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+			<TextBlock Foreground="{StaticResource AppForegroundBrush}" Text="{Binding Path=StringResources.AddRBCTimePage_Headline, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
 		</StackPanel>
 
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 			<StackPanel Grid.Row="0" Orientation="Vertical">
-				<FieldService:HeaderControl IconSource="/icons/calendar.png" HeaderText="DATE" Margin="15,0,0,0" />
+				<FieldService:HeaderControl IconSource="/icons/calendar.png"  HeaderText="{Binding Path=StringResources.AddRBCTimePage_Date, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
 				<telerikInput:RadDatePicker x:Name="dpDatePicker" Value="{Binding RBCTimeData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
-				<FieldService:HeaderControl IconSource="/icons/clock.png" HeaderText="TIME" Margin="15,0,0,0" />
+				<FieldService:HeaderControl IconSource="/icons/clock.png" HeaderText="{Binding Path=StringResources.AddRBCTimePage_Time, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
 				<c4f:TimeSpanPicker ValueStringFormat="{}{0:h} Hours and {0:m} Minutes" x:Name="tspTime" Step="0:15:0" Value="{Binding RBCTimeData.Minutes, Converter={StaticResource MinutesToTimeSpanValueConverter}, Mode=TwoWay}" />
-				<FieldService:HeaderControl IconSource="/icons/tasks.png" HeaderText="NOTES" Margin="15,0,0,0" />
+				<FieldService:HeaderControl IconSource="/icons/tasks.png" HeaderText="{Binding Path=StringResources.AddRBCTimePage_Notes, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
 				<TextBox InputScope="Text" Height="291" x:Name="tbNotes" TextWrapping="Wrap" Text="{Binding RBCTimeData.Notes, Mode=TwoWay}" AcceptsReturn="True" />
 			</StackPanel>
 		</Grid>
@@ -62,11 +63,11 @@
 	<phone:PhoneApplicationPage.ApplicationBar>
 		<shell:ApplicationBar BackgroundColor="{StaticResource PhoneForegroundColor}" ForegroundColor="{StaticResource PhoneBackgroundColor}" IsMenuEnabled="True" IsVisible="True">
 			<shell:ApplicationBar.MenuItems>
-				<shell:ApplicationBarMenuItem x:Name="abmiConvertToRegTime" Text="convert to time" Click="abmiConvertToRegTime_Click_1" />
+				<shell:ApplicationBarMenuItem x:Name="abmiConvertToRegTime" Text="convert" Click="abmiConvertToRegTime_Click_1" />
 				<shell:ApplicationBarMenuItem x:Name="abmiDelete" Text="delete" Click="abmiDelete_Click_1" />
 			</shell:ApplicationBar.MenuItems>
 
-			<shell:ApplicationBarIconButton Text="Save" IconUri="/icons/appbar.save.rest.png" x:Name="abibSave" Click="abibSave_Click_1" />
+			<shell:ApplicationBarIconButton Text="save" IconUri="/icons/appbar.save.rest.png" x:Name="abibSave" Click="abibSave_Click_1" />
 		</shell:ApplicationBar>
 	</phone:PhoneApplicationPage.ApplicationBar>
 
