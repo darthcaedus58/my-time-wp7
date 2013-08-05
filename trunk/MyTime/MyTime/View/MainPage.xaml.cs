@@ -522,7 +522,7 @@ namespace FieldService.View
 			var from = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1).AddMonths(-1);
 			DateTime tod = new DateTime(from.Year, from.Month, 1).AddMonths(1).AddDays(-1);
 
-			string body = string.Format("Here is my field service report for {0:MMMM}, {0:yyyy}:\n\n", from);
+			string body = string.Format(StringResources.MainPage_Report_Header, from);
 			TimeData[] entries = Reporting.BuildTimeReport(from, tod, SortOrder.DateOldestToNewest);
 
 			int tTime = 0;
@@ -540,14 +540,14 @@ namespace FieldService.View
 				tBs += e.BibleStudies;
 			}
 
-			body += string.Format("Hours:\t\t{0:0.00}\n", ((double) tTime/60.0));
+			body += string.Format(StringResources.MainPage_Report_Hours, ((double) tTime/60.0));
 			var x = RBCTimeDataInterface.GetMonthRBCTimeTotal(from);
-			body += x > 0 ? string.Format("R/B/C Hours: \t{0:0.0}\n", ((double) x/60.0)) : string.Empty;
-			body += tMags > 0 ? string.Format("Magazines:\t{0}\n", tMags) : string.Empty;
-			body += tBks  > 0 ? string.Format("Books:\t\t{0}\n", tBks) : string.Empty;
-			body += tBros > 0 ? string.Format("Brochures:\t{0}\n",tBros) : string.Empty;
-			body += tRv > 0 ? string.Format("Return Visits:\t{0}\n",tRv) : string.Empty;
-			body += tBs > 0 ? string.Format("Bible Studies:\t{0}",tBs) : string.Empty;
+			body += x > 0 ? string.Format(StringResources.MainPage_Report_AuxHours, ((double) x/60.0)) : string.Empty;
+			body += tMags > 0 ? string.Format(StringResources.MainPage_Report_Mags, tMags) : string.Empty;
+			body += tBks  > 0 ? string.Format(StringResources.MainPage_Report_Books, tBks) : string.Empty;
+			body += tBros > 0 ? string.Format(StringResources.MainPage_Report_Brochures,tBros) : string.Empty;
+			body += tRv > 0 ? string.Format(StringResources.MainPage_Report_RVs,tRv) : string.Empty;
+			body += tBs > 0 ? string.Format(StringResources.MainPage_Report_BibleStudies,tBs) : string.Empty;
 
 
 			Reporting.SendReport(body);

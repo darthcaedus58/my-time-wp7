@@ -15,10 +15,10 @@
 	<UserControl.Foreground>
 		<StaticResource ResourceKey="PhoneForegroundBrush"/>
 	</UserControl.Foreground>
-		<Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
+		<Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}" Loaded="LayoutRoot_Loaded">
 		<StackPanel Orientation="Horizontal">
-			<Image Height="30" Width="30" Source="{Binding IconSource}" Stretch="Fill" />
-			<TextBlock Margin="5" Height="30" FontWeight="Bold" FontSize="22" Text="{Binding HeaderText}" />
+			<Image x:Name="IconImage"  Height="30" Width="30" Source="{Binding IconSource}" Stretch="Fill" />
+			<TextBlock x:Name="HeaderTextBlock" Margin="5" Height="30" FontWeight="Bold" FontSize="22" Text="{Binding HeaderText}" />
 		</StackPanel>
 
 	</Grid>

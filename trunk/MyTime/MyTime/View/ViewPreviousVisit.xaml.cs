@@ -40,5 +40,13 @@ namespace FieldService.View
 			                                                 (DataContext as PreviousVisitViewModel).PreviousVisitItemId,
 			                                                 (DataContext as PreviousVisitViewModel).ReturnVisitItemId), UriKind.Relative));
 		}
+
+		private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+		{
+			var edit = ApplicationBar.Buttons[0] as ApplicationBarIconButton;
+			if (edit != null) {
+				edit.Text = StringResources.ViewPreviousVisitPage_Menu_Edit;
+			}
+		}
 	}
 }

@@ -20,10 +20,6 @@ using System.IO;
 using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Xml.Linq;
 using FieldService.Model;
 using Microsoft.Phone.Marketplace;
@@ -241,41 +237,41 @@ namespace FieldService.ViewModels
 			if (IsMainMenuLoaded) lbMainMenuItems.Clear();
 			IsMainMenuLoaded = false;
 			lbMainMenuItems.Add(new MainMenuModel {
-				                                      MenuText = "add time",
+				                                      MenuText = StringResources.MainPage_MainMenu_AddTime,
 				                                      IconUri = "/icons/clock.png",
 													  NavigateToPage = "/View/RegularTime.xaml"
 			                                      });
 			lbMainMenuItems.Add(new MainMenuModel {
-				                                      MenuText = "add rbc time",
+												      MenuText = StringResources.MainPage_MainMenu_AddAuxTime,
 				                                      IconUri = "/icons/Tools.png",
 													  NavigateToPage = "/View/RBCTime.xaml"
 			                                      });
 
 			lbMainMenuItems.Add(new MainMenuModel {
-				                                      MenuText = "add return visit",
+				                                      MenuText = StringResources.MainPage_MainMenu_AddRv,
 				                                      IconUri = "/icons/add-user.png",
 													  NavigateToPage = "/View/EditReturnVisit.xaml"
 			                                      });
 			lbMainMenuItems.Add(new MainMenuModel {
-				                                      MenuText = "send service report",
+				                                      MenuText = StringResources.MainPage_MainMenu_SendReport,
 													  IconUri = "/icons/message.png",
 													  NavigateToPage = ""
 			                                      });
 			lbMainMenuItems.Add(new MainMenuModel {
-				                                      MenuText = string.Format("{0} report",
+				                                      MenuText = string.Format(StringResources.MainPage_MainMenu_MonthReport,
 				                                                               DateTime.Today.ToString("MMMM").ToLower()),
 													  IconUri = "/icons/Graph1.png",
 													  NavigateToPage = ""
 			                                      });
 			lbMainMenuItems.Add(new MainMenuModel {
-				                                      MenuText = "service year report",
+				                                      MenuText = StringResources.MainPage_MainMenu_ServiceYearReport,
 													  IconUri = "/icons/Graph2.png",
 													  NavigateToPage = ""
 			                                      });
 			//lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "custom report", IconUri = "/icons/search.png"});
 
 			lbMainMenuItems.Add(new MainMenuModel {
-				                                      MenuText = "watchtower library",
+				                                      MenuText = StringResources.MainPage_MainMenu_WtLib,
 													  IconUri = "/icons/books.png",
 													  NavigateToPage = ""
 			                                      });
@@ -290,13 +286,13 @@ namespace FieldService.ViewModels
 				                                      });
 			else
 				lbMainMenuItems.Add(new MainMenuModel {
-					                                      MenuText = "backup & restore",
+					                                      MenuText = StringResources.MainPage_MainMenu_BackupRestore,
 					                                      IconUri = "/icons/Cloud-Refresh.png",
 														  NavigateToPage = "/View/BackupAndRestorePage.xaml"
 				                                      });
 #endif
 			lbMainMenuItems.Add(new MainMenuModel {
-				                                      MenuText = "settings",
+				                                      MenuText = StringResources.MainPage_MainMenu_Settings,
 				                                      IconUri = "/icons/settings.png",
 													  NavigateToPage = "/View/SettingsPage.xaml"
 			                                      });
@@ -338,7 +334,7 @@ namespace FieldService.ViewModels
 			//ListBox<int> rvList = new ListBox<int>();
 			foreach (TimeData td in entries) {
 				if (month != td.Date.Month) {
-					summary.Time = string.Format("{0:0.00} Hour(s)", (minutes/60.0));
+					summary.Time = string.Format(StringResources.TimeReport_HoursAndMinutes, (minutes / 60.0), minutes % 60);
 					summary.Minutes = minutes;
 					summary.RBCHours = (RBCTimeDataInterface.GetMonthRBCTimeTotal(new DateTime(year, month, 1)))/60.0;
 					RBCTimeData[] eee = RBCTimeDataInterface.GetRBCTimeEntries(new DateTime(year, month, 1), new DateTime(year, month, 1).AddMonths(1).AddDays(-1), SortOrder.DateNewestToOldest);
@@ -360,7 +356,7 @@ namespace FieldService.ViewModels
 
 				lbTimeEntries.Add(new TimeReportEntryViewModel {
 					                                               Date = td.Date,
-					                                               Hours = string.Format("{0:0.00} Hour(s)", (td.Minutes/60.0)),
+																   Hours = string.Format(StringResources.TimeReport_HoursAndMinutes, (td.Minutes / 60.0, minutes % 60)),
 					                                               ItemId = td.ItemId,
 					                                               Minutes = td.Minutes,
 					                                               EditLink = string.Format("/View/RegularTime.xaml?id={0}", td.ItemId)
@@ -376,7 +372,7 @@ namespace FieldService.ViewModels
 			foreach (RBCTimeData e in rtdEntries)
 				lbTimeEntries.Add(new TimeReportEntryViewModel {
 					                                               Date = e.Date,
-					                                               Hours = string.Format("{0:0.00} R/B/C Hour(s)", e.Hours),
+					                                               Hours = string.Format("{0:0.00} Auxillary Hour(s)", e.Hours),
 					                                               ItemId = e.ItemID,
 					                                               Minutes = e.Minutes,
 					                                               EditLink = string.Format("/View/RBCTime.xaml?id={0}", e.ItemID)

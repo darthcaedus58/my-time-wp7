@@ -31,11 +31,11 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar BackgroundColor="{StaticResource PhoneForegroundColor}" ForegroundColor="{StaticResource PhoneBackgroundColor}" IsMenuEnabled="True" IsVisible="True">
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem x:Name="abmiConvertToRbc" Text="convert to rbc time" Click="abmiConvertToRbc_Click_1" IsEnabled="True" />
-                <shell:ApplicationBarMenuItem x:Name="abmiDelete" Text="delete" Click="abmiDelete_Click" IsEnabled="True" />
+				<shell:ApplicationBarMenuItem x:Name="abmiConvertToRbc" Text="convert" Click="abmiConvertToRbc_Click_1" IsEnabled="True" />
+				<shell:ApplicationBarMenuItem x:Name="abmiDelete" Text="delete" Click="abmiDelete_Click" IsEnabled="True" />
             </shell:ApplicationBar.MenuItems>
 
-            <shell:ApplicationBarIconButton Text="Save" IconUri="/icons/appbar.save.rest.png" x:Name="abibSave" Click="abibSave_Click" IsEnabled="True" />
+			<shell:ApplicationBarIconButton Text="save" IconUri="/icons/appbar.save.rest.png" x:Name="abibSave" Click="abibSave_Click" IsEnabled="True" />
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 
@@ -54,23 +54,23 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Foreground="{StaticResource AppForegroundBrush}" x:Name="ApplicationTitle" Text="FIELD SERVICE" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Foreground="{StaticResource AppForegroundBrush}" x:Name="PageTitle" Text="time" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+			<TextBlock Foreground="{StaticResource AppForegroundBrush}" x:Name="ApplicationTitle" Text="{Binding Path=StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+			<TextBlock Foreground="{StaticResource AppForegroundBrush}" x:Name="PageTitle" Text="{Binding Path=StringResources.AddTimePage_Headline, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
         <Grid Row="1">
             <ScrollViewer>
                 <StackPanel>
-                    <local:HeaderControl IconSource="/icons/calendar.png" HeaderText="DATE" Margin="15,0,0,0" />
+					<local:HeaderControl IconSource="/icons/calendar.png" HeaderText="{Binding Path=StringResources.AddTimePage_Date, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
                     <telerik:RadDatePicker x:Name="dpDatePicker" Value="{Binding TimeData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
-                    <local:HeaderControl IconSource="/icons/clock.png" HeaderText="TIME" Margin="15,0,0,0" />
+					<local:HeaderControl IconSource="/icons/clock.png" HeaderText="{Binding Path=StringResources.AddRBCTimePage_Time, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
                     <c4f:TimeSpanPicker ValueStringFormat="{}{0:h} Hours and {0:m} Minutes" x:Name="tspTime" Step="0:15:0" Value="{Binding TimeData.TotalTime, Mode=TwoWay}" />
-                    <local:HeaderControl IconSource="/icons/books.png" HeaderText="PLACEMENTS" Margin="15,0,0,0" />
-                    <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags" Suffix="Magazines" Value="{Binding TimeData.Magazines, Mode=TwoWay}" />
-                    <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" Suffix="Brochures" Value="{Binding TimeData.Brochures, Mode=TwoWay}" />
-                    <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBooks" Suffix="Books" Value="{Binding TimeData.Books, Mode=TwoWay}" />
-                    <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbReturnVisits" Suffix="Return Visits" Value="{Binding TimeData.ReturnVisits, Mode=TwoWay}" />
-                    <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBibleStudies" Suffix="Bible Studies" Value="{Binding TimeData.BibleStudies, Mode=TwoWay}" />
-                    <local:HeaderControl IconSource="/icons/tasks.png" HeaderText="NOTES" Margin="15,0,0,0" />
+					<local:HeaderControl IconSource="/icons/books.png" HeaderText="{Binding Path=StringResources.AddTimePage_Placements, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
+					<telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags" Suffix="{Binding Path=StringResources.AddTimePage_Magazines, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeData.Magazines, Mode=TwoWay}" />
+					<telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" Suffix="{Binding Path=StringResources.AddTimePage_Brochures, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeData.Brochures, Mode=TwoWay}" />
+					<telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBooks" Suffix="{Binding Path=StringResources.AddTimePage_Books, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeData.Books, Mode=TwoWay}" />
+					<telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbReturnVisits" Suffix="{Binding Path=StringResources.AddTimePage_RVs, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeData.ReturnVisits, Mode=TwoWay}" />
+					<telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBibleStudies" Suffix="{Binding Path=StringResources.AddTime_BibleStudies, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeData.BibleStudies, Mode=TwoWay}" />
+					<local:HeaderControl IconSource="/icons/tasks.png" HeaderText="{Binding Path=StringResources.AddTimePage_Notes, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
                      <TextBox InputScope="Text" Height="180" x:Name="tbNotes" TextWrapping="Wrap" Text="{Binding TimeData.Notes, Mode=TwoWay}" AcceptsReturn="True" />
                 </StackPanel>
             </ScrollViewer>

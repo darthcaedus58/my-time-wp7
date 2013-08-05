@@ -19,6 +19,7 @@ using System.Windows.Input;
 using System.Windows.Navigation;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
 using MyTimeDatabaseLib;
 
 namespace FieldService.View
@@ -46,10 +47,10 @@ namespace FieldService.View
 		{
 			tbNotes.GetBindingExpression(PhoneTextBox.TextProperty).UpdateSource();
 			if(ViewModel.AddOrUpdateItem()) {
-				App.ToastMe("Call Saved.");
+				App.ToastMe(StringResources.AddCallPage_CallSaved);
 				App.ViewModel.IsRvDataChanged = true;
 			} else {
-				App.ToastMe("Call Saving Failed.");
+				App.ToastMe(StringResources.AddCallPage_CallSavedFailed);
 			}
 		}
 
@@ -60,10 +61,10 @@ namespace FieldService.View
 		/// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
 		private void abmiDeleteCall_Click(object sender, EventArgs e)
 		{
-			if (ViewModel.PreviousVisitItemId < 0 || MessageBox.Show("Are you sure you want to delete this call?", "FIELD SERVICE", MessageBoxButton.OKCancel) != MessageBoxResult.OK) return;
+			if (ViewModel.PreviousVisitItemId < 0 || MessageBox.Show(StringResources.AddCallPage_DeleteCallConfirmation, StringResources.ApplicationName, MessageBoxButton.OKCancel) != MessageBoxResult.OK) return;
 			bool v = ViewModel.DeleteCall();
 			if (!v) {
-				App.ToastMe("Deleting the call failed.");
+				App.ToastMe(StringResources.AddCallPage_DeleteCallFailed);
 				return;
 			}
 			NavigationService.GoBack();
@@ -79,14 +80,14 @@ namespace FieldService.View
 		{
 			base.OnNavigatedTo(e);
 			if (!NavigationContext.QueryString.ContainsKey("rvid")) {
-				MessageBox.Show("You must save the RV before adding a call.");
+				MessageBox.Show(StringResources.AddCallPage_SaveBeforeEditMessage);
 				NavigationService.GoBack();
 				return;
 			}
 			if (ViewModel.PreviousVisitItemId >= 0) return; //we have already loaded the call data and the user is just modifying it before saving it.
 			string rvItemId = NavigationContext.QueryString["rvid"];
 			if (string.IsNullOrEmpty(rvItemId)) {
-				MessageBox.Show("You must save the RV before adding a call.");
+				MessageBox.Show(StringResources.AddCallPage_SaveBeforeEditMessage);
 				NavigationService.GoBack();
 				return;
 			}
@@ -96,6 +97,21 @@ namespace FieldService.View
 
 			string callId = NavigationContext.QueryString["id"];
 			ViewModel.PreviousVisitItemId = int.Parse(callId);
+		}
+
+		private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+		{
+			//
+			var delete = ApplicationBar.MenuItems[0] as ApplicationBarMenuItem;
+			var save = ApplicationBar.Buttons[0] as ApplicationBarIconButton;
+
+			if (delete != null) {
+				delete.Text = StringResources.AddCallPage_DeleteCall;
+			}
+
+			if(save != null) {
+				save.Text = StringResources.AddCallPage_Save;
+			}
 		}
 	}
 }
