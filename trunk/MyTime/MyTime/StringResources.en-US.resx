@@ -160,7 +160,7 @@
     <value>You must save the RV before adding a call.</value>
   </data>
   <data name="AddRBCTimePage_Confirmation" xml:space="preserve">
-    <value>RBC Hour(s) Saved.</value>
+    <value>Auxiliary Hour(s) Saved.</value>
   </data>
   <data name="AddRBCTimePage_ConvertMenuItem" xml:space="preserve">
     <value>convert to time</value>
@@ -172,7 +172,7 @@
     <value>delete</value>
   </data>
   <data name="AddRBCTimePage_Headline" xml:space="preserve">
-    <value>rbc time</value>
+    <value>auxiliary time</value>
   </data>
   <data name="AddRBCTimePage_Notes" xml:space="preserve">
     <value>NOTES</value>
@@ -337,7 +337,7 @@
     <value>watchtower library</value>
   </data>
   <data name="MainPage_Report_AuxHours" xml:space="preserve">
-    <value>R/B/C Hours: \t{0:0.0}\n</value>
+    <value>Other Hours: \t{0:0.0}\n</value>
   </data>
   <data name="MainPage_Report_BibleStudies" xml:space="preserve">
     <value>Bible Studies:\t{0}</value>
@@ -679,7 +679,7 @@
     <value>RETURN VISIT</value>
   </data>
   <data name="MainPage_MainMenu_AddAuxTime" xml:space="preserve">
-    <value>add auxillary time</value>
+    <value>add auxiliary time</value>
   </data>
   <data name="TimeReport_HoursAndMinutes" xml:space="preserve">
     <value>{0} Hour(s) &amp; {1} Minutes</value>
@@ -698,5 +698,8 @@
   </data>
   <data name="MainPage_Messages_DonatePlease" xml:space="preserve">
     <value>This app is free to use. Submitting apps to the WP app store isn't. Would you consider a donation?</value>
+  </data>
+  <data name="AddRBCTimePage_Note" xml:space="preserve">
+    <value>Auxiliary time is any type of time that is not field service related, but that can be reported on your field service report - e.g. for some appointed brothers &amp; sisters time spent at regional building committee sites building kingdom halls can be noted on their report.  Please see your congregation service overseer for details.</value>
   </data>
 </root>

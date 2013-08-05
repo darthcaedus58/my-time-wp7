@@ -187,7 +187,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RBC Hour(s) Saved..
+        ///   Looks up a localized string similar to Auxiliary Hour(s) Saved..
         /// </summary>
         public static string AddRBCTimePage_Confirmation {
             get {
@@ -223,11 +223,20 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to rbc time.
+        ///   Looks up a localized string similar to auxiliary time.
         /// </summary>
         public static string AddRBCTimePage_Headline {
             get {
                 return ResourceManager.GetString("AddRBCTimePage_Headline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auxiliary time is any type of time that is not field service related, but that can be reported on your field service report - e.g. for some appointed brothers &amp; sisters time spent at regional building committee sites building kingdom halls can be noted on their report.  Please see your congregation service overseer for details..
+        /// </summary>
+        public static string AddRBCTimePage_Note {
+            get {
+                return ResourceManager.GetString("AddRBCTimePage_Note", resourceCulture);
             }
         }
         
@@ -358,7 +367,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed To Save Time..
+        ///   Looks up a localized string similar to Failed to Save Time..
         /// </summary>
         public static string AddTimePage_Messages_SaveFailed {
             get {
@@ -538,15 +547,6 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to retrieve SkyDrive file list. Verify your internet connection and try again. If ou continue to have a problem please report an issue on the settings page..
-        /// </summary>
-        public static string BackupAndRestorePage_Messages_SkyDriveListingFailed {
-            get {
-                return ResourceManager.GetString("BackupAndRestorePage_Messages_SkyDriveListingFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Can&apos;t upload your backup data. Please log out and try again..
         /// </summary>
         public static string BackupAndRestorePage_Messages_UploadFailed {
@@ -664,7 +664,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to add auxillary time.
+        ///   Looks up a localized string similar to add auxiliary time.
         /// </summary>
         public static string MainPage_MainMenu_AddAuxTime {
             get {
@@ -781,7 +781,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to R/B/C Hours: \t{0:0.0}\n.
+        ///   Looks up a localized string similar to Other Hours: \t{0:0.0}\n.
         /// </summary>
         public static string MainPage_Report_AuxHours {
             get {
@@ -817,7 +817,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;Here is my field service report for {0:MMMM}, {0:yyyy}:\n\n&quot;.
+        ///   Looks up a localized string similar to Here is my field service report for {0:MMMM}, {0:yyyy}:\n\n.
         /// </summary>
         public static string MainPage_Report_Header {
             get {
@@ -1051,7 +1051,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to on .
+        ///   Looks up a localized string similar to  on .
         /// </summary>
         public static string ReportingPage_Report_On {
             get {
@@ -1429,7 +1429,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to day(s) since visit.
+        ///   Looks up a localized string similar to  day(s) since visit.
         /// </summary>
         public static string RVPage_Visits_DaysSince {
             get {
@@ -1447,7 +1447,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Application Version.
+        ///   Looks up a localized string similar to Application Version: .
         /// </summary>
         public static string SettingsPage_About_AppVersion {
             get {
@@ -1465,7 +1465,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Core Version.
+        ///   Looks up a localized string similar to Core Version: .
         /// </summary>
         public static string SettingsPage_About_CoreVersion {
             get {
@@ -1501,7 +1501,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Links.
+        ///   Looks up a localized string similar to LINKS.
         /// </summary>
         public static string SettingsPage_About_Links {
             get {
@@ -1510,7 +1510,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open Source.
+        ///   Looks up a localized string similar to OPEN SOURCE.
         /// </summary>
         public static string SettingsPage_About_OpenSource {
             get {
@@ -1555,7 +1555,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add Call Placements.
+        ///   Looks up a localized string similar to VERSION.
         /// </summary>
         public static string SettingsPage_Settings_AddCallPlacements {
             get {
@@ -1744,15 +1744,6 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} Auxillary Hour(s) &amp; {1} Minutes.
-        /// </summary>
-        public static string TimeReport_AuxHoursAndMinutes {
-            get {
-                return ResourceManager.GetString("TimeReport_AuxHoursAndMinutes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0} Hour(s) &amp; {1} Minutes.
         /// </summary>
         public static string TimeReport_HoursAndMinutes {
@@ -1762,7 +1753,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Books.
+        ///   Looks up a localized string similar to  Books.
         /// </summary>
         public static string ViewPreviousVisitPage_Books {
             get {
@@ -1771,7 +1762,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Brochures.
+        ///   Looks up a localized string similar to  Brochures.
         /// </summary>
         public static string ViewPreviousVisitPage_Brochures {
             get {
@@ -1780,7 +1771,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Magazines.
+        ///   Looks up a localized string similar to  Magazines.
         /// </summary>
         public static string ViewPreviousVisitPage_Magazines {
             get {
