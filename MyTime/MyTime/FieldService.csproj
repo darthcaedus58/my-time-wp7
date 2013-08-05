@@ -1,395 +1,423 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-	<ProductVersion>10.0.20506</ProductVersion>
-	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{29CBB6B5-6565-4FCB-8B8A-A2E8B388E442}</ProjectGuid>
-	<ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
-	<OutputType>Library</OutputType>
-	<AppDesignerFolder>Properties</AppDesignerFolder>
-	<RootNamespace>FieldService</RootNamespace>
-	<AssemblyName>FieldService</AssemblyName>
-	<TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-	<SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
-	<TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
-	<TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
-	<SilverlightApplication>true</SilverlightApplication>
-	<SupportedCultures>en-US;</SupportedCultures>
-	<XapOutputs>true</XapOutputs>
-	<GenerateSilverlightManifest>true</GenerateSilverlightManifest>
-	<XapFilename>fieldservice.xap</XapFilename>
-	<SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
-	<SilverlightAppEntry>FieldService.App</SilverlightAppEntry>
-	<ValidateXaml>true</ValidateXaml>
-	<ThrowErrorsInValidation>true</ThrowErrorsInValidation>
-	<Utf8Output>true</Utf8Output>
-	<ExpressionBlendVersion>5.0.31017.0</ExpressionBlendVersion>
-	<SccProjectName>Svn</SccProjectName>
-	<SccLocalPath>Svn</SccLocalPath>
-	<SccAuxPath>Svn</SccAuxPath>
-	<SccProvider>SubversionScc</SccProvider>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{29CBB6B5-6565-4FCB-8B8A-A2E8B388E442}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FieldService</RootNamespace>
+    <AssemblyName>FieldService</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>en-US;it-IT;de-DE;</SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>fieldservice.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>FieldService.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>5.0.31017.0</ExpressionBlendVersion>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-	<DebugSymbols>true</DebugSymbols>
-	<DebugType>full</DebugType>
-	<Optimize>false</Optimize>
-	<OutputPath>Bin\Debug</OutputPath>
-	<DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
-	<NoStdLib>true</NoStdLib>
-	<NoConfig>true</NoConfig>
-	<ErrorReport>prompt</ErrorReport>
-	<WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-	<DebugType>pdbonly</DebugType>
-	<Optimize>true</Optimize>
-	<OutputPath>Bin\Release</OutputPath>
-	<DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
-	<NoStdLib>true</NoStdLib>
-	<NoConfig>true</NoConfig>
-	<ErrorReport>prompt</ErrorReport>
-	<WarningLevel>4</WarningLevel>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-	<Reference Include="Coding4Fun.Phone.Controls, Version=1.6.1.0, Culture=neutral, processorArchitecture=MSIL">
-	  <HintPath>..\packages\Coding4Fun.Phone.Controls.1.6.1\lib\sl4-windowsphone71\Coding4Fun.Phone.Controls.dll</HintPath>
-	</Reference>
-	<Reference Include="Coding4Fun.Phone.Controls.Toolkit, Version=1.6.1.0, Culture=neutral, processorArchitecture=MSIL">
-	  <SpecificVersion>False</SpecificVersion>
-	  <HintPath>..\packages\Coding4Fun.Phone.Controls.TimeSpan.1.6.1\lib\sl4-windowsphone71\Coding4Fun.Phone.Controls.Toolkit.dll</HintPath>
-	</Reference>
-	<Reference Include="HtmlAgilityPack">
-	  <HintPath>..\..\..\..\..\Downloads\HtmlAgilityPack.1.4.6\sl4-windowsphone71\HtmlAgilityPack.dll</HintPath>
-	</Reference>
-	<Reference Include="Microsoft.Expression.Interactions" />
-	<Reference Include="Microsoft.Live, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-	<Reference Include="Microsoft.Live.Controls, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-	<Reference Include="Microsoft.Phone" />
-	<Reference Include="Microsoft.Phone.Controls" />
-	<Reference Include="Microsoft.Phone.Controls.Maps, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
-	<Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
-	  <HintPath>..\packages\SilverlightToolkitWP.4.2012.10.9\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
-	</Reference>
-	<Reference Include="Microsoft.Phone.Interop" />
-	<Reference Include="System.Device" />
-	<Reference Include="System.Runtime.Serialization" />
-	<Reference Include="System.ServiceModel" />
-	<Reference Include="System.Windows" />
-	<Reference Include="system" />
-	<Reference Include="System.Core" />
-	<Reference Include="System.Net" />
-	<Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-	  <HintPath>..\..\..\..\..\Downloads\DataViz\DataVisualizationOnWindowsPhone\System.Windows.Controls.dll</HintPath>
-	</Reference>
-	<Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=2.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-	  <SpecificVersion>False</SpecificVersion>
-	  <HintPath>..\..\..\..\..\Downloads\DataViz\DataVisualizationOnWindowsPhone\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
-	</Reference>
-	<Reference Include="System.Windows.Interactivity" />
-	<Reference Include="System.Xml" />
-	<Reference Include="System.Xml.Linq" />
-	<Reference Include="System.Xml.Serialization" />
-	<Reference Include="System.Xml.XPath">
-	  <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.Xml.XPath.dll</HintPath>
-	</Reference>
-	<Reference Include="Telerik.Windows.Controls.Input, Version=2013.1.219.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-	  <SpecificVersion>False</SpecificVersion>
-	  <HintPath>..\..\..\..\..\AppData\Roaming\Telerik\Updates\RadControls_for_WindowsPhone7_2013_1_0219_DEV_hotfix\Binaries\WindowsPhone\Telerik.Windows.Controls.Input.dll</HintPath>
-	</Reference>
-	<Reference Include="Telerik.Windows.Controls.Primitives, Version=2013.1.219.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-	  <SpecificVersion>False</SpecificVersion>
-	  <HintPath>..\..\..\..\..\AppData\Roaming\Telerik\Updates\RadControls_for_WindowsPhone7_2013_1_0219_DEV_hotfix\Binaries\WindowsPhone\Telerik.Windows.Controls.Primitives.dll</HintPath>
-	</Reference>
-	<Reference Include="Telerik.Windows.Core, Version=2013.1.219.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-	  <SpecificVersion>False</SpecificVersion>
-	  <HintPath>..\..\..\..\..\AppData\Roaming\Telerik\Updates\RadControls_for_WindowsPhone7_2013_1_0219_DEV_hotfix\Binaries\WindowsPhone\Telerik.Windows.Core.dll</HintPath>
-	</Reference>
-	<Reference Include="WatermarkedTextBoxControl">
-	  <HintPath>..\..\..\..\..\Downloads\Waterdemo\WatermarkedTextBoxControl.dll</HintPath>
-	</Reference>
+    <Reference Include="Coding4Fun.Phone.Controls, Version=1.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Coding4Fun.Phone.Controls.1.6.1\lib\sl4-windowsphone71\Coding4Fun.Phone.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Coding4Fun.Phone.Controls.Toolkit, Version=1.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Coding4Fun.Phone.Controls.TimeSpan.1.6.1\lib\sl4-windowsphone71\Coding4Fun.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\..\..\..\..\Downloads\HtmlAgilityPack.1.4.6\sl4-windowsphone71\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions" />
+    <Reference Include="Microsoft.Live, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Live.Controls, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls" />
+    <Reference Include="Microsoft.Phone.Controls.Maps, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
+      <HintPath>..\packages\SilverlightToolkitWP.4.2012.10.9\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\Downloads\DataViz\DataVisualizationOnWindowsPhone\System.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=2.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Downloads\DataViz\DataVisualizationOnWindowsPhone\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml.Serialization" />
+    <Reference Include="System.Xml.XPath">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.Xml.XPath.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2013.1.219.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\AppData\Roaming\Telerik\Updates\RadControls_for_WindowsPhone7_2013_1_0219_DEV_hotfix\Binaries\WindowsPhone\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Primitives, Version=2013.1.219.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\AppData\Roaming\Telerik\Updates\RadControls_for_WindowsPhone7_2013_1_0219_DEV_hotfix\Binaries\WindowsPhone\Telerik.Windows.Controls.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Core, Version=2013.1.219.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\AppData\Roaming\Telerik\Updates\RadControls_for_WindowsPhone7_2013_1_0219_DEV_hotfix\Binaries\WindowsPhone\Telerik.Windows.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="WatermarkedTextBoxControl">
+      <HintPath>..\..\..\..\..\Downloads\Waterdemo\WatermarkedTextBoxControl.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-	<Compile Include="StringResources.en-US.Designer.cs">
-	  <DependentUpon>StringResources.en-US.resx</DependentUpon>
-	  <AutoGen>True</AutoGen>
-	  <DesignTime>True</DesignTime>
-	</Compile>
-	<Compile Include="HeaderControl.xaml.cs">
-	  <DependentUpon>HeaderControl.xaml</DependentUpon>
-	</Compile>
-	<Compile Include="LocalizedStrings.cs" />
-	<Compile Include="StringResources.Designer.cs">
-	  <AutoGen>True</AutoGen>
-	  <DesignTime>True</DesignTime>
-	  <DependentUpon>StringResources.resx</DependentUpon>
-	</Compile>
-	<Compile Include="ValueConverters.cs" />
-	<Compile Include="ViewModels\AddModifyRBCTimeViewModel.cs" />
-	<Compile Include="ViewModels\AddModifyTimeViewModel.cs" />
-	<Compile Include="ViewModels\PreviousVisitViewModel.cs" />
-	<Compile Include="ViewModels\ReturnVisitFullListViewModel.cs" />
-	<Compile Include="ViewModels\ReturnVisitViewModel.cs" />
-	<Compile Include="View\EditReturnVisit.xaml.cs">
-	  <DependentUpon>EditReturnVisit.xaml</DependentUpon>
-	</Compile>
-	<Compile Include="App.xaml.cs">
-	  <DependentUpon>App.xaml</DependentUpon>
-	</Compile>
-	<Compile Include="View\RBCTime.xaml.cs">
-	  <DependentUpon>RBCTime.xaml</DependentUpon>
-	</Compile>
-	<Compile Include="View\BackupAndRestorePage.xaml.cs">
-	  <DependentUpon>BackupAndRestorePage.xaml</DependentUpon>
-	</Compile>
-	<Compile Include="Reporting.cs" />
-	<Compile Include="SettingsProvider.cs" />
-	<Compile Include="View\MainPage.xaml.cs">
-	  <DependentUpon>MainPage.xaml</DependentUpon>
-	</Compile>
-	<Compile Include="View\RegularTime.xaml.cs">
-	  <DependentUpon>RegularTime.xaml</DependentUpon>
-	</Compile>
-	<Compile Include="View\PreviousCall.xaml.cs">
-	  <DependentUpon>PreviousCall.xaml</DependentUpon>
-	</Compile>
-	<Compile Include="Properties\AssemblyInfo.cs" />
-	<Compile Include="View\ReturnVisitFullList.xaml.cs">
-	  <DependentUpon>ReturnVisitFullList.xaml</DependentUpon>
-	</Compile>
-	<Compile Include="Service References\BingMapsGeocodeService\Reference.cs">
-	  <AutoGen>True</AutoGen>
-	  <DesignTime>True</DesignTime>
-	  <DependentUpon>Reference.svcmap</DependentUpon>
-	</Compile>
-	<Compile Include="Model\Settings.designer.cs" />
-	<Compile Include="View\SettingsPage.xaml.cs">
-	  <DependentUpon>SettingsPage.xaml</DependentUpon>
-	</Compile>
-	<Compile Include="SocietyScraper\SocietyScraper.cs" />
-	<Compile Include="TiltEffect.cs" />
-	<Compile Include="View\TimeReport.xaml.cs">
-	  <DependentUpon>TimeReport.xaml</DependentUpon>
-	</Compile>
-	<Compile Include="Model\ReturnVisitItemModel.cs" />
-	<Compile Include="Model\MainMenuModel.cs" />
-	<Compile Include="ViewModels\MainViewModel.cs" />
-	<Compile Include="Model\PreviousVisitModel.cs" />
-	<Compile Include="Model\ReturnVisitLongListModel.cs" />
-	<Compile Include="Model\TimeReportSummaryModel.cs" />
-	<Compile Include="View\ViewPreviousVisit.xaml.cs">
-	  <DependentUpon>ViewPreviousVisit.xaml</DependentUpon>
-	</Compile>
+    <Compile Include="StringResources.de-DE1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StringResources.de-DE.Designer.cs">
+      <DependentUpon>StringResources.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="StringResources.it-IT1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.it-IT.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StringResources.it-IT.Designer.cs">
+      <DependentUpon>StringResources.it-IT.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="StringResources.en-US.Designer.cs">
+      <DependentUpon>StringResources.en-US.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="HeaderControl.xaml.cs">
+      <DependentUpon>HeaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="StringResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ValueConverters.cs" />
+    <Compile Include="ViewModels\AddModifyRBCTimeViewModel.cs" />
+    <Compile Include="ViewModels\AddModifyTimeViewModel.cs" />
+    <Compile Include="ViewModels\PreviousVisitViewModel.cs" />
+    <Compile Include="ViewModels\ReturnVisitFullListViewModel.cs" />
+    <Compile Include="ViewModels\ReturnVisitViewModel.cs" />
+    <Compile Include="View\EditReturnVisit.xaml.cs">
+      <DependentUpon>EditReturnVisit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RBCTime.xaml.cs">
+      <DependentUpon>RBCTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BackupAndRestorePage.xaml.cs">
+      <DependentUpon>BackupAndRestorePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting.cs" />
+    <Compile Include="SettingsProvider.cs" />
+    <Compile Include="View\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RegularTime.xaml.cs">
+      <DependentUpon>RegularTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PreviousCall.xaml.cs">
+      <DependentUpon>PreviousCall.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\ReturnVisitFullList.xaml.cs">
+      <DependentUpon>ReturnVisitFullList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\BingMapsGeocodeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Settings.designer.cs" />
+    <Compile Include="View\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SocietyScraper\SocietyScraper.cs" />
+    <Compile Include="TiltEffect.cs" />
+    <Compile Include="View\TimeReport.xaml.cs">
+      <DependentUpon>TimeReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ReturnVisitItemModel.cs" />
+    <Compile Include="Model\MainMenuModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Model\PreviousVisitModel.cs" />
+    <Compile Include="Model\ReturnVisitLongListModel.cs" />
+    <Compile Include="Model\TimeReportSummaryModel.cs" />
+    <Compile Include="View\ViewPreviousVisit.xaml.cs">
+      <DependentUpon>ViewPreviousVisit.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-	<ApplicationDefinition Include="App.xaml">
-	  <SubType>Designer</SubType>
-	  <Generator>MSBuild:Compile</Generator>
-	</ApplicationDefinition>
-	<Page Include="HeaderControl.xaml">
-	  <Generator>MSBuild:MarkupCompilePass1</Generator>
-	  <SubType>Designer</SubType>
-	</Page>
-	<Page Include="View\EditReturnVisit.xaml">
-	  <Generator>MSBuild:MarkupCompilePass1</Generator>
-	  <SubType>Designer</SubType>
-	</Page>
-	<Page Include="View\RBCTime.xaml">
-	  <SubType>Designer</SubType>
-	  <Generator>MSBuild:Compile</Generator>
-	</Page>
-	<Page Include="View\BackupAndRestorePage.xaml">
-	  <SubType>Designer</SubType>
-	  <Generator>MSBuild:Compile</Generator>
-	</Page>
-	<Page Include="View\PreviousCall.xaml">
-	  <SubType>Designer</SubType>
-	  <Generator>MSBuild:Compile</Generator>
-	</Page>
-	<Page Include="View\MainPage.xaml">
-	  <SubType>Designer</SubType>
-	  <Generator>MSBuild:Compile</Generator>
-	</Page>
-	<Page Include="View\RegularTime.xaml">
-	  <SubType>Designer</SubType>
-	  <Generator>MSBuild:Compile</Generator>
-	</Page>
-	<Page Include="PhoneDataVisualizationResources.xaml">
-	  <Generator>MSBuild:Compile</Generator>
-	  <SubType>Designer</SubType>
-	</Page>
-	<Page Include="View\ReturnVisitFullList.xaml">
-	  <SubType>Designer</SubType>
-	  <Generator>MSBuild:Compile</Generator>
-	</Page>
-	<Page Include="View\SettingsPage.xaml">
-	  <Generator>MSBuild:Compile</Generator>
-	  <SubType>Designer</SubType>
-	</Page>
-	<Page Include="View\TimeReport.xaml">
-	  <SubType>Designer</SubType>
-	  <Generator>MSBuild:Compile</Generator>
-	</Page>
-	<Page Include="View\ViewPreviousVisit.xaml">
-	  <SubType>Designer</SubType>
-	  <Generator>MSBuild:Compile</Generator>
-	</Page>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="HeaderControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EditReturnVisit.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\RBCTime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BackupAndRestorePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PreviousCall.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RegularTime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PhoneDataVisualizationResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ReturnVisitFullList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\TimeReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewPreviousVisit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-	<Content Include="icons\add-user.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\add.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\appbar.save.rest.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\Books.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\calendar.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\Clean.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\clock.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\Cloud-refresh.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\diamond.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\Edit.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\Graph1.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\Graph2.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\Images\overflowdots.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Resource Include="MarketplaceIcon.png" />
-	<Resource Include="Background.png" />
-	<Content Include="icons\Maps.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\Media-Pause.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\Media-Play.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\Media-Save.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\Media-Stop.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\message.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\save.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\settings.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\tasks.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="icons\Tools.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="Images\DateTimePickerCancel.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="Images\DateTimePickerOK.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="Model\settings.xml">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Resource Include="ApplicationIcon.png" />
-	<Resource Include="PanoramaBackground.png" />
-	<Content Include="SplashScreenImage.jpg" />
-	<Content Include="Toolkit.Content\ApplicationBar.Cancel.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="Toolkit.Content\ApplicationBar.Check.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="Toolkit.Content\ApplicationBar.Delete.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<Content Include="Toolkit.Content\ApplicationBar.Select.png">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-	<None Include="FieldService_2013_02_07_12_32_23.sap" />
-	<None Include="FieldService_2013_02_07_16_15_50.sap" />
-	<None Include="packages.config" />
-	<None Include="Properties\AppManifest.xml" />
-	<None Include="Properties\WMAppManifest.xml" />
-	<None Include="Service References\BingMapsGeocodeService\Arrays.xsd">
-	  <SubType>Designer</SubType>
-	</None>
-	<None Include="Service References\BingMapsGeocodeService\common.xsd">
-	  <SubType>Designer</SubType>
-	</None>
-	<None Include="Service References\BingMapsGeocodeService\contracts.wsdl" />
-	<None Include="Service References\BingMapsGeocodeService\contracts.xsd">
-	  <SubType>Designer</SubType>
-	</None>
-	<None Include="Service References\BingMapsGeocodeService\FieldService.BingMapsGeocodeService.GeocodeResponse.datasource">
-	  <DependentUpon>Reference.svcmap</DependentUpon>
-	</None>
-	<None Include="Service References\BingMapsGeocodeService\geocode.wsdl" />
-	<None Include="Service References\BingMapsGeocodeService\geocode.xsd">
-	  <SubType>Designer</SubType>
-	</None>
-	<None Include="Service References\BingMapsGeocodeService\service.xsd">
-	  <SubType>Designer</SubType>
-	</None>
-	<Content Include="ServiceReferences.ClientConfig" />
-	<None Include="Model\Settings.xsd">
-	  <SubType>Designer</SubType>
-	</None>
+    <Content Include="icons\add-user.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\add.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\appbar.save.rest.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\Books.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\calendar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\Clean.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\clock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\Cloud-refresh.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\diamond.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\Edit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\Graph1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\Graph2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\Images\overflowdots.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="MarketplaceIcon.png" />
+    <Resource Include="Background.png" />
+    <Content Include="icons\Maps.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\Media-Pause.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\Media-Play.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\Media-Save.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\Media-Stop.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\message.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\save.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\settings.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\tasks.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\Tools.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\DateTimePickerCancel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\DateTimePickerOK.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Model\settings.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="ApplicationIcon.png" />
+    <Resource Include="PanoramaBackground.png" />
+    <Content Include="SplashScreenImage.jpg" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="FieldService_2013_02_07_12_32_23.sap" />
+    <None Include="FieldService_2013_02_07_16_15_50.sap" />
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml" />
+    <None Include="Service References\BingMapsGeocodeService\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BingMapsGeocodeService\common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BingMapsGeocodeService\contracts.wsdl" />
+    <None Include="Service References\BingMapsGeocodeService\contracts.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BingMapsGeocodeService\FieldService.BingMapsGeocodeService.GeocodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BingMapsGeocodeService\geocode.wsdl" />
+    <None Include="Service References\BingMapsGeocodeService\geocode.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BingMapsGeocodeService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="ServiceReferences.ClientConfig" />
+    <None Include="Model\Settings.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-	<Resource Include="icons\Images\add.png" />
-	<None Include="Service References\BingMapsGeocodeService\configuration91.svcinfo" />
-	<None Include="Service References\BingMapsGeocodeService\configuration.svcinfo" />
-	<None Include="Service References\BingMapsGeocodeService\Reference.svcmap">
-	  <Generator>WCF Proxy Generator</Generator>
-	  <LastGenOutput>Reference.cs</LastGenOutput>
-	</None>
+    <Resource Include="icons\Images\add.png" />
+    <None Include="Service References\BingMapsGeocodeService\configuration91.svcinfo" />
+    <None Include="Service References\BingMapsGeocodeService\configuration.svcinfo" />
+    <None Include="Service References\BingMapsGeocodeService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
-	<ProjectReference Include="..\..\..\..\..\Downloads\slsharpziplib-99885\trunk\SharpZipLib.Silverlight\SharpZipLib.WindowsPhone7.csproj">
-	  <Project>{7B257BE0-BAA4-4877-800C-05DDDAFB6443}</Project>
-	  <Name>SharpZipLib.WindowsPhone7</Name>
-	</ProjectReference>
-	<ProjectReference Include="..\MyTimeDatabaseLib\MyTimeDatabaseLib.csproj">
-	  <Project>{A1C548DC-5636-4CC8-B680-A818350BA8C5}</Project>
-	  <Name>MyTimeDatabaseLib</Name>
-	</ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\Downloads\slsharpziplib-99885\trunk\SharpZipLib.Silverlight\SharpZipLib.WindowsPhone7.csproj">
+      <Project>{7B257BE0-BAA4-4877-800C-05DDDAFB6443}</Project>
+      <Name>SharpZipLib.WindowsPhone7</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyTimeDatabaseLib\MyTimeDatabaseLib.csproj">
+      <Project>{A1C548DC-5636-4CC8-B680-A818350BA8C5}</Project>
+      <Name>MyTimeDatabaseLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-	<EmbeddedResource Include="StringResources.en-US.resx">
-	  <Generator>PublicResXFileCodeGenerator</Generator>
-	  <LastGenOutput>StringResources.en-US.Designer.cs</LastGenOutput>
-	</EmbeddedResource>
-	<EmbeddedResource Include="StringResources.resx">
-	  <Generator>PublicResXFileCodeGenerator</Generator>
-	  <LastGenOutput>StringResources.Designer.cs</LastGenOutput>
-	</EmbeddedResource>
+    <EmbeddedResource Include="StringResources.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.de-DE1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StringResources.it-IT.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.it-IT1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StringResources.en-US.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StringResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

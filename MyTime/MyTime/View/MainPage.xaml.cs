@@ -141,14 +141,14 @@ namespace FieldService.View
 			try {
 				var b = bool.Parse(App.AppSettingsProvider["askForDonation"].Value);
 				if (b) {
-					if (MessageBox.Show("This app is free to use. Submitting apps to the WP app store isn't. Would you consider a donation?", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
+					if (MessageBox.Show(StringResources.MainPage_Messages_DonatePlease, "", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
 						var donate = new WebBrowserTask()
 						{
 							URL = @"https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=tk%40square%2dhiptobe%2ecom&lc=US&item_name=Field%20Service%20App%20%28Square%2eHipToBe%29&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHostedGuest"
 						};
 						donate.Show();
 					} else {
-						App.ToastMe("You can donate in settings>about later.");
+						App.ToastMe(StringResources.MainPage_Messages_DonateLater);
 					}
 					App.AppSettingsProvider["askForDonation"].Value = "false";
 					App.AppSettingsProvider.SaveSettings();
@@ -216,7 +216,7 @@ namespace FieldService.View
 			TimeSpan t = TimerTimeSpan;
 
 			if (t.TotalMinutes <= 0) {
-				App.ToastMe("You can't add zero minutes.");
+				App.ToastMe(StringResources.MainPage_Messages_CantAddZeroMin);
 				return;
 			}
 
@@ -233,7 +233,7 @@ namespace FieldService.View
 			var minutes = (int) t.TotalMinutes;
 
 			if (minutes <= 0) {
-				App.ToastMe("You can't add zero minutes.");
+				App.ToastMe(StringResources.MainPage_Messages_CantAddZeroMin);
 				return;
 			}
 
@@ -250,12 +250,11 @@ namespace FieldService.View
 
 			try {
 				TimeDataInterface.AddTime(ref td);
-				App.ToastMe(string.Format("Time ({0} hrs & {1} min) added.", t.Hours, t.Minutes));
+				App.ToastMe(string.Format(StringResources.MainPage_Messages_AddedTime, t.Hours, t.Minutes));
 				TimerStopClickTapEvent();
 				ResetText();
 			} catch (Exception ee) {
-				//TODO:Exception handler
-				MessageBox.Show("Couldn't add time.\n\nException: " + ee.Message);
+				throw ee;
 			}
 		}
 
@@ -476,41 +475,20 @@ namespace FieldService.View
 		private void NavigateMainMenu(string v)
 		{
 			string month = DateTime.Today.ToString("MMMM").ToLower() + " report";
-			switch (v) {
-				//case "add time":
-				//	NavigationService.Navigate(new Uri("/View/RegularTime.xaml", UriKind.Relative));
-				//	break;
-				//case "add rbc time":
-				//	NavigationService.Navigate(new Uri("/View/RBCTime.xaml", UriKind.Relative));
-				//	break;
-				//case "add return visit":
-				//	NavigationService.Navigate(new Uri("/View/EditReturnVisit.xaml", UriKind.Relative));
-				//	break;
-				case "watchtower library":
-					var wbTask = new WebBrowserTask {Uri = new Uri("http://wol.jw.org", UriKind.RelativeOrAbsolute)};
-					wbTask.Show();
-					break;
-				case "service year report":
-					ShowYearlyReport();
-					break;
-				case "send service report":
-					SendServiceReport();
-					break;
-				//case "settings":
-				//	NavigationService.Navigate(new Uri("/View/SettingsPage.xaml", UriKind.Relative));
-				//	break;
-				case "buy cloud backup":
-					var mdt = new MarketplaceDetailTask();
-					mdt.Show();
-					break;
-				//case "backup & restore":
-				//	NavigationService.Navigate(new Uri("/View/BackupAndRestorePage.xaml", UriKind.Relative));
-				//	break;
-				default:
-					if (v.Equals(month)) {
-						ShowMonthlyReport();
-					}
-					break;
+			if (v == StringResources.MainPage_MainMenu_WtLib) {
+				var wbTask = new WebBrowserTask {Uri = new Uri("http://wol.jw.org", UriKind.RelativeOrAbsolute)};
+				wbTask.Show();
+			} else if (v == StringResources.MainPage_MainMenu_ServiceYearReport) {
+				ShowYearlyReport();
+			} else if (v == StringResources.MainPage_MainMenu_SendReport) {
+				SendServiceReport();
+			} else if (v == "buy cloud backup") {
+				var mdt = new MarketplaceDetailTask();
+				mdt.Show();
+			} else {
+				if (v.Equals(month)) {
+					ShowMonthlyReport();
+				}
 			}
 		}
 

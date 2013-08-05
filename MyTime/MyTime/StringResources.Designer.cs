@@ -124,7 +124,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to S.
+        ///   Looks up a localized string similar to Deleting the call failed..
         /// </summary>
         public static string AddCallPage_DeleteCallFailed {
             get {
@@ -426,6 +426,15 @@ namespace FieldService {
         public static string AddTimePage_Time {
             get {
                 return ResourceManager.GetString("AddTimePage_Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://wol.jw.org/en/wol/dt/r1/lp-e/{0}/{1}/{2}.
+        /// </summary>
+        public static string Application_DailyTextURL {
+            get {
+                return ResourceManager.GetString("Application_DailyTextURL", resourceCulture);
             }
         }
         
@@ -736,6 +745,42 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Time ({0} hrs &amp; {1} min) added..
+        /// </summary>
+        public static string MainPage_Messages_AddedTime {
+            get {
+                return ResourceManager.GetString("MainPage_Messages_AddedTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can&apos;t add zero minutes..
+        /// </summary>
+        public static string MainPage_Messages_CantAddZeroMin {
+            get {
+                return ResourceManager.GetString("MainPage_Messages_CantAddZeroMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can donate in settings&gt;about later..
+        /// </summary>
+        public static string MainPage_Messages_DonateLater {
+            get {
+                return ResourceManager.GetString("MainPage_Messages_DonateLater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This app is free to use. Submitting apps to the WP app store isn&apos;t. Would you consider a donation?.
+        /// </summary>
+        public static string MainPage_Messages_DonatePlease {
+            get {
+                return ResourceManager.GetString("MainPage_Messages_DonatePlease", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to R/B/C Hours: \t{0:0.0}\n.
         /// </summary>
         public static string MainPage_Report_AuxHours {
@@ -880,11 +925,47 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  Bible Studies.
+        /// </summary>
+        public static string ReportingPage_BibleStudies_1 {
+            get {
+                return ResourceManager.GetString("ReportingPage_BibleStudies_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to entries.
+        /// </summary>
+        public static string ReportingPage_Entries {
+            get {
+                return ResourceManager.GetString("ReportingPage_Entries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to entries.
         /// </summary>
         public static string ReportingPage_Entries_Header {
             get {
                 return ResourceManager.GetString("ReportingPage_Entries_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Books, .
+        /// </summary>
+        public static string ReportingPage_Report_Books {
+            get {
+                return ResourceManager.GetString("ReportingPage_Report_Books", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Brochures.
+        /// </summary>
+        public static string ReportingPage_Report_Brochures {
+            get {
+                return ResourceManager.GetString("ReportingPage_Report_Brochures", resourceCulture);
             }
         }
         
@@ -898,7 +979,25 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FROM.
+        ///   Looks up a localized string similar to  day(s).
+        /// </summary>
+        public static string ReportingPage_Report_Days {
+            get {
+                return ResourceManager.GetString("ReportingPage_Report_Days", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reminder: Service Year Begins in September..
+        /// </summary>
+        public static string ReportingPage_Report_Disclaimer {
+            get {
+                return ResourceManager.GetString("ReportingPage_Report_Disclaimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FROM: {0}.
         /// </summary>
         public static string ReportingPage_Report_From {
             get {
@@ -934,6 +1033,15 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  Magazines, .
+        /// </summary>
+        public static string ReportingPage_Report_Magazines {
+            get {
+                return ResourceManager.GetString("ReportingPage_Report_Magazines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to my activity.
         /// </summary>
         public static string ReportingPage_Report_MyActivity {
@@ -943,11 +1051,29 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to on .
+        /// </summary>
+        public static string ReportingPage_Report_On {
+            get {
+                return ResourceManager.GetString("ReportingPage_Report_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OTHER ACTIVITY.
         /// </summary>
         public static string ReportingPage_Report_OtherActivity {
             get {
                 return ResourceManager.GetString("ReportingPage_Report_OtherActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PLACEMENTS.
+        /// </summary>
+        public static string ReportingPage_Report_Placements {
+            get {
+                return ResourceManager.GetString("ReportingPage_Report_Placements", resourceCulture);
             }
         }
         
@@ -970,11 +1096,20 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TO.
+        ///   Looks up a localized string similar to TO: {0}.
         /// </summary>
         public static string ReportingPage_Report_To {
             get {
                 return ResourceManager.GetString("ReportingPage_Report_To", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Return Visits.
+        /// </summary>
+        public static string ReportingPage_ReturnVisits_1 {
+            get {
+                return ResourceManager.GetString("ReportingPage_ReturnVisits_1", resourceCulture);
             }
         }
         

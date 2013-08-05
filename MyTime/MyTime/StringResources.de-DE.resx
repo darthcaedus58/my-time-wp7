@@ -126,6 +126,9 @@
   <data name="AddCallPage_CallSaved" xml:space="preserve">
     <value>Call Saved.</value>
   </data>
+  <data name="AddCallPage_CallSavedFailed" xml:space="preserve">
+    <value>Call Saving Failed.</value>
+  </data>
   <data name="AddCallPage_Date" xml:space="preserve">
     <value>DATE</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="AddCallPage_DeleteCallConfirmation" xml:space="preserve">
     <value>Are you sure you want to delete this call?</value>
+  </data>
+  <data name="AddCallPage_DeleteCallFailed" xml:space="preserve">
+    <value>Deleting the call failed.</value>
   </data>
   <data name="AddCallPage_Headline" xml:space="preserve">
     <value>call</value>
@@ -149,6 +155,9 @@
   </data>
   <data name="AddCallPage_Save" xml:space="preserve">
     <value>save</value>
+  </data>
+  <data name="AddCallPage_SaveBeforeEditMessage" xml:space="preserve">
+    <value>You must save the RV before adding a call.</value>
   </data>
   <data name="AddRBCTimePage_Confirmation" xml:space="preserve">
     <value>RBC Hour(s) Saved.</value>
@@ -195,11 +204,32 @@
   <data name="AddTimePage_Magazines" xml:space="preserve">
     <value>Magazines</value>
   </data>
+  <data name="AddTimePage_Messages_RBCConvertFailed" xml:space="preserve">
+    <value>Conversion Failed.</value>
+  </data>
+  <data name="AddTimePage_Messages_RBCConvertSuccess" xml:space="preserve">
+    <value>Time Converted to RBC.</value>
+  </data>
+  <data name="AddTimePage_Messages_SaveCompleted" xml:space="preserve">
+    <value>Time: {0} Hours Saved.</value>
+  </data>
+  <data name="AddTimePage_Messages_SaveFailed" xml:space="preserve">
+    <value>Failed to Save Time.</value>
+  </data>
+  <data name="AddTimePage_Messages_TimeDeleteFailed" xml:space="preserve">
+    <value>Delete Failed.</value>
+  </data>
+  <data name="AddTimePage_Messages_TimeDeleteSuccess" xml:space="preserve">
+    <value>Time Deleted.</value>
+  </data>
   <data name="AddTimePage_Notes" xml:space="preserve">
     <value>NOTES</value>
   </data>
   <data name="AddTimePage_Placements" xml:space="preserve">
     <value>PLACEMENTS</value>
+  </data>
+  <data name="AddTimePage_RVs" xml:space="preserve">
+    <value>Return Visits</value>
   </data>
   <data name="AddTimePage_Save" xml:space="preserve">
     <value>save</value>
@@ -210,14 +240,44 @@
   <data name="AddTime_BibleStudies" xml:space="preserve">
     <value>Bible Studies</value>
   </data>
+  <data name="ApplicationName" xml:space="preserve">
+    <value>FIELD SERVICE</value>
+  </data>
   <data name="BackupAndRestorePage_Backup" xml:space="preserve">
     <value>Backup</value>
   </data>
   <data name="BackupAndRestorePage_Headline" xml:space="preserve">
     <value>manage cloud</value>
   </data>
+  <data name="BackupAndRestorePage_LastBackup" xml:space="preserve">
+    <value>Last Backup Date</value>
+  </data>
   <data name="BackupAndRestorePage_Message" xml:space="preserve">
     <value>Please sign-in and allow access to your SkyDrive.</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_DwnlProgress" xml:space="preserve">
+    <value>{0:0,0} of {1:0,0} downloaded.</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_NeverBackedUp" xml:space="preserve">
+    <value>Never Backed Up!</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_Progress" xml:space="preserve">
+    <value>{0:0,0} of {1:0,0} uploaded.</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_RestoreFailed" xml:space="preserve">
+    <value>Restore Failed!</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_RestoreSuccess" xml:space="preserve">
+    <value>Restore Completed!</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_Restoring" xml:space="preserve">
+    <value>Restoring Now...</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_UploadFailed" xml:space="preserve">
+    <value>Can't upload your backup data. Please log out and try again.</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_Welcome" xml:space="preserve">
+    <value>Welcome {0} {1}</value>
   </data>
   <data name="BackupAndRestorePage_NotSignedIn" xml:space="preserve">
     <value>Not signed in.</value>
@@ -240,8 +300,14 @@
   <data name="FullRVListPage_YearOld" xml:space="preserve">
     <value>Year Old</value>
   </data>
+  <data name="MainPage_AppName" xml:space="preserve">
+    <value>Field Service</value>
+  </data>
   <data name="MainPage_DT_Copyright" xml:space="preserve">
     <value>THE ABOVE IS COPYRIGHT 2012 WATCHTOWER BIBLE AND TRACT SOCIETY OF PENNSYLVANIA, INC. ALL RIGHTS RESERVED.</value>
+  </data>
+  <data name="MainPage_DT_ErrorText" xml:space="preserve">
+    <value />
   </data>
   <data name="MainPage_DT_Headline" xml:space="preserve">
     <value>daily text</value>
@@ -270,8 +336,35 @@
   <data name="MainPage_MainMenu_WtLib" xml:space="preserve">
     <value>watchtower library</value>
   </data>
+  <data name="MainPage_Report_AuxHours" xml:space="preserve">
+    <value>R/B/C Hours: \t{0:0.0}\n</value>
+  </data>
+  <data name="MainPage_Report_BibleStudies" xml:space="preserve">
+    <value>Bible Studies:\t{0}</value>
+  </data>
+  <data name="MainPage_Report_Books" xml:space="preserve">
+    <value>Books:\t\t{0}\n</value>
+  </data>
+  <data name="MainPage_Report_Brochures" xml:space="preserve">
+    <value>Brochures:\t{0}\n</value>
+  </data>
+  <data name="MainPage_Report_Header" xml:space="preserve">
+    <value>Here is my field service report for {0:MMMM}, {0:yyyy}:\n\n</value>
+  </data>
+  <data name="MainPage_Report_Hours" xml:space="preserve">
+    <value>Hours:\t\t{0:0.00}\n</value>
+  </data>
+  <data name="MainPage_Report_Mags" xml:space="preserve">
+    <value>Magazines:\t{0}\n</value>
+  </data>
+  <data name="MainPage_Report_RVs" xml:space="preserve">
+    <value>Return Visits:\t{0}\n</value>
+  </data>
   <data name="MainPage_RvHeadline" xml:space="preserve">
     <value>return visits</value>
+  </data>
+  <data name="MainPage_RV_DaysSince" xml:space="preserve">
+    <value>Day(s) Since Last Visit</value>
   </data>
   <data name="MainPage_Time_BibleStudies" xml:space="preserve">
     <value>Bible Studies</value>
@@ -287,6 +380,75 @@
   </data>
   <data name="MainPage_Time_Magazines" xml:space="preserve">
     <value>Magazines</value>
+  </data>
+  <data name="MainPage_Time_ReturnVisits" xml:space="preserve">
+    <value>Return Visits</value>
+  </data>
+  <data name="ReportingPage_BibleStudies_1" xml:space="preserve">
+    <value> Bible Studies</value>
+  </data>
+  <data name="ReportingPage_Entries" xml:space="preserve">
+    <value>entries</value>
+  </data>
+  <data name="ReportingPage_Entries_Header" xml:space="preserve">
+    <value>entries</value>
+  </data>
+  <data name="ReportingPage_Report_Books" xml:space="preserve">
+    <value> Books, </value>
+  </data>
+  <data name="ReportingPage_Report_Brochures" xml:space="preserve">
+    <value> Brochures</value>
+  </data>
+  <data name="ReportingPage_Report_ChartTitle" xml:space="preserve">
+    <value>Time In Hours</value>
+  </data>
+  <data name="ReportingPage_Report_Days" xml:space="preserve">
+    <value> day(s)</value>
+  </data>
+  <data name="ReportingPage_Report_Disclaimer" xml:space="preserve">
+    <value>Reminder: Service Year Begins in September.</value>
+  </data>
+  <data name="ReportingPage_Report_From" xml:space="preserve">
+    <value>FROM: {0}</value>
+  </data>
+  <data name="ReportingPage_Report_Headline" xml:space="preserve">
+    <value>report</value>
+  </data>
+  <data name="ReportingPage_Report_HoursOnDays" xml:space="preserve">
+    <value>{0} Hour(s) on {1} Days</value>
+  </data>
+  <data name="ReportingPage_Report_Legend" xml:space="preserve">
+    <value>legend</value>
+  </data>
+  <data name="ReportingPage_Report_Magazines" xml:space="preserve">
+    <value> Magazines, </value>
+  </data>
+  <data name="ReportingPage_Report_MyActivity" xml:space="preserve">
+    <value>my activity</value>
+  </data>
+  <data name="ReportingPage_Report_On" xml:space="preserve">
+    <value>on </value>
+  </data>
+  <data name="ReportingPage_Report_OtherActivity" xml:space="preserve">
+    <value>OTHER ACTIVITY</value>
+  </data>
+  <data name="ReportingPage_Report_Placements" xml:space="preserve">
+    <value>PLACEMENTS</value>
+  </data>
+  <data name="ReportingPage_Report_Time" xml:space="preserve">
+    <value>TIME</value>
+  </data>
+  <data name="ReportingPage_Report_TimeInHrs" xml:space="preserve">
+    <value>Time in Hours</value>
+  </data>
+  <data name="ReportingPage_Report_To" xml:space="preserve">
+    <value>TO: {0}</value>
+  </data>
+  <data name="ReportingPage_ReturnVisits_1" xml:space="preserve">
+    <value> Return Visits</value>
+  </data>
+  <data name="ReportingPage_Share" xml:space="preserve">
+    <value>share...</value>
   </data>
   <data name="RVPage_Address_Address1" xml:space="preserve">
     <value>Address 1</value>
@@ -391,19 +553,22 @@
     <value>Select Time</value>
   </data>
   <data name="RVPage_Visits_DaysSince" xml:space="preserve">
-    <value>day(s) since visit</value>
+    <value> day(s) since visit</value>
   </data>
   <data name="RVPage_Visits_Headline" xml:space="preserve">
     <value>visits</value>
   </data>
   <data name="SettingsPage_About_AppVersion" xml:space="preserve">
-    <value>Application Version</value>
+    <value>Application Version: </value>
   </data>
   <data name="SettingsPage_About_Copyright" xml:space="preserve">
     <value>Copyright 2013 Square.HipToBe</value>
   </data>
   <data name="SettingsPage_About_CoreVersion" xml:space="preserve">
-    <value>Core Version</value>
+    <value>Core Version: </value>
+  </data>
+  <data name="SettingsPage_About_Donate" xml:space="preserve">
+    <value>Donate To Development</value>
   </data>
   <data name="SettingsPage_About_Headline" xml:space="preserve">
     <value>about</value>
@@ -412,10 +577,10 @@
     <value>Help!</value>
   </data>
   <data name="SettingsPage_About_Links" xml:space="preserve">
-    <value>Links</value>
+    <value>LINKS</value>
   </data>
   <data name="SettingsPage_About_OpenSource" xml:space="preserve">
-    <value>Open Source</value>
+    <value>OPEN SOURCE</value>
   </data>
   <data name="SettingsPage_About_Rate" xml:space="preserve">
     <value>Rate this app!</value>
@@ -430,7 +595,7 @@
     <value>Version</value>
   </data>
   <data name="SettingsPage_Settings_AddCallPlacements" xml:space="preserve">
-    <value>Add Call Placements</value>
+    <value>VERSION</value>
   </data>
   <data name="SettingsPage_Settings_AppSettings" xml:space="preserve">
     <value>Application Settings</value>
@@ -492,20 +657,14 @@
   <data name="SettingsPage_Settings_UseLocServices" xml:space="preserve">
     <value>Use Location Services</value>
   </data>
-  <data name="ApplicationName" xml:space="preserve">
-    <value>FIELD SERVICE</value>
-  </data>
-  <data name="MainPage_AppName" xml:space="preserve">
-    <value>Field Service</value>
-  </data>
   <data name="ViewPreviousVisitPage_Books" xml:space="preserve">
-    <value>Books</value>
+    <value> Books</value>
   </data>
   <data name="ViewPreviousVisitPage_Brochures" xml:space="preserve">
-    <value>Brochures</value>
+    <value> Brochures</value>
   </data>
   <data name="ViewPreviousVisitPage_Magazines" xml:space="preserve">
-    <value>Magazines</value>
+    <value> Magazines</value>
   </data>
   <data name="ViewPreviousVisitPage_Menu_Edit" xml:space="preserve">
     <value>edit</value>
@@ -519,113 +678,14 @@
   <data name="ViewPreviousVisitPage_Rv" xml:space="preserve">
     <value>RETURN VISIT</value>
   </data>
-  <data name="AddCallPage_CallSavedFailed" xml:space="preserve">
-    <value>Call Saving Failed.</value>
-  </data>
-  <data name="AddCallPage_DeleteCallFailed" xml:space="preserve">
-    <value>Deleting the call failed.</value>
-  </data>
-  <data name="AddCallPage_SaveBeforeEditMessage" xml:space="preserve">
-    <value>You must save the RV before adding a call.</value>
-  </data>
-  <data name="AddTimePage_Messages_RBCConvertFailed" xml:space="preserve">
-    <value>Conversion Failed.</value>
-  </data>
-  <data name="AddTimePage_Messages_RBCConvertSuccess" xml:space="preserve">
-    <value>Time Converted to RBC.</value>
-  </data>
-  <data name="AddTimePage_Messages_SaveCompleted" xml:space="preserve">
-    <value>Time: {0} Hours Saved.</value>
-  </data>
-  <data name="AddTimePage_Messages_SaveFailed" xml:space="preserve">
-    <value>Failed To Save Time.</value>
-  </data>
-  <data name="AddTimePage_Messages_TimeDeleteFailed" xml:space="preserve">
-    <value>Delete Failed.</value>
-  </data>
-  <data name="AddTimePage_Messages_TimeDeleteSuccess" xml:space="preserve">
-    <value>Time Deleted.</value>
-  </data>
-  <data name="AddTimePage_RVs" xml:space="preserve">
-    <value>Return Visits</value>
-  </data>
-  <data name="BackupAndRestorePage_LastBackup" xml:space="preserve">
-    <value>Last Backup Date</value>
-  </data>
-  <data name="BackupAndRestorePage_Messages_DwnlProgress" xml:space="preserve">
-    <value>{0:0,0} of {1:0,0} downloaded.</value>
-  </data>
-  <data name="BackupAndRestorePage_Messages_NeverBackedUp" xml:space="preserve">
-    <value>Never Backed Up!</value>
-  </data>
-  <data name="BackupAndRestorePage_Messages_Progress" xml:space="preserve">
-    <value>{0:0,0} of {1:0,0} uploaded.</value>
-  </data>
-  <data name="BackupAndRestorePage_Messages_RestoreFailed" xml:space="preserve">
-    <value>Restore Failed!</value>
-  </data>
-  <data name="BackupAndRestorePage_Messages_RestoreSuccess" xml:space="preserve">
-    <value>Restore Completed!</value>
-  </data>
-  <data name="BackupAndRestorePage_Messages_Restoring" xml:space="preserve">
-    <value>Restoring Now...</value>
-  </data>
-  <data name="BackupAndRestorePage_Messages_SkyDriveListingFailed" xml:space="preserve">
-    <value>Unable to retrieve SkyDrive file list. Verify your internet connection and try again. If ou continue to have a problem please report an issue on the settings page.</value>
-  </data>
-  <data name="BackupAndRestorePage_Messages_UploadFailed" xml:space="preserve">
-    <value>Can't upload your backup data. Please log out and try again.</value>
-  </data>
-  <data name="BackupAndRestorePage_Messages_Welcome" xml:space="preserve">
-    <value>Welcome {0} {1}</value>
-  </data>
-  <data name="MainPage_DT_ErrorText" xml:space="preserve">
-    <value>You must be connected to the internet to view the daily text.</value>
-  </data>
-  <data name="MainPage_Report_AuxHours" xml:space="preserve">
-    <value>R/B/C Hours: \t{0:0.0}\n</value>
-  </data>
-  <data name="MainPage_Report_BibleStudies" xml:space="preserve">
-    <value>Bible Studies:\t{0}</value>
-  </data>
-  <data name="MainPage_Report_Books" xml:space="preserve">
-    <value>Books:\t\t{0}\n</value>
-  </data>
-  <data name="MainPage_Report_Brochures" xml:space="preserve">
-    <value>Brochures:\t{0}\n</value>
-  </data>
-  <data name="MainPage_Report_Header" xml:space="preserve">
-    <value>"Here is my field service report for {0:MMMM}, {0:yyyy}:\n\n"</value>
-  </data>
-  <data name="MainPage_Report_Hours" xml:space="preserve">
-    <value>Hours:\t\t{0:0.00}\n</value>
-  </data>
-  <data name="MainPage_Report_Mags" xml:space="preserve">
-    <value>Magazines:\t{0}\n</value>
-  </data>
-  <data name="MainPage_Report_RVs" xml:space="preserve">
-    <value>Return Visits:\t{0}\n</value>
-  </data>
-  <data name="MainPage_RV_DaysSince" xml:space="preserve">
-    <value>Day(s) Since Last Visit</value>
-  </data>
-  <data name="MainPage_Time_ReturnVisits" xml:space="preserve">
-    <value>Return Visits</value>
-  </data>
-  <data name="SettingsPage_About_Donate" xml:space="preserve">
-    <value>Donate To Development</value>
-  </data>
   <data name="MainPage_MainMenu_AddAuxTime" xml:space="preserve">
     <value>add auxillary time</value>
-  </data>
-  <data name="TimeReport_AuxHoursAndMinutes" xml:space="preserve">
-    <value>{0} Auxillary Hour(s) &amp; {1} Minutes</value>
   </data>
   <data name="TimeReport_HoursAndMinutes" xml:space="preserve">
     <value>{0} Hour(s) &amp; {1} Minutes</value>
   </data>
   <data name="Application_DailyTextURL" xml:space="preserve">
-    <value>http://wol.jw.org/en/wol/dt/r1/lp-e/{0}/{1}/{2}</value>
+    <value>http://wol.jw.org/de/wol/dt/r10/lp-x/{0}/{1}/{2}</value>
   </data>
   <data name="MainPage_Messages_AddedTime" xml:space="preserve">
     <value>Time ({0} hrs &amp; {1} min) added.</value>
@@ -638,71 +698,5 @@
   </data>
   <data name="MainPage_Messages_DonatePlease" xml:space="preserve">
     <value>This app is free to use. Submitting apps to the WP app store isn't. Would you consider a donation?</value>
-  </data>
-  <data name="ReportingPage_BibleStudies_1" xml:space="preserve">
-    <value> Bible Studies</value>
-  </data>
-  <data name="ReportingPage_Entries" xml:space="preserve">
-    <value>entries</value>
-  </data>
-  <data name="ReportingPage_Entries_Header" xml:space="preserve">
-    <value>entries</value>
-  </data>
-  <data name="ReportingPage_Report_Books" xml:space="preserve">
-    <value> Books, </value>
-  </data>
-  <data name="ReportingPage_Report_Brochures" xml:space="preserve">
-    <value> Brochures</value>
-  </data>
-  <data name="ReportingPage_Report_ChartTitle" xml:space="preserve">
-    <value>Time In Hours</value>
-  </data>
-  <data name="ReportingPage_Report_Days" xml:space="preserve">
-    <value> day(s)</value>
-  </data>
-  <data name="ReportingPage_Report_Disclaimer" xml:space="preserve">
-    <value>Reminder: Service Year Begins in September.</value>
-  </data>
-  <data name="ReportingPage_Report_From" xml:space="preserve">
-    <value>FROM: {0}</value>
-  </data>
-  <data name="ReportingPage_Report_Headline" xml:space="preserve">
-    <value>report</value>
-  </data>
-  <data name="ReportingPage_Report_HoursOnDays" xml:space="preserve">
-    <value>{0} Hour(s) on {1} Days</value>
-  </data>
-  <data name="ReportingPage_Report_Legend" xml:space="preserve">
-    <value>legend</value>
-  </data>
-  <data name="ReportingPage_Report_Magazines" xml:space="preserve">
-    <value> Magazines, </value>
-  </data>
-  <data name="ReportingPage_Report_MyActivity" xml:space="preserve">
-    <value>my activity</value>
-  </data>
-  <data name="ReportingPage_Report_On" xml:space="preserve">
-    <value>on </value>
-  </data>
-  <data name="ReportingPage_Report_OtherActivity" xml:space="preserve">
-    <value>OTHER ACTIVITY</value>
-  </data>
-  <data name="ReportingPage_Report_Placements" xml:space="preserve">
-    <value>PLACEMENTS</value>
-  </data>
-  <data name="ReportingPage_Report_Time" xml:space="preserve">
-    <value>TIME</value>
-  </data>
-  <data name="ReportingPage_Report_TimeInHrs" xml:space="preserve">
-    <value>Time in Hours</value>
-  </data>
-  <data name="ReportingPage_Report_To" xml:space="preserve">
-    <value>TO: {0}</value>
-  </data>
-  <data name="ReportingPage_ReturnVisits_1" xml:space="preserve">
-    <value> Return Visits</value>
-  </data>
-  <data name="ReportingPage_Share" xml:space="preserve">
-    <value>share...</value>
   </data>
 </root>
