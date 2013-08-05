@@ -307,7 +307,7 @@
     <value>THE ABOVE IS COPYRIGHT 2012 WATCHTOWER BIBLE AND TRACT SOCIETY OF PENNSYLVANIA, INC. ALL RIGHTS RESERVED.</value>
   </data>
   <data name="MainPage_DT_ErrorText" xml:space="preserve">
-    <value />
+    <value>You must be connected to the internet to view the daily text.</value>
   </data>
   <data name="MainPage_DT_Headline" xml:space="preserve">
     <value>daily text</value>
@@ -427,7 +427,7 @@
     <value>my activity</value>
   </data>
   <data name="ReportingPage_Report_On" xml:space="preserve">
-    <value>on </value>
+    <value> on </value>
   </data>
   <data name="ReportingPage_Report_OtherActivity" xml:space="preserve">
     <value>OTHER ACTIVITY</value>
@@ -683,5 +683,20 @@
   </data>
   <data name="TimeReport_HoursAndMinutes" xml:space="preserve">
     <value>{0} Hour(s) &amp; {1} Minutes</value>
+  </data>
+  <data name="Application_DailyTextURL" xml:space="preserve">
+    <value>http://wol.jw.org/en/wol/dt/r1/lp-e/{0}/{1}/{2}</value>
+  </data>
+  <data name="MainPage_Messages_AddedTime" xml:space="preserve">
+    <value>Time ({0} hrs &amp; {1} min) added.</value>
+  </data>
+  <data name="MainPage_Messages_CantAddZeroMin" xml:space="preserve">
+    <value>You can't add zero minutes.</value>
+  </data>
+  <data name="MainPage_Messages_DonateLater" xml:space="preserve">
+    <value>You can donate in settings&gt;about later.</value>
+  </data>
+  <data name="MainPage_Messages_DonatePlease" xml:space="preserve">
+    <value>This app is free to use. Submitting apps to the WP app store isn't. Would you consider a donation?</value>
   </data>
 </root>

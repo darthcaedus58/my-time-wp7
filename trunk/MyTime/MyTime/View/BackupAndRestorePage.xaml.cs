@@ -160,6 +160,8 @@ namespace FieldService.View
 						return;
 					} finally {
 						file.Close();
+						ClearOldBackupFiles();
+						App.ViewModel.IsRvDataChanged = true;
 					}
 				}
 			}

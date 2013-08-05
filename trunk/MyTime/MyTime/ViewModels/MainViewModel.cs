@@ -334,7 +334,7 @@ namespace FieldService.ViewModels
 			//ListBox<int> rvList = new ListBox<int>();
 			foreach (TimeData td in entries) {
 				if (month != td.Date.Month) {
-					summary.Time = string.Format(StringResources.TimeReport_HoursAndMinutes, (minutes / 60.0), minutes % 60);
+					summary.Time = string.Format(StringResources.TimeReport_HoursAndMinutes, (minutes / 60), minutes % 60);
 					summary.Minutes = minutes;
 					summary.RBCHours = (RBCTimeDataInterface.GetMonthRBCTimeTotal(new DateTime(year, month, 1)))/60.0;
 					RBCTimeData[] eee = RBCTimeDataInterface.GetRBCTimeEntries(new DateTime(year, month, 1), new DateTime(year, month, 1).AddMonths(1).AddDays(-1), SortOrder.DateNewestToOldest);
@@ -356,7 +356,7 @@ namespace FieldService.ViewModels
 
 				lbTimeEntries.Add(new TimeReportEntryViewModel {
 					                                               Date = td.Date,
-																   Hours = string.Format(StringResources.TimeReport_HoursAndMinutes, (td.Minutes / 60.0, minutes % 60)),
+																   Hours = string.Format(StringResources.TimeReport_HoursAndMinutes, (td.Minutes / 60), minutes % 60),
 					                                               ItemId = td.ItemId,
 					                                               Minutes = td.Minutes,
 					                                               EditLink = string.Format("/View/RegularTime.xaml?id={0}", td.ItemId)

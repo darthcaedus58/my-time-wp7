@@ -33,7 +33,7 @@
 			<ColumnDefinition Width="26*" />
 			<ColumnDefinition Width="454*" />
 		</Grid.ColumnDefinitions>-->
-		<controls:Panorama Grid.Column="1" Margin="0,0,-26,0" Foreground="{StaticResource AppForegroundBrush}" Title="{Binding Path=StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}">
+		<controls:Panorama Grid.Column="1" Margin="0,0,-26,0" Foreground="{StaticResource AppForegroundBrush}" Title="{Binding Path=StringResources.MainPage_AppName, Source={StaticResource LocalizedStrings}}">
 			<controls:Panorama.Background>
 				<ImageBrush ImageSource="../PanoramaBackground.png" Opacity="0.6" />
 			</controls:Panorama.Background>

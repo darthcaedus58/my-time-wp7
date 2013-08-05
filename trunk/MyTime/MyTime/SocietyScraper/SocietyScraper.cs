@@ -79,7 +79,7 @@ namespace FieldService.SocietyScraper
         /// <param name="d">The d.</param>
         public void StartDailyTextRetrieval(DateTime d)
         {
-            string url = string.Format("http://wol.jw.org/en/wol/dt/r1/lp-e/{0}/{1}/{2}", d.Year, d.Month, d.Day);
+            string url = string.Format(StringResources.Application_DailyTextURL, d.Year, d.Month, d.Day);
 
             _hw = new HtmlWeb();
             _hw.LoadCompleted += hw_LoadCompleted;
