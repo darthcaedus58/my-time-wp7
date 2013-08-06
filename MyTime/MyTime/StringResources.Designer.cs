@@ -547,6 +547,15 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Skydrive Listing Failed..
+        /// </summary>
+        public static string BackupAndRestorePage_Messages_SkyDriveListingFailed {
+            get {
+                return ResourceManager.GetString("BackupAndRestorePage_Messages_SkyDriveListingFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Can&apos;t upload your backup data. Please log out and try again..
         /// </summary>
         public static string BackupAndRestorePage_Messages_UploadFailed {

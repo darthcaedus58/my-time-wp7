@@ -279,6 +279,9 @@
   <data name="BackupAndRestorePage_Messages_Restoring" xml:space="preserve">
     <value>Restoring Now...</value>
   </data>
+  <data name="BackupAndRestorePage_Messages_SkyDriveListingFailed" xml:space="preserve">
+    <value>Skydrive Listing Failed.</value>
+  </data>
   <data name="BackupAndRestorePage_Messages_UploadFailed" xml:space="preserve">
     <value>Can't upload your backup data. Please log out and try again.</value>
   </data>
