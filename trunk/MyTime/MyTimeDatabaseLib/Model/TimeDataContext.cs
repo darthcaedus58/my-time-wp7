@@ -293,7 +293,7 @@ namespace MyTimeDatabaseLib.Model
         /// <summary>
         /// The DB connection string
         /// </summary>
-        public static string DBConnectionString = "Data Source=isostore:/TimeData.sdf";
+        public static string DBConnectionString = "Data Source=isostore:/TimeData.sdf;Max Database Size=512";
 
         // Pass the connection string to the base class.
 

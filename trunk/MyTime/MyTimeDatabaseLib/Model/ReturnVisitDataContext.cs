@@ -443,7 +443,7 @@ namespace MyTimeDatabaseLib.Model
         /// <summary>
         /// The DB connection string
         /// </summary>
-        public static string DBConnectionString = "Data Source=isostore:/ReturnVisitData.sdf";
+		public static string DBConnectionString = "Data Source=isostore:/ReturnVisitData.sdf;Max Database Size=512";
 
         // Pass the connection string to the base class.
 

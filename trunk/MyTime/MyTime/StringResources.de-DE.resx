@@ -160,7 +160,7 @@
     <value>Du musst zuerst den Rückbesuch speichern</value>
   </data>
   <data name="AddRBCTimePage_Confirmation" xml:space="preserve">
-    <value>Stunden RBK gespeichert</value>
+    <value>sparen hilfs stunden</value>
   </data>
   <data name="AddRBCTimePage_ConvertMenuItem" xml:space="preserve">
     <value>Zeit umrechnen</value>
@@ -172,7 +172,7 @@
     <value>Löschen</value>
   </data>
   <data name="AddRBCTimePage_Headline" xml:space="preserve">
-    <value>RBK Zeit</value>
+    <value>Hilfs-Zeit</value>
   </data>
   <data name="AddRBCTimePage_Notes" xml:space="preserve">
     <value>NOTIZEN</value>
@@ -190,7 +190,7 @@
     <value>Broschüren</value>
   </data>
   <data name="AddTimePage_ConvertMenuItem" xml:space="preserve">
-    <value>RBK Zeit umwandeln</value>
+    <value>konvertieren nebenzeitanzeige</value>
   </data>
   <data name="AddTimePage_Date" xml:space="preserve">
     <value>DATUM</value>
@@ -307,7 +307,7 @@
     <value>© 2013 Watchtower Bible and Tract Society of Pennsylvania, Inc. Alle Rechte vorbehalten.</value>
   </data>
   <data name="MainPage_DT_ErrorText" xml:space="preserve">
-    <value />
+    <value>Sie müssen mit dem Internet verbunden sein, um die tagestext anzuzeigen</value>
   </data>
   <data name="MainPage_DT_Headline" xml:space="preserve">
     <value>Tagestext</value>
@@ -337,7 +337,7 @@
     <value>wachtturm bibliothek</value>
   </data>
   <data name="MainPage_Report_AuxHours" xml:space="preserve">
-    <value>R/B/C Stunden: \t{0:0.0}\n</value>
+    <value>Anderen Stunden: \t{0:0.0}\n</value>
   </data>
   <data name="MainPage_Report_BibleStudies" xml:space="preserve">
     <value>Buchstudien:\t{0}</value>
@@ -394,7 +394,7 @@
     <value>Einträge</value>
   </data>
   <data name="ReportingPage_Report_Books" xml:space="preserve">
-    <value>Bücher,</value>
+    <value>Bücher, </value>
   </data>
   <data name="ReportingPage_Report_Brochures" xml:space="preserve">
     <value>Broschüren</value>
@@ -403,7 +403,7 @@
     <value>Zeit in Stunden</value>
   </data>
   <data name="ReportingPage_Report_Days" xml:space="preserve">
-    <value>Tag(e)</value>
+    <value> Tag(e)</value>
   </data>
   <data name="ReportingPage_Report_Disclaimer" xml:space="preserve">
     <value>Erinnerung: Das Dienstjahr beginnt im September</value>
@@ -421,13 +421,13 @@
     <value>Legende</value>
   </data>
   <data name="ReportingPage_Report_Magazines" xml:space="preserve">
-    <value>Zeitschriften,</value>
+    <value> Zeitschriften, </value>
   </data>
   <data name="ReportingPage_Report_MyActivity" xml:space="preserve">
     <value>Meine Tätigkeit</value>
   </data>
   <data name="ReportingPage_Report_On" xml:space="preserve">
-    <value>im</value>
+    <value> im </value>
   </data>
   <data name="ReportingPage_Report_OtherActivity" xml:space="preserve">
     <value>ANDERE TÄTIGKEITEN</value>
@@ -688,18 +688,21 @@
     <value>http://wol.jw.org/de/wol/dt/r10/lp-x/{0}/{1}/{2}</value>
   </data>
   <data name="MainPage_Messages_AddedTime" xml:space="preserve">
-    <value>Time ({0} hrs &amp; {1} min) added.</value>
+    <value>Time ({0} Std. &amp; {1} min) zugegeben.</value>
   </data>
   <data name="MainPage_Messages_CantAddZeroMin" xml:space="preserve">
-    <value>You can't add zero minutes.</value>
+    <value>Sie können keine Null Minuten.</value>
   </data>
   <data name="MainPage_Messages_DonateLater" xml:space="preserve">
-    <value>You can donate in settings&gt;about later.</value>
+    <value>Sie können aus "Einstellungen&gt; Info 'später spenden</value>
   </data>
   <data name="MainPage_Messages_DonatePlease" xml:space="preserve">
-    <value>This app is free to use. Submitting apps to the WP app store isn't. Would you consider a donation?</value>
+    <value>Diese Anwendung ist kostenlos zu benutzen. Einreichen Apps in den Windows Phone App Store ist es nicht. Würden Sie spenden?</value>
   </data>
   <data name="AddRBCTimePage_Note" xml:space="preserve">
     <value>Auxiliary time is any type of time that is not field service related, but that can be reported on your field service report - e.g. for some appointed brothers &amp; sisters time spent at regional building committee sites building kingdom halls can be noted on their report.  Please see your congregation service overseer for details.</value>
+  </data>
+  <data name="MainPage_Time_Notes" xml:space="preserve">
+    <value>Notizen</value>
   </data>
 </root>

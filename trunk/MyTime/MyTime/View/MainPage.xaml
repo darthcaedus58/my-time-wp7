@@ -91,8 +91,8 @@
 										<TextBlock FontWeight="ExtraBold"  Style="{StaticResource PhoneTextLargeStyle}" Foreground="Black"  Text="{Binding NameOrDescription}" TextWrapping="Wrap" />
 										<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Foreground="{StaticResource AppForegroundBrush}" Margin="12,-6,12,0" Text="{Binding FormattedAddress}" TextWrapping="Wrap" />
 										<StackPanel Orientation="Horizontal">
-											<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Margin="12,-6,12,0" Foreground="PaleVioletRed" Text="{Binding DaysSinceLastVisit}" TextWrapping="Wrap" />
-											<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Margin="12,-6,12,0" Foreground="PaleVioletRed" Text="{Binding Path=StringResources.MainPage_RV_DaysSince, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" />
+											<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Foreground="PaleVioletRed" Text="{Binding DaysSinceLastVisit}" TextWrapping="Wrap" Margin="12,0,0,0" />
+											<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Foreground="PaleVioletRed" Text="{Binding Path=StringResources.MainPage_RV_DaysSince, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" Margin="0" />
 										</StackPanel>
 									</StackPanel>
 								</StackPanel>
@@ -153,7 +153,7 @@
 								<telerik:RadNumericUpDown Suffix="{Binding Path=StringResources.MainPage_Time_Books, Source={StaticResource LocalizedStrings}}"  Value="{Binding MainPageBooks, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBooks" />
 								<telerik:RadNumericUpDown Suffix="{Binding Path=StringResources.MainPage_Time_ReturnVisits, Source={StaticResource LocalizedStrings}}"  Value="{Binding MainPageReturnVisits, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbReturnVisits" />
 								<telerik:RadNumericUpDown Suffix="{Binding Path=StringResources.MainPage_Time_BibleStudies, Source={StaticResource LocalizedStrings}}"  Value="{Binding MainPageBibleStudies, Mode=TwoWay}" Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBibleStudies" />
-								<TextBlock Text="Notes" TextWrapping="Wrap" FontSize="26.667" />
+								<TextBlock Text="{Binding Path=StringResources.MainPage_Time_Notes, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" FontSize="26.667" />
 								<TextBox Height="180" x:Name="tbNotes" TextWrapping="Wrap" Text="{Binding MainPageNotes, Mode=TwoWay}" />
 							</StackPanel>
 						</ScrollViewer>

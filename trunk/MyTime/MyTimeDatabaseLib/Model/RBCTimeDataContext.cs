@@ -165,7 +165,7 @@ namespace MyTimeDatabaseLib.Model
 		/// <summary>
 		/// The DB connection string
 		/// </summary>
-		public const string DBConnectionString = "Data Source=isostore:/RBCTimeData.sdf";
+		public const string DBConnectionString = "Data Source=isostore:/RBCTimeData.sdf;Max Database Size=512";
 
 		// Pass the connection string to the base class.
 

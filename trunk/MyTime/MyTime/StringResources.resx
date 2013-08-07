@@ -405,6 +405,9 @@
   <data name="MainPage_Time_Magazines" xml:space="preserve">
     <value>Magazines</value>
   </data>
+  <data name="MainPage_Time_Notes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
   <data name="MainPage_Time_ReturnVisits" xml:space="preserve">
     <value>Return Visits</value>
   </data>

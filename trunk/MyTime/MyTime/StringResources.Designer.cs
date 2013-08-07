@@ -925,6 +925,15 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Notes.
+        /// </summary>
+        public static string MainPage_Time_Notes {
+            get {
+                return ResourceManager.GetString("MainPage_Time_Notes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Return Visits.
         /// </summary>
         public static string MainPage_Time_ReturnVisits {
