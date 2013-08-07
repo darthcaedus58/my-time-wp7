@@ -19,6 +19,7 @@ namespace FieldService.ViewModels
 				                                                                           };
 
 		private ReturnVisitViewModel _parentRv;
+		private bool _saving;
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		public ReturnVisitViewModel ParentRv
@@ -152,7 +153,10 @@ namespace FieldService.ViewModels
 			if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
 		}
 
-		public bool AddOrUpdateItem() { return RvPreviousVisitsDataInterface.AddOrUpdateCall(ref _previousVisitData); }
+		public bool AddOrUpdateItem()
+		{
+			return RvPreviousVisitsDataInterface.AddOrUpdateCall(ref _previousVisitData);
+		}
 		public bool DeleteCall()
 		{
 			if (_previousVisitData.ItemId < 0) return false;

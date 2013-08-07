@@ -34,7 +34,11 @@ namespace FieldService.View
 		/// <summary>
 		/// Initializes a new instance of the <see cref="PreviousCallPage" /> class.
 		/// </summary>
-		public PreviousCallPage() { InitializeComponent(); }
+		public PreviousCallPage()
+		{
+			DataContext = new PreviousVisitViewModel();
+			InitializeComponent();
+		}
 
 		#region Events
 
