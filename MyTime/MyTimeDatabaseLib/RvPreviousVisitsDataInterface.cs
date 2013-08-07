@@ -71,7 +71,7 @@ namespace MyTimeDatabaseLib
 			if (call.RvItemId < 0) throw new ArgumentNullException("call", "Rv Item Id can't be null");
 			int itemId = call.ItemId;
 			using (var db = new RvPreviousVisitsContext(RvPreviousVisitsContext.DBConnectionString)) {
-				if (db.RvPreviousVisitItems.Any(s => s.ItemId == itemId)) {
+				if (itemId > 0 && db.RvPreviousVisitItems.Any(s => s.ItemId == itemId)) {
 					RvPreviousVisitItem c = db.RvPreviousVisitItems.Single(s => s.ItemId == itemId);
 
 					c.RvItemId = call.RvItemId;
@@ -87,10 +87,10 @@ namespace MyTimeDatabaseLib
 
 				var cc = RvPreviousVisitData.Copy(call);
 
-				call.ItemId = cc.ItemId;
 
 				db.RvPreviousVisitItems.InsertOnSubmit(cc);
 				db.SubmitChanges();
+				call.ItemId = cc.ItemId;
 				return call.ItemId >= 0;
 			}
 		}
