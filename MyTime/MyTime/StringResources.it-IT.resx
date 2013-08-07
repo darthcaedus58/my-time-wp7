@@ -702,4 +702,7 @@
   <data name="AddRBCTimePage_Note" xml:space="preserve">
     <value>Tempo ausiliario è un qualsiasi tipo di tempo che non è il servizio settore collegato, ma che può essere segnalato sul vostro rapporto di servizio di campo - ad esempio per alcuni fratelli nominati e sorelle il tempo trascorso in siti commissione edilizia regionali costruzione di Sale del Regno si possono notare sul loro rapporto. Si prega di consultare il vostro sorvegliante servizio congregazione per i dettagli.</value>
   </data>
+  <data name="MainPage_Time_Notes" xml:space="preserve">
+    <value>Note</value>
+  </data>
 </root>

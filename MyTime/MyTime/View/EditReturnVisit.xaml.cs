@@ -72,9 +72,9 @@ namespace FieldService
 			var email = ApplicationBar.MenuItems[1] as ApplicationBarMenuItem;
 			var export = ApplicationBar.MenuItems[2] as ApplicationBarMenuItem;
 
-			var save = ApplicationBar.Buttons[0] as ApplicationBarButton;
-			var add = ApplicationBar.Buttons[1] as ApplicationBarButton;
-			var clean = ApplicationBar.Buttons[2] as ApplicationBarButton;
+			var save = ApplicationBar.Buttons[0] as ApplicationBarIconButton;
+			var add = ApplicationBar.Buttons[1] as ApplicationBarIconButton;
+			var clean = ApplicationBar.Buttons[2] as ApplicationBarIconButton;
 
 			if (delete != null) {
 				delete.Text = StringResources.RVPage_Menu_Delete;

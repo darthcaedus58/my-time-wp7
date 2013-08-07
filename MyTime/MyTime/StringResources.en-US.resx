@@ -702,4 +702,7 @@
   <data name="AddRBCTimePage_Note" xml:space="preserve">
     <value>Auxiliary time is any type of time that is not field service related, but that can be reported on your field service report - e.g. for some appointed brothers &amp; sisters time spent at regional building committee sites building kingdom halls can be noted on their report.  Please see your congregation service overseer for details.</value>
   </data>
+  <data name="MainPage_Time_Notes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
 </root>
