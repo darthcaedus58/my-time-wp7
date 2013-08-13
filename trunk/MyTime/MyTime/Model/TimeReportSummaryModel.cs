@@ -272,6 +272,7 @@ namespace FieldService.Model
 		private int _min;
 
 		private string _editLink;
+		private string _notes;
 
 		public string EditLink
 		{
@@ -314,6 +315,18 @@ namespace FieldService.Model
 				if (_min != value) {
 					_min = value;
 					NotifyPropertyChanged("Minutes");
+				}
+			}
+		}
+
+		public string Notes
+		{
+			get { return _notes; }
+			set
+			{
+				if (_notes != value) {
+					_notes = value;
+					NotifyPropertyChanged("Notes");
 				}
 			}
 		}
