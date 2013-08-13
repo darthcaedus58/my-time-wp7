@@ -46,6 +46,7 @@
 							<TextBlock Name="tbDisclaimer" Text="{Binding Path=StringResources.ReportingPage_Report_Disclaimer, Source={StaticResource LocalizedStrings}}" />
 							<TextBlock Name="tbFromDate" Text="{Binding Path=StringResources.ReportingPage_Report_From, Source={StaticResource LocalizedStrings}}" />
 							<TextBlock Name="tbToDate" Text="{Binding Path=StringResources.ReportingPage_Report_To, Source={StaticResource LocalizedStrings}}" />
+							<TextBlock Name="tbTotalHours" Text="{Binding TimeReportTotal}" />
 						</StackPanel>
 					</Grid>
 					<Grid Row="1">
@@ -113,6 +114,7 @@
 								<StackPanel Orientation="Vertical">
 									<TextBlock Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextLargeStyle}" Text="{Binding Date, StringFormat=\{0:D\}}" />
 									<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Hours}" />
+									<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Notes}" TextTrimming="WordEllipsis" />
 								</StackPanel>
 							</DataTemplate>
 						</ListBox.ItemTemplate>

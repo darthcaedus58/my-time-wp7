@@ -1123,6 +1123,15 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TOTAL: {0} Hour(s) and {1} Minute(s).
+        /// </summary>
+        public static string ReportingPage_Report_TotalHours {
+            get {
+                return ResourceManager.GetString("ReportingPage_Report_TotalHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  Return Visits.
         /// </summary>
         public static string ReportingPage_ReturnVisits_1 {
@@ -1758,6 +1767,15 @@ namespace FieldService {
         public static string SettingsPage_Settings_UseLocServices {
             get {
                 return ResourceManager.GetString("SettingsPage_Settings_UseLocServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TOTAL: {0} Hour(s) and {1} Minute(s) Auxiliary Time.
+        /// </summary>
+        public static string TimeReport_AuxHoursAndMinutes {
+            get {
+                return ResourceManager.GetString("TimeReport_AuxHoursAndMinutes", resourceCulture);
             }
         }
         

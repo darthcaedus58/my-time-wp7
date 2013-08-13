@@ -124,25 +124,25 @@
     <value>Broschüren</value>
   </data>
   <data name="AddCallPage_CallSaved" xml:space="preserve">
-    <value>Eintrag gespeichert</value>
+    <value>Ansprache gespeichert</value>
   </data>
   <data name="AddCallPage_CallSavedFailed" xml:space="preserve">
-    <value>Eintrag speichern gescheitert</value>
+    <value>Ansprache speichern gescheitert</value>
   </data>
   <data name="AddCallPage_Date" xml:space="preserve">
     <value>DATUM</value>
   </data>
   <data name="AddCallPage_DeleteCall" xml:space="preserve">
-    <value>Eintrag löschen</value>
+    <value>Ansprache löschen</value>
   </data>
   <data name="AddCallPage_DeleteCallConfirmation" xml:space="preserve">
-    <value>Bist du sicher, diesen Eintrag löschen zu wollen?</value>
+    <value>Bist du sicher, diesen Ansprache löschen zu wollen?</value>
   </data>
   <data name="AddCallPage_DeleteCallFailed" xml:space="preserve">
-    <value>Löschung nicht erfolgreich</value>
+    <value>Löschung nicht erfolgreich!</value>
   </data>
   <data name="AddCallPage_Headline" xml:space="preserve">
-    <value>Eintrag</value>
+    <value>Ansprache</value>
   </data>
   <data name="AddCallPage_Magazines" xml:space="preserve">
     <value>Zeitschriften</value>
@@ -160,10 +160,10 @@
     <value>Du musst zuerst den Rückbesuch speichern</value>
   </data>
   <data name="AddRBCTimePage_Confirmation" xml:space="preserve">
-    <value>sparen hilfs stunden</value>
+    <value>Zusatzzeit gespeichert</value>
   </data>
   <data name="AddRBCTimePage_ConvertMenuItem" xml:space="preserve">
-    <value>Zeit umrechnen</value>
+    <value>Zeit umwandeln</value>
   </data>
   <data name="AddRBCTimePage_Date" xml:space="preserve">
     <value>DATUM</value>
@@ -172,7 +172,7 @@
     <value>Löschen</value>
   </data>
   <data name="AddRBCTimePage_Headline" xml:space="preserve">
-    <value>Hilfs-Zeit</value>
+    <value>Zusatzzeit (RBK)</value>
   </data>
   <data name="AddRBCTimePage_Notes" xml:space="preserve">
     <value>NOTIZEN</value>
@@ -190,7 +190,7 @@
     <value>Broschüren</value>
   </data>
   <data name="AddTimePage_ConvertMenuItem" xml:space="preserve">
-    <value>konvertieren nebenzeitanzeige</value>
+    <value>Zeit umwandeln</value>
   </data>
   <data name="AddTimePage_Date" xml:space="preserve">
     <value>DATUM</value>
@@ -208,7 +208,7 @@
     <value>Umwandlung fehlgeschlagen</value>
   </data>
   <data name="AddTimePage_Messages_RBCConvertSuccess" xml:space="preserve">
-    <value>Zeit wurde zu RBK umgewandelt</value>
+    <value>Zeit umgewandelt</value>
   </data>
   <data name="AddTimePage_Messages_SaveCompleted" xml:space="preserve">
     <value>Zeit: {0} Stunden gespeichert.</value>
@@ -313,19 +313,19 @@
     <value>Tagestext</value>
   </data>
   <data name="MainPage_MainMenu_AddRv" xml:space="preserve">
-    <value>Rückbesuch hinzufügen</value>
+    <value>Neuer Rückbesuch</value>
   </data>
   <data name="MainPage_MainMenu_AddTime" xml:space="preserve">
-    <value>Zeit hinzufügen</value>
+    <value>Zeit erfassen</value>
   </data>
   <data name="MainPage_MainMenu_BackupRestore" xml:space="preserve">
-    <value>Sichern &amp; Wiederherstellen</value>
+    <value>Datensicherung</value>
   </data>
   <data name="MainPage_MainMenu_MonthReport" xml:space="preserve">
     <value>{0} Bericht</value>
   </data>
   <data name="MainPage_MainMenu_SendReport" xml:space="preserve">
-    <value>Sende den Predigtdienstbericht</value>
+    <value>Bericht senden</value>
   </data>
   <data name="MainPage_MainMenu_ServiceYearReport" xml:space="preserve">
     <value>Bericht Dienstjahr</value>
@@ -334,7 +334,7 @@
     <value>Einstellungen</value>
   </data>
   <data name="MainPage_MainMenu_WtLib" xml:space="preserve">
-    <value>wachtturm bibliothek</value>
+    <value>Wachtturm Bibliothek</value>
   </data>
   <data name="MainPage_Report_AuxHours" xml:space="preserve">
     <value>Anderen Stunden: \t{0:0.0}\n</value>
@@ -394,7 +394,7 @@
     <value>Einträge</value>
   </data>
   <data name="ReportingPage_Report_Books" xml:space="preserve">
-    <value>Bücher, </value>
+    <value>Bücher</value>
   </data>
   <data name="ReportingPage_Report_Brochures" xml:space="preserve">
     <value>Broschüren</value>
@@ -520,7 +520,7 @@
     <value>Alle Rückbesuche berücksichtigen?</value>
   </data>
   <data name="RVPage_Messages_Saved" xml:space="preserve">
-    <value>Rückbesucht gespeichert</value>
+    <value>Rückbesuch gespeichert</value>
   </data>
   <data name="RVPage_Personal_Age" xml:space="preserve">
     <value>Alter</value>
@@ -679,7 +679,7 @@
     <value>RÜCKBESUCH</value>
   </data>
   <data name="MainPage_MainMenu_AddAuxTime" xml:space="preserve">
-    <value>Zusatzzeit hinzufügen</value>
+    <value>Zusatzzeit erfassen</value>
   </data>
   <data name="TimeReport_HoursAndMinutes" xml:space="preserve">
     <value>{0} Stunde(n) &amp; {1} Minute(n)</value>
@@ -688,19 +688,19 @@
     <value>http://wol.jw.org/de/wol/dt/r10/lp-x/{0}/{1}/{2}</value>
   </data>
   <data name="MainPage_Messages_AddedTime" xml:space="preserve">
-    <value>Time ({0} Std. &amp; {1} min) zugegeben.</value>
+    <value>Time ({0} Std. &amp; {1} min) hinzugefügt.</value>
   </data>
   <data name="MainPage_Messages_CantAddZeroMin" xml:space="preserve">
-    <value>Sie können keine Null Minuten.</value>
+    <value>Sie können nicht null Minuten erfassen.</value>
   </data>
   <data name="MainPage_Messages_DonateLater" xml:space="preserve">
-    <value>Sie können aus "Einstellungen&gt; Info 'später spenden</value>
+    <value>Sie können unter "Einstellungen &gt; Info" später spenden</value>
   </data>
   <data name="MainPage_Messages_DonatePlease" xml:space="preserve">
-    <value>Diese Anwendung ist kostenlos zu benutzen. Einreichen Apps in den Windows Phone App Store ist es nicht. Würden Sie spenden?</value>
+    <value>Diese Anwendung wird kostenlos zur Verfügung gestellt. Das Anbieten der App im Windows Phone Store ist es aber nicht. Über Ihre Spende freuen wir uns sehr!</value>
   </data>
   <data name="AddRBCTimePage_Note" xml:space="preserve">
-    <value>Auxiliary time is any type of time that is not field service related, but that can be reported on your field service report - e.g. for some appointed brothers &amp; sisters time spent at regional building committee sites building kingdom halls can be noted on their report.  Please see your congregation service overseer for details.</value>
+    <value>Mit Zusatzzeit ist jeder Zeittyp gemeint, der nicht direkt mit dem Predigtdienst in Zusammenhang steht, der jedoch im Bericht berücksichtigt werden kann. Brüder und Schwestern, die im Regionalen Baukomittee (RBK) tätig sind, können so zum Beispiel die für den Saalbau aufgebrachte Zeit im Bericht einschließen. Details klärst du bitte mit dem Dienstaufseher deiner Versammlung.</value>
   </data>
   <data name="MainPage_Time_Notes" xml:space="preserve">
     <value>Notizen</value>

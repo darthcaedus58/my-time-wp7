@@ -92,6 +92,13 @@ namespace FieldService.ViewModels
 			}
 		}
 
+		private int _timeReportTotal = 0;
+
+		public string TimeReportTotal
+		{
+			get { return string.Format(StringResources.ReportingPage_Report_TotalHours, _timeReportTotal / 60, _timeReportTotal % 60 > 0 ? 60 - (_timeReportTotal % 60) : 0); }
+		}
+
 		/// <summary>
 		/// Gets a value indicating whether this instance is rv data loaded.
 		/// </summary>
@@ -322,7 +329,9 @@ namespace FieldService.ViewModels
 				IsTimeReportDataLoaded = false;
 				icReport.Clear();
 				lbTimeEntries.Clear();
+				_timeReportTotal = 0;
 			}
+
 
 			int minutes = 0;
 			if (entries.Length <= 0) return;
@@ -333,8 +342,12 @@ namespace FieldService.ViewModels
 			var rtdEntries = new List<RBCTimeData>();
 			//ListBox<int> rvList = new ListBox<int>();
 			foreach (TimeData td in entries) {
+
+				//build total number for the report.
+				_timeReportTotal += td.Minutes;
+
 				if (month != td.Date.Month) {
-					summary.Time = string.Format(StringResources.TimeReport_HoursAndMinutes, (minutes / 60), minutes % 60);
+					summary.Time = string.Format(StringResources.TimeReport_HoursAndMinutes, (minutes / 60),minutes % 60 > 0 ? 60 - (minutes % 60) : 0);
 					summary.Minutes = minutes;
 					summary.RBCHours = (RBCTimeDataInterface.GetMonthRBCTimeTotal(new DateTime(year, month, 1)))/60.0;
 					RBCTimeData[] eee = RBCTimeDataInterface.GetRBCTimeEntries(new DateTime(year, month, 1), new DateTime(year, month, 1).AddMonths(1).AddDays(-1), SortOrder.DateNewestToOldest);
@@ -356,27 +369,32 @@ namespace FieldService.ViewModels
 
 				lbTimeEntries.Add(new TimeReportEntryViewModel {
 					                                               Date = td.Date,
-																   Hours = string.Format(StringResources.TimeReport_HoursAndMinutes, (td.Minutes / 60), minutes % 60),
+																   Hours = string.Format(StringResources.TimeReport_HoursAndMinutes, (td.Minutes / 60), minutes % 60 > 0 ? 60-(minutes % 60) : 0),
 					                                               ItemId = td.ItemId,
 					                                               Minutes = td.Minutes,
-					                                               EditLink = string.Format("/View/RegularTime.xaml?id={0}", td.ItemId)
+					                                               EditLink = string.Format("/View/RegularTime.xaml?id={0}", td.ItemId),
+																   Notes = td.Notes
 				                                               });
 			}
 			RBCTimeData[] ee = RBCTimeDataInterface.GetRBCTimeEntries(new DateTime(year, month, 1), new DateTime(year, month, 1).AddMonths(1).AddDays(-1), SortOrder.DateNewestToOldest);
 			if (ee != null) rtdEntries.AddRange(ee);
 			summary.RBCHours = (RBCTimeDataInterface.GetMonthRBCTimeTotal(new DateTime(year, month, 1))/60.0);
-			summary.Time = string.Format("{0:0.00} Hour(s)", (minutes/60.0));
+			summary.Time = string.Format(StringResources.TimeReport_HoursAndMinutes, (minutes / 60), minutes % 60 > 0 ? 60 - (minutes % 60) : 0);
 			summary.Minutes = minutes;
 			icReport.Add(summary);
 
-			foreach (RBCTimeData e in rtdEntries)
+			foreach (RBCTimeData e in rtdEntries) {
+				//add time 
+				_timeReportTotal += e.Minutes;
 				lbTimeEntries.Add(new TimeReportEntryViewModel {
 					                                               Date = e.Date,
-					                                               Hours = string.Format("{0:0.00} Auxillary Hour(s)", e.Hours),
+					                                               Hours = string.Format(StringResources.TimeReport_AuxHoursAndMinutes, (int)e.Hours, e.Minutes % 60 > 0 ? 60 -(e.Minutes % 60) : 0),
 					                                               ItemId = e.ItemID,
 					                                               Minutes = e.Minutes,
-					                                               EditLink = string.Format("/View/RBCTime.xaml?id={0}", e.ItemID)
+					                                               EditLink = string.Format("/View/RBCTime.xaml?id={0}", e.ItemID),
+																   Notes = e.Notes
 				                                               });
+			}
 			TimeReportEntryViewModel[] lte = lbTimeEntries.OrderBy(s => s.Date.Date).ToArray();
 			lbTimeEntries.Clear();
 			foreach (TimeReportEntryViewModel l in lte) lbTimeEntries.Add(l);
