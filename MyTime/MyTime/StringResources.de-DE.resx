@@ -124,25 +124,25 @@
     <value>Broschüren</value>
   </data>
   <data name="AddCallPage_CallSaved" xml:space="preserve">
-    <value>Ansprache gespeichert</value>
+    <value>Besuch gespeichert</value>
   </data>
   <data name="AddCallPage_CallSavedFailed" xml:space="preserve">
-    <value>Ansprache speichern gescheitert</value>
+    <value>Besuch speichern gescheitert</value>
   </data>
   <data name="AddCallPage_Date" xml:space="preserve">
     <value>DATUM</value>
   </data>
   <data name="AddCallPage_DeleteCall" xml:space="preserve">
-    <value>Ansprache löschen</value>
+    <value>Besuch löschen</value>
   </data>
   <data name="AddCallPage_DeleteCallConfirmation" xml:space="preserve">
-    <value>Bist du sicher, diesen Ansprache löschen zu wollen?</value>
+    <value>Bist du sicher, diesen Besuch löschen zu wollen?</value>
   </data>
   <data name="AddCallPage_DeleteCallFailed" xml:space="preserve">
     <value>Löschung nicht erfolgreich!</value>
   </data>
   <data name="AddCallPage_Headline" xml:space="preserve">
-    <value>Ansprache</value>
+    <value>Besuch</value>
   </data>
   <data name="AddCallPage_Magazines" xml:space="preserve">
     <value>Zeitschriften</value>
@@ -307,7 +307,7 @@
     <value>© 2013 Watchtower Bible and Tract Society of Pennsylvania, Inc. Alle Rechte vorbehalten.</value>
   </data>
   <data name="MainPage_DT_ErrorText" xml:space="preserve">
-    <value>Sie müssen mit dem Internet verbunden sein, um die tagestext anzuzeigen</value>
+    <value>Sie müssen mit dem Internet verbunden sein, um den Tagestext zu lesen.</value>
   </data>
   <data name="MainPage_DT_Headline" xml:space="preserve">
     <value>Tagestext</value>
@@ -613,10 +613,10 @@
     <value>Standard Alter</value>
   </data>
   <data name="SettingsPage_Settings_DeleteCallsAndRv" xml:space="preserve">
-    <value>Anrufe und Rückbesuche löschen</value>
+    <value>Besuche und Rückbesuche löschen</value>
   </data>
   <data name="SettingsPage_Settings_DeleteCallsRvNote" xml:space="preserve">
-    <value>BEACHTE: Wenn du die Anrufe löscht, werden die Rückbesuche aus deinem Bericht gelöscht.</value>
+    <value>BEACHTE: Wenn du die Besuche löscht, werden auch die Rückbesuche aus deinem Bericht gelöscht.</value>
   </data>
   <data name="SettingsPage_Settings_Email" xml:space="preserve">
     <value>Email</value>
@@ -640,7 +640,7 @@
     <value>Zeit runden (15 Minuten Regel)</value>
   </data>
   <data name="SettingsPage_Settings_SendMethod" xml:space="preserve">
-    <value>Standard Versand Methode</value>
+    <value>Standard Versandmethode</value>
   </data>
   <data name="SettingsPage_Settings_SharingOptions" xml:space="preserve">
     <value>VERSANDEINSTELLUNGEN</value>

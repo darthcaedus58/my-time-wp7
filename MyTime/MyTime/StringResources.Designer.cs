@@ -1771,7 +1771,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TOTAL: {0} Hour(s) and {1} Minute(s) Auxiliary Time.
+        ///   Looks up a localized string similar to {0} Hour(s) and {1} Minute(s) Auxiliary Time.
         /// </summary>
         public static string TimeReport_AuxHoursAndMinutes {
             get {

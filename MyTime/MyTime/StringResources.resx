@@ -709,7 +709,7 @@
     <value>RETURN VISIT</value>
   </data>
   <data name="TimeReport_AuxHoursAndMinutes" xml:space="preserve">
-    <value>TOTAL: {0} Hour(s) and {1} Minute(s) Auxiliary Time</value>
+    <value>{0} Hour(s) and {1} Minute(s) Auxiliary Time</value>
   </data>
   <data name="ReportingPage_Report_TotalHours" xml:space="preserve">
     <value>TOTAL: {0} Hour(s) and {1} Minute(s)</value>
