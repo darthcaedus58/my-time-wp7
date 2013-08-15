@@ -103,7 +103,18 @@ namespace FieldService.ViewModels
 		/// Gets a value indicating whether this instance is rv data loaded.
 		/// </summary>
 		/// <value><c>true</c> if this instance is rv data loaded; otherwise, <c>false</c>.</value>
-		public bool IsRvDataChanged { get; set; }
+		private bool _isRvDataChanged = true;
+		public bool IsRvDataChanged
+		{
+			get { return _isRvDataChanged; }
+				 set
+				 {
+					 if (_isRvDataChanged != value) {
+						 _isRvDataChanged = value;
+						 NotifyPropertyChanged("IsRvDataChanged");
+					 }
+				 }
+		}
 
 		/// <summary>
 		/// Gets a value indicating whether this instance is time report data loaded.
@@ -212,7 +223,6 @@ namespace FieldService.ViewModels
 		{
 			if (IsRvDataChanged) {
 				lbRvItems.Clear();
-				IsRvDataChanged = false;
 			} else {
 				return;
 			}
@@ -220,8 +230,10 @@ namespace FieldService.ViewModels
 			var bw = new BackgroundWorker();
 			bw.DoWork += (obt, e) => {
 				             _rvs = new List<ReturnVisitViewModel>();
-				             foreach (var r in ReturnVisitsInterface.GetReturnVisitByLastVisitDate(SortOrder.DateOldestToNewest, -1)) {
+				             var rvList = ReturnVisitsInterface.GetReturnVisitByLastVisitDate(SortOrder.DateOldestToNewest, -1);
+				             foreach (var r in rvList) {
 								 if (!ReturnVisitsInterface.IdExists(r)) continue;
+								 if (_rvs.Count >= 8) break;
 					             _rvs.Add(new ReturnVisitViewModel() {ItemId = r});
 				             }
 
@@ -333,7 +345,7 @@ namespace FieldService.ViewModels
 			}
 
 
-			int minutes = 0;
+			int summaryMinTotal = 0;
 			if (entries.Length <= 0) return;
 
 			int month = entries[0].Date.Month;
@@ -341,14 +353,16 @@ namespace FieldService.ViewModels
 			var summary = new TimeReportSummaryModel();
 			var rtdEntries = new List<RBCTimeData>();
 			//ListBox<int> rvList = new ListBox<int>();
-			foreach (TimeData td in entries) {
+			foreach (TimeData td in entries) {	//total regular time entries
 
 				//build total number for the report.
 				_timeReportTotal += td.Minutes;
 
+
+				//summary data start
 				if (month != td.Date.Month) {
-					summary.Time = string.Format(StringResources.TimeReport_HoursAndMinutes, (minutes / 60),minutes % 60 > 0 ? 60 - (minutes % 60) : 0);
-					summary.Minutes = minutes;
+					summary.Time = string.Format(StringResources.TimeReport_HoursAndMinutes, (summaryMinTotal / 60), summaryMinTotal > 0 ? summaryMinTotal % 60 : 0);
+					summary.Minutes = summaryMinTotal;
 					summary.RBCHours = (RBCTimeDataInterface.GetMonthRBCTimeTotal(new DateTime(year, month, 1)))/60.0;
 					RBCTimeData[] eee = RBCTimeDataInterface.GetRBCTimeEntries(new DateTime(year, month, 1), new DateTime(year, month, 1).AddMonths(1).AddDays(-1), SortOrder.DateNewestToOldest);
 					if (eee != null) rtdEntries.AddRange(eee);
@@ -356,31 +370,34 @@ namespace FieldService.ViewModels
 					summary = new TimeReportSummaryModel();
 					month = td.Date.Month;
 					year = td.Date.Year;
-					minutes = 0;
+					summaryMinTotal = 0;
 				}
 				summary.Month = td.Date.ToString("MMMM").ToUpper();
 				summary.Days++;
-				minutes += td.Minutes;
+				summaryMinTotal += td.Minutes;
 				summary.Magazines += td.Magazines;
 				summary.BibleStudies += td.BibleStudies;
 				summary.Books += td.Books;
 				summary.Brochures += td.Brochures;
 				summary.ReturnVisits += td.ReturnVisits;
+				//summary data end.
 
+				//add the time data to the entries page.
 				lbTimeEntries.Add(new TimeReportEntryViewModel {
 					                                               Date = td.Date,
-																   Hours = string.Format(StringResources.TimeReport_HoursAndMinutes, (td.Minutes / 60), minutes % 60 > 0 ? 60-(minutes % 60) : 0),
+																   Hours = string.Format(StringResources.TimeReport_HoursAndMinutes, (td.Minutes / 60), td.Minutes > 0 ? td.Minutes % 60 : 0),
 					                                               ItemId = td.ItemId,
 					                                               Minutes = td.Minutes,
 					                                               EditLink = string.Format("/View/RegularTime.xaml?id={0}", td.ItemId),
 																   Notes = td.Notes
 				                                               });
 			}
+
 			RBCTimeData[] ee = RBCTimeDataInterface.GetRBCTimeEntries(new DateTime(year, month, 1), new DateTime(year, month, 1).AddMonths(1).AddDays(-1), SortOrder.DateNewestToOldest);
 			if (ee != null) rtdEntries.AddRange(ee);
 			summary.RBCHours = (RBCTimeDataInterface.GetMonthRBCTimeTotal(new DateTime(year, month, 1))/60.0);
-			summary.Time = string.Format(StringResources.TimeReport_HoursAndMinutes, (minutes / 60), minutes % 60 > 0 ? 60 - (minutes % 60) : 0);
-			summary.Minutes = minutes;
+			summary.Time = string.Format(StringResources.TimeReport_HoursAndMinutes, (summaryMinTotal / 60), summaryMinTotal > 0 ? summaryMinTotal % 60 : 0);
+			summary.Minutes = summaryMinTotal;
 			icReport.Add(summary);
 
 			foreach (RBCTimeData e in rtdEntries) {
@@ -388,7 +405,7 @@ namespace FieldService.ViewModels
 				_timeReportTotal += e.Minutes;
 				lbTimeEntries.Add(new TimeReportEntryViewModel {
 					                                               Date = e.Date,
-					                                               Hours = string.Format(StringResources.TimeReport_AuxHoursAndMinutes, (int)e.Hours, e.Minutes % 60 > 0 ? 60 -(e.Minutes % 60) : 0),
+					                                               Hours = string.Format(StringResources.TimeReport_AuxHoursAndMinutes, (int)e.Hours, e.Minutes  > 0 ? e.Minutes % 60 : 0),
 					                                               ItemId = e.ItemID,
 					                                               Minutes = e.Minutes,
 					                                               EditLink = string.Format("/View/RBCTime.xaml?id={0}", e.ItemID),

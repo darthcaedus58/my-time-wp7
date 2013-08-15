@@ -376,6 +376,8 @@ namespace FieldService.ViewModels
 		}
 		#endregion
 
+		public string NavigateToPage { get { return string.Format("/View/EditReturnVisit.xaml?id={0}", ItemId); } }
+
 		public int ItemId
 		{
 			get { return _returnVisitData.ItemId; }
