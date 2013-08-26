@@ -75,5 +75,31 @@ namespace FieldService.ViewModels
 			}
 			return v;
 		}
+
+		public bool AddOrUpdateTime(int idExisting)
+		{
+			//throw new NotImplementedException();
+			var timeOld = _timeData;
+			TimeDataItemId = idExisting;
+			TimeData.BibleStudies += timeOld.BibleStudies;
+			TimeData.Books += timeOld.Books;
+			TimeData.Brochures += timeOld.Brochures;
+			TimeData.Date = timeOld.Date;
+			TimeData.Magazines += timeOld.Magazines;
+			TimeData.Minutes += timeOld.Minutes;
+			TimeData.Notes = string.IsNullOrWhiteSpace(timeOld.Notes) ? null : string.Format("{0}\n\n{1}",TimeData.Notes,timeOld.Notes);
+			TimeData.ReturnVisits += timeOld.ReturnVisits;
+
+			OnPropertyChanged("TimeData");
+
+			return AddOrUpdateTime();
+
+		}
+		public bool IsDoubleDataEntry(out int id)
+		{
+			//throw new NotImplementedException();
+			id = -1;
+			return _timeData.ItemId <= 0 && TimeDataInterface.IsDoubleDataEntry(_timeData.Date, out id);
+		}
 	}
 }

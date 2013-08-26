@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Windows;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
 using FieldService.ViewModels;
@@ -32,8 +33,17 @@ namespace FieldService.View
 
 		private void abibSave_Click_1(object sender, EventArgs e)
 		{
-			tbNotes.GetBindingExpression(PhoneTextBox.TextProperty).UpdateSource(); //if the text box has focus its data source will not be updated.
-			App.ToastMe(ViewModel.AddOrUpdateTime() ? string.Format("RBC Time: {0} Hours Saved.", ViewModel.RBCTimeData.Hours) : "Failed to save RBC time.");
+			if (!string.IsNullOrWhiteSpace(tbNotes.Text)) tbNotes.GetBindingExpression(PhoneTextBox.TextProperty).UpdateSource(); //if the text box has focus its data source will not be updated.
+
+			int idExisting; 
+			if (ViewModel.IsDoubleDateEntry(out idExisting)) {
+				var r = MessageBox.Show(StringResources.AddRBCTimePage_AskForDoubleEntry, "", MessageBoxButton.OKCancel);
+				if (r == MessageBoxResult.OK) {
+					App.ToastMe(ViewModel.AddOrUpdateTime(idExisting) ? string.Format(StringResources.AddRBCTimePage_SaveConfirmation, ViewModel.RBCTimeData.Hours) : StringResources.AddRBCTimePage_SaveFailed);
+					return;
+				}
+			}
+			App.ToastMe(ViewModel.AddOrUpdateTime() ? string.Format(StringResources.AddRBCTimePage_SaveConfirmation, ViewModel.RBCTimeData.Hours) : StringResources.AddRBCTimePage_SaveFailed);
 		}
 
 		private void abmiConvertToRegTime_Click_1(object sender, EventArgs e)

@@ -187,6 +187,15 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to It appears you have already added time earlier today.  Would you like to merge this new time with the previous time for today?.
+        /// </summary>
+        public static string AddRBCTimePage_AskForDoubleEntry {
+            get {
+                return ResourceManager.GetString("AddRBCTimePage_AskForDoubleEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auxiliary Hour(s) Saved..
         /// </summary>
         public static string AddRBCTimePage_Confirmation {
@@ -223,6 +232,24 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auxiliary Time Deleted..
+        /// </summary>
+        public static string AddRBCTimePage_DeleteConfirmation {
+            get {
+                return ResourceManager.GetString("AddRBCTimePage_DeleteConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting Failed..
+        /// </summary>
+        public static string AddRBCTimePage_DeleteFailed {
+            get {
+                return ResourceManager.GetString("AddRBCTimePage_DeleteFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to auxiliary time.
         /// </summary>
         public static string AddRBCTimePage_Headline {
@@ -255,6 +282,24 @@ namespace FieldService {
         public static string AddRBCTimePage_Save {
             get {
                 return ResourceManager.GetString("AddRBCTimePage_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time: {0} Hours Saved..
+        /// </summary>
+        public static string AddRBCTimePage_SaveConfirmation {
+            get {
+                return ResourceManager.GetString("AddRBCTimePage_SaveConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Failed..
+        /// </summary>
+        public static string AddRBCTimePage_SaveFailed {
+            get {
+                return ResourceManager.GetString("AddRBCTimePage_SaveFailed", resourceCulture);
             }
         }
         

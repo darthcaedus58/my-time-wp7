@@ -124,25 +124,25 @@
     <value>Opuscoli</value>
   </data>
   <data name="AddCallPage_CallSaved" xml:space="preserve">
-    <value>Chiamata salvata.</value>
+    <value>Chiamata salvata</value>
   </data>
   <data name="AddCallPage_CallSavedFailed" xml:space="preserve">
-    <value>Chiamata salvata fallito.</value>
+    <value>Salvataggio chiamata fallito</value>
   </data>
   <data name="AddCallPage_Date" xml:space="preserve">
     <value>DATA</value>
   </data>
   <data name="AddCallPage_DeleteCall" xml:space="preserve">
-    <value>elimina la chiamata</value>
+    <value>Elimina la chiamata</value>
   </data>
   <data name="AddCallPage_DeleteCallConfirmation" xml:space="preserve">
     <value>Sei sicuro di voler eliminare questa chiamata?</value>
   </data>
   <data name="AddCallPage_DeleteCallFailed" xml:space="preserve">
-    <value>Cancellando chiamata fallito.</value>
+    <value>Cancellazione chiamata fallita</value>
   </data>
   <data name="AddCallPage_Headline" xml:space="preserve">
-    <value>chiamata</value>
+    <value>Chiamata</value>
   </data>
   <data name="AddCallPage_Magazines" xml:space="preserve">
     <value>Riviste</value>
@@ -151,34 +151,34 @@
     <value>NOTE</value>
   </data>
   <data name="AddCallPage_Placements" xml:space="preserve">
-    <value>POSIZIONAMENTI</value>
+    <value>LETTERATURA</value>
   </data>
   <data name="AddCallPage_Save" xml:space="preserve">
-    <value>conservare</value>
+    <value>Salva</value>
   </data>
   <data name="AddCallPage_SaveBeforeEditMessage" xml:space="preserve">
-    <value>È necessario salvare il camper prima di aggiungere una chiamata.</value>
+    <value>È necessario salvare la visita ulteriore prima di aggiungere una chiamata</value>
   </data>
   <data name="AddRBCTimePage_Confirmation" xml:space="preserve">
-    <value>Ora(e) ausiliario Salvata.</value>
+    <value>Ora(e) ausiliario salvata</value>
   </data>
   <data name="AddRBCTimePage_ConvertMenuItem" xml:space="preserve">
-    <value>converti in ore</value>
+    <value>Converti in ore</value>
   </data>
   <data name="AddRBCTimePage_Date" xml:space="preserve">
     <value>DATA</value>
   </data>
   <data name="AddRBCTimePage_Delete" xml:space="preserve">
-    <value>cancella</value>
+    <value>Cancella</value>
   </data>
   <data name="AddRBCTimePage_Headline" xml:space="preserve">
-    <value>ore ausiliario</value>
+    <value>Ore ausiliario</value>
   </data>
   <data name="AddRBCTimePage_Notes" xml:space="preserve">
     <value>NOTE</value>
   </data>
   <data name="AddRBCTimePage_Save" xml:space="preserve">
-    <value>conservare</value>
+    <value>Salva</value>
   </data>
   <data name="AddRBCTimePage_Time" xml:space="preserve">
     <value>ORE</value>
@@ -190,49 +190,49 @@
     <value>Opuscoli</value>
   </data>
   <data name="AddTimePage_ConvertMenuItem" xml:space="preserve">
-    <value>convertire in tempo ausiliario</value>
+    <value>Convertire in tempo ausiliario</value>
   </data>
   <data name="AddTimePage_Date" xml:space="preserve">
     <value>DATA</value>
   </data>
   <data name="AddTimePage_DeleteMenuItem" xml:space="preserve">
-    <value>cancella</value>
+    <value>Cancella </value>
   </data>
   <data name="AddTimePage_Headline" xml:space="preserve">
-    <value>tempo</value>
+    <value>Tempo</value>
   </data>
   <data name="AddTimePage_Magazines" xml:space="preserve">
     <value>Riviste</value>
   </data>
   <data name="AddTimePage_Messages_RBCConvertFailed" xml:space="preserve">
-    <value>Conversione non riuscita.</value>
+    <value>Conversione non riuscita</value>
   </data>
   <data name="AddTimePage_Messages_RBCConvertSuccess" xml:space="preserve">
-    <value>Tempo Convertito in Ausiliaria.</value>
+    <value>Tempo Convertito in Ausiliario</value>
   </data>
   <data name="AddTimePage_Messages_SaveCompleted" xml:space="preserve">
-    <value>Tempo: {0} ore risparmiate.</value>
+    <value>Tempo: {0} ora(e) salvate</value>
   </data>
   <data name="AddTimePage_Messages_SaveFailed" xml:space="preserve">
-    <value>Fallito per risparmiare tempo.</value>
+    <value>Salvataggio ora(e) fallito</value>
   </data>
   <data name="AddTimePage_Messages_TimeDeleteFailed" xml:space="preserve">
-    <value>cancella fallito.</value>
+    <value>Cancellazione tempo fallito</value>
   </data>
   <data name="AddTimePage_Messages_TimeDeleteSuccess" xml:space="preserve">
-    <value>Tempo Cancellato</value>
+    <value>Cancellazione tempo avvenuta con successo</value>
   </data>
   <data name="AddTimePage_Notes" xml:space="preserve">
     <value>NOTE</value>
   </data>
   <data name="AddTimePage_Placements" xml:space="preserve">
-    <value>POSIZIONAMENTI</value>
+    <value>LETTERATURA</value>
   </data>
   <data name="AddTimePage_RVs" xml:space="preserve">
     <value>Visite Ulteriori</value>
   </data>
   <data name="AddTimePage_Save" xml:space="preserve">
-    <value>conservare</value>
+    <value>Salva</value>
   </data>
   <data name="AddTimePage_Time" xml:space="preserve">
     <value>TEMPO</value>
@@ -247,10 +247,10 @@
     <value>Backup</value>
   </data>
   <data name="BackupAndRestorePage_Headline" xml:space="preserve">
-    <value>gestisci il cloud</value>
+    <value>Gestisci il cloud</value>
   </data>
   <data name="BackupAndRestorePage_LastBackup" xml:space="preserve">
-    <value>Ultimo Backup Data</value>
+    <value>Ultimo Backup </value>
   </data>
   <data name="BackupAndRestorePage_Message" xml:space="preserve">
     <value>Per favore connettiti e consenti l’accesso al tuo SkyDrive</value>
@@ -259,7 +259,7 @@
     <value>{0:0,0} di {1:0,0} scaricati.</value>
   </data>
   <data name="BackupAndRestorePage_Messages_NeverBackedUp" xml:space="preserve">
-    <value>Mai Sostenuto Up!</value>
+    <value>Mai eseguito il Backup</value>
   </data>
   <data name="BackupAndRestorePage_Messages_Progress" xml:space="preserve">
     <value>{0:0,0} di {1:0,0} caricati.</value>
@@ -268,34 +268,34 @@
     <value>Ripristino non riuscito!</value>
   </data>
   <data name="BackupAndRestorePage_Messages_RestoreSuccess" xml:space="preserve">
-    <value>Ripristino Successo!</value>
+    <value>Ripristino avvenuto con successo!</value>
   </data>
   <data name="BackupAndRestorePage_Messages_Restoring" xml:space="preserve">
     <value>Ripristino Ora ...</value>
   </data>
   <data name="BackupAndRestorePage_Messages_UploadFailed" xml:space="preserve">
-    <value>Non riesco a caricare i dati di backup. Si prega di effettuare il logout e riprova.</value>
+    <value>Non riesco a caricare i dati di backup. Si prega di effettuare il logout e riprovare</value>
   </data>
   <data name="BackupAndRestorePage_Messages_Welcome" xml:space="preserve">
     <value>Benvenuto {0} {1}</value>
   </data>
   <data name="BackupAndRestorePage_NotSignedIn" xml:space="preserve">
-    <value>Accesso non eseguito.</value>
+    <value>Accesso non eseguito</value>
   </data>
   <data name="BackupAndRestorePage_Restore" xml:space="preserve">
     <value>Ripristina</value>
   </data>
   <data name="BackupAndRestorePage_SignIn" xml:space="preserve">
-    <value>Sign in</value>
+    <value>Entra</value>
   </data>
   <data name="BackupAndRestorePage_Signout" xml:space="preserve">
-    <value>Sign out</value>
+    <value>Esci</value>
   </data>
   <data name="BackupAndRestorePage_Welcome" xml:space="preserve">
     <value>Benvenuto</value>
   </data>
   <data name="FullRVListPage_Headline" xml:space="preserve">
-    <value>visite ulteriori</value>
+    <value>Visite ulteriori</value>
   </data>
   <data name="FullRVListPage_YearOld" xml:space="preserve">
     <value>Età</value>
@@ -304,37 +304,37 @@
     <value>Field Service</value>
   </data>
   <data name="MainPage_DT_Copyright" xml:space="preserve">
-    <value>QUANTO SOPRA E’ COPYRIGHT 2013 WATCHTOWER BIBLE AND TRACT SOCIETY OF PENNSYLVANIA, INC. TUTTI I DIRITTI SONO RISERVATI.</value>
+    <value>QUANTO SOPRA E’ COPYRIGHT 2013 WATCHTOWER BIBLE AND TRACT SOCIETY OF PENNSYLVANIA, INC. TUTTI I DIRITTI SONO RISERVATI</value>
   </data>
   <data name="MainPage_DT_ErrorText" xml:space="preserve">
-    <value>È necessario essere connessi a Internet per visualizzare il testo quotidiano.</value>
+    <value>È necessario essere connessi a Internet per visualizzare il testo quotidiano</value>
   </data>
   <data name="MainPage_DT_Headline" xml:space="preserve">
-    <value>scrittura del giorno</value>
+    <value>Scrittura del giorno</value>
   </data>
   <data name="MainPage_MainMenu_AddRv" xml:space="preserve">
-    <value>aggiungi visita ulteriore</value>
+    <value>Aggiungi visita ulteriore</value>
   </data>
   <data name="MainPage_MainMenu_AddTime" xml:space="preserve">
-    <value>aggiungi ore</value>
+    <value>Aggiungi ore</value>
   </data>
   <data name="MainPage_MainMenu_BackupRestore" xml:space="preserve">
-    <value>backup &amp; ripristino</value>
+    <value>Backup e ripristino</value>
   </data>
   <data name="MainPage_MainMenu_MonthReport" xml:space="preserve">
-    <value>rapporto {0}</value>
+    <value>Rapporto {0}</value>
   </data>
   <data name="MainPage_MainMenu_SendReport" xml:space="preserve">
-    <value>inviare rapporto</value>
+    <value>Invia rapporto</value>
   </data>
   <data name="MainPage_MainMenu_ServiceYearReport" xml:space="preserve">
-    <value>rapporto annuale</value>
+    <value>Rapporto annuale</value>
   </data>
   <data name="MainPage_MainMenu_Settings" xml:space="preserve">
-    <value>impostazioni</value>
+    <value>Impostazioni</value>
   </data>
   <data name="MainPage_MainMenu_WtLib" xml:space="preserve">
-    <value>libreria watchtower</value>
+    <value>Libreria watchtower</value>
   </data>
   <data name="MainPage_Report_AuxHours" xml:space="preserve">
     <value>Ore Ausiliario: \t{0:0.0}\n</value>
@@ -361,7 +361,7 @@
     <value>Visite Ulteriori:\t{0}\n</value>
   </data>
   <data name="MainPage_RvHeadline" xml:space="preserve">
-    <value>visite ulteriori</value>
+    <value>Visite ulteriori</value>
   </data>
   <data name="MainPage_RV_DaysSince" xml:space="preserve">
     <value>Giorni dall'ultima Visita</value>
@@ -376,7 +376,7 @@
     <value>Opuscoli</value>
   </data>
   <data name="MainPage_Time_Headline" xml:space="preserve">
-    <value>ore</value>
+    <value>Ore</value>
   </data>
   <data name="MainPage_Time_Magazines" xml:space="preserve">
     <value>Riviste</value>
@@ -388,52 +388,52 @@
     <value>Studi Biblici</value>
   </data>
   <data name="ReportingPage_Entries" xml:space="preserve">
-    <value>voci</value>
+    <value>Voci</value>
   </data>
   <data name="ReportingPage_Entries_Header" xml:space="preserve">
-    <value>voci</value>
+    <value>Voci</value>
   </data>
   <data name="ReportingPage_Report_Books" xml:space="preserve">
-    <value>Libri, </value>
+    <value>Libri</value>
   </data>
   <data name="ReportingPage_Report_Brochures" xml:space="preserve">
-    <value> Opuscoli</value>
+    <value>Opuscoli</value>
   </data>
   <data name="ReportingPage_Report_ChartTitle" xml:space="preserve">
     <value>Tempo in Ore</value>
   </data>
   <data name="ReportingPage_Report_Days" xml:space="preserve">
-    <value> day(s)</value>
+    <value>Giorno(i)</value>
   </data>
   <data name="ReportingPage_Report_Disclaimer" xml:space="preserve">
-    <value>Promemoria: Servizio anno inizia a settembre.</value>
+    <value>Promemoria: L'anno di servizio inizia a settembre</value>
   </data>
   <data name="ReportingPage_Report_From" xml:space="preserve">
     <value>DA: {0}</value>
   </data>
   <data name="ReportingPage_Report_Headline" xml:space="preserve">
-    <value>rapporto</value>
+    <value>Rapporto</value>
   </data>
   <data name="ReportingPage_Report_HoursOnDays" xml:space="preserve">
     <value>{0} Ora(e) in {1} giorno(i)</value>
   </data>
   <data name="ReportingPage_Report_Legend" xml:space="preserve">
-    <value>legenda</value>
+    <value>Legenda</value>
   </data>
   <data name="ReportingPage_Report_Magazines" xml:space="preserve">
-    <value> Riviste, </value>
+    <value>Riviste</value>
   </data>
   <data name="ReportingPage_Report_MyActivity" xml:space="preserve">
-    <value>le mie attività</value>
+    <value>Le mie attività</value>
   </data>
   <data name="ReportingPage_Report_On" xml:space="preserve">
-    <value>su </value>
+    <value>Su </value>
   </data>
   <data name="ReportingPage_Report_OtherActivity" xml:space="preserve">
     <value>ALTRE ATTIVITÀ</value>
   </data>
   <data name="ReportingPage_Report_Placements" xml:space="preserve">
-    <value>POSIZIONAMENTI</value>
+    <value>LETTERATURA</value>
   </data>
   <data name="ReportingPage_Report_Time" xml:space="preserve">
     <value>TEMPO</value>
@@ -448,7 +448,7 @@
     <value>Visite Ulteriori</value>
   </data>
   <data name="ReportingPage_Share" xml:space="preserve">
-    <value>condividi…</value>
+    <value>Condividi…</value>
   </data>
   <data name="RVPage_Address_Address1" xml:space="preserve">
     <value>Indirizzo 1</value>
@@ -466,7 +466,7 @@
     <value>Indirizzo attuale:</value>
   </data>
   <data name="RVPage_Address_Headline" xml:space="preserve">
-    <value>indirizzo</value>
+    <value>Indirizzo</value>
   </data>
   <data name="RVPage_Address_LocationNotes" xml:space="preserve">
     <value>Note Sulla Posizione</value>
@@ -487,28 +487,28 @@
     <value>INDIRIZZO</value>
   </data>
   <data name="RVPage_Info_Headline" xml:space="preserve">
-    <value>info</value>
+    <value>Info</value>
   </data>
   <data name="RVPage_Info_PersonalInfo" xml:space="preserve">
     <value>INFORMAZIONI PERSONALI</value>
   </data>
   <data name="RVPage_Menu_AddVisit" xml:space="preserve">
-    <value>aggiungi visita</value>
+    <value>Aggiungi visita</value>
   </data>
   <data name="RVPage_Menu_Delete" xml:space="preserve">
-    <value>cancella visita ulteriore</value>
+    <value>Cancella visita ulteriore</value>
   </data>
   <data name="RVPage_Menu_Email" xml:space="preserve">
-    <value>email visita ulteriore</value>
+    <value>Email visita ulteriore</value>
   </data>
   <data name="RVPage_Menu_Export" xml:space="preserve">
-    <value>esporta nei contatti</value>
+    <value>Esporta nei contatti</value>
   </data>
   <data name="RVPage_Menu_Reset" xml:space="preserve">
-    <value>reset</value>
+    <value>Ripristina</value>
   </data>
   <data name="RVPage_Menu_Save" xml:space="preserve">
-    <value>conservare</value>
+    <value>Salva</value>
   </data>
   <data name="RVPage_Messages_Delete" xml:space="preserve">
     <value>Sei sicuro di voler eliminare la visita ulteriore?</value>
@@ -520,7 +520,7 @@
     <value>Includere tutte le visite?</value>
   </data>
   <data name="RVPage_Messages_Saved" xml:space="preserve">
-    <value>Visita Ulteriore Salvata.</value>
+    <value>Visita Ulteriore Salvata</value>
   </data>
   <data name="RVPage_Personal_Age" xml:space="preserve">
     <value>Età</value>
@@ -532,7 +532,7 @@
     <value>Nome Completo</value>
   </data>
   <data name="RVPage_Personal_Headline" xml:space="preserve">
-    <value>personale</value>
+    <value>Personale</value>
   </data>
   <data name="RVPage_Personal_PhoneNumber" xml:space="preserve">
     <value>Numero di Telefono</value>
@@ -541,7 +541,7 @@
     <value>Aggiungi Promemoria</value>
   </data>
   <data name="RVPage_Reminders_Headline" xml:space="preserve">
-    <value>promemoria</value>
+    <value>Promemoria</value>
   </data>
   <data name="RVPage_Reminders_Notes" xml:space="preserve">
     <value>Note</value>
@@ -553,10 +553,10 @@
     <value>Scegli ora</value>
   </data>
   <data name="RVPage_Visits_DaysSince" xml:space="preserve">
-    <value> giorni dalla visita</value>
+    <value>Giorni dalla visita</value>
   </data>
   <data name="RVPage_Visits_Headline" xml:space="preserve">
-    <value>visite</value>
+    <value>Visite</value>
   </data>
   <data name="SettingsPage_About_AppVersion" xml:space="preserve">
     <value>Versione Applicazione:</value>
@@ -568,10 +568,10 @@
     <value>Versione Core:</value>
   </data>
   <data name="SettingsPage_About_Donate" xml:space="preserve">
-    <value>Donare a di Sviluppo</value>
+    <value>Donare per lo sviluppo dell'applicazione</value>
   </data>
   <data name="SettingsPage_About_Headline" xml:space="preserve">
-    <value>riguardo</value>
+    <value>Info</value>
   </data>
   <data name="SettingsPage_About_Help" xml:space="preserve">
     <value>Aiuto!</value>
@@ -595,67 +595,67 @@
     <value>Versione</value>
   </data>
   <data name="SettingsPage_Settings_AddCallPlacements" xml:space="preserve">
-    <value>VERSIONE</value>
+    <value>Aggiungi letteratura alla chiamata</value>
   </data>
   <data name="SettingsPage_Settings_AppSettings" xml:space="preserve">
-    <value>Application Settings</value>
+    <value>Impostazioni applicazione</value>
   </data>
   <data name="SettingsPage_Settings_BeautifyPhoneNumbers" xml:space="preserve">
-    <value>Beautify Phone Numbers (US Only)</value>
+    <value>Abbellire i numeri di telefono (solo USA)</value>
   </data>
   <data name="SettingsPage_Settings_CSO" xml:space="preserve">
-    <value>Congregation Service Overseer</value>
+    <value>Sorvegliante di servizio di congregazione</value>
   </data>
   <data name="SettingsPage_Settings_CSO_Message1" xml:space="preserve">
-    <value>Tap the button above to choose the contact record of your CSO.</value>
+    <value>Toccare il pulsante sopra per scegliere il contatto del vostro CSO.</value>
   </data>
   <data name="SettingsPage_Settings_DefaultAge" xml:space="preserve">
-    <value>Default Age</value>
+    <value>Età predefinita</value>
   </data>
   <data name="SettingsPage_Settings_DeleteCallsAndRv" xml:space="preserve">
-    <value>Delete Calls and RV</value>
+    <value>Cancella chiamate e visite ulteriori</value>
   </data>
   <data name="SettingsPage_Settings_DeleteCallsRvNote" xml:space="preserve">
-    <value>NOTE: Deleting the calls will delete the RVs from your service report.</value>
+    <value>NOTA: l'eliminazione delle chiamate eliminerà le visite ulteriori dal vostro rapporto di servizio.</value>
   </data>
   <data name="SettingsPage_Settings_Email" xml:space="preserve">
-    <value>Email</value>
+    <value>E-mail</value>
   </data>
   <data name="SettingsPage_Settings_Headline" xml:space="preserve">
-    <value>impostazioni</value>
+    <value>Impostazioni</value>
   </data>
   <data name="SettingsPage_Settings_NickName" xml:space="preserve">
-    <value>Nick Name</value>
+    <value>Nome</value>
   </data>
   <data name="SettingsPage_Settings_PersonalSettings" xml:space="preserve">
-    <value>Personal Settings</value>
+    <value>Impostazioni personali</value>
   </data>
   <data name="SettingsPage_Settings_PlacementsMessage1" xml:space="preserve">
-    <value>If set to ‘on’ placements recorded on a return visit call will count towards your monthly report. If you set this to ‘off’ you wil have to enter your placements twice (on the call and on the add time screen).</value>
+    <value>Se impostato su 'ON' la letteratura inserita nelle visite ulteriori sarà contata sul vostro rapporto mensile. Se si imposta su 'OFF' dovrete inserire la letteratura due volte (sulla chiamata e sul display aggiungi ore)</value>
   </data>
   <data name="SettingsPage_Settings_PrivacyPolicy" xml:space="preserve">
-    <value>Privacy Policy: This app uses location services to find your address when entering a new return visit. While the address you enter is stored, the GPS location data recorded while searching for an address is never stored or transmitted.</value>
+    <value>Informativa sulla privacy: Questa applicazione utilizza i servizi di localizzazione per trovare il vostro indirizzo quando si entra in una nuova visita ulteriore. Mentre l'indirizzo immesso viene memorizzato, i dati di localizzazione GPS registrati durante la ricerca di un indirizzo non sono mai memorizzati o trasmessi.</value>
   </data>
   <data name="SettingsPage_Settings_RoundTime" xml:space="preserve">
-    <value>Round Time (15 Minute Increments)</value>
+    <value>Arrotonda il tempo (incrementa di 15 minuti)</value>
   </data>
   <data name="SettingsPage_Settings_SendMethod" xml:space="preserve">
-    <value>Default Send Method</value>
+    <value>Metodo di invio predefinito</value>
   </data>
   <data name="SettingsPage_Settings_SharingOptions" xml:space="preserve">
-    <value>SHARING OPTIONS</value>
+    <value>Opzioni di condivisione</value>
   </data>
   <data name="SettingsPage_Settings_SignatureMessage" xml:space="preserve">
-    <value>Include Field Service Signature</value>
+    <value>Includi la firma Field Service</value>
   </data>
   <data name="SettingsPage_Settings_SignatureMessage2" xml:space="preserve">
-    <value>Signature is only included on emailed reports. It’s left off of SMS reports.</value>
+    <value>La firma è inclusa solo sui rapporti inviati via email. Non è inclusa nei rapporti inviati via SMS</value>
   </data>
   <data name="SettingsPage_Settings_SMS" xml:space="preserve">
     <value>SMS</value>
   </data>
   <data name="SettingsPage_Settings_UseLocServices" xml:space="preserve">
-    <value>Use Location Services</value>
+    <value>Usa il servizio di localizzazione</value>
   </data>
   <data name="ViewPreviousVisitPage_Books" xml:space="preserve">
     <value>Libri</value>
@@ -667,40 +667,40 @@
     <value>Riviste</value>
   </data>
   <data name="ViewPreviousVisitPage_Menu_Edit" xml:space="preserve">
-    <value>modifica</value>
+    <value>Modifica</value>
   </data>
   <data name="ViewPreviousVisitPage_Notes" xml:space="preserve">
     <value>NOTE</value>
   </data>
   <data name="ViewPreviousVisitPage_Placements" xml:space="preserve">
-    <value>POSIZIONAMENTI</value>
+    <value>LETTERATURA</value>
   </data>
   <data name="ViewPreviousVisitPage_Rv" xml:space="preserve">
     <value>VISITE ULTERIORI</value>
   </data>
   <data name="MainPage_MainMenu_AddAuxTime" xml:space="preserve">
-    <value>aggiungi ore altro</value>
+    <value>Aggiungi altre ore</value>
   </data>
   <data name="TimeReport_HoursAndMinutes" xml:space="preserve">
-    <value>{0} Ora(e) &amp; {1} Minuti</value>
+    <value>{0} Ora(e) e {1} Minuti</value>
   </data>
   <data name="Application_DailyTextURL" xml:space="preserve">
     <value>http://wol.jw.org/it/wol/dt/r6/lp-i/{0}/{1}/{2}</value>
   </data>
   <data name="MainPage_Messages_AddedTime" xml:space="preserve">
-    <value>Tempo ({0} ore &amp; {1} min) aggiunto.</value>
+    <value>Tempo ({0} ore e {1} min) aggiunto</value>
   </data>
   <data name="MainPage_Messages_CantAddZeroMin" xml:space="preserve">
-    <value>Non è possibile aggiungere zero minuti.</value>
+    <value>Non è possibile aggiungere zero minuti</value>
   </data>
   <data name="MainPage_Messages_DonateLater" xml:space="preserve">
-    <value>È possibile donare in impostazioni &gt; riguardo tardi.</value>
+    <value>È possibile donare in impostazioni &gt; info applicazione</value>
   </data>
   <data name="MainPage_Messages_DonatePlease" xml:space="preserve">
-    <value>Questa applicazione è libero di utilizzare. Invio di applicazioni per il negozio di Windows Phone applicazione non è. Vuoi prendere in considerazione una donazione?</value>
+    <value>Questa applicazione è di libero utilizzo. L'invio di applicazioni per il negozio di Windows Phone non è gratuito. Vuoi prendere in considerazione una donazione?</value>
   </data>
   <data name="AddRBCTimePage_Note" xml:space="preserve">
-    <value>Tempo ausiliario è un qualsiasi tipo di tempo che non è il servizio settore collegato, ma che può essere segnalato sul vostro rapporto di servizio di campo - ad esempio per alcuni fratelli nominati e sorelle il tempo trascorso in siti commissione edilizia regionali costruzione di Sale del Regno si possono notare sul loro rapporto. Si prega di consultare il vostro sorvegliante servizio congregazione per i dettagli.</value>
+    <value>Il tempo ausiliario è qualsiasi tipo di tempo che non è il servizio di campo, ma che può essere riportato sul vostro rapporto di servizio di campo: ad esempio per alcuni fratelli nominati e sorelle è il tempo trascorso nei siti di commissione edilizia regionale di costruzione delle Sale del Regno che si possono segnare sul loro rapporto. per dettagli riguardanti le ore che si possono segnare sul proprio rapporto, consultare il vostro sorvegliante di servizio di costruzione</value>
   </data>
   <data name="MainPage_Time_Notes" xml:space="preserve">
     <value>Note</value>

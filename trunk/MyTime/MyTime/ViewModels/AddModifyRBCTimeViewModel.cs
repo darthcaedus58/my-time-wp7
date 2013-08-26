@@ -70,5 +70,23 @@ namespace FieldService.ViewModels
 			}
 			return v;
 		}
+
+		public bool IsDoubleDateEntry(out int id)
+		{
+			//throw new NotImplementedException();
+			id = -1;
+			return _rbcTimeData.ItemID <= 0 && RBCTimeDataInterface.IsDoubleDateEntry(_rbcTimeData.Date, out id);
+		}
+
+		public bool AddOrUpdateTime(int idExisting)
+		{
+			//throw new NotImplementedException();
+			var rbcOld = _rbcTimeData;
+			RBCTimeDataItemId = idExisting;
+			RBCTimeData.Minutes += rbcOld.Minutes;
+			RBCTimeData.Notes += string.IsNullOrWhiteSpace(RBCTimeData.Notes) ? null : string.Format("\n\n{0}", rbcOld.Notes);
+			OnPropertyChanged("RBCTimeData");
+			return AddOrUpdateTime();
+		}
 	}
 }

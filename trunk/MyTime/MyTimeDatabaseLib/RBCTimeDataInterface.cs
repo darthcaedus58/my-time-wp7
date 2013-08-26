@@ -140,6 +140,27 @@ namespace MyTimeDatabaseLib
 				} catch { return null; }
 			}
 		}
+
+		public static bool IsDoubleDateEntry(DateTime date, out int id)
+		{
+			//throw new NotImplementedException();
+			using (var db = new RBCTimeDataContext()) {
+				try {
+					var q = from x in db.RBCTimeDataItems
+							where x.Date.Date == date.Date
+							select x;
+					if (q.Any()) {
+						id = q.First().ItemId;
+						return true;
+					}
+					id = -1;
+					return false;
+				} catch {
+					id = -1;
+					return false;
+				}
+			}
+		}
 	}
 
 	public class RBCTimeData
