@@ -16,7 +16,7 @@
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
     <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
-    <SupportedCultures>en-US;it-IT;de-DE;</SupportedCultures>
+    <SupportedCultures>en-US;it-IT;de-DE;es-MX;es-CO;</SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>fieldservice.xap</XapFilename>
@@ -120,6 +120,11 @@
       <DependentUpon>StringResources.de-DE.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="StringResources.es-MX1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.es-MX.resx</DependentUpon>
     </Compile>
     <Compile Include="StringResources.it-IT.Designer.cs">
       <DependentUpon>StringResources.it-IT.resx</DependentUpon>
@@ -392,6 +397,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="StringResources.es-CO.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="StringResources.es-MX.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StringResources.es-MX1.Designer.cs</LastGenOutput>

@@ -164,6 +164,28 @@ namespace MyTimeDatabaseLib
 			if (td.ItemId < 0) return AddTime(ref td);
 			return UpdateTime(ref td);
 		}
+
+		public static bool IsDoubleDataEntry(DateTime date, out int id)
+		{
+			//
+			using (var db = new TimeDataContext(TimeDataContext.DBConnectionString)) {
+				try {
+					var q = from x in db.TimeDataItems
+							where x.Date.Date == date.Date
+							select x;
+
+					if (q.Any()) {
+						id = q.First().ItemId;
+						return true;
+					}
+					id = -1;
+					return false;
+				} catch {
+					id = -1;
+					return false;
+				}
+			}
+		}
 	}
 
 	/// <summary>

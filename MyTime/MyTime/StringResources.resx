@@ -714,4 +714,19 @@
   <data name="ReportingPage_Report_TotalHours" xml:space="preserve">
     <value>TOTAL: {0} Hour(s) and {1} Minute(s)</value>
   </data>
+  <data name="AddRBCTimePage_AskForDoubleEntry" xml:space="preserve">
+    <value>It appears you have already added time earlier today.  Would you like to merge this new time with the previous time for today?</value>
+  </data>
+  <data name="AddRBCTimePage_DeleteConfirmation" xml:space="preserve">
+    <value>Auxiliary Time Deleted.</value>
+  </data>
+  <data name="AddRBCTimePage_DeleteFailed" xml:space="preserve">
+    <value>Deleting Failed.</value>
+  </data>
+  <data name="AddRBCTimePage_SaveConfirmation" xml:space="preserve">
+    <value>Time: {0} Hours Saved.</value>
+  </data>
+  <data name="AddRBCTimePage_SaveFailed" xml:space="preserve">
+    <value>Save Failed.</value>
+  </data>
 </root>

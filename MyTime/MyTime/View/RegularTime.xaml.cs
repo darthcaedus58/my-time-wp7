@@ -74,7 +74,16 @@ namespace FieldService.View
 		/// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
 		private void abibSave_Click(object sender, EventArgs e)
 		{
-			tbNotes.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+			if(!string.IsNullOrWhiteSpace(tbNotes.Text)) tbNotes.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
+			int idExisting;
+			if (ViewModel.IsDoubleDataEntry(out idExisting)) {
+				var r = MessageBox.Show(StringResources.AddRBCTimePage_AskForDoubleEntry, "", MessageBoxButton.OKCancel);
+				if (r == MessageBoxResult.OK) {
+					App.ToastMe(ViewModel.AddOrUpdateTime(idExisting) ? string.Format(StringResources.AddTimePage_Messages_SaveCompleted, ViewModel.TimeData.Hours) : StringResources.AddTimePage_Messages_SaveFailed);
+					return;
+				}
+			}
 			App.ToastMe(ViewModel.AddOrUpdateTime() ? string.Format(StringResources.AddTimePage_Messages_SaveCompleted, ViewModel.TimeData.Hours) : StringResources.AddTimePage_Messages_SaveFailed);
 		}
 
