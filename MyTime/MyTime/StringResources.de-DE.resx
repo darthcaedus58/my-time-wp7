@@ -705,4 +705,7 @@
   <data name="MainPage_Time_Notes" xml:space="preserve">
     <value>Notizen</value>
   </data>
+  <data name="AddRBCTimePage_AskForDoubleEntry" xml:space="preserve">
+    <value>Es sieht so aus, als ob du heute bereits Zeit hinzugefügt hast. Möchtest die neue Zeit mit der vorherigen Zeit für heute zusammenfassen?</value>
+  </data>
 </root>

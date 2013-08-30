@@ -140,6 +140,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StringResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="StringResources.it-IT1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.it-IT.resx</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverters.cs" />
     <Compile Include="ViewModels\AddModifyRBCTimeViewModel.cs" />
     <Compile Include="ViewModels\AddModifyTimeViewModel.cs" />
