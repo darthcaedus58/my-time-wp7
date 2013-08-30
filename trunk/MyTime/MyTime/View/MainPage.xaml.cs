@@ -139,6 +139,7 @@ namespace FieldService.View
 			_bwLoadRvs.RunWorkerAsync();
 
 			try {
+				//MessageBox.Show(CultureInfo.CurrentCulture.Name);
 				var b = bool.Parse(App.AppSettingsProvider["askForDonation"].Value);
 				if (b) {
 					if (MessageBox.Show(StringResources.MainPage_Messages_DonatePlease, "", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {

@@ -16,7 +16,7 @@
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
     <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
-    <SupportedCultures>en-US;it-IT;de-DE;es-MX;es-CO;</SupportedCultures>
+    <SupportedCultures>en;it;de;es;es-CO</SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>fieldservice.xap</XapFilename>
@@ -111,23 +111,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StringResources.de-DE1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StringResources.de-DE.resx</DependentUpon>
-    </Compile>
-    <Compile Include="StringResources.de-DE.Designer.cs">
-      <DependentUpon>StringResources.de-DE.resx</DependentUpon>
+    <Compile Include="StringResources.de.Designer.cs">
+      <DependentUpon>StringResources.de.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="StringResources.es-MX1.Designer.cs">
+    <Compile Include="StringResources.es.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StringResources.es-MX.resx</DependentUpon>
+      <DependentUpon>StringResources.es.resx</DependentUpon>
     </Compile>
-    <Compile Include="StringResources.it-IT.Designer.cs">
-      <DependentUpon>StringResources.it-IT.resx</DependentUpon>
+    <Compile Include="StringResources.es1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StringResources.it2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.it.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StringResources.it.Designer.cs">
+      <DependentUpon>StringResources.it.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -140,10 +145,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StringResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="StringResources.it-IT1.Designer.cs">
+    <Compile Include="StringResources.it1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StringResources.it-IT.resx</DependentUpon>
+      <DependentUpon>StringResources.it.resx</DependentUpon>
     </Compile>
     <Compile Include="ValueConverters.cs" />
     <Compile Include="ViewModels\AddModifyRBCTimeViewModel.cs" />
@@ -404,19 +409,21 @@
   <ItemGroup>
     <EmbeddedResource Include="StringResources.es-CO.resx">
       <SubType>Designer</SubType>
+      <Generator>file://conversadc2/operations/Customer_PRI/Nextel%28Mexico%29</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="StringResources.es-MX.resx">
+    <EmbeddedResource Include="StringResources.es.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>StringResources.es-MX1.Designer.cs</LastGenOutput>
+      <LastGenOutput>StringResources.es.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="StringResources.de-DE.resx">
+    <EmbeddedResource Include="StringResources.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>StringResources.de-DE1.Designer.cs</LastGenOutput>
+      <LastGenOutput>StringResources.de2.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="StringResources.it-IT.resx">
+    <EmbeddedResource Include="StringResources.it.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>StringResources.it-IT1.Designer.cs</LastGenOutput>
+      <LastGenOutput>StringResources.it2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="StringResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
