@@ -361,28 +361,36 @@
     <value>Esta aplicación es de uso gratuito. Envío de aplicaciones a la tienda de WP no lo es. ¿considere una donación?</value>
   </data>
   <data name="MainPage_Report_AuxHours" xml:space="preserve">
-    <value>Otras Horas: \t{0:0.0}\n</value>
+    <value>Otras Horas: 	{0:0.0}
+</value>
   </data>
   <data name="MainPage_Report_BibleStudies" xml:space="preserve">
-    <value>Estudios de la Biblia:\t{0}</value>
+    <value>Estudios de la Biblia:	{0}</value>
   </data>
   <data name="MainPage_Report_Books" xml:space="preserve">
-    <value>Libros:\t\t{0}\n</value>
+    <value>Libros:		{0}
+</value>
   </data>
   <data name="MainPage_Report_Brochures" xml:space="preserve">
-    <value>Folletos:\t{0}\n</value>
+    <value>Folletos:	{0}
+</value>
   </data>
   <data name="MainPage_Report_Header" xml:space="preserve">
-    <value>Aquí está mi informe de servicio de campo para {0:MMMM}, {0:yyyy}:\n\n</value>
+    <value>Aquí está mi informe de servicio de campo para {0:MMMM}, {0:yyyy}:
+
+</value>
   </data>
   <data name="MainPage_Report_Hours" xml:space="preserve">
-    <value>Horas:\t\t{0:0.00}\n</value>
+    <value>Horas:		{0:0.00}
+</value>
   </data>
   <data name="MainPage_Report_Mags" xml:space="preserve">
-    <value>revistas:\t{0}\n</value>
+    <value>revistas:	{0}
+</value>
   </data>
   <data name="MainPage_Report_RVs" xml:space="preserve">
-    <value>Revisitas:\t{0}\n</value>
+    <value>Revisitas:	{0}
+</value>
   </data>
   <data name="MainPage_RvHeadline" xml:space="preserve">
     <value>revisitas</value>

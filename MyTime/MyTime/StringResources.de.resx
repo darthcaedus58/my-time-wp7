@@ -337,28 +337,36 @@
     <value>Wachtturm Bibliothek</value>
   </data>
   <data name="MainPage_Report_AuxHours" xml:space="preserve">
-    <value>Anderen Stunden: \t{0:0.0}\n</value>
+    <value>Anderen Stunden: 	{0:0.0}
+</value>
   </data>
   <data name="MainPage_Report_BibleStudies" xml:space="preserve">
-    <value>Buchstudien:\t{0}</value>
+    <value>Buchstudien:	{0}</value>
   </data>
   <data name="MainPage_Report_Books" xml:space="preserve">
-    <value>Bücher:\t\t{0}\n</value>
+    <value>Bücher:		{0}
+</value>
   </data>
   <data name="MainPage_Report_Brochures" xml:space="preserve">
-    <value>Broschüren:\t{0}\n</value>
+    <value>Broschüren:	{0}
+</value>
   </data>
   <data name="MainPage_Report_Header" xml:space="preserve">
-    <value>Hier ist mein Predigtdienstbericht für {0:MMMM}, {0:yyyy}:\n\n</value>
+    <value>Hier ist mein Predigtdienstbericht für {0:MMMM}, {0:yyyy}:
+
+</value>
   </data>
   <data name="MainPage_Report_Hours" xml:space="preserve">
-    <value>Stunden:\t\t{0:0.00}\n</value>
+    <value>Stunden:		{0:0.00}
+</value>
   </data>
   <data name="MainPage_Report_Mags" xml:space="preserve">
-    <value>Zeitschriften:\t{0}\n</value>
+    <value>Zeitschriften:	{0}
+</value>
   </data>
   <data name="MainPage_Report_RVs" xml:space="preserve">
-    <value>Rückbesuche:\t{0}\n</value>
+    <value>Rückbesuche:	{0}
+</value>
   </data>
   <data name="MainPage_RvHeadline" xml:space="preserve">
     <value>Rückbesuche</value>

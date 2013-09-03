@@ -664,6 +664,87 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must choose a start &amp; end date..
+        /// </summary>
+        public static string CustomReportsPage_ErrorText {
+            get {
+                return ResourceManager.GetString("CustomReportsPage_ErrorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom Report.
+        /// </summary>
+        public static string CustomReportsPage_Headline {
+            get {
+                return ResourceManager.GetString("CustomReportsPage_Headline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Month.
+        /// </summary>
+        public static string CustomReportsPage_Month {
+            get {
+                return ResourceManager.GetString("CustomReportsPage_Month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RANGE.
+        /// </summary>
+        public static string CustomReportsPage_Range {
+            get {
+                return ResourceManager.GetString("CustomReportsPage_Range", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Run Report.
+        /// </summary>
+        public static string CustomReportsPage_RunReport {
+            get {
+                return ResourceManager.GetString("CustomReportsPage_RunReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to START DATE.
+        /// </summary>
+        public static string CustomReportsPage_Start {
+            get {
+                return ResourceManager.GetString("CustomReportsPage_Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to END DATE.
+        /// </summary>
+        public static string CustomReportsPage_To {
+            get {
+                return ResourceManager.GetString("CustomReportsPage_To", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Week.
+        /// </summary>
+        public static string CustomReportsPage_Week {
+            get {
+                return ResourceManager.GetString("CustomReportsPage_Week", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Year.
+        /// </summary>
+        public static string CustomReportsPage_Year {
+            get {
+                return ResourceManager.GetString("CustomReportsPage_Year", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to return vists.
         /// </summary>
         public static string FullRVListPage_Headline {
@@ -754,6 +835,15 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to custom time report.
+        /// </summary>
+        public static string MainPage_MainMenu_CustomReport {
+            get {
+                return ResourceManager.GetString("MainPage_MainMenu_CustomReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} report.
         /// </summary>
         public static string MainPage_MainMenu_MonthReport {
@@ -835,7 +925,8 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Other Hours: \t{0:0.0}\n.
+        ///   Looks up a localized string similar to Other Hours: 	{0:0.0}
+        ///.
         /// </summary>
         public static string MainPage_Report_AuxHours {
             get {
@@ -844,7 +935,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bible Studies:\t{0}.
+        ///   Looks up a localized string similar to Bible Studies:	{0}.
         /// </summary>
         public static string MainPage_Report_BibleStudies {
             get {
@@ -853,7 +944,8 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Books:\t\t{0}\n.
+        ///   Looks up a localized string similar to Books:		{0}
+        ///.
         /// </summary>
         public static string MainPage_Report_Books {
             get {
@@ -862,7 +954,8 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Brochures:\t{0}\n.
+        ///   Looks up a localized string similar to Brochures:	{0}
+        ///.
         /// </summary>
         public static string MainPage_Report_Brochures {
             get {
@@ -871,7 +964,9 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Here is my field service report for {0:MMMM}, {0:yyyy}:\n\n.
+        ///   Looks up a localized string similar to Here is my field service report for {0:MMMM}, {0:yyyy}:
+        ///
+        ///.
         /// </summary>
         public static string MainPage_Report_Header {
             get {
@@ -880,7 +975,8 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hours:\t\t{0:0.00}\n.
+        ///   Looks up a localized string similar to Hours:		{0:0.00}
+        ///.
         /// </summary>
         public static string MainPage_Report_Hours {
             get {
@@ -889,7 +985,8 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Magazines:\t{0}\n.
+        ///   Looks up a localized string similar to Magazines:	{0}
+        ///.
         /// </summary>
         public static string MainPage_Report_Mags {
             get {
@@ -898,7 +995,8 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Return Visits:\t{0}\n.
+        ///   Looks up a localized string similar to Return Visits:	{0}
+        ///.
         /// </summary>
         public static string MainPage_Report_RVs {
             get {

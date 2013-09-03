@@ -159,6 +159,9 @@
   <data name="AddCallPage_SaveBeforeEditMessage" xml:space="preserve">
     <value>You must save the RV before adding a call.</value>
   </data>
+  <data name="AddRBCTimePage_AskForDoubleEntry" xml:space="preserve">
+    <value>It appears you have already added time earlier today.  Would you like to merge this new time with the previous time for today?</value>
+  </data>
   <data name="AddRBCTimePage_Confirmation" xml:space="preserve">
     <value>Auxiliary Hour(s) Saved.</value>
   </data>
@@ -171,6 +174,12 @@
   <data name="AddRBCTimePage_Delete" xml:space="preserve">
     <value>delete</value>
   </data>
+  <data name="AddRBCTimePage_DeleteConfirmation" xml:space="preserve">
+    <value>Auxiliary Time Deleted.</value>
+  </data>
+  <data name="AddRBCTimePage_DeleteFailed" xml:space="preserve">
+    <value>Deleting Failed.</value>
+  </data>
   <data name="AddRBCTimePage_Headline" xml:space="preserve">
     <value>auxiliary time</value>
   </data>
@@ -182,6 +191,12 @@
   </data>
   <data name="AddRBCTimePage_Save" xml:space="preserve">
     <value>save</value>
+  </data>
+  <data name="AddRBCTimePage_SaveConfirmation" xml:space="preserve">
+    <value>Time: {0} Hours Saved.</value>
+  </data>
+  <data name="AddRBCTimePage_SaveFailed" xml:space="preserve">
+    <value>Save Failed.</value>
   </data>
   <data name="AddRBCTimePage_Time" xml:space="preserve">
     <value>TIME</value>
@@ -303,6 +318,33 @@
   <data name="BackupAndRestorePage_Welcome" xml:space="preserve">
     <value>Welcome</value>
   </data>
+  <data name="CustomReportsPage_ErrorText" xml:space="preserve">
+    <value>You must choose a start &amp; end date.</value>
+  </data>
+  <data name="CustomReportsPage_Headline" xml:space="preserve">
+    <value>Custom Report</value>
+  </data>
+  <data name="CustomReportsPage_Month" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="CustomReportsPage_Range" xml:space="preserve">
+    <value>RANGE</value>
+  </data>
+  <data name="CustomReportsPage_RunReport" xml:space="preserve">
+    <value>Run Report</value>
+  </data>
+  <data name="CustomReportsPage_Start" xml:space="preserve">
+    <value>START DATE</value>
+  </data>
+  <data name="CustomReportsPage_To" xml:space="preserve">
+    <value>END DATE</value>
+  </data>
+  <data name="CustomReportsPage_Week" xml:space="preserve">
+    <value>Week</value>
+  </data>
+  <data name="CustomReportsPage_Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
   <data name="FullRVListPage_Headline" xml:space="preserve">
     <value>return vists</value>
   </data>
@@ -333,6 +375,9 @@
   <data name="MainPage_MainMenu_BackupRestore" xml:space="preserve">
     <value>backup &amp; restore</value>
   </data>
+  <data name="MainPage_MainMenu_CustomReport" xml:space="preserve">
+    <value>custom time report</value>
+  </data>
   <data name="MainPage_MainMenu_MonthReport" xml:space="preserve">
     <value>{0} report</value>
   </data>
@@ -361,28 +406,36 @@
     <value>This app is free to use. Submitting apps to the WP app store isn't. Would you consider a donation?</value>
   </data>
   <data name="MainPage_Report_AuxHours" xml:space="preserve">
-    <value>Other Hours: \t{0:0.0}\n</value>
+    <value>Other Hours: 	{0:0.0}
+</value>
   </data>
   <data name="MainPage_Report_BibleStudies" xml:space="preserve">
-    <value>Bible Studies:\t{0}</value>
+    <value>Bible Studies:	{0}</value>
   </data>
   <data name="MainPage_Report_Books" xml:space="preserve">
-    <value>Books:\t\t{0}\n</value>
+    <value>Books:		{0}
+</value>
   </data>
   <data name="MainPage_Report_Brochures" xml:space="preserve">
-    <value>Brochures:\t{0}\n</value>
+    <value>Brochures:	{0}
+</value>
   </data>
   <data name="MainPage_Report_Header" xml:space="preserve">
-    <value>Here is my field service report for {0:MMMM}, {0:yyyy}:\n\n</value>
+    <value>Here is my field service report for {0:MMMM}, {0:yyyy}:
+
+</value>
   </data>
   <data name="MainPage_Report_Hours" xml:space="preserve">
-    <value>Hours:\t\t{0:0.00}\n</value>
+    <value>Hours:		{0:0.00}
+</value>
   </data>
   <data name="MainPage_Report_Mags" xml:space="preserve">
-    <value>Magazines:\t{0}\n</value>
+    <value>Magazines:	{0}
+</value>
   </data>
   <data name="MainPage_Report_RVs" xml:space="preserve">
-    <value>Return Visits:\t{0}\n</value>
+    <value>Return Visits:	{0}
+</value>
   </data>
   <data name="MainPage_RvHeadline" xml:space="preserve">
     <value>return visits</value>
@@ -470,6 +523,9 @@
   </data>
   <data name="ReportingPage_Report_To" xml:space="preserve">
     <value>TO: {0}</value>
+  </data>
+  <data name="ReportingPage_Report_TotalHours" xml:space="preserve">
+    <value>TOTAL: {0} Hour(s) and {1} Minute(s)</value>
   </data>
   <data name="ReportingPage_ReturnVisits_1" xml:space="preserve">
     <value> Return Visits</value>
@@ -684,6 +740,9 @@
   <data name="SettingsPage_Settings_UseLocServices" xml:space="preserve">
     <value>Use Location Services</value>
   </data>
+  <data name="TimeReport_AuxHoursAndMinutes" xml:space="preserve">
+    <value>{0} Hour(s) and {1} Minute(s) Auxiliary Time</value>
+  </data>
   <data name="TimeReport_HoursAndMinutes" xml:space="preserve">
     <value>{0} Hour(s) &amp; {1} Minutes</value>
   </data>
@@ -707,26 +766,5 @@
   </data>
   <data name="ViewPreviousVisitPage_Rv" xml:space="preserve">
     <value>RETURN VISIT</value>
-  </data>
-  <data name="TimeReport_AuxHoursAndMinutes" xml:space="preserve">
-    <value>{0} Hour(s) and {1} Minute(s) Auxiliary Time</value>
-  </data>
-  <data name="ReportingPage_Report_TotalHours" xml:space="preserve">
-    <value>TOTAL: {0} Hour(s) and {1} Minute(s)</value>
-  </data>
-  <data name="AddRBCTimePage_AskForDoubleEntry" xml:space="preserve">
-    <value>It appears you have already added time earlier today.  Would you like to merge this new time with the previous time for today?</value>
-  </data>
-  <data name="AddRBCTimePage_DeleteConfirmation" xml:space="preserve">
-    <value>Auxiliary Time Deleted.</value>
-  </data>
-  <data name="AddRBCTimePage_DeleteFailed" xml:space="preserve">
-    <value>Deleting Failed.</value>
-  </data>
-  <data name="AddRBCTimePage_SaveConfirmation" xml:space="preserve">
-    <value>Time: {0} Hours Saved.</value>
-  </data>
-  <data name="AddRBCTimePage_SaveFailed" xml:space="preserve">
-    <value>Save Failed.</value>
   </data>
 </root>

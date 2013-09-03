@@ -116,6 +116,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="StringResources.de2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.de.resx</DependentUpon>
+    </Compile>
     <Compile Include="StringResources.es.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -156,6 +161,9 @@
     <Compile Include="ViewModels\PreviousVisitViewModel.cs" />
     <Compile Include="ViewModels\ReturnVisitFullListViewModel.cs" />
     <Compile Include="ViewModels\ReturnVisitViewModel.cs" />
+    <Compile Include="View\CustomReportsPage.xaml.cs">
+      <DependentUpon>CustomReportsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EditReturnVisit.xaml.cs">
       <DependentUpon>EditReturnVisit.xaml</DependentUpon>
     </Compile>
@@ -215,6 +223,10 @@
     <Page Include="HeaderControl.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CustomReportsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EditReturnVisit.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
@@ -277,6 +289,9 @@
     <Content Include="icons\calendar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="icons\ChartCustomization.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="icons\Clean.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -321,10 +336,16 @@
     <Content Include="icons\message.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="icons\RangeSlider.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="icons\save.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="icons\settings.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\SubmitArrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="icons\tasks.png">

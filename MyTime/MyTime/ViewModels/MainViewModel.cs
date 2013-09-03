@@ -287,6 +287,11 @@ namespace FieldService.ViewModels
 													  IconUri = "/icons/Graph2.png",
 													  NavigateToPage = ""
 			                                      });
+			lbMainMenuItems.Add(new MainMenuModel {
+													  MenuText = StringResources.MainPage_MainMenu_CustomReport,
+				                                      IconUri = "/icons/ChartCustomization.png",
+				                                      NavigateToPage = "/View/CustomReportsPage.xaml"
+			                                      });
 			//lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "custom report", IconUri = "/icons/search.png"});
 
 			lbMainMenuItems.Add(new MainMenuModel {
