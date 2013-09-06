@@ -709,33 +709,33 @@
     <value>Sembra che hai aggiunto già del tempo oggi. Vuoi aggiungere il tempo nuovo con quello precedente di oggi?</value>
   </data>
   <data name="CustomReportsPage_ErrorText" xml:space="preserve">
-    <value>You must choose a start &amp; end date.</value>
+    <value>E’ necessario scegliere una data di inizio e fine</value>
   </data>
   <data name="CustomReportsPage_Headline" xml:space="preserve">
-    <value>Custom Report</value>
+    <value>Rapporto personalizzato</value>
   </data>
   <data name="CustomReportsPage_Month" xml:space="preserve">
-    <value>Month</value>
+    <value>Mese</value>
   </data>
   <data name="CustomReportsPage_Range" xml:space="preserve">
     <value>RANGE</value>
   </data>
   <data name="CustomReportsPage_RunReport" xml:space="preserve">
-    <value>Run Report</value>
+    <value>Esegui il report</value>
   </data>
   <data name="CustomReportsPage_Start" xml:space="preserve">
-    <value>START DATE</value>
+    <value>DATA DI INIZIO</value>
   </data>
   <data name="CustomReportsPage_To" xml:space="preserve">
-    <value>END DATE</value>
+    <value>DATA FINE</value>
   </data>
   <data name="CustomReportsPage_Week" xml:space="preserve">
-    <value>Week</value>
+    <value>Settimana</value>
   </data>
   <data name="CustomReportsPage_Year" xml:space="preserve">
-    <value>Year</value>
+    <value>Anno</value>
   </data>
   <data name="MainPage_MainMenu_CustomReport" xml:space="preserve">
-    <value>custom time report</value>
+    <value>Rapporto ora personalizzato</value>
   </data>
 </root>

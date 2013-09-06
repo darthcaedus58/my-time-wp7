@@ -96,7 +96,7 @@ namespace FieldService.ViewModels
 
 		public string TimeReportTotal
 		{
-			get { return string.Format(StringResources.ReportingPage_Report_TotalHours, _timeReportTotal / 60, _timeReportTotal % 60 > 0 ? 60 - (_timeReportTotal % 60) : 0); }
+			get { return string.Format(StringResources.ReportingPage_Report_TotalHours, _timeReportTotal / 60, _timeReportTotal % 60 > 0 ? _timeReportTotal % 60 : 0); }
 		}
 
 		/// <summary>
