@@ -550,7 +550,7 @@ namespace FieldService.View
 		{
 			var from = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
 			DateTime to = new DateTime(@from.Year, @from.Month, 1).AddMonths(1).AddDays(-1);
-
+			
 			NavigationService.Navigate(new Uri(string.Format("/View/TimeReport.xaml?from={0}&to={1}", from.ToString("MM-dd-yyyy"), to.ToString("MM-dd-yyyy")), UriKind.Relative));
 		}
 

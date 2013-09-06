@@ -725,4 +725,34 @@
   <data name="AddRBCTimePage_AskForDoubleEntry" xml:space="preserve">
     <value>Al parecer, ya ha añadido horas de servicio a este día  ¿Le gustaría combinar este nuevas horas con las horas anteriores?</value>
   </data>
+  <data name="CustomReportsPage_ErrorText" xml:space="preserve">
+    <value>Debe elegir una fecha de inicio y fin.</value>
+  </data>
+  <data name="CustomReportsPage_Headline" xml:space="preserve">
+    <value>Informe Personalizado</value>
+  </data>
+  <data name="CustomReportsPage_Month" xml:space="preserve">
+    <value>Mes</value>
+  </data>
+  <data name="CustomReportsPage_Range" xml:space="preserve">
+    <value>INTERVALO</value>
+  </data>
+  <data name="CustomReportsPage_RunReport" xml:space="preserve">
+    <value>Ejecutar Informe</value>
+  </data>
+  <data name="CustomReportsPage_Start" xml:space="preserve">
+    <value>FECHA DE INICIO</value>
+  </data>
+  <data name="CustomReportsPage_To" xml:space="preserve">
+    <value>FECHA DE FIN</value>
+  </data>
+  <data name="CustomReportsPage_Week" xml:space="preserve">
+    <value>Semana</value>
+  </data>
+  <data name="CustomReportsPage_Year" xml:space="preserve">
+    <value>Año</value>
+  </data>
+  <data name="MainPage_MainMenu_CustomReport" xml:space="preserve">
+    <value>hora del informe personalizado</value>
+  </data>
 </root>
