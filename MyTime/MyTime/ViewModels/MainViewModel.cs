@@ -3,7 +3,7 @@
 // Author           : trevo_000
 // Created          : 11-03-2012
 //
-// Last Modified By : trevo_000
+// Last Modified By : tevo_000
 // Last Modified On : 11-11-2012
 // ***********************************************************************
 // <copyright file="MainViewModel.cs" company="">
