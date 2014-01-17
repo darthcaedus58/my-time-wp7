@@ -60,8 +60,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Coding4Fun.Phone.Controls.TimeSpan.1.6.1\lib\sl4-windowsphone71\Coding4Fun.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\..\..\..\..\Downloads\HtmlAgilityPack.1.4.6\sl4-windowsphone71\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Expression.Interactions" />
     <Reference Include="Microsoft.Live, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -73,6 +74,10 @@
       <HintPath>..\packages\SilverlightToolkitWP.4.2012.10.9\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="SharpZipLib.WindowsPhone7, Version=0.86.0.518, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\SharpZipLib.WindowsPhone7.dll</HintPath>
+    </Reference>
     <Reference Include="System.Device" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -423,10 +428,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Downloads\slsharpziplib-99885\trunk\SharpZipLib.Silverlight\SharpZipLib.WindowsPhone7.csproj">
-      <Project>{7B257BE0-BAA4-4877-800C-05DDDAFB6443}</Project>
-      <Name>SharpZipLib.WindowsPhone7</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MyTimeDatabaseLib\MyTimeDatabaseLib.csproj">
       <Project>{A1C548DC-5636-4CC8-B680-A818350BA8C5}</Project>
       <Name>MyTimeDatabaseLib</Name>
