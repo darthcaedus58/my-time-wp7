@@ -18,7 +18,8 @@ using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.DataVisualization.Charting;
+//using System.Windows.Controls.DataVisualization.Charting;
+//xmlns:charting="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
 using System.Windows.Navigation;
 using FieldService.Model;
 using FieldService.ViewModels;
@@ -42,6 +43,7 @@ namespace FieldService.View
 		public TimeReport()
 		{
 			DataContext = App.ViewModel;
+
 			InitializeComponent();
 		}
 
@@ -126,13 +128,13 @@ namespace FieldService.View
 			tbFromDate.Text = string.Format(StringResources.ReportingPage_Report_From, _fromDate.ToShortDateString());
 			tbToDate.Text = string.Format(StringResources.ReportingPage_Report_To, _toDate.ToShortDateString());
 
-			myChart.Series.Clear();
-			myChart.Series.Add(new LineSeries {
-				                                  ItemsSource = new ChartData(),
-				                                  DependentValuePath = "Time",
-				                                  IndependentValuePath = "Header",
-				                                  Title = StringResources.ReportingPage_Report_ChartTitle,
-			                                  });
+			//myChart.Series.Clear();
+			//myChart.Series.Add(new LineSeries {
+			//                                      ItemsSource = new ChartData(),
+			//                                      DependentValuePath = "Time",
+			//                                      IndependentValuePath = "Header",
+			//                                      Title = StringResources.ReportingPage_Report_ChartTitle,
+			//                                  });
 		}
 	}
 
