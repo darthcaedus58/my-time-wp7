@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
 
 namespace FieldService.View
 {
@@ -24,6 +25,12 @@ namespace FieldService.View
 		{ 
 			//throw new NotImplementedException(); 
 			dpStartDate.Value = DateTime.Today;
+
+			var button = ApplicationBar.Buttons[0] as ApplicationBarIconButton;
+
+			if (button != null) {
+				button.Text = StringResources.CustomReportsPage_RunReport;
+			}
 		}
 		
 		private void abibRunReport_Click(object sender, EventArgs e) 

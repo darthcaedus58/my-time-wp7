@@ -83,16 +83,18 @@
     <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\Downloads\DataViz\DataVisualizationOnWindowsPhone\System.Windows.Controls.dll</HintPath>
     </Reference>
-    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=2.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Downloads\DataViz\DataVisualizationOnWindowsPhone\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
-    </Reference>
     <Reference Include="System.Windows.Interactivity" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml.Serialization" />
     <Reference Include="System.Xml.XPath">
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.Xml.XPath.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Chart, Version=2012.3.1311.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Windows Phone 7 Q3 2012\Binaries\WindowsPhone\Telerik.Windows.Controls.Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataVisualization, Version=2012.3.1311.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Windows Phone 7 Q3 2012\Binaries\WindowsPhone\Telerik.Windows.Controls.DataVisualization.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Windows.Controls.Input, Version=2013.2.718.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -202,15 +204,18 @@
     </Compile>
     <Compile Include="SocietyScraper\SocietyScraper.cs" />
     <Compile Include="TiltEffect.cs" />
-    <Compile Include="View\TimeReport.xaml.cs">
-      <DependentUpon>TimeReport.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Model\ReturnVisitItemModel.cs" />
     <Compile Include="Model\MainMenuModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Model\PreviousVisitModel.cs" />
     <Compile Include="Model\ReturnVisitLongListModel.cs" />
     <Compile Include="Model\TimeReportSummaryModel.cs" />
+    <Compile Include="View\TimeReport.xaml.cs">
+      <DependentUpon>TimeReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TimeReportFull.xaml.cs">
+      <DependentUpon>TimeReportFull.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ViewPreviousVisit.xaml.cs">
       <DependentUpon>ViewPreviousVisit.xaml</DependentUpon>
     </Compile>
@@ -252,10 +257,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PhoneDataVisualizationResources.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\ReturnVisitFullList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -267,6 +268,10 @@
     <Page Include="View\TimeReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TimeReportFull.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ViewPreviousVisit.xaml">
       <SubType>Designer</SubType>
