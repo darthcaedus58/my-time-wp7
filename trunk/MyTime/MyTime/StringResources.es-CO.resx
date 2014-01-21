@@ -781,4 +781,7 @@
 
 </value>
   </data>
+  <data name="ViewPreviousVisitPage_Tracts" xml:space="preserve">
+    <value> Tratados</value>
+  </data>
 </root>

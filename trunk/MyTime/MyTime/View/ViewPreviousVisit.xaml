@@ -38,6 +38,10 @@
 					<TextBlock Margin="12,0,0,0" Text="{Binding Books}" />
 					<TextBlock Margin="12,0,0,0" Text="{Binding Path=StringResources.ViewPreviousVisitPage_Books, Source={StaticResource LocalizedStrings}}" />
 				</StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Margin="12,0,0,0" Text="{Binding Tracts, FallbackValue=0}" />
+					<TextBlock Margin="12,0,0,0" Text="{Binding Path=StringResources.ViewPreviousVisitPage_Tracts, Source={StaticResource LocalizedStrings}}" />
+				</StackPanel>
 				<FieldService:HeaderControl HeaderText="{Binding Path=StringResources.ViewPreviousVisitPage_Notes, Source={StaticResource LocalizedStrings}}" IconSource="/icons/tasks.png" />
 			</StackPanel>
 		</Grid>
