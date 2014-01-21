@@ -38,30 +38,31 @@ namespace FieldService
 
 		private void Button_Click_1(object sender, RoutedEventArgs e)
 		{
-			switch (_currentAddress.CountryRegion.ToLower()) {
-				case "united kingdom":
-					App.ViewModel.ReturnVisitData.Address1 = _currentAddress.AddressLine;
-					App.ViewModel.ReturnVisitData.Address2 = string.Empty;
-					App.ViewModel.ReturnVisitData.City = _currentAddress.Locality;
-					App.ViewModel.ReturnVisitData.StateProvinceDistrict = string.Empty;
-					App.ViewModel.ReturnVisitData.PostalCode = _currentAddress.PostalCode;
-					App.ViewModel.ReturnVisitData.Country = _currentAddress.CountryRegion;
-					break;
-				case "united states":
-				case "canada":
-				case "italy":
-				default:
-					App.ViewModel.ReturnVisitData.Address1 = _currentAddress.AddressLine;
-					App.ViewModel.ReturnVisitData.Address2 = string.Empty;
-					App.ViewModel.ReturnVisitData.City = _currentAddress.Locality;
-					App.ViewModel.ReturnVisitData.StateProvinceDistrict = _currentAddress.AdminDistrict;
-					App.ViewModel.ReturnVisitData.PostalCode = _currentAddress.PostalCode;
-					App.ViewModel.ReturnVisitData.Country = _currentAddress.CountryRegion;
-					break;
-			}
+		        if (_currentAddress != null)
+		                switch (_currentAddress.CountryRegion.ToLower()) {
+		                        case "united kingdom":
+		                                App.ViewModel.ReturnVisitData.Address1 = _currentAddress.AddressLine;
+		                                App.ViewModel.ReturnVisitData.Address2 = string.Empty;
+		                                App.ViewModel.ReturnVisitData.City = _currentAddress.Locality;
+		                                App.ViewModel.ReturnVisitData.StateProvinceDistrict = string.Empty;
+		                                App.ViewModel.ReturnVisitData.PostalCode = _currentAddress.PostalCode;
+		                                App.ViewModel.ReturnVisitData.Country = _currentAddress.CountryRegion;
+		                                break;
+		                        case "united states":
+		                        case "canada":
+		                        case "italy":
+		                        default:
+		                                App.ViewModel.ReturnVisitData.Address1 = _currentAddress.AddressLine;
+		                                App.ViewModel.ReturnVisitData.Address2 = string.Empty;
+		                                App.ViewModel.ReturnVisitData.City = _currentAddress.Locality;
+		                                App.ViewModel.ReturnVisitData.StateProvinceDistrict = _currentAddress.AdminDistrict;
+		                                App.ViewModel.ReturnVisitData.PostalCode = _currentAddress.PostalCode;
+		                                App.ViewModel.ReturnVisitData.Country = _currentAddress.CountryRegion;
+		                                break;
+		                }
 		}
 
-		private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+	        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
 		{
 			var bwPageLoaded = new BackgroundWorker();
 			bwPageLoaded.RunWorkerCompleted += bwPageLoaded_RunWorkerCompleted;

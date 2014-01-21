@@ -477,7 +477,7 @@
     <value> Books, </value>
   </data>
   <data name="ReportingPage_Report_Brochures" xml:space="preserve">
-    <value> Brochures</value>
+    <value> Brochures, </value>
   </data>
   <data name="ReportingPage_Report_ChartTitle" xml:space="preserve">
     <value>Time In Hours</value>
@@ -766,5 +766,17 @@
   </data>
   <data name="ViewPreviousVisitPage_Rv" xml:space="preserve">
     <value>RETURN VISIT</value>
+  </data>
+  <data name="AddTimePage_Tracts" xml:space="preserve">
+    <value>Tracts</value>
+  </data>
+  <data name="ReportingPage_Chart_Header" xml:space="preserve">
+    <value>chart</value>
+  </data>
+  <data name="ReportingPage_Chart_YourTime" xml:space="preserve">
+    <value>YOUR TIME</value>
+  </data>
+  <data name="ReportingPage_Report_Tracts" xml:space="preserve">
+    <value> Tracts</value>
   </data>
 </root>

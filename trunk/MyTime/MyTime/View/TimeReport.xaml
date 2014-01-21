@@ -39,7 +39,7 @@
 						<RowDefinition Height="Auto"/>
 						<RowDefinition Height="Auto" />
 					</Grid.RowDefinitions>
-						<local:HeaderControl Grid.Row="0" HeaderText="YOUR TIME" />
+						<local:HeaderControl Grid.Row="0" HeaderText="YOUR TIME" IconSource="/icons/clock.png" />
 					<Grid Grid.Row="1">
 						<telerikChart:RadCartesianChart Tap="MyChart_OnTap" x:Name="myChart" MinHeight="96" >
                             <telerikChart:RadCartesianChart.Behaviors>
@@ -71,10 +71,8 @@
                                 <telerikChart:AreaSeries.TrackBallInfoTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding
-Path=DisplayHeader}" Foreground="{StaticResource PhoneBackgroundBrush}" FontWeight="Bold" />
-                                            <TextBlock Text="{Binding
-Path=DisplayContent}" Foreground="{StaticResource PhoneBackgroundBrush}" Margin="4,0,0,0" />
+                                            <TextBlock Text="{Binding Path=DisplayHeader}" Foreground="{StaticResource PhoneBackgroundBrush}" FontWeight="Bold" />
+                                            <TextBlock Text="{Binding Path=DisplayContent}" Foreground="{StaticResource PhoneBackgroundBrush}" Margin="4,0,0,0" />
                                         </StackPanel>
                                     </DataTemplate>
                                 </telerikChart:AreaSeries.TrackBallInfoTemplate>
@@ -85,8 +83,6 @@ Path=DisplayContent}" Foreground="{StaticResource PhoneBackgroundBrush}" Margin=
 				</Grid>
 			</controls:PivotItem>
 			<controls:PivotItem Header="{Binding Path=StringResources.ReportingPage_Report_Headline, Source={StaticResource LocalizedStrings}}">
-				<!--<ScrollViewer Height="Auto" >
-				<StackPanel Height="Auto">-->
 				<Grid Height="Auto">
 					<Grid.RowDefinitions>
 						<RowDefinition Height="Auto" />
@@ -126,6 +122,8 @@ Path=DisplayContent}" Foreground="{StaticResource PhoneBackgroundBrush}" Margin=
 												<TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_Report_Books, Source={StaticResource LocalizedStrings}}" />
 												<TextBlock Width="Auto" Text="{Binding Brochures}" />
 												<TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_Report_Brochures, Source={StaticResource LocalizedStrings}}" />
+												<TextBlock Width="Auto" Text="{Binding Tracts, FallbackValue=0}" />
+												<TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_Report_Tracts, Source={StaticResource LocalizedStrings}}" />
 											</StackPanel>
 											<TextBlock Margin="0,15,5,0" FontSize="18" FontWeight="Bold" Text="{Binding Path=StringResources.ReportingPage_Report_OtherActivity, Source={StaticResource LocalizedStrings}}" />
 											<StackPanel Orientation="Horizontal">

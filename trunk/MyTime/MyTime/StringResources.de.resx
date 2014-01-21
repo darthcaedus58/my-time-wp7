@@ -402,10 +402,10 @@
     <value>Einträge</value>
   </data>
   <data name="ReportingPage_Report_Books" xml:space="preserve">
-    <value>Bücher</value>
+    <value> Bücher, </value>
   </data>
   <data name="ReportingPage_Report_Brochures" xml:space="preserve">
-    <value>Broschüren</value>
+    <value> Broschüren, </value>
   </data>
   <data name="ReportingPage_Report_ChartTitle" xml:space="preserve">
     <value>Zeit in Stunden</value>
@@ -745,5 +745,17 @@
   </data>
   <data name="MainPage_MainMenu_CustomReport" xml:space="preserve">
     <value>Benutzerdefinierter Bericht</value>
+  </data>
+  <data name="AddTimePage_Tracts" xml:space="preserve">
+    <value>Traktate</value>
+  </data>
+  <data name="ReportingPage_Chart_Header" xml:space="preserve">
+    <value>diagramm</value>
+  </data>
+  <data name="ReportingPage_Chart_YourTime" xml:space="preserve">
+    <value>IHRE ZEIT</value>
+  </data>
+  <data name="ReportingPage_Report_Tracts" xml:space="preserve">
+    <value> Traktate</value>
   </data>
 </root>

@@ -216,9 +216,6 @@
     <Compile Include="View\TimeReport.xaml.cs">
       <DependentUpon>TimeReport.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\TimeReportFull.xaml.cs">
-      <DependentUpon>TimeReportFull.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\ViewPreviousVisit.xaml.cs">
       <DependentUpon>ViewPreviousVisit.xaml</DependentUpon>
     </Compile>
@@ -271,10 +268,6 @@
     <Page Include="View\TimeReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\TimeReportFull.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ViewPreviousVisit.xaml">
       <SubType>Designer</SubType>

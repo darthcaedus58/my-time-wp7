@@ -20,7 +20,8 @@ namespace FieldService.ViewModels
 					                                              Magazines = 0,
 					                                              Minutes = 0,
 					                                              Notes = string.Empty,
-					                                              ReturnVisits = 0
+					                                              ReturnVisits = 0,
+                                                                                      Tracts = 0
 				                                              });
 			}
 			set
@@ -89,12 +90,14 @@ namespace FieldService.ViewModels
 			TimeData.Minutes += timeOld.Minutes;
 			TimeData.Notes = string.IsNullOrWhiteSpace(timeOld.Notes) ? null : string.Format("{0}\n\n{1}",TimeData.Notes,timeOld.Notes);
 			TimeData.ReturnVisits += timeOld.ReturnVisits;
+		        TimeData.Tracts += timeOld.Tracts;
 
 			OnPropertyChanged("TimeData");
 
 			return AddOrUpdateTime();
 
 		}
+
 		public bool IsDoubleDataEntry(out int id)
 		{
 			//throw new NotImplementedException();
