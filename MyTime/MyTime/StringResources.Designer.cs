@@ -1800,6 +1800,57 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to faq.
+        /// </summary>
+        public static string SettingsPage_FAQ_Headline {
+            get {
+                return ResourceManager.GetString("SettingsPage_FAQ_Headline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are two ways to enter RVs so they will show up on your report:
+        ///1.       Using the built-in RV database.
+        ///	a.       Save a new RV or enter an existing RV.
+        ///	b.      Per the OD book, you don’t count the initial visit as an RV, so the first visit will not show up on your report, but all subsequent visits will be automatically counted on your report.
+        ///2.       Manually count your RVs
+        ///	a.       This method will only work if you don’t want to use the first method. You can’t use both at the same time.
+        ///	b. [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string SettingsPage_FAQ_HowToEnterRVs_A {
+            get {
+                return ResourceManager.GetString("SettingsPage_FAQ_HowToEnterRVs_A", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How do I enter the number of return vists on my report?.
+        /// </summary>
+        public static string SettingsPage_FAQ_HowToEnterRVs_Q {
+            get {
+                return ResourceManager.GetString("SettingsPage_FAQ_HowToEnterRVs_Q", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Per the OD book, the initial call is not counted on your time report.  Return visits are only counted on a subsequent visit which occurrs after the first initial visit.  If you are importing your return visits and have already made the initial call then you must save a &apos;dummy&apos; initial visit to ensure that your return visit is counted on your report.  If you are not using the return visit features of this app, then you should go to &quot; &apos;settings&apos; &gt; &apos;Manually Track RVs &amp; Placements&apos; &quot; and set it to &apos;off&apos; and yo [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string SettingsPage_FAQ_WhyDontRVShow_A {
+            get {
+                return ResourceManager.GetString("SettingsPage_FAQ_WhyDontRVShow_A", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Why don&apos;t my return visits show on my report?.
+        /// </summary>
+        public static string SettingsPage_FAQ_WhyDontRVShow_Q {
+            get {
+                return ResourceManager.GetString("SettingsPage_FAQ_WhyDontRVShow_Q", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VERSION.
         /// </summary>
         public static string SettingsPage_Settings_AddCallPlacements {

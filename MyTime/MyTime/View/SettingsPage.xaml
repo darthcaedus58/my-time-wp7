@@ -5,7 +5,8 @@
 							xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 							xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 							xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone" 
-							xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone" 
+							xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+							xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
 							FontFamily="{StaticResource PhoneFontFamilyNormal}" 
 							FontSize="{StaticResource PhoneFontSizeNormal}" 
 							Foreground="{StaticResource AppForegroundBrush}" 
@@ -32,6 +33,35 @@
 				</ScrollViewer>
 			</Grid>
 		</controls:PivotItem>
+        <controls:PivotItem Header="{Binding Path=StringResources.SettingsPage_FAQ_Headline, Source={StaticResource LocalizedStrings}}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Row="0">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <telerikPrimitives:RadExpanderControl>
+                                <telerikPrimitives:RadExpanderControl.Content>
+                                    <TextBlock Text="{Binding Path=StringResources.SettingsPage_FAQ_WhyDontRVShow_Q, Source={StaticResource LocalizedStrings}}"/> 
+                                </telerikPrimitives:RadExpanderControl.Content>
+                                <telerikPrimitives:RadExpanderControl.ExpandableContent>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=StringResources.SettingsPage_FAQ_WhyDontRVShow_A, Source={StaticResource LocalizedStrings}}"/> 
+                                </telerikPrimitives:RadExpanderControl.ExpandableContent>
+                            </telerikPrimitives:RadExpanderControl>
+                            <telerikPrimitives:RadExpanderControl>
+                                <telerikPrimitives:RadExpanderControl.Content>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=StringResources.SettingsPage_FAQ_HowToEnterRVs_Q, Source={StaticResource LocalizedStrings}}"/>
+                                </telerikPrimitives:RadExpanderControl.Content>
+                                <telerikPrimitives:RadExpanderControl.ExpandableContent>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=StringResources.SettingsPage_FAQ_HowToEnterRVs_A, Source={StaticResource LocalizedStrings}}"/>
+                                </telerikPrimitives:RadExpanderControl.ExpandableContent>
+                            </telerikPrimitives:RadExpanderControl>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </controls:PivotItem>
 		<controls:PivotItem Header="{Binding Path=StringResources.SettingsPage_About_Headline, Source={StaticResource LocalizedStrings}}">
 			<Grid>
 				<Grid.RowDefinitions>
@@ -83,19 +113,6 @@
 			</Grid>
 		</controls:PivotItem>
 	</controls:Pivot>
-
-	<!-- Sample code showing usage of ApplicationBar
-	<phone:PhoneApplicationPage.ApplicationBar>
-		<shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-			<shell:ApplicationBarIconButton x:Name="appbar_button1" IconUri="/Images/appbar_button1.png" Text="Button 1"></shell:ApplicationBarIconButton>
-			<shell:ApplicationBarIconButton x:Name="appbar_button2" IconUri="/Images/appbar_button2.png" Text="Button 2"></shell:ApplicationBarIconButton>
-			<shell:ApplicationBar.MenuItems>
-				<shell:ApplicationBarMenuItem x:Name="menuItem1" Text="MenuItem 1"></shell:ApplicationBarMenuItem>
-				<shell:ApplicationBarMenuItem x:Name="menuItem2" Text="MenuItem 2"></shell:ApplicationBarMenuItem>
-			</shell:ApplicationBar.MenuItems>
-		</shell:ApplicationBar>
-	</phone:PhoneApplicationPage.ApplicationBar>
-	-->
 
 
 </phone:PhoneApplicationPage>
