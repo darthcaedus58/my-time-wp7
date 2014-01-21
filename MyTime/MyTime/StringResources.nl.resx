@@ -1,0 +1,816 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddCallPage_Books" xml:space="preserve">
+    <value>Boeken</value>
+  </data>
+  <data name="AddCallPage_Brochures" xml:space="preserve">
+    <value>Brochures</value>
+  </data>
+  <data name="AddCallPage_CallSaved" xml:space="preserve">
+    <value>Bezoek opgeslagen.</value>
+  </data>
+  <data name="AddCallPage_CallSavedFailed" xml:space="preserve">
+    <value>Bezoek opslaan mislukt.</value>
+  </data>
+  <data name="AddCallPage_Date" xml:space="preserve">
+    <value>DATUM</value>
+  </data>
+  <data name="AddCallPage_DeleteCall" xml:space="preserve">
+    <value>Bezoek verwijderen</value>
+  </data>
+  <data name="AddCallPage_DeleteCallConfirmation" xml:space="preserve">
+    <value>Weet je zeker dat je dit bezoek wilt verwijderen?</value>
+  </data>
+  <data name="AddCallPage_DeleteCallFailed" xml:space="preserve">
+    <value>Verwijderen van het bezoek mislukt.</value>
+  </data>
+  <data name="AddCallPage_Headline" xml:space="preserve">
+    <value>bezoek</value>
+  </data>
+  <data name="AddCallPage_Magazines" xml:space="preserve">
+    <value>Tijdschriften</value>
+  </data>
+  <data name="AddCallPage_Notes" xml:space="preserve">
+    <value>AANTEKENINGEN</value>
+  </data>
+  <data name="AddCallPage_Placements" xml:space="preserve">
+    <value>VERSPREIDING</value>
+  </data>
+  <data name="AddCallPage_Save" xml:space="preserve">
+    <value>opslaan</value>
+  </data>
+  <data name="AddCallPage_SaveBeforeEditMessage" xml:space="preserve">
+    <value>Je moet eerst het NB opslaan voordat je een bezoek toevoegd.</value>
+  </data>
+  <data name="AddRBCTimePage_AskForDoubleEntry" xml:space="preserve">
+    <value>Je hebt al eerder vandaag velddiensttijd ingevoerd. Wil je deze nieuwe tijd samenvoegen met de vorige invoer?</value>
+  </data>
+  <data name="AddRBCTimePage_Confirmation" xml:space="preserve">
+    <value>Bijzondere dienst uren opgeslagen</value>
+  </data>
+  <data name="AddRBCTimePage_ConvertMenuItem" xml:space="preserve">
+    <value>omzetten naar tijd</value>
+  </data>
+  <data name="AddRBCTimePage_Date" xml:space="preserve">
+    <value>DATUM</value>
+  </data>
+  <data name="AddRBCTimePage_Delete" xml:space="preserve">
+    <value>verwijderen</value>
+  </data>
+  <data name="AddRBCTimePage_DeleteConfirmation" xml:space="preserve">
+    <value>Bijzondere dienst tijd verwijderd</value>
+  </data>
+  <data name="AddRBCTimePage_DeleteFailed" xml:space="preserve">
+    <value>Verwijderen mislukt.</value>
+  </data>
+  <data name="AddRBCTimePage_Headline" xml:space="preserve">
+    <value>Bijzondere dienst tijd</value>
+  </data>
+  <data name="AddRBCTimePage_Note" xml:space="preserve">
+    <value>Bijzondere dienst tijd is tijd die niet velddienst gerelateerd is, maar mag worden vermeld op het velddienst bericht. Bijvoorbeeld voor broeders en zusters die zijn toegewezen aan het RBC. Raadpleeg alsjeblieft de dienstopziener voor meer informatie.</value>
+  </data>
+  <data name="AddRBCTimePage_Notes" xml:space="preserve">
+    <value>AANTEKENINGEN</value>
+  </data>
+  <data name="AddRBCTimePage_Save" xml:space="preserve">
+    <value>opslaan</value>
+  </data>
+  <data name="AddRBCTimePage_SaveConfirmation" xml:space="preserve">
+    <value>Tijd: {0} Uur opgeslagen.</value>
+  </data>
+  <data name="AddRBCTimePage_SaveFailed" xml:space="preserve">
+    <value>Opslaan mislukt.</value>
+  </data>
+  <data name="AddRBCTimePage_Time" xml:space="preserve">
+    <value>TIJD</value>
+  </data>
+  <data name="AddTimePage_Books" xml:space="preserve">
+    <value>Boeken</value>
+  </data>
+  <data name="AddTimePage_Brochures" xml:space="preserve">
+    <value>Brochures</value>
+  </data>
+  <data name="AddTimePage_ConvertMenuItem" xml:space="preserve">
+    <value>omzetten naar RBC tijd</value>
+  </data>
+  <data name="AddTimePage_Date" xml:space="preserve">
+    <value>DATUM</value>
+  </data>
+  <data name="AddTimePage_DeleteMenuItem" xml:space="preserve">
+    <value>verwijderen</value>
+  </data>
+  <data name="AddTimePage_Headline" xml:space="preserve">
+    <value>tijd</value>
+  </data>
+  <data name="AddTimePage_Magazines" xml:space="preserve">
+    <value>Tijdschriften</value>
+  </data>
+  <data name="AddTimePage_Messages_RBCConvertFailed" xml:space="preserve">
+    <value>Omzetten mislukt.</value>
+  </data>
+  <data name="AddTimePage_Messages_RBCConvertSuccess" xml:space="preserve">
+    <value>Tijd omgezet naar RBC.</value>
+  </data>
+  <data name="AddTimePage_Messages_SaveCompleted" xml:space="preserve">
+    <value>Tijd: {0} Uur opgeslagen.</value>
+  </data>
+  <data name="AddTimePage_Messages_SaveFailed" xml:space="preserve">
+    <value>Tijd opslaan mislukt.</value>
+  </data>
+  <data name="AddTimePage_Messages_TimeDeleteFailed" xml:space="preserve">
+    <value>Verwijderen mislukt.</value>
+  </data>
+  <data name="AddTimePage_Messages_TimeDeleteSuccess" xml:space="preserve">
+    <value>Tijd verwijderd.</value>
+  </data>
+  <data name="AddTimePage_Notes" xml:space="preserve">
+    <value>AANTEKENINGEN</value>
+  </data>
+  <data name="AddTimePage_Placements" xml:space="preserve">
+    <value>VERSPREIDING</value>
+  </data>
+  <data name="AddTimePage_RVs" xml:space="preserve">
+    <value>Nabezoeken</value>
+  </data>
+  <data name="AddTimePage_Save" xml:space="preserve">
+    <value>opslaan</value>
+  </data>
+  <data name="AddTimePage_Time" xml:space="preserve">
+    <value>TIJD</value>
+  </data>
+  <data name="AddTime_BibleStudies" xml:space="preserve">
+    <value>Bijbelstudies</value>
+  </data>
+  <data name="ApplicationName" xml:space="preserve">
+    <value>VELDDIENST</value>
+  </data>
+  <data name="Application_DailyTextURL" xml:space="preserve">
+    <value>http://wol.jw.org/nl/wol/dt/r1/lp-e/{0}/{1}/{2}</value>
+  </data>
+  <data name="BackupAndRestorePage_Backup" xml:space="preserve">
+    <value>Backup</value>
+  </data>
+  <data name="BackupAndRestorePage_Headline" xml:space="preserve">
+    <value>beheer cloud</value>
+  </data>
+  <data name="BackupAndRestorePage_LastBackup" xml:space="preserve">
+    <value>Datum laatste backup</value>
+  </data>
+  <data name="BackupAndRestorePage_Message" xml:space="preserve">
+    <value>Log alsjeblieft in en sta toegang tot SkyDrive toe.</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_DwnlProgress" xml:space="preserve">
+    <value>{0:0,0} van {1:0,0} gedownload.</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_NeverBackedUp" xml:space="preserve">
+    <value>Nog nooit backup gemaakt!</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_Progress" xml:space="preserve">
+    <value>{0:0,0} van {1:0,0} verzonden.</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_RestoreFailed" xml:space="preserve">
+    <value>Herstel mislukt!</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_RestoreSuccess" xml:space="preserve">
+    <value>Herstel afgerond!</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_Restoring" xml:space="preserve">
+    <value>Backup aan het herstellen...</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_SkyDriveListingFailed" xml:space="preserve">
+    <value>Ophalen lijst van Skydrive mislukt.</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_UploadFailed" xml:space="preserve">
+    <value>Kan backup niet verzenden. Log alsjeblieft opnieuw in en probeer het opnieuw.</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_Welcome" xml:space="preserve">
+    <value>Welkom {0} {1}</value>
+  </data>
+  <data name="BackupAndRestorePage_NotSignedIn" xml:space="preserve">
+    <value>Niet ingelogd.</value>
+  </data>
+  <data name="BackupAndRestorePage_Restore" xml:space="preserve">
+    <value>Herstel</value>
+  </data>
+  <data name="BackupAndRestorePage_SignIn" xml:space="preserve">
+    <value>Aanmelden</value>
+  </data>
+  <data name="BackupAndRestorePage_Signout" xml:space="preserve">
+    <value>Afmelden</value>
+  </data>
+  <data name="BackupAndRestorePage_Welcome" xml:space="preserve">
+    <value>Welkom</value>
+  </data>
+  <data name="CustomReportsPage_ErrorText" xml:space="preserve">
+    <value>Je dient een begin en einddatum te selecteren.</value>
+  </data>
+  <data name="CustomReportsPage_Headline" xml:space="preserve">
+    <value>Eigen rapportage</value>
+  </data>
+  <data name="CustomReportsPage_Month" xml:space="preserve">
+    <value>maand</value>
+  </data>
+  <data name="CustomReportsPage_Range" xml:space="preserve">
+    <value>BEREIK</value>
+  </data>
+  <data name="CustomReportsPage_RunReport" xml:space="preserve">
+    <value>Rapportage opmaken</value>
+  </data>
+  <data name="CustomReportsPage_Start" xml:space="preserve">
+    <value>START DATUM</value>
+  </data>
+  <data name="CustomReportsPage_To" xml:space="preserve">
+    <value>EIND DATUM</value>
+  </data>
+  <data name="CustomReportsPage_Week" xml:space="preserve">
+    <value>Week</value>
+  </data>
+  <data name="CustomReportsPage_Year" xml:space="preserve">
+    <value>Jaar</value>
+  </data>
+  <data name="FullRVListPage_Headline" xml:space="preserve">
+    <value>nabezoeken</value>
+  </data>
+  <data name="FullRVListPage_YearOld" xml:space="preserve">
+    <value>Jaar oud</value>
+  </data>
+  <data name="MainPage_AppName" xml:space="preserve">
+    <value>Velddienst</value>
+  </data>
+  <data name="MainPage_DT_Copyright" xml:space="preserve">
+    <value>BOVENSTAANDE IS COPYRIGHT 2012 WATCHTOWER BIBLE AND TRACT SOCIETY OF PENNSYLVANIA, INC. ALLE RECHTEN VOORBEHOUDEN</value>
+  </data>
+  <data name="MainPage_DT_ErrorText" xml:space="preserve">
+    <value>Je dient verbonden te zijn met het internet om de dagtekst op te kunnen halen.</value>
+  </data>
+  <data name="MainPage_DT_Headline" xml:space="preserve">
+    <value>dagtekst</value>
+  </data>
+  <data name="MainPage_MainMenu_AddAuxTime" xml:space="preserve">
+    <value>bijzondere dienst tijd noteren</value>
+  </data>
+  <data name="MainPage_MainMenu_AddRv" xml:space="preserve">
+    <value>na te bezoeken adres noteren</value>
+  </data>
+  <data name="MainPage_MainMenu_AddTime" xml:space="preserve">
+    <value>tijd noteren</value>
+  </data>
+  <data name="MainPage_MainMenu_BackupRestore" xml:space="preserve">
+    <value>backup &amp; herstel</value>
+  </data>
+  <data name="MainPage_MainMenu_CustomReport" xml:space="preserve">
+    <value>aangepast rapport </value>
+  </data>
+  <data name="MainPage_MainMenu_MonthReport" xml:space="preserve">
+    <value>rapport voor {0}</value>
+  </data>
+  <data name="MainPage_MainMenu_SendReport" xml:space="preserve">
+    <value>velddienstrapport versturen</value>
+  </data>
+  <data name="MainPage_MainMenu_ServiceYearReport" xml:space="preserve">
+    <value>jaaroverzicht</value>
+  </data>
+  <data name="MainPage_MainMenu_Settings" xml:space="preserve">
+    <value>instellingen</value>
+  </data>
+  <data name="MainPage_MainMenu_WtLib" xml:space="preserve">
+    <value>watchtower library</value>
+  </data>
+  <data name="MainPage_Messages_AddedTime" xml:space="preserve">
+    <value>Tijd ({0} uur &amp; {1} min) toegevoegd.</value>
+  </data>
+  <data name="MainPage_Messages_CantAddZeroMin" xml:space="preserve">
+    <value>Je kan niet nul minuten toevoegen.</value>
+  </data>
+  <data name="MainPage_Messages_DonateLater" xml:space="preserve">
+    <value>Je kan in instellingen&gt;over later alsnog doneren.</value>
+  </data>
+  <data name="MainPage_Messages_DonatePlease" xml:space="preserve">
+    <value>Gebruik van deze app is kostenloos. Apps beschikbaarstellen in de App Store is dat echter niet. Zou je een bijdrage kunnen overwegen?</value>
+  </data>
+  <data name="MainPage_Report_AuxHours" xml:space="preserve">
+    <value>Overige uren: 	{0:0.0}
+</value>
+  </data>
+  <data name="MainPage_Report_BibleStudies" xml:space="preserve">
+    <value>Bijbelstudies:	{0}</value>
+  </data>
+  <data name="MainPage_Report_Books" xml:space="preserve">
+    <value>Boeken:		{0}
+</value>
+  </data>
+  <data name="MainPage_Report_Brochures" xml:space="preserve">
+    <value>Brochures:	{0}
+</value>
+  </data>
+  <data name="MainPage_Report_Header" xml:space="preserve">
+    <value>Hier is mijn velddienstrapport voor {0:MMMM}, {0:yyyy}:
+
+</value>
+  </data>
+  <data name="MainPage_Report_Hours" xml:space="preserve">
+    <value>Uren:		{0:0.00}
+</value>
+  </data>
+  <data name="MainPage_Report_Mags" xml:space="preserve">
+    <value>Tijdschriften:	{0}
+</value>
+  </data>
+  <data name="MainPage_Report_RVs" xml:space="preserve">
+    <value>Nabezoeken:	{0}
+</value>
+  </data>
+  <data name="MainPage_RvHeadline" xml:space="preserve">
+    <value>nabezoeken</value>
+  </data>
+  <data name="MainPage_RV_DaysSince" xml:space="preserve">
+    <value>Dagen sinds laatste bezoek</value>
+  </data>
+  <data name="MainPage_Time_BibleStudies" xml:space="preserve">
+    <value>Bijbelstudies</value>
+  </data>
+  <data name="MainPage_Time_Books" xml:space="preserve">
+    <value>Boeken</value>
+  </data>
+  <data name="MainPage_Time_Brochures" xml:space="preserve">
+    <value>Brochures</value>
+  </data>
+  <data name="MainPage_Time_Headline" xml:space="preserve">
+    <value>tijd</value>
+  </data>
+  <data name="MainPage_Time_Magazines" xml:space="preserve">
+    <value>Tijdschriften</value>
+  </data>
+  <data name="MainPage_Time_Notes" xml:space="preserve">
+    <value>Aantekeningen</value>
+  </data>
+  <data name="MainPage_Time_ReturnVisits" xml:space="preserve">
+    <value>Nabezoeken</value>
+  </data>
+  <data name="ReportingPage_BibleStudies_1" xml:space="preserve">
+    <value>Bijbelstudies</value>
+  </data>
+  <data name="ReportingPage_Entries" xml:space="preserve">
+    <value>overzicht</value>
+  </data>
+  <data name="ReportingPage_Entries_Header" xml:space="preserve">
+    <value>overzicht</value>
+  </data>
+  <data name="ReportingPage_Report_Books" xml:space="preserve">
+    <value>Boeken,</value>
+  </data>
+  <data name="ReportingPage_Report_Brochures" xml:space="preserve">
+    <value> Brochures, </value>
+  </data>
+  <data name="ReportingPage_Report_ChartTitle" xml:space="preserve">
+    <value>Tijd in uren</value>
+  </data>
+  <data name="ReportingPage_Report_Days" xml:space="preserve">
+    <value>dagen</value>
+  </data>
+  <data name="ReportingPage_Report_Disclaimer" xml:space="preserve">
+    <value>Herinnering: dienstjaar begint in September</value>
+  </data>
+  <data name="ReportingPage_Report_From" xml:space="preserve">
+    <value>VAN: {0}</value>
+  </data>
+  <data name="ReportingPage_Report_Headline" xml:space="preserve">
+    <value>rapport</value>
+  </data>
+  <data name="ReportingPage_Report_HoursOnDays" xml:space="preserve">
+    <value>{0} Uur/uren op {1} dagen</value>
+  </data>
+  <data name="ReportingPage_Report_Legend" xml:space="preserve">
+    <value>legenda</value>
+  </data>
+  <data name="ReportingPage_Report_Magazines" xml:space="preserve">
+    <value> Tijdschriften, </value>
+  </data>
+  <data name="ReportingPage_Report_MyActivity" xml:space="preserve">
+    <value>mijn activiteit</value>
+  </data>
+  <data name="ReportingPage_Report_On" xml:space="preserve">
+    <value>op</value>
+  </data>
+  <data name="ReportingPage_Report_OtherActivity" xml:space="preserve">
+    <value>OVERIGE ACTIVITEIT</value>
+  </data>
+  <data name="ReportingPage_Report_Placements" xml:space="preserve">
+    <value>VERSPREIDINGEN</value>
+  </data>
+  <data name="ReportingPage_Report_Time" xml:space="preserve">
+    <value>TIJD</value>
+  </data>
+  <data name="ReportingPage_Report_TimeInHrs" xml:space="preserve">
+    <value>Tijd in uren</value>
+  </data>
+  <data name="ReportingPage_Report_To" xml:space="preserve">
+    <value>AAN: {0}</value>
+  </data>
+  <data name="ReportingPage_Report_TotalHours" xml:space="preserve">
+    <value>TOTAAL: {0} uur and {1} minuten</value>
+  </data>
+  <data name="ReportingPage_ReturnVisits_1" xml:space="preserve">
+    <value>Nabezoeken</value>
+  </data>
+  <data name="ReportingPage_Share" xml:space="preserve">
+    <value>delen...</value>
+  </data>
+  <data name="RVPage_Address_Address1" xml:space="preserve">
+    <value>Adres 1</value>
+  </data>
+  <data name="RVPage_Address_Address2" xml:space="preserve">
+    <value>Adres 2</value>
+  </data>
+  <data name="RVPage_Address_City" xml:space="preserve">
+    <value>Plaats</value>
+  </data>
+  <data name="RVPage_Address_Country" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="RVPage_Address_CurrentAddress" xml:space="preserve">
+    <value>Huidige adres:</value>
+  </data>
+  <data name="RVPage_Address_Headline" xml:space="preserve">
+    <value>adres</value>
+  </data>
+  <data name="RVPage_Address_LocationNotes" xml:space="preserve">
+    <value>Notities locatie</value>
+  </data>
+  <data name="RVPage_Address_PostalCode" xml:space="preserve">
+    <value>Postcode</value>
+  </data>
+  <data name="RVPage_Address_StateDistrict" xml:space="preserve">
+    <value>Provincie</value>
+  </data>
+  <data name="RVPage_Address_Use" xml:space="preserve">
+    <value>Gebruik</value>
+  </data>
+  <data name="RVPage_Headline" xml:space="preserve">
+    <value>NABEZOEK TOEVOEGEN OF AANPASSEN</value>
+  </data>
+  <data name="RVPage_Info_Address" xml:space="preserve">
+    <value>ADRES</value>
+  </data>
+  <data name="RVPage_Info_Headline" xml:space="preserve">
+    <value>informatie</value>
+  </data>
+  <data name="RVPage_Info_PersonalInfo" xml:space="preserve">
+    <value>PERSOONLIJKE INFORMATIE</value>
+  </data>
+  <data name="RVPage_Menu_AddVisit" xml:space="preserve">
+    <value>bezoek toevoegen</value>
+  </data>
+  <data name="RVPage_Menu_Delete" xml:space="preserve">
+    <value>nabezoek verwijderen</value>
+  </data>
+  <data name="RVPage_Menu_Email" xml:space="preserve">
+    <value>nabezoek emailen</value>
+  </data>
+  <data name="RVPage_Menu_Export" xml:space="preserve">
+    <value>exporteren naar contactpersonen</value>
+  </data>
+  <data name="RVPage_Menu_Reset" xml:space="preserve">
+    <value>resetten</value>
+  </data>
+  <data name="RVPage_Menu_Save" xml:space="preserve">
+    <value>opslaan</value>
+  </data>
+  <data name="RVPage_Messages_Delete" xml:space="preserve">
+    <value>Weet je zeker dat je dit nabezoek wilt verwijderen?</value>
+  </data>
+  <data name="RVPage_Messages_IncludeAllVisits" xml:space="preserve">
+    <value>Wil je alle bezoeken bijvoegen?</value>
+  </data>
+  <data name="RVPage_Messages_IncludeAllVisits2" xml:space="preserve">
+    <value>Alle bezoeken bijvoegen</value>
+  </data>
+  <data name="RVPage_Messages_Saved" xml:space="preserve">
+    <value>Nabezoek opgeslagen.</value>
+  </data>
+  <data name="RVPage_Personal_Age" xml:space="preserve">
+    <value>Leeftijd</value>
+  </data>
+  <data name="RVPage_Personal_Description" xml:space="preserve">
+    <value>Omschrijving</value>
+  </data>
+  <data name="RVPage_Personal_FullName" xml:space="preserve">
+    <value>Volledige naam</value>
+  </data>
+  <data name="RVPage_Personal_Headline" xml:space="preserve">
+    <value>persoonlijk</value>
+  </data>
+  <data name="RVPage_Personal_PhoneNumber" xml:space="preserve">
+    <value>Telefoonnummer</value>
+  </data>
+  <data name="RVPage_Reminders_AddReminder" xml:space="preserve">
+    <value>Herinnering toevoegen</value>
+  </data>
+  <data name="RVPage_Reminders_Headline" xml:space="preserve">
+    <value>herinneringen</value>
+  </data>
+  <data name="RVPage_Reminders_Notes" xml:space="preserve">
+    <value>Aantekeningen</value>
+  </data>
+  <data name="RVPage_Reminders_SelectDate" xml:space="preserve">
+    <value>Selecteer datum</value>
+  </data>
+  <data name="RVPage_Reminders_SelectTime" xml:space="preserve">
+    <value>Selecteer tijd</value>
+  </data>
+  <data name="RVPage_Visits_DaysSince" xml:space="preserve">
+    <value> dagen sinds bezoek</value>
+  </data>
+  <data name="RVPage_Visits_Headline" xml:space="preserve">
+    <value>bezoeken</value>
+  </data>
+  <data name="SettingsPage_About_AppVersion" xml:space="preserve">
+    <value>Applicatie versie:</value>
+  </data>
+  <data name="SettingsPage_About_Copyright" xml:space="preserve">
+    <value>Copyright 2013 Square.HipToBe</value>
+  </data>
+  <data name="SettingsPage_About_CoreVersion" xml:space="preserve">
+    <value>Core Versie: </value>
+  </data>
+  <data name="SettingsPage_About_Donate" xml:space="preserve">
+    <value>Bijdragen aan ontwikkeling</value>
+  </data>
+  <data name="SettingsPage_About_Headline" xml:space="preserve">
+    <value>over</value>
+  </data>
+  <data name="SettingsPage_About_Help" xml:space="preserve">
+    <value>Help!</value>
+  </data>
+  <data name="SettingsPage_About_Links" xml:space="preserve">
+    <value>LINKS</value>
+  </data>
+  <data name="SettingsPage_About_OpenSource" xml:space="preserve">
+    <value>OPEN SOURCE</value>
+  </data>
+  <data name="SettingsPage_About_Rate" xml:space="preserve">
+    <value>Beoordeel deze App!</value>
+  </data>
+  <data name="SettingsPage_About_ReportIssue" xml:space="preserve">
+    <value>Probleem melden</value>
+  </data>
+  <data name="SettingsPage_About_ThisAppFOSS" xml:space="preserve">
+    <value>Deze App is open source!</value>
+  </data>
+  <data name="SettingsPage_About_Version" xml:space="preserve">
+    <value>Versie</value>
+  </data>
+  <data name="SettingsPage_Settings_AddCallPlacements" xml:space="preserve">
+    <value>VERSIE</value>
+  </data>
+  <data name="SettingsPage_Settings_AppSettings" xml:space="preserve">
+    <value>Programma instellingen</value>
+  </data>
+  <data name="SettingsPage_Settings_BeautifyPhoneNumbers" xml:space="preserve">
+    <value>Telefoonnummers verfraaien (alleen VS)</value>
+  </data>
+  <data name="SettingsPage_Settings_CSO" xml:space="preserve">
+    <value>Dienstopziener</value>
+  </data>
+  <data name="SettingsPage_Settings_CSO_Message1" xml:space="preserve">
+    <value>Druk op de knop om de contactgegevens van je dienstopziener te selecteren.</value>
+  </data>
+  <data name="SettingsPage_Settings_DefaultAge" xml:space="preserve">
+    <value>Standaard leeftijd</value>
+  </data>
+  <data name="SettingsPage_Settings_DeleteCallsAndRv" xml:space="preserve">
+    <value>Bezoeken en nabezoeken verwijderen</value>
+  </data>
+  <data name="SettingsPage_Settings_DeleteCallsRvNote" xml:space="preserve">
+    <value>OPMERKING: de bezoeken verwijderen zal de nabezoeken verwijderen van je velddienstrapport.</value>
+  </data>
+  <data name="SettingsPage_Settings_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="SettingsPage_Settings_Headline" xml:space="preserve">
+    <value>instellingen</value>
+  </data>
+  <data name="SettingsPage_Settings_NickName" xml:space="preserve">
+    <value>Pseudoniem</value>
+  </data>
+  <data name="SettingsPage_Settings_PersonalSettings" xml:space="preserve">
+    <value>Persoonlijke instellingen</value>
+  </data>
+  <data name="SettingsPage_Settings_PlacementsMessage1" xml:space="preserve">
+    <value>Wanneer ingeschakeld worden verspreidingen die worden genoteerd bij nabezoeken,opgeteld bij je velddienstbericht. Als je deze instelling 'uit' zet, zul je de verspreidingen 2 keer in moeten voeren (één keer bij het bezoek en op het 'tijd noteren' scherm.</value>
+  </data>
+  <data name="SettingsPage_Settings_PrivacyPolicy" xml:space="preserve">
+    <value>Privacybeleid: Deze app gebruikt locatiediensten om je adres op te zoeken wanneer je een nabezoek noteert. Hoewel het adres wordt opgeslagen, worden de GPS gegevens nooit opgeslagen of verzonden.</value>
+  </data>
+  <data name="SettingsPage_Settings_RoundTime" xml:space="preserve">
+    <value>Tijd afronden op 15 minuten</value>
+  </data>
+  <data name="SettingsPage_Settings_SendMethod" xml:space="preserve">
+    <value>Standaard verzendmethode</value>
+  </data>
+  <data name="SettingsPage_Settings_SharingOptions" xml:space="preserve">
+    <value>INSTELLINGEN VOOR DELEN</value>
+  </data>
+  <data name="SettingsPage_Settings_SignatureMessage" xml:space="preserve">
+    <value>'Velddienst' handtekening toevoegen</value>
+  </data>
+  <data name="SettingsPage_Settings_SignatureMessage2" xml:space="preserve">
+    <value>Handtekening wordt alleen toegevoegd aan email berichten, niet aan SMS rapporten.</value>
+  </data>
+  <data name="SettingsPage_Settings_SMS" xml:space="preserve">
+    <value>SMS</value>
+  </data>
+  <data name="SettingsPage_Settings_UseLocServices" xml:space="preserve">
+    <value>Locatiediensten gebruiken</value>
+  </data>
+  <data name="TimeReport_AuxHoursAndMinutes" xml:space="preserve">
+    <value>{0} uur en {1} minuten bijzondere dienst tijd</value>
+  </data>
+  <data name="TimeReport_HoursAndMinutes" xml:space="preserve">
+    <value>{0} uur &amp; {1} minuten</value>
+  </data>
+  <data name="ViewPreviousVisitPage_Books" xml:space="preserve">
+    <value>Boeken</value>
+  </data>
+  <data name="ViewPreviousVisitPage_Brochures" xml:space="preserve">
+    <value> Brochures</value>
+  </data>
+  <data name="ViewPreviousVisitPage_Magazines" xml:space="preserve">
+    <value>Tijdschriften</value>
+  </data>
+  <data name="ViewPreviousVisitPage_Menu_Edit" xml:space="preserve">
+    <value>wijzigen</value>
+  </data>
+  <data name="ViewPreviousVisitPage_Notes" xml:space="preserve">
+    <value>AANTEKENINGEN</value>
+  </data>
+  <data name="ViewPreviousVisitPage_Placements" xml:space="preserve">
+    <value>VERSPREIDING</value>
+  </data>
+  <data name="ViewPreviousVisitPage_Rv" xml:space="preserve">
+    <value>NABEZOEK</value>
+  </data>
+  <data name="AddCallPage_Tracts" xml:space="preserve">
+    <value>Tracts</value>
+  </data>
+  <data name="AddTimePage_Tracts" xml:space="preserve">
+    <value>Tracts</value>
+  </data>
+  <data name="MainPage_Report_Tracts" xml:space="preserve">
+    <value>Tracts:	{0}
+</value>
+  </data>
+  <data name="MainPage_Time_Tracts" xml:space="preserve">
+    <value>Tracts</value>
+  </data>
+  <data name="ReportingPage_Report_Tracts" xml:space="preserve">
+    <value> Tracts</value>
+  </data>
+  <data name="Reporting_ReportHeader" xml:space="preserve">
+    <value>Field service report for {0}:
+
+</value>
+  </data>
+  <data name="SettingsPage_FAQ_Headline" xml:space="preserve">
+    <value>faq</value>
+  </data>
+  <data name="SettingsPage_FAQ_HowToEnterRVs_A" xml:space="preserve">
+    <value>There are two ways to enter RVs so they will show up on your report:
+1.       Using the built-in RV database.
+	a.       Save a new RV or enter an existing RV.
+	b.      Per the OD book, you don’t count the initial visit as an RV, so the first visit will not show up on your report, but all subsequent visits will be automatically counted on your report.
+2.       Manually count your RVs
+	a.       This method will only work if you don’t want to use the first method. You can’t use both at the same time.
+	b.      To turn on manually counting of RVs go to: “Settings &gt; Add Call Placements” and turn it off.
+	c.       Now you will be able to count RVs manually on your add time page.</value>
+  </data>
+  <data name="SettingsPage_FAQ_HowToEnterRVs_Q" xml:space="preserve">
+    <value>How do I enter the number of return vists on my report?</value>
+  </data>
+  <data name="SettingsPage_FAQ_WhyDontRVShow_A" xml:space="preserve">
+    <value>Per the OD book, the initial call is not counted on your time report.  Return visits are only counted on a subsequent visit which occurrs after the first initial visit.  If you are importing your return visits and have already made the initial call then you must save a 'dummy' initial visit to ensure that your return visit is counted on your report.  If you are not using the return visit features of this app, then you should go to " 'settings' &gt; 'Manually Track RVs &amp; Placements' " and set it to 'off' and you will be able to manually track your RVs.</value>
+  </data>
+  <data name="SettingsPage_FAQ_WhyDontRVShow_Q" xml:space="preserve">
+    <value>Why don't my return visits show on my report?</value>
+  </data>
+  <data name="ViewPreviousVisitPage_Tracts" xml:space="preserve">
+    <value> Tracts</value>
+  </data>
+</root>
