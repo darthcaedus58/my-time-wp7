@@ -110,7 +110,7 @@ namespace MyTimeDatabaseLib.Model
                 [Column (CanBeNull = true)]
                 public int? Tracts
                 {
-                        get { return _tracts; }
+                        get { return _tracts ?? 0; }
                         set
                         {
                                 if (_tracts != value)

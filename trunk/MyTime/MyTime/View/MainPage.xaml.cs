@@ -244,6 +244,7 @@ namespace FieldService.View
 									  Magazines = (int)tbMags.Value,
 									  Brochures = (int) tbBrochures.Value,
 									  Books = (int) tbBooks.Value,
+                                                                          Tracts =  (int) tbTracts.Value,
 									  BibleStudies = (int) tbBibleStudies.Value,
 									  ReturnVisits = (int) tbReturnVisits.Value,
 									  Notes = tbNotes.Text
@@ -387,6 +388,7 @@ namespace FieldService.View
 				tbBooks.Value = 0;
 				tbBibleStudies.Value = 0;
 				tbReturnVisits.Value = 0;
+			        tbTracts.Value = 0;
 				tbNotes.Text = string.Empty;
 				_timerState = TimerState.Stopped;
 				ClearRestartTime();
@@ -510,6 +512,7 @@ namespace FieldService.View
 			int tBros = 0;
 			int tRv = 0;
 			int tBs = 0;
+		        int tTs = 0;
 			foreach (TimeData e in entries) {
 				tTime += e.Minutes;
 				tMags += e.Magazines;
@@ -517,6 +520,7 @@ namespace FieldService.View
 				tBros += e.Brochures;
 				tRv += e.ReturnVisits;
 				tBs += e.BibleStudies;
+			        tTs += e.Tracts;
 			}
 
 			body += string.Format(StringResources.MainPage_Report_Hours, ((double) tTime/60.0));
@@ -525,6 +529,7 @@ namespace FieldService.View
 			body += tMags > 0 ? string.Format(StringResources.MainPage_Report_Mags, tMags) : string.Empty;
 			body += tBks  > 0 ? string.Format(StringResources.MainPage_Report_Books, tBks) : string.Empty;
 			body += tBros > 0 ? string.Format(StringResources.MainPage_Report_Brochures,tBros) : string.Empty;
+		        body += tTs > 0 ? string.Format(StringResources.MainPage_Report_Tracts, tTs) : string.Empty;
 			body += tRv > 0 ? string.Format(StringResources.MainPage_Report_RVs,tRv) : string.Empty;
 			body += tBs > 0 ? string.Format(StringResources.MainPage_Report_BibleStudies,tBs) : string.Empty;
 
@@ -565,6 +570,7 @@ namespace FieldService.View
 			tbMags.Value = 0;
 			tbNotes.Text = string.Empty;
 			tbReturnVisits.Value = 0;
+		        tbTracts.Value = 0;
 		}
 
 		#region Nested type: TimerState

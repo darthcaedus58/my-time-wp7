@@ -337,28 +337,37 @@
     <value>Libreria watchtower</value>
   </data>
   <data name="MainPage_Report_AuxHours" xml:space="preserve">
-    <value>Ore Ausiliario: \t{0:0.0}\n</value>
+    <value>Ore Ausiliario: 	{0:0.0}
+</value>
   </data>
   <data name="MainPage_Report_BibleStudies" xml:space="preserve">
-    <value>Studi Biblici:\t{0}</value>
+    <value>Studi Biblici:	{0}
+</value>
   </data>
   <data name="MainPage_Report_Books" xml:space="preserve">
-    <value>Libri:\t\t{0}\n</value>
+    <value>Libri:		{0}
+</value>
   </data>
   <data name="MainPage_Report_Brochures" xml:space="preserve">
-    <value>Opuscoli:\t{0}\n</value>
+    <value>Opuscoli:	{0}
+</value>
   </data>
   <data name="MainPage_Report_Header" xml:space="preserve">
-    <value>Ecco il mio rapporto di servizio di campo per {0:MMMM}, {0:yyyy}:\n\n</value>
+    <value>Ecco il mio rapporto di servizio di campo per {0:MMMM}, {0:yyyy}:
+
+</value>
   </data>
   <data name="MainPage_Report_Hours" xml:space="preserve">
-    <value>Ore:\t\t{0:0.00}\n</value>
+    <value>Ore:		{0:0.00}
+</value>
   </data>
   <data name="MainPage_Report_Mags" xml:space="preserve">
-    <value>Riviste:\t{0}\n</value>
+    <value>Riviste:	{0}
+</value>
   </data>
   <data name="MainPage_Report_RVs" xml:space="preserve">
-    <value>Visite Ulteriori:\t{0}\n</value>
+    <value>Visite Ulteriori:	{0}
+</value>
   </data>
   <data name="MainPage_RvHeadline" xml:space="preserve">
     <value>Visite ulteriori</value>
@@ -741,6 +750,15 @@
   <data name="AddTimePage_Tracts" xml:space="preserve">
     <value>Volantini</value>
   </data>
+  <data name="AddCallPage_Tracts" xml:space="preserve">
+    <value>Volantini</value>
+  </data>
+  <data name="MainPage_Report_Tracts" xml:space="preserve">
+    <value>Volantini:{0}</value>
+  </data>
+  <data name="MainPage_Time_Tracts" xml:space="preserve">
+    <value>Volantini</value>
+  </data>
   <data name="ReportingPage_Chart_Header" xml:space="preserve">
     <value>grafico</value>
   </data>
@@ -749,5 +767,10 @@
   </data>
   <data name="ReportingPage_Report_Tracts" xml:space="preserve">
     <value> Volantini</value>
+  </data>
+  <data name="Reporting_ReportHeader" xml:space="preserve">
+    <value>Rapporto di servizio di campo per {0}:
+
+</value>
   </data>
 </root>

@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Phone.Data.Linq;
 using MyTimeDatabaseLib.Model;
 
 namespace MyTimeDatabaseLib
@@ -24,6 +25,8 @@ namespace MyTimeDatabaseLib
 	/// </summary>
 	public class RvPreviousVisitsDataInterface
 	{
+                public const int APP_VERSION = 2;
+
 		/// <summary>
 		/// Gets the previous visits.
 		/// </summary>
@@ -56,8 +59,22 @@ namespace MyTimeDatabaseLib
 		public static void CheckDatabase()
 		{
 			using (var db = new RvPreviousVisitsContext(RvPreviousVisitsContext.DBConnectionString)) {
-				if (db.DatabaseExists() == false)
-					db.CreateDatabase();
+                                if (db.DatabaseExists() == false) {
+                                        db.CreateDatabase();
+                                        DatabaseSchemaUpdater dbUpdater = db.CreateDatabaseSchemaUpdater();
+                                        dbUpdater.DatabaseSchemaVersion = APP_VERSION;
+                                        dbUpdater.Execute();
+                                } else {
+                                        var dbUpdater = db.CreateDatabaseSchemaUpdater();
+                                        if (dbUpdater.DatabaseSchemaVersion < 2)  //update from 1.0 to 2.0 db version
+		                        {
+                                                dbUpdater.AddColumn<RvPreviousVisitItem>("Tracts");
+                                                dbUpdater.DatabaseSchemaVersion = APP_VERSION;
+                                                dbUpdater.Execute();
+                                        }
+                                }
+
+
 			}
 		}
 
@@ -80,6 +97,7 @@ namespace MyTimeDatabaseLib
 					c.Brochures = call.Brochures;
 					c.Date = call.Date;
 					c.Notes = call.Notes;
+				        c.Tracts = call.Tracts;
 
 					db.SubmitChanges();
 					return c.ItemId > 0; // existing call saved.
@@ -239,13 +257,16 @@ namespace MyTimeDatabaseLib
 		/// <value>The date.</value>
 		public DateTime Date { get; set; }
 
-		internal static RvPreviousVisitItem Copy(RvPreviousVisitData call)
+	        public int Tracts { get; set; }
+
+	        internal static RvPreviousVisitItem Copy(RvPreviousVisitData call)
 		{
 			return new RvPreviousVisitItem {
 											   RvItemId = call.RvItemId,
 											   Magazines = call.Magazines,
 											   Books = call.Books,
 											   Brochures = call.Brochures,
+                                                                                           Tracts = call.Tracts,
 											   Date = call.Date,
 											   Notes = call.Notes
 										   };
@@ -258,6 +279,7 @@ namespace MyTimeDatabaseLib
 				                               RvItemId = call.RvItemId,
 				                               Books = call.Books,
 				                               Brochures = call.Brochures,
+                                                               Tracts = call.Tracts ?? 0,
 				                               Date = call.Date,
 				                               Magazines = call.Magazines,
 				                               Notes = call.Notes

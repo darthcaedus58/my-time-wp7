@@ -15,6 +15,7 @@ namespace FieldService.ViewModels
 					                                                                           Date = DateTime.Today,
 					                                                                           RvItemId = -1,
 					                                                                           Magazines = 0,
+                                                                                                                   Tracts = 0,
 					                                                                           Notes = string.Empty
 				                                                                           };
 
@@ -52,6 +53,7 @@ namespace FieldService.ViewModels
 				OnPropertyChanged("Date");
 				OnPropertyChanged("DaysSinceVisit");
 				OnPropertyChanged("Notes");
+			        OnPropertyChanged("Tracts");
 			}
 		}
 
@@ -87,6 +89,17 @@ namespace FieldService.ViewModels
 				OnPropertyChanged("Magazines");
 			}
 		}
+
+                public int Tracts
+                {
+                        get { return _previousVisitData.Tracts; }
+                        set
+                        {
+                                if (_previousVisitData.Tracts == value) return;
+                                _previousVisitData.Tracts = value;
+                                OnPropertyChanged("Tracts");
+                        }
+                }
 
 		public DateTime Date
 		{
@@ -126,6 +139,7 @@ namespace FieldService.ViewModels
 				OnPropertyChanged("Brochures");
 				OnPropertyChanged("Books");
 				OnPropertyChanged("DaysSinceVisit");
+			        OnPropertyChanged("Tracts");
 			}
 		}
 
@@ -141,6 +155,7 @@ namespace FieldService.ViewModels
 					                                             RvItemId = value,
 					                                             Date = DateTime.Today,
 					                                             Magazines = 0,
+                                                                                     Tracts = 0,
 					                                             Notes = string.Empty
 				                                             };
 				OnPropertyChanged("PreviousVisitData");

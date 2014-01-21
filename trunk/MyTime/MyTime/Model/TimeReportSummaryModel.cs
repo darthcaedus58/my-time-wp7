@@ -62,7 +62,9 @@ namespace FieldService.Model
 		/// </summary>
 		private string _time;
 
-		public double RBCHours
+	        private int _tracts;
+
+	        public double RBCHours
 		{
 			get { return _rbcMin; }
 			set
@@ -192,11 +194,24 @@ namespace FieldService.Model
 			}
 		}
 
-		/// <summary>
-		/// Gets or sets the return visits.
-		/// </summary>
-		/// <value>The return visits.</value>
-		public int ReturnVisits
+	        public int Tracts
+	        {
+	                get { return _tracts; }
+	                set
+	                {
+	                        if (_tracts != value)
+	                        {
+	                                _tracts = value;
+	                                NotifyPropertyChanged("Tracts");
+	                        }
+	                }
+	        }
+
+	        /// <summary>
+	        /// Gets or sets the return visits.
+	        /// </summary>
+	        /// <value>The return visits.</value>
+	        public int ReturnVisits
 		{
 			get { return _rvs; }
 

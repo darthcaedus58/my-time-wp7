@@ -758,6 +758,15 @@
   <data name="AddTimePage_Tracts" xml:space="preserve">
     <value>Tratados</value>
   </data>
+  <data name="AddCallPage_Tracts" xml:space="preserve">
+    <value>Tratados</value>
+  </data>
+  <data name="MainPage_Report_Tracts" xml:space="preserve">
+    <value>Tratados:{0}</value>
+  </data>
+  <data name="MainPage_Time_Tracts" xml:space="preserve">
+    <value>Tratados</value>
+  </data>
   <data name="ReportingPage_Chart_Header" xml:space="preserve">
     <value>gráfico</value>
   </data>
@@ -766,5 +775,10 @@
   </data>
   <data name="ReportingPage_Report_Tracts" xml:space="preserve">
     <value> Tratados</value>
+  </data>
+  <data name="Reporting_ReportHeader" xml:space="preserve">
+    <value>Informe de servicio de campo para {0}:
+
+</value>
   </data>
 </root>

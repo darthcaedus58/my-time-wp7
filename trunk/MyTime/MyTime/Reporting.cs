@@ -66,6 +66,7 @@ namespace FieldService
 							e.Magazines += c.Magazines;
 							e.Books += c.Books;
 							e.Brochures += c.Brochures;
+						        e.Tracts += c.Tracts;
 							e.ReturnVisits += RvPreviousVisitsDataInterface.IsInitialCall(c) ? 0 : 1;
 							found = true;
 							break;
@@ -77,6 +78,7 @@ namespace FieldService
 												Magazines = c.Magazines,
 												Books = c.Books,
 												Brochures = c.Brochures,
+                                                                                                Tracts = c.Tracts,
 												Date = c.Date,
 												ReturnVisits = RvPreviousVisitsDataInterface.IsInitialCall(c) ? 0 : 1
 											});

@@ -117,6 +117,7 @@ namespace FieldService.ViewModels
                                 summary.Books += td.Books;
                                 summary.Brochures += td.Brochures;
                                 summary.ReturnVisits += td.ReturnVisits;
+                                summary.Tracts += td.Tracts;
                                 //summary data end.
 
                                 //add the time data to the entries page.

@@ -47,7 +47,7 @@ namespace FieldService.ViewModels
 			if (!IsolatedStorageFile.GetUserStoreForApplication().FileExists("mainpage.xml")) {
 				using (IsolatedStorageFile iso = IsolatedStorageFile.GetUserStoreForApplication()) {
 					using (var file = new IsolatedStorageFileStream("mainpage.xml", FileMode.CreateNew, iso)) {
-						byte[] b = Encoding.UTF8.GetBytes("<?xml version=\"1.0\" encoding=\"utf-8\" ?><items><magazines>0</magazines><brochures>0</brochures><books>0</books><rvs>0</rvs><bs>0</bs><notes> </notes></items>");
+                                                byte[] b = Encoding.UTF8.GetBytes("<?xml version=\"1.0\" encoding=\"utf-8\" ?><items><magazines>0</magazines><brochures>0</brochures><books>0</books><rvs>0</rvs><bs>0</bs><tracts>0</tracts><notes> </notes></items>");
 						file.Write(b, 0, b.Length);
 					}
 				}
@@ -100,15 +100,17 @@ namespace FieldService.ViewModels
 		/// <value><c>true</c> if this instance is main menu loaded; otherwise, <c>false</c>.</value>
 		public bool IsMainMenuLoaded { get; private set; }
 
-		public double MainPageMagazines { get { return GetMainPageDouble("magazines"); } set { SetMainPageValue(value, "magazines"); } }
+		public double MainPageMagazines { get { return GetMainPageDouble("magazines"); } set { SetMainPageDouble(value, "magazines"); } }
 
-		public double MainPageBrochures { get { return GetMainPageDouble("brochures"); } set { SetMainPageValue(value, "brochures"); } }
+		public double MainPageBrochures { get { return GetMainPageDouble("brochures"); } set { SetMainPageDouble(value, "brochures"); } }
 
-		public double MainPageBooks { get { return GetMainPageDouble("books"); } set { SetMainPageValue(value, "books"); } }
+		public double MainPageBooks { get { return GetMainPageDouble("books"); } set { SetMainPageDouble(value, "books"); } }
 
-		public double MainPageReturnVisits { get { return GetMainPageDouble("rvs"); } set { SetMainPageValue(value, "rvs"); } }
+		public double MainPageTracts { get { return GetMainPageDouble("tracts"); } set { SetMainPageDouble(value, "tracts"); } }
 
-		public double MainPageBibleStudies { get { return GetMainPageDouble("bs"); } set { SetMainPageValue(value, "bs"); } }
+		public double MainPageReturnVisits { get { return GetMainPageDouble("rvs"); } set { SetMainPageDouble(value, "rvs"); } }
+
+		public double MainPageBibleStudies { get { return GetMainPageDouble("bs"); } set { SetMainPageDouble(value, "bs"); } }
 
 		public string MainPageNotes { get { return GetMainPageString("notes"); } set { SetMainPageString(value, "notes"); } }
 
@@ -129,7 +131,14 @@ namespace FieldService.ViewModels
 					file.Read(bb, 0, bb.Length);
 					using (var oStream = new MemoryStream(bb)) {
 						XDocument xDoc = XDocument.Load(oStream);
-						return xDoc.Element("items").Element(elementName).Value;
+					        try
+					        {
+					                return xDoc.Element("items").Element(elementName).Value;
+					        }
+					        catch (NullReferenceException)
+					        {
+					                return string.Empty;
+					        }
 					}
 				}
 			}
@@ -143,7 +152,14 @@ namespace FieldService.ViewModels
 					file.Read(bb, 0, bb.Length);
 					using (var oStream = new MemoryStream(bb)) {
 						XDocument xDoc = XDocument.Load(oStream);
-						return Convert.ToDouble(xDoc.Element("items").Element(elementName).Value);
+					        try
+					        {
+					                return Convert.ToDouble(xDoc.Element("items").Element(elementName).Value);
+					        }
+					        catch (NullReferenceException)
+					        {
+					                return 0;
+					        }
 					}
 				}
 			}
@@ -158,6 +174,8 @@ namespace FieldService.ViewModels
 					file.Read(bb, 0, bb.Length);
 					using (var oStream = new MemoryStream(bb)) {
 						xDoc = XDocument.Load(oStream);
+                                                if(!xDoc.Element("items").Elements(elementName).Any())
+                                                        xDoc.Element("items").Add(new XElement(elementName, value));
 						xDoc.Element("items").Element(elementName).Value = value;
 					}
 				}
@@ -168,7 +186,7 @@ namespace FieldService.ViewModels
 			}
 		}
 
-		private static void SetMainPageValue(double value, string elementName)
+		private static void SetMainPageDouble(double value, string elementName)
 		{
 			using (IsolatedStorageFile iso = IsolatedStorageFile.GetUserStoreForApplication()) {
 				XDocument xDoc;
@@ -177,6 +195,8 @@ namespace FieldService.ViewModels
 					file.Read(bb, 0, bb.Length);
 					using (var oStream = new MemoryStream(bb)) {
 						xDoc = XDocument.Load(oStream);
+                                                if (!xDoc.Element("items").Elements(elementName).Any())
+                                                        xDoc.Element("items").Add(new XElement(elementName, value));
 						xDoc.Element("items").Element(elementName).Value = value.ToString();
 					}
 				}
