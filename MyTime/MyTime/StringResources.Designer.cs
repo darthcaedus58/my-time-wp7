@@ -2068,5 +2068,14 @@ namespace FieldService {
                 return ResourceManager.GetString("ViewPreviousVisitPage_Rv", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Tracts.
+        /// </summary>
+        public static string ViewPreviousVisitPage_Tracts {
+            get {
+                return ResourceManager.GetString("ViewPreviousVisitPage_Tracts", resourceCulture);
+            }
+        }
     }
 }
