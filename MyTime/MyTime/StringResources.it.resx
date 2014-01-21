@@ -394,10 +394,10 @@
     <value>Voci</value>
   </data>
   <data name="ReportingPage_Report_Books" xml:space="preserve">
-    <value>Libri</value>
+    <value> Libri, </value>
   </data>
   <data name="ReportingPage_Report_Brochures" xml:space="preserve">
-    <value>Opuscoli</value>
+    <value> Opuscoli, </value>
   </data>
   <data name="ReportingPage_Report_ChartTitle" xml:space="preserve">
     <value>Tempo in Ore</value>
@@ -421,7 +421,7 @@
     <value>Legenda</value>
   </data>
   <data name="ReportingPage_Report_Magazines" xml:space="preserve">
-    <value>Riviste</value>
+    <value>Riviste , </value>
   </data>
   <data name="ReportingPage_Report_MyActivity" xml:space="preserve">
     <value>Le mie attività</value>
@@ -737,5 +737,17 @@
   </data>
   <data name="MainPage_MainMenu_CustomReport" xml:space="preserve">
     <value>Rapporto ora personalizzato</value>
+  </data>
+  <data name="AddTimePage_Tracts" xml:space="preserve">
+    <value>Volantini</value>
+  </data>
+  <data name="ReportingPage_Chart_Header" xml:space="preserve">
+    <value>grafico</value>
+  </data>
+  <data name="ReportingPage_Chart_YourTime" xml:space="preserve">
+    <value>IL TUO TEMPO</value>
+  </data>
+  <data name="ReportingPage_Report_Tracts" xml:space="preserve">
+    <value> Volantini</value>
   </data>
 </root>

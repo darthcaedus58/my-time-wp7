@@ -14,6 +14,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Phone.Data.Linq;
 using MyTimeDatabaseLib.Model;
 
 namespace MyTimeDatabaseLib
@@ -23,18 +24,29 @@ namespace MyTimeDatabaseLib
 	/// </summary>
 	public class TimeDataInterface
 	{
+	        public const int APP_VERSION = 2;
 		/// <summary>
 		/// Checks the database.
 		/// </summary>
 		public static void CheckDatabase()
 		{
-			using (var db = new TimeDataContext(TimeDataContext.DBConnectionString)) {
-				if (db.DatabaseExists() == false)
-					db.CreateDatabase();
-				//else {
-				//    db.DeleteDatabase();
-				//    db.CreateDatabase();
-				//}
+		        using (var db = new TimeDataContext(TimeDataContext.DBConnectionString)) {
+		                if (db.DatabaseExists() == false)
+		                {
+		                        db.CreateDatabase();
+		                        DatabaseSchemaUpdater dbUpdater = db.CreateDatabaseSchemaUpdater();
+		                        dbUpdater.DatabaseSchemaVersion = APP_VERSION;
+                                        dbUpdater.Execute();
+		                } else
+		                {
+		                        var dbUpdater = db.CreateDatabaseSchemaUpdater();
+		                        if (dbUpdater.DatabaseSchemaVersion < 2)  //update from 1.0 to 2.0 db version
+		                        {
+		                                dbUpdater.AddColumn<TimeDataItem>("Tracts");
+		                                dbUpdater.DatabaseSchemaVersion = APP_VERSION;
+                                                dbUpdater.Execute();
+		                        }
+		                }
 			}
 		}
 
@@ -65,7 +77,7 @@ namespace MyTimeDatabaseLib
 					TimeDataItem tdi = db.TimeDataItems.Single(s => s.ItemId == id);
 					var td = TimeData.Copy(tdi);
 					return td;
-				} catch (InvalidOperationException e) {
+				} catch (InvalidOperationException) {
 					return null;
 				}
 			}
@@ -93,6 +105,7 @@ namespace MyTimeDatabaseLib
 					tdi.Minutes = td.Minutes;
 					tdi.Notes = td.Notes;
 					tdi.ReturnVisits = td.ReturnVisits;
+				        tdi.Tracts = td.Tracts ?? 0;
 
 					db.SubmitChanges();
 					return true;
@@ -120,22 +133,11 @@ namespace MyTimeDatabaseLib
 														  select x;
 
 				if (entries.Any()) {
-					var times = new List<TimeData>();
-					IEnumerable<TimeDataItem> e = so == SortOrder.DateNewestToOldest ? entries.ToArray().Reverse() : entries.ToArray();
-					foreach (TimeDataItem tdi in e) {
-						times.Add(new TimeData {
-												   BibleStudies = tdi.BibleStudies,
-												   Books = tdi.Books,
-												   Brochures = tdi.Brochures,
-												   Date = tdi.Date,
-												   ItemId = tdi.ItemId,
-												   Magazines = tdi.Magazines,
-												   Minutes = tdi.Minutes,
-												   Notes = tdi.Notes,
-												   ReturnVisits = tdi.ReturnVisits
-											   });
-					}
-					return times.ToArray();
+				        IEnumerable<TimeDataItem> e = so == SortOrder.DateNewestToOldest ? entries.ToArray().Reverse() : entries.ToArray();
+				        return e.Select(tdi => new TimeData
+				        {
+				                BibleStudies = tdi.BibleStudies, Books = tdi.Books, Brochures = tdi.Brochures, Date = tdi.Date, ItemId = tdi.ItemId, Magazines = tdi.Magazines, Minutes = tdi.Minutes, Notes = tdi.Notes, ReturnVisits = tdi.ReturnVisits, Tracts = tdi.Tracts ?? 0
+				        }).ToArray();
 				}
 				return new TimeData[0];
 			}
@@ -156,7 +158,6 @@ namespace MyTimeDatabaseLib
 					return true;
 				} catch (InvalidOperationException) { return false; }
 			}
-			return false;
 		}
 
 		public static bool AddOrUpdateTime(ref TimeData td)
@@ -239,6 +240,7 @@ namespace MyTimeDatabaseLib
 		/// <value>The brochures.</value>
 		public int Brochures { get; set; }
 
+                public int? Tracts { get; set; }
 		/// <summary>
 		/// Gets or sets the bible studies.
 		/// </summary>
@@ -267,7 +269,8 @@ namespace MyTimeDatabaseLib
 				                        Magazines = d.Magazines,
 				                        Minutes = d.Minutes,
 				                        Notes = d.Notes,
-				                        ReturnVisits = d.ReturnVisits
+				                        ReturnVisits = d.ReturnVisits,
+                                                        Tracts = d.Tracts
 			                        };
 		}
 
@@ -282,7 +285,8 @@ namespace MyTimeDatabaseLib
 				                    Magazines = tdi.Magazines,
 				                    Minutes = tdi.Minutes,
 				                    Notes = tdi.Notes,
-				                    ReturnVisits = tdi.ReturnVisits
+				                    ReturnVisits = tdi.ReturnVisits,
+                                                    Tracts = tdi.Tracts
 			                    };
 
 		}
