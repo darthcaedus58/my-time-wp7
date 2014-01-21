@@ -94,14 +94,29 @@ namespace FieldService.View
 
 			string body = string.Empty;
                         foreach (TimeReportSummaryModel entry in ((TimeReportViewModel)DataContext).icReport) {
-				body += string.Format("Report for {0}:\n\n", entry.Month);
-				body += string.Format("Hours:\t\t{0:0.00}\n", (entry.Minutes/60.0));
-				body += entry.Magazines > 0 ? string.Format("Magazines:\t{0}\n", entry.Magazines) : string.Empty;
-				body += entry.Books > 0 ? string.Format("Books:\t\t{0}\n", entry.Books) : string.Empty;
-				body += entry.Brochures > 0 ? string.Format("Brochures:\t{0}\n", entry.Brochures) : string.Empty;
-				body += entry.ReturnVisits > 0 ? string.Format("Return Visits:\t{0}\n", entry.ReturnVisits) : string.Empty;
-				body += entry.BibleStudies > 0 ? string.Format("Bible Studies:\t{0}\n", entry.BibleStudies) : string.Empty;
-				body += entry.RBCHours > 0 ? string.Format("R/B/C Hours:\t{0}", entry.RBCHours) : string.Empty;
+				body += string.Format(StringResources.Reporting_ReportHeader, entry.Month);
+                                body += string.Format(StringResources.MainPage_Report_Hours, (entry.Minutes/60.0));
+                                body += entry.Magazines > 0
+                                        ? string.Format(StringResources.MainPage_Report_Mags, entry.Magazines)
+                                        : string.Empty;
+                                body += entry.Books > 0
+                                        ? string.Format(StringResources.MainPage_Report_Books, entry.Books)
+                                        : string.Empty;
+                                body += entry.Brochures > 0
+                                        ? string.Format(StringResources.MainPage_Report_Brochures, entry.Brochures)
+                                        : string.Empty;
+                                body += entry.Tracts > 0
+                                        ? string.Format(StringResources.MainPage_Report_Tracts, entry.Tracts)
+                                        : string.Empty;
+                                body += entry.ReturnVisits > 0
+                                        ? string.Format(StringResources.MainPage_Report_RVs, entry.ReturnVisits)
+                                        : string.Empty;
+                                body += entry.BibleStudies > 0
+                                        ? string.Format(StringResources.MainPage_Report_BibleStudies, entry.BibleStudies)
+                                        : string.Empty;
+                                body += entry.RBCHours > 0
+                                        ? string.Format(StringResources.MainPage_Report_AuxHours, entry.RBCHours)
+                                        : string.Empty;
 				body += "\n\n";
 			}
 
@@ -147,7 +162,7 @@ namespace FieldService.View
 	                {
 	                        var dp = info.DataPoint as CategoricalDataPoint;
 	                        info.DisplayHeader = dp.Category+":";
-	                        info.DisplayContent = string.Format("{0} Hour(s)", dp.Value);
+                                info.DisplayContent = string.Format(StringResources.TimeReport_HoursAndMinutes, ((int)dp.Value), (60 * (dp.Value - ((int)dp.Value))));
 	                }
 	        }
 

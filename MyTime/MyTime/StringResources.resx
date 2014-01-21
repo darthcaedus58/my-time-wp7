@@ -770,6 +770,13 @@
   <data name="AddTimePage_Tracts" xml:space="preserve">
     <value>Tracts</value>
   </data>
+  <data name="MainPage_Report_Tracts" xml:space="preserve">
+    <value>Tracts:	{0}
+</value>
+  </data>
+  <data name="MainPage_Time_Tracts" xml:space="preserve">
+    <value>Tracts</value>
+  </data>
   <data name="ReportingPage_Chart_Header" xml:space="preserve">
     <value>chart</value>
   </data>
@@ -778,5 +785,13 @@
   </data>
   <data name="ReportingPage_Report_Tracts" xml:space="preserve">
     <value> Tracts</value>
+  </data>
+  <data name="AddCallPage_Tracts" xml:space="preserve">
+    <value>Tracts</value>
+  </data>
+  <data name="Reporting_ReportHeader" xml:space="preserve">
+    <value>Field service report for {0}:
+
+</value>
   </data>
 </root>

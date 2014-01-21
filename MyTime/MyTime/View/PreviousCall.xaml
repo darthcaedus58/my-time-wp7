@@ -54,6 +54,7 @@
 					<telerikInput:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags" Suffix="{Binding Path=StringResources.AddCallPage_Magazines, Source={StaticResource LocalizedStrings}}" Value="{Binding PreviousVisitData.Magazines, Mode=TwoWay}" />
 					<telerikInput:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" Suffix="{Binding Path=StringResources.AddCallPage_Brochures, Source={StaticResource LocalizedStrings}}" Value="{Binding PreviousVisitData.Brochures, Mode=TwoWay}" />
 					<telerikInput:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBooks" Suffix="{Binding Path=StringResources.AddCallPage_Books, Source={StaticResource LocalizedStrings}}" Value="{Binding PreviousVisitData.Books, Mode=TwoWay}" />
+					<telerikInput:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbTracts" Suffix="{Binding Path=StringResources.AddCallPage_Tracts, Source={StaticResource LocalizedStrings}}" Value="{Binding PreviousVisitData.Tracts, Mode=TwoWay}" />
 					<FieldService:HeaderControl IconSource="/icons/tasks.png" HeaderText="{Binding Path=StringResources.AddCallPage_Notes, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
 					<TextBox x:Name="tbNotes" Height="180" TextWrapping="Wrap" InputScope="Text" Text="{Binding PreviousVisitData.Notes, Mode=TwoWay}" AcceptsReturn="True"/>
 				</StackPanel>

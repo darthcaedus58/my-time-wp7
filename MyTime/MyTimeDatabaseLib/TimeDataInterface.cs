@@ -105,7 +105,7 @@ namespace MyTimeDatabaseLib
 					tdi.Minutes = td.Minutes;
 					tdi.Notes = td.Notes;
 					tdi.ReturnVisits = td.ReturnVisits;
-				        tdi.Tracts = td.Tracts ?? 0;
+				        tdi.Tracts = td.Tracts;
 
 					db.SubmitChanges();
 					return true;
@@ -240,7 +240,7 @@ namespace MyTimeDatabaseLib
 		/// <value>The brochures.</value>
 		public int Brochures { get; set; }
 
-                public int? Tracts { get; set; }
+                public int Tracts { get; set; }
 		/// <summary>
 		/// Gets or sets the bible studies.
 		/// </summary>
@@ -286,7 +286,7 @@ namespace MyTimeDatabaseLib
 				                    Minutes = tdi.Minutes,
 				                    Notes = tdi.Notes,
 				                    ReturnVisits = tdi.ReturnVisits,
-                                                    Tracts = tdi.Tracts
+                                                    Tracts = tdi.Tracts ?? 0
 			                    };
 
 		}

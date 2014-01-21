@@ -187,6 +187,15 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tracts.
+        /// </summary>
+        public static string AddCallPage_Tracts {
+            get {
+                return ResourceManager.GetString("AddCallPage_Tracts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to It appears you have already added time earlier today.  Would you like to merge this new time with the previous time for today?.
         /// </summary>
         public static string AddRBCTimePage_AskForDoubleEntry {
@@ -1014,6 +1023,16 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tracts:	{0}
+        ///.
+        /// </summary>
+        public static string MainPage_Report_Tracts {
+            get {
+                return ResourceManager.GetString("MainPage_Report_Tracts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Day(s) Since Last Visit.
         /// </summary>
         public static string MainPage_RV_DaysSince {
@@ -1091,6 +1110,26 @@ namespace FieldService {
         public static string MainPage_Time_ReturnVisits {
             get {
                 return ResourceManager.GetString("MainPage_Time_ReturnVisits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tracts.
+        /// </summary>
+        public static string MainPage_Time_Tracts {
+            get {
+                return ResourceManager.GetString("MainPage_Time_Tracts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Field service report for {0}:
+        ///
+        ///.
+        /// </summary>
+        public static string Reporting_ReportHeader {
+            get {
+                return ResourceManager.GetString("Reporting_ReportHeader", resourceCulture);
             }
         }
         

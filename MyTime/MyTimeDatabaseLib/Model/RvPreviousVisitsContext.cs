@@ -59,7 +59,9 @@ namespace MyTimeDatabaseLib.Model
         /// </summary>
         [Column(IsVersion = true)] private Binary _version;
 
-        /// <summary>
+            private int? _tracts;
+
+            /// <summary>
         /// Gets or sets the item id.
         /// </summary>
         /// <value>The item id.</value>
@@ -192,9 +194,24 @@ namespace MyTimeDatabaseLib.Model
             }
         }
 
-        // Version column aids update performance.
+            [Column(CanBeNull = true)]
+            public int? Tracts
+            {
+                    get { return _tracts ?? 0; }
+                    set
+                    {
+                            if (_tracts != value)
+                            {
+                                    NotifyPropertyChanging("Tracts");
+                                    _tracts = value;
+                                    NotifyPropertyChanged("Tracts");
+                            }
+                    }
+            }
 
-        #region INotifyPropertyChanged Members
+            // Version column aids update performance.
+
+            #region INotifyPropertyChanged Members
 
         /// <summary>
         /// Occurs when [property changed].
