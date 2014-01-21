@@ -136,7 +136,10 @@
 			</controls:PivotItem>
 			<controls:PivotItem Header="{Binding Path=StringResources.RVPage_Visits_Headline, Source={StaticResource LocalizedStrings}}">
 				<Grid>
-					<StackPanel>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+					<Grid Row="0">
 						<ListBox ItemsSource="{Binding ReturnVisitData.PreviousVisits}" SelectionChanged="PreviousVisitListBox_SelectionChanged" >
 							<ListBox.ItemTemplate>
 								<DataTemplate>
@@ -151,7 +154,7 @@
 								</DataTemplate>
 							</ListBox.ItemTemplate>
 						</ListBox>
-					</StackPanel>
+					</Grid>
 				</Grid>
 			</controls:PivotItem>
 		</controls:Pivot>
