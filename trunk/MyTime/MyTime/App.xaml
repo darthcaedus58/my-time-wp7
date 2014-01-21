@@ -149,6 +149,7 @@
 				<Setter Property="HorizontalContentAlignment" Value="Left"/>
 				<Setter Property="VerticalContentAlignment" Value="Center"/>
 				<Setter Property="Padding" Value="5"/>
+                <Setter Property="MinValue" Value="0" />
 				<Setter Property="Template">
 					<Setter.Value>
 						<ControlTemplate TargetType="telerik:RadNumericUpDown">
