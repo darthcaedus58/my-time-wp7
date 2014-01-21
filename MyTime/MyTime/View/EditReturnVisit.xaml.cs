@@ -339,6 +339,7 @@ namespace FieldService
 			}
 			if (App.ViewModel.ReturnVisitData.SaveOrUpdate()) {
 				App.ToastMe("Return Visit Saved.");
+			        NavigationContext.QueryString["id"] = App.ViewModel.ReturnVisitData.ItemId.ToString();
 			} else {
 				App.ToastMe("Return Visit Saving Failed.");
 			}
