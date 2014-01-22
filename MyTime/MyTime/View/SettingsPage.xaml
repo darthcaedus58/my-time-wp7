@@ -43,7 +43,7 @@
                         <StackPanel Orientation="Vertical">
                             <telerikPrimitives:RadExpanderControl>
                                 <telerikPrimitives:RadExpanderControl.Content>
-                                    <TextBlock Text="{Binding Path=StringResources.SettingsPage_FAQ_WhyDontRVShow_Q, Source={StaticResource LocalizedStrings}}"/> 
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=StringResources.SettingsPage_FAQ_WhyDontRVShow_Q, Source={StaticResource LocalizedStrings}}"/> 
                                 </telerikPrimitives:RadExpanderControl.Content>
                                 <telerikPrimitives:RadExpanderControl.ExpandableContent>
                                     <TextBlock TextWrapping="Wrap" Text="{Binding Path=StringResources.SettingsPage_FAQ_WhyDontRVShow_A, Source={StaticResource LocalizedStrings}}"/> 

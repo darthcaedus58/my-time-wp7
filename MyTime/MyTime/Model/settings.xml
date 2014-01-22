@@ -25,4 +25,5 @@
 	<Setting Name="deleteCallsAndRV" FriendlyName="Delete Calls and RV" Type="Boolean" Value="false" />
 	<Setting Name="deleteCallsNote" Type="Note" Value="NOTE: Deleting the calls will delete the RVs from your service report." />
 	<Setting Name="askForDonation" Type="Boolean" Value="True" ShowInSettingsPage="false" FriendlyName="askForDonation" />
+	<Setting Name="howToShownVer" Type="String" Value="" ShowInSettingsPage="false" FriendlyName="howToShownVer" />
 </Settings>
