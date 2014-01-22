@@ -26,6 +26,11 @@ namespace FieldService.ViewModels
                                 Information = StringResources.HowTo_WhatsNew_I2,
                                 ImageSource = new Uri("/Images/wp_ss_20140122_0003.png", UriKind.Relative)
                         });
+                        _items.Add(new HowToDataItemViewModel()
+                        {
+                                Title = StringResources.HowTo_WhatsNext_T1,
+                                Information = StringResources.HowTo_WhatsNext_I1
+                        });
                 }
 
                 /// <summary>

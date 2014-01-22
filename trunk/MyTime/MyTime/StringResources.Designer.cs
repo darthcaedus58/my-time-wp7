@@ -781,7 +781,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to how to.
+        ///   Looks up a localized string similar to new version!.
         /// </summary>
         public static string HowTo_Header {
             get {
@@ -822,6 +822,25 @@ namespace FieldService {
         public static string HowTo_WhatsNew_T2 {
             get {
                 return ResourceManager.GetString("HowTo_WhatsNew_T2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1.  House-to-House Record Tracking.
+        ///2.  View Presentations from KM..
+        /// </summary>
+        public static string HowTo_WhatsNext_I1 {
+            get {
+                return ResourceManager.GetString("HowTo_WhatsNext_I1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whats Next?.
+        /// </summary>
+        public static string HowTo_WhatsNext_T1 {
+            get {
+                return ResourceManager.GetString("HowTo_WhatsNext_T1", resourceCulture);
             }
         }
         

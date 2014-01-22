@@ -790,7 +790,7 @@
     <value>Tracts</value>
   </data>
   <data name="HowTo_Header" xml:space="preserve">
-    <value>how to</value>
+    <value>new version!</value>
   </data>
   <data name="HowTo_WhatsNew_I1" xml:space="preserve">
     <value>Tracts added. You can now track the placement of tracts, such as Kingdom News #38.</value>
@@ -803,6 +803,13 @@
   </data>
   <data name="HowTo_WhatsNew_T2" xml:space="preserve">
     <value>Whats New?</value>
+  </data>
+  <data name="HowTo_WhatsNext_I1" xml:space="preserve">
+    <value>1.  House-to-House Record Tracking.
+2.  View Presentations from KM.</value>
+  </data>
+  <data name="HowTo_WhatsNext_T1" xml:space="preserve">
+    <value>Whats Next?</value>
   </data>
   <data name="Reporting_ReportHeader" xml:space="preserve">
     <value>Field service report for {0}:
