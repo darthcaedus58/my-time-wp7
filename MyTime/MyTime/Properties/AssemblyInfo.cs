@@ -11,7 +11,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Square.HipToBe")]
 [assembly: AssemblyProduct("Field Service")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,6 +33,6 @@ using System.Resources;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("2013.9.6.1607")]
-[assembly: AssemblyFileVersion("1.13.9.6")]
+[assembly: AssemblyVersion("2014.1.22.1745")]
+[assembly: AssemblyFileVersion("1.14.1.22")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]
