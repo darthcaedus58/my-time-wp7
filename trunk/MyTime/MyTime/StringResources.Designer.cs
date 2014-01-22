@@ -781,6 +781,51 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to how to.
+        /// </summary>
+        public static string HowTo_Header {
+            get {
+                return ResourceManager.GetString("HowTo_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tracts added. You can now track the placement of tracts, such as Kingdom News #38..
+        /// </summary>
+        public static string HowTo_WhatsNew_I1 {
+            get {
+                return ResourceManager.GetString("HowTo_WhatsNew_I1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FAQ Section.  Go to Settings &gt; FAQ..
+        /// </summary>
+        public static string HowTo_WhatsNew_I2 {
+            get {
+                return ResourceManager.GetString("HowTo_WhatsNew_I2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whats New?.
+        /// </summary>
+        public static string HowTo_WhatsNew_T1 {
+            get {
+                return ResourceManager.GetString("HowTo_WhatsNew_T1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whats New?.
+        /// </summary>
+        public static string HowTo_WhatsNew_T2 {
+            get {
+                return ResourceManager.GetString("HowTo_WhatsNew_T2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Field Service.
         /// </summary>
         public static string MainPage_AppName {

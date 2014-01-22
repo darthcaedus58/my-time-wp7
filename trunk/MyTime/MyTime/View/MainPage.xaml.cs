@@ -78,8 +78,6 @@ namespace FieldService.View
 			_bwLoadRvs = new BackgroundWorker();
 
 			_bwLoadRvs.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
-
-			//selector.DataSource = new IntLoopingDataSource() {MinValue = 0, MaxValue = 100, SelectedItem = 0};
 		}
 
 
@@ -142,6 +140,7 @@ namespace FieldService.View
 				//MessageBox.Show(CultureInfo.CurrentCulture.Name);
 				var b = bool.Parse(App.AppSettingsProvider["askForDonation"].Value);
 				if (b) {
+
 					if (MessageBox.Show(StringResources.MainPage_Messages_DonatePlease, "", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
 						var donate = new WebBrowserTask()
 						{
@@ -155,6 +154,16 @@ namespace FieldService.View
 					App.AppSettingsProvider.SaveSettings();
 				}
 			} catch {}
+
+                        try {
+                                var vers = App.AppSettingsProvider["howToShownVer"].Value.ToString();
+                                //if (!vers.Equals(App.GetVersion())) {
+                                        NavigationService.Navigate(new Uri("/View/HowTo.xaml", UriKind.Relative));
+                                        App.AppSettingsProvider["howToShownVer"].Value = App.GetVersion();
+                                //}
+                        } catch (Exception) {
+                                NavigationService.Navigate(new Uri("/View/HowTo.xaml", UriKind.Relative));
+                        }
 		}
 
 		private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

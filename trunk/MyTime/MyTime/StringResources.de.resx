@@ -136,7 +136,7 @@
     <value>Besuch löschen</value>
   </data>
   <data name="AddCallPage_DeleteCallConfirmation" xml:space="preserve">
-    <value>Bist du sicher, diesen Besuch löschen zu wollen?</value>
+    <value>Diesen Besuch wirlich löschen?</value>
   </data>
   <data name="AddCallPage_DeleteCallFailed" xml:space="preserve">
     <value>Löschung nicht erfolgreich!</value>
@@ -477,7 +477,7 @@
     <value>Adresse</value>
   </data>
   <data name="RVPage_Address_LocationNotes" xml:space="preserve">
-    <value>Notizen</value>
+    <value>Notizen zur Adresse (Hinterhof/Kaputte Klingel, usw.)</value>
   </data>
   <data name="RVPage_Address_PostalCode" xml:space="preserve">
     <value>Postleitzahl</value>
@@ -534,7 +534,7 @@
     <value>Alter</value>
   </data>
   <data name="RVPage_Personal_Description" xml:space="preserve">
-    <value>Beschreibung</value>
+    <value>Info zur Person (Schwerhörig/Glaubt nicht an Gott/usw.)</value>
   </data>
   <data name="RVPage_Personal_FullName" xml:space="preserve">
     <value>Vollständiger Name</value>
@@ -603,13 +603,13 @@
     <value>Version</value>
   </data>
   <data name="SettingsPage_Settings_AddCallPlacements" xml:space="preserve">
-    <value>VERSION</value>
+    <value>Automatisches zählen von Rückbesuchen</value>
   </data>
   <data name="SettingsPage_Settings_AppSettings" xml:space="preserve">
     <value>App Einstellungen</value>
   </data>
   <data name="SettingsPage_Settings_BeautifyPhoneNumbers" xml:space="preserve">
-    <value>Beautify Phone Numbers (US Only)</value>
+    <value>Beautify Phone Numbers (Nur USA)</value>
   </data>
   <data name="SettingsPage_Settings_CSO" xml:space="preserve">
     <value>Versammlungs-Dienstaufseher</value>
@@ -773,26 +773,26 @@
 </value>
   </data>
   <data name="SettingsPage_FAQ_Headline" xml:space="preserve">
-    <value>faq</value>
+    <value>FAQ</value>
   </data>
   <data name="SettingsPage_FAQ_HowToEnterRVs_A" xml:space="preserve">
-    <value>There are two ways to enter RVs so they will show up on your report:
-1.       Using the built-in RV database.
-	a.       Save a new RV or enter an existing RV.
-	b.      Per the OD book, you don’t count the initial visit as an RV, so the first visit will not show up on your report, but all subsequent visits will be automatically counted on your report.
-2.       Manually count your RVs
-	a.       This method will only work if you don’t want to use the first method. You can’t use both at the same time.
-	b.      To turn on manually counting of RVs go to: “Settings &gt; Add Call Placements” and turn it off.
-	c.       Now you will be able to count RVs manually on your add time page.</value>
+    <value>Es gibt zwei Möglichkeiten deinen Besuch in den Bericht aufzunehmen:
+1.       Mit der internen RB Datenbank. (default)
+	a.       Speichere oder erstelle einen Rückbesuch.
+	b.      Nach dem erstellen eines Rückbesuches wird der erste Besuch nicht als Rückbesuch gewertet. Alle weiteren Besuche werden dann automatisch in deinen Bericht übernommen.
+2.       Manuelles zählen deiner Rückbesuche
+	a.       Diese Option ist nur alleine Anwendbar. Es gibt keine Möglichkeit beides gleichzeitig zu verwenden.
+	b.      Um das manuelle zählen der RBs eizuschalten gehe zu: “Einstellungen &gt; Automatisches zählen von Rückbesuchen” und deaktiviere es.
+	c.       Nun kannst du Rückbesuche manuell auf der Seite -Zeit erfassen- eintragen.</value>
   </data>
   <data name="SettingsPage_FAQ_HowToEnterRVs_Q" xml:space="preserve">
-    <value>How do I enter the number of return vists on my report?</value>
+    <value>Wie trage ich die Anzahl meiner Rückbesuche ein?</value>
   </data>
   <data name="SettingsPage_FAQ_WhyDontRVShow_A" xml:space="preserve">
-    <value>Per the OD book, the initial call is not counted on your time report.  Return visits are only counted on a subsequent visit which occurrs after the first initial visit.  If you are importing your return visits and have already made the initial call then you must save a 'dummy' initial visit to ensure that your return visit is counted on your report.  If you are not using the return visit features of this app, then you should go to " 'settings' &gt; 'Manually Track RVs &amp; Placements' " and set it to 'off' and you will be able to manually track your RVs.</value>
+    <value>Nach dem erstellen eines Rückbesuches wird der erste Besuch nicht als Rückbesuch gewertet. Rückbesuche werden erst ab dem zweiten und den folgenden Besuchen gezählt. Solltest du bereits mehrere Besuche gemacht haben aber jetzt erst den Rückbesuch anlegen so lege bitte einen Dummy Besuch in einem vergangenen Monat an. Damit wird der aktuelle Besuch dann auch als RB gezählt. Möchtest du das automatische zählen nicht nutzen so gehe bitte wie folgt vor. Gehe zu: “Einstellungen &gt; Automatisches zählen von Rückbesuchen” und deaktiviere es.</value>
   </data>
   <data name="SettingsPage_FAQ_WhyDontRVShow_Q" xml:space="preserve">
-    <value>Why don't my return visits show on my report?</value>
+    <value>Warum sehe ich keine Rückbesuche in meinem Bericht?</value>
   </data>
   <data name="ViewPreviousVisitPage_Tracts" xml:space="preserve">
     <value> Traktate</value>

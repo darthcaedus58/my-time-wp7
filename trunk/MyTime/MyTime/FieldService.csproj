@@ -162,6 +162,8 @@
     <Compile Include="ValueConverters.cs" />
     <Compile Include="ViewModels\AddModifyRBCTimeViewModel.cs" />
     <Compile Include="ViewModels\AddModifyTimeViewModel.cs" />
+    <Compile Include="ViewModels\HowToDataItemViewModel.cs" />
+    <Compile Include="ViewModels\HowToDataViewModel.cs" />
     <Compile Include="ViewModels\PreviousVisitViewModel.cs" />
     <Compile Include="ViewModels\ReturnVisitFullListViewModel.cs" />
     <Compile Include="ViewModels\ReturnVisitViewModel.cs" />
@@ -174,6 +176,9 @@
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HowTo.xaml.cs">
+      <DependentUpon>HowTo.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RBCTime.xaml.cs">
       <DependentUpon>RBCTime.xaml</DependentUpon>
@@ -236,6 +241,10 @@
     <Page Include="View\EditReturnVisit.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\HowTo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RBCTime.xaml">
       <SubType>Designer</SubType>
@@ -317,6 +326,10 @@
     <Content Include="icons\Images\overflowdots.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Frame.png" />
+    <Content Include="Images\FrameThumbnail.png" />
+    <Content Include="Images\LeftArrow.png" />
+    <Content Include="Images\RightArrow.png" />
     <Resource Include="MarketplaceIcon.png" />
     <Resource Include="Background.png" />
     <Content Include="icons\Maps.png">
@@ -361,6 +374,8 @@
     <Content Include="Images\DateTimePickerOK.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\wp_ss_20140122_0002.png" />
+    <Content Include="Images\wp_ss_20140122_0003.png" />
     <Content Include="Model\settings.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
