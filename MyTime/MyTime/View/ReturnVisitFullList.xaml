@@ -8,6 +8,7 @@
                             xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone" 
                             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
                             xmlns:ViewModels="clr-namespace:FieldService.ViewModels"
+                            xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
                             FontFamily="{StaticResource PhoneFontFamilyNormal}" 
                             FontSize="{StaticResource PhoneFontSizeNormal}" 
                             Foreground="{StaticResource AppForegroundBrush}" 
@@ -72,6 +73,7 @@
                     </ItemsPanelTemplate>
                 </toolkit:LongListSelector.GroupItemsPanel>
             </toolkit:LongListSelector>
+            <telerikPrimitives:RadBusyIndicator IsRunning="{Binding IsRvFullListLoading}"/>
         </Grid>
     </Grid>
 

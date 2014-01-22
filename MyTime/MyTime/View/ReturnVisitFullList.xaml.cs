@@ -46,10 +46,12 @@ namespace FieldService.View
 		/// <param name="e">The <see cref="SelectionChangedEventArgs" /> instance containing the event data.</param>
 		private void llsAllReturnVisits_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
+                        
 			var returnVisitLlItemModel = llsAllReturnVisits.SelectedItem as ReturnVisitLLItemModel;
 			if (returnVisitLlItemModel != null) {
 				NavigationService.Navigate(new Uri(string.Format("/View/EditReturnVisit.xaml?id={0}", returnVisitLlItemModel.ItemId), UriKind.Relative));
 			}
+		        llsAllReturnVisits.SelectedItem = null;
 		}
 
 		#endregion

@@ -15,11 +15,13 @@ namespace FieldService.ViewModels
 {
 	public class ReturnVisitFullListViewModel : INotifyPropertyChanged
 	{
-		public event PropertyChangedEventHandler PropertyChanged;
+	        private bool _isRvFullListLoading;
+	        public event PropertyChangedEventHandler PropertyChanged;
 
 		public ReturnVisitFullListViewModel()
 		{
 			llReturnVisitFullListCategory = new ObservableCollection<ReturnVistLLCategory>();
+		        IsRvFullListLoading = true;
 		}
 
 		/// <summary>
@@ -28,21 +30,33 @@ namespace FieldService.ViewModels
 		/// <value>The ll return visit full list category.</value>
 		public ObservableCollection<ReturnVistLLCategory> llReturnVisitFullListCategory { get; private set; }
 
-		/// <summary>
-		/// Gets a value indicating whether this instance is rv full list loaded.
-		/// </summary>
-		/// <value><c>true</c> if this instance is rv full list loaded; otherwise, <c>false</c>.</value>
-		public bool IsRvFullListLoaded { get; private set; }
+	        /// <summary>
+	        /// Gets a value indicating whether this instance is rv full list loaded.
+	        /// </summary>
+	        /// <value><c>true</c> if this instance is rv full list loaded; otherwise, <c>false</c>.</value>
+	        public bool IsRvFullListLoading
+	        {
+	                get { return _isRvFullListLoading; }
+	                private set
+	                {
+	                        if (_isRvFullListLoading != value)
+	                        {
+	                                _isRvFullListLoading = value;
+                                        OnPropertyChanged("IsRvFullListLoading");
+	                        }
+	                }
+	        }
 
-		/// <summary>
-		/// Loads the return visit full list.
-		/// </summary>
-		public void LoadReturnVisitFullList()
+	        /// <summary>
+	        /// Loads the return visit full list.
+	        /// </summary>
+	        public void LoadReturnVisitFullList()
 		{
-			if (IsRvFullListLoaded) {
+			if (!IsRvFullListLoading) {
 				llReturnVisitFullListCategory = new ObservableCollection<ReturnVistLLCategory>();
 			}
-			IsRvFullListLoaded = false;
+			IsRvFullListLoading = true;
+		        OnPropertyChanged("IsRvFullListLoading");
 
 			var wb = new WriteableBitmap(100, 100);
 			for (int i = 0; i < wb.Pixels.Length; i++) {
@@ -117,7 +131,8 @@ namespace FieldService.ViewModels
 				                                             });
 			}
 			llReturnVisitFullListCategory.Add(cityCat);
-			IsRvFullListLoaded = true;
+			IsRvFullListLoading = false;
+		        OnPropertyChanged("IsRvFullListLoading");
 		}
 
 		protected virtual void OnPropertyChanged(string propertyName)
