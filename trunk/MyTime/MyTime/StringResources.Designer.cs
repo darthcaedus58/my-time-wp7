@@ -763,7 +763,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to return vists.
+        ///   Looks up a localized string similar to return visits.
         /// </summary>
         public static string FullRVListPage_Headline {
             get {
