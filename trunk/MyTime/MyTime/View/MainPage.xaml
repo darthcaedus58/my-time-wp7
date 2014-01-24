@@ -42,7 +42,7 @@
 			</controls:Panorama.Background>
 
 			<toolkit:WrapPanel x:Name="wpMainOptions" Height="Auto" MinHeight="522" Orientation="Vertical">
-				<ItemsControl x:Name="lbMainMenuItems" Margin="0,0,0,0" ItemsSource="{Binding lbMainMenuItems}" MinHeight="522">
+				<ItemsControl x:Name="lbMainMenuItems" Margin="25,23,0,0" ItemsSource="{Binding lbMainMenuItems}" MinHeight="522">
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
 							<toolkit:MenuItem Margin="-10,-12,0,-5" Click="MenuItem_ClickEvent" FontFamily="{StaticResource PhoneFontFamilySemiLight}" FontSize="37" Foreground="{StaticResource AppForegroundBrush}" Tag="{Binding MenuText}">
@@ -69,15 +69,8 @@
 			<controls:PanoramaItem Width="850" Orientation="Horizontal">
 				<controls:PanoramaItem.Header>
 					<StackPanel Orientation="Horizontal">
-						<TextBlock>
-							<Run Text="{Binding Path=StringResources.MainPage_RvHeadline, Source={StaticResource LocalizedStrings}}" />
-						</TextBlock>
-						<Rectangle Height="40" Margin="25,23,0,0" Width="40" Fill="{StaticResource AppForegroundBrush}" HorizontalAlignment="Right" Tap="imgShowAllReturnVisit_Tap">
-							<Rectangle.OpacityMask>
-								<ImageBrush ImageSource="/icons/Images/overflowdots.png" Stretch="Fill" />
-							</Rectangle.OpacityMask>
-						</Rectangle>
-						<!--<Image Height="56" Margin="25,23,0,0" Width="40" HorizontalAlignment="Right" Name="imgShowAllReturnVisits" Source="" Tap="imgShowAllReturnVisit_Tap" />-->
+						<TextBlock Text="{Binding Path=StringResources.MainPage_RvHeadline, Source={StaticResource LocalizedStrings}}" />
+                          <telerikPrimitives:RadImageButton Tap="imgShowAllReturnVisit_Tap" ButtonShape="Ellipse" Margin="14,23,0,0" ImageStretch="Fill" RestStateImageSource="/icons/Images/overflowdots.png" MinWidth="40" MinHeight="40" />
 					</StackPanel>
 				</controls:PanoramaItem.Header>
 				<Grid Margin="0,0,-42,0">
@@ -152,13 +145,17 @@
 					</Grid.RowDefinitions>
 					<Grid Grid.Row="0">
 						<StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-							<Image x:Name="abibStart" Height="50" Margin="0,0,15,0" Width="50" Source="/icons/Media-Play.png" Tap="abibStart_Tap" />
+                            <telerikPrimitives:RadImageButton x:Name="abibStart" ButtonType="Custom" ButtonShape="Image" MaxWidth="75" MaxHeight="90" ImageStretch="Fill" RestStateImageSource="/icons/Media-Play.png" PressedStateImageSource="/icons/Media-Play.png" Tap="abibStart_Tap" Margin="0,0,0,-25" />
+							<!--<Image x:Name="abibStart" Height="50" Margin="0,0,15,0" Width="50" Source="/icons/Media-Play.png" Tap="abibStart_Tap" />-->
 							<!--Source="/icons/play.png"-->
-							<Image x:Name="abibPause" Height="50" Margin="15,0" Width="50" Source="/icons/Media-Pause.png" Tap="abibPause_Tap" />
+                            <telerikPrimitives:RadImageButton x:Name="abibPause" ButtonType="Custom" ButtonShape="Image" MaxWidth="75" MaxHeight="90" ImageStretch="Fill" RestStateImageSource="/icons/Media-Pause.png" PressedStateImageSource="/icons/Media-Pause.png" Tap="abibPause_Tap" Margin="0,0,0,-25" />
+							<!--<Image x:Name="abibPause" Height="50" Margin="15,0" Width="50" Source="/icons/Media-Pause.png" Tap="abibPause_Tap" />-->
 							<!--Source="/icons/pause.png"-->
-							<Image x:Name="abibStop" Height="50" Margin="15,0" Width="50" Source="/icons/Media-Stop.png" Tap="abibStop_Tap" />
+                            <telerikPrimitives:RadImageButton x:Name="abibStop" ButtonType="Custom" ButtonShape="Image" MaxWidth="75" MaxHeight="90" ImageStretch="Fill" RestStateImageSource="/icons/Media-Stop.png" PressedStateImageSource="/icons/Media-Stop.png" Tap="abibStop_Tap" Margin="0,0,0,-25" />
+							<!--<Image x:Name="abibStop" Height="50" Margin="15,0" Width="50" Source="/icons/Media-Stop.png" Tap="abibStop_Tap" />-->
 							<!--Source="/icons/delete.png"-->
-							<Image x:Name="abibAddIt" Height="50" Margin="15,0,0,0" Width="50" Source="/icons/Media-Save.png" Tap="abibAddIt_Tap" />
+                            <telerikPrimitives:RadImageButton x:Name="abibAddIt" ButtonType="Custom" ButtonShape="Image" MaxWidth="75" MaxHeight="90" ImageStretch="Fill" RestStateImageSource="/icons/Media-Save.png" PressedStateImageSource="/icons/Media-Save.png" Tap="abibAddIt_Tap" Margin="0,0,0,-25" />
+							<!--<Image x:Name="abibAddIt" Height="50" Margin="15,0,0,0" Width="50" Source="/icons/Media-Save.png" Tap="abibAddIt_Tap" />-->
 							<!--Source="/icons/add_white.png"-->
 						</StackPanel>
 					</Grid>

@@ -16,8 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Collections.Generic;
 using System.Windows.Controls.Primitives;
-
-
+using System.Windows.Shapes;
 #if WINDOWS_PHONE
 using Microsoft.Phone.Controls;
 #endif
@@ -44,7 +43,7 @@ namespace FieldService
         static TiltEffect()
         {
             // The tiltable items list.
-            TiltableItems = new List<Type>() { typeof(ButtonBase), typeof(ListBoxItem), typeof(MenuItem), typeof(Image)};
+            TiltableItems = new List<Type>() { typeof(ButtonBase), typeof(ListBoxItem), typeof(MenuItem), typeof(Image), typeof(Rectangle)};
             UseLogarithmicEase = false;
         }
 
