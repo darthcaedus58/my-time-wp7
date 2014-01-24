@@ -350,6 +350,9 @@
     <Content Include="icons\Cloud-refresh.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="icons\Delete.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="icons\diamond.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
