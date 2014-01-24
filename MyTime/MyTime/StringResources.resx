@@ -651,13 +651,13 @@
     <value>Core Version: </value>
   </data>
   <data name="SettingsPage_About_Donate" xml:space="preserve">
-    <value>Donate To Development</value>
+    <value>donate to development</value>
   </data>
   <data name="SettingsPage_About_Headline" xml:space="preserve">
     <value>about</value>
   </data>
   <data name="SettingsPage_About_Help" xml:space="preserve">
-    <value>Help!</value>
+    <value>ask a question</value>
   </data>
   <data name="SettingsPage_About_Links" xml:space="preserve">
     <value>LINKS</value>
@@ -666,10 +666,10 @@
     <value>OPEN SOURCE</value>
   </data>
   <data name="SettingsPage_About_Rate" xml:space="preserve">
-    <value>Rate this app!</value>
+    <value>rate this app</value>
   </data>
   <data name="SettingsPage_About_ReportIssue" xml:space="preserve">
-    <value>Report Issue</value>
+    <value>report bug</value>
   </data>
   <data name="SettingsPage_About_ThisAppFOSS" xml:space="preserve">
     <value>This app is open source!</value>
