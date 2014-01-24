@@ -36,9 +36,16 @@
         <controls:PivotItem Header="{Binding Path=StringResources.SettingsPage_FAQ_Headline, Source={StaticResource LocalizedStrings}}">
             <Grid>
                 <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid Row="0">
+                    <StackPanel>
+                        <Button Content="{Binding Path=StringResources.SettingsPage_About_Help, Source={StaticResource LocalizedStrings}}" Click="AskAQuestion_Click"  Style="{StaticResource SettingsButtonBaseControlTemplate}" />
+                        <Button Content="{Binding Path=StringResources.SettingsPage_About_ReportIssue, Source={StaticResource LocalizedStrings}}" Click="HyperlinkButtonHelpMeQuestion_Click" Style="{StaticResource SettingsButtonBaseControlTemplate}" />
+                    </StackPanel>
+                </Grid>
+                <Grid Row="1">
                     <ScrollViewer>
                         <StackPanel Orientation="Vertical">
                             <telerikPrimitives:RadExpanderControl>
@@ -83,15 +90,12 @@
 							<TextBlock Name="tbCoreVersion" />
 						</StackPanel>
 						<TextBlock Text="{Binding Path=StringResources.SettingsPage_About_Copyright, Source={StaticResource LocalizedStrings}}" />
-						<HyperlinkButton FontSize="22" Name="bBuyMePleasePleaseBuyMe" HorizontalAlignment="Left" Content="{Binding Path=StringResources.SettingsPage_About_Donate, Source={StaticResource LocalizedStrings}}" Click="bBuyMePleasePleaseBuyMe_Click" />
+                        <Button Style="{StaticResource SettingsButtonBaseControlTemplate}" Name="bBuyMePleasePleaseBuyMe" Content="{Binding Path=StringResources.SettingsPage_About_Donate, Source={StaticResource LocalizedStrings}}" Click="bBuyMePleasePleaseBuyMe_Click" />
 					</StackPanel>
 				</Grid>
 				<Grid Row="1">
 					<StackPanel>
-						<TextBlock Margin="0,10,0,0" FontWeight="Bold" Text="{Binding Path=StringResources.SettingsPage_About_Links, Source={StaticResource LocalizedStrings}}" />
-						<HyperlinkButton Click="HyperlinkButtonRateApp_Click" Content="{Binding Path=StringResources.SettingsPage_About_Rate, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Left" />
-						<HyperlinkButton Click="HyperlinkButtonHelpMeQuestion_Click" Content="{Binding Path=StringResources.SettingsPage_About_Help, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Left" />
-						<HyperlinkButton Click="HyperlinkButton_Click" Content="{Binding Path=StringResources.SettingsPage_About_ReportIssue, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Left" />
+                        <Button Style="{StaticResource SettingsButtonBaseControlTemplate}" Click="HyperlinkButtonRateApp_Click" Content="{Binding Path=StringResources.SettingsPage_About_Rate, Source={StaticResource LocalizedStrings}}" />
 					</StackPanel>
 				</Grid>
 				<Grid Row="2">

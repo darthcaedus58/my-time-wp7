@@ -1783,7 +1783,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Donate To Development.
+        ///   Looks up a localized string similar to donate to development.
         /// </summary>
         public static string SettingsPage_About_Donate {
             get {
@@ -1801,7 +1801,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Help!.
+        ///   Looks up a localized string similar to ask a question.
         /// </summary>
         public static string SettingsPage_About_Help {
             get {
@@ -1828,7 +1828,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rate this app!.
+        ///   Looks up a localized string similar to rate this app.
         /// </summary>
         public static string SettingsPage_About_Rate {
             get {
@@ -1837,7 +1837,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Report Issue.
+        ///   Looks up a localized string similar to report bug.
         /// </summary>
         public static string SettingsPage_About_ReportIssue {
             get {

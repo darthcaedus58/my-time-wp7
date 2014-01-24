@@ -120,5 +120,14 @@ namespace FieldService.View
 			web.URL = "http://code.google.com/p/my-time-wp7/issues/entry?template=Defect%20report%20from%20user";
 			web.Show();
 		}
+
+	        private void AskAQuestion_Click(object sender, RoutedEventArgs e)
+	        {
+                        var emailcomposer = new EmailComposeTask
+                        {
+                                To = "help@square-hiptobe.com"
+                        };
+                        emailcomposer.Show();
+	        }
 	}
 }
