@@ -73,7 +73,7 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar ForegroundColor="Black" BackgroundColor="Gainsboro" IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton IconUri="/Images\LeftArrow.png" Click="LeftArrow_Click" Text="Back"/>
-            <shell:ApplicationBarIconButton IconUri="/Toolkit.Content/ApplicationBar.Delete.png" Click="CloseButton_Click" Text="Close" />
+            <shell:ApplicationBarIconButton IconUri="/icons/Delete.png" Click="CloseButton_Click" Text="Close" />
             <shell:ApplicationBarIconButton IconUri="/Images\RightArrow.png" Click="RightArrow_Click" Text="next"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
