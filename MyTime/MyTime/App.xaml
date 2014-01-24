@@ -4,8 +4,10 @@
 	xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
 	xmlns:FS="clr-namespace:FieldService" 
 	xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input" 
-	xmlns:telerik1="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Core" xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives" 
-	x:Class="FieldService.App"
+	xmlns:telerik1="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Core" 
+    xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    x:Class="FieldService.App"
 	>
 
 	<Application.Resources>
@@ -35,7 +37,23 @@
 				<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
 				<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
 			</Style>
-			<Style x:Key="IncreaseButtonStyle" BasedOn="{StaticResource NumericUpDownRepeatButtonStyle}" TargetType="Button">
+            <Style x:Key="LongListSelectorJumpListStyle" TargetType="phone:LongListSelector">
+                <Setter Property="GridCellSize"  Value="113,113"/>
+                <Setter Property="LayoutMode" Value="List" />
+                <Setter Property="ItemTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <Border Padding="{StaticResource PhoneTouchTargetOverhang}" Background="{StaticResource AppAccentBrush}" Margin="6" >
+                                <TextBlock Text="{Binding Title}"
+                                               Style="{StaticResource PhoneTextGroupHeaderStyle}"
+                                           
+                                               VerticalAlignment="Center"/>
+                            </Border>
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="IncreaseButtonStyle" BasedOn="{StaticResource NumericUpDownRepeatButtonStyle}" TargetType="Button">
 				<Setter Property="BorderThickness" Value="3, 0, 0, 0"/>
 				<Setter Property="BorderBrush" Value="{StaticResource PhoneSubtleBrush}"/>
 				<Setter Property="Padding" Value="25, 25, 25, 25"/>

@@ -13,10 +13,16 @@
 // ***********************************************************************
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using FieldService.Model;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
+using Telerik.Windows.Controls;
 
 namespace FieldService.View
 {
@@ -31,13 +37,54 @@ namespace FieldService.View
 		/// </summary>
 		public ReturnVistFullList()
 		{
-			//DataContext = new ReturnVisitFullListViewModel();
+		        //DataContext = new ReturnVisitFullListViewModel();
 			InitializeComponent();
-			ViewModel.LoadReturnVisitFullList();
-			llsAllReturnVisits.ItemsSource = ViewModel.llReturnVisitFullListCategory;
 		}
 
-		#region Events
+	        private async void UpdateModel()
+	        {
+	                var bw = new BackgroundWorker();
+
+                        bw.RunWorkerCompleted += (o,e) =>
+                        {
+                                if(llsAllReturnVisits.ItemsSource != null) llsAllReturnVisits.ItemsSource.Clear();
+                                var rvList = ViewModel.LoadReturnVisitFullList();
+                                llsAllReturnVisits.ItemsSource = rvList;
+
+                                racbRvSearchBox.SuggestionsSource = BindSuggestionSource(rvList);
+                                racbRvSearchBox.SuggestionSelected += racbRvSearchBox_OnSuggestionSelected;
+                                racbRvSearchBox.GotFocus += (sender, args) => {
+                                        racbRvSearchBox.SelectAll();
+                                };
+                                racbRvSearchBox.FilterKeyProvider = (object item) => {
+                                        var typedItem = item as ReturnVisitLLItemModel;
+                                        return string.Format(
+                                                "{0} {1} {2}", typedItem.Text, typedItem.Address1, typedItem.Address2);
+                                };
+                                racbRvSearchBox.IsEnabled = true;
+                        };
+
+                        bw.RunWorkerAsync();
+	        }
+
+	        private IEnumerable BindSuggestionSource(List<ReturnVisitFullListViewModel.Group<ReturnVisitLLItemModel>> rvList)
+	        {
+	                var retList = new List<ReturnVisitLLItemModel>();
+	                foreach (var rvgroup in rvList) {
+	                        retList.AddRange(rvgroup);
+	                }
+	                return retList;
+	        }
+
+	        private void racbRvSearchBox_OnSuggestionSelected(object sender, SuggestionSelectedEventArgs e)
+	        {
+                        var returnVisitLlItemModel = e.SelectedSuggestion as ReturnVisitLLItemModel;
+                        if (returnVisitLlItemModel != null) {
+                                NavigationService.Navigate(new Uri(string.Format("/View/EditReturnVisit.xaml?id={0}", returnVisitLlItemModel.ItemId), UriKind.Relative));
+                        }
+	        }
+
+	        #region Events
 
 		/// <summary>
 		/// Handles the SelectionChanged event of the llsAllReturnVisits control.
@@ -55,5 +102,11 @@ namespace FieldService.View
 		}
 
 		#endregion
+
+                private void ReturnVisitFullList_OnLoaded(object sender, System.Windows.RoutedEventArgs e)
+                {
+                        racbRvSearchBox.IsEnabled = false;
+                        UpdateModel();
+                }
 	}
 }

@@ -9,12 +9,13 @@
                             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
                             xmlns:ViewModels="clr-namespace:FieldService.ViewModels"
                             xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+                            xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
                             FontFamily="{StaticResource PhoneFontFamilyNormal}" 
                             FontSize="{StaticResource PhoneFontSizeNormal}" 
                             Foreground="{StaticResource AppForegroundBrush}" 
                             Orientation="Portrait" SupportedOrientations="Portrait" 
                             mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480" 
-                            shell:SystemTray.IsVisible="False">
+                            shell:SystemTray.IsVisible="False" Loaded="ReturnVisitFullList_OnLoaded">
 
     <phone:PhoneApplicationPage.Resources>
         <SolidColorBrush Color="#FF4C4478" x:Key="AppForegroundColor"/>
@@ -40,7 +41,62 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Background="{StaticResource AppBackgroundBrush}" Grid.Row="1" Margin="12,0,12,0">
-            <phone:LongListSelector Foreground="{StaticResource AppForegroundBrush}" Background="{StaticResource AppBackgroundBrush}" Name="llsAllReturnVisits" SelectionChanged="llsAllReturnVisits_SelectionChanged" ItemsSource="{Binding llReturnVisitFullListCategory}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+            <Grid Row="0">
+                <telerikInput:RadAutoCompleteBox 
+                    AutoCompleteMode="Contains"
+                    AutoCompletePopupDisplayMode="BelowTextBox"
+                    FilterDelay="0:0:0.350"
+                    x:Name="racbRvSearchBox"
+                    IsEnabled="False">
+                    <telerikInput:RadAutoCompleteBox.SuggestionItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="-12,-3,0,-3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Margin="{StaticResource PhoneHorizontalMargin}" Width="48" Height="48" Source="{Binding ImageSource}" />
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="{Binding Text}" telerikInput:RadAutoCompleteBox.IsElementHighlighted="True" FontSize="{StaticResource PhoneFontSizeMedium}">
+                                        <telerikInput:RadAutoCompleteBox.HighlightStyle>
+                                            <telerikInput:HighlightStyle Foreground="{StaticResource AppForegroundBrush}" />
+                                        </telerikInput:RadAutoCompleteBox.HighlightStyle>
+                                    </TextBlock>
+                                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Address1}" telerikInput:RadAutoCompleteBox.IsElementHighlighted="True" FontSize="{StaticResource PhoneFontSizeSmall}" >
+                                            <telerikInput:RadAutoCompleteBox.HighlightStyle>
+                                            <telerikInput:HighlightStyle Foreground="{StaticResource AppForegroundBrush}" />
+                                        </telerikInput:RadAutoCompleteBox.HighlightStyle>
+                                        </TextBlock>
+                                        <TextBlock Text=" " FontSize="{StaticResource PhoneFontSizeSmall}" />
+                                        <TextBlock Text="{Binding Address2}" telerikInput:RadAutoCompleteBox.IsElementHighlighted="True" FontSize="{StaticResource PhoneFontSizeSmall}" >
+                                            <telerikInput:RadAutoCompleteBox.HighlightStyle>
+                                            <telerikInput:HighlightStyle Foreground="{StaticResource AppForegroundBrush}" />
+                                        </telerikInput:RadAutoCompleteBox.HighlightStyle>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </telerikInput:RadAutoCompleteBox.SuggestionItemTemplate>
+                </telerikInput:RadAutoCompleteBox>
+            </Grid>
+            <Grid Row="1">
+            <phone:LongListSelector JumpListStyle="{StaticResource LongListSelectorJumpListStyle}" 
+                                    Foreground="{StaticResource AppForegroundBrush}" 
+                                    Background="{StaticResource AppBackgroundBrush}" 
+                                    Name="llsAllReturnVisits" 
+                                    SelectionChanged="llsAllReturnVisits_SelectionChanged" 
+                                    LayoutMode="List"
+                                    IsGroupingEnabled="True" >
                 <phone:LongListSelector.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -55,25 +111,14 @@
                 </phone:LongListSelector.ItemTemplate>
                 <phone:LongListSelector.GroupHeaderTemplate>
                     <DataTemplate>
-                        <Border Padding="{StaticResource PhoneTouchTargetOverhang}" Background="{StaticResource AppAccentBrush}">
-                            <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Text="{Binding Name}" />
+                        <Border Padding="{StaticResource PhoneTouchTargetOverhang}" Background="{StaticResource AppAccentBrush}" Margin="0,10,0,0">
+                            <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Text="{Binding Title}" />
                         </Border>
                     </DataTemplate>
                 </phone:LongListSelector.GroupHeaderTemplate>
-                <!--<phone:LongListSelector.GroupItemTemplate>
-                    <DataTemplate>
-                        <Border Margin="{StaticResource PhoneTouchTargetOverhang}" Padding="{StaticResource PhoneTouchTargetOverhang}" Background="{StaticResource AppAccentBrush}">
-                            <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Text="{Binding Name}" />
-                        </Border>
-                    </DataTemplate>
-                </phone:LongListSelector.GroupItemTemplate>
-                <phone:LongListSelector.GroupItemsPanel>
-                    <ItemsPanelTemplate>
-                        <toolkit:WrapPanel Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </phone:LongListSelector.GroupItemsPanel>-->
             </phone:LongListSelector>
             <telerikPrimitives:RadBusyIndicator IsRunning="{Binding IsRvFullListLoading}"/>
+            </Grid>
         </Grid>
     </Grid>
 
