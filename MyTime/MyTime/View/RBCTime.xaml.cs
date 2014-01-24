@@ -3,14 +3,13 @@ using System.Threading;
 using System.Windows;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
-using FieldService.ViewModels;
 using Microsoft.Phone.Shell;
 
 namespace FieldService.View
 {
 	public partial class RBCTimePage : PhoneApplicationPage
 	{
-		private AddModifyRBCTimeViewModel ViewModel { get { return ((ViewModels.AddModifyRBCTimeViewModel) DataContext); } }
+		private AddModifyRBCTimeViewModel ViewModel { get { return ((AddModifyRBCTimeViewModel) DataContext); } }
 		public RBCTimePage()
 		{
 			DataContext = new AddModifyRBCTimeViewModel();

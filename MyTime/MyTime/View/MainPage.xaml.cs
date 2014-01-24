@@ -160,6 +160,7 @@ namespace FieldService.View
                                 if (!vers.Equals(App.GetVersion())) {
                                         NavigationService.Navigate(new Uri("/View/HowTo.xaml", UriKind.Relative));
                                         App.AppSettingsProvider["howToShownVer"].Value = App.GetVersion();
+                                        App.AppSettingsProvider.SaveSettings();
                                 }
                         } catch (Exception) {
                                 NavigationService.Navigate(new Uri("/View/HowTo.xaml", UriKind.Relative));
