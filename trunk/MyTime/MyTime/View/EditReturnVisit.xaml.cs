@@ -120,12 +120,13 @@ namespace FieldService
 
 		private void RefreshRemindersList()
 		{
-			var reminders = ScheduledActionService.GetActions<Reminder>();
-			foreach (Reminder r in reminders) if (r.BeginTime < DateTime.Now) ScheduledActionService.Remove(r.Name);
-			var rr = ScheduledActionService.GetActions<Reminder>().ToList();
+		        
+			var reminders = ScheduledActionService.GetActions<Microsoft.Phone.Scheduler.Reminder>();
+			foreach (var r in reminders) if (r.BeginTime < DateTime.Now) ScheduledActionService.Remove(r.Name);
+                        var rr = ScheduledActionService.GetActions<Microsoft.Phone.Scheduler.Reminder>().ToList();
 
 			var s = string.Format("Field Service Reminder ({0})", App.ViewModel.ReturnVisitData.FullName);
-			var reminderList = new List<Reminder>();
+                        var reminderList = new List<Microsoft.Phone.Scheduler.Reminder>();
 			foreach (var r in rr) {
 				if (r.Title == s) reminderList.Add(r);
 			}
@@ -480,9 +481,10 @@ namespace FieldService
 			}
 
 			var s = string.Format("Field Service Reminder ({0})", App.ViewModel.ReturnVisitData.FullName);
-			
 
-			var r = new Reminder(Guid.NewGuid().ToString()) {
+
+                        var r = new Microsoft.Phone.Scheduler.Reminder(Guid.NewGuid().ToString())
+                        {
 				                                                   Content = tbReminderNotes.Text,
 				                                                   BeginTime = reminderDtTm,
 																   Title = s,

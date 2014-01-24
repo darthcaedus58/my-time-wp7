@@ -2,19 +2,15 @@
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-	xmlns:FieldService="clr-namespace:FieldService" 
+	xmlns:FS="clr-namespace:FieldService" 
 	xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input" 
 	xmlns:telerik1="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Core" xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives" 
-	xmlns:Toolkit="clr-namespace:Coding4Fun.Phone.Controls.Toolkit;assembly=Coding4Fun.Phone.Controls.Toolkit" 
 	x:Class="FieldService.App"
 	>
 
 	<Application.Resources>
 		<ResourceDictionary>
-			<!--<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="/FieldService;component/PhoneDataVisualizationResources.xaml" />
-			</ResourceDictionary.MergedDictionaries>-->
-			<FieldService:LocalizedStrings x:Key="LocalizedStrings" />
+			<FS:LocalizedStrings x:Key="LocalizedStrings" />
 			<SolidColorBrush Color="#FF4C4478" x:Key="AppForegroundBrush"/>
 			<SolidColorBrush Color="#FF8FCCF8" x:Key="AppBackgroundBrush"/>
 			<SolidColorBrush  Color="#FFD2DA86" x:Key="AppAccentBrush"/>
