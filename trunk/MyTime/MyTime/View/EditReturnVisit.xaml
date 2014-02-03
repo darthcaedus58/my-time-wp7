@@ -54,7 +54,10 @@
 							<ScrollViewer>
 								<StackPanel>
 								<local:HeaderControl HeaderText="{Binding Path=StringResources.RVPage_Info_Address, Source={StaticResource LocalizedStrings}}" IconSource="/icons/Maps.png"/>
-									<HyperlinkButton Click="ShowBingMapHyperlinkButton_Click" Content="{Binding ReturnVisitData.FormattedAddress}" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="-10,0,0,0" FontSize="20"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <telerikPrimitives:RadImageButton Padding="0" Margin="0,-25,0,0" MinWidth="80" MinHeight="80" RestStateImageSource="/icons/gps.png" Tap="ShowBingMapHyperlinkButton_Click" ButtonShape="Ellipse" ImageStretch="Fill" />
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.FormattedAddress}" />
+                                </StackPanel>
 									<TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.LocationNotes}"/>
 								<local:HeaderControl HeaderText="{Binding Path=StringResources.RVPage_Info_PersonalInfo, Source={StaticResource LocalizedStrings}}" IconSource="/icons/add-user.png"/>
 									<TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.NameOrDescription}"/>
