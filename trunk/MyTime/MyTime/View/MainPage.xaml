@@ -45,7 +45,7 @@
 				<ItemsControl x:Name="lbMainMenuItems" Margin="25,23,0,0" ItemsSource="{Binding lbMainMenuItems}" MinHeight="522">
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
-							<toolkit:MenuItem Margin="-10,-12,0,-5" Click="MenuItem_ClickEvent" FontFamily="{StaticResource PhoneFontFamilySemiLight}" FontSize="37" Foreground="{StaticResource AppForegroundBrush}" Tag="{Binding MenuText}">
+							<toolkit:MenuItem Margin="-10,-12,0,-5" Tap="MenuItem_ClickEvent" FontFamily="{StaticResource PhoneFontFamilySemiLight}" FontSize="37" Foreground="{StaticResource AppForegroundBrush}" Tag="{Binding MenuText}">
 								<toolkit:MenuItem.Header>
 									<StackPanel Margin="20,10,10,-5" Orientation="Horizontal">
 										<Rectangle Height="50" Width="50" Fill="{StaticResource AppForegroundBrush}" Tag="{Binding MenuText}" Tap="MenuImage_TapEvent">
@@ -57,7 +57,7 @@
 									</StackPanel>
 								</toolkit:MenuItem.Header>
 								<i:Interaction.Triggers>
-									<i:EventTrigger EventName="Click">
+									<i:EventTrigger EventName="Tap">
 										<ec:NavigateToPageAction TargetPage="{Binding NavigateToPage}" />
 									</i:EventTrigger>
 								</i:Interaction.Triggers>
@@ -98,7 +98,7 @@
 											</StackPanel>
 										</toolkit:MenuItem.Header>
 										<i:Interaction.Triggers>
-											<i:EventTrigger EventName="Click">
+											<i:EventTrigger EventName="Tap">
 												<ec:NavigateToPageAction TargetPage="{Binding NavigateToPage}" />
 											</i:EventTrigger>
 										</i:Interaction.Triggers>
