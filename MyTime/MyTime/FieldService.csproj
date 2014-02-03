@@ -128,8 +128,9 @@
       <HintPath>References\SharpZipLib.WindowsPhone7.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Interactivity" />
-    <Reference Include="System.Xml.XPath">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.Xml.XPath.dll</HintPath>
+    <Reference Include="System.Xml.XPath, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Xml.XPath.SL4.2.0.5.0\lib\System.Xml.XPath.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Windows.Controls.Chart">
       <HintPath>..\lib\RCWP\2013.3.1127.2040\Telerik.Windows.Controls.Chart.dll</HintPath>
@@ -506,6 +507,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="StringResources.nl.resx" />
+    <EmbeddedResource Include="StringResources.pt.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="StringResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StringResources.Designer.cs</LastGenOutput>
