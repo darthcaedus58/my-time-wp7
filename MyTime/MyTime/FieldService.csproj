@@ -360,6 +360,9 @@
     <Content Include="icons\Edit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="icons\gps.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="icons\Graph1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
