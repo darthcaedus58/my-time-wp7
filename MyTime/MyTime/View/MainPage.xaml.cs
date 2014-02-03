@@ -487,7 +487,9 @@ namespace FieldService.View
 		/// <param name="v">The v.</param>
 		private void NavigateMainMenu(string v)
 		{
-			string month = DateTime.Today.ToString("MMMM").ToLower() + " report";
+		        string month = string.Format(
+		                StringResources.MainPage_MainMenu_MonthReport,
+		                DateTime.Today.ToString("MMMM").ToLower());
 			if (v == StringResources.MainPage_MainMenu_WtLib) {
 				var wbTask = new WebBrowserTask {Uri = new Uri("http://wol.jw.org", UriKind.RelativeOrAbsolute)};
 				wbTask.Show();
