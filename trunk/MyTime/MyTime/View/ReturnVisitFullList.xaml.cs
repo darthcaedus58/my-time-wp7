@@ -70,9 +70,10 @@ namespace FieldService.View
 	        private IEnumerable BindSuggestionSource(List<ReturnVisitFullListViewModel.Group<ReturnVisitLLItemModel>> rvList)
 	        {
 	                var retList = new List<ReturnVisitLLItemModel>();
-	                foreach (var rvgroup in rvList) {
-	                        retList.AddRange(rvgroup);
-	                }
+	                if (rvList != null) 
+                                foreach (var rvgroup in rvList) {
+	                                retList.AddRange(rvgroup);
+	                        }
 	                return retList;
 	        }
 

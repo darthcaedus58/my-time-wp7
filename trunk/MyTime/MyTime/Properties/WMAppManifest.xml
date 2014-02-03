@@ -12,7 +12,6 @@
   <App xmlns="" ProductID="{e9d44338-3c5e-4277-bdae-181591bf164c}" Title="Field Service" RuntimeType="Silverlight" Version="1.0.4.0" Genre="apps.normal" Author="Square.HipToBe" Description="Field Service Application for Jehovah's Witnesses to manage their ministry." Publisher="Square.HipToBe" PublisherID="{ab618fa0-d5d4-4ce8-bfc3-d5364a5db77e}">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
-      <Capability Name="ID_CAP_GAMERSERVICES" />
       <Capability Name="ID_CAP_IDENTITY_DEVICE" />
       <Capability Name="ID_CAP_IDENTITY_USER" />
       <Capability Name="ID_CAP_LOCATION" />
@@ -39,10 +38,14 @@
           <Count>0</Count>
           <BackgroundImageURI IsResource="false" IsRelative="true">Background.png</BackgroundImageURI>
           <Title>Field Service</Title>
-          <BackContent></BackContent>
-          <BackBackgroundImageURI></BackBackgroundImageURI>
-          <BackTitle></BackTitle>
-          <DeviceLockImageURI></DeviceLockImageURI>
+          <BackContent>
+          </BackContent>
+          <BackBackgroundImageURI>
+          </BackBackgroundImageURI>
+          <BackTitle>
+          </BackTitle>
+          <DeviceLockImageURI>
+          </DeviceLockImageURI>
           <HasLarge>false</HasLarge>
         </TemplateFlip>
       </PrimaryToken>
