@@ -428,7 +428,9 @@
     <Resource Include="ApplicationIcon.png" />
     <Resource Include="PanoramaBackground.png" />
     <Content Include="README_FIRST.txt" />
-    <Content Include="SplashScreenImage.jpg" />
+    <Content Include="SplashScreenImage.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

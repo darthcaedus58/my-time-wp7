@@ -21,8 +21,11 @@
 	Background="{StaticResource AppBackgroundBrush}" 
 	mc:Ignorable="d"
 	Loaded="PhoneApplicationPage_Loaded">
+    <phone:PhoneApplicationPage.Resources>
+        <local:DateTimeToShortTimeValueConverter x:Key="DateTimeToShortTimeValueConverter"/>
+    </phone:PhoneApplicationPage.Resources>
 
-	<phone:PhoneApplicationPage.ApplicationBar>
+    <phone:PhoneApplicationPage.ApplicationBar>
 		<shell:ApplicationBar BackgroundColor="{StaticResource PhoneForegroundColor}" ForegroundColor="{StaticResource PhoneBackgroundColor}" IsMenuEnabled="True" IsVisible="True">
 			<shell:ApplicationBar.MenuItems>
 				<shell:ApplicationBarMenuItem x:Name="appbar_delete" Text="delete" Click="appbar_delete_Click_1" />
@@ -148,9 +151,10 @@
 								<DataTemplate>
 									<StackPanel>
 										<TextBlock Foreground="{StaticResource AppForegroundBrush}" Text="{Binding Date, StringFormat=\{0:D\}}" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                        <TextBlock Foreground="{StaticResource AppForegroundBrush}" Text="{Binding Date, Converter={StaticResource DateTimeToShortTimeValueConverter}, StringFormat=@ \{0\}}" Style="{StaticResource PhoneTextSmallStyle}" Margin="12,0"/> 
 										<TextBlock Text="{Binding Notes}" Height="50" TextWrapping="Wrap" TextTrimming="WordEllipsis" Style="{StaticResource PhoneTextSmallStyle}" />
 										<StackPanel Orientation="Horizontal">
-										<TextBlock Text="{Binding DaysSinceVisit}" Style="{StaticResource PhoneTextAccentStyle}" />
+                                            <TextBlock Text="{Binding DaysSinceVisit}" Style="{StaticResource PhoneTextAccentStyle}" />
 											<TextBlock Text="{Binding Path=StringResources.RVPage_Visits_DaysSince, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextAccentStyle}" />
 										</StackPanel>
 									</StackPanel>

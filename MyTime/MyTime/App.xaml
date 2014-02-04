@@ -257,7 +257,7 @@
                 <Setter Property="Foreground" Value="White" />
                 <Setter Property="BorderThickness" Value="0" />
             </Style>
-        </ResourceDictionary>
+		</ResourceDictionary>
 	</Application.Resources>
 
 
