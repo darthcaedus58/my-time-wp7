@@ -18,7 +18,7 @@
     </TargetFrameworkProfile>
     <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
-    <SupportedCultures>en;it;de;es;es-CO;nl</SupportedCultures>
+    <SupportedCultures>en;it;de;es;es-CO;nl;pt</SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>FieldService_$(Configuration)_$(Platform).xap</XapFilename>
@@ -428,9 +428,9 @@
     <Resource Include="ApplicationIcon.png" />
     <Resource Include="PanoramaBackground.png" />
     <Content Include="README_FIRST.txt" />
-    <Content Include="SplashScreenImage.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="SplashScreenImage.screen-720p.jpg" />
+    <Content Include="SplashScreenImage.screen-WVGA.jpg" />
+    <Content Include="SplashScreenImage.screen-WXGA.jpg" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
