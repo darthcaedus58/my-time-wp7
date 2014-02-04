@@ -50,7 +50,8 @@
 				<StackPanel>
 					<FieldService:HeaderControl IconSource="/icons/calendar.png" HeaderText="{Binding Path=StringResources.AddCallPage_Date, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
 					<telerikInput:RadDatePicker x:Name="dpDatePicker" Value="{Binding PreviousVisitData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
-					<FieldService:HeaderControl IconSource="/icons/Books.png" HeaderText="{Binding Path=StringResources.AddCallPage_Placements, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
+					<telerikInput:RadTimePicker x:Name="tsTimePicker" Value="{Binding PreviousVisitData.Date, Mode=TwoWay}" />
+                    <FieldService:HeaderControl IconSource="/icons/Books.png" HeaderText="{Binding Path=StringResources.AddCallPage_Placements, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
 					<telerikInput:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags" Suffix="{Binding Path=StringResources.AddCallPage_Magazines, Source={StaticResource LocalizedStrings}}" Value="{Binding PreviousVisitData.Magazines, Mode=TwoWay}" />
 					<telerikInput:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" Suffix="{Binding Path=StringResources.AddCallPage_Brochures, Source={StaticResource LocalizedStrings}}" Value="{Binding PreviousVisitData.Brochures, Mode=TwoWay}" />
 					<telerikInput:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBooks" Suffix="{Binding Path=StringResources.AddCallPage_Books, Source={StaticResource LocalizedStrings}}" Value="{Binding PreviousVisitData.Books, Mode=TwoWay}" />

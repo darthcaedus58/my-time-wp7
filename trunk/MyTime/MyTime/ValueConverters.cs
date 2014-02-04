@@ -3,11 +3,25 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Data;
 
 namespace FieldService
 {
+        public class DateTimeToShortTimeValueConverter : IValueConverter
+        {
+                public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+                {
+                        return ((DateTime) value).ToShortTimeString();
+                }
+
+                public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+                {
+                        return DateTime.ParseExact(
+                                value.ToString(), Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern, CultureInfo.CurrentCulture);
+                }
+        }
 	public class DoubleToVisibilityValueConverter : IValueConverter
 	{
 		/// <summary>

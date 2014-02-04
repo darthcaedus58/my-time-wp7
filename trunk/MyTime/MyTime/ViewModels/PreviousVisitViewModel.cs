@@ -12,7 +12,7 @@ namespace FieldService.ViewModels
 		private RvPreviousVisitData _previousVisitData = new RvPreviousVisitData {
 					                                                                           Books = 0,
 					                                                                           Brochures = 0,
-					                                                                           Date = DateTime.Today,
+					                                                                           Date = DateTime.Now,
 					                                                                           RvItemId = -1,
 					                                                                           Magazines = 0,
                                                                                                                    Tracts = 0,
