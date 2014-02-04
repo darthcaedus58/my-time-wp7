@@ -854,7 +854,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to THE ABOVE IS COPYRIGHT 2012 WATCHTOWER BIBLE AND TRACT SOCIETY OF PENNSYLVANIA, INC. ALL RIGHTS RESERVED..
+        ///   Looks up a localized string similar to THE ABOVE IS COPYRIGHT 2014 WATCHTOWER BIBLE AND TRACT SOCIETY OF PENNSYLVANIA, INC. ALL RIGHTS RESERVED..
         /// </summary>
         public static string MainPage_DT_Copyright {
             get {
@@ -863,7 +863,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You must be connected to the internet to view the daily text..
+        ///   Looks up a localized string similar to You must be connected to the internet to view..
         /// </summary>
         public static string MainPage_DT_ErrorText {
             get {
@@ -1003,6 +1003,24 @@ namespace FieldService {
         public static string MainPage_Messages_DonatePlease {
             get {
                 return ResourceManager.GetString("MainPage_Messages_DonatePlease", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to presentations.
+        /// </summary>
+        public static string MainPage_Presentations_Headline {
+            get {
+                return ResourceManager.GetString("MainPage_Presentations_Headline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://square-hiptobe.com/fieldservice/presentations/en/presentations.html.
+        /// </summary>
+        public static string MainPage_Presentations_Url {
+            get {
+                return ResourceManager.GetString("MainPage_Presentations_Url", resourceCulture);
             }
         }
         

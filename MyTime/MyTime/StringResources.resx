@@ -355,10 +355,10 @@
     <value>Field Service</value>
   </data>
   <data name="MainPage_DT_Copyright" xml:space="preserve">
-    <value>THE ABOVE IS COPYRIGHT 2012 WATCHTOWER BIBLE AND TRACT SOCIETY OF PENNSYLVANIA, INC. ALL RIGHTS RESERVED.</value>
+    <value>THE ABOVE IS COPYRIGHT 2014 WATCHTOWER BIBLE AND TRACT SOCIETY OF PENNSYLVANIA, INC. ALL RIGHTS RESERVED.</value>
   </data>
   <data name="MainPage_DT_ErrorText" xml:space="preserve">
-    <value>You must be connected to the internet to view the daily text.</value>
+    <value>You must be connected to the internet to view.</value>
   </data>
   <data name="MainPage_DT_Headline" xml:space="preserve">
     <value>daily text</value>
@@ -840,5 +840,11 @@
   </data>
   <data name="ViewPreviousVisitPage_Tracts" xml:space="preserve">
     <value> Tracts</value>
+  </data>
+  <data name="MainPage_Presentations_Headline" xml:space="preserve">
+    <value>presentations</value>
+  </data>
+  <data name="MainPage_Presentations_Url" xml:space="preserve">
+    <value>http://square-hiptobe.com/fieldservice/presentations/en/presentations.html</value>
   </data>
 </root>
