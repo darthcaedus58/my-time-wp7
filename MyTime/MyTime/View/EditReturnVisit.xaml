@@ -22,6 +22,7 @@
 	mc:Ignorable="d"
 	Loaded="PhoneApplicationPage_Loaded">
     <phone:PhoneApplicationPage.Resources>
+        <local:StringLengthToVisibilityConverter x:Key="StringLengthToVisibilityConverter"/>
         <local:DateTimeToShortTimeValueConverter x:Key="DateTimeToShortTimeValueConverter"/>
     </phone:PhoneApplicationPage.Resources>
 
@@ -58,12 +59,12 @@
 								<StackPanel>
 								<local:HeaderControl HeaderText="{Binding Path=StringResources.RVPage_Info_Address, Source={StaticResource LocalizedStrings}}" IconSource="/icons/Maps.png"/>
                                 <StackPanel Orientation="Horizontal">
-                                    <telerikPrimitives:RadImageButton Padding="0" Margin="0,-25,0,0" MinWidth="80" MinHeight="80" RestStateImageSource="/icons/gps.png" Tap="ShowBingMapHyperlinkButton_Click" ButtonShape="Ellipse" ImageStretch="Fill" />
-                                    <TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.FormattedAddress}" />
+                                    <telerikPrimitives:RadImageButton Visibility="{Binding ReturnVisitData.FormattedAddress, Mode=OneWay, Converter={StaticResource StringLengthToVisibilityConverter}}" Padding="0" Margin="0,-25,0,0" MinWidth="80" MinHeight="80" RestStateImageSource="/icons/gps.png" Tap="ShowBingMapHyperlinkButton_Click" ButtonShape="Ellipse" ImageStretch="Fill" />
+                                    <TextBlock Visibility="{Binding ReturnVisitData.FormattedAddress, Mode=OneWay, Converter={StaticResource StringLengthToVisibilityConverter}}" TextWrapping="Wrap" Text="{Binding ReturnVisitData.FormattedAddress}" />
                                 </StackPanel>
 									<TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.LocationNotes}"/>
 								<local:HeaderControl HeaderText="{Binding Path=StringResources.RVPage_Info_PersonalInfo, Source={StaticResource LocalizedStrings}}" IconSource="/icons/add-user.png"/>
-									<TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.NameOrDescription}"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.NameOrDescription}"/>
 									<HyperlinkButton Click="PhoneNumberHyperlinkButton_Click" Content="{Binding ReturnVisitData.PhoneNumber}" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="-10,0,0,0" FontSize="20"/>
 									<TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.PhysicalDescription}"/>
 								</StackPanel>

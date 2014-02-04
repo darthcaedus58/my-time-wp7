@@ -9,6 +9,18 @@ using System.Windows.Data;
 
 namespace FieldService
 {
+        public class StringLengthToVisibilityConverter : IValueConverter
+        {
+                public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+                {
+                        return value.ToString().Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+                }
+
+                public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+                {
+                        return null;
+                }
+        }
         public class DateTimeToShortTimeValueConverter : IValueConverter
         {
                 public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

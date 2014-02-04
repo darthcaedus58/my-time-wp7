@@ -261,6 +261,7 @@ namespace FieldService.ViewModels
 		{
 			get
 			{
+			        if (!IsAddressValid) return string.Empty;
 				var country = AddressCountryCode;
 				switch(country) {
 					case "it": //italy
