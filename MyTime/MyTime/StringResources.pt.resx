@@ -262,7 +262,7 @@
     <value>SERVIÇO DE CAMPO</value>
   </data>
   <data name="Application_DailyTextURL" xml:space="preserve">
-    <value>http://wol.jw.org/en/wol/dt/r1/lp-e/{0}/{1}/{2}</value>
+    <value>http://wol.jw.org/pt/wol/dt/r5/lp-t/{0}/{1}/{2}</value>
   </data>
   <data name="BackupAndRestorePage_Backup" xml:space="preserve">
     <value>Backup</value>
