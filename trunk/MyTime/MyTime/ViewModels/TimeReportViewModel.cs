@@ -35,6 +35,14 @@ namespace FieldService.ViewModels
                 public string TimeReportTotal
                 {
                         get { return string.Format(StringResources.ReportingPage_Report_TotalHours, _timeReportTotal / 60, _timeReportTotal % 60 > 0 ? _timeReportTotal % 60 : 0); }
+                        private set
+                        {
+                                if (_timeReportTotal != int.Parse(value))
+                                {
+                                        _timeReportTotal = int.Parse(value);
+                                        OnPropertyChanged("TimeReportTotal");
+                                }
+                        }
                 }
 
                 public int TimeReportMajorStep
@@ -166,7 +174,7 @@ namespace FieldService.ViewModels
                                         TimeReportChartData.Add(new TimeChartInfo { Header = string.Format("{0}/{1}", v.Date.Month, v.Date.Day), Time = (v.Minutes / 60.0) });
                                 }
                         }
-
+                        OnPropertyChanged("TimeReportTotal");
                         IsTimeReportDataLoading = false;
                         OnPropertyChanged("TimeReportChartData");
                 }

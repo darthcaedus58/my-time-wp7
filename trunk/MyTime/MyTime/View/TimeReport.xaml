@@ -24,7 +24,6 @@
 	shell:SystemTray.IsVisible="False">
 	<phone:PhoneApplicationPage.Resources>
 		<my:DoubleToVisibilityValueConverter x:Key="DoubleToVisibilityValueConverter"/>
-		<my:DoubleToVisibilityValueConverter x:Key="IntToVisibilityValueConverter"/>
 		<!-- Data -->
 	</phone:PhoneApplicationPage.Resources>
 	<!--LayoutRoot is the root grid where all page content is placed-->
