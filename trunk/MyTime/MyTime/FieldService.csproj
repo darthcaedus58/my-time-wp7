@@ -155,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="SocietyScraper\PresentationsScraper.cs" />
     <Compile Include="StringResources.de.Designer.cs">
       <DependentUpon>StringResources.de.resx</DependentUpon>
       <AutoGen>True</AutoGen>

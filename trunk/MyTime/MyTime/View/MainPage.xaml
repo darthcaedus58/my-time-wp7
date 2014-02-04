@@ -110,7 +110,7 @@
 					</Grid>
 				</Grid>
 			</controls:PanoramaItem>
-			<controls:PanoramaItem Header="{Binding Path=StringResources.MainPage_DT_Headline, Source={StaticResource LocalizedStrings}}">
+			<controls:PanoramaItem x:Name="piHeaderDT" Header="{Binding Path=StringResources.MainPage_DT_Headline, Source={StaticResource LocalizedStrings}}">
 				<Grid>
 					<Grid.RowDefinitions>
 						<RowDefinition Height="Auto" />
@@ -120,7 +120,7 @@
 					<Grid Grid.Row="0" Margin="0,-30,0,0">
 						<StackPanel Orientation="Vertical">
 							<TextBlock Style="{StaticResource PhoneTextLargeStyle}" x:Name="lblDailyTextDate" Margin="0,0,0,0" Foreground="{StaticResource AppForegroundBrush}" />
-							<TextBlock x:Name="lblDailyText" FontStyle="Italic" Foreground="Black" Text="{Binding Path=StringResources.MainPage_DT_ErrorText, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" />
+							<TextBlock x:Name="lblDailyTextScripture" FontStyle="Italic" Foreground="Black" Text="{Binding Path=StringResources.MainPage_DT_ErrorText, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" />
 						</StackPanel>
 					</Grid>
 					<Grid Grid.Row="1">

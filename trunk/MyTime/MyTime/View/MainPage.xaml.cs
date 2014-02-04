@@ -178,15 +178,36 @@ namespace FieldService.View
 			if (lblDailyTextDate.Text.Length >= 26) {
 				lblDailyTextDate.Text = string.Format("{0:ddd} {0:MMM}. {0:dd}, {0:yyyy}", DateTime.Today);
 			}
+		        try{
+		                if (!bool.Parse(App.AppSettingsProvider["showPresentationsInsteadOfDailyText"].Value)){
 
-			var ss = new DailyTextScraper();
+		                        var ss = new DailyTextScraper();
 
-			ss.DailyTextRetrieved += ss_DailyTextRetrieved;
+		                        ss.DailyTextRetrieved += ss_DailyTextRetrieved;
 
-			ss.StartDailyTextRetrieval(DateTime.Now);
+		                        ss.StartDailyTextRetrieval(DateTime.Now);
+		                } else{
+		                        var ps = new PresentationsScraper();
+		                        ps.TextRetrieved += ps_PresentationTextReceived;
+		                        ps.StartPresentationTextRetrieval(StringResources.MainPage_Presentations_Url);
+		                }
+		        } catch {
+                                var ss = new DailyTextScraper();
+
+                                ss.DailyTextRetrieved += ss_DailyTextRetrieved;
+
+                                ss.StartDailyTextRetrieval(DateTime.Now);
+		        }
 		}
 
-		/// <summary>
+	        private void ps_PresentationTextReceived(string text)
+	        {
+	                piHeaderDT.Header = StringResources.MainPage_Presentations_Headline;
+	                lblDailyTextScripture.Visibility = Visibility.Collapsed;;
+	                lblDTSummary.Text = text;
+	        }
+
+	        /// <summary>
 		/// Handles the TapEvent event of the MenuImage control.
 		/// </summary>
 		/// <param name="sender">The source of the event.</param>
@@ -363,7 +384,7 @@ namespace FieldService.View
 		/// <param name="dt">The dt.</param>
 		public void ss_DailyTextRetrieved(DailyText dt)
 		{
-			lblDailyText.Text = dt.Scripture;
+			lblDailyTextScripture.Text = dt.Scripture;
 			lblDTSummary.Text = dt.SummaryText;
 		}
 
