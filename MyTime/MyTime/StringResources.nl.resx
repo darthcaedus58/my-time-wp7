@@ -813,4 +813,25 @@
   <data name="ViewPreviousVisitPage_Tracts" xml:space="preserve">
     <value> Tracts</value>
   </data>
+  <data name="MainPage_MainMenu_HouseToHouseRecords" xml:space="preserve">
+    <value>huis-tot-huis</value>
+  </data>
+  <data name="StreetBuildingList_PageName" xml:space="preserve">
+    <value>straat/gebouw lijst</value>
+  </data>
+  <data name="TerritoryCard_PageName" xml:space="preserve">
+    <value>grondgebied kaart</value>
+  </data>
+  <data name="TerritoryList_Appbar_Add" xml:space="preserve">
+    <value>toevoegen</value>
+  </data>
+  <data name="TerritoryList_PageName" xml:space="preserve">
+    <value>grondgebied lijst</value>
+  </data>
+  <data name="TerritoryList_StreetCountFormatString" xml:space="preserve">
+    <value>{0} straten.</value>
+  </data>
+  <data name="TerritoryList_TerritoryNumberFormatString" xml:space="preserve">
+    <value>Grondgebied # {0}</value>
+  </data>
 </root>

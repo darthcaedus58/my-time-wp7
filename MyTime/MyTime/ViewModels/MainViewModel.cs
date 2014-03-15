@@ -216,10 +216,10 @@ namespace FieldService.ViewModels
                         var bw = new BackgroundWorker();
                         bw.DoWork += (obt, e) => {
                                 _rvs = new List<ReturnVisitViewModel>();
-                                var rvList = ReturnVisitsInterface.GetReturnVisitByLastVisitDate(SortOrder.DateOldestToNewest, -1);
+                                var rvList = ReturnVisitsInterface.GetReturnVisitsByLastVisitDate(8);
                                 foreach (var r in rvList) {
-                                        if (!ReturnVisitsInterface.IdExists(r)) continue;
-                                        if (_rvs.Count >= 8) break;
+                                        //if (!ReturnVisitsInterface.IdExists(r)) continue;
+                                        //if (_rvs.Count >= 8) break;
                                         _rvs.Add(new ReturnVisitViewModel() { ItemId = r });
                                 }
 
@@ -285,7 +285,14 @@ namespace FieldService.ViewModels
                                 IconUri = "/icons/ChartCustomization.png",
                                 NavigateToPage = "/View/CustomReportsPage.xaml"
                         });
-                        //lbMainMenuItems.Add(new MainMenuViewModel {MenuText = "custom report", IconUri = "/icons/search.png"});
+
+                        //lbMainMenuItems.Add(
+                        //        new MainMenuModel
+                        //        {
+                        //                MenuText = StringResources.MainPage_MainMenu_HouseToHouseRecords,
+                        //                IconUri = "/icons/Houses.png",
+                        //                NavigateToPage = "/View/TerritoryList.xaml"
+                        //        });
 
                         lbMainMenuItems.Add(new MainMenuModel
                         {

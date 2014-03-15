@@ -16,6 +16,16 @@ using System.Text.RegularExpressions;
 
 namespace MyTimeDatabaseLib
 {
+        public enum House2HouseSymbol : int
+        {
+                CallAgain = 1,
+                NotAtHome = 2,
+                Busy = 4,
+                Chilld = 8,
+                Man = 16,
+                Woman = 32
+        };
+
     /// <summary>
     /// Class Main
     /// </summary>

@@ -806,4 +806,25 @@
   <data name="ViewPreviousVisitPage_Tracts" xml:space="preserve">
     <value> Tratados</value>
   </data>
+  <data name="MainPage_MainMenu_HouseToHouseRecords" xml:space="preserve">
+    <value>casa en casa</value>
+  </data>
+  <data name="StreetBuildingList_PageName" xml:space="preserve">
+    <value>calle o edificio de la lista</value>
+  </data>
+  <data name="TerritoryCard_PageName" xml:space="preserve">
+    <value>tarjeta de territorio</value>
+  </data>
+  <data name="TerritoryList_Appbar_Add" xml:space="preserve">
+    <value>agregar</value>
+  </data>
+  <data name="TerritoryList_PageName" xml:space="preserve">
+    <value>lista territorio</value>
+  </data>
+  <data name="TerritoryList_StreetCountFormatString" xml:space="preserve">
+    <value>{0} calles.</value>
+  </data>
+  <data name="TerritoryList_TerritoryNumberFormatString" xml:space="preserve">
+    <value>Territorio n º {0}</value>
+  </data>
 </root>

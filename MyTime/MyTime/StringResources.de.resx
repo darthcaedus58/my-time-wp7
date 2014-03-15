@@ -797,4 +797,25 @@
   <data name="ViewPreviousVisitPage_Tracts" xml:space="preserve">
     <value> Traktate</value>
   </data>
+  <data name="MainPage_MainMenu_HouseToHouseRecords" xml:space="preserve">
+    <value>Haus-zu-Haus</value>
+  </data>
+  <data name="StreetBuildingList_PageName" xml:space="preserve">
+    <value>Straße / Gebäudeliste</value>
+  </data>
+  <data name="TerritoryCard_PageName" xml:space="preserve">
+    <value>Gebiet Karte</value>
+  </data>
+  <data name="TerritoryList_Appbar_Add" xml:space="preserve">
+    <value>hinzufügen</value>
+  </data>
+  <data name="TerritoryList_PageName" xml:space="preserve">
+    <value>Gebiet Liste</value>
+  </data>
+  <data name="TerritoryList_StreetCountFormatString" xml:space="preserve">
+    <value>{0} Straßen.</value>
+  </data>
+  <data name="TerritoryList_TerritoryNumberFormatString" xml:space="preserve">
+    <value>Gebiet Nr. {0}</value>
+  </data>
 </root>

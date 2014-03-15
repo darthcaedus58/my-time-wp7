@@ -41,11 +41,11 @@
 				<ImageBrush ImageSource="../PanoramaBackground.png" Opacity="0.6" />
 			</controls:Panorama.Background>
 
-			<toolkit:WrapPanel x:Name="wpMainOptions" Height="Auto" MinHeight="522" Orientation="Vertical">
+			<toolkit:WrapPanel x:Name="wpMainOptions" Height="Auto" MinHeight="522" Orientation="Vertical" Margin="0,-69,0,11">
 				<ItemsControl x:Name="lbMainMenuItems" Margin="25,23,0,0" ItemsSource="{Binding lbMainMenuItems}" MinHeight="522">
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
-							<toolkit:MenuItem Margin="-10,-12,0,-5" Tap="MenuItem_ClickEvent" FontFamily="{StaticResource PhoneFontFamilySemiLight}" FontSize="37" Foreground="{StaticResource AppForegroundBrush}" Tag="{Binding MenuText}">
+							<toolkit:MenuItem Margin="-10,-12,0,-8" Tap="MenuItem_ClickEvent" FontFamily="{StaticResource PhoneFontFamilySemiLight}" FontSize="37" Foreground="{StaticResource AppForegroundBrush}" Tag="{Binding MenuText}">
 								<toolkit:MenuItem.Header>
 									<StackPanel Margin="20,10,10,-5" Orientation="Horizontal">
 										<Rectangle Height="50" Width="50" Fill="{StaticResource AppForegroundBrush}" Tag="{Binding MenuText}" Tap="MenuImage_TapEvent">
@@ -68,14 +68,60 @@
 			</toolkit:WrapPanel>
 			<controls:PanoramaItem Width="850" Orientation="Horizontal">
 				<controls:PanoramaItem.Header>
-					<StackPanel Orientation="Horizontal">
-						<TextBlock Text="{Binding Path=StringResources.MainPage_RvHeadline, Source={StaticResource LocalizedStrings}}" />
-                          <telerikPrimitives:RadImageButton Tap="imgShowAllReturnVisit_Tap" ButtonShape="Ellipse" Margin="14,23,0,0" ImageStretch="Fill" RestStateImageSource="/icons/Images/overflowdots.png" MinWidth="40" MinHeight="40" />
+                    <StackPanel Orientation="Horizontal">
+						<TextBlock x:Name="tbRvHeadline" Text="{Binding Path=StringResources.MainPage_RvHeadline, Source={StaticResource LocalizedStrings}}" />
+                          <telerikPrimitives:RadImageButton Tap="imgShowAllReturnVisit_Tap" ButtonShape="Ellipse" Margin="-5,23,0,0" ImageStretch="Fill" RestStateImageSource="/icons/Filtering.png" MinWidth="40" MinHeight="40" />
+                          <telerikPrimitives:RadImageButton Tap="RadImageButton_Tap"  ButtonShape="Ellipse" Margin="-15,23,-20,0" ImageStretch="Fill"  RestStateImageSource="/icons/Map-Location.png" MinWidth="40" MinHeight="40" />
+                        <telerik:RadAutoCompleteBox 
+                            AutoCompleteMode="Contains"
+                            AutoCompletePopupDisplayMode="BelowTextBox"
+                            FilterDelay="0:0:0.350" 
+                            LostFocus="acbSearchRv_LostFocus" 
+                            Tap="acbSearchRv_Tap"  
+                            Height="80" Width="350" 
+                            x:Name="acbRvSearchBox"
+                            IsEnabled="False">
+                            <telerik:RadAutoCompleteBox.SuggestionItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="-12,-3,0,-3">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Column="0" Margin="{StaticResource PhoneHorizontalMargin}" Width="48" Height="48" Source="{Binding ImageSource}" />
+                                        <Grid Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="{Binding Text}" telerik:RadAutoCompleteBox.IsElementHighlighted="True" FontSize="{StaticResource PhoneFontSizeMedium}">
+                                        <telerik:RadAutoCompleteBox.HighlightStyle>
+                                            <telerik:HighlightStyle Foreground="{StaticResource AppForegroundBrush}" />
+                                        </telerik:RadAutoCompleteBox.HighlightStyle>
+                                            </TextBlock>
+                                            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Address1}" telerik:RadAutoCompleteBox.IsElementHighlighted="True" FontSize="{StaticResource PhoneFontSizeSmall}" >
+                                            <telerik:RadAutoCompleteBox.HighlightStyle>
+                                            <telerik:HighlightStyle Foreground="{StaticResource AppForegroundBrush}" />
+                                        </telerik:RadAutoCompleteBox.HighlightStyle>
+                                                </TextBlock>
+                                                <TextBlock Text=" " FontSize="{StaticResource PhoneFontSizeSmall}" />
+                                                <TextBlock Text="{Binding Address2}" telerik:RadAutoCompleteBox.IsElementHighlighted="True" FontSize="{StaticResource PhoneFontSizeSmall}" >
+                                            <telerik:RadAutoCompleteBox.HighlightStyle>
+                                            <telerik:HighlightStyle Foreground="{StaticResource AppForegroundBrush}" />
+                                        </telerik:RadAutoCompleteBox.HighlightStyle>
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </telerik:RadAutoCompleteBox.SuggestionItemTemplate>
+                            </telerik:RadAutoCompleteBox>
 					</StackPanel>
 				</controls:PanoramaItem.Header>
 				<Grid Margin="0,0,-42,0">
 					<Grid Row="0">
-						<ItemsControl Width="900" Margin="0" ItemsSource="{Binding lbRvItems}">
+						<ItemsControl Width="900" Margin="0,-50,0,0" ItemsSource="{Binding lbRvItems}">
 							<ItemsControl.ItemsPanel>
 								<ItemsPanelTemplate>
 									<telerikPrimitives:RadWrapPanel Margin="0" ItemHeight="130" ItemWidth="415" Orientation="Horizontal" />

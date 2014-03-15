@@ -847,4 +847,28 @@
   <data name="MainPage_Presentations_Url" xml:space="preserve">
     <value>http://square-hiptobe.com/fieldservice/presentations/en/presentations.html</value>
   </data>
+  <data name="MainPage_MainMenu_HouseToHouseRecords" xml:space="preserve">
+    <value>house to house</value>
+  </data>
+  <data name="StreetBuildingList_HouseCountFormatString" xml:space="preserve">
+    <value>{0} Not at Homes</value>
+  </data>
+  <data name="StreetBuildingList_PageName" xml:space="preserve">
+    <value>street/building list</value>
+  </data>
+  <data name="TerritoryCard_PageName" xml:space="preserve">
+    <value>territory card</value>
+  </data>
+  <data name="TerritoryList_Appbar_Add" xml:space="preserve">
+    <value>add</value>
+  </data>
+  <data name="TerritoryList_PageName" xml:space="preserve">
+    <value>territory list</value>
+  </data>
+  <data name="TerritoryList_StreetCountFormatString" xml:space="preserve">
+    <value>{0} streets.</value>
+  </data>
+  <data name="TerritoryList_TerritoryNumberFormatString" xml:space="preserve">
+    <value>Territory # {0}</value>
+  </data>
 </root>

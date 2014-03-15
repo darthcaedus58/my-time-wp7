@@ -31,6 +31,9 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
 using MyTimeDatabaseLib;
 using GestureEventArgs = System.Windows.Input.GestureEventArgs;
+using Telerik.Windows.Controls;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace FieldService.View
 {
@@ -78,7 +81,44 @@ namespace FieldService.View
 			_bwLoadRvs = new BackgroundWorker();
 
 			_bwLoadRvs.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+                        var bw = new BackgroundWorker();
+
+                        bw.RunWorkerCompleted += (o, e) => {
+                                var rvList = (new ReturnVisitFullListViewModel()).LoadReturnVisitFullList();
+
+                               acbRvSearchBox.SuggestionsSource = BindSuggestionSource(rvList);
+                               acbRvSearchBox.SuggestionSelected += acbRvSearchBox_OnSuggestionSelected;
+                               acbRvSearchBox.GotFocus += (sender, args) => {
+                                       acbRvSearchBox.SelectAll();
+                               };
+                               acbRvSearchBox.FilterKeyProvider = (object item) => {
+                                       var typedItem = item as ReturnVisitLLItemModel;
+                                       return string.Format(
+                                               "{0} {1} {2}", typedItem.Text, typedItem.Address1, typedItem.Address2);
+                               };
+                               acbRvSearchBox.IsEnabled = true;
+                       };
+
+                        bw.RunWorkerAsync();
 		}
+
+                private IEnumerable BindSuggestionSource(List<ReturnVisitFullListViewModel.Group<ReturnVisitLLItemModel>> rvList)
+                {
+                        var retList = new List<ReturnVisitLLItemModel>();
+                        if (rvList != null)
+                                foreach (var rvgroup in rvList) {
+                                        retList.AddRange(rvgroup);
+                                }
+                        return retList;
+                }
+
+                private void acbRvSearchBox_OnSuggestionSelected(object sender, SuggestionSelectedEventArgs e)
+                {
+                        var returnVisitLlItemModel = e.SelectedSuggestion as ReturnVisitLLItemModel;
+                        if (returnVisitLlItemModel != null) {
+                                NavigationService.Navigate(new Uri(string.Format("/View/EditReturnVisit.xaml?id={0}", returnVisitLlItemModel.ItemId), UriKind.Relative));
+                        }
+                }
 
 
 		/// <summary>
@@ -636,5 +676,21 @@ namespace FieldService.View
 		private void abibStop_Tap(object sender, GestureEventArgs e) { TimerStopClickTapEvent(); }
 
 		private void abibAddIt_Tap(object sender, GestureEventArgs e) { TimeAdditClickTapEvent(); }
+
+                private void acbSearchRv_Tap(object sender, GestureEventArgs e)
+                {
+                        tbRvHeadline.Visibility = System.Windows.Visibility.Collapsed;
+                }
+
+                private void acbSearchRv_LostFocus(object sender, RoutedEventArgs e)
+                {
+                        tbRvHeadline.Visibility = System.Windows.Visibility.Visible;
+                }
+
+                private void RadImageButton_Tap(object sender, GestureEventArgs e)
+                {
+
+			NavigationService.Navigate(new Uri(string.Format("/View/MapCalls.xaml"), UriKind.Relative));
+                }
 	}
 }
