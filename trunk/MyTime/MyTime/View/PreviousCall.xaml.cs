@@ -97,7 +97,7 @@ namespace FieldService.View
 			}
 			ViewModel.ReturnVisitItemId = int.Parse(rvItemId);
 
-			if (!NavigationContext.QueryString.ContainsKey("id")) return;
+		    if (!NavigationContext.QueryString.ContainsKey("id")) return;
 
 			string callId = NavigationContext.QueryString["id"];
 			ViewModel.PreviousVisitItemId = int.Parse(callId);
