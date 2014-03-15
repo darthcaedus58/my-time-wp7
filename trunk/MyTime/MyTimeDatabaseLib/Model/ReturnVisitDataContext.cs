@@ -95,7 +95,12 @@ namespace MyTimeDatabaseLib.Model
         /// </summary>
         [Column(IsVersion = true)] private Binary _version;
 
-        /// <summary>
+            private double? _latitude;
+            private double? _longitude;
+            private double TOLERANCE = 0;
+            private DateTime? _lastVisitDate;
+
+            /// <summary>
         /// Gets or sets the item id.
         /// </summary>
         /// <value>The item id.</value>
@@ -390,7 +395,57 @@ namespace MyTimeDatabaseLib.Model
             }
         }
 
-        #region INotifyPropertyChanged Members
+            [Column]
+            public double? Latitude 
+            { 
+                    get { return _latitude; } 
+                    set
+                    {
+                            if (_latitude == null)
+                                    _latitude = 0;
+                        if (value == null)
+                            return;
+                            if(Math.Abs((double) (_latitude - value)) > TOLERANCE) {
+                                NotifyPropertyChanging("Latitude");
+                                    _latitude = value;
+                                    NotifyPropertyChanged("Latitude");
+                            }
+                    } 
+            }
+
+            [Column]
+            public double? Longitude 
+            { 
+                    get { return _longitude; } 
+                    set
+                    {
+                            if (_longitude == null)
+                                    _longitude = 0;
+                        if (value == null)
+                            return;
+                            if(Math.Abs((double) (_longitude - value)) > TOLERANCE) {
+                                NotifyPropertyChanging("Longitude");
+                                    _longitude = value;
+                                    NotifyPropertyChanged("Longitude");
+                            }
+                    }
+            }
+
+            [Column]
+            public DateTime? LastVisitDate 
+            { 
+                    get { return _lastVisitDate; } 
+                    set 
+                    { 
+                            if(_lastVisitDate == value) { 
+                                    NotifyPropertyChanging("LastVisitDate");
+                                    _lastVisitDate = value;
+                                    NotifyPropertyChanged("LastVisitDate");
+                            }
+                    } 
+            }
+
+            #region INotifyPropertyChanged Members
 
         /// <summary>
         /// Occurs when [property changed].

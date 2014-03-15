@@ -767,4 +767,25 @@
   <data name="ViewPreviousVisitPage_Rv" xml:space="preserve">
     <value>REVISITA</value>
   </data>
+  <data name="MainPage_MainMenu_HouseToHouseRecords" xml:space="preserve">
+    <value>registro de casa em casa</value>
+  </data>
+  <data name="StreetBuildingList_PageName" xml:space="preserve">
+    <value>rua ou edifício da lista</value>
+  </data>
+  <data name="TerritoryCard_PageName" xml:space="preserve">
+    <value>cartão território</value>
+  </data>
+  <data name="TerritoryList_Appbar_Add" xml:space="preserve">
+    <value>adicionar</value>
+  </data>
+  <data name="TerritoryList_PageName" xml:space="preserve">
+    <value>lista território</value>
+  </data>
+  <data name="TerritoryList_StreetCountFormatString" xml:space="preserve">
+    <value>{0} ruas.</value>
+  </data>
+  <data name="TerritoryList_TerritoryNumberFormatString" xml:space="preserve">
+    <value>Território # {0}</value>
+  </data>
 </root>

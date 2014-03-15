@@ -92,9 +92,12 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="House2HouseRecordsInterfaces.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="Model\House2HouseRecordsDataContext.cs" />
     <Compile Include="Model\RBCTimeDataContext.cs" />
     <Compile Include="Model\RvPreviousVisitsContext.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="RBCTimeDataInterface.cs" />
     <Compile Include="ReturnVisitAlreadyExistsException.cs" />
     <Compile Include="RvPreviousVisitNotFoundException.cs" />

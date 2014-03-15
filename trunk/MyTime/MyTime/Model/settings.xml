@@ -13,7 +13,7 @@
 	<Setting Name="NickName" FriendlyName="Nick Name" Type="String" Value="" />
 	<Setting Name ="dfltAgeValue" FriendlyName="Default Age" Type="Integer" Value="18" />
 	<Setting Name="AppSettingsHdr" Type="Header" Value="Application Setting" />
-        <Setting Name="showPresentationsInsteadOfDailyText" Type="Boolean" FriendlyName="Show Presentation Instead of Daily Text" Value="false" />
+        <!--<Setting Name="showPresentationsInsteadOfDailyText" Type="Boolean" FriendlyName="Show Presentation Instead of Daily Text" Value="false" />-->
 	<Setting Name="UseLocationServices" FriendlyName="Use Location Services" Type="Boolean" Value="True" />
 	<Setting Name="PrivacyPolicy" Type="Note" Value="Privacy Policy: This app uses location services to find your address when entering a new return visit. While the address you enter is stored, the GPS location data recorded while searching for an address is never stored or transmitted." />
 	<Setting Name="AddCallPlacements" FriendlyName="Manually Track RVs &amp; Placements" Type="Boolean" Value="True"/>

@@ -926,6 +926,15 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to house to house.
+        /// </summary>
+        public static string MainPage_MainMenu_HouseToHouseRecords {
+            get {
+                return ResourceManager.GetString("MainPage_MainMenu_HouseToHouseRecords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} report.
         /// </summary>
         public static string MainPage_MainMenu_MonthReport {
@@ -2118,6 +2127,69 @@ namespace FieldService {
         public static string SettingsPage_Settings_UseLocServices {
             get {
                 return ResourceManager.GetString("SettingsPage_Settings_UseLocServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Not at Homes.
+        /// </summary>
+        public static string StreetBuildingList_HouseCountFormatString {
+            get {
+                return ResourceManager.GetString("StreetBuildingList_HouseCountFormatString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to street/building list.
+        /// </summary>
+        public static string StreetBuildingList_PageName {
+            get {
+                return ResourceManager.GetString("StreetBuildingList_PageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to territory card.
+        /// </summary>
+        public static string TerritoryCard_PageName {
+            get {
+                return ResourceManager.GetString("TerritoryCard_PageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to add.
+        /// </summary>
+        public static string TerritoryList_Appbar_Add {
+            get {
+                return ResourceManager.GetString("TerritoryList_Appbar_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to territory list.
+        /// </summary>
+        public static string TerritoryList_PageName {
+            get {
+                return ResourceManager.GetString("TerritoryList_PageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} streets..
+        /// </summary>
+        public static string TerritoryList_StreetCountFormatString {
+            get {
+                return ResourceManager.GetString("TerritoryList_StreetCountFormatString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Territory # {0}.
+        /// </summary>
+        public static string TerritoryList_TerritoryNumberFormatString {
+            get {
+                return ResourceManager.GetString("TerritoryList_TerritoryNumberFormatString", resourceCulture);
             }
         }
         

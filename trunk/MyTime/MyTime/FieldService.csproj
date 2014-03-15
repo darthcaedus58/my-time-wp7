@@ -154,6 +154,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\StreetBuildingItemModel.cs" />
+    <Compile Include="Model\TerritoryCardModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="SocietyScraper\PresentationsScraper.cs" />
     <Compile Include="StringResources.de.Designer.cs">
@@ -203,11 +205,15 @@
     <Compile Include="ValueConverters.cs" />
     <Compile Include="ViewModels\AddModifyRBCTimeViewModel.cs" />
     <Compile Include="ViewModels\AddModifyTimeViewModel.cs" />
+    <Compile Include="ViewModels\EditTerritoryCardViewModel.cs" />
     <Compile Include="ViewModels\HowToDataItemViewModel.cs" />
     <Compile Include="ViewModels\HowToDataViewModel.cs" />
+    <Compile Include="ViewModels\MapCallsViewModel.cs" />
     <Compile Include="ViewModels\PreviousVisitViewModel.cs" />
     <Compile Include="ViewModels\ReturnVisitFullListViewModel.cs" />
     <Compile Include="ViewModels\ReturnVisitViewModel.cs" />
+    <Compile Include="ViewModels\StreetBuildingListPageViewModel.cs" />
+    <Compile Include="ViewModels\TerritoryListPageViewModel.cs" />
     <Compile Include="ViewModels\TimeReportViewModel.cs" />
     <Compile Include="View\CustomReportsPage.xaml.cs">
       <DependentUpon>CustomReportsPage.xaml</DependentUpon>
@@ -218,8 +224,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EditTerritoryCard.xaml.cs">
+      <DependentUpon>EditTerritoryCard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\HowTo.xaml.cs">
       <DependentUpon>HowTo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapCalls.xaml.cs">
+      <DependentUpon>MapCalls.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RBCTime.xaml.cs">
       <DependentUpon>RBCTime.xaml</DependentUpon>
@@ -259,6 +271,12 @@
     <Compile Include="Model\PreviousVisitModel.cs" />
     <Compile Include="Model\ReturnVisitLongListModel.cs" />
     <Compile Include="Model\TimeReportSummaryModel.cs" />
+    <Compile Include="View\StreetBuildingList.xaml.cs">
+      <DependentUpon>StreetBuildingList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TerritoryList.xaml.cs">
+      <DependentUpon>TerritoryList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TimeReport.xaml.cs">
       <DependentUpon>TimeReport.xaml</DependentUpon>
     </Compile>
@@ -283,7 +301,15 @@
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\EditTerritoryCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\HowTo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapCalls.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -314,6 +340,14 @@
     <Page Include="View\SettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\StreetBuildingList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TerritoryList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\TimeReport.xaml">
       <SubType>Designer</SubType>
@@ -361,6 +395,7 @@
     <Content Include="icons\Edit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="icons\Filtering.png" />
     <Content Include="icons\gps.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -370,11 +405,12 @@
     <Content Include="icons\Graph2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="icons\Houses.png" />
     <Content Include="icons\Images\overflowdots.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="icons\Map-Location.png" />
     <Content Include="Images\Frame.png" />
-    <Content Include="Images\FrameThumbnail.png" />
     <Content Include="Images\LeftArrow.png" />
     <Content Include="Images\RightArrow.png" />
     <Resource Include="MarketplaceIcon.png" />
@@ -522,6 +558,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
