@@ -153,7 +153,7 @@ namespace FieldService.ViewModels
 					                                             Books = 0,
 					                                             Brochures = 0,
 					                                             RvItemId = value,
-					                                             Date = DateTime.Today,
+					                                             Date = DateTime.Now,
 					                                             Magazines = 0,
                                                                                      Tracts = 0,
 					                                             Notes = string.Empty
