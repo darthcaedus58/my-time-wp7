@@ -154,6 +154,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppSettings.cs" />
     <Compile Include="Model\StreetBuildingItemModel.cs" />
     <Compile Include="Model\TerritoryCardModel.cs" />
     <Compile Include="Properties\Annotations.cs" />

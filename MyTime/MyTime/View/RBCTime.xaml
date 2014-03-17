@@ -55,7 +55,7 @@
 				<FieldService:HeaderControl IconSource="/icons/calendar.png"  HeaderText="{Binding Path=StringResources.AddRBCTimePage_Date, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
 				<telerikInput:RadDatePicker x:Name="dpDatePicker" Value="{Binding RBCTimeData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
 				<FieldService:HeaderControl IconSource="/icons/clock.png" HeaderText="{Binding Path=StringResources.AddRBCTimePage_Time, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
-				<c4f:TimeSpanPicker ValueStringFormat="{}{0:h} Hours and {0:m} Minutes" x:Name="tspTime" Step="0:15:0" Value="{Binding RBCTimeData.Minutes, Converter={StaticResource MinutesToTimeSpanValueConverter}, Mode=TwoWay}" />
+				<c4f:TimeSpanPicker ValueStringFormat="{}{0:h} Hours and {0:m} Minutes" x:Name="tspTime" Step="{Binding AppSettings.roundTimeIncrement, Converter={StaticResource MinutesToTimeSpanValueConverter}, Source={StaticResource AppSettings}}" Value="{Binding RBCTimeData.Minutes, Converter={StaticResource MinutesToTimeSpanValueConverter}, Mode=TwoWay}" />
 				<FieldService:HeaderControl IconSource="/icons/tasks.png" HeaderText="{Binding Path=StringResources.AddRBCTimePage_Notes, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
 			</StackPanel>
 		</Grid>
