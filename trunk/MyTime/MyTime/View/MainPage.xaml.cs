@@ -292,14 +292,10 @@ namespace FieldService.View
 				return;
 			}
 
-			try {
-				if (App.AppSettingsProvider["roundtime"].Value.Equals(bool.TrueString, StringComparison.CurrentCultureIgnoreCase)) {
-					var ts = TimeSpan.FromMinutes(15 * Math.Ceiling(t.TotalMinutes / 15.0));
-					float m = float.Parse(t.TotalMinutes.ToString()) % (float)15.0;
-					if (m <= 7.5) t = TimeSpan.FromMinutes(ts.TotalMinutes - 15.0);
-					else t = ts;
-				}
-			} catch { }
+				var ts = TimeSpan.FromMinutes(App.Settings.roundTimeIncrement * Math.Ceiling(t.TotalMinutes / App.Settings.roundTimeIncrement));
+                float m = float.Parse(t.TotalMinutes.ToString()) % App.Settings.roundTimeIncrement;
+                if (m <= (App.Settings.roundTimeIncrement/2.0)) t = TimeSpan.FromMinutes(ts.TotalMinutes - App.Settings.roundTimeIncrement);
+                else t = ts;
 
 
 			var minutes = (int) t.TotalMinutes;

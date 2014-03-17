@@ -98,6 +98,8 @@ namespace FieldService
 		/// <value>The app settings.</value>
 		public static SettingsProvider AppSettingsProvider { get { return _settingsProvider ?? new SettingsProvider(); } }
 
+        public static SettingsViewModel Settings { get { return _settingsViewModel ?? new SettingsViewModel(); } }
+
 		/// <summary>
 		/// A static ViewModel used by the views to bind against.
 		/// </summary>
@@ -198,7 +200,9 @@ namespace FieldService
 		/// </summary>
 		private bool _phoneApplicationInitialized;
 
-		// Do not add any additional code to this method
+	    private static SettingsViewModel _settingsViewModel;
+
+	    // Do not add any additional code to this method
 
 		// Do not add any additional code to this method
 
