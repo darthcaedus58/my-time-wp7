@@ -514,5 +514,9 @@ namespace MyTimeDatabaseLib.Model
         /// <param name="connectionString">The connection string.</param>
         public ReturnVisitDataContext(string connectionString)
             : base(connectionString) { }
+
+        public ReturnVisitDataContext() : base(DBConnectionString)
+        {
+        }
     }
 }

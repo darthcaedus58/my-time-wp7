@@ -375,6 +375,44 @@ namespace MyTimeDatabaseLib
                 return null;
             }
         }
+
+        public static bool UpdateLastVisitDate(int rvItemId, DateTime date)
+        {
+            try {
+                using (var db = new ReturnVisitDataContext()) {
+                    var rv = db.ReturnVisitItems.Single(s => s.ItemId == rvItemId);
+                    if (rv != null && date > rv.LastVisitDate) { //Don't update if the new rv visit date is prior to the current last visit date
+                        rv.LastVisitDate = date;
+                        db.SubmitChanges();
+                    } else if (rv != null) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch (InvalidOperationException) {
+                return false;
+            }
+            return false;
+        }
+
+        public static bool DeleteCallFromRv(int rvItemId, DateTime date)
+        {
+            try {
+                using (var db = new ReturnVisitDataContext()) {
+                    var rv = db.ReturnVisitItems.Single(s => s.ItemId == rvItemId);
+                    if (date >= rv.LastVisitDate) {
+                        //Just to be safe checking '>='
+                        rv.LastVisitDate = GetLastVisitDate(rv);
+                        db.SubmitChanges();
+                    }
+                    return true;
+                }
+            }
+            catch {
+                return false;
+            }
+        }
     }
 
     /// <summary>

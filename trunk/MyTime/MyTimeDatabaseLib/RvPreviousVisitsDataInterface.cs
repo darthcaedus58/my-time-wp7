@@ -100,7 +100,7 @@ namespace MyTimeDatabaseLib
 				        c.Tracts = call.Tracts;
 
 					db.SubmitChanges();
-					return c.ItemId > 0; // existing call saved.
+					return c.ItemId > 0 && ReturnVisitsInterface.UpdateLastVisitDate(call.RvItemId, call.Date); // existing call saved.
 				}
 
 				var cc = RvPreviousVisitData.Copy(call);
@@ -109,7 +109,7 @@ namespace MyTimeDatabaseLib
 				db.RvPreviousVisitItems.InsertOnSubmit(cc);
 				db.SubmitChanges();
 				call.ItemId = cc.ItemId;
-				return call.ItemId >= 0;
+                return call.ItemId >= 0 && ReturnVisitsInterface.UpdateLastVisitDate(call.RvItemId, call.Date);
 			}
 		}
 
@@ -145,7 +145,7 @@ namespace MyTimeDatabaseLib
 
 					db.RvPreviousVisitItems.DeleteOnSubmit(call);
 					db.SubmitChanges();
-					return true;
+					return ReturnVisitsInterface.DeleteCallFromRv(call.RvItemId, call.Date);
 				} catch { return false; }
 			}
 		}
