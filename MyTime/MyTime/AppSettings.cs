@@ -11,6 +11,6 @@ namespace FieldService
     {
         private static SettingsViewModel _appSettings = new SettingsViewModel();
 
-        public SettingsViewModel AppSettings { get { return _appSettings; } }
+        public static SettingsViewModel AppSettings { get { return _appSettings; } }
     }
 }
