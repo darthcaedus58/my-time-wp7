@@ -12,6 +12,7 @@
 
 	<Application.Resources>
 		<ResourceDictionary>
+            <FS:AppSettingsProvider x:Name="AppSettings"/>
 			<FS:LocalizedStrings x:Key="LocalizedStrings" />
 			<SolidColorBrush Color="#FF4C4478" x:Key="AppForegroundBrush"/>
 			<SolidColorBrush Color="#FF8FCCF8" x:Key="AppBackgroundBrush"/>

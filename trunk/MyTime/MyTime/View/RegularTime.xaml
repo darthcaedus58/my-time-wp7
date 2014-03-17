@@ -63,7 +63,7 @@
 					<local:HeaderControl IconSource="/icons/calendar.png" HeaderText="{Binding Path=StringResources.AddTimePage_Date, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
                     <telerik:RadDatePicker x:Name="dpDatePicker" Value="{Binding TimeData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
 					<local:HeaderControl IconSource="/icons/clock.png" HeaderText="{Binding Path=StringResources.AddRBCTimePage_Time, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
-                    <c4f:TimeSpanPicker ValueStringFormat="{}{0:h} Hours and {0:m} Minutes" x:Name="tspTime" Step="0:15:0" Value="{Binding TimeData.TotalTime, Mode=TwoWay}" />
+                    <c4f:TimeSpanPicker ValueStringFormat="{}{0:h} Hours and {0:m} Minutes" x:Name="tspTime" Step="{Binding AppSettings.roundTimeIncrement, Converter={StaticResource MinutesToTimeSpanValueConverter}, Source={StaticResource AppSettings}}" Value="{Binding TimeData.TotalTime, Mode=TwoWay}" />
 					<local:HeaderControl IconSource="/icons/books.png" HeaderText="{Binding Path=StringResources.AddTimePage_Placements, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
 					<telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags" Suffix="{Binding Path=StringResources.AddTimePage_Magazines, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeData.Magazines, Mode=TwoWay}" />
 					<telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" Suffix="{Binding Path=StringResources.AddTimePage_Brochures, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeData.Brochures, Mode=TwoWay}" />
