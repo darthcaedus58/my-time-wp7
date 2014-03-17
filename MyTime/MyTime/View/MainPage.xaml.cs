@@ -168,8 +168,7 @@ namespace FieldService.View
 		/// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
 		private void MainPage_Loaded(object sender, RoutedEventArgs e)
 		{
-			bool countCalls = bool.Parse(App.AppSettingsProvider["AddCallPlacements"].Value);
-			if (countCalls) {
+			if (App.Settings.manuallyTrackRvs) {
 				tbReturnVisits.Visibility = Visibility.Collapsed;
 			}
 			if (!App.ViewModel.IsMainMenuLoaded) App.ViewModel.LoadMainMenu();
@@ -178,8 +177,7 @@ namespace FieldService.View
 
 			try {
 				//MessageBox.Show(CultureInfo.CurrentCulture.Name);
-				var b = bool.Parse(App.AppSettingsProvider["askForDonation"].Value);
-				if (b) {
+				if (App.Settings.askForDonation) {
 
 					if (MessageBox.Show(StringResources.MainPage_Messages_DonatePlease, "", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
 						var donate = new WebBrowserTask()
@@ -190,17 +188,14 @@ namespace FieldService.View
 					} else {
 						App.ToastMe(StringResources.MainPage_Messages_DonateLater);
 					}
-					App.AppSettingsProvider["askForDonation"].Value = "false";
-					App.AppSettingsProvider.SaveSettings();
+				    App.Settings.askForDonation = false;
 				}
 			} catch {}
 
                         try {
-                                var vers = App.AppSettingsProvider["howToShownVer"].Value.ToString();
-                                if (!vers.Equals(App.GetVersion())) {
+                                if (!App.Settings.howToShownVer.Equals(App.GetVersion())) {
                                         NavigationService.Navigate(new Uri("/View/HowTo.xaml", UriKind.Relative));
-                                        App.AppSettingsProvider["howToShownVer"].Value = App.GetVersion();
-                                        App.AppSettingsProvider.SaveSettings();
+                                        App.Settings.howToShownVer = App.GetVersion();
                                 }
                         } catch (Exception) {
                                 NavigationService.Navigate(new Uri("/View/HowTo.xaml", UriKind.Relative));
