@@ -678,16 +678,16 @@
     <value>Version</value>
   </data>
   <data name="SettingsPage_Settings_AddCallPlacements" xml:space="preserve">
-    <value>VERSION</value>
+    <value>ManuallyTrack RVs &amp; Placements</value>
   </data>
   <data name="SettingsPage_Settings_AppSettings" xml:space="preserve">
-    <value>Application Settings</value>
+    <value>APPLICATION SETTINGS</value>
   </data>
   <data name="SettingsPage_Settings_BeautifyPhoneNumbers" xml:space="preserve">
     <value>Beautify Phone Numbers (US Only)</value>
   </data>
   <data name="SettingsPage_Settings_CSO" xml:space="preserve">
-    <value>Congregation Service Overseer</value>
+    <value>Congregation Secretary or Service Group Overseer</value>
   </data>
   <data name="SettingsPage_Settings_CSO_Message1" xml:space="preserve">
     <value>Tap the button above to choose the contact record of your CSO.</value>
@@ -711,16 +711,16 @@
     <value>Nick Name</value>
   </data>
   <data name="SettingsPage_Settings_PersonalSettings" xml:space="preserve">
-    <value>Personal Settings</value>
+    <value>PERSONAL SETTINGS</value>
   </data>
   <data name="SettingsPage_Settings_PlacementsMessage1" xml:space="preserve">
-    <value>If set to ‘on’ placements recorded on a return visit call will count towards your monthly report. If you set this to ‘off’ you wil have to enter your placements twice (on the call and on the add time screen).</value>
+    <value>If you don't intend to store your return visits in this app set this to 'off' and you can manually record your return visits on the add time page. If set to 'on' placements recorded on a return visit call will count towards your monthly report. If you set this to 'off' you will have to enter your placements twice (on the call and on the add time screen).</value>
   </data>
   <data name="SettingsPage_Settings_PrivacyPolicy" xml:space="preserve">
     <value>Privacy Policy: This app uses location services to find your address when entering a new return visit. While the address you enter is stored, the GPS location data recorded while searching for an address is never stored or transmitted.</value>
   </data>
   <data name="SettingsPage_Settings_RoundTime" xml:space="preserve">
-    <value>Round Time (15 Minute Increments)</value>
+    <value>Round Time (Minute Increments)</value>
   </data>
   <data name="SettingsPage_Settings_SendMethod" xml:space="preserve">
     <value>Default Send Method</value>
