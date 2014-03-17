@@ -48,7 +48,7 @@ namespace FieldService.View
 		/// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
 		private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
 		{
-			bool countCalls = bool.Parse(App.AppSettingsProvider["AddCallPlacements"].Value);
+		    bool countCalls = App.Settings.manuallyTrackRvs;
 			if (countCalls) {
 				tbReturnVisits.Visibility = Visibility.Collapsed;
 			}

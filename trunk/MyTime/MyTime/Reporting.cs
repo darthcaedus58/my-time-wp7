@@ -24,12 +24,11 @@ namespace FieldService
 			string sendTo = String.Empty;
 			bool includeSig = true;
 			try {
-				Setting nickName = App.AppSettingsProvider["NickName"];
-				body += String.Format(",\n{0}", nickName.Value);
-				Setting to = App.AppSettingsProvider["csoEmail"];
-				sendType = to.AddressType;
-				sendTo = to.Value;
-				includeSig = App.AppSettingsProvider["sharefsapp"].Value.Equals(Boolean.TrueString, StringComparison.CurrentCultureIgnoreCase);
+			    string nickName = App.Settings.nickname;
+				body += String.Format(",\n{0}", nickName);
+			    sendType = App.Settings.SendMethodEnum;
+			    sendTo = App.Settings.csoEmail;
+			    includeSig = App.Settings.shareFSApp;
 			} catch (Exception) {}
 
 			if (sendType == addressType.Email) {
@@ -49,7 +48,7 @@ namespace FieldService
 			TimeData[] entries = TimeDataInterface.GetEntries(fromDate, toDate, so);
 
 			try {
-				bool countCalls = bool.Parse(App.AppSettingsProvider["AddCallPlacements"].Value);
+			    bool countCalls = App.Settings.manuallyTrackRvs;
 
 				if (!countCalls) return entries;
 				RvPreviousVisitData[] calls = RvPreviousVisitsDataInterface.GetCallsByDate(fromDate, toDate);
