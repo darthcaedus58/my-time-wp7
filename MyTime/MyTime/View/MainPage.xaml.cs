@@ -318,9 +318,28 @@ namespace FieldService.View
 								  };
 
 			try {
-				TimeDataInterface.AddTime(ref td);
-				App.ToastMe(string.Format(StringResources.MainPage_Messages_AddedTime, t.Hours, t.Minutes));
-				TimerStopClickTapEvent();
+			    int id;
+			    if (TimeDataInterface.IsDoubleDataEntry(DateTime.Now, out id) &&
+			        MessageBox.Show(StringResources.AddRBCTimePage_AskForDoubleEntry, "", MessageBoxButton.OKCancel) ==
+			        MessageBoxResult.OK) {
+			        var tdOld = TimeDataInterface.GetTimeDataItem(id);
+			        tdOld.Minutes += td.Minutes;
+			        tdOld.Magazines += td.Magazines;
+			        tdOld.Brochures += td.Brochures;
+			        tdOld.Books += td.Books;
+			        tdOld.Tracts += td.Tracts;
+			        tdOld.BibleStudies += td.BibleStudies;
+			        tdOld.ReturnVisits += td.ReturnVisits;
+			        tdOld.Notes += td.Notes.Length > 0 ? string.Format("\n\n{0}", td.Notes) : string.Empty;
+			        TimeDataInterface.UpdateTime(ref tdOld);
+			        var a = new TimeSpan(0, tdOld.Minutes, 0);
+                    App.ToastMe(string.Format(StringResources.MainPage_Messages_AddedTime, a.Hours, a.Minutes));
+			    }
+			    else {
+			        TimeDataInterface.AddTime(ref td);
+			        App.ToastMe(string.Format(StringResources.MainPage_Messages_AddedTime, t.Hours, t.Minutes));
+			    }
+			    TimerStopClickTapEvent();
 				ResetText();
 			} catch (Exception ee) {
 				throw ee;
