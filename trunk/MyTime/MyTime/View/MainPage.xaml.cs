@@ -451,11 +451,10 @@ namespace FieldService.View
 		private void PauseTimer()
 		{
 			try {
-				_dt.Stop();
-				SetRestartTime();
-			} catch { } finally {
-				_timerState = TimerState.Paused;
-			}
+                _dt.Stop(); 
+                 _timerState = TimerState.Paused;
+                SetRestartTime();
+			} catch { } 
 		}
 
 		/// <summary>
