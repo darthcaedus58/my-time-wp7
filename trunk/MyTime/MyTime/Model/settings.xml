@@ -2,6 +2,7 @@
 <Settings xmlns="http://www.inputstudiowp7.com/schemas">
 	<Setting Name="shareOptsHdr" Type="Header" Value="Sharing Options" />
 	<Setting Name="csoEmail" FriendlyName="Congregation Service Overseer" Type="ContactChooser" Value="" AddressType="Email" ContactDisplayName="" />
+ <Setting Type="String" FriendlyName="csDisplayName" Name="csDisplayName" Value=""/>
 	<Setting Name="contactNotes" Type="Note" Value="Tap the button above to choose the contact record of your CSO." />
 	<Setting Name="sharefsapp" FriendlyName="Include 'Field Service' Signature" Type="Boolean" Value="True" />
 	<Setting Name="SiggyNotes" Type="Note" Value="Signature only included on emailed reports. Its left off of SMS reports." />
@@ -27,4 +28,5 @@
 	<Setting Name="deleteCallsNote" Type="Note" Value="NOTE: Deleting the calls will delete the RVs from your service report." />
 	<Setting Name="askForDonation" Type="Boolean" Value="True" ShowInSettingsPage="false" FriendlyName="askForDonation" />
 	<Setting Name="howToShownVer" Type="String" Value="" ShowInSettingsPage="false" FriendlyName="howToShownVer" />
+  <Setting Name="roundTimeIncrement" Type="Integer" FriendlyName="roundTimeIncrement" />
 </Settings>

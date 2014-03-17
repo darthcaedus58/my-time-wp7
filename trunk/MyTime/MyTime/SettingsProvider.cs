@@ -458,7 +458,7 @@ namespace FieldService
         /// <summary>
         /// Class EnumValueConverter
         /// </summary>
-        internal class EnumValueConverter : IValueConverter
+        public class EnumValueConverter : IValueConverter
         {
             #region IValueConverter Members
 

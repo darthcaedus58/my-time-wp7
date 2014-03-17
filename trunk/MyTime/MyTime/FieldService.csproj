@@ -212,6 +212,7 @@
     <Compile Include="ViewModels\PreviousVisitViewModel.cs" />
     <Compile Include="ViewModels\ReturnVisitFullListViewModel.cs" />
     <Compile Include="ViewModels\ReturnVisitViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\StreetBuildingListPageViewModel.cs" />
     <Compile Include="ViewModels\TerritoryListPageViewModel.cs" />
     <Compile Include="ViewModels\TimeReportViewModel.cs" />

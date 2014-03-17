@@ -14,7 +14,9 @@
 
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Navigation;
+using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
 using MyTimeDatabaseLib;
@@ -29,7 +31,7 @@ namespace FieldService.View
 	{
 		private bool _isTrial;
 
-		/// <summary>
+	    /// <summary>
 		/// Initializes a new instance of the Settings class.
 		/// </summary>
 		public SettingsPage()
@@ -76,10 +78,10 @@ namespace FieldService.View
 		/// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
 		private void Settings_Loaded(object sender, RoutedEventArgs e)
 		{
-			var grid = FindName("SettingsRoot") as Grid;
-			if (null == grid) return;
-			StackPanel sp = App.AppSettingsProvider.BuildXaml();
-			grid.Children.Add(sp);
+            //var grid = FindName("SettingsRoot") as Grid;
+            //if (null == grid) return;
+            //StackPanel sp = App.AppSettingsProvider.BuildXaml();
+            //grid.Children.Add(sp);
 
 			tbAppVersion.Text = App.GetVersion();
 			tbCoreVersion.Text = Main.GetVersion();
@@ -128,6 +130,53 @@ namespace FieldService.View
                                 To = "help@square-hiptobe.com"
                         };
                         emailcomposer.Show();
-	        }
+            }
+
+            /// <summary>
+            /// Handles the Click event of the bButton control.
+            /// </summary>
+            /// <param name="sender">The source of the event.</param>
+            /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
+            private void bButton_Click(object sender, RoutedEventArgs e)
+            {
+                
+                if (((SettingsViewModel)SettingsStackPanel.DataContext).SendMethodEnum == addressType.Email) {
+                    var email = new EmailAddressChooserTask();
+                    email.Completed += email_Completed;
+                    email.Show();
+                } else {
+                    var sms = new PhoneNumberChooserTask();
+                    sms.Completed += sms_Completed;
+                    sms.Show();
+                }
+            }
+
+            /// <summary>
+            /// Email_s the completed.
+            /// </summary>
+            /// <param name="sender">The sender.</param>
+            /// <param name="e">The e.</param>
+            private void email_Completed(object sender, EmailResult e)
+            {
+                if (e.TaskResult != TaskResult.OK) {
+                    return;
+                }
+                ((SettingsViewModel)SettingsStackPanel.DataContext).csContactDisplayName = e.DisplayName;
+                ((SettingsViewModel)SettingsStackPanel.DataContext).csoEmail = e.Email;
+            }
+
+            /// <summary>
+            /// SMS_s the completed.
+            /// </summary>
+            /// <param name="sender">The sender.</param>
+            /// <param name="e">The e.</param>
+            private void sms_Completed(object sender, PhoneNumberResult e)
+            {
+                if (e.TaskResult != TaskResult.OK) {
+                    return;
+                }
+                ((SettingsViewModel)SettingsStackPanel.DataContext).csContactDisplayName = e.DisplayName;
+                ((SettingsViewModel)SettingsStackPanel.DataContext).csoEmail = e.PhoneNumber;
+            }
 	}
 }
