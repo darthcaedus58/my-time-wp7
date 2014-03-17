@@ -46,10 +46,14 @@ namespace FieldService.ViewModels
 
             set
             {
-                if(value == StringResources.SettingsPage_Settings_SMS) 
+                if (value == StringResources.SettingsPage_Settings_SMS) {
                     SetSettingValue("csoEmail", addressType.Sms);
-                else if(value == StringResources.SettingsPage_Settings_Email)
+                    return;
+                }
+                if (value == StringResources.SettingsPage_Settings_Email) {
                     SetSettingValue("csoEmail", addressType.Email);
+                    return;
+                }
                 SetSettingValue("csoEmail", addressType.Sms);
                 OnPropertyChanged();
             }

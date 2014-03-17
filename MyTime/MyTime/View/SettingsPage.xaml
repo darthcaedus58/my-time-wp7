@@ -48,7 +48,10 @@
                         <TextBlock Text="{Binding StringResources.SettingsPage_Settings_CSO, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
                         <Button Content="{Binding csContactDisplayName}" Style="{StaticResource SettingsButtonBaseControlTemplate}" Click="bButton_Click" />
                         <TextBox Text="{Binding csoEmail, Mode=TwoWay}"  />
-                        <toolkit:ListPicker Header="{Binding StringResources.SettingsPage_Settings_SendMethod, Mode=OneWay, Source={StaticResource LocalizedStrings}}" ItemsSource="{Binding SendMethodCollection}" SelectedItem="{Binding SendMethod, Mode=TwoWay}" />
+                        <toolkit:ListPicker 
+                            Header="{Binding StringResources.SettingsPage_Settings_SendMethod, Mode=OneWay, Source={StaticResource LocalizedStrings}}" 
+                            ItemsSource="{Binding SendMethodCollection}" 
+                            SelectedItem="{Binding SendMethod, Mode=TwoWay}" />
                         <toolkit:ToggleSwitch Header="{Binding StringResources.SettingsPage_Settings_SignatureMessage, Mode=OneWay, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding shareFSApp, Mode=TwoWay}"/>
                         <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_Settings_SignatureMessage2, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
 
