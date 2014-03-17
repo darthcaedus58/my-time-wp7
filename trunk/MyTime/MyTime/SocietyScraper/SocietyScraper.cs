@@ -56,6 +56,7 @@ namespace FieldService.SocietyScraper
             tags = docNode.SelectNodes(".//p[@class='sb']");
             string summaryText = tags.Count > 0 ? tags[0].InnerText : string.Empty;
 
+            scripture = scripture.Replace("&nbsp;", " ");
             summaryText = summaryText.Replace("&nbsp;", " ");
 
             var dt = new DailyText {
