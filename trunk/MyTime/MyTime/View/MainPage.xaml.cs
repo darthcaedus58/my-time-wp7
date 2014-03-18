@@ -701,5 +701,10 @@ namespace FieldService.View
 
 			NavigationService.Navigate(new Uri(string.Format("/View/MapCalls.xaml"), UriKind.Relative));
                 }
+
+	    private void ShowPresentation_Tap(object sender, GestureEventArgs e)
+	    {
+	        NavigationService.Navigate(new Uri("/View/ViewPresentationPic.xaml", UriKind.Relative));
+	    }
 	}
 }

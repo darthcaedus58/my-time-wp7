@@ -156,7 +156,13 @@
 					</Grid>
 				</Grid>
 			</controls:PanoramaItem>
-			<controls:PanoramaItem x:Name="piHeaderDT" Header="{Binding Path=StringResources.MainPage_DT_Headline, Source={StaticResource LocalizedStrings}}">
+			<controls:PanoramaItem x:Name="piHeaderDT" >
+   <controls:PanoramaItem.Header>
+       <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=StringResources.MainPage_DT_Headline, Source={StaticResource LocalizedStrings}}"/>
+           <telerikPrimitives:RadImageButton Tap="ShowPresentation_Tap" RestStateImageSource="/icons/Login-Door.png" Margin="0,15,0,0"/>
+       </StackPanel>
+   </controls:PanoramaItem.Header>
 				<Grid>
 					<Grid.RowDefinitions>
 						<RowDefinition Height="Auto" />
