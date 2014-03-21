@@ -1124,7 +1124,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Day(s) Since Last Visit.
+        ///   Looks up a localized string similar to {0} Day(s) Since Last Visit.
         /// </summary>
         public static string MainPage_RV_DaysSince {
             get {
@@ -1693,7 +1693,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Full Name.
+        ///   Looks up a localized string similar to Full NameOrDescription.
         /// </summary>
         public static string RVPage_Personal_FullName {
             get {
@@ -2032,7 +2032,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nick Name.
+        ///   Looks up a localized string similar to Nick NameOrDescription.
         /// </summary>
         public static string SettingsPage_Settings_NickName {
             get {

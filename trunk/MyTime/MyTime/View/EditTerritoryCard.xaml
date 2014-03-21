@@ -41,7 +41,7 @@
             <StackPanel>
                 <Image  x:Name="biTerrImage" Source="{Binding TerritoryCardImage}" Width="300" Height="300" HorizontalAlignment="Center" Stretch="UniformToFill" />
                 <Button Tap="bTakePhoto_OnTap" Style="{StaticResource SettingsButtonBaseControlTemplate}" Content="Take Photo"/>
-                <telerikPrimitives:RadTextBox Watermark="Number" Text="{Binding TerritoryCardTerritoryNumber}" InputScope="NameOrPhoneNumber" />
+                <telerikPrimitives:RadTextBox Watermark="Number" Text="{Binding TerritoryCardTerritoryNumber}" InputScope="NameOrDescriptionOrPhoneNumber" />
                 <telerikPrimitives:RadTextBox Watermark="Notes" Text="{Binding TerritoryCardNotes}" InputScope="Text" AcceptsReturn="True" MaxHeight="120" />
             </StackPanel>
         </Grid>

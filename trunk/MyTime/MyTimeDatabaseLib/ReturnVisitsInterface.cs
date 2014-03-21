@@ -14,8 +14,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Microsoft.Phone.Data.Linq;
 using MyTimeDatabaseLib.Model;
 
@@ -359,16 +364,24 @@ namespace MyTimeDatabaseLib
             }
         }
 
-        public static IEnumerable<int> GetReturnVisitsByLastVisitDate(int maxReturnCount = 8)
+        public static List<ReturnVisitData> GetReturnVisitsByLastVisitDate(int maxReturnCount = 8)
         {
             try {
                 using (var db = new ReturnVisitDataContext(ReturnVisitDataContext.DBConnectionString)) {
                     var qry = from x in db.ReturnVisitItems
                         orderby x.LastVisitDate
-                        select x.ItemId;
+                        select x;
 
                     if (!qry.Any()) return null;
-                    return qry.Take(maxReturnCount == -1 ? qry.Count() : maxReturnCount).ToList();
+                    bool save = false;
+                    foreach (var r in qry) {
+                        if (r.LastVisitDate == null) {
+                            r.LastVisitDate = GetLastVisitDate(r);
+                            save = true;
+                        }
+                    }
+                    if(save) db.SubmitChanges();
+                    return qry.Take(maxReturnCount == -1 ? qry.Count() : maxReturnCount).Select(rv => ReturnVisitData.Copy(rv)).ToList();
                 }
             }
             catch {
@@ -449,6 +462,63 @@ namespace MyTimeDatabaseLib
         /// <value>The image SRC.</value>
         public int[] ImageSrc { get; set; }
 
+        public BitmapImage Image
+        {
+            get
+            {
+                var wb = new WriteableBitmap(100, 100);
+                for (int i = 0; i < wb.Pixels.Length; i++) {
+                    wb.Pixels[i] = 0xFF3300;
+                }
+                var bmp = new BitmapImage();
+                using (var ms = new MemoryStream()) {
+                    wb.SaveJpeg(ms, 100, 100, 0, 100);
+                    bmp.SetSource(ms);
+                }
+
+                var bi = new BitmapImage();
+                if (ImageSrc != null && ImageSrc.Length >= 0) {
+                    var ris = new WriteableBitmap(450, 250);
+
+                    //get image from database
+                    for (int i = 0; i < ImageSrc.Length; i++) {
+                        ris.Pixels[i] = ImageSrc[i];
+                    }
+
+                    //put the image in a WritableBitmap
+                    using (var ms = new MemoryStream()) {
+                        ris.SaveJpeg(ms, 450, 250, 0, 100);
+                        bi.SetSource(ms);
+                    }
+
+                    //crop the image to 100x100 and centered
+                    var img = new Image {
+                        Source = bi,
+                        Width = 450,
+                        Height = 250
+                    };
+                    var wb2 = new WriteableBitmap(100, 100);
+                    var t = new CompositeTransform {
+                        ScaleX = 0.5,
+                        ScaleY = 0.5,
+                        TranslateX = -((450 / 2) / 2 - 50),
+                        TranslateY = -((250 / 2) / 2 - 50)
+                    };
+                    wb2.Render(img, t);
+                    wb2.Invalidate();
+                    bi = new BitmapImage();
+                    using (var ms = new MemoryStream()) {
+                        wb2.SaveJpeg(ms, 100, 100, 0, 100);
+                        bi.SetSource(ms);
+                    }
+                    //BitmapImage bi is now cropped
+                } else {
+                    bi = bmp; //Default image.
+                }
+                return bi;
+            }
+        }
+
         /// <summary>
         /// Gets or sets the date created.
         /// </summary>
@@ -527,6 +597,105 @@ namespace MyTimeDatabaseLib
         /// <value>The other notes.</value>
         public string OtherNotes { get; set; }
 
+        public string NameOrDescription
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(FullName)) {
+                    return FullName;
+                }
+                if (!string.IsNullOrEmpty(Age)) {
+                    return string.Format("{0} Year Old {1}", Age, Gender);
+                }
+                ///TODO: Fix Me.
+                return string.Format("{0}{1}", Gender == "Male" ? "Man" : "Woman", string.IsNullOrEmpty(PhysicalDescription) ? string.Empty : string.Format(" ({0})", PhysicalDescription));
+            }
+        }
+
+        private string AddressCountryCode
+        {
+            get
+            {
+                var country = Country;
+                return GetCountryCode(country);
+            }
+        }
+
+        public static string GetCountryCode(string country)
+        {
+            if (string.IsNullOrEmpty(country)) country = string.Empty;
+            switch (country.ToLower()) {
+                case "":
+                    country = CultureInfo.CurrentCulture.Name.Remove(0, 3).ToLower();
+                    break;
+                case "thailand":
+                    country = "th";
+                    break;
+                case "italy":
+                case "italia":
+                case "it":
+                    country = "it";
+                    break;
+                case "england":
+                case "great britian":
+                case "britian":
+                case "gb":
+                case "uk":
+                case "u.k.":
+                case "united kingdom":
+                    country = "gb";
+                    break;
+                case "usa":
+                case "us":
+                case "u.s.a.":
+                case "united states":
+                case "united states of america":
+                case "america":
+                    country = "us";
+                    break;
+                default:
+                    country = CultureInfo.CurrentCulture.Name.Remove(0, 3).ToLower();
+                    break;
+            }
+            return country;
+        }
+
+        public bool IsAddressValid
+        {
+            get
+            {
+                switch (AddressCountryCode) {
+                    case "gb":
+                        return !(string.IsNullOrEmpty(AddressOne) || string.IsNullOrEmpty(City));
+                    case "us":
+                    case "it":
+                    case "th":
+                    default:
+                        return !(string.IsNullOrEmpty(AddressOne) || string.IsNullOrEmpty(City) || string.IsNullOrEmpty(StateProvince));
+                }
+            }
+        }
+
+        public string FormattedAddress
+        {
+            get
+            {
+                if (!IsAddressValid) return string.Empty;
+                var country = AddressCountryCode;
+                switch (country) {
+                    case "it": //italy
+                        return string.Format("{0} {1}\n{2} {3} {4}", AddressOne, AddressTwo, PostalCode, City, StateProvince);
+                    case "gb": //england
+                        return string.Format("{0} {1}\n{2} {3}", AddressOne, AddressTwo, City, PostalCode);
+                    case "th": //thailand
+                        return string.Format("{0} {1}\n{2} {3}", AddressOne, AddressTwo, City, StateProvince);
+                    default:
+                    case "us": //usa
+                        return string.Format("{0} {1}\n{2},{3} {4}", AddressOne, AddressTwo, City, StateProvince, PostalCode);
+                }
+            }
+        }
+
         internal static ReturnVisitDataItem Copy(ReturnVisitData newRv)
         {
             return new ReturnVisitDataItem {
@@ -547,6 +716,31 @@ namespace MyTimeDatabaseLib
                 Latitude = newRv.Latitude,
                 Longitude = newRv.Longitude,
                 LastVisitDate = newRv.LastVisitDate
+            };
+        }
+
+        internal static ReturnVisitData Copy(ReturnVisitDataItem newRv)
+        {
+            return new ReturnVisitData()
+            {
+                AddressOne = newRv.AddressOne,
+                AddressTwo = newRv.AddressTwo,
+                Age = newRv.Age,
+                City = newRv.City,
+                Country = newRv.Country,
+                DateCreated = newRv.DateCreated,
+                FullName = newRv.FullName,
+                Gender = newRv.Gender,
+                OtherNotes = newRv.OtherNotes,
+                PhysicalDescription = newRv.PhysicalDescription,
+                PostalCode = newRv.PostalCode,
+                StateProvince = newRv.StateProvince,
+                ImageSrc = newRv.ImageSrc,
+                PhoneNumber = newRv.PhoneNumber,
+                Latitude = newRv.Latitude ?? 0.0,
+                Longitude = newRv.Longitude ?? 0.0,
+                LastVisitDate = newRv.LastVisitDate ?? DateTime.MinValue
+
             };
         }
     }

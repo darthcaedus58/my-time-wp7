@@ -537,7 +537,7 @@
     <value>Info zur Person (Schwerhörig/Glaubt nicht an Gott/usw.)</value>
   </data>
   <data name="RVPage_Personal_FullName" xml:space="preserve">
-    <value>Vollständiger Name</value>
+    <value>Vollständiger NameOrDescription</value>
   </data>
   <data name="RVPage_Personal_Headline" xml:space="preserve">
     <value>Kontakt</value>
@@ -633,7 +633,7 @@
     <value>Einstellungen</value>
   </data>
   <data name="SettingsPage_Settings_NickName" xml:space="preserve">
-    <value>NickName</value>
+    <value>NickNameOrDescription</value>
   </data>
   <data name="SettingsPage_Settings_PersonalSettings" xml:space="preserve">
     <value>Persönliche Einstellungen</value>
