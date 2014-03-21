@@ -21,7 +21,7 @@ namespace FieldService.Model
     /// <summary>
     /// Class ReturnVisitItemViewModel
     /// </summary>
-    public class ReturnVisitItemModel : INotifyPropertyChanged
+    public class ReturnVisitSummaryModel : INotifyPropertyChanged
     {
         /// <summary>
         /// The _image
@@ -34,20 +34,16 @@ namespace FieldService.Model
         /// <summary>
         /// The _line one
         /// </summary>
-        private string _lineOne;
+        private string _formattedAddress;
         /// <summary>
         /// The _line three
         /// </summary>
-        private string _lineThree;
-        /// <summary>
-        /// The _line two
-        /// </summary>
-        private string _lineTwo;
+        private string _daysSinceVisit;
 
         /// <summary>
-        /// The _name
+        /// The _nameOrDescription
         /// </summary>
-        private string _name;
+        private string _nameOrDescription;
 
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
@@ -72,14 +68,14 @@ namespace FieldService.Model
         /// </summary>
         /// <value>The name.</value>
         /// <returns></returns>
-        public string Name
+        public string NameOrDescription
         {
-            get { return _name; }
+            get { return _nameOrDescription; }
             set
             {
-                if (value != _name) {
-                    _name = value;
-                    NotifyPropertyChanged("Name");
+                if (value != _nameOrDescription) {
+                    _nameOrDescription = value;
+                    NotifyPropertyChanged("NameOrDescription");
                 }
             }
         }
@@ -89,47 +85,25 @@ namespace FieldService.Model
         /// </summary>
         /// <value>The line one.</value>
         /// <returns></returns>
-        public string LineOne
+        public string FormattedAddress
         {
-            get { return _lineOne; }
+            get { return _formattedAddress; }
             set
             {
-                if (value != _lineOne) {
-                    _lineOne = value;
-                    NotifyPropertyChanged("LineOne");
+                if (value != _formattedAddress) {
+                    _formattedAddress = value;
+                    NotifyPropertyChanged("FormattedAddress");
                 }
             }
         }
-
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <value>The line two.</value>
-        /// <returns></returns>
-        public string LineTwo
+        public string DaysSinceVisit
         {
-            get { return _lineTwo; }
+            get { return _daysSinceVisit; }
             set
             {
-                if (value != _lineTwo) {
-                    _lineTwo = value;
-                    NotifyPropertyChanged("LineTwo");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the line three.
-        /// </summary>
-        /// <value>The line three.</value>
-        public string LineThree
-        {
-            get { return _lineThree; }
-            set
-            {
-                if (_lineThree != value) {
-                    _lineThree = value;
-                    NotifyPropertyChanged("LineThree");
+                if (_daysSinceVisit != value) {
+                    _daysSinceVisit = value;
+                    NotifyPropertyChanged("DaysSinceVisit");
                 }
             }
         }
@@ -162,7 +136,7 @@ namespace FieldService.Model
         /// <summary>
         /// Notifies the property changed.
         /// </summary>
-        /// <param name="propertyName">Name of the property.</param>
+        /// <param name="propertyName">NameOrDescription of the property.</param>
         private void NotifyPropertyChanged(String propertyName)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

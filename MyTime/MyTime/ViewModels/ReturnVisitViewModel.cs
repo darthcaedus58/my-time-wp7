@@ -19,9 +19,18 @@ namespace FieldService.ViewModels
 			_returnVisitData = new ReturnVisitData {
 				                                         DateCreated = DateTime.Now
 			                                         };
-
+		    _loadPreviousVisits = true;
 			PreviousVisits = new ObservableCollection<PreviousVisitViewModel>();
 		}
+
+	    public ReturnVisitViewModel(bool loadPreviousVisits)
+        {
+            _returnVisitData = new ReturnVisitData {
+                DateCreated = DateTime.Now
+            };
+            PreviousVisits = new ObservableCollection<PreviousVisitViewModel>();
+	        _loadPreviousVisits = loadPreviousVisits;
+	    }
 
 		private ReturnVisitData _returnVisitData;
 
@@ -387,7 +396,7 @@ namespace FieldService.ViewModels
 				if (value == _returnVisitData.ItemId) return;
 				if (value >= 0) {
 					_returnVisitData = ReturnVisitsInterface.GetReturnVisit(value);
-					LoadPreviousVisits(value);
+					if (_loadPreviousVisits) LoadPreviousVisits(value);
 				} else {
 					_returnVisitData = new ReturnVisitData();
 					IsPreviousVisitsLoaded = true;
@@ -407,6 +416,7 @@ namespace FieldService.ViewModels
 				OnPropertyChanged("PhoneNumber");
 				OnPropertyChanged("Gender");
 				OnPropertyChanged("Age");
+                OnPropertyChanged("LastVisitDate");
 			}
 		}
 
@@ -415,11 +425,16 @@ namespace FieldService.ViewModels
 			get
 			{
 				if (_returnVisitData.ItemId < 0) return DateTime.Now;
-				var x = RvPreviousVisitsDataInterface.GetPreviousVisits(_returnVisitData.ItemId, SortOrder.DateNewestToOldest);
-				if (x.Any()) {
-					return x.First().Date;
-				}
-				return DateTime.Now;
+			    if (_returnVisitData.LastVisitDate == DateTime.MinValue) {
+			        var x = RvPreviousVisitsDataInterface.GetPreviousVisits(_returnVisitData.ItemId, SortOrder.DateNewestToOldest);
+			        if (x.Any()) {
+			            return x.First().Date;
+			        }
+			    }
+			    else {
+			        return _returnVisitData.LastVisitDate;
+			    }
+			    return DateTime.Now;
 			}
 		}
 
@@ -447,8 +462,9 @@ namespace FieldService.ViewModels
 		public ObservableCollection<PreviousVisitViewModel> PreviousVisits {get; private set;}
 
 		public bool IsPreviousVisitsLoaded;
+	    private bool _loadPreviousVisits;
 
-		#region INotifyPropertyChanged Members
+	    #region INotifyPropertyChanged Members
 
 		public event PropertyChangedEventHandler PropertyChanged;
 

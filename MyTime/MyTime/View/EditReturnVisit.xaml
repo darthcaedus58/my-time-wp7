@@ -75,7 +75,7 @@
 			<controls:PivotItem Header="{Binding Path=StringResources.RVPage_Personal_Headline, Source={StaticResource LocalizedStrings}}">
 				<Grid>
 					<StackPanel>
-						<telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="PersonalFullName" Text="{Binding ReturnVisitData.FullName, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Personal_FullName, Source={StaticResource LocalizedStrings}}"/>
+						<telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="PersonalFullNameOrDescription" Text="{Binding ReturnVisitData.FullName, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Personal_FullName, Source={StaticResource LocalizedStrings}}"/>
 						<telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="Number" Text="{Binding ReturnVisitData.Age, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Personal_Age, Source={StaticResource LocalizedStrings}}"/>
 						<telerikInput:RadListPicker SelectedItem="{Binding ReturnVisitData.Gender, Mode=TwoWay}">
 							<System:String>Male</System:String>
@@ -114,7 +114,7 @@
 								<telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="AddressCity" Text="{Binding ReturnVisitData.City, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Address_City, Source={StaticResource LocalizedStrings}}"/>
 								<telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="AddressStateOrProvince" Text="{Binding ReturnVisitData.StateProvinceDistrict, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Address_StateDistrict, Source={StaticResource LocalizedStrings}}"/>
 								<telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="PostalCode" Text="{Binding ReturnVisitData.PostalCode, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Address_PostalCode, Source={StaticResource LocalizedStrings}}"/>
-								<telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="AddressCountryName" Text="{Binding ReturnVisitData.Country, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Address_Country, Source={StaticResource LocalizedStrings}}"/>
+								<telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="AddressCountryNameOrDescription" Text="{Binding ReturnVisitData.Country, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Address_Country, Source={StaticResource LocalizedStrings}}"/>
 								<telerikPrimitives:RadTextBox TextWrapping="Wrap" Height="247" AcceptsReturn="True" InputScope="Text" Text="{Binding ReturnVisitData.LocationNotes, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Address_LocationNotes, Source={StaticResource LocalizedStrings}}"/>
 							</StackPanel>
 						</ScrollViewer>

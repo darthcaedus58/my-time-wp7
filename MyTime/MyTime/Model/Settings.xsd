@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema xmlns="http://www.inputstudiowp7.com/schemas" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.inputstudiowp7.com/schemas">
+<xsd:schema xmlns="http://www.inputstudiowp7.com/schemas" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNameOrDescriptionspace="http://www.inputstudiowp7.com/schemas">
     <xsd:element name="Settings">
         <xsd:annotation>
             <xsd:documentation>
@@ -16,13 +16,13 @@
         <xsd:sequence>
             <xsd:element name="StringItem" maxOccurs="unbounded" minOccurs="0" type="StringItem" />
         </xsd:sequence>
-        <xsd:attribute name="Name" type="xsd:string" use="required" />
+        <xsd:attribute name="NameOrDescription" type="xsd:string" use="required" />
         <xsd:attribute name="Type" type="eDataType" use="required" />
         <xsd:attribute name="Xaml" type="xsd:string" />
         <xsd:attribute name="Value" type="xsd:string" />
-        <xsd:attribute name="FriendlyName" type="xsd:string" />
+        <xsd:attribute name="FriendlyNameOrDescription" type="xsd:string" />
         <xsd:attribute name="ShowInSettingsPage" type="xsd:boolean" default="true" />
-        <xsd:attribute name="ContactDisplayName" type="xsd:string" />
+        <xsd:attribute name="ContactDisplayNameOrDescription" type="xsd:string" />
         <xsd:attribute name="AddressType" type="addressType" />
     </xsd:complexType>
     <xsd:simpleType name="eDataType">

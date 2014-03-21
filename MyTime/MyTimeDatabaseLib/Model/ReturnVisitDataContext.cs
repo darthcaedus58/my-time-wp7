@@ -437,7 +437,7 @@ namespace MyTimeDatabaseLib.Model
                     get { return _lastVisitDate; } 
                     set 
                     { 
-                            if(_lastVisitDate == value) { 
+                            if(_lastVisitDate == null || _lastVisitDate != value) { 
                                     NotifyPropertyChanging("LastVisitDate");
                                     _lastVisitDate = value;
                                     NotifyPropertyChanged("LastVisitDate");
@@ -487,6 +487,7 @@ namespace MyTimeDatabaseLib.Model
                 PropertyChanging(this, new PropertyChangingEventArgs(propertyName));
             }
         }
+
     }
 
     /// <summary>

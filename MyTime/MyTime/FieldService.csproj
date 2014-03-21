@@ -268,7 +268,7 @@
     </Compile>
     <Compile Include="SocietyScraper\SocietyScraper.cs" />
     <Compile Include="TiltEffect.cs" />
-    <Compile Include="Model\ReturnVisitItemModel.cs" />
+    <Compile Include="Model\ReturnVisitSummaryModel.cs" />
     <Compile Include="Model\MainMenuModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Model\PreviousVisitModel.cs" />

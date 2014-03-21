@@ -153,7 +153,7 @@ namespace FieldService
         /// Reads from file.
         /// </summary>
         /// <param name="isoStore">The iso store.</param>
-        /// <param name="fileName">Name of the file.</param>
+        /// <param name="fileName">NameOrDescription of the file.</param>
         /// <returns>Settings.</returns>
         protected Settings ReadFromFile(IsolatedStorageFile isoStore, string fileName)
         {
@@ -214,7 +214,7 @@ namespace FieldService
         /// </summary>
         /// <param name="isoStore">The iso store.</param>
         /// <param name="settings">The settings.</param>
-        /// <param name="fileName">Name of the file.</param>
+        /// <param name="fileName">NameOrDescription of the file.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
         protected bool WriteToFile(IsolatedStorageFile isoStore, Settings settings, string fileName)
         {
