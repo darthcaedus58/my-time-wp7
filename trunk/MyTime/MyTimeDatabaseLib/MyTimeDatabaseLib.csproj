@@ -92,6 +92,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BitmapConverter.cs" />
     <Compile Include="House2HouseRecordsInterfaces.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Model\House2HouseRecordsDataContext.cs" />

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://dev.virtualearth.net/webservices/v1/common" elementFormDefault="qualified" targetNamespace="http://dev.virtualearth.net/webservices/v1/common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://dev.virtualearth.net/webservices/v1/common" elementFormDefault="qualified" targetNameOrDescriptionspace="http://dev.virtualearth.net/webservices/v1/common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://dev.virtualearth.net/webservices/v1/metadata/geocodeservice/GeocodeService4.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:import schemaLocation="http://dev.virtualearth.net/webservices/v1/metadata/geocodeservice/GeocodeService3.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:complexType name="RequestBase">
@@ -138,8 +138,8 @@
   <xs:complexType name="SizeOfint">
     <xs:annotation>
       <xs:appinfo>
-        <GenericType Name="SizeOf{0}{#}" Namespace="http://dev.virtualearth.net/webservices/v1/common" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="int" Namespace="http://www.w3.org/2001/XMLSchema" />
+        <GenericType NameOrDescription="SizeOf{0}{#}" NameOrDescriptionspace="http://dev.virtualearth.net/webservices/v1/common" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter NameOrDescription="int" NameOrDescriptionspace="http://www.w3.org/2001/XMLSchema" />
         </GenericType>
       </xs:appinfo>
     </xs:annotation>
@@ -215,7 +215,7 @@
       <xs:element minOccurs="0" name="Address" nillable="true" type="tns:Address" />
       <xs:element minOccurs="0" name="BestView" nillable="true" type="tns:Rectangle" />
       <xs:element minOccurs="0" name="Confidence" type="tns:Confidence" />
-      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayNameOrDescription" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EntityType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Locations" nillable="true" type="tns:ArrayOfGeocodeLocation" />
       <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="MatchCodes" nillable="true" type="q1:ArrayOfstring" />

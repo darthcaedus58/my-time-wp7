@@ -43,7 +43,7 @@ namespace FieldService.ViewModels
                                 TerritoryListEntries = new ObservableCollection<TerritoryCardModel>();
                         }
 
-                        TerritoryCardsData[] d = TerritoryCardsInterface.GetTerritoryCards(SortOrder.AscendingGeneric);
+                        TerritoryCardData[] d = TerritoryCardsInterface.GetTerritoryCards(SortOrder.AscendingGeneric);
 
                         IsTerritoryListLoading = false;
                 }

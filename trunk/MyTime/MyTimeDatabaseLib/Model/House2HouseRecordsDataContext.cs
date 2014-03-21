@@ -119,7 +119,7 @@ namespace MyTimeDatabaseLib.Model
         internal class TerritoryCardsDataContext : DataContext
         {
                 public const string DBConnectionString =
-                        "Data Source=isostore:/TerritoryCardsData.sdf;Max Database Size=512";
+                        "Data Source=isostore:/TerritoryCardData.sdf;Max Database Size=512";
 
                 public Table<TerritoryCardItem> TerritoryCardItems;
 

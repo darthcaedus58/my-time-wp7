@@ -312,13 +312,12 @@ namespace FieldService.ViewModels
                 NavigateToPage = "/View/CustomReportsPage.xaml"
             });
 
-            //lbMainMenuItems.Add(
-            //        new MainMenuModel
-            //        {
-            //                MenuText = StringResources.MainPage_MainMenu_HouseToHouseRecords,
-            //                IconUri = "/icons/Houses.png",
-            //                NavigateToPage = "/View/TerritoryList.xaml"
-            //        });
+            lbMainMenuItems.Add(
+                    new MainMenuModel {
+                        MenuText = StringResources.MainPage_MainMenu_HouseToHouseRecords,
+                        IconUri = "/icons/Houses.png",
+                        NavigateToPage = "/View/TerritoryList.xaml"
+                    });
 
             lbMainMenuItems.Add(new MainMenuModel {
                 MenuText = StringResources.MainPage_MainMenu_WtLib,
