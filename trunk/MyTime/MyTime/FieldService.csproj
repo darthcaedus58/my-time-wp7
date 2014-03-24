@@ -556,6 +556,7 @@
     <EmbeddedResource Include="StringResources.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StringResources.de2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="StringResources.it.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

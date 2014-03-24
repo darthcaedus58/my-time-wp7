@@ -90,6 +90,9 @@ namespace FieldService
 			ReturnVisitsInterface.CheckDatabase();
 			RvPreviousVisitsDataInterface.CheckDatabase();
 			RBCTimeDataInterface.CheckDatabase();
+		    TerritoryCardsInterface.CheckDatabase();
+            StreetBuildingInterface.CheckDatabase();
+            House2HouseRecordsInterface.CheckDatabase();
 		}
 
 		/// <summary>

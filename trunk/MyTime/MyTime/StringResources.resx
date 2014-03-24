@@ -612,7 +612,7 @@
     <value>Description</value>
   </data>
   <data name="RVPage_Personal_FullName" xml:space="preserve">
-    <value>Full NameOrDescription</value>
+    <value>Full Name</value>
   </data>
   <data name="RVPage_Personal_Headline" xml:space="preserve">
     <value>personal</value>
@@ -708,7 +708,7 @@
     <value>settings</value>
   </data>
   <data name="SettingsPage_Settings_NickName" xml:space="preserve">
-    <value>Nick NameOrDescription</value>
+    <value>Nick Name</value>
   </data>
   <data name="SettingsPage_Settings_PersonalSettings" xml:space="preserve">
     <value>PERSONAL SETTINGS</value>
