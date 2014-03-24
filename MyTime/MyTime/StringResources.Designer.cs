@@ -1693,7 +1693,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Full NameOrDescription.
+        ///   Looks up a localized string similar to Full Name.
         /// </summary>
         public static string RVPage_Personal_FullName {
             get {
@@ -2032,7 +2032,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nick NameOrDescription.
+        ///   Looks up a localized string similar to Nick Name.
         /// </summary>
         public static string SettingsPage_Settings_NickName {
             get {

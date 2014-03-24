@@ -106,7 +106,7 @@ namespace FieldService.Annotations
   ///   protected virtual void NotifyChanged(string propertyName) { ... }
   ///
   ///   private string _name;
-  ///   public string NameOrDescription {
+  ///   public string Name {
   ///     get { return _name; }
   ///     set { _name = value; NotifyChanged("LastName"); /* Warning */ }
   ///   }

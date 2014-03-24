@@ -388,7 +388,7 @@ namespace FieldService
 
                 private void miShareContact_Click_1(object sender, EventArgs e)
                 {
-                        string body = string.Format("NameOrDescription: {0}\n" +
+                        string body = string.Format("Name: {0}\n" +
                                                                                 "Phone Number: {1}\n" +
                                                                                 "Address 1: {2}\n" +
                                                                                 "Address 2: {3}\n" +

@@ -96,7 +96,7 @@ namespace FieldService.Model
 		/// <summary>
 		/// Notifies the property changed.
 		/// </summary>
-		/// <param name="propertyName">NameOrDescription of the property.</param>
+		/// <param name="propertyName">Name of the property.</param>
 		private void NotifyPropertyChanged(String propertyName)
 		{
 			PropertyChangedEventHandler handler = PropertyChanged;

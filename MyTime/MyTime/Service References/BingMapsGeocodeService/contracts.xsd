@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://dev.virtualearth.net/webservices/v1/geocode/contracts" elementFormDefault="qualified" targetNameOrDescriptionspace="http://dev.virtualearth.net/webservices/v1/geocode/contracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://dev.virtualearth.net/webservices/v1/geocode/contracts" elementFormDefault="qualified" targetNamespace="http://dev.virtualearth.net/webservices/v1/geocode/contracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://dev.virtualearth.net/webservices/v1/metadata/geocodeservice/GeocodeService2.xsd" namespace="http://dev.virtualearth.net/webservices/v1/geocode" />
   <xs:element name="Geocode">
     <xs:complexType>

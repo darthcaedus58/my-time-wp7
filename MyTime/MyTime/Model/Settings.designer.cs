@@ -139,12 +139,12 @@ namespace FieldService {
 				if ((this.nameField != null)) {
 					if ((nameField.Equals(value) != true)) {
 						this.nameField = value;
-						this.RaisePropertyChanged("NameOrDescription");
+						this.RaisePropertyChanged("Name");
 					}
 				}
 				else {
 					this.nameField = value;
-					this.RaisePropertyChanged("NameOrDescription");
+					this.RaisePropertyChanged("Name");
 				}
 			}
 		}

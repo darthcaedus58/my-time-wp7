@@ -673,6 +673,7 @@ namespace MyTimeDatabaseLib
         {
             return new ReturnVisitData()
             {
+                ItemId = newRv.ItemId,
                 AddressOne = newRv.AddressOne,
                 AddressTwo = newRv.AddressTwo,
                 Age = newRv.Age,
@@ -690,7 +691,6 @@ namespace MyTimeDatabaseLib
                 Latitude = newRv.Latitude ?? 0.0,
                 Longitude = newRv.Longitude ?? 0.0,
                 LastVisitDate = newRv.LastVisitDate ?? DateTime.MinValue
-
             };
         }
     }

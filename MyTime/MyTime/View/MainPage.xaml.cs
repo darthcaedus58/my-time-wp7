@@ -78,9 +78,11 @@ namespace FieldService.View
                 acbRvSearchBox.GotFocus += (sender, args) => {
                     acbRvSearchBox.SelectAll();
                 };
-                acbRvSearchBox.FilterKeyProvider = (object item) => {
+                acbRvSearchBox.FilterKeyProvider = (object item) =>
+                {
                     var typedItem = item as ReturnVisitSummaryModel;
-                    return string.Format(
+                    if (typedItem == null) return string.Empty;
+                        return string.Format(
                             "{0} {1}", typedItem.NameOrDescription, typedItem.FormattedAddress);
                 };
 
@@ -130,7 +132,7 @@ namespace FieldService.View
         {
             if (((ListBox)sender).SelectedIndex < 0) return;
             try {
-                var rv = ((ListBox)sender).SelectedItem as ReturnVisitViewModel;
+                var rv = ((ListBox)sender).SelectedItem as ReturnVisitSummaryModel;
                 if (rv == null) return;
                 ((ListBox)sender).SelectedIndex = -1;
                 NavigationService.Navigate(new Uri(string.Format("/View/EditReturnVisit.xaml?id={0}", rv.ItemId.ToString(CultureInfo.InvariantCulture)), UriKind.Relative));
@@ -155,7 +157,7 @@ namespace FieldService.View
             _bwLoadRvs.RunWorkerAsync();
             StartDailyTextRetrieval();
             try {
-                //MessageBox.Show(CultureInfo.CurrentCulture.NameOrDescription);
+                //MessageBox.Show(CultureInfo.CurrentCulture.Name);
                 if (App.Settings.askForDonation) {
 
                     if (MessageBox.Show(StringResources.MainPage_Messages_DonatePlease, "", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
@@ -392,7 +394,10 @@ namespace FieldService.View
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="GestureEventArgs" /> instance containing the event data.</param>
-        private void imgShowAllReturnVisit_Tap(object sender, GestureEventArgs e) { NavigationService.Navigate(new Uri("/View/ReturnVisitFullList.xaml", UriKind.Relative)); }
+        private void imgShowAllReturnVisit_Tap(object sender, GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/ReturnVisitFullList.xaml", UriKind.Relative));
+        }
 
         /// <summary>
         /// SS_s the daily text retrieved.
