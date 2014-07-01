@@ -8,7 +8,9 @@
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}" d:DesignWidth="480" Height="317">
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    Background="{StaticResource AppAccentBrush}"         
+             d:DesignWidth="480" Height="317">
     <UserControl.Resources>
         <fieldService:MinutesToDateTimeValueConverter x:Key="MinutesToDateTimeValueConverter"/>
     </UserControl.Resources>

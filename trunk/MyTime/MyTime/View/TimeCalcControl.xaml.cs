@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.ServiceModel.Channels;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -39,6 +40,11 @@ namespace FieldService.View
             var end = tpEnd.Value ?? DateTime.MinValue;
 
             TimeSpan t = end - start;
+
+            if (t.Minutes < 0) {
+                MessageBox.Show("Start time must be before End Time.");
+                return;
+            }
 
             if (start == DateTime.MinValue || end == DateTime.MinValue)
                 FormClosed(this, new TimeCalcFormClosedEventArgs(DialogResult.Cancel, TimeSpan.Zero));
