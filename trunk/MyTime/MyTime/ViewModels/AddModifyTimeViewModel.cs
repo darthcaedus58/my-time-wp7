@@ -32,6 +32,30 @@ namespace FieldService.ViewModels
 			}
 		}
 
+	    public DateTime TimeDataDate
+	    {
+	        get { return TimeData.Date; }
+	        set
+	        {
+	            if (TimeData.Date.Equals(value)) return;
+	            TimeData.Date = value;
+                OnPropertyChanged("TimeData");
+                OnPropertyChanged("TimeDataDate");
+	        }
+	    }
+
+	    public TimeSpan TimeDataTotalTime
+	    {
+	        get { return TimeData.TotalTime; }
+	        set
+	        {
+	            if (TimeData.TotalTime == value) return;
+	            TimeData.TotalTime = value;
+                OnPropertyChanged("TimeData");
+                OnPropertyChanged("TimeDataTotalTime");
+	        }
+	    }
+
 		public int TimeDataItemId
 		{
 			get { return _timeData == null ? -1 : _timeData.ItemId; }
@@ -43,7 +67,79 @@ namespace FieldService.ViewModels
 			}
 		}
 
-		#region INotifyPropertyChanged Members
+	    public int TimeDataMagazines
+	    {
+	        get { return TimeData.Magazines; }
+	        set
+	        {
+	            if (TimeData.Magazines == value) return;
+	            TimeData.Magazines = value;
+                OnPropertyChanged("TimeData");
+                OnPropertyChanged("TimeDataMagazines");
+	        }
+	    }
+
+	    public int TimeDataBrochures
+	    {
+            get { return TimeData.Brochures; }
+            set
+            {
+                if (TimeData.Brochures == value) return;
+                TimeData.Brochures = value;
+                OnPropertyChanged("TimeData");
+                OnPropertyChanged("TimeDataBrochures");
+            }
+	    }
+
+	    public int TimeDataBooks
+	    {
+            get { return TimeData.Books; }
+            set
+            {
+                if (TimeData.Books == value) return;
+                TimeData.Books = value;
+                OnPropertyChanged("TimeData");
+                OnPropertyChanged("TimeDataBooks");
+            }
+	    }
+
+	    public int TimeDataTracts
+	    {
+            get { return TimeData.Tracts; }
+            set
+            {
+                if (TimeData.Tracts == value) return;
+                TimeData.Tracts = value;
+                OnPropertyChanged("TimeData");
+                OnPropertyChanged("TimeDataTracts");
+            }
+	    }
+
+	    public int TimeDataReturnVisits
+	    {
+            get { return TimeData.ReturnVisits; }
+            set
+            {
+                if (TimeData.ReturnVisits == value) return;
+                TimeData.ReturnVisits = value;
+                OnPropertyChanged("TimeData");
+                OnPropertyChanged("TimeDataReturnVisits");
+            }
+	    }
+
+	    public int TimeDataBibleStudies
+	    {
+            get { return TimeData.Magazines; }
+            set
+            {
+                if (TimeData.Magazines == value) return;
+                TimeData.Magazines = value;
+                OnPropertyChanged("TimeData");
+                OnPropertyChanged("TimeDataBibleStudies");
+            }
+	    }
+
+	    #region INotifyPropertyChanged Members
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
