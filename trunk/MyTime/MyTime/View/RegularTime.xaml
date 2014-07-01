@@ -7,7 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls.Toolkit;assembly=Coding4Fun.Phone.Controls.Toolkit"
     xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
-    xmlns:local="clr-namespace:FieldService" xmlns:ViewModels="clr-namespace:FieldService.ViewModels" x:Name="phoneApplicationPage" 
+    xmlns:local="clr-namespace:FieldService" xmlns:ViewModels="clr-namespace:FieldService.ViewModels"
+    xmlns:view="clr-namespace:FieldService.View"
+    x:Name="phoneApplicationPage" 
     x:Class="FieldService.View.RegularTimePage"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="728" d:DesignWidth="480"
@@ -48,34 +50,41 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
         <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
+        <view:TimeCalcControl Grid.Row="0" Visibility="Collapsed" FormClosed="TimeCalcControl_OnFormClosed" HorizontalContentAlignment="Stretch" x:Name="TimeCalc" />
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+        <StackPanel x:Name="TitlePanel" Grid.Row="1" Margin="12,17,0,28">
 			<TextBlock Foreground="{StaticResource AppForegroundBrush}" x:Name="ApplicationTitle" Text="{Binding Path=StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
 			<TextBlock Foreground="{StaticResource AppForegroundBrush}" x:Name="PageTitle" Text="{Binding Path=StringResources.AddTimePage_Headline, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
-        <Grid Row="1">
+        <Grid x:Name="ContentGrid" Row="2">
             <ScrollViewer>
                 <StackPanel>
 					<local:HeaderControl IconSource="/icons/calendar.png" HeaderText="{Binding Path=StringResources.AddTimePage_Date, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
-                    <telerik:RadDatePicker x:Name="dpDatePicker" Value="{Binding TimeData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
-					<local:HeaderControl IconSource="/icons/clock.png" HeaderText="{Binding Path=StringResources.AddRBCTimePage_Time, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
-                    <c4f:TimeSpanPicker ValueStringFormat="{}{0:h} Hours and {0:m} Minutes" x:Name="tspTime" Step="{Binding AppSettings.roundTimeIncrement, Converter={StaticResource MinutesToTimeSpanValueConverter}, Source={StaticResource AppSettings}}" Value="{Binding TimeData.TotalTime, Mode=TwoWay}" />
+                    <telerik:RadDatePicker x:Name="dpDatePicker" Value="{Binding TimeDataDate, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
+                     <Grid>
+                        <local:HeaderControl IconSource="/icons/clock.png" HeaderText="{Binding Path=StringResources.AddRBCTimePage_Time, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
+                        <Button Click="TimeCalcButton_OnClick" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0" Padding="0" BorderThickness="0">
+                            <Button.Content>
+                                <Image Source="/icons/Device-Calculator.png" Width="30" Height="30"/>
+                            </Button.Content>
+                        </Button> 
+                     </Grid>
+                    <c4f:TimeSpanPicker ValueStringFormat="{}{0:h} Hours and {0:m} Minutes" x:Name="tspTime" Step="{Binding AppSettings.roundTimeIncrement, Converter={StaticResource MinutesToTimeSpanValueConverter}, Source={StaticResource AppSettings}}" Value="{Binding TimeDataTotalTime, Mode=TwoWay}" />
 					<local:HeaderControl IconSource="/icons/books.png" HeaderText="{Binding Path=StringResources.AddTimePage_Placements, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
-					<telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags" Suffix="{Binding Path=StringResources.AddTimePage_Magazines, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeData.Magazines, Mode=TwoWay}" />
-					<telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" Suffix="{Binding Path=StringResources.AddTimePage_Brochures, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeData.Brochures, Mode=TwoWay}" />
-					<telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBooks" Suffix="{Binding Path=StringResources.AddTimePage_Books, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeData.Books, Mode=TwoWay}" />
-                    <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbTracts" Suffix="{Binding Path=StringResources.AddTimePage_Tracts, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeData.Tracts, Mode=TwoWay}" />
-					<telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbReturnVisits" Suffix="{Binding Path=StringResources.AddTimePage_RVs, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeData.ReturnVisits, Mode=TwoWay}" />
-					<telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBibleStudies" Suffix="{Binding Path=StringResources.AddTime_BibleStudies, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeData.BibleStudies, Mode=TwoWay}" />
+					<telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags" Suffix="{Binding Path=StringResources.AddTimePage_Magazines, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeDataMagazines, Mode=TwoWay}" />
+					<telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" Suffix="{Binding Path=StringResources.AddTimePage_Brochures, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeDataBrochures, Mode=TwoWay}" />
+					<telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBooks" Suffix="{Binding Path=StringResources.AddTimePage_Books, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeDataBooks, Mode=TwoWay}" />
+                    <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbTracts" Suffix="{Binding Path=StringResources.AddTimePage_Tracts, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeDataTracts, Mode=TwoWay}" />
+					<telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbReturnVisits" Suffix="{Binding Path=StringResources.AddTimePage_RVs, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeDataReturnVisits, Mode=TwoWay}" />
+					<telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBibleStudies" Suffix="{Binding Path=StringResources.AddTime_BibleStudies, Source={StaticResource LocalizedStrings}}" Value="{Binding TimeDataBibleStudies, Mode=TwoWay}" />
 					<local:HeaderControl IconSource="/icons/tasks.png" HeaderText="{Binding Path=StringResources.AddTimePage_Notes, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
-                     <TextBox InputScope="Text" Height="180" x:Name="tbNotes" TextWrapping="Wrap" Text="{Binding TimeData.Notes, Mode=TwoWay}" AcceptsReturn="True" />
+                     <TextBox InputScope="Text" Height="180" x:Name="tbNotes" TextWrapping="Wrap" Text="{Binding TimeDataNotes, Mode=TwoWay}" AcceptsReturn="True" />
                 </StackPanel>
             </ScrollViewer>
         </Grid>
     </Grid>
-
 </phone:PhoneApplicationPage>
