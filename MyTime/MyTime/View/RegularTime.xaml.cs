@@ -20,6 +20,7 @@ using System.Windows.Navigation;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Telerik.Windows.Controls;
 
 namespace FieldService.View
 {
@@ -33,7 +34,7 @@ namespace FieldService.View
 		/// </summary>
 		public RegularTimePage()
 		{
-			DataContext = new AddModifyTimeViewModel();
+			//DataContext = new AddModifyTimeViewModel();
 			InitializeComponent();
 		}
 
@@ -129,5 +130,20 @@ namespace FieldService.View
 				ViewModel.TimeDataItemId = id;
 			} catch (Exception) {}
 		}
+
+	    private void TimeCalcButton_OnClick(object sender, RoutedEventArgs e)
+	    {
+	        TimeCalc.Visibility = Visibility.Visible;
+	        ContentGrid.IsHitTestVisible = false;
+	    }
+
+	    private void TimeCalcControl_OnFormClosed(object sender, TimeCalcFormClosedEventArgs e)
+	    {
+	        TimeCalc.Visibility = Visibility.Collapsed;
+	        ContentGrid.IsHitTestVisible = true;
+	        if (e.DialogResult == DialogResult.OK) {
+	            ViewModel.TimeDataTotalTime = e.TimeSpan;
+	        }
+	    }
 	}
 }
