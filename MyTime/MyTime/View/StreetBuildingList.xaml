@@ -8,6 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModels="clr-namespace:FieldService.ViewModels"
     xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:maps="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Maps.Toolkit;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -27,34 +30,58 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="150"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Foreground="{StaticResource AppForegroundBrush}" Text="{Binding StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Foreground="{StaticResource AppForegroundBrush}" Text="{Binding StringResources.StreetBuildingList_PageName, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        <StackPanel Grid.Row="0" Margin="0">
+            <maps:Map  LogoVisibility="Collapsed" CopyrightVisibility="Collapsed" >
+                <maps:Map.ZoomLevel>
+                    <system:Double>15</system:Double>
+                </maps:Map.ZoomLevel>
+                <maps:Map.CredentialsProvider>
+                    <maps:ApplicationIdCredentialsProvider ApplicationId="AkRhgqPR6aujo-xib-KiR8Lt20wsn89GY4R9SP0RA6h4w7QT9mS3kKwYKKxjklfV"/>
+                </maps:Map.CredentialsProvider>
+                <maps:Map.Children>
+                    <toolkit:UserLocationMarker GeoCoordinate="{Binding CurrentLocation}" />
+                </maps:Map.Children>
+            </maps:Map>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <StackPanel>
-                <telerikPrimitives:RadDataBoundListBox ItemsSource="{Binding StreetBuildingListEntries}">
-                    <telerikPrimitives:RadDataBoundListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <!--<Image MaxWidth="100" MaxHeight="100" MinWidth="100" MinHeight="100" Source="{Binding Image}"/>-->
-                                <StackPanel>
-                                    <TextBlock Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextLargeStyle}" Text="{Binding TerritoryNumberString, Mode=OneWay}"/>
-                                    <TextBlock Foreground="{StaticResource AppAccentBrush}" Style="{StaticResource PhoneTextSmallStyle}" Text="{Binding StreetCountString, Mode=OneWay}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </DataTemplate>
-                    </telerikPrimitives:RadDataBoundListBox.ItemTemplate>
-                </telerikPrimitives:RadDataBoundListBox>
-            </StackPanel>
-            <telerikPrimitives:RadBusyIndicator IsRunning="{Binding IsStreetBuildingListLoading}"/>
+        <phone:Pivot Foreground="{StaticResource AppForegroundBrush}" >
+            <phone:PivotItem Header="streets+buildings">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                    <StackPanel>
+                            <telerikPrimitives:RadDataBoundListBox ItemsSource="{Binding StreetBuildingListEntries}">
+                            <telerikPrimitives:RadDataBoundListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <!--<Image MaxWidth="100" MaxHeight="100" MinWidth="100" MinHeight="100" Source="{Binding Image}"/>-->
+                                        <StackPanel>
+                                            <TextBlock Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextLargeStyle}" Text="{Binding TerritoryNumberString, Mode=OneWay}"/>
+                                            <TextBlock Foreground="{StaticResource AppAccentBrush}" Style="{StaticResource PhoneTextSmallStyle}" Text="{Binding StreetCountString, Mode=OneWay}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </telerikPrimitives:RadDataBoundListBox.ItemTemplate>
+                        </telerikPrimitives:RadDataBoundListBox>
+                    </StackPanel>
+                    <telerikPrimitives:RadBusyIndicator IsRunning="{Binding IsStreetBuildingListLoading}"/>
+                    </Grid>
+                </phone:PivotItem>
+            <phone:PivotItem Header="homes">
+                <Grid>
+                    
+                </Grid>
+            </phone:PivotItem>
+        </phone:Pivot>
+            
         </Grid>
     </Grid>
 

@@ -7,12 +7,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
     xmlns:ViewModels="clr-namespace:FieldService.ViewModels"
-    x:Class="FieldService.View.TerritoryList"
+    x:Class="FieldService.View.TerritoryList" 
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="PageLoaded">
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar ForegroundColor="Black" BackgroundColor="Gainsboro" IsVisible="True" IsMenuEnabled="True">
@@ -41,16 +41,19 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
-                <telerikPrimitives:RadDataBoundListBox ItemsSource="{Binding TerritoryListEntries}">
+                <telerikPrimitives:RadDataBoundListBox ItemsSource="{Binding TerritoryListEntries}" SelectionChanged="TerritoryList_SelectionChanged">
                     <telerikPrimitives:RadDataBoundListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Image MaxHeight="100" MaxWidth="100" MinHeight="100" MinWidth="100" Source="{Binding Image}" />
+                                <Border BorderThickness="1" BorderBrush="{StaticResource AppForegroundBrush}" Margin="0,5,0,0">
+                            <StackPanel Margin="0,5,0,5" Orientation="Horizontal">
+                                <Image MaxHeight="100" MaxWidth="100" MinHeight="100" MinWidth="100" Source="{Binding Image}" Margin="5,0,0,0" />
                                 <StackPanel>
-                                    <TextBlock Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource ResourceKey=AppForegroundBrush}" Text="{Binding TerritoryNumberString, Mode=OneWay}" />
+                                    <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Foreground="{StaticResource ResourceKey=AppForegroundBrush}" Text="{Binding TerritoryNumberString, Mode=OneWay}" FontWeight="ExtraBold" />
+                                    <TextBlock Style="{StaticResource PhoneTextNormalStyle}" Text="{Binding Notes, Mode=TwoWay}" TextTrimming="WordEllipsis"/>
                                     <TextBlock Style="{StaticResource PhoneTextSmallStyle}" Foreground="{StaticResource AppAccentBrush}" Text="{Binding StreetCountString, Mode=OneWay}" />
                                 </StackPanel>
                             </StackPanel>
+                            </Border>
                         </DataTemplate>
                     </telerikPrimitives:RadDataBoundListBox.ItemTemplate>
                 </telerikPrimitives:RadDataBoundListBox>

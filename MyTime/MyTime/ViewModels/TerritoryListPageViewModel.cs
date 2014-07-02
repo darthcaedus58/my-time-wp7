@@ -14,7 +14,7 @@ namespace FieldService.ViewModels
 {
         public class TerritoryListPageViewModel : INotifyPropertyChanged
         {
-                private bool _isTerritoryListLoading;
+            private bool _isTerritoryListLoading = true;
                 public event PropertyChangedEventHandler PropertyChanged;
 
                 public ObservableCollection<TerritoryCardModel> TerritoryListEntries { get; private set; }
@@ -36,7 +36,7 @@ namespace FieldService.ViewModels
                         LoadTerritoryList();
                 }
 
-                private void LoadTerritoryList()
+                public void LoadTerritoryList()
                 {
                         if (!IsTerritoryListLoading){
                                 IsTerritoryListLoading = true;
@@ -44,7 +44,20 @@ namespace FieldService.ViewModels
                         }
 
                         TerritoryCardData[] d = TerritoryCardsInterface.GetTerritoryCards(SortOrder.AscendingGeneric);
-
+                    if (d == null) {
+                        IsTerritoryListLoading = false;
+                        return;
+                    }
+                    foreach (var c in d) {
+                        TerritoryListEntries.Add(new TerritoryCardModel(c.ItemId)
+                        {
+                            Image = c.Image,
+                            DateCreated = c.DateCreated,
+                            Notes = c.Notes,
+                            StreetCount = 0,
+                            TerritoryNumber = c.TerritoryNumber
+                        });
+                    }
                         IsTerritoryListLoading = false;
                 }
 
