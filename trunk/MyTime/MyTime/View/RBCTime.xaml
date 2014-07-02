@@ -9,6 +9,7 @@
 	xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
 	xmlns:ViewModels="clr-namespace:FieldService.ViewModels"
 	xmlns:FieldService="clr-namespace:FieldService"
+	xmlns:view="clr-namespace:FieldService.View"
 	x:Class="FieldService.View.RBCTimePage" 
 	SupportedOrientations="Portrait" Orientation="Portrait"
 	mc:Ignorable="d" d:DesignHeight="728" d:DesignWidth="480"
@@ -38,29 +39,37 @@
 	<!--LayoutRoot is the root grid where all page content is placed-->
 	<Grid x:Name="LayoutRoot"  Background="{StaticResource AppBackgroundBrush}">
 		<Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
-
-		<!--TitlePanel contains the name of the application and page title-->
-		<StackPanel Grid.Row="0" Margin="12,17,0,28">
+        <view:TimeCalcControl Grid.Row="0" Visibility="Collapsed" FormClosed="TimeCalcControl_OnFormClosed" HorizontalContentAlignment="Stretch" x:Name="TimeCalc" />
+        <!--TitlePanel contains the name of the application and page title-->
+		<StackPanel Grid.Row="1" Margin="12,17,0,28">
 			<TextBlock Foreground="{StaticResource AppForegroundBrush}" Text="{Binding Path=StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
 			<TextBlock Foreground="{StaticResource AppForegroundBrush}" Text="{Binding Path=StringResources.AddRBCTimePage_Headline, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
 		</StackPanel>
 
-		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+		<Grid x:Name="ContentPanel" Grid.Row="2" Margin="12,0,12,0">
 			<StackPanel Grid.Row="0" Orientation="Vertical">
 				<TextBlock Text="{Binding Path=StringResources.AddRBCTimePage_Note, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" FontSize="15" />
 				<FieldService:HeaderControl IconSource="/icons/calendar.png"  HeaderText="{Binding Path=StringResources.AddRBCTimePage_Date, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
 				<telerikInput:RadDatePicker x:Name="dpDatePicker" Value="{Binding RBCTimeData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
-				<FieldService:HeaderControl IconSource="/icons/clock.png" HeaderText="{Binding Path=StringResources.AddRBCTimePage_Time, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
-				<c4f:TimeSpanPicker ValueStringFormat="{}{0:h} Hours and {0:m} Minutes" x:Name="tspTime" Step="{Binding AppSettings.roundTimeIncrement, Converter={StaticResource MinutesToTimeSpanValueConverter}, Source={StaticResource AppSettings}}" Value="{Binding RBCTimeData.Minutes, Converter={StaticResource MinutesToTimeSpanValueConverter}, Mode=TwoWay}" />
+                <Grid>
+				    <FieldService:HeaderControl IconSource="/icons/clock.png" HeaderText="{Binding Path=StringResources.AddRBCTimePage_Time, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
+                    <Button Click="TimeCalcButton_OnClick" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0" Padding="0" BorderThickness="0">
+                        <Button.Content>
+                            <Image Source="/icons/Device-Calculator.png" Width="30" Height="30"/>
+                        </Button.Content>
+                    </Button>
+                </Grid>
+				<c4f:TimeSpanPicker ValueStringFormat="{}{0:h} Hours and {0:m} Minutes" x:Name="tspTime" Step="{Binding AppSettings.roundTimeIncrement, Converter={StaticResource MinutesToTimeSpanValueConverter}, Source={StaticResource AppSettings}}" Value="{Binding RBCTimeDataMinutes, Converter={StaticResource MinutesToTimeSpanValueConverter}, Mode=TwoWay}" />
 				<FieldService:HeaderControl IconSource="/icons/tasks.png" HeaderText="{Binding Path=StringResources.AddRBCTimePage_Notes, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
 			</StackPanel>
 		</Grid>
 		
-		<Grid x:Name="NotesPanel" Grid.Row="2" >
+		<Grid x:Name="NotesPanel" Grid.Row="3" >
 			<StackPanel Orientation="Vertical">
 				<TextBox InputScope="Text" x:Name="tbNotes" TextWrapping="Wrap" Text="{Binding RBCTimeData.Notes, Mode=TwoWay}" AcceptsReturn="True" Height="{Binding ElementName=NotesPanel, Path=ActualHeight}" />
 			</StackPanel>
