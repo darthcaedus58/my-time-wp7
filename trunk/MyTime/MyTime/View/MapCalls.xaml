@@ -29,9 +29,9 @@
             <Maps:Map.CredentialsProvider>
                 <Maps:ApplicationIdCredentialsProvider ApplicationId="AkRhgqPR6aujo-xib-KiR8Lt20wsn89GY4R9SP0RA6h4w7QT9mS3kKwYKKxjklfV"/>
             </Maps:Map.CredentialsProvider>
-            <Maps:Map.Children>
+            <!--<Maps:Map.Children>
                 <toolkit:UserLocationMarker GeoCoordinate="{Binding CurrentLocation, Mode=OneWay}" />
-            </Maps:Map.Children>
+            </Maps:Map.Children>-->
         </Maps:Map>
     </Grid>
 
