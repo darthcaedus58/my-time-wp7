@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:slideView="clr-namespace:Telerik.Windows.Controls.SlideView;assembly=Telerik.Windows.Controls.Primitives"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource AppForegroundBrush}"
@@ -18,7 +19,7 @@
 	</phone:PhoneApplicationPage.ApplicationBar>
 	<Grid x:Name="gMainContent" Background="{StaticResource AppBackgroundBrush}">
         <TextBlock Text="Take a photo" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-		<Image x:Name="imgPresentationPic" Stretch="UniformToFill"/>
+		<slideView:PanAndZoomImage ZoomMode="Free"  x:Name="imgPresentationPic" Stretch="UniformToFill"/>
 	</Grid>
 
     <!--LayoutRoot is the root grid where all page content is placed-->

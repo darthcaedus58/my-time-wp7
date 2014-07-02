@@ -42,16 +42,18 @@ namespace FieldService.View
         private void ApplicationBarIconButton_OnClick(object sender, EventArgs e)
         {
             var cc = new CameraCaptureTask();
-            cc.Completed += (o, result) => {
+            cc.Completed += (o, result) =>
+            {
                 var bmp = new BitmapImage();
+                if (result.ChosenPhoto == null) return;
                 bmp.SetSource(result.ChosenPhoto);
-                                               imgPresentationPic.Source = bmp;
+                imgPresentationPic.Source = bmp;
 
-                                               using (var isoStore = IsolatedStorageFile.GetUserStoreForApplication()) {
-                                                   var wb = new WriteableBitmap(bmp);
-                                                   using (var isoFileStream = isoStore.CreateFile("Presentation.jpg"))
-                                                       Extensions.SaveJpeg(wb, isoFileStream, bmp.PixelWidth, wb.PixelHeight, 0, 100);
-                                               }
+                using (var isoStore = IsolatedStorageFile.GetUserStoreForApplication()) {
+                    var wb = new WriteableBitmap(bmp);
+                    using (var isoFileStream = isoStore.CreateFile("Presentation.jpg"))
+                        Extensions.SaveJpeg(wb, isoFileStream, bmp.PixelWidth, wb.PixelHeight, 0, 100);
+                }
             };
             cc.Show();
         }
