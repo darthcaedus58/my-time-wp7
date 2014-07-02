@@ -240,7 +240,7 @@ namespace FieldService.ViewModels
             var bw = new BackgroundWorker();
             bw.DoWork += (obt, e) => {
 
-                _rvs =  ReturnVisitsInterface.GetReturnVisitsByLastVisitDate(-1);
+                _rvs =  ReturnVisitsInterface.GetReturnVisitsByLastVisitDate(-1) ?? new List<ReturnVisitData>();
             };
             bw.RunWorkerCompleted += (obj, e) => {
                                                      foreach (var rv in _rvs) {
@@ -312,12 +312,12 @@ namespace FieldService.ViewModels
                 NavigateToPage = "/View/CustomReportsPage.xaml"
             });
 
-            lbMainMenuItems.Add(
-                    new MainMenuModel {
-                        MenuText = StringResources.MainPage_MainMenu_HouseToHouseRecords,
-                        IconUri = "/icons/Houses.png",
-                        NavigateToPage = "/View/TerritoryList.xaml"
-                    });
+            //lbMainMenuItems.Add(
+            //        new MainMenuModel {
+            //            MenuText = StringResources.MainPage_MainMenu_HouseToHouseRecords,
+            //            IconUri = "/icons/Houses.png",
+            //            NavigateToPage = "/View/TerritoryList.xaml"
+            //        });
 
             lbMainMenuItems.Add(new MainMenuModel {
                 MenuText = StringResources.MainPage_MainMenu_WtLib,
