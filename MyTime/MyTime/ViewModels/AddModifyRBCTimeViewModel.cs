@@ -37,7 +37,19 @@ namespace FieldService.ViewModels
 			}
 		}
 
-		#region INotifyPropertyChanged Members
+	    public int RBCTimeDataMinutes
+	    {
+	        get { return RBCTimeData.Minutes; }
+	        set
+	        {
+	            if (value == RBCTimeData.Minutes) return;
+	            RBCTimeData.Minutes = value;
+                OnPropertyChanged("RBCTimeData");
+                OnPropertyChanged("RBCTimeDataMinutes");
+	        }
+	    }
+
+	    #region INotifyPropertyChanged Members
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
