@@ -12,11 +12,8 @@
 	<UserControl.FontSize>
 		<StaticResource ResourceKey="PhoneFontSizeNormal"/>
 	</UserControl.FontSize>
-	<UserControl.Foreground>
-		<StaticResource ResourceKey="PhoneForegroundBrush"/>
-	</UserControl.Foreground>
-		<Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}" Loaded="LayoutRoot_Loaded">
-		<StackPanel Orientation="Horizontal">
+		<Grid x:Name="LayoutRoot" Loaded="LayoutRoot_Loaded">
+		<StackPanel Orientation="Horizontal" Background="{Binding Background, ElementName=LayoutRoot}">
 			<Image x:Name="IconImage"  Height="30" Width="30" Source="{Binding IconSource}" Stretch="Fill" />
 			<TextBlock x:Name="HeaderTextBlock" Margin="5" Height="30" FontWeight="Bold" FontSize="22" Text="{Binding HeaderText}" />
 		</StackPanel>
