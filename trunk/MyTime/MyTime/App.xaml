@@ -255,7 +255,6 @@
 			</ControlTemplate>
             <Style x:Key="SettingsButtonBaseControlTemplate" TargetType="ButtonBase">
                 <Setter Property="Background" Value="{StaticResource AppForegroundBrush}" />
-                <Setter Property="Foreground" Value="White" />
                 <Setter Property="BorderThickness" Value="0" />
             </Style>
 		</ResourceDictionary>
