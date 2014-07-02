@@ -128,7 +128,7 @@ namespace MyTimeDatabaseLib
 		{
 			using (var db = new TimeDataContext(TimeDataContext.DBConnectionString)) {
 				IOrderedQueryable<TimeDataItem> entries = from x in db.TimeDataItems
-														  where x.Date >= @from && x.Date <= to
+														  where x.Date >= @from && x.Date < (new DateTime(to.Year,to.Month,to.Day,0,0,0,000)).AddDays(1)
 														  orderby x.Date
 														  select x;
 
