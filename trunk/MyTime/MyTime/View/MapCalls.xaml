@@ -21,15 +21,16 @@
     
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Maps:Map Center="{Binding CurrentLocation}" x:Name="mRvMaps" LogoVisibility="Collapsed" CopyrightVisibility="Collapsed" >
+        <!--<ProgressBar IsIndeterminate="True" />-->
+        <Maps:Map Center="{Binding CurrentLocation, Mode=OneWay}" x:Name="mRvMaps" LogoVisibility="Collapsed" CopyrightVisibility="Collapsed" >
             <Maps:Map.ZoomLevel>
-                <System:Double>15</System:Double>
+                <System:Double>13.5</System:Double>
             </Maps:Map.ZoomLevel>
             <Maps:Map.CredentialsProvider>
                 <Maps:ApplicationIdCredentialsProvider ApplicationId="AkRhgqPR6aujo-xib-KiR8Lt20wsn89GY4R9SP0RA6h4w7QT9mS3kKwYKKxjklfV"/>
             </Maps:Map.CredentialsProvider>
             <Maps:Map.Children>
-                <toolkit:UserLocationMarker GeoCoordinate="{Binding CurrentLocation}" />
+                <toolkit:UserLocationMarker GeoCoordinate="{Binding CurrentLocation, Mode=OneWay}" />
             </Maps:Map.Children>
         </Maps:Map>
     </Grid>
