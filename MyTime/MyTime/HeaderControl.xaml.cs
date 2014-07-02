@@ -18,7 +18,11 @@ namespace FieldService
 
 		public static DependencyProperty IconSourceProperty = DependencyProperty.Register("IconSource", typeof (ImageSource), typeof (HeaderControl), new PropertyMetadata(new PropertyChangedCallback(IconSourcePropertyChanged)));
 
-		public string HeaderText
+		public static new DependencyProperty ForegroundProperty = DependencyProperty.Register("Foreground", typeof (Brush), typeof (HeaderControl), new PropertyMetadata(App.Current.Resources["AppForegroundBrush"] as Brush, new PropertyChangedCallback(ForegroundPropertyChanged)));
+
+        public static new DependencyProperty BackgroundProperty = DependencyProperty.Register("Background", typeof (Brush), typeof (HeaderControl), new PropertyMetadata(App.Current.Resources["AppBackgroundBrush"] as Brush, new PropertyChangedCallback(BackgroundPropertyChanged)));
+
+	    public string HeaderText
 		{
 			get { return (string) GetValue(HeaderTextProperty); }
 			set { SetValue(HeaderTextProperty, value); }
@@ -30,10 +34,23 @@ namespace FieldService
 			set { SetValue(IconSourceProperty, value); }
 		}
 
+	    public Brush Background
+	    {
+            get { return (Brush)GetValue(BackgroundProperty); }
+            set { SetValue(BackgroundProperty, value);}
+	    }
+
+        public Brush Foreground
+        {
+            get { return (Brush)GetValue(ForegroundProperty); }
+            set { SetValue(ForegroundProperty, value); }
+        }
+
 		public HeaderControl()
 		{
-			//DataContext = this;
 			InitializeComponent();
+            //Foreground = App.Current.Resources["AppForegroundBrush"] as Brush;
+            //Background = App.Current.Resources["AppBackgroundBrush"] as Brush;
 		}
 
 		private void LayoutRoot_Loaded(object sender, RoutedEventArgs e)
@@ -58,5 +75,24 @@ namespace FieldService
 				c.IconImage.Source = (ImageSource) e.NewValue;
 			}
 		}
+
+        private static void BackgroundPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+
+            var c = d as HeaderControl;
+            if (c != null) {
+                //c.Background = (Brush)e.NewValue;
+                c.LayoutRoot.Background = (Brush)e.NewValue;
+            }
+        }
+
+        private static void ForegroundPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var c = d as HeaderControl;
+            if (c != null) {
+                //c.Foreground = (Brush) e.NewValue;
+                c.HeaderTextBlock.Foreground = (Brush)e.NewValue;
+            }
+        }
 	}
 }
