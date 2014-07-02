@@ -9,7 +9,7 @@ using FieldService.Annotations;
 
 namespace FieldService.Model
 {
-        class StreetBuildingItemModel : INotifyPropertyChanged
+        public class StreetBuildingItemModel : INotifyPropertyChanged
         {
                 private int _itemId;
                 private int _territoryCardId;

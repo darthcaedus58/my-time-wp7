@@ -39,10 +39,10 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
-                <Image  x:Name="biTerrImage" Source="{Binding TerritoryCardImage}" Width="300" Height="300" HorizontalAlignment="Center" Stretch="UniformToFill" />
+                <Image Source="{Binding TerritoryCardImage}" x:Name="biTerrImage" Width="300" Height="300" HorizontalAlignment="Center" Stretch="UniformToFill" />
                 <Button Tap="bTakePhoto_OnTap" Style="{StaticResource SettingsButtonBaseControlTemplate}" Content="Take Photo"/>
-                <telerikPrimitives:RadTextBox Watermark="Number" Text="{Binding TerritoryCardTerritoryNumber}" InputScope="NameOrDescriptionOrPhoneNumber" />
-                <telerikPrimitives:RadTextBox Watermark="Notes" Text="{Binding TerritoryCardNotes}" InputScope="Text" AcceptsReturn="True" MaxHeight="120" />
+                <telerikPrimitives:RadTextBox Watermark="Number" Text="{Binding TerritoryCardTerritoryNumber, Mode=TwoWay}" InputScope="AddressStreet" />
+                <telerikPrimitives:RadTextBox Watermark="Notes" Text="{Binding TerritoryCardNotes, Mode=TwoWay}" InputScope="Text" AcceptsReturn="True" MaxHeight="120" />
             </StackPanel>
         </Grid>
     </Grid>

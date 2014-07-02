@@ -11,7 +11,7 @@ using FieldService.Model;
 
 namespace FieldService.ViewModels
 {
-        class StreetBuildingListPageViewModel : INotifyPropertyChanged
+        public class StreetBuildingListPageViewModel : INotifyPropertyChanged
         {
                 public event PropertyChangedEventHandler PropertyChanged;
 

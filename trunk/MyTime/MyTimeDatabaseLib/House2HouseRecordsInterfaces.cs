@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Linq;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
@@ -8,6 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Microsoft.Phone.Maps.Services;
 using MyTimeDatabaseLib.Annotations;
@@ -15,7 +17,7 @@ using MyTimeDatabaseLib.Model;
 
 namespace MyTimeDatabaseLib
 {
-    internal class House2HouseRecordsInterface
+    public class House2HouseRecordsInterface
     {
         public static void CheckDatabase()
         {
@@ -248,6 +250,15 @@ namespace MyTimeDatabaseLib
                 return false;
             }
         }
+
+        public static void CheckDatabase()
+        {
+            using (var db = new TerritoryCardsDataContext()) {
+                if(!db.DatabaseExists())
+                //db.DeleteDatabase();
+                    db.CreateDatabase();
+            }
+        }
     }
 
     public class TerritoryCardData
@@ -256,6 +267,7 @@ namespace MyTimeDatabaseLib
         {
             ItemId = -1;
             DateCreated = DateTime.Now;
+            ImageSrc = new WriteableBitmap(Image).Pixels;
         }
         public int ItemId { get; internal set; }
         public string TerritoryNumber { get; set; }
@@ -265,7 +277,35 @@ namespace MyTimeDatabaseLib
         {
             get
             {
-                return BitmapConverter.GetBitmapImage(ImageSrc);
+                var wb = new WriteableBitmap(300, 300);
+                for (int i = 0; i < wb.Pixels.Length; i++) {
+                    wb.Pixels[i] = 0xFF3300;
+                }  //Set Default Image
+
+                var bmp = new BitmapImage();
+                using (var ms = new MemoryStream()) {
+                    wb.SaveJpeg(ms, 300, 300, 0, 100);
+                    bmp.SetSource(ms);
+                } //Write Default image(wb) to bmp
+
+                var bi = new BitmapImage();
+                if (ImageSrc != null && ImageSrc.Length >= 0) {
+                    var ris = new WriteableBitmap(300,300);
+
+                    //get image from database
+                    for (int i = 0; i < ImageSrc.Length; i++) {
+                        ris.Pixels[i] = ImageSrc[i];
+                    }
+
+                    //put the image(ris) in a WritableBitmap(bi)
+                    using (var ms = new MemoryStream()) {
+                        ris.SaveJpeg(ms, 300, 300, 0, 100);
+                        bi.SetSource(ms);
+                    }
+                } else {
+                    bi = bmp; //Default image.
+                }
+                return bi;
             }
         }
         public string Notes { get; set; }

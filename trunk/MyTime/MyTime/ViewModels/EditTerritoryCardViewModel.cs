@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using FieldService.Annotations;
 using FieldService.Model;
+using MyTimeDatabaseLib;
 
 namespace FieldService.ViewModels
 {
@@ -15,11 +16,11 @@ namespace FieldService.ViewModels
         {
                 public event PropertyChangedEventHandler PropertyChanged;
 
-                public TerritoryCardModel TerritoryCard;
+                private TerritoryCardData TerritoryCard;
 
                 public EditTerritoryCardViewModel()
                 {
-                        TerritoryCard = new TerritoryCardModel(-1);
+                        TerritoryCard = new TerritoryCardData();
                 }
 
                 public BitmapImage TerritoryCardImage
@@ -28,7 +29,7 @@ namespace FieldService.ViewModels
                         set
                         {
                                 if (Equals(value, TerritoryCard.Image)) return;
-                                TerritoryCard.Image = value;
+                                TerritoryCard.ImageSrc = new WriteableBitmap(value).Pixels;
                                 OnPropertyChanged();
                         }
                 }
@@ -60,6 +61,17 @@ namespace FieldService.ViewModels
                 {
                         PropertyChangedEventHandler handler = PropertyChanged;
                         if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+                }
+
+                internal bool SaveOrUpdate()
+                {
+                    var r = TerritoryCardsInterface.AddOrUpdateTerritoryCard(ref TerritoryCard);
+                    if (r) {
+                        OnPropertyChanged("TerritoryCardImage");
+                        OnPropertyChanged("TerritoryCardNotes");
+                        OnPropertyChanged("TerritoryCardTerritoryNumber");
+                    }
+                    return r;
                 }
         }
 }
