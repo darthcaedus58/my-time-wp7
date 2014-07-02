@@ -30,22 +30,99 @@
 	<Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
 		<!--Pivot Control-->
 		<controls:Pivot Foreground="{StaticResource AppForegroundBrush}" Background="{StaticResource AppBackgroundBrush}" Title="FIELD SERVICE">
-			<controls:PivotItem Header="chart" >
-				<Grid>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="*" />
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto" />
-					</Grid.RowDefinitions>
-						<local:HeaderControl Grid.Row="0" HeaderText="YOUR TIME" IconSource="/icons/clock.png" />
-					<Grid Grid.Row="1">
-						<telerikChart:RadCartesianChart Tap="MyChart_OnTap" x:Name="myChart" MinHeight="96" >
+            <controls:PivotItem Header="{Binding Path=StringResources.ReportingPage_Report_Headline, Source={StaticResource LocalizedStrings}}">
+                <Grid Height="Auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Row="0">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Name="tbDisclaimer" Text="{Binding Path=StringResources.ReportingPage_Report_Disclaimer, Source={StaticResource LocalizedStrings}}" />
+                            <TextBlock Name="tbFromDate" Text="{Binding Path=StringResources.ReportingPage_Report_From, Source={StaticResource LocalizedStrings}}" />
+                            <TextBlock Name="tbToDate" Text="{Binding Path=StringResources.ReportingPage_Report_To, Source={StaticResource LocalizedStrings}}" />
+                            <TextBlock Name="tbTotalHours" Text="{Binding TimeReportTotal}" />
+                        </StackPanel>
+                    </Grid>
+                    <Grid Row="1">
+                        <ScrollViewer Height="Auto">
+                            <ItemsControl ItemsSource="{Binding icReport}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Style="{StaticResource PhoneTextLargeStyle}" Width="Auto" Text="{Binding Month}" />
+                                            <TextBlock Margin="0,15,5,0" Width="Auto" FontSize="18" FontWeight="Bold" Text="{Binding Path=StringResources.ReportingPage_Report_Time, Source={StaticResource LocalizedStrings}}" />
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Width="Auto" Text="{Binding Time}" />
+                                                <TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_Report_On, Source={StaticResource LocalizedStrings}}" />
+                                                <TextBlock Width="Auto" Text="{Binding Days}" />
+                                                <TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_Report_Days, Source={StaticResource LocalizedStrings}}" />
+                                            </StackPanel>
+                                            <TextBlock Width="Auto" Visibility="{Binding RBCHours, Converter={StaticResource DoubleToVisibilityValueConverter}}" Text="{Binding RBCHours, StringFormat=\{0:0.0\} R/B/C Hours}" />
+                                            <TextBlock Margin="0,15,5,0" Width="Auto" FontSize="18" FontWeight="Bold" Text="{Binding Path=StringResources.ReportingPage_Report_Placements, Source={StaticResource LocalizedStrings}}" />
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Width="Auto" Text="{Binding Magazines}" />
+                                                <TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_Report_Magazines, Source={StaticResource LocalizedStrings}}" />
+                                                <TextBlock Width="Auto" Text="{Binding Books}" />
+                                                <TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_Report_Books, Source={StaticResource LocalizedStrings}}" />
+                                                <TextBlock Width="Auto" Text="{Binding Brochures}" />
+                                                <TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_Report_Brochures, Source={StaticResource LocalizedStrings}}" />
+                                                <TextBlock Width="Auto" Text="{Binding Tracts, FallbackValue=0}" />
+                                                <TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_Report_Tracts, Source={StaticResource LocalizedStrings}}" />
+                                            </StackPanel>
+                                            <TextBlock Margin="0,15,5,0" FontSize="18" FontWeight="Bold" Text="{Binding Path=StringResources.ReportingPage_Report_OtherActivity, Source={StaticResource LocalizedStrings}}" />
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Width="Auto" Text="{Binding ReturnVisits}" />
+                                                <TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_ReturnVisits_1, Source={StaticResource LocalizedStrings}}" />
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Width="Auto" Text="{Binding BibleStudies}" />
+                                                <TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_BibleStudies_1, Source={StaticResource LocalizedStrings}}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+            </controls:PivotItem>
+			<controls:PivotItem Header="{Binding Path=StringResources.ReportingPage_Entries_Header, Source={StaticResource LocalizedStrings}}">
+				<Grid x:Name="grid" >
+					<ListBox ItemsSource="{Binding lbTimeEntries}" Name="lbEntries" SelectionChanged="lbEntries_SelectionChanged" Height="{Binding ActualHeight, ElementName=grid, Mode=OneWay}">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<StackPanel Orientation="Vertical">
+									<TextBlock Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextLargeStyle}" Text="{Binding Date, StringFormat=\{0:D\}}" />
+									<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Hours}" />
+									<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Notes}" TextTrimming="WordEllipsis" />
+								</StackPanel>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+				</Grid>
+            </controls:PivotItem>
+            <controls:PivotItem Header="chart" >
+                <!--TODO: translation-->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <!--TODO: translation-->
+                    <local:HeaderControl Grid.Row="0" HeaderText="YOUR TIME" IconSource="/icons/clock.png" />
+                    <Grid Grid.Row="1">
+                        <telerikChart:RadCartesianChart Tap="MyChart_OnTap" x:Name="myChart" MinHeight="96" >
                             <telerikChart:RadCartesianChart.Behaviors>
                                 <telerikChart:ChartTrackBallBehavior SnapMode="ClosestPoint" ShowIntersectionPoints="True" ShowTrackInfo="True" TrackInfoUpdated="ChartTrackBallBehavior_OnTrackInfoUpdated" />
                             </telerikChart:RadCartesianChart.Behaviors>
                             <telerikChart:RadCartesianChart.HorizontalAxis>
-								<telerikChart:CategoricalAxis 
+                                <telerikChart:CategoricalAxis 
 								GapLength="0.5" 
 								LabelInterval="1" 
 								LabelOffset="0" 
@@ -53,14 +130,14 @@
                                 LastLabelVisibility="Visible"
 								TickThickness="8" 
 								ZIndex="1"/>
-							</telerikChart:RadCartesianChart.HorizontalAxis>
-							<telerikChart:RadCartesianChart.VerticalAxis>
-								<telerikChart:LinearAxis MajorStep="{Binding TimeReportMajorStep}" LineThickness="2" />
-							</telerikChart:RadCartesianChart.VerticalAxis>
-							<telerikChart:RadCartesianChart.Grid>
-								<telerikChart:CartesianChartGrid MajorLinesVisibility="X" MajorXLinesRenderMode="All"/>
-							</telerikChart:RadCartesianChart.Grid>
-							<telerikChart:AreaSeries 
+                            </telerikChart:RadCartesianChart.HorizontalAxis>
+                            <telerikChart:RadCartesianChart.VerticalAxis>
+                                <telerikChart:LinearAxis MajorStep="{Binding TimeReportMajorStep}" LineThickness="2" />
+                            </telerikChart:RadCartesianChart.VerticalAxis>
+                            <telerikChart:RadCartesianChart.Grid>
+                                <telerikChart:CartesianChartGrid MajorLinesVisibility="X" MajorXLinesRenderMode="All"/>
+                            </telerikChart:RadCartesianChart.Grid>
+                            <telerikChart:AreaSeries 
                                 CategoryBinding="Header"
                                 ValueBinding="Time"
                                 ItemsSource="{Binding TimeReportChartData}"
@@ -78,87 +155,10 @@
                             </telerikChart:AreaSeries>
                         </telerikChart:RadCartesianChart>
                         <!--<telerikPrimitives:RadBusyIndicator ContentPosition="Top" Grid.Row="1"  IsRunning="{Binding IsTimeReportDataLoading}" Margin="0,0,15,0" />-->
-					</Grid>
-				</Grid>
-			</controls:PivotItem>
-			<controls:PivotItem Header="{Binding Path=StringResources.ReportingPage_Report_Headline, Source={StaticResource LocalizedStrings}}">
-				<Grid Height="Auto">
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="*" />
-					</Grid.RowDefinitions>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="*" />
-					</Grid.ColumnDefinitions>
-					<Grid Row="0">
-						<StackPanel Orientation="Vertical">
-							<TextBlock Name="tbDisclaimer" Text="{Binding Path=StringResources.ReportingPage_Report_Disclaimer, Source={StaticResource LocalizedStrings}}" />
-							<TextBlock Name="tbFromDate" Text="{Binding Path=StringResources.ReportingPage_Report_From, Source={StaticResource LocalizedStrings}}" />
-							<TextBlock Name="tbToDate" Text="{Binding Path=StringResources.ReportingPage_Report_To, Source={StaticResource LocalizedStrings}}" />
-							<TextBlock Name="tbTotalHours" Text="{Binding TimeReportTotal}" />
-						</StackPanel>
-					</Grid>
-					<Grid Row="1">
-						<ScrollViewer Height="Auto">
-							<ItemsControl ItemsSource="{Binding icReport}">
-								<ItemsControl.ItemTemplate>
-									<DataTemplate>
-										<StackPanel Orientation="Vertical">
-											<TextBlock Style="{StaticResource PhoneTextLargeStyle}" Width="Auto" Text="{Binding Month}" />
-											<TextBlock Margin="0,15,5,0" Width="Auto" FontSize="18" FontWeight="Bold" Text="{Binding Path=StringResources.ReportingPage_Report_Time, Source={StaticResource LocalizedStrings}}" />
-											<StackPanel Orientation="Horizontal">
-												<TextBlock Width="Auto" Text="{Binding Time}" />
-												<TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_Report_On, Source={StaticResource LocalizedStrings}}" />
-												<TextBlock Width="Auto" Text="{Binding Days}" />
-												<TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_Report_Days, Source={StaticResource LocalizedStrings}}" />
-											</StackPanel>
-											<TextBlock Width="Auto" Visibility="{Binding RBCHours, Converter={StaticResource DoubleToVisibilityValueConverter}}" Text="{Binding RBCHours, StringFormat=\{0:0.0\} R/B/C Hours}" />
-											<TextBlock Margin="0,15,5,0" Width="Auto" FontSize="18" FontWeight="Bold" Text="{Binding Path=StringResources.ReportingPage_Report_Placements, Source={StaticResource LocalizedStrings}}" />
-											<StackPanel Orientation="Horizontal">
-												<TextBlock Width="Auto" Text="{Binding Magazines}" />
-												<TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_Report_Magazines, Source={StaticResource LocalizedStrings}}" />
-												<TextBlock Width="Auto" Text="{Binding Books}" />
-												<TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_Report_Books, Source={StaticResource LocalizedStrings}}" />
-												<TextBlock Width="Auto" Text="{Binding Brochures}" />
-												<TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_Report_Brochures, Source={StaticResource LocalizedStrings}}" />
-												<TextBlock Width="Auto" Text="{Binding Tracts, FallbackValue=0}" />
-												<TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_Report_Tracts, Source={StaticResource LocalizedStrings}}" />
-											</StackPanel>
-											<TextBlock Margin="0,15,5,0" FontSize="18" FontWeight="Bold" Text="{Binding Path=StringResources.ReportingPage_Report_OtherActivity, Source={StaticResource LocalizedStrings}}" />
-											<StackPanel Orientation="Horizontal">
-												<TextBlock Width="Auto" Text="{Binding ReturnVisits}" />
-												<TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_ReturnVisits_1, Source={StaticResource LocalizedStrings}}" />
-											</StackPanel>
-											<StackPanel Orientation="Horizontal">
-												<TextBlock Width="Auto" Text="{Binding BibleStudies}" />
-												<TextBlock Width="Auto" Text="{Binding Path=StringResources.ReportingPage_BibleStudies_1, Source={StaticResource LocalizedStrings}}" />
-											</StackPanel>
-										</StackPanel>
-									</DataTemplate>
-								</ItemsControl.ItemTemplate>
-							</ItemsControl>
-						</ScrollViewer>
-					</Grid>
-				</Grid>
-			</controls:PivotItem>
-
-			<!--Pivot item two-->
-			<controls:PivotItem Header="{Binding Path=StringResources.ReportingPage_Entries_Header, Source={StaticResource LocalizedStrings}}">
-				<Grid x:Name="grid" >
-					<ListBox ItemsSource="{Binding lbTimeEntries}" Name="lbEntries" SelectionChanged="lbEntries_SelectionChanged" Height="{Binding ActualHeight, ElementName=grid, Mode=OneWay}">
-						<ListBox.ItemTemplate>
-							<DataTemplate>
-								<StackPanel Orientation="Vertical">
-									<TextBlock Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextLargeStyle}" Text="{Binding Date, StringFormat=\{0:D\}}" />
-									<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Hours}" />
-									<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Notes}" TextTrimming="WordEllipsis" />
-								</StackPanel>
-							</DataTemplate>
-						</ListBox.ItemTemplate>
-					</ListBox>
-				</Grid>
-			</controls:PivotItem>
-		</controls:Pivot>
+                    </Grid>
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>
 	</Grid>
 
 	<!--Sample code showing usage of ApplicationBar-->
