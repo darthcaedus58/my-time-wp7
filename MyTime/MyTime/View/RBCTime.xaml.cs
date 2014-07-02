@@ -4,6 +4,7 @@ using System.Windows;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Telerik.Windows.Controls;
 
 namespace FieldService.View
 {
@@ -83,5 +84,20 @@ namespace FieldService.View
 				save.Text = StringResources.AddRBCTimePage_Save;
 			}
 		}
+
+	    private void TimeCalcButton_OnClick(object sender, RoutedEventArgs e)
+	    {
+            TimeCalc.Visibility = Visibility.Visible;
+            ContentPanel.IsHitTestVisible = false;
+	    }
+
+	    private void TimeCalcControl_OnFormClosed(object sender, TimeCalcFormClosedEventArgs e)
+	    {
+            TimeCalc.Visibility = Visibility.Collapsed;
+            ContentPanel.IsHitTestVisible = true;
+            if (e.DialogResult == DialogResult.OK) {
+                ViewModel.RBCTimeDataMinutes = (int)e.TimeSpan.TotalMinutes;
+            }
+	    }
 	}
 }
