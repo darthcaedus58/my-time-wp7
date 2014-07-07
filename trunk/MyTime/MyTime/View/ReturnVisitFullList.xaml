@@ -53,7 +53,7 @@
                     AutoCompletePopupDisplayMode="BelowTextBox"
                     FilterDelay="0:0:0.350"
                     x:Name="racbRvSearchBox"
-                    IsEnabled="False">
+                    IsEnabled="False" Style="{StaticResource RadAutoCompleteBoxAppDefaultStyle}">
                     <telerikInput:RadAutoCompleteBox.SuggestionItemTemplate>
                         <DataTemplate>
                             <Grid Margin="-12,-3,0,-3">
@@ -107,6 +107,7 @@
                                 <TextBlock FontSize="{StaticResource PhoneFontSizeMediumLarge}" Text="{Binding Text}" />
                                 <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Address1}" />
                                 <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Address2}" />
+                                    <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding DaysSinceLastVisit}" Foreground="PaleVioletRed" />
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>
