@@ -11,9 +11,17 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource AppForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" Loaded="Page_Loaded">
-	<phone:PhoneApplicationPage.ApplicationBar>
-		<shell:ApplicationBar BackgroundColor="Gainsboro" ForegroundColor="Black">
+    mc:Ignorable="d" Loaded="Page_Loaded"
+    shell:SystemTray.IsVisible="true"
+    shell:SystemTray.BackgroundColor="{StaticResource AppAccentColor}"
+    shell:SystemTray.ForegroundColor="{StaticResource AppForegroundColor}" >
+
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator IsVisible="True" Text="{Binding Path=StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}" IsIndeterminate="False"/>
+    </shell:SystemTray.ProgressIndicator>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar BackgroundColor="{StaticResource AppAccentColor}" ForegroundColor="{StaticResource AppForegroundColor}">
 			<shell:ApplicationBarIconButton Click="ApplicationBarIconButton_OnClick" IconUri="/Assets/AppBar/feature.camera.png" IsEnabled="True" Text="take photo"/>
 		</shell:ApplicationBar>
 	</phone:PhoneApplicationPage.ApplicationBar>

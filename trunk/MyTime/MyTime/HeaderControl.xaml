@@ -2,11 +2,16 @@
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Class="FieldService.HeaderControl"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:fieldService="clr-namespace:FieldService"
+	x:Class="FieldService.HeaderControl"
 	mc:Ignorable="d"
 	d:DesignHeight="40" d:DesignWidth="465">
-	
-	<UserControl.FontFamily>
+    <UserControl.Resources>
+        <fieldService:ImageBrushConverter x:Key="ImageBrushConverter"/>
+    </UserControl.Resources>
+
+    <UserControl.FontFamily>
 		<StaticResource ResourceKey="PhoneFontFamilyNormal"/>
 	</UserControl.FontFamily>
 	<UserControl.FontSize>
@@ -14,8 +19,14 @@
 	</UserControl.FontSize>
 		<Grid x:Name="LayoutRoot" Loaded="LayoutRoot_Loaded">
 		<StackPanel Orientation="Horizontal" Background="{Binding Background, ElementName=LayoutRoot}">
-			<Image x:Name="IconImage"  Height="30" Width="30" Source="{Binding IconSource}" Stretch="Fill" />
-			<TextBlock x:Name="HeaderTextBlock" Margin="5" Height="30" FontWeight="Bold" FontSize="22" Text="{Binding HeaderText}" />
+            <Rectangle 
+                x:Name="rectOpacityMask" 
+                Height="30" Width="30" Fill="{Binding Foreground, ElementName=HeaderTextBlock}" >
+                <Rectangle.OpacityMask>
+                    <ImageBrush x:Name="imgBrush" ImageSource="{Binding IconSource}" Stretch="Fill"/>
+                </Rectangle.OpacityMask>
+                </Rectangle>
+                <TextBlock x:Name="HeaderTextBlock" Margin="5" Height="30" FontWeight="Bold" FontSize="22" Text="{Binding HeaderText}" />
 		</StackPanel>
 
 	</Grid>

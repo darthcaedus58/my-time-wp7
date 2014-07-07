@@ -15,13 +15,15 @@
                             Foreground="{StaticResource AppForegroundBrush}" 
                             Orientation="Portrait" SupportedOrientations="Portrait" 
                             mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480" 
-                            shell:SystemTray.IsVisible="False" Loaded="ReturnVisitFullList_OnLoaded">
+                            shell:SystemTray.IsVisible="true"
+    shell:SystemTray.BackgroundColor="{StaticResource AppAccentColor}"
+    shell:SystemTray.ForegroundColor="{StaticResource AppForegroundColor}" >
 
-    <phone:PhoneApplicationPage.Resources>
-        <SolidColorBrush Color="#FF4C4478" x:Key="AppForegroundColor"/>
-        <SolidColorBrush Color="#FF8FCCF8" x:Key="AppBackgroundColor"/>
-        <SolidColorBrush  Color="#FFD2DA86" x:Key="AppAccentColor"/>
-    </phone:PhoneApplicationPage.Resources>
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator IsVisible="True" Text="{Binding Path=StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}" IsIndeterminate="False"/>
+    </shell:SystemTray.ProgressIndicator>
+
+
     <phone:PhoneApplicationPage.DataContext>
         <ViewModels:ReturnVisitFullListViewModel />
     </phone:PhoneApplicationPage.DataContext>
@@ -34,8 +36,7 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-			<TextBlock Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextNormalStyle}" x:Name="ApplicationTitle" Text="{Binding Path=StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}" />
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="10">
 			<TextBlock Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextTitle1Style}" x:Name="PageTitle" Margin="9,-7,0,0" Text="{Binding Path=StringResources.FullRVListPage_Headline, Source={StaticResource LocalizedStrings}}" />
         </StackPanel>
 

@@ -397,7 +397,9 @@ namespace MyTimeDatabaseLib
                     if (rv != null && date > rv.LastVisitDate) { //Don't update if the new rv visit date is prior to the current last visit date
                         rv.LastVisitDate = date;
                         db.SubmitChanges();
-                    } else if (rv != null) {
+                        return true;
+                    }
+                    if (rv != null) {
                         return true;
                     }
                 }

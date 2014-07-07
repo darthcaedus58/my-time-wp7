@@ -21,8 +21,15 @@
 	xmlns:telerikChart="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Chart"
 	xmlns:chartEngine="clr-namespace:Telerik.Charting;assembly=Telerik.Windows.Controls.Chart"
 	xmlns:telerikDataVis="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.DataVisualization"
-	shell:SystemTray.IsVisible="False">
-	<phone:PhoneApplicationPage.Resources>
+	shell:SystemTray.IsVisible="true"
+    shell:SystemTray.BackgroundColor="{StaticResource AppAccentColor}"
+    shell:SystemTray.ForegroundColor="{StaticResource AppForegroundColor}" >
+
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator IsVisible="True" Text="{Binding Path=StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}" IsIndeterminate="False"/>
+    </shell:SystemTray.ProgressIndicator>
+    
+    <phone:PhoneApplicationPage.Resources>
 		<my:DoubleToVisibilityValueConverter x:Key="DoubleToVisibilityValueConverter"/>
 		<!-- Data -->
 	</phone:PhoneApplicationPage.Resources>
@@ -53,7 +60,7 @@
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Vertical">
-                                            <TextBlock Style="{StaticResource PhoneTextLargeStyle}" Width="Auto" Text="{Binding Month}" />
+                                            <TextBlock Foreground="White" Style="{StaticResource PhoneTextLargeStyle}" Width="Auto" Text="{Binding Month}" />
                                             <TextBlock Margin="0,15,5,0" Width="Auto" FontSize="18" FontWeight="Bold" Text="{Binding Path=StringResources.ReportingPage_Report_Time, Source={StaticResource LocalizedStrings}}" />
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Width="Auto" Text="{Binding Time}" />
@@ -100,7 +107,7 @@
 									<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Hours}" />
 									<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Notes}" TextTrimming="WordEllipsis" />
 								</StackPanel>
-							</DataTemplate>
+                            </DataTemplate>
 						</ListBox.ItemTemplate>
 					</ListBox>
 				</Grid>
@@ -142,7 +149,9 @@
                                 ValueBinding="Time"
                                 ItemsSource="{Binding TimeReportChartData}"
                                 Stroke="{StaticResource AppAccentBrush}" 
+                                StrokeThickness="4"
                                 Fill="{StaticResource AppForegroundBrush}" 
+                                Opacity="0.5"
                                 ClipToPlotArea="False">
                                 <telerikChart:AreaSeries.TrackBallInfoTemplate>
                                     <DataTemplate>
@@ -163,7 +172,7 @@
 
 	<!--Sample code showing usage of ApplicationBar-->
 	<phone:PhoneApplicationPage.ApplicationBar>
-		<shell:ApplicationBar BackgroundColor="{StaticResource PhoneForegroundColor}" ForegroundColor="{StaticResource PhoneBackgroundColor}" Mode="Minimized" x:Name="myAppBar" IsVisible="True" IsMenuEnabled="True">
+        <shell:ApplicationBar BackgroundColor="{StaticResource AppAccentColor}" ForegroundColor="{StaticResource AppForegroundColor}" Mode="Minimized" x:Name="myAppBar" IsVisible="True" IsMenuEnabled="True">
 			<shell:ApplicationBar.MenuItems>
 				<shell:ApplicationBarMenuItem Click="miShareReport_Click" x:Name="miShareReport" Text="share"/>
 			</shell:ApplicationBar.MenuItems>

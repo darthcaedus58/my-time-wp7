@@ -162,7 +162,19 @@ namespace FieldService.ViewModels
 			}
 		}
 
-		protected virtual void OnPropertyChanged(string propertyName)
+	    public DateTime PreviousVisitDataDate
+	    {
+	        get { return PreviousVisitData.Date; }
+	        set
+	        {
+	            if (value == PreviousVisitData.Date) return;
+	            PreviousVisitData.Date = value;
+                OnPropertyChanged("PreviousVisitDataDate");
+                OnPropertyChanged("PreviousVisitData");
+	        }
+	    }
+
+	    protected virtual void OnPropertyChanged(string propertyName)
 		{
 			PropertyChangedEventHandler handler = PropertyChanged;
 			if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));

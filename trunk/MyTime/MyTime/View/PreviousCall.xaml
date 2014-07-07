@@ -8,18 +8,25 @@
 	xmlns:ViewModels="clr-namespace:FieldService.ViewModels" 
 	xmlns:FieldService="clr-namespace:FieldService"
 	xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
+	xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
 	x:Class="FieldService.View.PreviousCallPage"
 	FontFamily="{StaticResource PhoneFontFamilyNormal}"
 	FontSize="{StaticResource PhoneFontSizeNormal}"
 	Foreground="{StaticResource AppForegroundBrush}"
 	SupportedOrientations="Portrait" Orientation="Portrait"
 	mc:Ignorable="d" d:DesignHeight="728" d:DesignWidth="480"
-	shell:SystemTray.IsVisible="False"
 	Background="{StaticResource AppBackgroundBrush}"
-	Loaded="PhoneApplicationPage_Loaded">
+	shell:SystemTray.IsVisible="true"
+    shell:SystemTray.BackgroundColor="{StaticResource AppAccentColor}"
+    shell:SystemTray.ForegroundColor="{StaticResource AppForegroundColor}"
+    Loaded="PhoneApplicationPage_Loaded" >
 
-	<phone:PhoneApplicationPage.ApplicationBar>
-		<shell:ApplicationBar BackgroundColor="{StaticResource PhoneForegroundColor}" ForegroundColor="{StaticResource PhoneBackgroundColor}" IsMenuEnabled="True" IsVisible="True">
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator IsVisible="True" Text="{Binding Path=StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}" IsIndeterminate="False"/>
+    </shell:SystemTray.ProgressIndicator>
+
+    <phone:PhoneApplicationPage.ApplicationBar >
+        <shell:ApplicationBar BackgroundColor="{StaticResource AppAccentColor}" ForegroundColor="{StaticResource AppForegroundColor}" IsMenuEnabled="True" IsVisible="True">
 			<shell:ApplicationBar.MenuItems>
 				<shell:ApplicationBarMenuItem Text="delete" Click="abmiDeleteCall_Click" />
 			</shell:ApplicationBar.MenuItems>
@@ -39,8 +46,7 @@
 		</Grid.RowDefinitions>
 
 		<!--TitlePanel contains the name of the application and page title-->
-		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-			<TextBlock Foreground="{StaticResource AppForegroundBrush}" x:Name="ApplicationTitle" Text="{Binding Path=StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="10">
 			<TextBlock Foreground="{StaticResource AppForegroundBrush}" x:Name="PageTitle" Text="{Binding Path=StringResources.AddCallPage_Headline, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
 		</StackPanel>
 
@@ -49,15 +55,15 @@
 			<ScrollViewer>
 				<StackPanel>
 					<FieldService:HeaderControl IconSource="/icons/calendar.png" HeaderText="{Binding Path=StringResources.AddCallPage_Date, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
-					<telerikInput:RadDatePicker x:Name="dpDatePicker" Value="{Binding PreviousVisitDataDate, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" />
-					<telerikInput:RadTimePicker x:Name="tsTimePicker" Value="{Binding PreviousVisitDataDate, Mode=TwoWay}" />
+					<telerikInput:RadDatePicker x:Name="dpDatePicker" Value="{Binding PreviousVisitDataDate, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" />
+					<telerikInput:RadTimePicker x:Name="tsTimePicker" Value="{Binding PreviousVisitDataDate, Mode=TwoWay}" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" />
                     <FieldService:HeaderControl IconSource="/icons/Books.png" HeaderText="{Binding Path=StringResources.AddCallPage_Placements, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
 					<telerikInput:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags" Suffix="{Binding Path=StringResources.AddCallPage_Magazines, Source={StaticResource LocalizedStrings}}" Value="{Binding PreviousVisitData.Magazines, Mode=TwoWay}" />
 					<telerikInput:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" Suffix="{Binding Path=StringResources.AddCallPage_Brochures, Source={StaticResource LocalizedStrings}}" Value="{Binding PreviousVisitData.Brochures, Mode=TwoWay}" />
 					<telerikInput:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBooks" Suffix="{Binding Path=StringResources.AddCallPage_Books, Source={StaticResource LocalizedStrings}}" Value="{Binding PreviousVisitData.Books, Mode=TwoWay}" />
 					<telerikInput:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbTracts" Suffix="{Binding Path=StringResources.AddCallPage_Tracts, Source={StaticResource LocalizedStrings}}" Value="{Binding PreviousVisitData.Tracts, Mode=TwoWay}" />
 					<FieldService:HeaderControl IconSource="/icons/tasks.png" HeaderText="{Binding Path=StringResources.AddCallPage_Notes, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
-					<TextBox x:Name="tbNotes" Height="180" TextWrapping="Wrap" InputScope="Text" Text="{Binding PreviousVisitData.Notes, Mode=TwoWay}" AcceptsReturn="True"/>
+					<telerikPrimitives:RadTextBox x:Name="tbNotes" Height="180" TextWrapping="Wrap" InputScope="Text" Text="{Binding PreviousVisitData.Notes, Mode=TwoWay}" AcceptsReturn="True" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
 				</StackPanel>
 			</ScrollViewer>
 		</Grid>

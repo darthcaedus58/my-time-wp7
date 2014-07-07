@@ -13,8 +13,14 @@
 							x:Class="FieldService.View.SettingsPage" 
 							Orientation="Portrait" SupportedOrientations="Portrait" 
 							mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800" 
-							shell:SystemTray.IsVisible="False"
-							>
+							 shell:SystemTray.IsVisible="true"
+    shell:SystemTray.BackgroundColor="{StaticResource AppAccentColor}"
+    shell:SystemTray.ForegroundColor="{StaticResource AppForegroundColor}">
+
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator IsVisible="True" Text="{Binding Path=StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}" IsIndeterminate="False"/>
+    </shell:SystemTray.ProgressIndicator>
+    
     <phone:PhoneApplicationPage.Resources>
         <SolidColorBrush Color="#FF4C4478" x:Key="AppForegroundColor"/>
         <SolidColorBrush Color="#FF8FCCF8" x:Key="AppBackgroundColor"/>
@@ -47,8 +53,8 @@
                         <fieldService:HeaderControl HeaderText="{Binding StringResources.SettingsPage_Settings_SharingOptions, Mode=OneWay, Source={StaticResource LocalizedStrings}}" IconSource="/icons/message.png" />
                         <TextBlock Text="{Binding StringResources.SettingsPage_Settings_CSO, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
                         <Button Content="{Binding csContactDisplayName}" Style="{StaticResource SettingsButtonBaseControlTemplate}" Click="bButton_Click" />
-                        <TextBox Text="{Binding csoEmail, Mode=TwoWay}"  />
-                        <toolkit:ListPicker 
+                        <telerikPrimitives:RadTextBox Text="{Binding csoEmail, Mode=TwoWay}" Style="{StaticResource RadTextBoxAppDefaultStyle}"  />
+                        <toolkit:ListPicker BorderBrush="{StaticResource AppForegroundBrush}" Foreground="{StaticResource AppAccentBrush}"
                             Header="{Binding StringResources.SettingsPage_Settings_SendMethod, Mode=OneWay, Source={StaticResource LocalizedStrings}}" 
                             ItemsSource="{Binding SendMethodCollection}" 
                             SelectedItem="{Binding SendMethod, Mode=TwoWay}" />
@@ -57,16 +63,16 @@
 
                         <fieldService:HeaderControl IconSource="/icons/add-user.png" HeaderText="{Binding StringResources.SettingsPage_Settings_PersonalSettings, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
                         <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_Settings_NickName, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
-                        <TextBox Text="{Binding nickname, Mode=TwoWay}"/>
+                        <telerikPrimitives:RadTextBox Text="{Binding nickname, Mode=TwoWay}" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
                         <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_Settings_DefaultAge, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
-                        <TextBox Text="{Binding defaultAgeValue, Mode=TwoWay}" InputScope="Number"/>
+                        <telerikPrimitives:RadTextBox Text="{Binding defaultAgeValue, Mode=TwoWay}" InputScope="Number" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
 
                         <fieldService:HeaderControl IconSource="/icons/RangeSlider.png" HeaderText="{Binding StringResources.SettingsPage_Settings_AppSettings, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
                         <toolkit:ToggleSwitch Header="{Binding StringResources.SettingsPage_Settings_UseLocServices, Mode=OneWay, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding useLocationServices, Mode=TwoWay}"/>
                         <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_Settings_PrivacyPolicy, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
                         <toolkit:ToggleSwitch Header="{Binding StringResources.SettingsPage_Settings_BeautifyPhoneNumbers, Mode=OneWay, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding beautifyPhoneNumbers, Mode=TwoWay}"/>
                         <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_Settings_RoundTime, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
-                        <TextBox Text="{Binding roundTimeIncrement, Mode=TwoWay}" InputScope="Number"/>
+                        <telerikPrimitives:RadTextBox Text="{Binding roundTimeIncrement, Mode=TwoWay}" InputScope="Number" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
                         <toolkit:ToggleSwitch Header="{Binding StringResources.SettingsPage_Settings_AddCallPlacements, Mode=OneWay, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding manuallyTrackRvs, Mode=TwoWay}"/>
                         <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_Settings_PlacementsMessage1, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
                         <toolkit:ToggleSwitch Header="{Binding StringResources.SettingsPage_Settings_DeleteCallsAndRv, Mode=OneWay, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding deleteCallsAndRv, Mode=TwoWay}"/>
@@ -94,13 +100,13 @@
                                 <telerikPrimitives:RadExpanderControl.ExpandableContent>
                                     <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_FAQ_WhyDontRVShow_A, Source={StaticResource LocalizedStrings}}"/>
                                 </telerikPrimitives:RadExpanderControl.ExpandableContent>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_FAQ_WhyDontRVShow_Q, Source={StaticResource LocalizedStrings}}"/>
+                                <TextBlock Foreground="White" Style="{StaticResource PhoneTextLargeStyle}" TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_FAQ_WhyDontRVShow_Q, Source={StaticResource LocalizedStrings}}"/>
                             </telerikPrimitives:RadExpanderControl>
                             <telerikPrimitives:RadExpanderControl>
                                 <telerikPrimitives:RadExpanderControl.ExpandableContent>
                                     <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_FAQ_HowToEnterRVs_A, Source={StaticResource LocalizedStrings}}"/>
                                 </telerikPrimitives:RadExpanderControl.ExpandableContent>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_FAQ_HowToEnterRVs_Q, Source={StaticResource LocalizedStrings}}"/>
+                                <TextBlock Foreground="White" Style="{StaticResource PhoneTextLargeStyle}" TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_FAQ_HowToEnterRVs_Q, Source={StaticResource LocalizedStrings}}"/>
                             </telerikPrimitives:RadExpanderControl>
                         </StackPanel>
                     </ScrollViewer>
