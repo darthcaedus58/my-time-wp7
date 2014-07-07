@@ -15,9 +15,10 @@
                             Foreground="{StaticResource AppForegroundBrush}" 
                             Orientation="Portrait" SupportedOrientations="Portrait" 
                             mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480" 
+                            Loaded="ReturnVisitFullList_OnLoaded"
                             shell:SystemTray.IsVisible="true"
-    shell:SystemTray.BackgroundColor="{StaticResource AppAccentColor}"
-    shell:SystemTray.ForegroundColor="{StaticResource AppForegroundColor}" >
+                            shell:SystemTray.BackgroundColor="{StaticResource AppAccentColor}"
+                            shell:SystemTray.ForegroundColor="{StaticResource AppForegroundColor}" >
 
     <shell:SystemTray.ProgressIndicator>
         <shell:ProgressIndicator IsVisible="True" Text="{Binding Path=StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}" IsIndeterminate="False"/>
