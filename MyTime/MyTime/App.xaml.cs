@@ -57,7 +57,6 @@ namespace FieldService
 			radDiagnostics.IncludeScreenshot = true;
 			radDiagnostics.Init();
 			(App.Current.Resources["PhoneAccentBrush"] as SolidColorBrush).Color = Color.FromArgb(0xFF, 0xD2, 0xDA, 0x86);
-
 			_settingsProvider = new SettingsProvider();
 			// Global handler for uncaught exceptions. 
 			UnhandledException += Application_UnhandledException;

@@ -12,7 +12,14 @@
 	x:Class="FieldService.View.CustomReportsPage" 
 	SupportedOrientations="Portrait" Orientation="Portrait"
 	mc:Ignorable="d" d:DesignHeight="728" d:DesignWidth="480"
-	Loaded="PhoneApplicationPage_Loaded">
+	Loaded="PhoneApplicationPage_Loaded"
+    shell:SystemTray.IsVisible="true"
+    shell:SystemTray.BackgroundColor="{StaticResource AppAccentColor}"
+    shell:SystemTray.ForegroundColor="{StaticResource AppForegroundColor}">
+
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator IsVisible="True" Text="{Binding Path=StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}" IsIndeterminate="False"/>
+    </shell:SystemTray.ProgressIndicator>
 	
 	<phone:PhoneApplicationPage.Background>
 		<StaticResource ResourceKey="AppBackgroundBrush"/>
@@ -45,7 +52,7 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 			<StackPanel Orientation="Vertical">
 				<FieldService:HeaderControl IconSource="/icons/calendar.png"  HeaderText="{Binding Path=StringResources.CustomReportsPage_Start, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
-				<telerikInput:RadDatePicker x:Name="dpStartDate" Template="{StaticResource RadDatePickerControlTemplateApp}" />
+				<telerikInput:RadDatePicker x:Name="dpStartDate" Template="{StaticResource RadDatePickerControlTemplateApp}" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" />
 				<FieldService:HeaderControl IconSource="/icons/RangeSlider.png" HeaderText="{Binding Path=StringResources.CustomReportsPage_Range, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
 				<Grid Margin="0,10,0,0">
 					<Grid.ColumnDefinitions>
@@ -53,17 +60,17 @@
 						<ColumnDefinition Width="*" />
 						<ColumnDefinition Width="*" />
 					</Grid.ColumnDefinitions>
-					<Button Grid.Column="0" Content="{Binding Path=StringResources.CustomReportsPage_Week, Source={StaticResource LocalizedStrings}}" Click="ButtonSetRangeWeek_Click" />
-					<Button Grid.Column="1" Content="{Binding Path=StringResources.CustomReportsPage_Month, Source={StaticResource LocalizedStrings}}" Click="ButtonSetRangeMonth_Click" />
-					<Button Grid.Column="2" Content="{Binding Path=StringResources.CustomReportsPage_Year, Source={StaticResource LocalizedStrings}}" Click="ButtonSetRangeYear_Click" />
+					<Button Grid.Column="0" Content="{Binding Path=StringResources.CustomReportsPage_Week, Source={StaticResource LocalizedStrings}}" Click="ButtonSetRangeWeek_Click" Style="{StaticResource SettingsButtonBaseControlTemplate}" />
+					<Button Grid.Column="1" Content="{Binding Path=StringResources.CustomReportsPage_Month, Source={StaticResource LocalizedStrings}}" Click="ButtonSetRangeMonth_Click" Style="{StaticResource SettingsButtonBaseControlTemplate}" />
+					<Button Grid.Column="2" Content="{Binding Path=StringResources.CustomReportsPage_Year, Source={StaticResource LocalizedStrings}}" Click="ButtonSetRangeYear_Click" Style="{StaticResource SettingsButtonBaseControlTemplate}" />
 				</Grid>
 				<FieldService:HeaderControl IconSource="/icons/calendar.png"  HeaderText="{Binding Path=StringResources.CustomReportsPage_To, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
-				<telerikInput:RadDatePicker x:Name="dpToDate" Template="{StaticResource RadDatePickerControlTemplateApp}" />
+				<telerikInput:RadDatePicker x:Name="dpToDate" Template="{StaticResource RadDatePickerControlTemplateApp}" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" />
 			</StackPanel>
 		</Grid>
     </Grid>
 	<phone:PhoneApplicationPage.ApplicationBar>
-		<shell:ApplicationBar BackgroundColor="{StaticResource PhoneForegroundColor}" ForegroundColor="{StaticResource PhoneBackgroundColor}" IsMenuEnabled="True" IsVisible="True">
+		<shell:ApplicationBar BackgroundColor="{StaticResource AppAccentColor}" ForegroundColor="{StaticResource AppForegroundColor}" IsMenuEnabled="True" IsVisible="True">
 			<shell:ApplicationBarIconButton Text="run report" IconUri="/icons/SubmitArrow.png" x:Name="abibRunReport" Click="abibRunReport_Click" />
 		</shell:ApplicationBar>
 	</phone:PhoneApplicationPage.ApplicationBar>

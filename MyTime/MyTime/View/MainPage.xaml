@@ -187,18 +187,10 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                            <telerikPrimitives:RadImageButton x:Name="abibStart" ButtonType="Custom" ButtonShape="Image" MaxWidth="75" MaxHeight="90" ImageStretch="Fill" RestStateImageSource="/icons/Media-Play.png" PressedStateImageSource="/icons/Media-Play.png" Tap="abibStart_Tap" Margin="0,0,0,-25" />
-                            <!--<Image x:Name="abibStart" Height="50" Margin="0,0,15,0" Width="50" Source="/icons/Media-Play.png" Tap="abibStart_Tap" />-->
-                            <!--<Image x:Name="abibPause" Height="50" Margin="15,0" Width="50" Source="/icons/Media-Pause.png" Tap="abibPause_Tap" />-->
-                            <!--<Image x:Name="abibStop" Height="50" Margin="15,0" Width="50" Source="/icons/Media-Stop.png" Tap="abibStop_Tap" />-->
-                            <!--<Image x:Name="abibAddIt" Height="50" Margin="15,0,0,0" Width="50" Source="/icons/Media-Save.png" Tap="abibAddIt_Tap" />-->
-                            <!--Source="/icons/add_white.png"-->
-                            <!--Source="/icons/play.png"-->
-                            <telerikPrimitives:RadImageButton x:Name="abibPause" ButtonType="Custom" ButtonShape="Image" MaxWidth="75" MaxHeight="90" ImageStretch="Fill" RestStateImageSource="/icons/Media-Pause.png" PressedStateImageSource="/icons/Media-Pause.png" Tap="abibPause_Tap" Margin="0,0,0,-25" />
-                            <!--Source="/icons/pause.png"-->
-                            <telerikPrimitives:RadImageButton x:Name="abibStop" ButtonType="Custom" ButtonShape="Image" MaxWidth="75" MaxHeight="90" ImageStretch="Fill" RestStateImageSource="/icons/Media-Stop.png" PressedStateImageSource="/icons/Media-Stop.png" Tap="abibStop_Tap" Margin="0,0,0,-25" />
-                            <!--Source="/icons/delete.png"-->
-                            <telerikPrimitives:RadImageButton x:Name="abibAddIt" ButtonType="Custom" ButtonShape="Image" MaxWidth="75" MaxHeight="90" ImageStretch="Fill" RestStateImageSource="/icons/Media-Save.png" PressedStateImageSource="/icons/Media-Save.png" Tap="abibAddIt_Tap" Margin="0,0,0,-25" />
+                            <telerikPrimitives:RadImageButton x:Name="abibStart" ButtonType="Custom" ButtonShape="Image" MaxWidth="90" MaxHeight="90" ImageStretch="Fill" RestStateImageSource="/icons/Media-Play.png" PressedStateImageSource="/icons/Media-Play.png" Tap="abibStart_Tap" Margin="0,0,0,-25" />
+                            <telerikPrimitives:RadImageButton x:Name="abibPause" ButtonType="Custom" ButtonShape="Image" MaxWidth="90" MaxHeight="90" ImageStretch="Fill" RestStateImageSource="/icons/Media-Pause.png" PressedStateImageSource="/icons/Media-Pause.png" Tap="abibPause_Tap" Margin="0,0,0,-25" />
+                            <telerikPrimitives:RadImageButton x:Name="abibStop" ButtonType="Custom" ButtonShape="Image" MaxWidth="90" MaxHeight="90" ImageStretch="Fill" RestStateImageSource="/icons/Media-Stop.png" PressedStateImageSource="/icons/Media-Stop.png" Tap="abibStop_Tap" Margin="0,0,0,-25" />
+                            <telerikPrimitives:RadImageButton x:Name="abibAddIt" ButtonType="Custom" ButtonShape="Image" MaxWidth="90" MaxHeight="90" ImageStretch="Fill" RestStateImageSource="/icons/Media-Save.png" PressedStateImageSource="/icons/Media-Save.png" Tap="abibAddIt_Tap" Margin="0,0,0,-25" />
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Row="1">

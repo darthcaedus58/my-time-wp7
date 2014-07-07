@@ -5,22 +5,26 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:fieldService="clr-namespace:FieldService"
     xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     Background="{StaticResource AppAccentBrush}"         
-             d:DesignWidth="480" Height="317">
+             d:DesignWidth="480" Height="420">
     <UserControl.Resources>
         <fieldService:MinutesToDateTimeValueConverter x:Key="MinutesToDateTimeValueConverter"/>
+    <fieldService:MinutesToTimeSpanValueConverter x:Key="MinutesToTimeSpanValueConverter"/>
     </UserControl.Resources>
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource AppAccentBrush}">
         <StackPanel>
             <fieldService:HeaderControl Background="{StaticResource AppAccentBrush}" Foreground="{StaticResource AppForegroundBrush}" IconSource="/icons/clock.png" HeaderText="START TIME" />
-            <telerikInput:RadTimePicker x:Name="tpStart" Step="{Binding AppSettings.roundTimeIncrement, Converter={StaticResource MinutesToDateTimeValueConverter}, Source={StaticResource AppSettings}}" />
+            <telerikInput:RadTimePicker x:Name="tpStart" Step="{Binding AppSettings.roundTimeIncrement, Converter={StaticResource MinutesToDateTimeValueConverter}, Source={StaticResource AppSettings}}" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" Style="{StaticResource RadTimePickerAppDefaultStyle}" />
             <fieldService:HeaderControl Background="{StaticResource AppAccentBrush}" Foreground="{StaticResource AppForegroundBrush}" IconSource="/icons/clock.png" HeaderText="END TIME" />
-            <telerikInput:RadTimePicker x:Name="tpEnd" Step="{Binding AppSettings.roundTimeIncrement, Converter={StaticResource MinutesToDateTimeValueConverter}, Source={StaticResource AppSettings}}" />
+            <telerikInput:RadTimePicker x:Name="tpEnd" Step="{Binding AppSettings.roundTimeIncrement, Converter={StaticResource MinutesToDateTimeValueConverter}, Source={StaticResource AppSettings}}" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" Style="{StaticResource RadTimePickerAppDefaultStyle}" />
+            <fieldService:HeaderControl Background="{StaticResource AppAccentBrush}" Foreground="{StaticResource AppForegroundBrush}" IconSource="/icons/clock.png" HeaderText="BREAK TIME" />
+            <telerikInput:RadTimeSpanPicker x:Name="tspBreakTime" SelectorFormat="hm" MinValue="00:00:00" MaxValue="23:00:00" DisplayValueFormat="h' Hours and 'm' Minutes'" Step="{Binding AppSettings.roundTimeIncrement, Converter={StaticResource MinutesToTimeSpanValueConverter}, Source={StaticResource AppSettings}}" Value="00:00:00" Style="{StaticResource RadTimeSpanPickerAppStyle}" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" />
             <StackPanel Orientation="Horizontal">
                 <Button Content="ok" Style="{StaticResource SettingsButtonBaseControlTemplate}" Click="OkButton_Click" />
                 <Button Content="cancel" Style="{StaticResource SettingsButtonBaseControlTemplate}" Click="CloseButton_Click" />

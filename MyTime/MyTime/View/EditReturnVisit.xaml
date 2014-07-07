@@ -11,161 +11,184 @@
 							xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input" 
 							xmlns:System="clr-namespace:System;assembly=mscorlib"
 							xmlns:ViewModels="clr-namespace:FieldService.ViewModels"
+							xmlns:PhoneTextBox="clr-namespace:Telerik.Windows.Controls.PhoneTextBox;assembly=Telerik.Windows.Controls.Primitives"
 							x:Class="FieldService.EditReturnVisit" 
 	d:DesignWidth="480" d:DesignHeight="728"
-	FontFamily="{StaticResource PhoneFontFamilyNormal}"
-	FontSize="{StaticResource PhoneFontSizeNormal}"
-	Foreground="{StaticResource PhoneForegroundBrush}"
 	SupportedOrientations="Portrait"  
 	Orientation="Portrait" 
-	Background="{StaticResource AppBackgroundBrush}" 
 	mc:Ignorable="d"
-	Loaded="PhoneApplicationPage_Loaded">
+	Loaded="PhoneApplicationPage_Loaded" 
+                            shell:SystemTray.IsVisible="true"
+    >
+
     <phone:PhoneApplicationPage.Resources>
         <local:StringLengthToVisibilityConverter x:Key="StringLengthToVisibilityConverter"/>
         <local:DateTimeToShortTimeValueConverter x:Key="DateTimeToShortTimeValueConverter"/>
     </phone:PhoneApplicationPage.Resources>
 
+    <phone:PhoneApplicationPage.FontFamily>
+        <StaticResource ResourceKey="PhoneFontFamilyNormal"/>
+    </phone:PhoneApplicationPage.FontFamily>
+    <phone:PhoneApplicationPage.FontSize>
+        <StaticResource ResourceKey="PhoneFontSizeNormal"/>
+    </phone:PhoneApplicationPage.FontSize>
+    <phone:PhoneApplicationPage.Foreground>
+        <StaticResource ResourceKey="PhoneForegroundBrush"/>
+    </phone:PhoneApplicationPage.Foreground>
+    <phone:PhoneApplicationPage.Background>
+        <StaticResource ResourceKey="AppBackgroundBrush"/>
+    </phone:PhoneApplicationPage.Background>
+    <shell:SystemTray.BackgroundColor>
+        <StaticResource ResourceKey="AppAccentColor"/>
+    </shell:SystemTray.BackgroundColor>
+    <shell:SystemTray.ForegroundColor>
+        <StaticResource ResourceKey="AppForegroundColor"/>
+    </shell:SystemTray.ForegroundColor>
+
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator IsVisible="True" Text="{Binding StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}" IsIndeterminate="False"/>
+    </shell:SystemTray.ProgressIndicator>
+
     <phone:PhoneApplicationPage.ApplicationBar>
-		<shell:ApplicationBar BackgroundColor="{StaticResource PhoneForegroundColor}" ForegroundColor="{StaticResource PhoneBackgroundColor}" IsMenuEnabled="True" IsVisible="True">
-			<shell:ApplicationBar.MenuItems>
-				<shell:ApplicationBarMenuItem x:Name="appbar_delete" Text="delete" Click="appbar_delete_Click_1" />
-				<shell:ApplicationBarMenuItem x:Name="miShareContact" Text="share" Click="miShareContact_Click_1" />
-				<shell:ApplicationBarMenuItem x:Name="miCreateContact" Text="export to contact" Click="miCreateContact_Click" />
-			</shell:ApplicationBar.MenuItems>
-			<shell:ApplicationBarIconButton x:Name="appbar_save" IconUri="/icons/appbar.save.rest.png" Text="save" Click="appbar_save_Click_1" />
-			<shell:ApplicationBarIconButton IconUri="/icons/add.png" Text="add visit" Click="ApplicationBarIconButton_Click_1" />
-			<shell:ApplicationBarIconButton IconUri="/icons/Clean.png" Click="ResetCleanApplicationBarButton_Click" Text="reset"/>
-		</shell:ApplicationBar>
-	</phone:PhoneApplicationPage.ApplicationBar>
-	<!--LayoutRoot is the root grid where all page content is placed-->
-	<Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
-		<controls:Pivot Title="{Binding Path=StringResources.RVPage_Headline, Source={StaticResource LocalizedStrings}}" Foreground="{StaticResource AppForegroundBrush}" LoadedPivotItem="Pivot_LoadedPivotItem_1">
-			<controls:PivotItem Header="{Binding Path=StringResources.RVPage_Info_Headline, Source={StaticResource LocalizedStrings}}">
-				<Grid>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="250" />
-						<RowDefinition Height="*" />
-					</Grid.RowDefinitions>
-						<Grid Row="0">
-						<Maps:Map IsHitTestVisible="False" Name="mapInfo" LogoVisibility="Collapsed" CopyrightVisibility="Collapsed">
-							<Maps:Map.CredentialsProvider>
-								<Maps:ApplicationIdCredentialsProvider ApplicationId="AkRhgqPR6aujo-xib-KiR8Lt20wsn89GY4R9SP0RA6h4w7QT9mS3kKwYKKxjklfV"/>
-							</Maps:Map.CredentialsProvider>
-						</Maps:Map>
-						</Grid>
-						<Grid Row="1">
-							<ScrollViewer>
-								<StackPanel>
-								<local:HeaderControl HeaderText="{Binding Path=StringResources.RVPage_Info_Address, Source={StaticResource LocalizedStrings}}" IconSource="/icons/Maps.png"/>
+        <shell:ApplicationBar BackgroundColor="{StaticResource AppAccentColor}" ForegroundColor="{StaticResource AppForegroundColor}" IsMenuEnabled="True" IsVisible="True">
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="appbar_delete" Text="delete" Click="appbar_delete_Click_1" />
+                <shell:ApplicationBarMenuItem x:Name="miShareContact" Text="share" Click="miShareContact_Click_1" />
+                <shell:ApplicationBarMenuItem x:Name="miCreateContact" Text="export to contact" Click="miCreateContact_Click" />
+            </shell:ApplicationBar.MenuItems>
+            <shell:ApplicationBarIconButton x:Name="appbar_save" IconUri="/icons/appbar.save.rest.png" Text="save" Click="appbar_save_Click_1" />
+            <shell:ApplicationBarIconButton IconUri="/icons/add.png" Text="add visit" Click="ApplicationBarIconButton_Click_1" />
+            <shell:ApplicationBarIconButton IconUri="/icons/Clean.png" Click="ResetCleanApplicationBarButton_Click" Text="reset"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
+        <controls:Pivot Title="{Binding StringResources.RVPage_Headline, Source={StaticResource LocalizedStrings}}" Foreground="{StaticResource AppForegroundBrush}" LoadedPivotItem="Pivot_LoadedPivotItem_1">
+            <controls:PivotItem Header="{Binding StringResources.RVPage_Info_Headline, Source={StaticResource LocalizedStrings}}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="250" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Maps:Map IsHitTestVisible="False" x:Name="mapInfo" LogoVisibility="Collapsed" CopyrightVisibility="Collapsed">
+                            <Maps:Map.CredentialsProvider>
+                                <Maps:ApplicationIdCredentialsProvider ApplicationId="AkRhgqPR6aujo-xib-KiR8Lt20wsn89GY4R9SP0RA6h4w7QT9mS3kKwYKKxjklfV"/>
+                            </Maps:Map.CredentialsProvider>
+                        </Maps:Map>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <ScrollViewer>
+                            <StackPanel>
+                                <local:HeaderControl HeaderText="{Binding StringResources.RVPage_Info_Address, Source={StaticResource LocalizedStrings}}" IconSource="/icons/Maps.png"/>
                                 <StackPanel Orientation="Horizontal">
-                                    <telerikPrimitives:RadImageButton Visibility="{Binding ReturnVisitData.FormattedAddress, Mode=OneWay, Converter={StaticResource StringLengthToVisibilityConverter}}" Padding="0" Margin="0,-25,0,0" MinWidth="80" MinHeight="80" RestStateImageSource="/icons/gps.png" Tap="ShowBingMapHyperlinkButton_Click" ButtonShape="Ellipse" ImageStretch="Fill" />
-                                    <TextBlock Visibility="{Binding ReturnVisitData.FormattedAddress, Mode=OneWay, Converter={StaticResource StringLengthToVisibilityConverter}}" TextWrapping="Wrap" Text="{Binding ReturnVisitData.FormattedAddress}" />
+                                    <telerikPrimitives:RadImageButton Visibility="{Binding ReturnVisitData.FormattedAddress, Converter={StaticResource StringLengthToVisibilityConverter}, Mode=OneWay}" Padding="0" Margin="0,-25,0,0" MinWidth="80" MinHeight="80" RestStateImageSource="/icons/gps.png" Tap="ShowBingMapHyperlinkButton_Click" ButtonShape="Ellipse" ImageStretch="Fill" />
+                                    <TextBlock Visibility="{Binding ReturnVisitData.FormattedAddress, Converter={StaticResource StringLengthToVisibilityConverter}, Mode=OneWay}" TextWrapping="Wrap" Text="{Binding ReturnVisitData.FormattedAddress}" />
                                 </StackPanel>
-									<TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.LocationNotes}"/>
-								<local:HeaderControl HeaderText="{Binding Path=StringResources.RVPage_Info_PersonalInfo, Source={StaticResource LocalizedStrings}}" IconSource="/icons/add-user.png"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.LocationNotes}"/>
+                                <local:HeaderControl HeaderText="{Binding StringResources.RVPage_Info_PersonalInfo, Source={StaticResource LocalizedStrings}}" IconSource="/icons/add-user.png"/>
                                 <TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.NameOrDescription}"/>
-									<HyperlinkButton Click="PhoneNumberHyperlinkButton_Click" Content="{Binding ReturnVisitData.PhoneNumber}" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="-10,0,0,0" FontSize="20"/>
-									<TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.PhysicalDescription}"/>
-								</StackPanel>
-							</ScrollViewer>
-						</Grid>
-				</Grid>
-			</controls:PivotItem>
-			<controls:PivotItem Header="{Binding Path=StringResources.RVPage_Personal_Headline, Source={StaticResource LocalizedStrings}}">
-				<Grid>
-					<StackPanel>
-						<telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="PersonalFullName" Text="{Binding ReturnVisitData.FullName, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Personal_FullName, Source={StaticResource LocalizedStrings}}"/>
-						<telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="Number" Text="{Binding ReturnVisitData.Age, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Personal_Age, Source={StaticResource LocalizedStrings}}"/>
-						<telerikInput:RadListPicker SelectedItem="{Binding ReturnVisitData.Gender, Mode=TwoWay}">
-							<System:String>Male</System:String>
-							<System:String>Female</System:String>
-						</telerikInput:RadListPicker>
-						<telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="TelephoneNumber" Text="{Binding ReturnVisitData.PhoneNumber, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Personal_PhoneNumber, Source={StaticResource LocalizedStrings}}"/>
-						<telerikPrimitives:RadTextBox TextWrapping="Wrap" Height="247" AcceptsReturn="True" Text="{Binding ReturnVisitData.PhysicalDescription, Mode=TwoWay}" InputScope="Text" Watermark="{Binding Path=StringResources.RVPage_Personal_Description, Source={StaticResource LocalizedStrings}}"/>
-					</StackPanel>
-				</Grid>
-			</controls:PivotItem>
-			<controls:PivotItem Header="{Binding Path=StringResources.RVPage_Address_Headline, Source={StaticResource LocalizedStrings}}">
-				<Grid>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="*" />
-					</Grid.RowDefinitions>
-					<Grid Grid.Row="0">
-						<StackPanel>
-							<!--<ProgressBar Height="10" IsIndeterminate="True" Foreground="{StaticResource AppAccentBrush}"/>-->
-							<TextBlock TextWrapping="Wrap" Text="{Binding Path=StringResources.RVPage_Address_CurrentAddress, Source={StaticResource LocalizedStrings}}"/>
-							<StackPanel Height="85" Orientation="Horizontal">
-								<Button Content="{Binding Path=StringResources.RVPage_Address_Use, Source={StaticResource LocalizedStrings}}" Click="Button_Click_1" />
-								<StackPanel>
-									<TextBlock x:Name="tbCurrentAddress" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
-									<TextBlock x:Name="tbCurrentCityStateZip" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
-									<TextBlock x:Name="tbCurrentCountry" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
-								</StackPanel>
-							</StackPanel>
-						</StackPanel>
-					</Grid>
-					<Grid Grid.Row="1">
-						<ScrollViewer>
-							<StackPanel>
-								<telerikPrimitives:RadTextBox Text="{Binding ReturnVisitData.Address1, Mode=TwoWay}" TextWrapping="Wrap" InputScope="AddressStreet" Watermark="{Binding Path=StringResources.RVPage_Address_Address1, Source={StaticResource LocalizedStrings}}"/>
-								<telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="AddressStreet" Text="{Binding ReturnVisitData.Address2, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Address_Address2, Source={StaticResource LocalizedStrings}}"/>
-								<telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="AddressCity" Text="{Binding ReturnVisitData.City, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Address_City, Source={StaticResource LocalizedStrings}}"/>
-								<telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="AddressStateOrProvince" Text="{Binding ReturnVisitData.StateProvinceDistrict, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Address_StateDistrict, Source={StaticResource LocalizedStrings}}"/>
-								<telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="PostalCode" Text="{Binding ReturnVisitData.PostalCode, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Address_PostalCode, Source={StaticResource LocalizedStrings}}"/>
-								<telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="AddressCountryName" Text="{Binding ReturnVisitData.Country, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Address_Country, Source={StaticResource LocalizedStrings}}"/>
-								<telerikPrimitives:RadTextBox TextWrapping="Wrap" Height="247" AcceptsReturn="True" InputScope="Text" Text="{Binding ReturnVisitData.LocationNotes, Mode=TwoWay}" Watermark="{Binding Path=StringResources.RVPage_Address_LocationNotes, Source={StaticResource LocalizedStrings}}"/>
-							</StackPanel>
-						</ScrollViewer>
-					</Grid>
-				</Grid>
-			</controls:PivotItem>
-			<controls:PivotItem Header="{Binding Path=StringResources.RVPage_Reminders_Headline, Source={StaticResource LocalizedStrings}}">
-				<Grid>
-					<StackPanel>
-						<telerikPrimitives:RadTextBox Name="tbReminderNotes" InputScope="Text" TextWrapping="Wrap" AcceptsReturn="True" Height="125" Margin="0,-10" Watermark="{Binding Path=StringResources.RVPage_Reminders_Notes, Source={StaticResource LocalizedStrings}}"/>
-						<telerikInput:RadDatePicker Name="dpReminderDate" VerticalAlignment="Stretch" Margin="0,-10"/>
-						<telerikInput:RadTimePicker Name="tpReminderTime" VerticalAlignment="Stretch" Margin="0,-10"/>
-						<Button Click="AddReminderButton_Click" Content="{Binding Path=StringResources.RVPage_Reminders_AddReminder, Source={StaticResource LocalizedStrings}}"/>
-						<ListBox Name="lbReminders" >
-							<ListBox.ItemTemplate>
-								<DataTemplate>
-									<StackPanel>
-										<TextBlock Text="{Binding Content}" Style="{StaticResource PhoneTextLargeStyle}" TextTrimming="WordEllipsis" />
-										<TextBlock Text="{Binding BeginTime, StringFormat=\{0:f\}}" Style="{StaticResource PhoneTextAccentStyle}" TextTrimming="WordEllipsis" />
-									</StackPanel>
-								</DataTemplate>
-							</ListBox.ItemTemplate>
-						</ListBox>
-					</StackPanel>
-				</Grid>
-			</controls:PivotItem>
-			<controls:PivotItem Header="{Binding Path=StringResources.RVPage_Visits_Headline, Source={StaticResource LocalizedStrings}}">
-				<Grid>
-    <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-    </Grid.RowDefinitions>
-					<Grid Row="0">
-						<ListBox ItemsSource="{Binding ReturnVisitData.PreviousVisits}" SelectionChanged="PreviousVisitListBox_SelectionChanged" >
-							<ListBox.ItemTemplate>
-								<DataTemplate>
-									<StackPanel>
-										<TextBlock Foreground="{StaticResource AppForegroundBrush}" Text="{Binding Date, StringFormat=\{0:D\}}" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                        <TextBlock Foreground="{StaticResource AppForegroundBrush}" Text="{Binding Date, Converter={StaticResource DateTimeToShortTimeValueConverter}, StringFormat=@ \{0\}}" Style="{StaticResource PhoneTextSmallStyle}" Margin="12,0"/> 
-										<TextBlock Text="{Binding Notes}" Height="50" TextWrapping="Wrap" TextTrimming="WordEllipsis" Style="{StaticResource PhoneTextSmallStyle}" />
-										<StackPanel Orientation="Horizontal">
+                                <HyperlinkButton Click="PhoneNumberHyperlinkButton_Click" Content="{Binding ReturnVisitData.PhoneNumber}" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="-10,0,0,0" FontSize="20"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding ReturnVisitData.PhysicalDescription}"/>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+            </controls:PivotItem>
+            <controls:PivotItem Header="{Binding StringResources.RVPage_Personal_Headline, Source={StaticResource LocalizedStrings}}">
+                <Grid>
+                    <StackPanel>
+                        <telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="PersonalFullName" Text="{Binding ReturnVisitData.FullName, Mode=TwoWay}" Watermark="{Binding StringResources.RVPage_Personal_FullName, Source={StaticResource LocalizedStrings}}" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
+                        <telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="Number" Text="{Binding ReturnVisitData.Age, Mode=TwoWay}" Watermark="{Binding StringResources.RVPage_Personal_Age, Source={StaticResource LocalizedStrings}}" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
+                        <telerikInput:RadListPicker Foreground="White" SelectedItem="{Binding ReturnVisitData.Gender, Mode=TwoWay}" BorderBrush="{StaticResource AppForegroundBrush}" Background="{StaticResource AppForegroundBrush}">
+                            <System:String>Male</System:String>
+                            <System:String>Female</System:String>
+                        </telerikInput:RadListPicker>
+                        <telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="TelephoneNumber" Text="{Binding ReturnVisitData.PhoneNumber, Mode=TwoWay}" Watermark="{Binding StringResources.RVPage_Personal_PhoneNumber, Source={StaticResource LocalizedStrings}}" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
+                        <telerikPrimitives:RadTextBox TextWrapping="Wrap" Height="247" AcceptsReturn="True" Text="{Binding ReturnVisitData.PhysicalDescription, Mode=TwoWay}" InputScope="Text" Watermark="{Binding StringResources.RVPage_Personal_Description, Source={StaticResource LocalizedStrings}}" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
+                    </StackPanel>
+                </Grid>
+            </controls:PivotItem>
+            <controls:PivotItem Header="{Binding StringResources.RVPage_Address_Headline, Source={StaticResource LocalizedStrings}}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <StackPanel>
+                            <!--<ProgressBar Height="10" IsIndeterminate="True" Foreground="{StaticResource AppAccentBrush}"/>-->
+                            <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.RVPage_Address_CurrentAddress, Source={StaticResource LocalizedStrings}}"/>
+                            <StackPanel Height="85" Orientation="Horizontal">
+                                <Button Content="{Binding StringResources.RVPage_Address_Use, Source={StaticResource LocalizedStrings}}" Click="Button_Click_1" Style="{StaticResource SettingsButtonBaseControlTemplate}" />
+                                <StackPanel>
+                                    <TextBlock x:Name="tbCurrentAddress" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
+                                    <TextBlock x:Name="tbCurrentCityStateZip" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
+                                    <TextBlock x:Name="tbCurrentCountry" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <ScrollViewer>
+                            <StackPanel>
+                                <telerikPrimitives:RadTextBox Text="{Binding ReturnVisitData.Address1, Mode=TwoWay}" TextWrapping="Wrap" InputScope="AddressStreet" Watermark="{Binding StringResources.RVPage_Address_Address1, Source={StaticResource LocalizedStrings}}" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
+                                <telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="AddressStreet" Text="{Binding ReturnVisitData.Address2, Mode=TwoWay}" Watermark="{Binding StringResources.RVPage_Address_Address2, Source={StaticResource LocalizedStrings}}" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
+                                <telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="AddressCity" Text="{Binding ReturnVisitData.City, Mode=TwoWay}" Watermark="{Binding StringResources.RVPage_Address_City, Source={StaticResource LocalizedStrings}}" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
+                                <telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="AddressStateOrProvince" Text="{Binding ReturnVisitData.StateProvinceDistrict, Mode=TwoWay}" Watermark="{Binding StringResources.RVPage_Address_StateDistrict, Source={StaticResource LocalizedStrings}}" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
+                                <telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="PostalCode" Text="{Binding ReturnVisitData.PostalCode, Mode=TwoWay}" Watermark="{Binding StringResources.RVPage_Address_PostalCode, Source={StaticResource LocalizedStrings}}" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
+                                <telerikPrimitives:RadTextBox TextWrapping="Wrap" InputScope="AddressCountryName" Text="{Binding ReturnVisitData.Country, Mode=TwoWay}" Watermark="{Binding StringResources.RVPage_Address_Country, Source={StaticResource LocalizedStrings}}" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
+                                <telerikPrimitives:RadTextBox TextWrapping="Wrap" Height="247" AcceptsReturn="True" InputScope="Text" Text="{Binding ReturnVisitData.LocationNotes, Mode=TwoWay}" Watermark="{Binding StringResources.RVPage_Address_LocationNotes, Source={StaticResource LocalizedStrings}}" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+            </controls:PivotItem>
+            <controls:PivotItem Header="{Binding StringResources.RVPage_Reminders_Headline, Source={StaticResource LocalizedStrings}}">
+                <Grid>
+                    <StackPanel>
+                        <telerikPrimitives:RadTextBox x:Name="tbReminderNotes" InputScope="Text" TextWrapping="Wrap" AcceptsReturn="True" Height="125" Margin="0,-10" Watermark="{Binding StringResources.RVPage_Reminders_Notes, Source={StaticResource LocalizedStrings}}" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
+                        <telerikInput:RadDatePicker x:Name="dpReminderDate" VerticalAlignment="Stretch" Margin="0,-10" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" Template="{StaticResource RadDatePickerControlTemplateApp}"/>
+                        <telerikInput:RadTimePicker x:Name="tpReminderTime" VerticalAlignment="Stretch" Margin="0,-10" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" Style="{StaticResource RadTimePickerAppDefaultStyle}"/>
+                        <Button Click="AddReminderButton_Click" Content="{Binding StringResources.RVPage_Reminders_AddReminder, Source={StaticResource LocalizedStrings}}" Style="{StaticResource SettingsButtonBaseControlTemplate}"/>
+                        <ListBox x:Name="lbReminders" >
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Content}" Style="{StaticResource PhoneTextLargeStyle}" TextTrimming="WordEllipsis" />
+                                        <TextBlock Text="{Binding BeginTime, StringFormat=\{0:f\}}" Style="{StaticResource PhoneTextAccentStyle}" TextTrimming="WordEllipsis" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </Grid>
+            </controls:PivotItem>
+            <controls:PivotItem Header="{Binding StringResources.RVPage_Visits_Headline, Source={StaticResource LocalizedStrings}}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <ListBox ItemsSource="{Binding ReturnVisitData.PreviousVisits}" SelectionChanged="PreviousVisitListBox_SelectionChanged" >
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Foreground="{StaticResource AppForegroundBrush}" Text="{Binding Date, StringFormat=\{0:D\}}" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                        <TextBlock Foreground="{StaticResource AppForegroundBrush}" Text="{Binding Date, Converter={StaticResource DateTimeToShortTimeValueConverter}, StringFormat=@ \{0\}}" Style="{StaticResource PhoneTextSmallStyle}" Margin="12,0"/>
+                                        <TextBlock Text="{Binding Notes}" Height="50" TextWrapping="Wrap" TextTrimming="WordEllipsis" Style="{StaticResource PhoneTextSmallStyle}" />
+                                        <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding DaysSinceVisit}" Style="{StaticResource PhoneTextAccentStyle}" />
-											<TextBlock Text="{Binding Path=StringResources.RVPage_Visits_DaysSince, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextAccentStyle}" />
-										</StackPanel>
-									</StackPanel>
-								</DataTemplate>
-							</ListBox.ItemTemplate>
-						</ListBox>
-					</Grid>
-				</Grid>
-			</controls:PivotItem>
-		</controls:Pivot>
-	</Grid>
+                                            <TextBlock Text="{Binding StringResources.RVPage_Visits_DaysSince, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextAccentStyle}" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>
+    </Grid>
 
 </phone:PhoneApplicationPage>

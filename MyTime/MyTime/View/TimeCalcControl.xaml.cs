@@ -31,6 +31,7 @@ namespace FieldService.View
         {
             InitializeComponent();
             tpEnd.Value = DateTime.Now;
+            tspBreakTime.Value = new TimeSpan(0,0,0);
 
         }
 
@@ -38,8 +39,9 @@ namespace FieldService.View
         {
             var start = tpStart.Value ?? DateTime.MinValue;
             var end = tpEnd.Value ?? DateTime.MinValue;
+            var breakTime = tspBreakTime.Value ?? new TimeSpan(0,0,0);
 
-            TimeSpan t = end - start;
+            TimeSpan t = (end - start) - breakTime;
 
             if (t.Minutes < 0) {
                 MessageBox.Show("Start time must be before End Time.");

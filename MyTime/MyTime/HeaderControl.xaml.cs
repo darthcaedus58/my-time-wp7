@@ -6,7 +6,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -16,7 +18,7 @@ namespace FieldService
 	{
 		public static DependencyProperty HeaderTextProperty = DependencyProperty.Register("HeaderText", typeof (string), typeof (HeaderControl), new PropertyMetadata(new PropertyChangedCallback(HeaderTextPropertyChanged)));
 
-		public static DependencyProperty IconSourceProperty = DependencyProperty.Register("IconSource", typeof (ImageSource), typeof (HeaderControl), new PropertyMetadata(new PropertyChangedCallback(IconSourcePropertyChanged)));
+		public static DependencyProperty IconSourceProperty = DependencyProperty.Register("IconSource", typeof (string), typeof (HeaderControl), new PropertyMetadata(new PropertyChangedCallback(IconSourcePropertyChanged)));
 
 		public static new DependencyProperty ForegroundProperty = DependencyProperty.Register("Foreground", typeof (Brush), typeof (HeaderControl), new PropertyMetadata(App.Current.Resources["AppForegroundBrush"] as Brush, new PropertyChangedCallback(ForegroundPropertyChanged)));
 
@@ -28,9 +30,9 @@ namespace FieldService
 			set { SetValue(HeaderTextProperty, value); }
 		}
 
-		public ImageSource IconSource
+		public string IconSource
 		{
-			get { return (ImageSource) GetValue(IconSourceProperty); }
+			get { return (string) GetValue(IconSourceProperty); }
 			set { SetValue(IconSourceProperty, value); }
 		}
 
@@ -72,7 +74,7 @@ namespace FieldService
 
 			var c = d as HeaderControl;
 			if(c!= null) {
-				c.IconImage.Source = (ImageSource) e.NewValue;
+                c.imgBrush.ImageSource = new BitmapImage(new Uri(e.NewValue.ToString(), UriKind.Relative));
 			}
 		}
 
@@ -82,7 +84,8 @@ namespace FieldService
             var c = d as HeaderControl;
             if (c != null) {
                 //c.Background = (Brush)e.NewValue;
-                c.LayoutRoot.Background = (Brush)e.NewValue;
+                c.LayoutRoot.Background = (Brush) e.NewValue;
+                c.rectOpacityMask.Fill = (Brush) e.NewValue;
             }
         }
 
@@ -90,7 +93,8 @@ namespace FieldService
         {
             var c = d as HeaderControl;
             if (c != null) {
-                //c.Foreground = (Brush) e.NewValue;
+                //c.rectOpacityMask.Fill = (Brush) e.NewValue;
+                //c.rectOpacityMask.OpacityMask.Opacity = 1;
                 c.HeaderTextBlock.Foreground = (Brush)e.NewValue;
             }
         }
