@@ -869,4 +869,29 @@
   <data name="General_SelectDate" xml:space="preserve">
     <value>Seleccione una fecha</value>
   </data>
+  <data name="HowTo_WhatsNext_I1" xml:space="preserve">
+    <value>1.-Casa por casa en el seguimiento de registros. 
+2. Anote "no en casa" visita para una nueva visita.</value>
+  </data>
+  <data name="HowTo_WhatsNext_T1" xml:space="preserve">
+    <value>¿Qué sigue?</value>
+  </data>
+  <data name="HowTo_WhatsNew" xml:space="preserve">
+    <value>Qué hay de nuevo?</value>
+  </data>
+  <data name="HowTo_WhatsNew_FilterGPSButtons_I" xml:space="preserve">
+    <value>Ahora puede filtrar sus visitas de vuelta por la ciudad o asignarlos a través de GPS.</value>
+  </data>
+  <data name="HowTo_WhatsNew_GPSMapping_I" xml:space="preserve">
+    <value>Ver visitas de vuelta en un mapa mediante coordenadas GPS. Haga doble clic en una visita de regreso para abrirlo.</value>
+  </data>
+  <data name="HowTo_WhatsNew_SearchRVs_I" xml:space="preserve">
+    <value>Busca en tus visitas de retorno desde la página principal.</value>
+  </data>
+  <data name="HowTo_WhatsNew_ReportEntries_I" xml:space="preserve">
+    <value>Ver las ubicaciones de la literatura desde la pestaña de entradas en la página de informes.</value>
+  </data>
+  <data name="HowTo_WhatsNew_Presentations_I" xml:space="preserve">
+    <value>Tome una fotografía de las presentaciones de su KM para una fácil referencia.</value>
+  </data>
 </root>

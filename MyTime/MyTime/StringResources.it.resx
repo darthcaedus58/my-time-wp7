@@ -870,4 +870,29 @@
   <data name="General_SelectDate" xml:space="preserve">
     <value>Seleziona la data</value>
   </data>
+  <data name="HowTo_WhatsNext_I1" xml:space="preserve">
+    <value>1. Casa-a-Casa registro de rastreamento. 
+2. Grave "não em casa" visita para uma visita de retorno.</value>
+  </data>
+  <data name="HowTo_WhatsNext_T1" xml:space="preserve">
+    <value>Cosa c'è di nuovo?</value>
+  </data>
+  <data name="HowTo_WhatsNew" xml:space="preserve">
+    <value>Cosa c'è di nuovo?</value>
+  </data>
+  <data name="HowTo_WhatsNew_FilterGPSButtons_I" xml:space="preserve">
+    <value>È ora possibile filtrare le visite di ritorno per città o sulla mappa utilizzando il GPS.</value>
+  </data>
+  <data name="HowTo_WhatsNew_GPSMapping_I" xml:space="preserve">
+    <value>Vedi visite di ritorno su una mappa utilizzando le coordinate GPS. Fare doppio clic su una visita di ritorno per aprirlo.</value>
+  </data>
+  <data name="HowTo_WhatsNew_SearchRVs_I" xml:space="preserve">
+    <value>Cerca i tuoi visite di ritorno dalla pagina principale.</value>
+  </data>
+  <data name="HowTo_WhatsNew_ReportEntries_I" xml:space="preserve">
+    <value>Guarda i posizionamenti letteratura dalla scheda le voci sulla pagina report.</value>
+  </data>
+  <data name="HowTo_WhatsNew_Presentations_I" xml:space="preserve">
+    <value>Scatta una foto delle presentazioni dal KM per un facile riferimento.</value>
+  </data>
 </root>

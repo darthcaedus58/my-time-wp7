@@ -790,15 +790,6 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select date.
-        /// </summary>
-        public static string General_SelectDate {
-            get {
-                return ResourceManager.GetString("General_SelectDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Select time.
         /// </summary>
         public static string General_SelectTime {
@@ -817,44 +808,62 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tracts added. You can now track the placement of tracts, such as Kingdom News #38..
+        ///   Looks up a localized string similar to What&apos;s New?.
         /// </summary>
-        public static string HowTo_WhatsNew_I1 {
+        public static string HowTo_WhatsNew {
             get {
-                return ResourceManager.GetString("HowTo_WhatsNew_I1", resourceCulture);
+                return ResourceManager.GetString("HowTo_WhatsNew", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FAQ Section.  Go to Settings &gt; FAQ..
+        ///   Looks up a localized string similar to You can now filter your return visits by city or map them using GPS..
         /// </summary>
-        public static string HowTo_WhatsNew_I2 {
+        public static string HowTo_WhatsNew_FilterGPSButtons_I {
             get {
-                return ResourceManager.GetString("HowTo_WhatsNew_I2", resourceCulture);
+                return ResourceManager.GetString("HowTo_WhatsNew_FilterGPSButtons_I", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Whats New?.
+        ///   Looks up a localized string similar to View return visits on a map using GPS coordinates. Double Click on a return visit to open it..
         /// </summary>
-        public static string HowTo_WhatsNew_T1 {
+        public static string HowTo_WhatsNew_GPSMapping_I {
             get {
-                return ResourceManager.GetString("HowTo_WhatsNew_T1", resourceCulture);
+                return ResourceManager.GetString("HowTo_WhatsNew_GPSMapping_I", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Whats New?.
+        ///   Looks up a localized string similar to Take a picture of the presentations from your KM for easy reference..
         /// </summary>
-        public static string HowTo_WhatsNew_T2 {
+        public static string HowTo_WhatsNew_Presentations_I {
             get {
-                return ResourceManager.GetString("HowTo_WhatsNew_T2", resourceCulture);
+                return ResourceManager.GetString("HowTo_WhatsNew_Presentations_I", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View your literature placements from the entries tab on the reports page..
+        /// </summary>
+        public static string HowTo_WhatsNew_ReportEntries_I {
+            get {
+                return ResourceManager.GetString("HowTo_WhatsNew_ReportEntries_I", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search your return visits from the main page..
+        /// </summary>
+        public static string HowTo_WhatsNew_SearchRVs_I {
+            get {
+                return ResourceManager.GetString("HowTo_WhatsNew_SearchRVs_I", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 1.  House-to-House Record Tracking.
-        ///2.  View Presentations from KM..
+        ///2.  Record &quot;not at home&quot; visit for a return visit..
         /// </summary>
         public static string HowTo_WhatsNext_I1 {
             get {
@@ -1039,15 +1048,6 @@ namespace FieldService {
         public static string MainPage_Messages_DonatePlease {
             get {
                 return ResourceManager.GetString("MainPage_Messages_DonatePlease", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to presentations.
-        /// </summary>
-        public static string MainPage_Presentations_Headline {
-            get {
-                return ResourceManager.GetString("MainPage_Presentations_Headline", resourceCulture);
             }
         }
         

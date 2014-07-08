@@ -792,21 +792,9 @@
   <data name="HowTo_Header" xml:space="preserve">
     <value>new version!</value>
   </data>
-  <data name="HowTo_WhatsNew_I1" xml:space="preserve">
-    <value>Tracts added. You can now track the placement of tracts, such as Kingdom News #38.</value>
-  </data>
-  <data name="HowTo_WhatsNew_I2" xml:space="preserve">
-    <value>FAQ Section.  Go to Settings &gt; FAQ.</value>
-  </data>
-  <data name="HowTo_WhatsNew_T1" xml:space="preserve">
-    <value>Whats New?</value>
-  </data>
-  <data name="HowTo_WhatsNew_T2" xml:space="preserve">
-    <value>Whats New?</value>
-  </data>
   <data name="HowTo_WhatsNext_I1" xml:space="preserve">
     <value>1.  House-to-House Record Tracking.
-2.  View Presentations from KM.</value>
+2.  Record "not at home" visit for a return visit.</value>
   </data>
   <data name="HowTo_WhatsNext_T1" xml:space="preserve">
     <value>Whats Next?</value>
@@ -840,9 +828,6 @@
   </data>
   <data name="ViewPreviousVisitPage_Tracts" xml:space="preserve">
     <value> Tracts</value>
-  </data>
-  <data name="MainPage_Presentations_Headline" xml:space="preserve">
-    <value>presentations</value>
   </data>
   <data name="MainPage_MainMenu_HouseToHouseRecords" xml:space="preserve">
     <value>house to house</value>
@@ -889,7 +874,22 @@
   <data name="General_SelectTime" xml:space="preserve">
     <value>Select time</value>
   </data>
-  <data name="General_SelectDate" xml:space="preserve">
-    <value>Select date</value>
+  <data name="HowTo_WhatsNew" xml:space="preserve">
+    <value>What's New?</value>
+  </data>
+  <data name="HowTo_WhatsNew_FilterGPSButtons_I" xml:space="preserve">
+    <value>You can now filter your return visits by city or map them using GPS.</value>
+  </data>
+  <data name="HowTo_WhatsNew_GPSMapping_I" xml:space="preserve">
+    <value>View return visits on a map using GPS coordinates. Double Click on a return visit to open it.</value>
+  </data>
+  <data name="HowTo_WhatsNew_SearchRVs_I" xml:space="preserve">
+    <value>Search your return visits from the main page.</value>
+  </data>
+  <data name="HowTo_WhatsNew_ReportEntries_I" xml:space="preserve">
+    <value>View your literature placements from the entries tab on the reports page.</value>
+  </data>
+  <data name="HowTo_WhatsNew_Presentations_I" xml:space="preserve">
+    <value>Take a picture of the presentations from your KM for easy reference.</value>
   </data>
 </root>
