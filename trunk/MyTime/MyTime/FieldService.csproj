@@ -577,7 +577,9 @@
       <LastGenOutput>StringResources.it2.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="StringResources.nl.resx" />
+    <EmbeddedResource Include="StringResources.nl.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="StringResources.pt.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -827,4 +827,59 @@
   <data name="TerritoryList_TerritoryNumberFormatString" xml:space="preserve">
     <value>Territorio n º {0}</value>
   </data>
+  <data name="AddRBCTimePage_DeleteConfirmation" xml:space="preserve">
+    <value>Auxiliary Time Deleted.</value>
+  </data>
+  <data name="AddRBCTimePage_DeleteFailed" xml:space="preserve">
+    <value>Deleting Failed.</value>
+  </data>
+  <data name="AddRBCTimePage_SaveConfirmation" xml:space="preserve">
+    <value>Time: {0} Hours Saved.</value>
+  </data>
+  <data name="AddRBCTimePage_SaveFailed" xml:space="preserve">
+    <value>Save Failed.</value>
+  </data>
+  <data name="HowTo_Header" xml:space="preserve">
+    <value>new version!</value>
+  </data>
+  <data name="HowTo_WhatsNew_I1" xml:space="preserve">
+    <value>Tracts added. You can now track the placement of tracts, such as Kingdom News #38.</value>
+  </data>
+  <data name="HowTo_WhatsNew_I2" xml:space="preserve">
+    <value>FAQ Section.  Go to Settings &gt; FAQ.</value>
+  </data>
+  <data name="HowTo_WhatsNew_T1" xml:space="preserve">
+    <value>Whats New?</value>
+  </data>
+  <data name="HowTo_WhatsNew_T2" xml:space="preserve">
+    <value>Whats New?</value>
+  </data>
+  <data name="HowTo_WhatsNext_I1" xml:space="preserve">
+    <value>1.  House-to-House Record Tracking.
+2.  View Presentations from KM.</value>
+  </data>
+  <data name="HowTo_WhatsNext_T1" xml:space="preserve">
+    <value>Whats Next?</value>
+  </data>
+  <data name="MainPage_Presentations_Headline" xml:space="preserve">
+    <value>presentations</value>
+  </data>
+  <data name="StreetBuildingList_HouseCountFormatString" xml:space="preserve">
+    <value>{0} Not at Homes</value>
+  </data>
+  <data name="TimeCalc_BreakTime" xml:space="preserve">
+    <value>TIEMPO DE DESCANSO</value>
+  </data>
+  <data name="TimeCalc_CANCEL" xml:space="preserve">
+    <value>cancelar</value>
+  </data>
+  <data name="TimeCalc_EndTime" xml:space="preserve">
+    <value>TERMINAR EL TIEMPO</value>
+  </data>
+  <data name="TimeCalc_OK" xml:space="preserve">
+    <value>ok</value>
+  </data>
+  <data name="TimeCalc_StartTime" xml:space="preserve">
+    <value>HORA DE INICIO</value>
+  </data>
 </root>

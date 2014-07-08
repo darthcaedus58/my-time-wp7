@@ -597,7 +597,7 @@
     <value>Applicación Versión: </value>
   </data>
   <data name="SettingsPage_About_Copyright" xml:space="preserve">
-    <value>Copyright 2013 Square.HipToBe</value>
+    <value>Copyright 2014 Square.HipToBe</value>
   </data>
   <data name="SettingsPage_About_CoreVersion" xml:space="preserve">
     <value>Core Version: </value>
@@ -785,23 +785,23 @@
     <value>faq</value>
   </data>
   <data name="SettingsPage_FAQ_HowToEnterRVs_A" xml:space="preserve">
-    <value>There are two ways to enter RVs so they will show up on your report:
-1.       Using the built-in RV database.
-	a.       Save a new RV or enter an existing RV.
-	b.      Per the OD book, you don’t count the initial visit as an RV, so the first visit will not show up on your report, but all subsequent visits will be automatically counted on your report.
-2.       Manually count your RVs
-	a.       This method will only work if you don’t want to use the first method. You can’t use both at the same time.
-	b.      To turn on manually counting of RVs go to: “Settings &gt; Add Call Placements” and turn it off.
-	c.       Now you will be able to count RVs manually on your add time page.</value>
+    <value>Hay dos maneras de entrar en casas rodantes por lo que se mostrará en su informe:
+  1. Uso de la base de datos de RV incorporado. 
+    a. Guardar un nuevo RV o introduzca una casa rodante existente. 
+    b. Por el libro OD, no se cuenta la visita inicial como una casa rodante, por lo que la primera visita no se mostrará en su informe, pero todas las visitas subsiguientes serán contados de forma automática en su informe. 
+  2. Contar manualmente tus RVs 
+    a. Este método sólo funcionará si usted no desea utilizar el primer método. No puede usar las dos al mismo tiempo. 
+    b. Para activar el recuento manual de los vehículos recreativos, vaya a: "Ajustes &gt; Añadir Call Colocaciones "y apagarlo. 
+    c. Ahora vas a poder contar RVs manualmente en su página de tiempo de adición.</value>
   </data>
   <data name="SettingsPage_FAQ_HowToEnterRVs_Q" xml:space="preserve">
-    <value>How do I enter the number of return vists on my report?</value>
+    <value>¿Cómo se introduce el número de ocasiones en retorno en mi informe? </value>
   </data>
   <data name="SettingsPage_FAQ_WhyDontRVShow_A" xml:space="preserve">
-    <value>Per the OD book, the initial call is not counted on your time report.  Return visits are only counted on a subsequent visit which occurrs after the first initial visit.  If you are importing your return visits and have already made the initial call then you must save a 'dummy' initial visit to ensure that your return visit is counted on your report.  If you are not using the return visit features of this app, then you should go to " 'settings' &gt; 'Manually Track RVs &amp; Placements' " and set it to 'off' and you will be able to manually track your RVs.</value>
+    <value>Por el libro de OD, la llamada inicial no se cuenta en su informe de tiempo. Visitas de retorno sólo se cuentan en una visita posterior que occurrs después de la primera visita inicial. Si va a importar sus visitas de vuelta y ya ha efectuado la llamada inicial, entonces debe guardar una visita inicial "maniquí" para asegurar que su visita de vuelta se cuenta en su informe. Si no va a utilizar las características de visitas de retorno de esta aplicación, entonces usted debe ir a "en 'Configuración'&gt; 'manual de pistas Autocaravanas y Ubicaciones'" y la ajuste en "off" y usted será capaz de rastrear manualmente los vehículos recreativos .</value>
   </data>
   <data name="SettingsPage_FAQ_WhyDontRVShow_Q" xml:space="preserve">
-    <value>Why don't my return visits show on my report?</value>
+    <value>¿Por qué mis visitas posteriores muestran en mi informe?</value>
   </data>
   <data name="ViewPreviousVisitPage_Tracts" xml:space="preserve">
     <value> Tratados</value>
@@ -826,5 +826,38 @@
   </data>
   <data name="TerritoryList_TerritoryNumberFormatString" xml:space="preserve">
     <value>Territorio n º {0}</value>
+  </data>
+  <data name="AddRBCTimePage_DeleteConfirmation" xml:space="preserve">
+    <value>Auxiliar Tiempo eliminados.</value>
+  </data>
+  <data name="AddRBCTimePage_DeleteFailed" xml:space="preserve">
+    <value>Eliminación de Error.</value>
+  </data>
+  <data name="AddRBCTimePage_SaveConfirmation" xml:space="preserve">
+    <value>Hora: {0} horas ahorradas.</value>
+  </data>
+  <data name="AddRBCTimePage_SaveFailed" xml:space="preserve">
+    <value>Save Failed.</value>
+  </data>
+  <data name="HowTo_Header" xml:space="preserve">
+    <value>nueva versión!</value>
+  </data>
+  <data name="StreetBuildingList_HouseCountFormatString" xml:space="preserve">
+    <value>{0} En Casas</value>
+  </data>
+  <data name="TimeCalc_BreakTime" xml:space="preserve">
+    <value>TIEMPO DE DESCANSO</value>
+  </data>
+  <data name="TimeCalc_CANCEL" xml:space="preserve">
+    <value>cancelar</value>
+  </data>
+  <data name="TimeCalc_EndTime" xml:space="preserve">
+    <value>TERMINAR EL TIEMPO</value>
+  </data>
+  <data name="TimeCalc_OK" xml:space="preserve">
+    <value>ok</value>
+  </data>
+  <data name="TimeCalc_StartTime" xml:space="preserve">
+    <value>HORA DE INICIO</value>
   </data>
 </root>

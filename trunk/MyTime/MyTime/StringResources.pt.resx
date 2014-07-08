@@ -199,7 +199,7 @@
     <value>Falha ao Salvar.</value>
   </data>
   <data name="AddRBCTimePage_Time" xml:space="preserve">
-    <value>TIME</value>
+    <value>TEMPO</value>
   </data>
   <data name="AddTimePage_Books" xml:space="preserve">
     <value>Livros</value>
@@ -645,7 +645,7 @@
     <value>Versão da Aplicação: </value>
   </data>
   <data name="SettingsPage_About_Copyright" xml:space="preserve">
-    <value>Copyright 2013 Square.HipToBe</value>
+    <value>Copyright 2014 Square.HipToBe</value>
   </data>
   <data name="SettingsPage_About_CoreVersion" xml:space="preserve">
     <value>Versão do Core (Núcleo): </value>
@@ -787,5 +787,78 @@
   </data>
   <data name="TerritoryList_TerritoryNumberFormatString" xml:space="preserve">
     <value>Território # {0}</value>
+  </data>
+  <data name="AddTimePage_Tracts" xml:space="preserve">
+    <value>Folhetos</value>
+  </data>
+  <data name="MainPage_Report_Tracts" xml:space="preserve">
+    <value>Folhetos:	{0}
+</value>
+  </data>
+  <data name="MainPage_Time_Tracts" xml:space="preserve">
+    <value>Folhetos</value>
+  </data>
+  <data name="ReportingPage_Chart_Header" xml:space="preserve">
+    <value>gráfico</value>
+  </data>
+  <data name="ReportingPage_Chart_YourTime" xml:space="preserve">
+    <value>SEU TEMPO</value>
+  </data>
+  <data name="ReportingPage_Report_Tracts" xml:space="preserve">
+    <value> Folhetos</value>
+  </data>
+  <data name="AddCallPage_Tracts" xml:space="preserve">
+    <value>Folhetos</value>
+  </data>
+  <data name="HowTo_Header" xml:space="preserve">
+    <value>nova versão!</value>
+  </data>
+  <data name="Reporting_ReportHeader" xml:space="preserve">
+    <value>Relatório de serviço de campo para {0}:
+
+</value>
+  </data>
+  <data name="SettingsPage_FAQ_Headline" xml:space="preserve">
+    <value>faq</value>
+  </data>
+  <data name="SettingsPage_FAQ_HowToEnterRVs_A" xml:space="preserve">
+    <value>Há duas maneiras de entrar RVs para que eles irão aparecer em seu relatório: 
+  1. Utilizando a base de dados RV embutido. 
+    a. Salvar um novo RV ou digite um RV existente. 
+    b. Por livro OD, você não conta a visita inicial como um RV, então a primeira visita não vai aparecer em seu relatório, mas todas as visitas seguintes será automaticamente contado em seu relatório. 
+  2. Contar manualmente os RVs 
+    a. Este método só irá funcionar se você não quiser usar o primeiro método. Você não pode usar os dois ao mesmo tempo. 
+    b. Para ligar manualmente a contagem de RVs acesse: "Configurações &gt; Adicionar chamadas colocações "e desligá-lo. 
+    c. Agora você vai poder contar RVs manualmente em sua página de tempo adicional.</value>
+  </data>
+  <data name="SettingsPage_FAQ_HowToEnterRVs_Q" xml:space="preserve">
+    <value>Como faço para inserir o número de vists retorno sobre o meu relatório?</value>
+  </data>
+  <data name="SettingsPage_FAQ_WhyDontRVShow_A" xml:space="preserve">
+    <value>Por livro OD, a chamada inicial não é contado em seu relatório de tempo. Visitas de retorno só são contados em uma visita posterior que ocorre após a primeira visita inicial. Se você estiver importando as suas visitas de retorno e já fez a chamada inicial, em seguida, você deve salvar uma visita inicial "manequim" para garantir que sua visita de retorno é contado em seu relatório. Se você não estiver usando os recursos de retorno visita deste aplicativo, então você deve ir para "'Configurações' &gt; 'manualmente trilha RVs e Canais" "e configurá-lo para' off 'e você será capaz de controlar manualmente os RVs .</value>
+  </data>
+  <data name="SettingsPage_FAQ_WhyDontRVShow_Q" xml:space="preserve">
+    <value>Por que não mostrar as minhas visitas de retorno sobre o meu relatório?</value>
+  </data>
+  <data name="ViewPreviousVisitPage_Tracts" xml:space="preserve">
+    <value> Folhetos</value>
+  </data>
+  <data name="StreetBuildingList_HouseCountFormatString" xml:space="preserve">
+    <value>{0} não em Casas</value>
+  </data>
+  <data name="TimeCalc_BreakTime" xml:space="preserve">
+    <VALUE>TEMPO DE INTERVALO</VALUE>
+  </data>
+  <data name="TimeCalc_CANCEL" xml:space="preserve">
+    <value>cancelar</value>
+  </data>
+  <data name="TimeCalc_EndTime" xml:space="preserve">
+    <value>ACABAR COM O TEMPO</value>
+  </data>
+  <data name="TimeCalc_OK" xml:space="preserve">
+    <value>está bem</value>
+  </data>
+  <data name="TimeCalc_StartTime" xml:space="preserve">
+    <value>A HORA DE INÍCIO</value>
   </data>
 </root>

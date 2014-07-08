@@ -844,9 +844,6 @@
   <data name="MainPage_Presentations_Headline" xml:space="preserve">
     <value>presentations</value>
   </data>
-  <data name="MainPage_Presentations_Url" xml:space="preserve">
-    <value>http://square-hiptobe.com/fieldservice/presentations/en/presentations.html</value>
-  </data>
   <data name="MainPage_MainMenu_HouseToHouseRecords" xml:space="preserve">
     <value>house to house</value>
   </data>
@@ -870,5 +867,20 @@
   </data>
   <data name="TerritoryList_TerritoryNumberFormatString" xml:space="preserve">
     <value>Territory # {0}</value>
+  </data>
+  <data name="TimeCalc_BreakTime" xml:space="preserve">
+    <value>BREAK TIME</value>
+  </data>
+  <data name="TimeCalc_CANCEL" xml:space="preserve">
+    <value>cancel</value>
+  </data>
+  <data name="TimeCalc_EndTime" xml:space="preserve">
+    <value>END TIME</value>
+  </data>
+  <data name="TimeCalc_OK" xml:space="preserve">
+    <value>ok</value>
+  </data>
+  <data name="TimeCalc_StartTime" xml:space="preserve">
+    <value>START TIME</value>
   </data>
 </root>

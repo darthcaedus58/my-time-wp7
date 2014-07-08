@@ -570,7 +570,7 @@
     <value>Application Version: </value>
   </data>
   <data name="SettingsPage_About_Copyright" xml:space="preserve">
-    <value>Copyright 2013 Square.HipToBe</value>
+    <value>Copyright 2014 Square.HipToBe</value>
   </data>
   <data name="SettingsPage_About_CoreVersion" xml:space="preserve">
     <value>Core Version: </value>
@@ -817,5 +817,47 @@
   </data>
   <data name="TerritoryList_TerritoryNumberFormatString" xml:space="preserve">
     <value>Gebiet Nr. {0}</value>
+  </data>
+  <data name="BackupAndRestorePage_Messages_SkyDriveListingFailed" xml:space="preserve">
+    <value>Onedrive Listing fehlgeschlagen.</value>
+  </data>
+  <data name="AddRBCTimePage_DeleteConfirmation" xml:space="preserve">
+    <value>Hilfs gelöscht.</value>
+  </data>
+  <data name="AddRBCTimePage_DeleteFailed" xml:space="preserve">
+    <value>Das Löschen ist fehlgeschlagen.</value>
+  </data>
+  <data name="AddRBCTimePage_SaveConfirmation" xml:space="preserve">
+    <value>Zeit: {0} Stunden gespeichert.</value>
+  </data>
+  <data name="AddRBCTimePage_SaveFailed" xml:space="preserve">
+    <value>Speichern fehlgeschlagen.</value>
+  </data>
+  <data name="TimeReport_AuxHoursAndMinutes" xml:space="preserve">
+    <value>{0} Stunde (n) und {1} Minute (n) Hilfszeit</value>
+  </data>
+  <data name="HowTo_Header" xml:space="preserve">
+    <value>neuen Version!</value>
+  </data>
+  <data name="ReportingPage_Report_TotalHours" xml:space="preserve">
+    <value>TOTAL: {0} Stunde (n) und {1} Minute (n)</value>
+  </data>
+  <data name="StreetBuildingList_HouseCountFormatString" xml:space="preserve">
+    <value>{0} Nicht bei Häuser</value>
+  </data>
+  <data name="TimeCalc_BreakTime" xml:space="preserve">
+    <value>PAUSENZEIT</value>
+  </data>
+  <data name="TimeCalc_CANCEL" xml:space="preserve">
+    <value>stornieren</value>
+  </data>
+  <data name="TimeCalc_EndTime" xml:space="preserve">
+    <value>ENDE DER ZEIT</value>
+  </data>
+  <data name="TimeCalc_OK" xml:space="preserve">
+    <value>ok</value>
+  </data>
+  <data name="TimeCalc_StartTime" xml:space="preserve">
+    <value>STARTZEIT</value>
   </data>
 </root>

@@ -1025,15 +1025,6 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://square-hiptobe.com/fieldservice/presentations/en/presentations.html.
-        /// </summary>
-        public static string MainPage_Presentations_Url {
-            get {
-                return ResourceManager.GetString("MainPage_Presentations_Url", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Other Hours: 	{0:0.0}
         ///.
         /// </summary>
@@ -2190,6 +2181,51 @@ namespace FieldService {
         public static string TerritoryList_TerritoryNumberFormatString {
             get {
                 return ResourceManager.GetString("TerritoryList_TerritoryNumberFormatString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BREAK TIME.
+        /// </summary>
+        public static string TimeCalc_BreakTime {
+            get {
+                return ResourceManager.GetString("TimeCalc_BreakTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cancel.
+        /// </summary>
+        public static string TimeCalc_CANCEL {
+            get {
+                return ResourceManager.GetString("TimeCalc_CANCEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to END TIME.
+        /// </summary>
+        public static string TimeCalc_EndTime {
+            get {
+                return ResourceManager.GetString("TimeCalc_EndTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ok.
+        /// </summary>
+        public static string TimeCalc_OK {
+            get {
+                return ResourceManager.GetString("TimeCalc_OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to START TIME.
+        /// </summary>
+        public static string TimeCalc_StartTime {
+            get {
+                return ResourceManager.GetString("TimeCalc_StartTime", resourceCulture);
             }
         }
         
