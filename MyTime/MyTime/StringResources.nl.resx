@@ -645,7 +645,7 @@
     <value>Applicatie versie:</value>
   </data>
   <data name="SettingsPage_About_Copyright" xml:space="preserve">
-    <value>Copyright 2013 Square.HipToBe</value>
+    <value>Copyright 2014 Square.HipToBe</value>
   </data>
   <data name="SettingsPage_About_CoreVersion" xml:space="preserve">
     <value>Core Versie: </value>
@@ -768,23 +768,23 @@
     <value>NABEZOEK</value>
   </data>
   <data name="AddCallPage_Tracts" xml:space="preserve">
-    <value>Tracts</value>
+    <value>Traktaten</value>
   </data>
   <data name="AddTimePage_Tracts" xml:space="preserve">
-    <value>Tracts</value>
+    <value>Traktaten</value>
   </data>
   <data name="MainPage_Report_Tracts" xml:space="preserve">
-    <value>Tracts:	{0}
+    <value>Traktaten:	{0}
 </value>
   </data>
   <data name="MainPage_Time_Tracts" xml:space="preserve">
-    <value>Tracts</value>
+    <value>Traktaten</value>
   </data>
   <data name="ReportingPage_Report_Tracts" xml:space="preserve">
-    <value> Tracts</value>
+    <value> Traktaten</value>
   </data>
   <data name="Reporting_ReportHeader" xml:space="preserve">
-    <value>Field service report for {0}:
+    <value>Field service rapport voor {0}:
 
 </value>
   </data>
@@ -792,26 +792,26 @@
     <value>faq</value>
   </data>
   <data name="SettingsPage_FAQ_HowToEnterRVs_A" xml:space="preserve">
-    <value>There are two ways to enter RVs so they will show up on your report:
-1.       Using the built-in RV database.
-	a.       Save a new RV or enter an existing RV.
-	b.      Per the OD book, you don’t count the initial visit as an RV, so the first visit will not show up on your report, but all subsequent visits will be automatically counted on your report.
-2.       Manually count your RVs
-	a.       This method will only work if you don’t want to use the first method. You can’t use both at the same time.
-	b.      To turn on manually counting of RVs go to: “Settings &gt; Add Call Placements” and turn it off.
-	c.       Now you will be able to count RVs manually on your add time page.</value>
+    <value>Er zijn twee manieren om campers te voeren, zodat ze zal verschijnen op uw rapport:
+  1. Met behulp van de ingebouwde RV databank. 
+    a. Sla een nieuwe camper of voer een bestaande RV. 
+    b. Per de OD boek, tel je niet het eerste bezoek als een camper, dus het eerste bezoek zal niet te zien op uw rapport, maar alle latere bezoeken wordt automatisch geteld op uw rapport. 
+  2. Handmatig tel uw campers 
+    a. Deze methode werkt alleen als je niet wilt dat de eerste methode te gebruiken. Je kunt niet beide tegelijkertijd. 
+    b. U schakelt handmatig tellen van campers ga naar: "Instellingen &gt; Voeg Call Posities "en zet hem uit. 
+    c. Nu zul je in staat om campers handmatig rekenen op uw add tijd pagina.</value>
   </data>
   <data name="SettingsPage_FAQ_HowToEnterRVs_Q" xml:space="preserve">
-    <value>How do I enter the number of return vists on my report?</value>
+    <value>Hoe voer ik het aantal rendement vists op mijn verslag?</value>
   </data>
   <data name="SettingsPage_FAQ_WhyDontRVShow_A" xml:space="preserve">
-    <value>Per the OD book, the initial call is not counted on your time report.  Return visits are only counted on a subsequent visit which occurrs after the first initial visit.  If you are importing your return visits and have already made the initial call then you must save a 'dummy' initial visit to ensure that your return visit is counted on your report.  If you are not using the return visit features of this app, then you should go to " 'settings' &gt; 'Manually Track RVs &amp; Placements' " and set it to 'off' and you will be able to manually track your RVs.</value>
+    <value>Per de OD boek, wordt de eerste oproep niet op gerekend uw tijd verslag. Herhalingsbezoeken worden alleen geteld op een volgend bezoek die occurrs na de eerste eerste bezoek. Als u het importeren van uw terugkeer bezoeken en hebben al de eerste oproep gedaan dan moet je een 'dummy' eerste bezoek opslaan om ervoor te zorgen dat uw tegenbezoek wordt geteld op uw rapport. Als u niet het tegenbezoek kenmerken van deze app gebruiken, dan moet je naar "'Instellingen' &gt; 'Handmatig Track Campers en Posities" en zet deze op' off 'en u in staat zal zijn om uw campers handmatig bijhouden .</value>
   </data>
   <data name="SettingsPage_FAQ_WhyDontRVShow_Q" xml:space="preserve">
-    <value>Why don't my return visits show on my report?</value>
+    <value>Waarom komen mijn terugkeer bezoeken tonen op mijn verslag?</value>
   </data>
   <data name="ViewPreviousVisitPage_Tracts" xml:space="preserve">
-    <value> Tracts</value>
+    <value> Traktaten</value>
   </data>
   <data name="MainPage_MainMenu_HouseToHouseRecords" xml:space="preserve">
     <value>huis-tot-huis</value>
@@ -833,5 +833,32 @@
   </data>
   <data name="TerritoryList_TerritoryNumberFormatString" xml:space="preserve">
     <value>Grondgebied # {0}</value>
+  </data>
+  <data name="ReportingPage_Chart_Header" xml:space="preserve">
+    <value>tabel</value>
+  </data>
+  <data name="ReportingPage_Chart_YourTime" xml:space="preserve">
+    <value>JE TIJD</value>
+  </data>
+  <data name="HowTo_Header" xml:space="preserve">
+    <value>nieuwe versie!</value>
+  </data>
+  <data name="StreetBuildingList_HouseCountFormatString" xml:space="preserve">
+    <value>{0} Helemaal niet Homes</value>
+  </data>
+  <data name="TimeCalc_BreakTime" xml:space="preserve">
+    <value>PAUZE TIJD</value>
+  </data>
+  <data name="TimeCalc_CANCEL" xml:space="preserve">
+    <value>annuleren</value>
+  </data>
+  <data name="TimeCalc_EndTime" xml:space="preserve">
+    <value>EINDTIJD</value>
+  </data>
+  <data name="TimeCalc_OK" xml:space="preserve">
+    <value>ok</value>
+  </data>
+  <data name="TimeCalc_StartTime" xml:space="preserve">
+    <value>BEGINTIJD</value>
   </data>
 </root>
