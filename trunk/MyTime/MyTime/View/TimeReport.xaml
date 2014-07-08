@@ -31,11 +31,8 @@
     
     <phone:PhoneApplicationPage.Resources>
 		<my:DoubleToVisibilityValueConverter x:Key="DoubleToVisibilityValueConverter"/>
-		<!-- Data -->
 	</phone:PhoneApplicationPage.Resources>
-	<!--LayoutRoot is the root grid where all page content is placed-->
 	<Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
-		<!--Pivot Control-->
 		<controls:Pivot Foreground="{StaticResource AppForegroundBrush}" Background="{StaticResource AppBackgroundBrush}" Title="FIELD SERVICE">
             <controls:PivotItem Header="{Binding Path=StringResources.ReportingPage_Report_Headline, Source={StaticResource LocalizedStrings}}">
                 <Grid Height="Auto">
@@ -103,20 +100,22 @@
 						<ListBox.ItemTemplate>
 							<DataTemplate>
 								<StackPanel HorizontalAlignment="Stretch" Orientation="Vertical">
-									<TextBlock Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextLargeStyle}" Text="{Binding Date, StringFormat=\{0:D\}}" />
+									<TextBlock TextTrimming="WordEllipsis" Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextLargeStyle}" Text="{Binding Date, StringFormat=\{0:D\}}" />
 									<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Hours}" />
-									<TextBlock Margin="0" Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Notes}" TextTrimming="WordEllipsis" Visibility="{Binding Notes, Converter={StaticResource TextToVisibilityConverter}}" />
-                                     <Grid Margin="0,-12,0,0">
+									<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Notes}" TextTrimming="WordEllipsis" Visibility="{Binding Notes, Converter={StaticResource TextToVisibilityConverter}}" />
+                                     <Grid Visibility="{Binding IsRegularTime}" Margin="0,-12,0,0">
                                          <Grid.ColumnDefinitions>
                                              <ColumnDefinition Width="*" />
                                              <ColumnDefinition Width="*" />
                                              <ColumnDefinition Width="*" />
                                              <ColumnDefinition Width="*" />
+                                             <ColumnDefinition Width="*" />
                                          </Grid.ColumnDefinitions>
-                                        <Button Grid.Column="0" Width="133" Margin="-10,0,-10,0" Padding="0" HorizontalAlignment="Center" BorderThickness="0" Background="{StaticResource AppForegroundBrush}" Foreground="White" Content="0" />
-                                        <Button Grid.Column="1" Width="133" Margin="-10,0,-10,0" Padding="0" HorizontalAlignment="Center" BorderThickness="0" Background="#FF82817e" Foreground="White" Content="1" />
-                                        <Button Grid.Column="2" Width="133" Margin="-10,0,-10,0" Padding="0" HorizontalAlignment="Center" BorderThickness="0" Background="#ff9d9e80" Foreground="White" Content="2" />
-                                        <Button Grid.Column="3" Width="133" Margin="-10,0,-10,0" Padding="0" HorizontalAlignment="Center" BorderThickness="0" Background="{StaticResource AppAccentBrush}" Foreground="White" Content="3" />
+                                        <Button Grid.Column="0" Width="111" Margin="-10,0,-10,0" Padding="0" HorizontalAlignment="Center" BorderThickness="0" Background="{StaticResource AppForegroundBrush}" Foreground="White" Content="{Binding MagazinesCount}" />
+                                        <Button Grid.Column="1" Width="111" Margin="-10,0,-10,0" Padding="0" HorizontalAlignment="Center" BorderThickness="0" Background="#FF776988" Foreground="White" Content="{Binding BooksCount}" />
+                                        <Button Grid.Column="2" Width="111" Margin="-10,0,-10,0" Padding="0" HorizontalAlignment="Center" BorderThickness="0" Background="#FF82817e" Foreground="White" Content="{Binding BrochuresCount}" />
+                                        <Button Grid.Column="3" Width="111" Margin="-10,0,-10,0" Padding="0" HorizontalAlignment="Center" BorderThickness="0" Background="#ff9d9e80" Foreground="White" Content="{Binding TractsCount}" />
+                                        <Button Grid.Column="4" Width="111" Margin="-10,0,-10,0" Padding="0" HorizontalAlignment="Center" BorderThickness="0" Background="{StaticResource AppAccentBrush}" Foreground="White" Content="{Binding RVsCount}" />
                                      </Grid>
 								</StackPanel>
                             </DataTemplate>
