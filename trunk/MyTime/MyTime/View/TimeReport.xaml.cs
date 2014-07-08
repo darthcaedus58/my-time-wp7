@@ -138,7 +138,7 @@ namespace FieldService.View
 			    try {
 			        string header = StringResources.ApplicationName;
 			        NavigationContext.QueryString.TryGetValue("header", out header);
-			        pMainPivot.Title = header.ToUpper();
+			        pMainPivot.Title = (header ?? string.Format("{0:d} - {1:d}",_fromDate,_toDate)).ToUpper();
 			    } catch {}
 				RefreshTimeReport();
 			} catch (Exception ee) {
