@@ -77,7 +77,10 @@
 							LostFocus="acbSearchRv_LostFocus" 
 							Tap="acbSearchRv_Tap"  
 							Height="80" Width="350" 
-							x:Name="acbRvSearchBox" SuggestionsSource="{Binding RvSearchBoxSuggestionsSource}" IsEnabled="{Binding RvSearchBoxLoaded}">
+							x:Name="acbRvSearchBox" 
+                            SuggestionsSource="{Binding RvSearchBoxSuggestionsSource}" 
+                            IsEnabled="{Binding RvSearchBoxLoaded}" 
+                            Style="{StaticResource RadAutoCompleteBoxAppDefaultStyle}">
                             <telerik:RadAutoCompleteBox.SuggestionItemTemplate>
                                 <DataTemplate>
                                     <Grid Margin="-12,-3,0,-3">
@@ -199,14 +202,15 @@
                     <Grid Grid.Row="2">
                         <ScrollViewer Height="Auto" VerticalAlignment="Stretch">
                             <StackPanel>
+                                <local:HeaderControl IconSource="/icons/books.png" HeaderText="{Binding Path=StringResources.AddTimePage_Placements, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
                                 <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbMags" Suffix="{Binding StringResources.MainPage_Time_Magazines, Source={StaticResource LocalizedStrings}}" Value="{Binding MainPageMagazines, Mode=TwoWay}" />
                                 <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBrochures" Suffix="{Binding StringResources.MainPage_Time_Brochures, Source={StaticResource LocalizedStrings}}" Value="{Binding MainPageBrochures, Mode=TwoWay}" />
                                 <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBooks" Suffix="{Binding StringResources.MainPage_Time_Books, Source={StaticResource LocalizedStrings}}" Value="{Binding MainPageBooks, Mode=TwoWay}" />
                                 <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbTracts" Suffix="{Binding StringResources.MainPage_Time_Tracts, Source={StaticResource LocalizedStrings}}" Value="{Binding MainPageTracts, Mode=TwoWay}" />
                                 <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbReturnVisits" Suffix="{Binding StringResources.MainPage_Time_ReturnVisits, Source={StaticResource LocalizedStrings}}" Value="{Binding MainPageReturnVisits, Mode=TwoWay}" />
                                 <telerik:RadNumericUpDown Style="{StaticResource RadNumericUpDownStyleApp}" x:Name="tbBibleStudies" Suffix="{Binding StringResources.MainPage_Time_BibleStudies, Source={StaticResource LocalizedStrings}}" Value="{Binding MainPageBibleStudies, Mode=TwoWay}" />
-                                <TextBlock FontSize="26.667" Text="{Binding StringResources.MainPage_Time_Notes, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" />
-                                <TextBox x:Name="tbNotes" Height="180" Text="{Binding MainPageNotes, Mode=TwoWay}" TextWrapping="Wrap" />
+                                <local:HeaderControl HeaderText="{Binding StringResources.MainPage_Time_Notes, Source={StaticResource LocalizedStrings}}" IconSource="/icons/tasks.png" />
+                                <telerikPrimitives:RadTextBox x:Name="tbNotes" Height="180" Text="{Binding MainPageNotes, Mode=TwoWay}" TextWrapping="Wrap" Style="{StaticResource RadTextBoxAppDefaultStyle}" />
                             </StackPanel>
                         </ScrollViewer>
                     </Grid>
