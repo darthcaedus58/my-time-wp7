@@ -14,6 +14,7 @@
 
 using System;
 using System.ComponentModel;
+using System.Windows;
 
 namespace FieldService.Model
 {
@@ -288,8 +289,13 @@ namespace FieldService.Model
 
 		private string _editLink;
 		private string _notes;
+	    private int _magazinesCount;
+	    private int _brochuresCount;
+	    private int _booksCount;
+	    private int _rVsCount;
+	    private int _tractsCount;
 
-		public string EditLink
+	    public string EditLink
 		{
 			get { return _editLink; }
 			set
@@ -346,7 +352,6 @@ namespace FieldService.Model
 			}
 		}
 
-
 		/// <summary>
 		/// Gets or sets the date.
 		/// </summary>
@@ -381,7 +386,72 @@ namespace FieldService.Model
 			}
 		}
 
-		#region INotifyPropertyChanged Members
+	    public int MagazinesCount
+	    {
+	        get { return _magazinesCount; }
+	        set
+	        {
+	            if(value == _magazinesCount) return;
+                _magazinesCount = value;
+                NotifyPropertyChanged("MagazinesCount");
+	        }
+	    }
+
+	    public int BrochuresCount
+	    {
+	        get { return _brochuresCount; }
+	        set
+	        {
+	            if (value == _brochuresCount) return;
+                _brochuresCount = value;
+                NotifyPropertyChanged("BrochuresCount");
+	        }
+	    }
+
+	    public int BooksCount
+	    {
+	        get { return _booksCount; }
+	        set
+	        {
+	            if (value == _booksCount) return;
+                _booksCount = value;
+                NotifyPropertyChanged("BooksCount");
+	        }
+	    }
+
+	    public int RVsCount
+	    {
+	        get { return _rVsCount; }
+	        set
+	        {
+	            if (value == _rVsCount) return;
+                _rVsCount = value;
+                NotifyPropertyChanged("RVsCount");
+	        }
+	    }
+
+	    public int TractsCount
+	    {
+	        get { return _tractsCount; }
+	        set
+	        {
+	            if (value == _tractsCount) return;
+	            _tractsCount = value;
+                NotifyPropertyChanged("TractsCount");
+	        }
+	    }
+
+	    public Visibility IsRegularTime
+	    {
+	        get
+	        {
+	            if (_magazinesCount < 0 && _brochuresCount < 0 && _booksCount < 0 && _rVsCount < 0 && _tractsCount < 0)
+	                return Visibility.Collapsed;
+	            return Visibility.Visible;
+	        }
+	    }
+
+	    #region INotifyPropertyChanged Members
 
 		/// <summary>
 		/// Occurs when [property changed].
