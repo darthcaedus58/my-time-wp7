@@ -883,4 +883,13 @@
   <data name="TimeCalc_StartTime" xml:space="preserve">
     <value>START TIME</value>
   </data>
+  <data name="General_HoursAndMinutes" xml:space="preserve">
+    <value>h' hours and 'm' minutes'</value>
+  </data>
+  <data name="General_SelectTime" xml:space="preserve">
+    <value>Select time</value>
+  </data>
+  <data name="General_SelectDate" xml:space="preserve">
+    <value>Select date</value>
+  </data>
 </root>

@@ -860,4 +860,13 @@
   <data name="TimeCalc_StartTime" xml:space="preserve">
     <value>STARTZEIT</value>
   </data>
+  <data name="General_HoursAndMinutes" xml:space="preserve">
+    <value>h' Stunden und 'm' Minuten'</value>
+  </data>
+  <data name="General_SelectTime" xml:space="preserve">
+    <value>Wählen Sie Zeit</value>
+  </data>
+  <data name="General_SelectDate" xml:space="preserve">
+    <value>Datum wählen</value>
+  </data>
 </root>

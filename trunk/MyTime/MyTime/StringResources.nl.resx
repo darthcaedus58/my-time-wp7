@@ -861,4 +861,13 @@
   <data name="TimeCalc_StartTime" xml:space="preserve">
     <value>BEGINTIJD</value>
   </data>
+  <data name="General_HoursAndMinutes" xml:space="preserve">
+    <value>h' uren en 'm' minuten'</value>
+  </data>
+  <data name="General_SelectTime" xml:space="preserve">
+    <value>Selecteer tijd</value>
+  </data>
+  <data name="General_SelectDate" xml:space="preserve">
+    <value>Selecteer een datum</value>
+  </data>
 </root>
