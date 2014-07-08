@@ -598,7 +598,10 @@ namespace FieldService.View
             DateTime from = DateTime.Today.Month >= 9 ? new DateTime(DateTime.Today.Year, 9, 1) : new DateTime(DateTime.Today.Year - 1, 9, 1);
             DateTime to = from.AddYears(1).AddDays(-1);
 
-            NavigationService.Navigate(new Uri(string.Format("/View/TimeReport.xaml?from={0}&to={1}", from.ToString("MM-dd-yyyy"), to.ToString("MM-dd-yyyy")), UriKind.Relative));
+            NavigationService.Navigate(new Uri(string.Format("/View/TimeReport.xaml?from={0}&to={1}&header={2}", 
+                                                             from.ToString("MM-dd-yyyy"), 
+                                                             to.ToString("MM-dd-yyyy"),
+                                                             StringResources.MainPage_MainMenu_ServiceYearReport), UriKind.Relative));
         }
 
         /// <summary>
@@ -609,7 +612,11 @@ namespace FieldService.View
             var from = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
             DateTime to = new DateTime(@from.Year, @from.Month, 1).AddMonths(1).AddDays(-1);
 
-            NavigationService.Navigate(new Uri(string.Format("/View/TimeReport.xaml?from={0}&to={1}", from.ToString("MM-dd-yyyy"), to.ToString("MM-dd-yyyy")), UriKind.Relative));
+            NavigationService.Navigate(new Uri(string.Format("/View/TimeReport.xaml?from={0}&to={1}&header={2}", 
+                                                             from.ToString("MM-dd-yyyy"), 
+                                                             to.ToString("MM-dd-yyyy"),
+                                                             string.Format(StringResources.MainPage_MainMenu_MonthReport,
+                                                                            DateTime.Today.ToString("MMMM").ToLower())), UriKind.Relative));
         }
 
         /// <summary>

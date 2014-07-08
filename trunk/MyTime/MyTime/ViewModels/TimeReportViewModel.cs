@@ -136,7 +136,12 @@ namespace FieldService.ViewModels
                                         ItemId = td.ItemId,
                                         Minutes = td.Minutes,
                                         EditLink = string.Format("/View/RegularTime.xaml?id={0}", td.ItemId),
-                                        Notes = td.Notes
+                                        Notes = td.Notes,
+                                        MagazinesCount = td.Magazines,
+                                        BrochuresCount = td.Brochures,
+                                        BooksCount = td.Books,
+                                        TractsCount = td.Tracts,
+                                        RVsCount = td.ReturnVisits
                                 });
                         }
 
@@ -157,7 +162,12 @@ namespace FieldService.ViewModels
                                         ItemId = e.ItemID,
                                         Minutes = e.Minutes,
                                         EditLink = string.Format("/View/RBCTime.xaml?id={0}", e.ItemID),
-                                        Notes = e.Notes
+                                        Notes = e.Notes,
+                                        MagazinesCount = -1,
+                                        BrochuresCount = -1,
+                                        BooksCount = -1,
+                                        RVsCount = -1,
+                                        TractsCount = -1
                                 });
                         }
                         TimeReportEntryViewModel[] lte = lbTimeEntries.OrderBy(s => s.Date.Date).ToArray();
