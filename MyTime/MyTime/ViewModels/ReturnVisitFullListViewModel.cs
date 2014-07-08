@@ -112,7 +112,8 @@ namespace FieldService.ViewModels
                                         Address2 = string.Format("{0}, {1} {2}", r.City, r.StateProvince, r.Country),
                                         City = r.City,
                                         ImageSource = bi,
-                                        ItemId = r.ItemId
+                                        ItemId = r.ItemId,
+                                        DaysSinceInt = (DateTime.Now - r.LastVisitDate).Days
                                 });
                         }
                         IsRvFullListLoading = false;
