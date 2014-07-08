@@ -59,7 +59,7 @@
 		</StackPanel>
 
 		<Grid x:Name="ContentPanel" Grid.Row="2" Margin="12,0,12,0">
-			<StackPanel Grid.Row="0" Orientation="Vertical">
+			<StackPanel Orientation="Vertical">
 				<TextBlock Text="{Binding Path=StringResources.AddRBCTimePage_Note, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" FontSize="15" />
 				<FieldService:HeaderControl IconSource="/icons/calendar.png"  HeaderText="{Binding Path=StringResources.AddRBCTimePage_Date, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
                 <telerikInput:RadDatePicker x:Name="dpDatePicker" EmptyContent="{Binding Path=StringResources.General_SelectDate, Source={StaticResource LocalizedStrings}}"  Value="{Binding RBCTimeData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" />
@@ -78,9 +78,7 @@
 		</Grid>
 		
 		<Grid x:Name="NotesPanel" Grid.Row="3" >
-			<StackPanel Orientation="Vertical">
-				<telerikPrimitives:RadTextBox InputScope="Text" x:Name="tbNotes" TextWrapping="Wrap" Text="{Binding RBCTimeData.Notes, Mode=TwoWay}" AcceptsReturn="True" Height="{Binding ElementName=NotesPanel, Path=ActualHeight}" Style="{StaticResource RadTextBoxAppDefaultStyle}" />
-			</StackPanel>
+            <telerikPrimitives:RadTextBox Margin="1,1,1,10" InputScope="Text" x:Name="tbNotes" TextWrapping="Wrap" Text="{Binding RBCTimeData.Notes, Mode=TwoWay}" AcceptsReturn="True" Height="{Binding ElementName=NotesPanel, Path=ActualHeight}" Style="{StaticResource RadTextBoxAppDefaultStyle}" />
 		</Grid>
 	</Grid>
 
