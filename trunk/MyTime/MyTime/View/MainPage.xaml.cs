@@ -201,13 +201,6 @@ namespace FieldService.View
             
         }
 
-        private void ps_PresentationTextReceived(string text)
-        {
-            piHeaderDT.Header = StringResources.MainPage_Presentations_Headline;
-            lblDailyTextScripture.Visibility = Visibility.Collapsed; ;
-            lblDTSummary.Text = text;
-        }
-
         /// <summary>
         /// Handles the TapEvent event of the MenuImage control.
         /// </summary>

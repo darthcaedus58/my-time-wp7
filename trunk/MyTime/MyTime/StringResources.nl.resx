@@ -870,4 +870,29 @@
   <data name="General_SelectDate" xml:space="preserve">
     <value>Selecteer een datum</value>
   </data>
+  <data name="HowTo_WhatsNext_I1" xml:space="preserve">
+    <value>1. Huis-aan-Huis Record Tracking. 
+2. Neem "niet thuis" bezoek voor een tegenbezoek.</value>
+  </data>
+  <data name="HowTo_WhatsNext_T1" xml:space="preserve">
+    <value>Whats Next?</value>
+  </data>
+  <data name="HowTo_WhatsNew" xml:space="preserve">
+    <value>Wat is er nieuw?</value>
+  </data>
+  <data name="HowTo_WhatsNew_FilterGPSButtons_I" xml:space="preserve">
+    <value>U kunt nu uw terugkeer bezoeken filteren op stad of kaart ze met behulp van GPS.</value>
+  </data>
+  <data name="HowTo_WhatsNew_GPSMapping_I" xml:space="preserve">
+    <value>Bekijk terugkeer bezoeken op een kaart met behulp van GPS-coördinaten. Dubbelklik op een volgend bezoek aan het te openen.</value>
+  </data>
+  <data name="HowTo_WhatsNew_SearchRVs_I" xml:space="preserve">
+    <value>Zoek uw terugkeer bezoeken van de hoofdpagina.</value>
+  </data>
+  <data name="HowTo_WhatsNew_ReportEntries_I" xml:space="preserve">
+    <value>Bekijk uw literatuur plaatsingen op het tabblad inzendingen op de pagina rapporten.</value>
+  </data>
+  <data name="HowTo_WhatsNew_Presentations_I" xml:space="preserve">
+    <value>Maak een foto van de presentaties van uw KM voor gemakkelijke verwijzing.</value>
+  </data>
 </root>
