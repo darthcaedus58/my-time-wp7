@@ -135,6 +135,11 @@ namespace FieldService.View
 					NavigationService.GoBack();
 				_fromDate = DateTime.ParseExact(fromStr, "MM-dd-yyyy", CultureInfo.InvariantCulture);
 				_toDate = DateTime.ParseExact(toStr, "MM-dd-yyyy", CultureInfo.InvariantCulture);
+			    try {
+			        string header = StringResources.ApplicationName;
+			        NavigationContext.QueryString.TryGetValue("header", out header);
+			        pMainPivot.Title = header.ToUpper();
+			    } catch {}
 				RefreshTimeReport();
 			} catch (Exception ee) {
 				NavigationService.GoBack();

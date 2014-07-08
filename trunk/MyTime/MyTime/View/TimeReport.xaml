@@ -14,8 +14,7 @@
 	FontSize="{StaticResource PhoneFontSizeNormal}" 
 	Foreground="{StaticResource AppForegroundBrush}" 
 	Loaded="PhoneApplicationPage_Loaded" Orientation="Portrait" 
-	SupportedOrientations="Portrait" mc:Ignorable="d" 
-	d:DesignWidth="480" d:DesignHeight="728" 
+	SupportedOrientations="Portrait" mc:Ignorable="d"
 	xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives" 
 	xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
 	xmlns:telerikChart="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Chart"
@@ -32,8 +31,8 @@
     <phone:PhoneApplicationPage.Resources>
 		<my:DoubleToVisibilityValueConverter x:Key="DoubleToVisibilityValueConverter"/>
 	</phone:PhoneApplicationPage.Resources>
-	<Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
-		<controls:Pivot Foreground="{StaticResource AppForegroundBrush}" Background="{StaticResource AppBackgroundBrush}" Title="FIELD SERVICE">
+    <Grid Width="Auto" Height="Auto" x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
+		<controls:Pivot x:Name="pMainPivot" Foreground="{StaticResource AppForegroundBrush}" Background="{StaticResource AppBackgroundBrush}" >
             <controls:PivotItem Header="{Binding Path=StringResources.ReportingPage_Report_Headline, Source={StaticResource LocalizedStrings}}">
                 <Grid Height="Auto">
                     <Grid.RowDefinitions>
@@ -123,8 +122,7 @@
 					</ListBox>
 				</Grid>
             </controls:PivotItem>
-            <controls:PivotItem Header="chart" >
-                <!--TODO: translation-->
+            <controls:PivotItem Header="{Binding Path=StringResources.ReportingPage_Chart_Header, Source={StaticResource LocalizedStrings}}" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -132,8 +130,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <!--TODO: translation-->
-                    <local:HeaderControl Grid.Row="0" HeaderText="YOUR TIME" IconSource="/icons/clock.png" />
+                    <local:HeaderControl Grid.Row="0" HeaderText="{Binding Path=StringResources.ReportingPage_Chart_YourTime, Source={StaticResource LocalizedStrings}}" IconSource="/icons/clock.png" />
                     <Grid Grid.Row="1">
                         <telerikChart:RadCartesianChart Tap="MyChart_OnTap" x:Name="myChart" MinHeight="96" >
                             <telerikChart:RadCartesianChart.Behaviors>
