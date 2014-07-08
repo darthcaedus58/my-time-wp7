@@ -1187,7 +1187,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Notes.
+        ///   Looks up a localized string similar to NOTES.
         /// </summary>
         public static string MainPage_Time_Notes {
             get {

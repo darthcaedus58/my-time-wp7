@@ -49,7 +49,21 @@ namespace FieldService.Model
 
                 private string _city;
 
-                /// <summary>
+            private int _daysSinceLastVisit;
+
+            public int DaysSinceInt
+            {
+                get { return _daysSinceLastVisit; }
+                set
+                {
+                    if (value == _daysSinceLastVisit) return;
+                    _daysSinceLastVisit = value;
+                    NotifyPropertyChanged("DaysSinceLastVisit");
+                    NotifyPropertyChanged("DaysSinceInt");
+                }
+            }
+
+            /// <summary>
                 /// Gets or sets the item id.
                 /// </summary>
                 /// <value>The item id.</value>
@@ -65,12 +79,17 @@ namespace FieldService.Model
                         }
                 }
 
-                /// <summary>
-                /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-                /// </summary>
-                /// <value>The image source.</value>
-                /// <returns></returns>
-                public BitmapImage ImageSource
+            public string DaysSinceLastVisit
+            {
+                get { return string.Format("{0} {1}",_daysSinceLastVisit, StringResources.RVPage_Visits_DaysSince); }
+            }
+
+            /// <summary>
+            /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+            /// </summary>
+            /// <value>The image source.</value>
+            /// <returns></returns>
+            public BitmapImage ImageSource
                 {
                         get { return _image; }
 
