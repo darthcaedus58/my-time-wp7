@@ -24,7 +24,7 @@ namespace FieldService.View
 		private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e) 
 		{ 
 			//throw new NotImplementedException(); 
-			dpStartDate.Value = DateTime.Today;
+			dpToDate.Value = DateTime.Today;
 
 			var button = ApplicationBar.Buttons[0] as ApplicationBarIconButton;
 

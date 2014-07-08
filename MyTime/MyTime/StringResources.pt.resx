@@ -847,7 +847,7 @@
     <value>{0} não em Casas</value>
   </data>
   <data name="TimeCalc_BreakTime" xml:space="preserve">
-    <VALUE>TEMPO DE INTERVALO</VALUE>
+    <value>TEMPO DE INTERVALO</value>
   </data>
   <data name="TimeCalc_CANCEL" xml:space="preserve">
     <value>cancelar</value>
@@ -860,5 +860,14 @@
   </data>
   <data name="TimeCalc_StartTime" xml:space="preserve">
     <value>A HORA DE INÍCIO</value>
+  </data>
+  <data name="General_HoursAndMinutes" xml:space="preserve">
+    <value>h' horas e 'm' minutos'</value>
+  </data>
+  <data name="General_SelectTime" xml:space="preserve">
+    <value>Selecione o tempo</value>
+  </data>
+  <data name="General_SelectDate" xml:space="preserve">
+    <value>Seleccionar data</value>
   </data>
 </root>

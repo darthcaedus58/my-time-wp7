@@ -781,6 +781,33 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to h&apos; hours and &apos;m&apos; minutes&apos;.
+        /// </summary>
+        public static string General_HoursAndMinutes {
+            get {
+                return ResourceManager.GetString("General_HoursAndMinutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select date.
+        /// </summary>
+        public static string General_SelectDate {
+            get {
+                return ResourceManager.GetString("General_SelectDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select time.
+        /// </summary>
+        public static string General_SelectTime {
+            get {
+                return ResourceManager.GetString("General_SelectTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to new version!.
         /// </summary>
         public static string HowTo_Header {

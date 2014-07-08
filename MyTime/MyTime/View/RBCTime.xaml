@@ -62,7 +62,7 @@
 			<StackPanel Grid.Row="0" Orientation="Vertical">
 				<TextBlock Text="{Binding Path=StringResources.AddRBCTimePage_Note, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" FontSize="15" />
 				<FieldService:HeaderControl IconSource="/icons/calendar.png"  HeaderText="{Binding Path=StringResources.AddRBCTimePage_Date, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
-				<telerikInput:RadDatePicker x:Name="dpDatePicker" Value="{Binding RBCTimeData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" />
+                <telerikInput:RadDatePicker x:Name="dpDatePicker" EmptyContent="{Binding Path=StringResources.General_SelectDate, Source={StaticResource LocalizedStrings}}"  Value="{Binding RBCTimeData.Date, Mode=TwoWay}" Template="{StaticResource RadDatePickerControlTemplateApp}" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" />
                 <Grid>
 				    <FieldService:HeaderControl IconSource="/icons/clock.png" HeaderText="{Binding Path=StringResources.AddRBCTimePage_Time, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
                     <Button Click="TimeCalcButton_OnClick" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0" Padding="0" BorderThickness="0">
@@ -71,7 +71,7 @@
                         </Button.Content>
                     </Button>
                 </Grid>
-                <telerikInput:RadTimeSpanPicker SelectorFormat="hm" MaxValue="23:00:00" DisplayValueFormat="h' Hours and 'm' Minutes'" Step="{Binding AppSettings.roundTimeIncrement, Converter={StaticResource MinutesToTimeSpanValueConverter}, Source={StaticResource AppSettings}}" Value="{Binding RBCTimeDataMinutes, Converter={StaticResource MinutesToTimeSpanValueConverter}, Mode=TwoWay}" Style="{StaticResource RadTimeSpanPickerAppStyle}" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" />
+                <telerikInput:RadTimeSpanPicker DisplayValueFormat="{Binding Path=StringResources.General_HoursAndMinutes, Source={StaticResource LocalizedStrings}}" SelectorFormat="hm" MaxValue="23:00:00" Step="{Binding AppSettings.roundTimeIncrement, Converter={StaticResource MinutesToTimeSpanValueConverter}, Source={StaticResource AppSettings}}" Value="{Binding RBCTimeDataMinutes, Converter={StaticResource MinutesToTimeSpanValueConverter}, Mode=TwoWay}" Style="{StaticResource RadTimeSpanPickerAppStyle}" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" />
 				<!--<c4f:TimeSpanPicker ValueStringFormat="{}{0:h} Hours and {0:m} Minutes" x:Name="tspTime" Step="{Binding AppSettings.roundTimeIncrement, Converter={StaticResource MinutesToTimeSpanValueConverter}, Source={StaticResource AppSettings}}" Value="{Binding RBCTimeDataMinutes, Converter={StaticResource MinutesToTimeSpanValueConverter}, Mode=TwoWay}" Template="{StaticResource TimeSpanPickerControlAppDefaultTemplate}" />-->
 				<FieldService:HeaderControl IconSource="/icons/tasks.png" HeaderText="{Binding Path=StringResources.AddRBCTimePage_Notes, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
 			</StackPanel>
