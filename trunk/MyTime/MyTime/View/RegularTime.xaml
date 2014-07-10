@@ -69,7 +69,7 @@
             <ScrollViewer>
                 <StackPanel>
 					<local:HeaderControl IconSource="/icons/calendar.png" HeaderText="{Binding Path=StringResources.AddTimePage_Date, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
-                    <telerik:RadDatePicker x:Name="dpDatePicker" EmptyContent="{Binding Path=StringResources.General_SelectDate, Source={StaticResource LocalizedStrings}}"  Value="{Binding TimeDataDate, Mode=TwoWay}" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}"  />
+                    <telerik:RadDatePicker x:Name="dpDatePicker" EmptyContent="{Binding Path=StringResources.General_SelectDate, Source={StaticResource LocalizedStrings}}"  Value="{Binding TimeDataDate, Mode=TwoWay}" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" Template="{StaticResource RadDatePickerControlTemplateApp}"  />
                      <Grid>
                         <local:HeaderControl IconSource="/icons/clock.png" HeaderText="{Binding Path=StringResources.AddRBCTimePage_Time, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
                         <Button Click="TimeCalcButton_OnClick" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0" Padding="0" BorderThickness="0">
