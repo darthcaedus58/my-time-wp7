@@ -17,6 +17,16 @@ namespace FieldService.View
 			InitializeComponent();
 		}
 
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            if (TimeCalc.Visibility == Visibility.Visible) {
+                TimeCalcControl_OnFormClosed(this, new TimeCalcFormClosedEventArgs(DialogResult.Cancel, new TimeSpan(0)));
+                e.Cancel = true;
+                return;
+            }
+            base.OnBackKeyPress(e);
+        }
+
 		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
 		{
 			base.OnNavigatedTo(e);
