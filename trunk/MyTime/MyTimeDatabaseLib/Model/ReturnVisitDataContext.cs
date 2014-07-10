@@ -439,6 +439,7 @@ namespace MyTimeDatabaseLib.Model
                     { 
                             if(_lastVisitDate == null || _lastVisitDate != value) { 
                                     NotifyPropertyChanging("LastVisitDate");
+                                if (value < SqlCeConstants.DateTimeMinValue) value = SqlCeConstants.DateTimeMinValue;
                                     _lastVisitDate = value;
                                     NotifyPropertyChanged("LastVisitDate");
                             }

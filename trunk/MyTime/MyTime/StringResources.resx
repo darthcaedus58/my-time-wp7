@@ -874,6 +874,9 @@
   <data name="General_SelectTime" xml:space="preserve">
     <value>Select time</value>
   </data>
+  <data name="General_SelectDate" xml:space="preserve">
+    <value>Select date</value>
+  </data>
   <data name="HowTo_WhatsNew" xml:space="preserve">
     <value>What's New?</value>
   </data>
@@ -891,5 +894,8 @@
   </data>
   <data name="HowTo_WhatsNew_Presentations_I" xml:space="preserve">
     <value>Take a picture of the presentations from your KM for easy reference.</value>
+  </data>
+  <data name="FullRVListPage_NoVisitsSaved" xml:space="preserve">
+    <value>No Previous Visits!</value>
   </data>
 </root>

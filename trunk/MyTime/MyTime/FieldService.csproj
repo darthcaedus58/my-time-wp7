@@ -18,7 +18,7 @@
     </TargetFrameworkProfile>
     <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
-    <SupportedCultures>en;it;de;es;es-CO;nl;pt</SupportedCultures>
+    <SupportedCultures>en;it;de;es;nl;pt</SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>FieldService_$(Configuration)_$(Platform).xap</XapFilename>
@@ -571,10 +571,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="StringResources.es-CO.resx">
-      <SubType>Designer</SubType>
-      <Generator>file://conversadc2/operations/Customer_PRI/Nextel%28Mexico%29</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="StringResources.es.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StringResources.es.Designer.cs</LastGenOutput>

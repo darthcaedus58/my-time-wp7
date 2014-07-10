@@ -894,4 +894,7 @@
   <data name="HowTo_WhatsNew_Presentations_I" xml:space="preserve">
     <value>Tome una fotografía de las presentaciones de su KM para una fácil referencia.</value>
   </data>
+  <data name="FullRVListPage_NoVisitsSaved" xml:space="preserve">
+    <value>No hay visitas anteriores!</value>
+  </data>
 </root>

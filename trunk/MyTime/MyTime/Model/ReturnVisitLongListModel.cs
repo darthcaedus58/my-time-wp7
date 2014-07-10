@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Media.Imaging;
+using MyTimeDatabaseLib;
 
 namespace FieldService.Model
 {
@@ -81,7 +82,13 @@ namespace FieldService.Model
 
             public string DaysSinceLastVisit
             {
-                get { return string.Format("{0} {1}",_daysSinceLastVisit, StringResources.RVPage_Visits_DaysSince); }
+                get
+                {
+                    if (_daysSinceLastVisit == (DateTime.Now - SqlCeConstants.DateTimeMinValue).Days)
+                        return StringResources.FullRVListPage_NoVisitsSaved;
+
+                    return string.Format("{0} {1}",_daysSinceLastVisit, StringResources.RVPage_Visits_DaysSince);
+                }
             }
 
             /// <summary>

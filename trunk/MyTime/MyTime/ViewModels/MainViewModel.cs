@@ -238,9 +238,10 @@ namespace FieldService.ViewModels
 
             RvSearchBoxLoaded = false;
             var bw = new BackgroundWorker();
-            bw.DoWork += (obt, e) => {
-
-                _rvs =  ReturnVisitsInterface.GetReturnVisitsByLastVisitDate(-1) ?? new List<ReturnVisitData>();
+            bw.DoWork += (obt, e) =>
+            {
+                _rvs = ReturnVisitsInterface.GetReturnVisitsByLastVisitDate(-1) ??
+                       new List<ReturnVisitData>();
             };
             bw.RunWorkerCompleted += (obj, e) => {
                                                      foreach (var rv in _rvs) {
@@ -255,7 +256,7 @@ namespace FieldService.ViewModels
                                                              NameOrDescription = rv.NameOrDescription
                                                          };
 
-                                                         if (lbRvItems.Count < 8)
+                                                         if (lbRvItems.Count < 8 && rv.LastVisitDate != SqlCeConstants.DateTimeMinValue)
                                                              lbRvItems.Add(r);
 
                                                          RvSearchBoxSuggestionsSource.Add(r);
