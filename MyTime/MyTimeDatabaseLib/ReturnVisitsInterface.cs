@@ -14,6 +14,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data.Linq.SqlClient;
+using System.Dynamic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -56,6 +58,14 @@ namespace MyTimeDatabaseLib
         DescendingGeneric
     }
 
+    public class SqlCeConstants
+    {
+        public static DateTime DateTimeMinValue 
+        {
+            get {return new DateTime(1753,01,01);}
+        }
+    }
+
     /// <summary>
     /// Class ReturnVisitsInterface
     /// </summary>
@@ -91,7 +101,6 @@ namespace MyTimeDatabaseLib
 
                 if (demRVs != null)
                     foreach (ReturnVisitDataItem r in demRVs) {
-                        DateTime lv = DateTime.MinValue;
                         var rr = new ReturnVisitData {
                             ItemId = r.ItemId,
                             DateCreated = r.DateCreated,
@@ -175,7 +184,7 @@ namespace MyTimeDatabaseLib
                         foreach (var r in rvList)
                         {
                             var x = r;
-                            if (r.LastVisitDate > DateTime.MinValue) {
+                            if (r.LastVisitDate > SqlCeConstants.DateTimeMinValue) {
                                 r.LastVisitDate = GetLastVisitDate(ReturnVisitData.Copy(x));
                             }
                             UpdateReturnVisit(ref x);
@@ -224,7 +233,7 @@ namespace MyTimeDatabaseLib
 
         private static DateTime GetLastVisitDate(ReturnVisitDataItem r)
         {
-            DateTime lv = DateTime.MinValue;
+            DateTime lv = SqlCeConstants.DateTimeMinValue;
             try {
                 RvPreviousVisitData[] x = RvPreviousVisitsDataInterface.GetPreviousVisits(r.ItemId, SortOrder.DateNewestToOldest);
                 if (x.Any()) { lv = x.First().Date; }
@@ -370,6 +379,7 @@ namespace MyTimeDatabaseLib
                 using (var db = new ReturnVisitDataContext(ReturnVisitDataContext.DBConnectionString)) {
                     var qry = from x in db.ReturnVisitItems
                         orderby x.LastVisitDate
+                        //where x.LastVisitDate != SqlCeConstants.DateTimeMinValue
                         select x;
 
                     if (!qry.Any()) return null;
@@ -692,7 +702,7 @@ namespace MyTimeDatabaseLib
                 PhoneNumber = newRv.PhoneNumber,
                 Latitude = newRv.Latitude ?? 0.0,
                 Longitude = newRv.Longitude ?? 0.0,
-                LastVisitDate = newRv.LastVisitDate ?? DateTime.MinValue
+                LastVisitDate = newRv.LastVisitDate ?? SqlCeConstants.DateTimeMinValue
             };
         }
     }

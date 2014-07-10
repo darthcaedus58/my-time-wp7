@@ -32,7 +32,7 @@ namespace FieldService.View
 
                         bw.RunWorkerCompleted += (o, e) => {
                                 _rvList = ReturnVisitsInterface.GetReturnVisits(SortOrder.DateNewestToOldest, -1);
-                                for (_index = 0; _index < _rvList.Length; _index++){
+                                for (_index = 0; _index < _rvList.Length; _index++) {
                                         if (_rvList[_index].Latitude == 0 || _rvList[_index].Longitude == 0){
                                                 MakeGeocodeRequest(GetGeocodeAddress(_rvList[_index]));
                                                 break;

@@ -57,7 +57,7 @@ namespace FieldService.ViewModels
                                 bmp.SetSource(ms);
                         }
 
-                        ReturnVisitData[] rVs = ReturnVisitsInterface.GetReturnVisits(SortOrder.CityAToZ, -1);
+                        var rVs = ReturnVisitsInterface.GetReturnVisits(SortOrder.CityAToZ, -1);
                         if (rVs == null) return null;
                         if (rVs.Length <= 0) return null;
                         var rvList = new List<ReturnVisitLLItemModel>();

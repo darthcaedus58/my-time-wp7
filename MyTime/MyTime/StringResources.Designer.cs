@@ -772,6 +772,15 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Previous Visits!.
+        /// </summary>
+        public static string FullRVListPage_NoVisitsSaved {
+            get {
+                return ResourceManager.GetString("FullRVListPage_NoVisitsSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Year Old.
         /// </summary>
         public static string FullRVListPage_YearOld {
@@ -786,6 +795,15 @@ namespace FieldService {
         public static string General_HoursAndMinutes {
             get {
                 return ResourceManager.GetString("General_HoursAndMinutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select date.
+        /// </summary>
+        public static string General_SelectDate {
+            get {
+                return ResourceManager.GetString("General_SelectDate", resourceCulture);
             }
         }
         
