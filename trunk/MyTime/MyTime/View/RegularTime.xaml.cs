@@ -115,6 +115,16 @@ namespace FieldService.View
 
 		#endregion
 
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            if (TimeCalc.Visibility == Visibility.Visible) {
+                TimeCalcControl_OnFormClosed(this, new TimeCalcFormClosedEventArgs(DialogResult.Cancel, new TimeSpan(0)));
+                e.Cancel = true;
+                return;
+            }
+            base.OnBackKeyPress(e);
+        }
+
 		/// <summary>
 		/// Called when a page becomes the active page in a frame.
 		/// </summary>
