@@ -132,8 +132,8 @@ namespace FieldService.ViewModels
             get { return TimeData.Magazines; }
             set
             {
-                if (TimeData.Magazines == value) return;
-                TimeData.Magazines = value;
+                if (TimeData.BibleStudies == value) return;
+                TimeData.BibleStudies = value;
                 OnPropertyChanged("TimeData");
                 OnPropertyChanged("TimeDataBibleStudies");
             }
