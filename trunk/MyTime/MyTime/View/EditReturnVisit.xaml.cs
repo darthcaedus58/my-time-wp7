@@ -377,12 +377,12 @@ namespace FieldService
                 private void appbar_delete_Click_1(object sender, EventArgs e)
                 {
                         if (App.ViewModel.ReturnVisitData.ItemId < 0) return;
-                        if (MessageBox.Show("Are you sure you want to delete the return visit?", "Field Service", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel) return;
+                        if (MessageBox.Show(StringResources.RVPage_Messages_Delete, StringResources.ApplicationName, MessageBoxButton.OKCancel) == MessageBoxResult.Cancel) return;
                         try {
                             var deleteCalls = App.Settings.deleteCallsAndRv;
-                                App.ToastMe(App.ViewModel.ReturnVisitData.Delete(deleteCalls) ? "RV Deleted." : "RV Delete Failed.");
+                            App.ToastMe(App.ViewModel.ReturnVisitData.Delete(deleteCalls) ? "Deleted." : StringResources.AddTimePage_Messages_TimeDeleteFailed);
                         } catch {
-                                App.ToastMe(App.ViewModel.ReturnVisitData.Delete(MessageBox.Show("Do you want to delete the return visit's calls?") == MessageBoxResult.OK) ? "RV Deleted." : "RV Delete Failed.");
+                            App.ToastMe(App.ViewModel.ReturnVisitData.Delete(MessageBox.Show(StringResources.RVPage_Messages_IncludeAllVisits) == MessageBoxResult.OK) ? "Deleted" : StringResources.AddTimePage_Messages_TimeDeleteFailed);
                         }
                 }
 
