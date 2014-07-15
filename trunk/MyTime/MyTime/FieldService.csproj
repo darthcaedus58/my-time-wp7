@@ -165,6 +165,7 @@
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
     <Compile Include="Commands\AddVisitToRVCommand.cs" />
+    <Compile Include="Commands\DeletePreviousCallCommand.cs" />
     <Compile Include="Commands\DeleteReturnVisitCommand.cs" />
     <Compile Include="Model\StreetBuildingItemModel.cs" />
     <Compile Include="Model\TerritoryCardModel.cs" />
