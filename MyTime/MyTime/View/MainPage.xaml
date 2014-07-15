@@ -124,6 +124,16 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <toolkit:MenuItem Margin="0,-17,-17,0">
+                                    <telerikPrimitives:RadContextMenu.ContextMenu>
+                                        <telerikPrimitives:RadContextMenu>
+                                            <telerikPrimitives:RadContextMenuItem Content="add visit" 
+                                                                                  Command="{StaticResource AddVisitToRVCommand}"
+                                                                                  CommandParameter="{Binding ItemId}"/>
+                                            <telerikPrimitives:RadContextMenuItem Content="delete" 
+                                                                                  Command="{StaticResource DeleteReturnVisitCommand}"
+                                                                                  CommandParameter="{Binding ItemId}"/>
+                                        </telerikPrimitives:RadContextMenu>
+                                    </telerikPrimitives:RadContextMenu.ContextMenu>
                                         <toolkit:MenuItem.Header>
                                             <StackPanel Orientation="Horizontal">
                                                 <Image Height="100" Width="100" Source="{Binding ImageSource}" />

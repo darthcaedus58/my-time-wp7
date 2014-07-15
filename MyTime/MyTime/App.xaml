@@ -12,6 +12,9 @@
     xmlns:PhoneTextBox="clr-namespace:Telerik.Windows.Controls.PhoneTextBox;assembly=Telerik.Windows.Controls.Primitives" xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:TimeSpanPicker="clr-namespace:Telerik.Windows.Controls.TimeSpanPicker;assembly=Telerik.Windows.Controls.Input"
     xmlns:AutoCompleteTextBox="clr-namespace:Telerik.Windows.Controls.AutoCompleteTextBox;assembly=Telerik.Windows.Controls.Input"
+    xmlns:input="clr-namespace:System.Windows.Input;assembly=System"
+    xmlns:ec="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+    xmlns:commands="clr-namespace:FieldService.Commands"
     x:Class="FieldService.App"
 	>
 
@@ -882,6 +885,8 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <commands:AddVisitToRVCommand x:Key="AddVisitToRVCommand" />
+            <commands:DeleteReturnVisitCommand x:Key="DeleteReturnVisitCommand" />
         </ResourceDictionary>
     </Application.Resources>
 
