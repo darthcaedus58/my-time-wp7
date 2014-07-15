@@ -9,6 +9,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Telerik.Windows.Controls;
+using FieldService.Common;
 
 namespace FieldService.View
 {
@@ -38,7 +39,15 @@ namespace FieldService.View
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             var start = tpStart.Value ?? DateTime.MinValue;
+            if (start == DateTime.MinValue) {
+                MessageBox.Show("Start time must be before End Time.");
+                return;
+            }
             var end = tpEnd.Value ?? DateTime.MinValue;
+            if(end == DateTime.MinValue) {
+                MessageBox.Show("Start time must be before End Time.");
+                return;
+            }
             var breakTime = tspBreakTime.Value ?? new TimeSpan(0,0,0);
 
             TimeSpan t = (end - start) - breakTime;
@@ -51,22 +60,10 @@ namespace FieldService.View
             if (start == DateTime.MinValue || end == DateTime.MinValue)
                 FormClosed(this, new TimeCalcFormClosedEventArgs(DialogResult.Cancel, TimeSpan.Zero));
 
-            t = RoundTime(t);
+            t = GeneralHelper.RoundTime(t, App.Settings.roundTimeIncrement);
 
 
             FormClosed(this, new TimeCalcFormClosedEventArgs(DialogResult.OK, t));
-        }
-
-        private static TimeSpan RoundTime(TimeSpan t)
-        {
-            var ts =
-                TimeSpan.FromMinutes(App.Settings.roundTimeIncrement*
-                                     Math.Ceiling(t.TotalMinutes/App.Settings.roundTimeIncrement));
-            float m = float.Parse(t.TotalMinutes.ToString())%App.Settings.roundTimeIncrement;
-            if (m <= (App.Settings.roundTimeIncrement/2.0))
-                t = TimeSpan.FromMinutes(ts.TotalMinutes - App.Settings.roundTimeIncrement);
-            else t = ts;
-            return t;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

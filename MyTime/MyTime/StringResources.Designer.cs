@@ -448,6 +448,15 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Minimum time: {0} minutes.
+        /// </summary>
+        public static string AddTimePage_MustBeMinimum {
+            get {
+                return ResourceManager.GetString("AddTimePage_MustBeMinimum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NOTES.
         /// </summary>
         public static string AddTimePage_Notes {

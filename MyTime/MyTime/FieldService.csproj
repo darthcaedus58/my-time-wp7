@@ -565,6 +565,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FieldService.Common\FieldService.Common.csproj">
+      <Project>{3603D10B-9AC1-42EC-A0B3-8CF89E554D64}</Project>
+      <Name>FieldService.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyTimeDatabaseLib\MyTimeDatabaseLib.csproj">
       <Project>{A1C548DC-5636-4CC8-B680-A818350BA8C5}</Project>
       <Name>MyTimeDatabaseLib</Name>
