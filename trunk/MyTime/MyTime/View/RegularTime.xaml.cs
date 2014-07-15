@@ -76,6 +76,10 @@ namespace FieldService.View
 		private void abibSave_Click(object sender, EventArgs e)
 		{
 			if(!string.IsNullOrWhiteSpace(tbNotes.Text)) tbNotes.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+		    if (ViewModel.TimeDataTotalTime.TotalMinutes < App.Settings.roundTimeIncrement) {
+		        App.ToastMe(string.Format(StringResources.AddTimePage_MustBeMinimum, App.Settings.roundTimeIncrement));
+		        return;
+		    }
 
 			int idExisting;
 			if (ViewModel.IsDoubleDataEntry(out idExisting)) {

@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Performance1.psess = Performance1.psess
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FieldService.Common", "FieldService.Common\FieldService.Common.csproj", "{3603D10B-9AC1-42EC-A0B3-8CF89E554D64}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -60,6 +62,18 @@ Global
 		{DA7FA58C-B262-4FAF-A9C3-9B9690AE2EC5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DA7FA58C-B262-4FAF-A9C3-9B9690AE2EC5}.Release|ARM.ActiveCfg = Release|Any CPU
 		{DA7FA58C-B262-4FAF-A9C3-9B9690AE2EC5}.Release|x86.ActiveCfg = Release|Any CPU
+		{3603D10B-9AC1-42EC-A0B3-8CF89E554D64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3603D10B-9AC1-42EC-A0B3-8CF89E554D64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3603D10B-9AC1-42EC-A0B3-8CF89E554D64}.Debug|ARM.ActiveCfg = Debug|ARM
+		{3603D10B-9AC1-42EC-A0B3-8CF89E554D64}.Debug|ARM.Build.0 = Debug|ARM
+		{3603D10B-9AC1-42EC-A0B3-8CF89E554D64}.Debug|x86.ActiveCfg = Debug|x86
+		{3603D10B-9AC1-42EC-A0B3-8CF89E554D64}.Debug|x86.Build.0 = Debug|x86
+		{3603D10B-9AC1-42EC-A0B3-8CF89E554D64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3603D10B-9AC1-42EC-A0B3-8CF89E554D64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3603D10B-9AC1-42EC-A0B3-8CF89E554D64}.Release|ARM.ActiveCfg = Release|ARM
+		{3603D10B-9AC1-42EC-A0B3-8CF89E554D64}.Release|ARM.Build.0 = Release|ARM
+		{3603D10B-9AC1-42EC-A0B3-8CF89E554D64}.Release|x86.ActiveCfg = Release|x86
+		{3603D10B-9AC1-42EC-A0B3-8CF89E554D64}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

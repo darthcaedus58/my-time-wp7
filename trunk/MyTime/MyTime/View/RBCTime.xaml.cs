@@ -44,6 +44,10 @@ namespace FieldService.View
 		private void abibSave_Click_1(object sender, EventArgs e)
 		{
 			if (!string.IsNullOrWhiteSpace(tbNotes.Text)) tbNotes.GetBindingExpression(PhoneTextBox.TextProperty).UpdateSource(); //if the text box has focus its data source will not be updated.
+            if (ViewModel.RBCTimeDataMinutes < App.Settings.roundTimeIncrement) {
+                App.ToastMe(string.Format(StringResources.AddTimePage_MustBeMinimum, App.Settings.roundTimeIncrement));
+                return;
+            }
 
 			int idExisting; 
 			if (ViewModel.IsDoubleDateEntry(out idExisting)) {

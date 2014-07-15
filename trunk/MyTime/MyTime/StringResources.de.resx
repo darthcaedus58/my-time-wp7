@@ -897,4 +897,7 @@
   <data name="FullRVListPage_NoVisitsSaved" xml:space="preserve">
     <value>Keine vorherige Besuche!</value>
   </data>
+  <data name="AddTimePage_MustBeMinimum" xml:space="preserve">
+    <value>Mindestdauer : {0} Minuten</value>
+  </data>
 </root>

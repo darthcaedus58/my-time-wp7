@@ -6,23 +6,22 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Field Service")]
+[assembly: AssemblyTitle("FieldService.Common")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Square.HipToBe")]
-[assembly: AssemblyProduct("Field Service")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("FieldService.Common")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-
-// SettingsCollection ComVisible to false makes the types in this assembly not visible 
+// Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("440e1e8f-5900-438f-9921-5fed1c2aa004")]
+[assembly: Guid("3603d10b-9ac1-42ec-a0b3-8cf89e554d64")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -33,6 +32,6 @@ using System.Resources;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("2014.7.15.1210")]
-[assembly: AssemblyFileVersion("1.14.7.15")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]
