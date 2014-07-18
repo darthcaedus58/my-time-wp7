@@ -175,7 +175,7 @@
                                 <DataTemplate>
                                     <StackPanel>
                                         <telerikPrimitives:RadContextMenu.ContextMenu>
-                                            <telerikPrimitives:RadContextMenu>
+                                            <telerikPrimitives:RadContextMenu x:Name="menu">
                                                 <telerikPrimitives:RadContextMenuItem Content="{Binding Path=StringResources.AddCallPage_DeleteCall, Source={StaticResource LocalizedStrings}}" 
                                                                                   Command="{StaticResource DeletePreviousCallCommand}"
                                                                                   CommandParameter="{Binding PreviousVisitItemId}"/>

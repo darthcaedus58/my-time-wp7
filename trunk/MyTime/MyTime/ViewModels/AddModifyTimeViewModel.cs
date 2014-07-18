@@ -129,7 +129,7 @@ namespace FieldService.ViewModels
 
 	    public int TimeDataBibleStudies
 	    {
-            get { return TimeData.Magazines; }
+            get { return TimeData.BibleStudies; }
             set
             {
                 if (TimeData.BibleStudies == value) return;

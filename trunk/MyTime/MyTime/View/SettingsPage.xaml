@@ -52,7 +52,7 @@
                         </StackPanel.DataContext>
                         <fieldService:HeaderControl HeaderText="{Binding StringResources.SettingsPage_Settings_SharingOptions, Mode=OneWay, Source={StaticResource LocalizedStrings}}" IconSource="/icons/message.png" />
                         <TextBlock Text="{Binding StringResources.SettingsPage_Settings_CSO, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
-                        <Button Content="{Binding csContactDisplayName}" Style="{StaticResource SettingsButtonBaseControlTemplate}" Click="bButton_Click" />
+                        <Button Content="{Binding csContactDisplayName, FallbackValue='Choose Contact'}" Style="{StaticResource SettingsButtonBaseControlTemplate}" Click="bButton_Click" />
                         <telerikPrimitives:RadTextBox Text="{Binding csoEmail, Mode=TwoWay}" Style="{StaticResource RadTextBoxAppDefaultStyle}"  />
                         <toolkit:ListPicker BorderBrush="{StaticResource AppForegroundBrush}" Foreground="{StaticResource AppAccentBrush}"
                             Header="{Binding StringResources.SettingsPage_Settings_SendMethod, Mode=OneWay, Source={StaticResource LocalizedStrings}}" 
@@ -63,9 +63,9 @@
 
                         <fieldService:HeaderControl IconSource="/icons/add-user.png" HeaderText="{Binding StringResources.SettingsPage_Settings_PersonalSettings, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
                         <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_Settings_NickName, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
-                        <telerikPrimitives:RadTextBox Text="{Binding nickname, Mode=TwoWay}" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
+                        <telerikPrimitives:RadTextBox Text="{Binding nickname, Mode=TwoWay}" Watermark="{Binding StringResources.SettingsPage_Settings_NickName, Mode=OneWay, Source={StaticResource LocalizedStrings}}" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
                         <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_Settings_DefaultAge, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
-                        <telerikPrimitives:RadTextBox Text="{Binding defaultAgeValue, Mode=TwoWay}" InputScope="Number" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
+                        <telerikPrimitives:RadTextBox Text="{Binding defaultAgeValue, Mode=TwoWay}" Watermark="{Binding StringResources.SettingsPage_Settings_DefaultAge, Mode=OneWay, Source={StaticResource LocalizedStrings}}" InputScope="Number" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
 
                         <fieldService:HeaderControl IconSource="/icons/RangeSlider.png" HeaderText="{Binding StringResources.SettingsPage_Settings_AppSettings, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
                         <toolkit:ToggleSwitch Header="{Binding StringResources.SettingsPage_Settings_UseLocServices, Mode=OneWay, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding useLocationServices, Mode=TwoWay}"/>
@@ -77,6 +77,12 @@
                         <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_Settings_PlacementsMessage1, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
                         <toolkit:ToggleSwitch Header="{Binding StringResources.SettingsPage_Settings_DeleteCallsAndRv, Mode=OneWay, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding deleteCallsAndRv, Mode=TwoWay}"/>
                         <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_Settings_DeleteCallsRvNote, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
+
+                        <fieldService:HeaderControl IconSource="/icons/calendar.png" HeaderText="{Binding StringResources.SettingsPage_Settings_DailyTextSettings, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
+                        <toolkit:ToggleSwitch Header="{Binding StringResources.SettingsPage_Settings_DailyTextUseCustom, Mode=OneWay, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding UseCustomDTUrl, Mode=TwoWay}"/>
+                        <telerikPrimitives:RadTextBox Text="{Binding CustomDTUrl, Mode=TwoWay}" Watermark="{Binding StringResources.SettingsPage_Settings_DailyTextURL, Mode=OneWay, Source={StaticResource LocalizedStrings}}" InputScope="Url" Style="{StaticResource RadTextBoxAppDefaultStyle}" />
+                        <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_Settings_DailyTextInstructions, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
+                        <Image Source="/Images/daily_text_help_settings.png" Margin="0,0,0,50"/>
                     </StackPanel>
                 </ScrollViewer>
             </Grid>

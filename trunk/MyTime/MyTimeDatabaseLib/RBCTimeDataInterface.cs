@@ -98,15 +98,7 @@ namespace MyTimeDatabaseLib
 		{ 
 			//
 			if (td.ItemID < 0) return false;
-			using (var db = new RBCTimeDataContext()) {
-				try {
-					var rtd = db.RBCTimeDataItems.Single(s => s.ItemId == td.ItemID);
-					if (rtd == null) return false;
-					db.RBCTimeDataItems.DeleteOnSubmit(rtd);
-					db.SubmitChanges();
-					return true;
-				} catch { return false; }
-			}
+		    return DeleteTime(td.ItemID);
 		}
 
 		public static int GetMonthRBCTimeTotal(DateTime dt)
@@ -161,7 +153,21 @@ namespace MyTimeDatabaseLib
 				}
 			}
 		}
-	}
+
+        public static bool DeleteTime(int ItemID)
+        {
+            if (ItemID < 0) return false;
+            using (var db = new RBCTimeDataContext()) {
+                try {
+                    var rtd = db.RBCTimeDataItems.Single(s => s.ItemId == ItemID);
+                    if (rtd == null) return false;
+                    db.RBCTimeDataItems.DeleteOnSubmit(rtd);
+                    db.SubmitChanges();
+                    return true;
+                } catch { return false; }
+            }
+        }
+    }
 
 	public class RBCTimeData
 	{

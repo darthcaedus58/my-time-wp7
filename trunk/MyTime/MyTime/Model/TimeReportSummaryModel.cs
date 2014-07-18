@@ -264,6 +264,12 @@ namespace FieldService.Model
 		}
 	}
 
+    public enum TimeType
+    {
+        Regular,
+        Auxiliary
+    }
+
 	/// <summary>
 	/// Class TimeReportEntryViewModel
 	/// </summary>
@@ -287,6 +293,8 @@ namespace FieldService.Model
 		/// </summary>
 		private int _min;
 
+        public TimeReportEntryViewModel Self { get { return this; } }
+
 		private string _editLink;
 		private string _notes;
 	    private int _magazinesCount;
@@ -294,6 +302,7 @@ namespace FieldService.Model
 	    private int _booksCount;
 	    private int _rVsCount;
 	    private int _tractsCount;
+	    private TimeType _type;
 
 	    public string EditLink
 		{
@@ -445,9 +454,18 @@ namespace FieldService.Model
 	    {
 	        get
 	        {
-	            if (_magazinesCount < 0 && _brochuresCount < 0 && _booksCount < 0 && _rVsCount < 0 && _tractsCount < 0)
-	                return Visibility.Collapsed;
-	            return Visibility.Visible;
+	            return Type == TimeType.Auxiliary ? Visibility.Collapsed : Visibility.Visible;
+	        }
+	    }
+
+	    public TimeType Type
+	    {
+	        get { return _type; }
+	        set
+	        {
+	            if (_type == value) return;
+	            _type = value;
+                NotifyPropertyChanged("Type");
 	        }
 	    }
 

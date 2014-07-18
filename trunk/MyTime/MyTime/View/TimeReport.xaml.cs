@@ -18,11 +18,13 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 //using System.Windows.Controls.DataVisualization.Charting;
 //xmlns:charting="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
 using System.Windows.Navigation;
+using Windows.Foundation.Metadata;
 using FieldService.Model;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
@@ -160,21 +162,30 @@ namespace FieldService.View
 
 		}
 
-	        private void ChartTrackBallBehavior_OnTrackInfoUpdated(object sender, TrackBallInfoEventArgs e)
-	        {
-	                e.Header = "";
-	                foreach (var info in e.Context.DataPointInfos)
-	                {
-	                        var dp = info.DataPoint as CategoricalDataPoint;
-	                        info.DisplayHeader = dp.Category+":";
-                                info.DisplayContent = string.Format(StringResources.TimeReport_HoursAndMinutes, ((int)dp.Value), (60 * (dp.Value - ((int)dp.Value))));
-	                }
-	        }
+	    private void ChartTrackBallBehavior_OnTrackInfoUpdated(object sender, TrackBallInfoEventArgs e)
+	    {
+	            e.Header = "";
+	            foreach (var info in e.Context.DataPointInfos)
+	            {
+	                    var dp = info.DataPoint as CategoricalDataPoint;
+	                    info.DisplayHeader = dp.Category+":";
+                            info.DisplayContent = string.Format(StringResources.TimeReport_HoursAndMinutes, ((int)dp.Value), (60 * (dp.Value - ((int)dp.Value))));
+	            }
+	    }
 
-	        private void MyChart_OnTap(object sender, GestureEventArgs e)
-	        {
-	                //throw new NotImplementedException();
-	        }
+	    private void MyChart_OnTap(object sender, GestureEventArgs e)
+	    {
+	            //throw new NotImplementedException();
+	    }
+
+	    private void UIElement_OnTap(object sender, GestureEventArgs e)
+	    {
+	        var bw = new BackgroundWorker();
+	        bw.DoWork += (o, args) => Thread.Sleep(1000);
+	        bw.RunWorkerCompleted += (o, args) => RefreshTimeReport();
+
+            bw.RunWorkerAsync();
+	    }
 	}
 
 
