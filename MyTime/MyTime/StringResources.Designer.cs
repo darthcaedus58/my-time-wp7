@@ -511,7 +511,16 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://wol.jw.org/en/wol/dt/r1/lp-e/{0}/{1}/{2}.
+        ///   Looks up a localized string similar to http://wol.jw.org/{0}/wol/dt/{1}/{2}.
+        /// </summary>
+        public static string Application_CustomDailyTextURL {
+            get {
+                return ResourceManager.GetString("Application_CustomDailyTextURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://wol.jw.org/en/wol/dt/r1/lp-e.
         /// </summary>
         public static string Application_DailyTextURL {
             get {
@@ -844,47 +853,30 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can now filter your return visits by city or map them using GPS..
+        ///   Looks up a localized string similar to Context menus are now added on several pages.
+        ///Hold down to show the menu..
         /// </summary>
-        public static string HowTo_WhatsNew_FilterGPSButtons_I {
+        public static string HowTo_WhatsNew_ContextMenus {
             get {
-                return ResourceManager.GetString("HowTo_WhatsNew_FilterGPSButtons_I", resourceCulture);
+                return ResourceManager.GetString("HowTo_WhatsNew_ContextMenus", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View return visits on a map using GPS coordinates. Double Click on a return visit to open it..
+        ///   Looks up a localized string similar to You can now set a custom url to view the daily text in any language available on jw.org!!.
         /// </summary>
-        public static string HowTo_WhatsNew_GPSMapping_I {
+        public static string HowTo_WhatsNew_CustomDTUrl {
             get {
-                return ResourceManager.GetString("HowTo_WhatsNew_GPSMapping_I", resourceCulture);
+                return ResourceManager.GetString("HowTo_WhatsNew_CustomDTUrl", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Take a picture of the presentations from your KM for easy reference..
+        ///   Looks up a localized string similar to You can now set the increment you want to use for saving your time.  Do you want to save your time in 1 minute increments? Or would you prefer 30 minute increments?  It&apos;s up to you!.
         /// </summary>
-        public static string HowTo_WhatsNew_Presentations_I {
+        public static string HowTo_WhatsNew_RoundTimeInc {
             get {
-                return ResourceManager.GetString("HowTo_WhatsNew_Presentations_I", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to View your literature placements from the entries tab on the reports page..
-        /// </summary>
-        public static string HowTo_WhatsNew_ReportEntries_I {
-            get {
-                return ResourceManager.GetString("HowTo_WhatsNew_ReportEntries_I", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search your return visits from the main page..
-        /// </summary>
-        public static string HowTo_WhatsNew_SearchRVs_I {
-            get {
-                return ResourceManager.GetString("HowTo_WhatsNew_SearchRVs_I", resourceCulture);
+                return ResourceManager.GetString("HowTo_WhatsNew_RoundTimeInc", resourceCulture);
             }
         }
         
@@ -2028,6 +2020,51 @@ namespace FieldService {
         public static string SettingsPage_Settings_CSO_Message1 {
             get {
                 return ResourceManager.GetString("SettingsPage_Settings_CSO_Message1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not parse URL, try again..
+        /// </summary>
+        public static string SettingsPage_Settings_DailyTextErrorUrl {
+            get {
+                return ResourceManager.GetString("SettingsPage_Settings_DailyTextErrorUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go to http://wol.jw.org and go to the daily text page. Copy the URL of that page into the above box..
+        /// </summary>
+        public static string SettingsPage_Settings_DailyTextInstructions {
+            get {
+                return ResourceManager.GetString("SettingsPage_Settings_DailyTextInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DAILY TEXT SETTINGS.
+        /// </summary>
+        public static string SettingsPage_Settings_DailyTextSettings {
+            get {
+                return ResourceManager.GetString("SettingsPage_Settings_DailyTextSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to URL.
+        /// </summary>
+        public static string SettingsPage_Settings_DailyTextURL {
+            get {
+                return ResourceManager.GetString("SettingsPage_Settings_DailyTextURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use Custom Daily Text URL.
+        /// </summary>
+        public static string SettingsPage_Settings_DailyTextUseCustom {
+            get {
+                return ResourceManager.GetString("SettingsPage_Settings_DailyTextUseCustom", resourceCulture);
             }
         }
         
