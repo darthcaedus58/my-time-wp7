@@ -262,7 +262,7 @@
     <value>FIELD SERVICE</value>
   </data>
   <data name="Application_DailyTextURL" xml:space="preserve">
-    <value>http://wol.jw.org/en/wol/dt/r1/lp-e/{0}/{1}/{2}</value>
+    <value>http://wol.jw.org/en/wol/dt/r1/lp-e</value>
   </data>
   <data name="BackupAndRestorePage_Backup" xml:space="preserve">
     <value>Backup</value>
@@ -880,25 +880,38 @@
   <data name="HowTo_WhatsNew" xml:space="preserve">
     <value>What's New?</value>
   </data>
-  <data name="HowTo_WhatsNew_FilterGPSButtons_I" xml:space="preserve">
-    <value>You can now filter your return visits by city or map them using GPS.</value>
-  </data>
-  <data name="HowTo_WhatsNew_GPSMapping_I" xml:space="preserve">
-    <value>View return visits on a map using GPS coordinates. Double Click on a return visit to open it.</value>
-  </data>
-  <data name="HowTo_WhatsNew_SearchRVs_I" xml:space="preserve">
-    <value>Search your return visits from the main page.</value>
-  </data>
-  <data name="HowTo_WhatsNew_ReportEntries_I" xml:space="preserve">
-    <value>View your literature placements from the entries tab on the reports page.</value>
-  </data>
-  <data name="HowTo_WhatsNew_Presentations_I" xml:space="preserve">
-    <value>Take a picture of the presentations from your KM for easy reference.</value>
-  </data>
   <data name="FullRVListPage_NoVisitsSaved" xml:space="preserve">
     <value>No Previous Visits!</value>
   </data>
   <data name="AddTimePage_MustBeMinimum" xml:space="preserve">
     <value>Minimum time: {0} minutes</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextSettings" xml:space="preserve">
+    <value>DAILY TEXT SETTINGS</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextURL" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextInstructions" xml:space="preserve">
+    <value>Go to http://wol.jw.org and go to the daily text page. Copy the URL of that page into the above box.</value>
+  </data>
+  <data name="Application_CustomDailyTextURL" xml:space="preserve">
+    <value>http://wol.jw.org/{0}/wol/dt/{1}/{2}</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextUseCustom" xml:space="preserve">
+    <value>Use Custom Daily Text URL</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextErrorUrl" xml:space="preserve">
+    <value>Could not parse URL, try again.</value>
+  </data>
+  <data name="HowTo_WhatsNew_ContextMenus" xml:space="preserve">
+    <value>Context menus are now added on several pages.
+Hold down to show the menu.</value>
+  </data>
+  <data name="HowTo_WhatsNew_CustomDTUrl" xml:space="preserve">
+    <value>You can now set a custom url to view the daily text in any language available on jw.org!!</value>
+  </data>
+  <data name="HowTo_WhatsNew_RoundTimeInc" xml:space="preserve">
+    <value>You can now set the increment you want to use for saving your time.  Do you want to save your time in 1 minute increments? Or would you prefer 30 minute increments?  It's up to you!</value>
   </data>
 </root>

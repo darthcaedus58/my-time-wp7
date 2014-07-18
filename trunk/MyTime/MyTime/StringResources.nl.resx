@@ -262,7 +262,7 @@
     <value>VELDDIENST</value>
   </data>
   <data name="Application_DailyTextURL" xml:space="preserve">
-    <value>http://wol.jw.org/nl/wol/dt/r18/lp-o/{0}/{1}/{2}</value>
+    <value>http://wol.jw.org/nl/wol/dt/r18/lp-o</value>
   </data>
   <data name="BackupAndRestorePage_Backup" xml:space="preserve">
     <value>Backup</value>
@@ -880,25 +880,29 @@
   <data name="HowTo_WhatsNew" xml:space="preserve">
     <value>Wat is er nieuw?</value>
   </data>
-  <data name="HowTo_WhatsNew_FilterGPSButtons_I" xml:space="preserve">
-    <value>U kunt nu uw terugkeer bezoeken filteren op stad of kaart ze met behulp van GPS.</value>
-  </data>
-  <data name="HowTo_WhatsNew_GPSMapping_I" xml:space="preserve">
-    <value>Bekijk terugkeer bezoeken op een kaart met behulp van GPS-coördinaten. Dubbelklik op een volgend bezoek aan het te openen.</value>
-  </data>
-  <data name="HowTo_WhatsNew_SearchRVs_I" xml:space="preserve">
-    <value>Zoek uw terugkeer bezoeken van de hoofdpagina.</value>
-  </data>
-  <data name="HowTo_WhatsNew_ReportEntries_I" xml:space="preserve">
-    <value>Bekijk uw literatuur plaatsingen op het tabblad inzendingen op de pagina rapporten.</value>
-  </data>
-  <data name="HowTo_WhatsNew_Presentations_I" xml:space="preserve">
-    <value>Maak een foto van de presentaties van uw KM voor gemakkelijke verwijzing.</value>
-  </data>
   <data name="FullRVListPage_NoVisitsSaved" xml:space="preserve">
     <value>Geen eerdere bezoeken!</value>
   </data>
   <data name="AddTimePage_MustBeMinimum" xml:space="preserve">
     <value>Minimale tijd: {0} minuten</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextURL" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextInstructions" xml:space="preserve">
+    <value>Ga naar http://wol.jw.org en ga naar de dagelijkse tekst pagina. Kopieer de URL van die pagina in de bovengenoemde doos.</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextUseCustom" xml:space="preserve">
+    <value>Gebruik aangepaste URL dagtekst</value>
+  </data>
+  <data name="HowTo_WhatsNew_ContextMenus" xml:space="preserve">
+    <value>Context menu's zijn nu toegevoegd op meerdere pagina's. 
+Ingedrukt om het menu te tonen.</value>
+  </data>
+  <data name="HowTo_WhatsNew_CustomDTUrl" xml:space="preserve">
+    <value>U kunt een aangepaste dagtekst url creëren. Bekijk de dagelijkse tekst in elke taal die beschikbaar is op de website jw.org!</value>
+  </data>
+  <data name="HowTo_WhatsNew_RoundTimeInc" xml:space="preserve">
+    <value>U kunt nu de stap die u wilt gebruiken voor het opslaan van uw tijd. Wilt u uw tijd te besparen in stappen van 1 minuut? Of wilt u liever blokken van 30 minuten? Het is aan jou!</value>
   </data>
 </root>

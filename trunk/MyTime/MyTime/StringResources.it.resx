@@ -694,7 +694,7 @@
     <value>{0} Ora(e) e {1} Minuti</value>
   </data>
   <data name="Application_DailyTextURL" xml:space="preserve">
-    <value>http://wol.jw.org/it/wol/dt/r6/lp-i/{0}/{1}/{2}</value>
+    <value>http://wol.jw.org/it/wol/dt/r6/lp-i</value>
   </data>
   <data name="MainPage_Messages_AddedTime" xml:space="preserve">
     <value>Tempo ({0} ore e {1} min) aggiunto</value>
@@ -880,25 +880,29 @@
   <data name="HowTo_WhatsNew" xml:space="preserve">
     <value>Cosa c'è di nuovo?</value>
   </data>
-  <data name="HowTo_WhatsNew_FilterGPSButtons_I" xml:space="preserve">
-    <value>È ora possibile filtrare le visite di ritorno per città o sulla mappa utilizzando il GPS.</value>
-  </data>
-  <data name="HowTo_WhatsNew_GPSMapping_I" xml:space="preserve">
-    <value>Vedi visite di ritorno su una mappa utilizzando le coordinate GPS. Fare doppio clic su una visita di ritorno per aprirlo.</value>
-  </data>
-  <data name="HowTo_WhatsNew_SearchRVs_I" xml:space="preserve">
-    <value>Cerca i tuoi visite di ritorno dalla pagina principale.</value>
-  </data>
-  <data name="HowTo_WhatsNew_ReportEntries_I" xml:space="preserve">
-    <value>Guarda i posizionamenti letteratura dalla scheda le voci sulla pagina report.</value>
-  </data>
-  <data name="HowTo_WhatsNew_Presentations_I" xml:space="preserve">
-    <value>Scatta una foto delle presentazioni dal KM per un facile riferimento.</value>
-  </data>
   <data name="FullRVListPage_NoVisitsSaved" xml:space="preserve">
     <value>Senza precedenti visite!</value>
   </data>
   <data name="AddTimePage_MustBeMinimum" xml:space="preserve">
     <value>Tempo minimo: {0} minuti</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextURL" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextInstructions" xml:space="preserve">
+    <value>Vai a http://wol.jw.org e andare alla pagina di testo giornalmente. Copiare l'URL di quella pagina nella casella in alto.</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextUseCustom" xml:space="preserve">
+    <value>scrittura del giorno personalizzato URL</value>
+  </data>
+  <data name="HowTo_WhatsNew_ContextMenus" xml:space="preserve">
+    <value>I menu contestuali sono ora aggiunte su più pagine. 
+Tenere premuto per visualizzare il menu.</value>
+  </data>
+  <data name="HowTo_WhatsNew_CustomDTUrl" xml:space="preserve">
+    <value>È ora possibile impostare un URL personalizzato per le scrittura del giorno. È possibile visualizzare le scrittura del giorno in qualsiasi lingua che è disponibile sul sito Internet jw.org!</value>
+  </data>
+  <data name="HowTo_WhatsNew_RoundTimeInc" xml:space="preserve">
+    <value>È ora possibile impostare l'incremento che si desidera utilizzare per salvare il vostro tempo. Vuoi risparmiare tempo in incrementi di 1 minuto? O preferisci incrementi di 30 minuti? Tocca a voi!</value>
   </data>
 </root>
