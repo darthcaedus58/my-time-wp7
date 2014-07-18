@@ -80,7 +80,7 @@ namespace FieldService.SocietyScraper
         /// <param name="d">The d.</param>
         public void StartDailyTextRetrieval(DateTime d)
         {
-            string url = string.Format(StringResources.Application_DailyTextURL, d.Year, d.Month, d.Day);
+            string url = App.Settings.UseCustomDTUrl ? App.Settings.CustomDTUrl : StringResources.Application_DailyTextURL;
 
             _hw = new HtmlWeb();
             _hw.LoadCompleted += hw_LoadCompleted;

@@ -29,4 +29,8 @@
 	<Setting Name="askForDonation" Type="Boolean" Value="True" ShowInSettingsPage="false" FriendlyName="askForDonation" />
 	<Setting Name="howToShownVer" Type="String" Value="" ShowInSettingsPage="false" FriendlyName="howToShownVer" />
   <Setting Name="roundTimeIncrement" Type="Integer" FriendlyName="roundTimeIncrement" />
+  <Setting Name="UseCustomDTUrl" Type="Boolean" FriendlyName="UseCustomDTUrl" />
+  <Setting Name="CustomDT_Lang1" Type="String" FriendlyName="CustomDT_Lang1"/>
+  <Setting Name="CustomDT_Lang2" Type="String" FriendlyName="CustomDT_Lang2"/>
+  <Setting Name="CustomDT_RType" Type="String" FriendlyName="CustomDT_RType"/>
 </Settings>
