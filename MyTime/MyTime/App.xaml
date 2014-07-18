@@ -888,6 +888,7 @@
             <commands:AddVisitToRVCommand x:Key="AddVisitToRVCommand" />
             <commands:DeleteReturnVisitCommand x:Key="DeleteReturnVisitCommand" />
             <commands:DeletePreviousCallCommand x:Key="DeletePreviousCallCommand" />
+            <commands:DeleteTimeEntryCommand x:Key="DeleteTimeEntryCommand" />
         </ResourceDictionary>
     </Application.Resources>
 
