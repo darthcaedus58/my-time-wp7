@@ -136,14 +136,14 @@ namespace FieldService
                         lbReminders.ItemsSource = reminderList;
                 }
 
-                protected override void OnBackKeyPress(CancelEventArgs e)
-                {
-                        base.OnBackKeyPress(e);
-                        CleanView();
-                }
+            protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
+            {
+                base.OnNavigatedFrom(e);
+                CleanView();
+            }
 
 
-                private void Pivot_LoadedPivotItem_1(object sender, PivotItemEventArgs e)
+            private void Pivot_LoadedPivotItem_1(object sender, PivotItemEventArgs e)
                 {
                         ApplicationBar.Mode = ApplicationBarMode.Default;
                         string hdr = e.Item.Header.ToString();

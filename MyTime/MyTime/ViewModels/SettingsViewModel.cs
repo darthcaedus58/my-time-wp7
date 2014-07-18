@@ -6,6 +6,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using FieldService.Annotations;
 
@@ -283,6 +284,60 @@ namespace FieldService.ViewModels
             set
             {
                 SetSettingValue("howToShownVer", value);
+                OnPropertyChanged();
+            }
+        }
+
+        public bool UseCustomDTUrl
+        {
+            get { 
+                try {
+                    var b = bool.Parse(GetSetting("UseCustomDTUrl"));
+                    if (b) {
+                        return (!string.IsNullOrEmpty(GetSetting("CustomDT_Lang1")) && !string.IsNullOrEmpty(GetSetting("CustomDT_Lang2")) && !string.IsNullOrEmpty(GetSetting("CustomDT_RType")));
+                    }
+                    return b;
+                }
+                catch {
+                    SetSettingValue("UseCustomDTUrl", true);
+                    OnPropertyChanged();
+                    return true;
+                } 
+            }
+            set
+            {
+                SetSettingValue("UseCustomDTUrl", value);
+                OnPropertyChanged();
+            }
+        }
+
+        public string CustomDTUrl
+        {
+            get
+            {
+                return string.Format(StringResources.Application_CustomDailyTextURL, GetSetting("CustomDT_Lang1"),
+                    GetSetting("CustomDT_RType"), GetSetting("CustomDT_Lang2"));
+            }
+            set
+            {
+                string dtUrlPattern =
+                    @"^http\://(?:m\.)?wol\.jw\.org/(?<lang1>[\w\-]+)/wol/dt/(?<rtype>r\d+)/(?<lang2>lp\-\w+)/\d{4}/\d{1,2}/\d{1,2}$";
+
+                var qry = Regex.Match(value, dtUrlPattern);
+
+                if (qry.Success && qry.Groups.Count == 4) {
+                    SetSettingValue("CustomDT_Lang1", qry.Groups["lang1"].Value);
+                    SetSettingValue("CustomDT_Lang2", qry.Groups["lang2"].Value);
+                    SetSettingValue("CustomDT_RType", qry.Groups["rtype"].Value);
+                }
+                else {
+                    SetSettingValue("CustomDT_Lang1",string.Empty);
+                    SetSettingValue("CustomDT_Lang2",string.Empty);
+                    SetSettingValue("CustomDT_RType",string.Empty);
+                    UseCustomDTUrl = false;
+                    App.ToastMe(StringResources.SettingsPage_Settings_DailyTextErrorUrl);
+                }
+
                 OnPropertyChanged();
             }
         }

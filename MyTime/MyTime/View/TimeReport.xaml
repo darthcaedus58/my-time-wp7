@@ -27,10 +27,11 @@
     <shell:SystemTray.ProgressIndicator>
         <shell:ProgressIndicator IsVisible="True" Text="{Binding Path=StringResources.ApplicationName, Source={StaticResource LocalizedStrings}}" IsIndeterminate="False"/>
     </shell:SystemTray.ProgressIndicator>
-    
+
     <phone:PhoneApplicationPage.Resources>
-		<my:DoubleToVisibilityValueConverter x:Key="DoubleToVisibilityValueConverter"/>
-	</phone:PhoneApplicationPage.Resources>
+        <my:IntToVisibilityValueConverter x:Key="IntToVisibilityValueConverter"/>
+        <my:DoubleToVisibilityValueConverter x:Key="DoubleToVisibilityValueConverter"/>
+    </phone:PhoneApplicationPage.Resources>
     <Grid Width="Auto" Height="Auto" x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
 		<controls:Pivot x:Name="pMainPivot" Foreground="{StaticResource AppForegroundBrush}" Background="{StaticResource AppBackgroundBrush}" >
             <controls:PivotItem Header="{Binding Path=StringResources.ReportingPage_Report_Headline, Source={StaticResource LocalizedStrings}}">
@@ -48,6 +49,105 @@
                             <TextBlock Name="tbFromDate" Text="{Binding Path=StringResources.ReportingPage_Report_From, Source={StaticResource LocalizedStrings}}" />
                             <TextBlock Name="tbToDate" Text="{Binding Path=StringResources.ReportingPage_Report_To, Source={StaticResource LocalizedStrings}}" />
                             <TextBlock Name="tbTotalHours" Text="{Binding TimeReportTotal}" />
+                            <!--<telerikDataVis:RadGauge>
+                                <Grid>
+                                    <Grid.Resources>
+                                        <telerikDataVis:GaugeValueToBrushConverter x:Key="converter1" DefaultColor="Gray">
+                                            <telerikDataVis:GaugeColorValueRange Color="#5C5C5C" MaxValue="79" MinValue="41"/>
+                                            <telerikDataVis:GaugeColorValueRange Color="Red" MaxValue="120" MinValue="80"/>
+                                        </telerikDataVis:GaugeValueToBrushConverter>
+                                    </Grid.Resources>
+                                    <Grid>
+                                        <telerikDataVis:LinearGaugeRange LabelStep="0" MaxValue="200" MinValue="100" TickStep="8">
+                                            <telerikDataVis:LinearGaugeRange.TickTemplate>
+                                                <DataTemplate>
+                                                    <Rectangle Fill="#424242" Height="4" Width="2"/>
+                                                </DataTemplate>
+                                            </telerikDataVis:LinearGaugeRange.TickTemplate>
+                                            <telerikDataVis:LinearBarGaugeIndicator BarBrush="#424242" telerikDataVis:LinearGaugeRange.IndicatorOffset="2" Value="200"/>
+                                            <telerikDataVis:MarkerGaugeIndicator telerikDataVis:LinearGaugeRange.IndicatorOffset="-13" Value="103">
+                                                <telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Foreground="Gray" Text="100"/>
+                                                    </DataTemplate>
+                                                </telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                            </telerikDataVis:MarkerGaugeIndicator>
+                                            <telerikDataVis:MarkerGaugeIndicator telerikDataVis:LinearGaugeRange.IndicatorOffset="-13" Value="196.5">
+                                                <telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Foreground="Gray" Text="200"/>
+                                                    </DataTemplate>
+                                                </telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                            </telerikDataVis:MarkerGaugeIndicator>
+                                            <telerikDataVis:MarkerGaugeIndicator telerikDataVis:LinearGaugeRange.IndicatorOffset="-23" Value="141.5">
+                                                <telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Foreground="Gray" Text="*"/>
+                                                    </DataTemplate>
+                                                </telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                            </telerikDataVis:MarkerGaugeIndicator>
+                                            <telerikDataVis:MarkerGaugeIndicator telerikDataVis:LinearGaugeRange.IndicatorOffset="-12" Value="141.5">
+                                                <telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                                    <DataTemplate>
+                                                        <Rectangle Fill="#424242" Height="10" Width="2"/>
+                                                    </DataTemplate>
+                                                </telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                            </telerikDataVis:MarkerGaugeIndicator>
+                                        </telerikDataVis:LinearGaugeRange>
+                                        <telerikDataVis:LinearGaugeRange LabelStep="0" MaxValue="120" TickStep="10">
+                                            <telerikDataVis:LinearGaugeRange.RenderTransform>
+                                                <TranslateTransform Y="21"/>
+                                            </telerikDataVis:LinearGaugeRange.RenderTransform>
+                                            <telerikDataVis:LinearGaugeRange.TickTemplate>
+                                                <DataTemplate>
+                                                    <Rectangle Fill="{Binding Converter={StaticResource converter1}}" Height="4" Width="2"/>
+                                                </DataTemplate>
+                                            </telerikDataVis:LinearGaugeRange.TickTemplate>
+                                            <telerikDataVis:SegmentedLinearGaugeIndicator telerikDataVis:LinearGaugeRange.IndicatorOffset="-1" Value="120">
+                                                <telerikDataVis:BarIndicatorSegment Stroke="{StaticResource PhoneForegroundBrush}"/>
+                                                <telerikDataVis:BarIndicatorSegment Stroke="#5C5C5C"/>
+                                                <telerikDataVis:BarIndicatorSegment Stroke="Red"/>
+                                            </telerikDataVis:SegmentedLinearGaugeIndicator>
+                                            <telerikDataVis:LinearBarGaugeIndicator BarBrush="Red" BarThickness="12" telerikDataVis:LinearGaugeRange.IndicatorOffset="-10" Value="80"/>
+                                            <telerikDataVis:MarkerGaugeIndicator telerikDataVis:LinearGaugeRange.IndicatorOffset="12" Value="1">
+                                                <telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Foreground="#707070" Text="0"/>
+                                                    </DataTemplate>
+                                                </telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                            </telerikDataVis:MarkerGaugeIndicator>
+                                            <telerikDataVis:MarkerGaugeIndicator telerikDataVis:LinearGaugeRange.IndicatorOffset="12" Value="40">
+                                                <telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Foreground="#707070" Text="40"/>
+                                                    </DataTemplate>
+                                                </telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                            </telerikDataVis:MarkerGaugeIndicator>
+                                            <telerikDataVis:MarkerGaugeIndicator telerikDataVis:LinearGaugeRange.IndicatorOffset="12" Value="80">
+                                                <telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Foreground="Red" Text="80"/>
+                                                    </DataTemplate>
+                                                </telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                            </telerikDataVis:MarkerGaugeIndicator>
+                                            <telerikDataVis:MarkerGaugeIndicator telerikDataVis:LinearGaugeRange.IndicatorOffset="12" Value="116">
+                                                <telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Foreground="Red" Text="120"/>
+                                                    </DataTemplate>
+                                                </telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                            </telerikDataVis:MarkerGaugeIndicator>
+                                            <telerikDataVis:MarkerGaugeIndicator telerikDataVis:LinearGaugeRange.IndicatorOffset="-10" Value="29.7">
+                                                <telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                                    <DataTemplate>
+                                                        <Rectangle Fill="#424242" Height="16" Width="2"/>
+                                                    </DataTemplate>
+                                                </telerikDataVis:MarkerGaugeIndicator.MarkerTemplate>
+                                            </telerikDataVis:MarkerGaugeIndicator>
+                                        </telerikDataVis:LinearGaugeRange>
+                                    </Grid>
+                                </Grid>
+                            </telerikDataVis:RadGauge>-->
                         </StackPanel>
                     </Grid>
                     <Grid Row="1">
@@ -90,16 +190,26 @@
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
                         </ScrollViewer>
+                        <telerikPrimitives:RadBusyIndicator ContentPosition="Top" Grid.Row="1"  IsRunning="{Binding IsTimeReportDataLoading}" Margin="0,0,15,0" />
                     </Grid>
                 </Grid>
             </controls:PivotItem>
 			<controls:PivotItem Header="{Binding Path=StringResources.ReportingPage_Entries_Header, Source={StaticResource LocalizedStrings}}">
-				<Grid x:Name="grid" >
-					<ListBox ItemsSource="{Binding lbTimeEntries}" Name="lbEntries" SelectionChanged="lbEntries_SelectionChanged" Height="{Binding ActualHeight, ElementName=grid, Mode=OneWay}">
+				<Grid x:Name="grid">
+					<ListBox ItemsSource="{Binding lbTimeEntries, Mode=TwoWay}" Name="lbEntries" SelectionChanged="lbEntries_SelectionChanged" Height="{Binding ActualHeight, ElementName=grid, Mode=OneWay}">
 						<ListBox.ItemTemplate>
 							<DataTemplate>
-								<StackPanel HorizontalAlignment="Stretch" Orientation="Vertical">
-									<TextBlock TextTrimming="WordEllipsis" Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextLargeStyle}" Text="{Binding Date, StringFormat=\{0:D\}}" />
+                                <StackPanel Visibility="{Binding Minutes, Converter={StaticResource IntToVisibilityValueConverter}}" HorizontalAlignment="Stretch" Orientation="Vertical">
+                                    <telerikPrimitives:RadContextMenu.ContextMenu>
+                                        <telerikPrimitives:RadContextMenu>
+                                            <telerikPrimitives:RadContextMenuItem Content="{Binding Path=StringResources.AddTimePage_DeleteMenuItem, Source={StaticResource LocalizedStrings}}" 
+                                                                                  Tap="UIElement_OnTap"
+                                                                                  Command="{StaticResource DeleteTimeEntryCommand}"
+                                                                                  CommandParameter="{Binding Self}"/>
+                                                                                  
+                                        </telerikPrimitives:RadContextMenu>
+                                    </telerikPrimitives:RadContextMenu.ContextMenu>
+                                    <TextBlock TextTrimming="WordEllipsis" Foreground="{StaticResource AppForegroundBrush}" Style="{StaticResource PhoneTextLargeStyle}" Text="{Binding Date, StringFormat=\{0:D\}}" />
 									<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Hours}" />
 									<TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Notes}" TextTrimming="WordEllipsis" Visibility="{Binding Notes, Converter={StaticResource TextToVisibilityConverter}}" />
                                      <Grid Visibility="{Binding IsRegularTime}" Margin="0,-12,0,0">
@@ -171,7 +281,7 @@
                                 </telerikChart:AreaSeries.TrackBallInfoTemplate>
                             </telerikChart:AreaSeries>
                         </telerikChart:RadCartesianChart>
-                        <!--<telerikPrimitives:RadBusyIndicator ContentPosition="Top" Grid.Row="1"  IsRunning="{Binding IsTimeReportDataLoading}" Margin="0,0,15,0" />-->
+                        <telerikPrimitives:RadBusyIndicator ContentPosition="Top" Grid.Row="1"  IsRunning="{Binding IsTimeReportDataLoading}" Margin="0,0,15,0" />
                     </Grid>
                 </Grid>
             </controls:PivotItem>

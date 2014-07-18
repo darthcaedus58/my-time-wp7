@@ -693,7 +693,7 @@
     <value>{0} Stunde(n) &amp; {1} Minute(n)</value>
   </data>
   <data name="Application_DailyTextURL" xml:space="preserve">
-    <value>http://wol.jw.org/de/wol/dt/r10/lp-x/{0}/{1}/{2}</value>
+    <value>http://wol.jw.org/de/wol/dt/r10/lp-x</value>
   </data>
   <data name="MainPage_Messages_AddedTime" xml:space="preserve">
     <value>Time ({0} Std. &amp; {1} min) hinzugefügt.</value>
@@ -879,25 +879,29 @@
   <data name="HowTo_WhatsNew" xml:space="preserve">
     <value>Was gibt's Neues?</value>
   </data>
-  <data name="HowTo_WhatsNew_FilterGPSButtons_I" xml:space="preserve">
-    <value>Sie können nun Ihre Gegenbesuche filtern nach Stadt oder ordnen Sie sie mit Hilfe von GPS.</value>
-  </data>
-  <data name="HowTo_WhatsNew_GPSMapping_I" xml:space="preserve">
-    <value>Sehen Gegenbesuche auf einer Karte mit GPS-Koordinaten. Klicken Sie doppelt auf einen Gegenbesuch, um es zu öffnen.</value>
-  </data>
-  <data name="HowTo_WhatsNew_SearchRVs_I" xml:space="preserve">
-    <value>Suchen Sie Ihr Gegenbesuche von der Seite an.</value>
-  </data>
-  <data name="HowTo_WhatsNew_ReportEntries_I" xml:space="preserve">
-    <value>Sehen Sie Ihre Literatur Platzierungen auf der Registerkarte Einträgen auf der Seite Berichte.</value>
-  </data>
-  <data name="HowTo_WhatsNew_Presentations_I" xml:space="preserve">
-    <value>Nehmen Sie ein Bild von den Präsentationen von Ihrem KM für eine einfache Referenz.</value>
-  </data>
   <data name="FullRVListPage_NoVisitsSaved" xml:space="preserve">
     <value>Keine vorherige Besuche!</value>
   </data>
   <data name="AddTimePage_MustBeMinimum" xml:space="preserve">
     <value>Mindestdauer : {0} Minuten</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextURL" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextInstructions" xml:space="preserve">
+    <value>Zum http://wol.jw.org und gehen zum Tagestext-Seite. Kopieren Sie die URL dieser Seite in den oben genannten Box.</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextUseCustom" xml:space="preserve">
+    <value>BBenutzerdefinierte tagestext URL</value>
+  </data>
+  <data name="HowTo_WhatsNew_ContextMenus" xml:space="preserve">
+    <value>Kontextmenüs werden nun auf mehreren Seiten aufgenommen. 
+Halten Sie, um das Menü zu zeigen.</value>
+  </data>
+  <data name="HowTo_WhatsNew_CustomDTUrl" xml:space="preserve">
+    <value>Sie können jetzt eine individuelle URL für die tagestext gesetzt. Sie können die tagestext in jeder Sprache, die verfügbar ist auf der Website jw.org an!</value>
+  </data>
+  <data name="HowTo_WhatsNew_RoundTimeInc" xml:space="preserve">
+    <value>Sie können nun die Schrittweite, die Sie für das Speichern Ihrer Zeit verwenden möchten. Möchten Sie Ihre Zeit in Schritten von 1 Minute speichern? Oder möchten Sie lieber Schritten von 30 Minuten? Es liegt an Ihnen!</value>
   </data>
 </root>

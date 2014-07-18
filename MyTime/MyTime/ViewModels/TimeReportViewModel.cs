@@ -141,7 +141,8 @@ namespace FieldService.ViewModels
                                         BrochuresCount = td.Brochures,
                                         BooksCount = td.Books,
                                         TractsCount = td.Tracts,
-                                        RVsCount = td.ReturnVisits
+                                        RVsCount = td.ReturnVisits,
+                                        Type = TimeType.Regular
                                 });
                         }
 
@@ -167,7 +168,8 @@ namespace FieldService.ViewModels
                                         BrochuresCount = -1,
                                         BooksCount = -1,
                                         RVsCount = -1,
-                                        TractsCount = -1
+                                        TractsCount = -1,
+                                        Type = TimeType.Auxiliary
                                 });
                         }
                         TimeReportEntryViewModel[] lte = lbTimeEntries.OrderBy(s => s.Date.Date).ToArray();

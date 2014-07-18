@@ -17,28 +17,33 @@ namespace FieldService.ViewModels
                         _items.Add(new HowToDataItemViewModel()
                         {
                             Title = StringResources.HowTo_WhatsNew,
-                            Information = StringResources.HowTo_WhatsNew_FilterGPSButtons_I,
-                            ImageSource = new Uri("/Images/whatsnew_filter-gps-buttons.png", UriKind.Relative)
+                            Information = StringResources.HowTo_WhatsNew_ContextMenus,
+                            ImageSource = new Uri("/Images/whatsnew_contextmenu0.png", UriKind.Relative)
                         });
                         _items.Add(new HowToDataItemViewModel() {
                             Title = StringResources.HowTo_WhatsNew,
-                            Information = StringResources.HowTo_WhatsNew_GPSMapping_I,
-                            ImageSource = new Uri("/Images/whatsnew_gpsmapping.png", UriKind.Relative)
+                            Information = StringResources.HowTo_WhatsNew_ContextMenus,
+                            ImageSource = new Uri("/Images/whatsnew_contextmenu1.png", UriKind.Relative)
                         });
                         _items.Add(new HowToDataItemViewModel() {
                             Title = StringResources.HowTo_WhatsNew,
-                            Information = StringResources.HowTo_WhatsNew_SearchRVs_I,
-                            ImageSource = new Uri("/Images/whatsnew_searchrvs.png", UriKind.Relative)
+                            Information = StringResources.HowTo_WhatsNew_ContextMenus,
+                            ImageSource = new Uri("/Images/whatsnew_contextmenu2.png", UriKind.Relative)
                         });
                         _items.Add(new HowToDataItemViewModel() {
                             Title = StringResources.HowTo_WhatsNew,
-                            Information = StringResources.HowTo_WhatsNew_Presentations_I,
-                            ImageSource = new Uri("/Images/whatsnew_presentations.png", UriKind.Relative)
+                            Information = StringResources.HowTo_WhatsNew_ContextMenus,
+                            ImageSource = new Uri("/Images/whatsnew_contextmenu3.png", UriKind.Relative)
                         });
                         _items.Add(new HowToDataItemViewModel() {
                             Title = StringResources.HowTo_WhatsNew,
-                            Information = StringResources.HowTo_WhatsNew_ReportEntries_I,
-                            ImageSource = new Uri("/Images/whatsnew_reportentries.png", UriKind.Relative)
+                            Information = StringResources.HowTo_WhatsNew_CustomDTUrl,
+                            ImageSource = new Uri("/Images/whatsnew_custom_dt_url.png", UriKind.Relative)
+                        });
+                        _items.Add(new HowToDataItemViewModel() {
+                            Title = StringResources.HowTo_WhatsNew,
+                            Information = StringResources.HowTo_WhatsNew_RoundTimeInc,
+                            ImageSource = new Uri("/Images/whatsnew_roundtimeinc.png", UriKind.Relative)
                         });
                         _items.Add(new HowToDataItemViewModel()
                         {
