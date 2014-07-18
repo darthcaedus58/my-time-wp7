@@ -167,6 +167,7 @@
     <Compile Include="Commands\AddVisitToRVCommand.cs" />
     <Compile Include="Commands\DeletePreviousCallCommand.cs" />
     <Compile Include="Commands\DeleteReturnVisitCommand.cs" />
+    <Compile Include="Commands\DeleteTimeEntryCommand.cs" />
     <Compile Include="Model\StreetBuildingItemModel.cs" />
     <Compile Include="Model\TerritoryCardModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
@@ -443,6 +444,7 @@
     </Content>
     <Content Include="icons\Login-Door.png" />
     <Content Include="icons\Map-Location.png" />
+    <Content Include="Images\daily_text_help_settings.png" />
     <Content Include="Images\Frame.png" />
     <Content Include="Images\LeftArrow.png" />
     <Content Include="Images\RightArrow.png" />
@@ -490,21 +492,12 @@
     <Content Include="Images\DateTimePickerOK.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\whatsnew_filter-gps-buttons.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\whatsnew_gpsmapping.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\whatsnew_presentations.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\whatsnew_reportentries.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\whatsnew_searchrvs.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Images\whatsnew_contextmenu0.png" />
+    <Content Include="Images\whatsnew_contextmenu1.png" />
+    <Content Include="Images\whatsnew_contextmenu2.png" />
+    <Content Include="Images\whatsnew_contextmenu3.png" />
+    <Content Include="Images\whatsnew_custom_dt_url.png" />
+    <Content Include="Images\whatsnew_roundtimeinc.png" />
     <Content Include="Model\settings.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
