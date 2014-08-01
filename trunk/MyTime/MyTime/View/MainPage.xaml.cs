@@ -172,14 +172,14 @@ namespace FieldService.View
                 }
             } catch { }
 
-            try {
-                if (!App.Settings.howToShownVer.Equals(App.GetVersion())) {
-                    NavigationService.Navigate(new Uri("/View/HowTo.xaml", UriKind.Relative));
-                    App.Settings.howToShownVer = App.GetVersion();
-                }
-            } catch (Exception) {
-                NavigationService.Navigate(new Uri("/View/HowTo.xaml", UriKind.Relative));
-            }
+            //try {
+            //    if (!App.Settings.howToShownVer.Equals(App.GetVersion())) {
+            //        NavigationService.Navigate(new Uri("/View/HowTo.xaml", UriKind.Relative));
+            //        App.Settings.howToShownVer = App.GetVersion();
+            //    }
+            //} catch (Exception) {
+            //    NavigationService.Navigate(new Uri("/View/HowTo.xaml", UriKind.Relative));
+            //}
         }
 
         private void StartDailyTextRetrieval()
