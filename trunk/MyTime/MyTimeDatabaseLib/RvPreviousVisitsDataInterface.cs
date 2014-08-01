@@ -173,9 +173,11 @@ namespace MyTimeDatabaseLib
 		{
 			//
 			using (var db = new RvPreviousVisitsContext(RvPreviousVisitsContext.DBConnectionString)) {
-				try {
+				try { //new DateTime(tod.Year, tod.Month, tod.Day, 0,0,0).AddDays(1)
+                    @from  = new DateTime(@from.Year,@from.Month, @from.Day,0,0,0);
+				    tod = new DateTime(tod.Year, tod.Month, tod.Day, 0, 0, 0).AddDays(1);
 					var calls = from x in db.RvPreviousVisitItems
-								where x.Date >= @from && x.Date <= tod
+                                where x.Date >= @from && x.Date < tod
 								select x;
 					if (calls.Any()) {
 						return calls.Select(c => RvPreviousVisitData.Copy(c)).ToArray();
