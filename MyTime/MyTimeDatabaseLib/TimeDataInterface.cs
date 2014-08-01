@@ -127,8 +127,10 @@ namespace MyTimeDatabaseLib
 		public static TimeData[] GetEntries(DateTime @from, DateTime to, SortOrder so)
 		{
 			using (var db = new TimeDataContext(TimeDataContext.DBConnectionString)) {
+                @from = new DateTime(@from.Year, @from.Month, @from.Day, 0, 0, 0);
+                to = new DateTime(to.Year, to.Month, to.Day, 0, 0, 0).AddDays(1);
 				IOrderedQueryable<TimeDataItem> entries = from x in db.TimeDataItems
-														  where x.Date >= @from && x.Date < (new DateTime(to.Year,to.Month,to.Day,0,0,0,000)).AddDays(1)
+														  where x.Date >= @from && x.Date < to
 														  orderby x.Date
 														  select x;
 
