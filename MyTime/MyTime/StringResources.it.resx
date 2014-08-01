@@ -905,4 +905,13 @@ Tenere premuto per visualizzare il menu.</value>
   <data name="HowTo_WhatsNew_RoundTimeInc" xml:space="preserve">
     <value>È ora possibile impostare l'incremento che si desidera utilizzare per salvare il vostro tempo. Vuoi risparmiare tempo in incrementi di 1 minuto? O preferisci incrementi di 30 minuti? Tocca a voi!</value>
   </data>
+  <data name="SettingsPage_Settings_DailyTextSettings" xml:space="preserve">
+    <value>DAILY TEXT SETTINGS</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextErrorUrl" xml:space="preserve">
+    <value>Could not parse URL, try again.</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextErrorUrlNotSet" xml:space="preserve">
+    <value>Please enter url first.</value>
+  </data>
 </root>

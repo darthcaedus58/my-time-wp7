@@ -905,4 +905,13 @@ Ingedrukt om het menu te tonen.</value>
   <data name="HowTo_WhatsNew_RoundTimeInc" xml:space="preserve">
     <value>U kunt nu de stap die u wilt gebruiken voor het opslaan van uw tijd. Wilt u uw tijd te besparen in stappen van 1 minuut? Of wilt u liever blokken van 30 minuten? Het is aan jou!</value>
   </data>
+  <data name="SettingsPage_Settings_DailyTextSettings" xml:space="preserve">
+    <value>DAILY TEXT SETTINGS</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextErrorUrl" xml:space="preserve">
+    <value>Could not parse URL, try again.</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextErrorUrlNotSet" xml:space="preserve">
+    <value>Please enter url first.</value>
+  </data>
 </root>

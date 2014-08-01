@@ -19,7 +19,9 @@ using System.IO.IsolatedStorage;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using Coding4Fun.Phone.Controls;
 using FieldService.ViewModels;
@@ -268,14 +270,21 @@ namespace FieldService
 		/// </summary>
 		/// <param name="content">The content.</param>
 		/// <param name="title">The title.</param>
-		public static void ToastMe(string content, string title = "Field Service")
+		public static void ToastMe(string content, string title = "")
 		{
-			var toast = new ToastPrompt {
-											Title = title,
-											Message = content
-										};
+            if(string.IsNullOrEmpty(title))
+                title = StringResources.ApplicationName;
 
-			toast.Show();
+
+            var toast = new ToastPrompt {
+                Title = title,
+                Message = content,
+                TextOrientation = Orientation.Vertical
+            };
+
+            toast.Show();
+            
+            
 		}
 
 		/// <summary>

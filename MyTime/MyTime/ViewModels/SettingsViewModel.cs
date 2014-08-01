@@ -292,11 +292,8 @@ namespace FieldService.ViewModels
         {
             get { 
                 try {
-                    var b = bool.Parse(GetSetting("UseCustomDTUrl"));
-                    if (b) {
-                        return (!string.IsNullOrEmpty(GetSetting("CustomDT_Lang1")) && !string.IsNullOrEmpty(GetSetting("CustomDT_Lang2")) && !string.IsNullOrEmpty(GetSetting("CustomDT_RType")));
-                    }
-                    return b;
+                    return bool.Parse(GetSetting("UseCustomDTUrl"));
+                    
                 }
                 catch {
                     SetSettingValue("UseCustomDTUrl", true);
@@ -306,6 +303,11 @@ namespace FieldService.ViewModels
             }
             set
             {
+                if (value) {
+                    value = (!string.IsNullOrEmpty(GetSetting("CustomDT_Lang1")) && !string.IsNullOrEmpty(GetSetting("CustomDT_Lang2")) && !string.IsNullOrEmpty(GetSetting("CustomDT_RType")));
+                    if (!value)
+                        App.ToastMe(StringResources.SettingsPage_Settings_DailyTextErrorUrlNotSet);
+                }
                 SetSettingValue("UseCustomDTUrl", value);
                 OnPropertyChanged();
             }
@@ -315,15 +317,18 @@ namespace FieldService.ViewModels
         {
             get
             {
-                return string.Format(StringResources.Application_CustomDailyTextURL, GetSetting("CustomDT_Lang1"),
-                    GetSetting("CustomDT_RType"), GetSetting("CustomDT_Lang2"), DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day);
+                return UseCustomDTUrl
+                    ? string.Format(StringResources.Application_CustomDailyTextURL, 
+                        GetSetting("CustomDT_Lang1"), GetSetting("CustomDT_RType"), GetSetting("CustomDT_Lang2"), 
+                        DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day)
+                    : string.Empty;
             }
             set
             {
                 string dtUrlPattern =
                     @"^http\://(?:m\.)?wol\.jw\.org/(?<lang1>[\w\-]+)/wol/dt/(?<rtype>r\d+)/(?<lang2>lp\-\w+)/\d{4}/\d{1,2}/\d{1,2}$";
 
-                var qry = Regex.Match(value, dtUrlPattern);
+                var qry = Regex.Match(value, dtUrlPattern); 
 
                 if (qry.Success && qry.Groups.Count == 4) {
                     SetSettingValue("CustomDT_Lang1", qry.Groups["lang1"].Value);

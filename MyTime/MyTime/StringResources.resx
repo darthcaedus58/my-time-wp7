@@ -904,6 +904,9 @@
   <data name="SettingsPage_Settings_DailyTextErrorUrl" xml:space="preserve">
     <value>Could not parse URL, try again.</value>
   </data>
+  <data name="SettingsPage_Settings_DailyTextErrorUrlNotSet" xml:space="preserve">
+    <value>Please enter url first.</value>
+  </data>
   <data name="HowTo_WhatsNew_ContextMenus" xml:space="preserve">
     <value>Context menus are now added on several pages.
 Hold down to show the menu.</value>
