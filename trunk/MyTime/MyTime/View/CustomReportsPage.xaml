@@ -64,6 +64,14 @@
 					<Button Grid.Column="1" Content="{Binding Path=StringResources.CustomReportsPage_Month, Source={StaticResource LocalizedStrings}}" Click="ButtonSetRangeMonth_Click" Style="{StaticResource SettingsButtonBaseControlTemplate}" />
 					<Button Grid.Column="2" Content="{Binding Path=StringResources.CustomReportsPage_Year, Source={StaticResource LocalizedStrings}}" Click="ButtonSetRangeYear_Click" Style="{StaticResource SettingsButtonBaseControlTemplate}" />
 				</Grid>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+					<Button Grid.Column="0" Content="{Binding Path=StringResources.CustomReportsPage_LastMonth, Source={StaticResource LocalizedStrings}}" Click="ButtonSetRangeLastMonth_Click" Style="{StaticResource SettingsButtonBaseControlTemplate}" />
+					<Button Grid.Column="1" Content="{Binding Path=StringResources.CustomReportsPage_LastServiceYear, Source={StaticResource LocalizedStrings}}" Click="ButtonSetRangeLastServiceYear_Click" Style="{StaticResource SettingsButtonBaseControlTemplate}" />
+    </Grid>
 				<FieldService:HeaderControl IconSource="/icons/calendar.png"  HeaderText="{Binding Path=StringResources.CustomReportsPage_To, Source={StaticResource LocalizedStrings}}" Margin="15,0,0,0" />
                 <telerikInput:RadDatePicker x:Name="dpToDate" EmptyContent="{Binding Path=StringResources.General_SelectDate, Source={StaticResource LocalizedStrings}}"  Template="{StaticResource RadDatePickerControlTemplateApp}" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" />
 			</StackPanel>

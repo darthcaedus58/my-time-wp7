@@ -345,6 +345,12 @@
   <data name="CustomReportsPage_Year" xml:space="preserve">
     <value>Year</value>
   </data>
+  <data name="CustomReportsPage_LastMonth" xml:space="preserve">
+    <value>last month</value>
+  </data>
+  <data name="CustomReportsPage_LastServiceYear" xml:space="preserve">
+    <value>last service year</value>
+  </data>
   <data name="FullRVListPage_Headline" xml:space="preserve">
     <value>return visits</value>
   </data>

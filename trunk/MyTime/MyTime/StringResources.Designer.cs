@@ -718,6 +718,24 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to last month.
+        /// </summary>
+        public static string CustomReportsPage_LastMonth {
+            get {
+                return ResourceManager.GetString("CustomReportsPage_LastMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to last service year.
+        /// </summary>
+        public static string CustomReportsPage_LastServiceYear {
+            get {
+                return ResourceManager.GetString("CustomReportsPage_LastServiceYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Month.
         /// </summary>
         public static string CustomReportsPage_Month {

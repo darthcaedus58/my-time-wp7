@@ -340,10 +340,10 @@
     <value>EIND DATUM</value>
   </data>
   <data name="CustomReportsPage_Week" xml:space="preserve">
-    <value>Week</value>
+    <value>week</value>
   </data>
   <data name="CustomReportsPage_Year" xml:space="preserve">
-    <value>Jaar</value>
+    <value>jaar</value>
   </data>
   <data name="FullRVListPage_Headline" xml:space="preserve">
     <value>nabezoeken</value>
@@ -906,12 +906,18 @@ Ingedrukt om het menu te tonen.</value>
     <value>U kunt nu de stap die u wilt gebruiken voor het opslaan van uw tijd. Wilt u uw tijd te besparen in stappen van 1 minuut? Of wilt u liever blokken van 30 minuten? Het is aan jou!</value>
   </data>
   <data name="SettingsPage_Settings_DailyTextSettings" xml:space="preserve">
-    <value>DAILY TEXT SETTINGS</value>
+    <value>DAGTEKST INSTELLINGEN</value>
   </data>
   <data name="SettingsPage_Settings_DailyTextErrorUrl" xml:space="preserve">
-    <value>Could not parse URL, try again.</value>
+    <value>Kon niet ontleden URL, probeer het opnieuw.</value>
   </data>
   <data name="SettingsPage_Settings_DailyTextErrorUrlNotSet" xml:space="preserve">
-    <value>Please enter url first.</value>
+    <value>Gelieve eerst in URL.</value>
+  </data>
+  <data name="CustomReportsPage_LastMonth" xml:space="preserve">
+    <value>vorige maand</value>
+  </data>
+  <data name="CustomReportsPage_LastServiceYear" xml:space="preserve">
+    <value>laatste dienstjaar</value>
   </data>
 </root>
