@@ -479,7 +479,6 @@ namespace FieldService.ViewModels
 		public bool SaveOrUpdate()
 		{
 			if (_returnVisitData.DateCreated <= DateTime.MinValue || _returnVisitData.DateCreated >= DateTime.MaxValue) _returnVisitData.DateCreated = DateTime.Now;	
-            if(_returnVisitData.LastVisitDate == null )
 			App.ViewModel.IsRvDataChanged = true;
 			return ReturnVisitsInterface.AddOrUpdateRV(ref _returnVisitData);
 		}
