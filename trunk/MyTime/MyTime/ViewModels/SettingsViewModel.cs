@@ -316,7 +316,7 @@ namespace FieldService.ViewModels
             get
             {
                 return string.Format(StringResources.Application_CustomDailyTextURL, GetSetting("CustomDT_Lang1"),
-                    GetSetting("CustomDT_RType"), GetSetting("CustomDT_Lang2"));
+                    GetSetting("CustomDT_RType"), GetSetting("CustomDT_Lang2"), DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day);
             }
             set
             {

@@ -247,7 +247,7 @@
     <value>SERVICIO DE CAMPO</value>
   </data>
   <data name="Application_DailyTextURL" xml:space="preserve">
-    <value>http://wol.jw.org/es/wol/dt/r4/lp-s</value>
+    <value>http://wol.jw.org/es/wol/dt/r4/lp-s/{0}/{1}/{2}</value>
   </data>
   <data name="BackupAndRestorePage_Backup" xml:space="preserve">
     <value>Respaldo</value>

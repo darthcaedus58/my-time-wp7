@@ -262,7 +262,7 @@
     <value>FIELD SERVICE</value>
   </data>
   <data name="Application_DailyTextURL" xml:space="preserve">
-    <value>http://wol.jw.org/en/wol/dt/r1/lp-e</value>
+    <value>http://wol.jw.org/en/wol/dt/r1/lp-e/{0}/{1}/{2}</value>
   </data>
   <data name="BackupAndRestorePage_Backup" xml:space="preserve">
     <value>Backup</value>
@@ -896,7 +896,7 @@
     <value>Go to http://wol.jw.org and go to the daily text page. Copy the URL of that page into the above box.</value>
   </data>
   <data name="Application_CustomDailyTextURL" xml:space="preserve">
-    <value>http://wol.jw.org/{0}/wol/dt/{1}/{2}</value>
+    <value>http://wol.jw.org/{0}/wol/dt/{1}/{2}/{3}/{4}/{5}</value>
   </data>
   <data name="SettingsPage_Settings_DailyTextUseCustom" xml:space="preserve">
     <value>Use Custom Daily Text URL</value>
