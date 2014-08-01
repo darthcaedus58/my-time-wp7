@@ -511,7 +511,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://wol.jw.org/{0}/wol/dt/{1}/{2}.
+        ///   Looks up a localized string similar to http://wol.jw.org/{0}/wol/dt/{1}/{2}/{3}/{4}/{5}.
         /// </summary>
         public static string Application_CustomDailyTextURL {
             get {
@@ -520,7 +520,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://wol.jw.org/en/wol/dt/r1/lp-e.
+        ///   Looks up a localized string similar to http://wol.jw.org/en/wol/dt/r1/lp-e/{0}/{1}/{2}.
         /// </summary>
         public static string Application_DailyTextURL {
             get {

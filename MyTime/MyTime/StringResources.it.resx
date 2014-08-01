@@ -694,7 +694,7 @@
     <value>{0} Ora(e) e {1} Minuti</value>
   </data>
   <data name="Application_DailyTextURL" xml:space="preserve">
-    <value>http://wol.jw.org/it/wol/dt/r6/lp-i</value>
+    <value>http://wol.jw.org/it/wol/dt/r6/lp-i/{0}/{1}/{2}</value>
   </data>
   <data name="MainPage_Messages_AddedTime" xml:space="preserve">
     <value>Tempo ({0} ore e {1} min) aggiunto</value>

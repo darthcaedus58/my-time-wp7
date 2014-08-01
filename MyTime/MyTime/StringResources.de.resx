@@ -693,7 +693,7 @@
     <value>{0} Stunde(n) &amp; {1} Minute(n)</value>
   </data>
   <data name="Application_DailyTextURL" xml:space="preserve">
-    <value>http://wol.jw.org/de/wol/dt/r10/lp-x</value>
+    <value>http://wol.jw.org/de/wol/dt/r10/lp-x/{0}/{1}/{2}</value>
   </data>
   <data name="MainPage_Messages_AddedTime" xml:space="preserve">
     <value>Time ({0} Std. &amp; {1} min) hinzugefügt.</value>
