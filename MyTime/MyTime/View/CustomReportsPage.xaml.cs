@@ -48,20 +48,33 @@ namespace FieldService.View
 
 		private void ButtonSetRangeWeek_Click(object sender, RoutedEventArgs e)
 		{
-			//throw new NotImplementedException();
-
 			if (dpStartDate.Value != null) dpToDate.Value = dpStartDate.Value.Value.AddDays(7);
 		}
 
 		private void ButtonSetRangeMonth_Click(object sender, RoutedEventArgs e)
 		{
-			//throw new NotImplementedException();
 			if (dpStartDate.Value != null) dpToDate.Value = dpStartDate.Value.Value.AddMonths(1).AddDays(-1);
 		}
 		private void ButtonSetRangeYear_Click(object sender, RoutedEventArgs e)
 		{
-			//throw new NotImplementedException();
 			if (dpStartDate.Value != null) dpToDate.Value = dpStartDate.Value.Value.AddYears(1).AddDays(-1);
 		}
+
+	    private void ButtonSetRangeLastMonth_Click(object sender, RoutedEventArgs e)
+	    {
+	        dpStartDate.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1,0,0,0).AddMonths(-1);
+	        dpToDate.Value = dpStartDate.Value.Value.AddMonths(1).AddDays(-1);
+	    }
+
+	    private void ButtonSetRangeLastServiceYear_Click(object sender, RoutedEventArgs e)
+	    {
+	        if (DateTime.Today.Month <= 8) {
+	            dpStartDate.Value = new DateTime(DateTime.Today.Year - 2, 9, 1, 0, 0, 0);
+	        }
+	        else {
+	            dpStartDate.Value = new DateTime(DateTime.Today.Year - 1, 9, 1, 0, 0, 0);
+	        }
+            dpToDate.Value = dpStartDate.Value.Value.AddYears(1).AddDays(-1);
+	    }
 	}
 }

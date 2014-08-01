@@ -905,12 +905,18 @@ Halten Sie, um das Menü zu zeigen.</value>
     <value>Sie können nun die Schrittweite, die Sie für das Speichern Ihrer Zeit verwenden möchten. Möchten Sie Ihre Zeit in Schritten von 1 Minute speichern? Oder möchten Sie lieber Schritten von 30 Minuten? Es liegt an Ihnen!</value>
   </data>
   <data name="SettingsPage_Settings_DailyTextSettings" xml:space="preserve">
-    <value>DAILY TEXT SETTINGS</value>
+    <value>TAGESTEXT EINSTELLUNGEN</value>
   </data>
   <data name="SettingsPage_Settings_DailyTextErrorUrl" xml:space="preserve">
-    <value>Could not parse URL, try again.</value>
+    <value>URL konnte nicht analysiert werden, versuchen Sie es erneut.</value>
   </data>
   <data name="SettingsPage_Settings_DailyTextErrorUrlNotSet" xml:space="preserve">
-    <value>Please enter url first.</value>
+    <value>Bitte geben Sie zunächst URL.</value>
+  </data>
+  <data name="CustomReportsPage_LastMonth" xml:space="preserve">
+    <value>im letzten Monat</value>
+  </data>
+  <data name="CustomReportsPage_LastServiceYear" xml:space="preserve">
+    <value>letzten Dienstjahr</value>
   </data>
 </root>

@@ -732,7 +732,7 @@
     <value>Informe Personalizado</value>
   </data>
   <data name="CustomReportsPage_Month" xml:space="preserve">
-    <value>Mes</value>
+    <value>mes</value>
   </data>
   <data name="CustomReportsPage_Range" xml:space="preserve">
     <value>INTERVALO</value>
@@ -747,10 +747,10 @@
     <value>FECHA DE FIN</value>
   </data>
   <data name="CustomReportsPage_Week" xml:space="preserve">
-    <value>Semana</value>
+    <value>semana</value>
   </data>
   <data name="CustomReportsPage_Year" xml:space="preserve">
-    <value>Año</value>
+    <value>año</value>
   </data>
   <data name="MainPage_MainMenu_CustomReport" xml:space="preserve">
     <value>hora del informe personalizado</value>
@@ -905,12 +905,18 @@ Mantenga pulsado para mostrar el menú.</value>
     <value>Ahora puede establecer el incremento que desea utilizar para ahorrar su tiempo. ¿Quieres ahorrar tiempo en incrementos de 1 minuto? ¿O prefiere incrementos de 30 minutos? Tu decides!</value>
   </data>
   <data name="SettingsPage_Settings_DailyTextSettings" xml:space="preserve">
-    <value>DAILY TEXT SETTINGS</value>
+    <value>AJUSTES DE TEXTO DIARIOS</value>
   </data>
   <data name="SettingsPage_Settings_DailyTextErrorUrl" xml:space="preserve">
-    <value>Could not parse URL, try again.</value>
+    <value>No se pudo analizar el URL, inténtelo de nuevo.</value>
   </data>
   <data name="SettingsPage_Settings_DailyTextErrorUrlNotSet" xml:space="preserve">
-    <value>Please enter url first.</value>
+    <value>Por favor introduce el URL primero.</value>
+  </data>
+  <data name="CustomReportsPage_LastMonth" xml:space="preserve">
+    <value>mes pasado</value>
+  </data>
+  <data name="CustomReportsPage_LastServiceYear" xml:space="preserve">
+    <value>último año de servicio</value>
   </data>
 </root>
