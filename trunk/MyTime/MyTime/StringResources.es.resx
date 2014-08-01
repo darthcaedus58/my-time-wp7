@@ -904,4 +904,13 @@ Mantenga pulsado para mostrar el menú.</value>
   <data name="HowTo_WhatsNew_RoundTimeInc" xml:space="preserve">
     <value>Ahora puede establecer el incremento que desea utilizar para ahorrar su tiempo. ¿Quieres ahorrar tiempo en incrementos de 1 minuto? ¿O prefiere incrementos de 30 minutos? Tu decides!</value>
   </data>
+  <data name="SettingsPage_Settings_DailyTextSettings" xml:space="preserve">
+    <value>DAILY TEXT SETTINGS</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextErrorUrl" xml:space="preserve">
+    <value>Could not parse URL, try again.</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextErrorUrlNotSet" xml:space="preserve">
+    <value>Please enter url first.</value>
+  </data>
 </root>

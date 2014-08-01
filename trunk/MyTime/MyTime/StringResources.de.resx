@@ -904,4 +904,13 @@ Halten Sie, um das Menü zu zeigen.</value>
   <data name="HowTo_WhatsNew_RoundTimeInc" xml:space="preserve">
     <value>Sie können nun die Schrittweite, die Sie für das Speichern Ihrer Zeit verwenden möchten. Möchten Sie Ihre Zeit in Schritten von 1 Minute speichern? Oder möchten Sie lieber Schritten von 30 Minuten? Es liegt an Ihnen!</value>
   </data>
+  <data name="SettingsPage_Settings_DailyTextSettings" xml:space="preserve">
+    <value>DAILY TEXT SETTINGS</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextErrorUrl" xml:space="preserve">
+    <value>Could not parse URL, try again.</value>
+  </data>
+  <data name="SettingsPage_Settings_DailyTextErrorUrlNotSet" xml:space="preserve">
+    <value>Please enter url first.</value>
+  </data>
 </root>

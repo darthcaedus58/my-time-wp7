@@ -2033,6 +2033,15 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter url first..
+        /// </summary>
+        public static string SettingsPage_Settings_DailyTextErrorUrlNotSet {
+            get {
+                return ResourceManager.GetString("SettingsPage_Settings_DailyTextErrorUrlNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Go to http://wol.jw.org and go to the daily text page. Copy the URL of that page into the above box..
         /// </summary>
         public static string SettingsPage_Settings_DailyTextInstructions {
