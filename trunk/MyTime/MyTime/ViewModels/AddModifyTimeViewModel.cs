@@ -139,6 +139,18 @@ namespace FieldService.ViewModels
             }
 	    }
 
+	    public string TimeDataNotes
+        {
+            get { return TimeData.Notes; }
+            set
+            {
+                if (TimeData.Notes == value) return;
+                TimeData.Notes = value;
+                OnPropertyChanged("TimeData");
+                OnPropertyChanged("TimeDataNotes");
+            }
+	    }
+
 	    #region INotifyPropertyChanged Members
 
 		public event PropertyChangedEventHandler PropertyChanged;
