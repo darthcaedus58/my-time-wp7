@@ -292,8 +292,7 @@ namespace FieldService.ViewModels
         {
             get { 
                 try {
-                    return bool.Parse(GetSetting("UseCustomDTUrl"));
-                    
+                    return bool.Parse(GetSetting("UseCustomDTUrl")) && (!string.IsNullOrEmpty(GetSetting("CustomDT_Lang1")) && !string.IsNullOrEmpty(GetSetting("CustomDT_Lang2")) && !string.IsNullOrEmpty(GetSetting("CustomDT_RType")));
                 }
                 catch {
                     SetSettingValue("UseCustomDTUrl", true);
@@ -317,7 +316,7 @@ namespace FieldService.ViewModels
         {
             get
             {
-                return UseCustomDTUrl
+                return (!string.IsNullOrEmpty(GetSetting("CustomDT_Lang1")) && !string.IsNullOrEmpty(GetSetting("CustomDT_Lang2")) && !string.IsNullOrEmpty(GetSetting("CustomDT_RType")))
                     ? string.Format(StringResources.Application_CustomDailyTextURL, 
                         GetSetting("CustomDT_Lang1"), GetSetting("CustomDT_RType"), GetSetting("CustomDT_Lang2"), 
                         DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day)
@@ -325,6 +324,7 @@ namespace FieldService.ViewModels
             }
             set
             {
+                if (string.IsNullOrEmpty(value)) return;
                 string dtUrlPattern =
                     @"^http\://(?:m\.)?wol\.jw\.org/(?<lang1>[\w\-]+)/wol/dt/(?<rtype>r\d+)/(?<lang2>lp\-\w+)/\d{4}/\d{1,2}/\d{1,2}$";
 

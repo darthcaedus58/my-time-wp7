@@ -32,6 +32,11 @@ namespace FieldService.ViewModels
                 private int _timeReportTotal = 0;
                 private int _timeReportMajorStep;
 
+            public double TimeReportGuageValue
+            {
+                get { return _timeReportTotal/60.0; }
+            }
+                
                 public string TimeReportTotal
                 {
                         get { return string.Format(StringResources.ReportingPage_Report_TotalHours, _timeReportTotal / 60, _timeReportTotal % 60 > 0 ? _timeReportTotal % 60 : 0); }
@@ -41,6 +46,7 @@ namespace FieldService.ViewModels
                                 {
                                         _timeReportTotal = int.Parse(value);
                                         OnPropertyChanged("TimeReportTotal");
+                                        OnPropertyChanged("TimeReportGuageValue");
                                 }
                         }
                 }
@@ -187,6 +193,7 @@ namespace FieldService.ViewModels
                                 }
                         }
                         OnPropertyChanged("TimeReportTotal");
+                        OnPropertyChanged("TimeReportGuageValue");
                         IsTimeReportDataLoading = false;
                         OnPropertyChanged("TimeReportChartData");
                 }
