@@ -1979,7 +1979,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Per the OD book, the initial call is not counted on your time report.  Return visits are only counted on a subsequent visit which occurrs after the first initial visit.  If you are importing your return visits and have already made the initial call then you must save a &apos;dummy&apos; initial visit to ensure that your return visit is counted on your report.  If you are not using the return visit features of this app, then you should go to &quot; &apos;settings&apos; &gt; &apos;Manually Track RVs &amp; Placements&apos; &quot; and set it to &apos;off&apos; and yo [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Per the OD book, the initial call is not counted on your time report.  Return visits are only counted on a subsequent visit which occurrs after the first initial visit.  If you are importing your return visits and have already made the initial call then you must save a &apos;dummy&apos; initial visit to ensure that your return visit is counted on your report.  If you are not using the return visit features of this app, then you should go to &quot; &apos;settings&apos; &gt; &apos;Automatically count RVs&apos; &quot; and set it to &apos;off&apos; and you will b [rest of string was truncated]&quot;;.
         /// </summary>
         public static string SettingsPage_FAQ_WhyDontRVShow_A {
             get {
@@ -1997,7 +1997,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ManuallyTrack RVs &amp; Placements.
+        ///   Looks up a localized string similar to Automatically count RVs.
         /// </summary>
         public static string SettingsPage_Settings_AddCallPlacements {
             get {

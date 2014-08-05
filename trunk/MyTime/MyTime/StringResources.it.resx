@@ -604,7 +604,7 @@
     <value>Versione</value>
   </data>
   <data name="SettingsPage_Settings_AddCallPlacements" xml:space="preserve">
-    <value>Aggiungi letteratura alla chiamata</value>
+    <value>Contare automaticamente visite di ritorno</value>
   </data>
   <data name="SettingsPage_Settings_AppSettings" xml:space="preserve">
     <value>Impostazioni applicazione</value>
@@ -777,20 +777,20 @@
     <value>faq</value>
   </data>
   <data name="SettingsPage_FAQ_HowToEnterRVs_A" xml:space="preserve">
-    <value>Ci sono due modi per entrare in camper in modo che apparirà sul vostro rapporto: 
-  1. Utilizzando il database RV built-in. 
-    a. Salvare un camper nuovo o inserire un camper esistente. 
-    b. Per il libro OD, non si conta la prima visita come un camper, quindi la prima visita non mostrerà sul vostro rapporto, ma tutte le visite successive verrà contato automaticamente sul vostro rapporto. 
-  2. Contare manualmente i camper 
+    <value>Ci sono due modi per entrare visite di ritorno in modo che apparirà sul vostro rapporto: 
+  1. Utilizzando il database visite di ritorno. 
+    a. Salvare un visite di ritorno nuovo o inserire un visite di ritorno. 
+    b. Per il libro OD, non si conta la prima visita come un visite di ritorno, quindi la prima visita non mostrerà sul vostro rapporto, ma tutte le visite successive verrà contato automaticamente sul vostro rapporto. 
+  2. Contare manualmente i visite di ritorno
     a. Questo metodo funziona solo se non si desidera utilizzare il primo metodo. Non è possibile utilizzare entrambi allo stesso tempo. 
-    b. Per attivare il conteggio manuale dei camper vai a: "Impostazioni&gt; Aggiungi chiamate posizionamenti "e spegnerlo. 
-    c. Ora sarete in grado di contare camper manualmente sulla tua pagina tempo aggiuntivo.</value>
+    b. Per attivare il conteggio manuale visite di ritorno vai a: "Impostazioni" &gt; "Contare automaticamente visite di ritorno" e spegnerlo. 
+    c. Ora sarete in grado di contare visite di ritorno manualmente.</value>
   </data>
   <data name="SettingsPage_FAQ_HowToEnterRVs_Q" xml:space="preserve">
     <value>Come faccio a inserire il numero di visite qui ritorno sulla mia relazione?</value>
   </data>
   <data name="SettingsPage_FAQ_WhyDontRVShow_A" xml:space="preserve">
-    <value>Per il libro OD, la chiamata iniziale non viene conteggiata nel report tempo. Visite di ritorno sono conteggiate solo su una successiva visita che occurrs dopo la prima visita iniziale. Se si importano le vostre visite di ritorno e hai già effettuato la chiamata iniziale, allora è necessario salvare un 'manichino' visita iniziale per assicurarsi che la visita di ritorno è contato sul vostro rapporto. Se non si utilizzano le caratteristiche visita di ritorno di questa applicazione, allora si dovrebbe andare a "'Impostazioni'&gt; 'traccia manualmente camper e posizionamenti'" e impostare su 'off' e sarete in grado di tenere traccia manualmente i camper .</value>
+    <value>Per il libro OD, la chiamata iniziale non viene conteggiata nel report tempo. Visite di ritorno sono conteggiate solo su una successiva visita che occurrs dopo la prima visita iniziale. Se si importano le vostre visite di ritorno e hai già effettuato la chiamata iniziale, allora è necessario salvare un 'manichino' visita iniziale per assicurarsi che la visita di ritorno è contato sul vostro rapporto. Se non si utilizzano le caratteristiche visita di ritorno di questa applicazione, allora si dovrebbe andare a "'Impostazioni' &gt; 'Contare automaticamente visite di ritorno'" e impostare su 'off' e sarete in grado di tenere traccia manualmente i camper .</value>
   </data>
   <data name="SettingsPage_FAQ_WhyDontRVShow_Q" xml:space="preserve">
     <value>Perché le mie visite di ritorno Mostra sulla mia relazione?</value>
