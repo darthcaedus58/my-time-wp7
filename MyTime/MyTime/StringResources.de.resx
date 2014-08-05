@@ -777,19 +777,19 @@
   </data>
   <data name="SettingsPage_FAQ_HowToEnterRVs_A" xml:space="preserve">
     <value>Es gibt zwei Möglichkeiten deinen Besuch in den Bericht aufzunehmen:
-1.       Mit der internen RB Datenbank. (default)
+1.       Mit der internen Rückbesuche Datenbank. (default)
 	a.       Speichere oder erstelle einen Rückbesuch.
 	b.      Nach dem erstellen eines Rückbesuches wird der erste Besuch nicht als Rückbesuch gewertet. Alle weiteren Besuche werden dann automatisch in deinen Bericht übernommen.
 2.       Manuelles zählen deiner Rückbesuche
 	a.       Diese Option ist nur alleine Anwendbar. Es gibt keine Möglichkeit beides gleichzeitig zu verwenden.
-	b.      Um das manuelle zählen der RBs eizuschalten gehe zu: “Einstellungen &gt; Automatisches zählen von Rückbesuchen” und deaktiviere es.
-	c.       Nun kannst du Rückbesuche manuell auf der Seite -Zeit erfassen- eintragen.</value>
+	b.      Um das manuelle zählen der Rückbesuche gehe zu: "Einstellungen" &gt; "Automatisches zählen von Rückbesuche" und deaktiviere es.
+	c.       Nun kannst du Rückbesuche manuell erfassen.</value>
   </data>
   <data name="SettingsPage_FAQ_HowToEnterRVs_Q" xml:space="preserve">
     <value>Wie trage ich die Anzahl meiner Rückbesuche ein?</value>
   </data>
   <data name="SettingsPage_FAQ_WhyDontRVShow_A" xml:space="preserve">
-    <value>Nach dem erstellen eines Rückbesuches wird der erste Besuch nicht als Rückbesuch gewertet. Rückbesuche werden erst ab dem zweiten und den folgenden Besuchen gezählt. Solltest du bereits mehrere Besuche gemacht haben aber jetzt erst den Rückbesuch anlegen so lege bitte einen Dummy Besuch in einem vergangenen Monat an. Damit wird der aktuelle Besuch dann auch als RB gezählt. Möchtest du das automatische zählen nicht nutzen so gehe bitte wie folgt vor. Gehe zu: “Einstellungen &gt; Automatisches zählen von Rückbesuchen” und deaktiviere es.</value>
+    <value>Nach dem erstellen eines Rückbesuches wird der erste Besuch nicht als Rückbesuch gewertet. Rückbesuche werden erst ab dem zweiten und den folgenden Besuchen gezählt. Solltest du bereits mehrere Besuche gemacht haben aber jetzt erst den Rückbesuch anlegen so lege bitte einen Dummy Besuch in einem vergangenen Monat an. Damit wird der aktuelle Besuch dann auch als RB gezählt. Möchtest du das automatische zählen nicht nutzen so gehe bitte wie folgt vor. Gehe zu: “Einstellungen" &gt; "Automatisches zählen von Rückbesuchen" und deaktiviere es.</value>
   </data>
   <data name="SettingsPage_FAQ_WhyDontRVShow_Q" xml:space="preserve">
     <value>Warum sehe ich keine Rückbesuche in meinem Bericht?</value>

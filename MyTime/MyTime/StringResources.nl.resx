@@ -678,7 +678,7 @@
     <value>Versie</value>
   </data>
   <data name="SettingsPage_Settings_AddCallPlacements" xml:space="preserve">
-    <value>VERSIE</value>
+    <value>Terugkeer bezoeken automatisch tellen</value>
   </data>
   <data name="SettingsPage_Settings_AppSettings" xml:space="preserve">
     <value>Programma instellingen</value>
@@ -792,20 +792,20 @@
     <value>faq</value>
   </data>
   <data name="SettingsPage_FAQ_HowToEnterRVs_A" xml:space="preserve">
-    <value>Er zijn twee manieren om campers te voeren, zodat ze zal verschijnen op uw rapport:
-  1. Met behulp van de ingebouwde RV databank. 
-    a. Sla een nieuwe camper of voer een bestaande RV. 
-    b. Per de OD boek, tel je niet het eerste bezoek als een camper, dus het eerste bezoek zal niet te zien op uw rapport, maar alle latere bezoeken wordt automatisch geteld op uw rapport. 
-  2. Handmatig tel uw campers 
+    <value>Er zijn twee manieren om terugkeer bezoeken te voeren tel, zodat ze zal verschijnen op uw rapport:
+  1. Met behulp van de ingebouwde databank terugkeer bezoeken. 
+    a. Sla een nieuwe camper of voer een bestaande terugkeer bezoeken. 
+    b. Per de OD boek, tel je niet het eerste bezoek als een terugkeer bezoeken, dus het eerste bezoek zal niet te zien op uw rapport, maar alle latere bezoeken wordt automatisch geteld op uw rapport. 
+  2. Handmatig tel uw terugkeer bezoeken 
     a. Deze methode werkt alleen als je niet wilt dat de eerste methode te gebruiken. Je kunt niet beide tegelijkertijd. 
-    b. U schakelt handmatig tellen van campers ga naar: "Instellingen &gt; Voeg Call Posities "en zet hem uit. 
+    b. U schakelt handmatig tellen van campers ga naar: "Instellingen" &gt; "Terugkeer bezoeken automatisch tellen" en zet hem uit. 
     c. Nu zul je in staat om campers handmatig rekenen op uw add tijd pagina.</value>
   </data>
   <data name="SettingsPage_FAQ_HowToEnterRVs_Q" xml:space="preserve">
     <value>Hoe voer ik het aantal rendement vists op mijn verslag?</value>
   </data>
   <data name="SettingsPage_FAQ_WhyDontRVShow_A" xml:space="preserve">
-    <value>Per de OD boek, wordt de eerste oproep niet op gerekend uw tijd verslag. Herhalingsbezoeken worden alleen geteld op een volgend bezoek die occurrs na de eerste eerste bezoek. Als u het importeren van uw terugkeer bezoeken en hebben al de eerste oproep gedaan dan moet je een 'dummy' eerste bezoek opslaan om ervoor te zorgen dat uw tegenbezoek wordt geteld op uw rapport. Als u niet het tegenbezoek kenmerken van deze app gebruiken, dan moet je naar "'Instellingen' &gt; 'Handmatig Track Campers en Posities" en zet deze op' off 'en u in staat zal zijn om uw campers handmatig bijhouden .</value>
+    <value>Per de OD boek, wordt de eerste oproep niet op gerekend uw tijd verslag. Herhalingsbezoeken worden alleen geteld op een volgend bezoek die occurrs na de eerste eerste bezoek. Als u het importeren van uw terugkeer bezoeken en hebben al de eerste oproep gedaan dan moet je een 'dummy' eerste bezoek opslaan om ervoor te zorgen dat uw tegenbezoek wordt geteld op uw rapport. Als u niet het tegenbezoek kenmerken van deze app gebruiken, dan moet je naar 'Instellingen' &gt; 'Terugkeer bezoeken automatisch tellen" en zet deze op' off 'en u in staat zal zijn om uw herhalingsbezoeken handmatig bijhouden.</value>
   </data>
   <data name="SettingsPage_FAQ_WhyDontRVShow_Q" xml:space="preserve">
     <value>Waarom komen mijn terugkeer bezoeken tonen op mijn verslag?</value>

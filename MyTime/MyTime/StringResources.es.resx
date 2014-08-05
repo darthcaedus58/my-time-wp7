@@ -630,7 +630,7 @@
     <value>Versión</value>
   </data>
   <data name="SettingsPage_Settings_AddCallPlacements" xml:space="preserve">
-    <value>VERSION</value>
+    <value>Contar automáticamente nuevas visitas</value>
   </data>
   <data name="SettingsPage_Settings_AppSettings" xml:space="preserve">
     <value>Configuracion Aplicacion</value>
@@ -785,20 +785,20 @@
     <value>faq</value>
   </data>
   <data name="SettingsPage_FAQ_HowToEnterRVs_A" xml:space="preserve">
-    <value>Hay dos maneras de entrar en casas rodantes por lo que se mostrará en su informe:
-  1. Uso de la base de datos de RV incorporado. 
-    a. Guardar un nuevo RV o introduzca una casa rodante existente. 
-    b. Por el libro OD, no se cuenta la visita inicial como una casa rodante, por lo que la primera visita no se mostrará en su informe, pero todas las visitas subsiguientes serán contados de forma automática en su informe. 
+    <value>Hay dos maneras de entrar en visitas de retorno por lo que se mostrará en informe:
+  1. Uso incorporado de la base de datos de visitas de retorno . 
+    a. Guardar un nuevo RV o introduzca una visitas de retorna existente. 
+    b. Por el libro OD, no se cuenta la visita inicial como una  visita de retorna, por lo que la primera visita no se mostrará en su informe, pero todas las visitas subsiguientes serán contados de forma automática en su informe. 
   2. Contar manualmente tus RVs 
     a. Este método sólo funcionará si usted no desea utilizar el primer método. No puede usar las dos al mismo tiempo. 
-    b. Para activar el recuento manual de los vehículos recreativos, vaya a: "Ajustes &gt; Añadir Call Colocaciones "y apagarlo. 
-    c. Ahora vas a poder contar RVs manualmente en su página de tiempo de adición.</value>
+    b. Para activar el contar manual de visitas de retorno, vaya a: "Ajustes &gt; Contar automáticamente retorno visitas" y apagarlo. 
+    c. Ahora vas a poder contar manual visitas de retorno y colocaciones.</value>
   </data>
   <data name="SettingsPage_FAQ_HowToEnterRVs_Q" xml:space="preserve">
     <value>¿Cómo se introduce el número de ocasiones en retorno en mi informe? </value>
   </data>
   <data name="SettingsPage_FAQ_WhyDontRVShow_A" xml:space="preserve">
-    <value>Por el libro de OD, la llamada inicial no se cuenta en su informe de tiempo. Visitas de retorno sólo se cuentan en una visita posterior que occurrs después de la primera visita inicial. Si va a importar sus visitas de vuelta y ya ha efectuado la llamada inicial, entonces debe guardar una visita inicial "maniquí" para asegurar que su visita de vuelta se cuenta en su informe. Si no va a utilizar las características de visitas de retorno de esta aplicación, entonces usted debe ir a "en 'Configuración'&gt; 'manual de pistas Autocaravanas y Ubicaciones'" y la ajuste en "off" y usted será capaz de rastrear manualmente los vehículos recreativos .</value>
+    <value>Por el libro OD, la llamada inicial no se cuenta en su informe. Visitas de retorno sólo se cuentan en una visita posterior que occurrs después de la primera visita inicial. Si va a importar sus visitas de vuelta y ya ha efectuado la llamada inicial, entonces debe guardar una visita inicial "maniquí" para asegurar que su visita de vuelta se cuenta en su informe. Si no va a utilizar las características de visitas de retorno de esta aplicación, entonces usted debe ir a "en 'Configuración'&gt; 'Contar automáticamente nuevas visita'" y la ajuste en "off" y usted será capaz de rastrear manualmente visitas de retorno.</value>
   </data>
   <data name="SettingsPage_FAQ_WhyDontRVShow_Q" xml:space="preserve">
     <value>¿Por qué mis visitas posteriores muestran en mi informe?</value>

@@ -678,7 +678,7 @@
     <value>Versão</value>
   </data>
   <data name="SettingsPage_Settings_AddCallPlacements" xml:space="preserve">
-    <value>VERSÃO</value>
+    <value>Contar automaticamente o retorno de visitas</value>
   </data>
   <data name="SettingsPage_Settings_AppSettings" xml:space="preserve">
     <value>Configurações da Aplicação</value>
@@ -822,20 +822,20 @@
     <value>faq</value>
   </data>
   <data name="SettingsPage_FAQ_HowToEnterRVs_A" xml:space="preserve">
-    <value>Há duas maneiras de entrar RVs para que eles irão aparecer em seu relatório: 
-  1. Utilizando a base de dados RV embutido. 
-    a. Salvar um novo RV ou digite um RV existente. 
-    b. Por livro OD, você não conta a visita inicial como um RV, então a primeira visita não vai aparecer em seu relatório, mas todas as visitas seguintes será automaticamente contado em seu relatório. 
-  2. Contar manualmente os RVs 
+    <value>Há duas maneiras de entrar retorno de visitas para que eles irão aparecer em seu relatório: 
+  1. Utilizando a base de dados embutido retorno de visitas . 
+    a. Salvar um novo retorno de visitas ou digite um retorno de visitas existente. 
+    b. Por livro OD, você não conta a visita inicial como um retorno de visita, então a primeira visita não vai aparecer em seu relatório, mas todas as visitas seguintes será automaticamente contado em seu relatório. 
+  2. Contar manualmente os retorno de visitas
     a. Este método só irá funcionar se você não quiser usar o primeiro método. Você não pode usar os dois ao mesmo tempo. 
-    b. Para ligar manualmente a contagem de RVs acesse: "Configurações &gt; Adicionar chamadas colocações "e desligá-lo. 
-    c. Agora você vai poder contar RVs manualmente em sua página de tempo adicional.</value>
+    b. Para ligar manualmente a contagem de retorno de visitas acesse: "Configurações &gt; Contar automaticamente o retorno de visitas" e desligá-lo. 
+    c. Agora você vai poder contar retorno de visitas manualmente em sua página de tempo adicional.</value>
   </data>
   <data name="SettingsPage_FAQ_HowToEnterRVs_Q" xml:space="preserve">
     <value>Como faço para inserir o número de vists retorno sobre o meu relatório?</value>
   </data>
   <data name="SettingsPage_FAQ_WhyDontRVShow_A" xml:space="preserve">
-    <value>Por livro OD, a chamada inicial não é contado em seu relatório de tempo. Visitas de retorno só são contados em uma visita posterior que ocorre após a primeira visita inicial. Se você estiver importando as suas visitas de retorno e já fez a chamada inicial, em seguida, você deve salvar uma visita inicial "manequim" para garantir que sua visita de retorno é contado em seu relatório. Se você não estiver usando os recursos de retorno visita deste aplicativo, então você deve ir para "'Configurações' &gt; 'manualmente trilha RVs e Canais" "e configurá-lo para' off 'e você será capaz de controlar manualmente os RVs .</value>
+    <value>Por livro OD, a chamada inicial não é citado em seu relatório. Visitas de retorno só são contados em uma visita posterior que ocorre após a primeira visita inicial. Se você estiver importando as suas visitas de retorno e já fez a chamada inicial, em seguida, você deve salvar uma visita inicial "manequim" para garantir que sua visita de retorno é contado em seu relatório. Se você não estiver usando base de dados embutido retorno de visitas, então você deve ir para "'Configurações' &gt; 'Contar automaticamente o retorno de visitas" e configurá-lo para' off 'e você será capaz de controlar manualmente os retorno de visitas.</value>
   </data>
   <data name="SettingsPage_FAQ_WhyDontRVShow_Q" xml:space="preserve">
     <value>Por que não mostrar as minhas visitas de retorno sobre o meu relatório?</value>
