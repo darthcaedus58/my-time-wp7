@@ -304,11 +304,11 @@ namespace FieldService.ViewModels
             {
                 if (value) {
                     value = (!string.IsNullOrEmpty(GetSetting("CustomDT_Lang1")) && !string.IsNullOrEmpty(GetSetting("CustomDT_Lang2")) && !string.IsNullOrEmpty(GetSetting("CustomDT_RType")));
-                    if (!value)
-                        App.ToastMe(StringResources.SettingsPage_Settings_DailyTextErrorUrlNotSet);
+                    if (!value) App.ToastMe(StringResources.SettingsPage_Settings_DailyTextErrorUrlNotSet);
                 }
                 SetSettingValue("UseCustomDTUrl", value);
                 OnPropertyChanged();
+                if(value) OnPropertyChanged("CustomDTUrl");
             }
         }
 
