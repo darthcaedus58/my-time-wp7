@@ -396,7 +396,7 @@
     <value>revisitas</value>
   </data>
   <data name="MainPage_RV_DaysSince" xml:space="preserve">
-    <value>(s) Día desde la última visita</value>
+    <value>{0} Días desde la última visita</value>
   </data>
   <data name="MainPage_Time_BibleStudies" xml:space="preserve">
     <value>Estudios de la Biblia</value>
@@ -444,7 +444,7 @@
     <value>Recordatorio: Año de Servicio comienza en septiembre.</value>
   </data>
   <data name="ReportingPage_Report_From" xml:space="preserve">
-    <value>DE: {0}</value>
+    <value>DE: </value>
   </data>
   <data name="ReportingPage_Report_Headline" xml:space="preserve">
     <value>reporte</value>
@@ -477,7 +477,7 @@
     <value>Tiempo en Horas</value>
   </data>
   <data name="ReportingPage_Report_To" xml:space="preserve">
-    <value>A: {0}</value>
+    <value>A: </value>
   </data>
   <data name="ReportingPage_ReturnVisits_1" xml:space="preserve">
     <value> Revisitas</value>
@@ -720,7 +720,7 @@
     <value>{0} Horas(s) y {1} Minuto(s) Tiempo Auxiliar</value>
   </data>
   <data name="ReportingPage_Report_TotalHours" xml:space="preserve">
-    <value>TOTAL: {0} Hora(s) y {1} Minuto(s)</value>
+    <value>TOTAL: </value>
   </data>
   <data name="AddRBCTimePage_AskForDoubleEntry" xml:space="preserve">
     <value>Al parecer, ya ha añadido horas de servicio a este día  ¿Le gustaría combinar este nuevas horas con las horas anteriores?</value>
@@ -918,5 +918,23 @@ Mantenga pulsado para mostrar el menú.</value>
   </data>
   <data name="CustomReportsPage_LastServiceYear" xml:space="preserve">
     <value>último año de servicio</value>
+  </data>
+  <data name="SettingsPage_Settings_TimeGoalNote" xml:space="preserve">
+    <value>Enter your monthly goal (in hours)</value>
+  </data>
+  <data name="SettingsPage_Settings_TimeGoal" xml:space="preserve">
+    <value>META</value>
+  </data>
+  <data name="ReportingPage_Report_GoalText1" xml:space="preserve">
+    <value>META: </value>
+  </data>
+  <data name="ReportingPage_Report_GoalText2" xml:space="preserve">
+    <value>{0} HORAS EN {1} MESES</value>
+  </data>
+  <data name="ReportingPage_Report_RemainingText1" xml:space="preserve">
+    <value>TIEMPO RESTANTE:</value>
+  </data>
+  <data name="ReportingPage_Report_RemainingText2" xml:space="preserve">
+    <value>{0} HORAS &amp; {1} MINUTOS</value>
   </data>
 </root>

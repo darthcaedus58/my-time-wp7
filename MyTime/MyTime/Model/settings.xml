@@ -33,4 +33,5 @@
   <Setting Name="CustomDT_Lang1" Type="String" FriendlyName="CustomDT_Lang1"/>
   <Setting Name="CustomDT_Lang2" Type="String" FriendlyName="CustomDT_Lang2"/>
   <Setting Name="CustomDT_RType" Type="String" FriendlyName="CustomDT_RType"/>
+  <Setting Name="TimeGoalPerMonth" Type="Integer" Value ="10" FriendlyName="TimeGoalPerMonth" />
 </Settings>

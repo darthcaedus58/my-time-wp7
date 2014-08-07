@@ -373,7 +373,7 @@
     <value>Visite ulteriori</value>
   </data>
   <data name="MainPage_RV_DaysSince" xml:space="preserve">
-    <value>Giorni dall'ultima Visita</value>
+    <value>{0} Giorni dall'ultima Visita</value>
   </data>
   <data name="MainPage_Time_BibleStudies" xml:space="preserve">
     <value>Studi Biblici</value>
@@ -418,7 +418,7 @@
     <value>Promemoria: L'anno di servizio inizia a settembre</value>
   </data>
   <data name="ReportingPage_Report_From" xml:space="preserve">
-    <value>DA: {0}</value>
+    <value>DA: </value>
   </data>
   <data name="ReportingPage_Report_Headline" xml:space="preserve">
     <value>Rapporto</value>
@@ -451,7 +451,7 @@
     <value>Tempo in Ore</value>
   </data>
   <data name="ReportingPage_Report_To" xml:space="preserve">
-    <value>A: {0}</value>
+    <value>A: </value>
   </data>
   <data name="ReportingPage_ReturnVisits_1" xml:space="preserve">
     <value>Visite Ulteriori</value>
@@ -841,7 +841,7 @@
     <value>nuova versione!</value>
   </data>
   <data name="ReportingPage_Report_TotalHours" xml:space="preserve">
-    <value>TOTALE: {0} Hour (s) e {1} minuto (s)</value>
+    <value>TOTALE: </value>
   </data>>
   <data name="StreetBuildingList_HouseCountFormatString" xml:space="preserve">
     <value>{0} Non al Homes</value>
@@ -920,5 +920,23 @@ Si prega di inserire l'URL in primo luogo.</value>
   </data>
   <data name="CustomReportsPage_LastServiceYear" xml:space="preserve">
     <value>scorso anno di servizio</value>
+  </data>
+  <data name="SettingsPage_Settings_TimeGoalNote" xml:space="preserve">
+    <value>Enter your monthly goal (in hours)</value>
+  </data>
+  <data name="SettingsPage_Settings_TimeGoal" xml:space="preserve">
+    <value>SCOPO</value>
+  </data>
+  <data name="ReportingPage_Report_GoalText1" xml:space="preserve">
+    <value>SCOPO: </value>
+  </data>
+  <data name="ReportingPage_Report_GoalText2" xml:space="preserve">
+    <value>{0} ORE IN {1} MESI</value>
+  </data>
+  <data name="ReportingPage_Report_RemainingText1" xml:space="preserve">
+    <value>TEMPO RIMANENTE: </value>
+  </data>
+  <data name="ReportingPage_Report_RemainingText2" xml:space="preserve">
+    <value>{0} ORE &amp; {1} MINUTI</value>
   </data>
 </root>

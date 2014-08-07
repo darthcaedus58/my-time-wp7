@@ -441,7 +441,7 @@
     <value>revisitas</value>
   </data>
   <data name="MainPage_RV_DaysSince" xml:space="preserve">
-    <value>Dia(s) Desde a Última Visita</value>
+    <value>{0} Dia(s) Desde a Última Visita</value>
   </data>
   <data name="MainPage_Time_BibleStudies" xml:space="preserve">
     <value>Estudos Bíblicos</value>
@@ -489,7 +489,7 @@
     <value>Lembrete: O Ano de Serviço Começa em Setembro.</value>
   </data>
   <data name="ReportingPage_Report_From" xml:space="preserve">
-    <value>DE: {0}</value>
+    <value>DE: </value>
   </data>
   <data name="ReportingPage_Report_Headline" xml:space="preserve">
     <value>relatório</value>
@@ -522,10 +522,10 @@
     <value>Tempo em Horas</value>
   </data>
   <data name="ReportingPage_Report_To" xml:space="preserve">
-    <value>PARA: {0}</value>
+    <value>PARA: </value>
   </data>
   <data name="ReportingPage_Report_TotalHours" xml:space="preserve">
-    <value>TOTAL: {0} Hora(s) e {1} Minuto(s)</value>
+    <value>TOTAL: </value>
   </data>
   <data name="ReportingPage_ReturnVisits_1" xml:space="preserve">
     <value> Revisitas</value>
@@ -919,5 +919,23 @@ Mantenha pressionado para mostrar o menu.</value>
   </data>
   <data name="CustomReportsPage_LastServiceYear" xml:space="preserve">
     <value>último ano de serviço</value>
+  </data>
+  <data name="SettingsPage_Settings_TimeGoalNote" xml:space="preserve">
+    <value>Enter your monthly goal (in hours)</value>
+  </data>
+  <data name="SettingsPage_Settings_TimeGoal" xml:space="preserve">
+    <value>OBJETIVO</value>
+  </data>
+  <data name="ReportingPage_Report_GoalText1" xml:space="preserve">
+    <value>OBJETIVO: </value>
+  </data>
+  <data name="ReportingPage_Report_GoalText2" xml:space="preserve">
+    <value>{0} HORAS EM {1} MESES</value>
+  </data>
+  <data name="ReportingPage_Report_RemainingText1" xml:space="preserve">
+    <value>TEMPO RESTANTE: </value>
+  </data>
+  <data name="ReportingPage_Report_RemainingText2" xml:space="preserve">
+    <value>{0} HORAS &amp; {1} MINUTO</value>
   </data>
 </root>

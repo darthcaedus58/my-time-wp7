@@ -1,0 +1,153 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerikDataVisualization="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.DataVisualization"
+    xmlns:view="clr-namespace:FieldService.View">
+    <Style TargetType="view:TimeGoalGauge">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="view:TimeGoalGauge">
+                    <Grid x:Name="LayoutRoot">
+                        <telerikDataVisualization:RadGauge Grid.Row="0">
+                            <Grid>
+
+                                <Grid.Resources>
+                                    <telerikDataVisualization:GaugeValueToBrushConverter x:Key="converter1" DefaultColor="WhiteSmoke">
+                                        <telerikDataVisualization:GaugeColorValueRange Color="{StaticResource AppForegroundColor}" MaxValue="{Binding MaxGaugeValue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" MinValue="{Binding GoalValue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"/>
+                                    </telerikDataVisualization:GaugeValueToBrushConverter>
+
+                                    <TransformGroup x:Key="indicatorNudge">
+                                                    <ScaleTransform ScaleX="1.007"/>
+                                                    <TranslateTransform X="-2"/>
+                                                </TransformGroup>
+
+                                    <telerikDataVisualization:GaugeValueToStringConverter x:Key="valueToStringConverter"/>
+                                </Grid.Resources>
+
+                                <telerikDataVisualization:LinearGaugeRange x:Name="PART_Gauge"
+                                                           LabelOffset="-20" 
+                                                           LabelStep="{Binding LabelStepValue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" 
+                                                           MaxValue="{Binding MaxGaugeValue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" 
+                                                           MajorTickStep="{Binding MajorTickStepValue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                                           Margin="7" 
+                                                           TickStep="{Binding TickStepValue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+
+                                    <telerikDataVisualization:LinearGaugeRange.LabelTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Foreground="{StaticResource AppForegroundBrush}" FontWeight="Bold" FontSize="13" Text="{Binding}"/>
+                                        </DataTemplate>
+                                    </telerikDataVisualization:LinearGaugeRange.LabelTemplate>
+
+                                    <telerikDataVisualization:LinearGaugeRange.MajorTickTemplate>
+                                        <DataTemplate>
+                                            <Rectangle Fill="{Binding Converter={StaticResource converter1}}" Height="18" Width="2"/>
+                                        </DataTemplate>
+                                    </telerikDataVisualization:LinearGaugeRange.MajorTickTemplate>
+
+                                    <telerikDataVisualization:LinearGaugeRange.TickTemplate>
+                                        <DataTemplate>
+                                            <Rectangle Fill="{Binding Converter={StaticResource converter1}}" Height="14" Width="1"/>
+                                        </DataTemplate>
+                                    </telerikDataVisualization:LinearGaugeRange.TickTemplate>
+
+                                    <telerikDataVisualization:SegmentedLinearGaugeIndicator Value="{Binding MaxGaugeValue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                                        <telerikDataVisualization:BarIndicatorSegment Opacity="0.85" Length="{Binding GoalValue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Stroke="WhiteSmoke" Thickness="10"/>
+                                        <telerikDataVisualization:BarIndicatorSegment Opacity="0.85" Length="{Binding MaxValueLessGoalValue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Stroke="#FF776988" Thickness="10"/>
+                                    </telerikDataVisualization:SegmentedLinearGaugeIndicator>
+                                    <telerikDataVisualization:SegmentedLinearGaugeIndicator telerikDataVisualization:LinearGaugeRange.IndicatorOffset="-5" Value="{Binding MaxGaugeValue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                                        <telerikDataVisualization:BarIndicatorSegment Length="{Binding GoalValue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Stroke="WhiteSmoke" Thickness="1"/>
+                                        <telerikDataVisualization:BarIndicatorSegment Length="{Binding MaxValueLessGoalValue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Stroke="{StaticResource AppForegroundBrush}" Thickness="1"/>
+                                    </telerikDataVisualization:SegmentedLinearGaugeIndicator>
+                                    <telerikDataVisualization:SegmentedLinearGaugeIndicator telerikDataVisualization:LinearGaugeRange.IndicatorOffset="5" Value="{Binding MaxGaugeValue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                                        <telerikDataVisualization:BarIndicatorSegment Length="{Binding GoalValue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Stroke="WhiteSmoke" Thickness="1"/>
+                                        <telerikDataVisualization:BarIndicatorSegment  Length="{Binding MaxValueLessGoalValue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Stroke="{StaticResource AppForegroundBrush}" Thickness="1"/>
+                                    </telerikDataVisualization:SegmentedLinearGaugeIndicator>
+
+                                    <!--Value Met Markers-->
+                                    <telerikDataVisualization:LinearBarGaugeIndicator x:Name="ValueMetBarIndicator" 
+                                                                      Opacity="0.7"
+                                                                      BarBrush="{StaticResource AppAccentBrush}" 
+                                                                      BarThickness="8" 
+                                                                      IsAnimated="True" 
+                                                                      RenderTransform="{StaticResource indicatorNudge}"
+                                                                      Value="{Binding ValueMet, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"/>
+
+                                    <telerikDataVisualization:MarkerGaugeIndicator x:Name="ValueMetLineIndicator" 
+                                                                   IsAnimated="True" 
+                                                                   telerikDataVisualization:LinearGaugeRange.IndicatorOffset="7" 
+                                                                   Value="{Binding ValueMet, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+
+                                        <telerikDataVisualization:MarkerGaugeIndicator.MarkerTemplate>
+                                            <DataTemplate>
+                                                <Rectangle Fill="{StaticResource AppAccentBrush}" Height="22" Width="2"/>
+                                            </DataTemplate>
+                                        </telerikDataVisualization:MarkerGaugeIndicator.MarkerTemplate>
+                                    </telerikDataVisualization:MarkerGaugeIndicator>
+
+                                    <telerikDataVisualization:MarkerGaugeIndicator x:Name="ValueMetTextIndicator" 
+                                                                   IsAnimated="True" 
+                                                                   telerikDataVisualization:LinearGaugeRange.IndicatorOffset="12" 
+                                                                   Value="{Binding ValueMet, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+
+                                        <telerikDataVisualization:MarkerGaugeIndicator.MarkerTemplate>
+                                            <DataTemplate>
+                                                <Grid Height="37" Width="37">
+                                                    <Grid.RenderTransform>
+                                                        <TranslateTransform X="20"/>
+                                                    </Grid.RenderTransform>
+                                                    <TextBlock FontWeight="Bold" 
+                                               FontSize="13" 
+                                               HorizontalAlignment="Center" 
+                                               Text="{Binding Converter={StaticResource valueToStringConverter}}" 
+                                               VerticalAlignment="Center"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </telerikDataVisualization:MarkerGaugeIndicator.MarkerTemplate>
+
+                                    </telerikDataVisualization:MarkerGaugeIndicator>
+                                    <!--Goal Markers-->
+                                    <telerikDataVisualization:MarkerGaugeIndicator x:Name="GoalLineIndicator" 
+                                                                   IsAnimated="True" 
+                                                                   telerikDataVisualization:LinearGaugeRange.IndicatorOffset="-15" 
+                                                                   Value="{Binding GoalValue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+
+                                        <telerikDataVisualization:MarkerGaugeIndicator.MarkerTemplate>
+                                            <DataTemplate>
+                                                <Rectangle Fill="{StaticResource AppForegroundBrush}" Height="40" Width="2"/>
+                                            </DataTemplate>
+                                        </telerikDataVisualization:MarkerGaugeIndicator.MarkerTemplate>
+                                    </telerikDataVisualization:MarkerGaugeIndicator>
+
+                                    <telerikDataVisualization:MarkerGaugeIndicator x:Name="GoalTextIndicator" 
+                                                                   IsAnimated="True" 
+                                                                   telerikDataVisualization:LinearGaugeRange.IndicatorOffset="-32" 
+                                                                   Value="{Binding GoalValue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+
+                                        <telerikDataVisualization:MarkerGaugeIndicator.MarkerTemplate>
+                                            <DataTemplate>
+                                                <Grid Height="37" Width="37">
+                                                    <Grid.RenderTransform>
+                                                        <TranslateTransform X="20"/>
+                                                    </Grid.RenderTransform>
+                                                    <TextBlock FontWeight="Bold" 
+                                               FontSize="13" 
+                                               HorizontalAlignment="Center" 
+                                               Text="{Binding Converter={StaticResource valueToStringConverter}}" 
+                                               VerticalAlignment="Center"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </telerikDataVisualization:MarkerGaugeIndicator.MarkerTemplate>
+
+                                    </telerikDataVisualization:MarkerGaugeIndicator>
+
+                                </telerikDataVisualization:LinearGaugeRange>
+                            </Grid>
+                        </telerikDataVisualization:RadGauge>
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -441,7 +441,7 @@
     <value>nabezoeken</value>
   </data>
   <data name="MainPage_RV_DaysSince" xml:space="preserve">
-    <value>Dagen sinds laatste bezoek</value>
+    <value>{0} Dagen sinds laatste bezoek</value>
   </data>
   <data name="MainPage_Time_BibleStudies" xml:space="preserve">
     <value>Bijbelstudies</value>
@@ -489,7 +489,7 @@
     <value>Herinnering: dienstjaar begint in September</value>
   </data>
   <data name="ReportingPage_Report_From" xml:space="preserve">
-    <value>VAN: {0}</value>
+    <value>VAN: </value>
   </data>
   <data name="ReportingPage_Report_Headline" xml:space="preserve">
     <value>rapport</value>
@@ -522,10 +522,10 @@
     <value>Tijd in uren</value>
   </data>
   <data name="ReportingPage_Report_To" xml:space="preserve">
-    <value>AAN: {0}</value>
+    <value>AAN: </value>
   </data>
   <data name="ReportingPage_Report_TotalHours" xml:space="preserve">
-    <value>TOTAAL: {0} uur and {1} minuten</value>
+    <value>TOTAAL: </value>
   </data>
   <data name="ReportingPage_ReturnVisits_1" xml:space="preserve">
     <value>Nabezoeken</value>
@@ -919,5 +919,23 @@ Ingedrukt om het menu te tonen.</value>
   </data>
   <data name="CustomReportsPage_LastServiceYear" xml:space="preserve">
     <value>laatste dienstjaar</value>
+  </data>
+  <data name="SettingsPage_Settings_TimeGoalNote" xml:space="preserve">
+    <value>Enter your monthly goal (in hours)</value>
+  </data>
+  <data name="SettingsPage_Settings_TimeGoal" xml:space="preserve">
+    <value>DOEL</value>
+  </data>
+  <data name="ReportingPage_Report_GoalText1" xml:space="preserve">
+    <value>DOEL: </value>
+  </data>
+  <data name="ReportingPage_Report_GoalText2" xml:space="preserve">
+    <value>{0} UUR IN {1} MAANDEN</value>
+  </data>
+  <data name="ReportingPage_Report_RemainingText1" xml:space="preserve">
+    <value>RESTERENDE TIJD: </value>
+  </data>
+  <data name="ReportingPage_Report_RemainingText2" xml:space="preserve">
+    <value>{0} UUR &amp; {1} MINUTEN</value>
   </data>
 </root>
