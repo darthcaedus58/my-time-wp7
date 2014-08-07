@@ -495,7 +495,7 @@
     <value>Reminder: Service Year Begins in September.</value>
   </data>
   <data name="ReportingPage_Report_From" xml:space="preserve">
-    <value>FROM: {0}</value>
+    <value>FROM: </value>
   </data>
   <data name="ReportingPage_Report_Headline" xml:space="preserve">
     <value>report</value>
@@ -528,10 +528,10 @@
     <value>Time in Hours</value>
   </data>
   <data name="ReportingPage_Report_To" xml:space="preserve">
-    <value>TO: {0}</value>
+    <value>TO: </value>
   </data>
   <data name="ReportingPage_Report_TotalHours" xml:space="preserve">
-    <value>TOTAL: {0} Hour(s) and {1} Minute(s)</value>
+    <value>TOTAL: </value>
   </data>
   <data name="ReportingPage_ReturnVisits_1" xml:space="preserve">
     <value> Return Visits</value>
@@ -922,5 +922,23 @@ Hold down to show the menu.</value>
   </data>
   <data name="HowTo_WhatsNew_RoundTimeInc" xml:space="preserve">
     <value>You can now set the increment you want to use for saving your time.  Do you want to save your time in 1 minute increments? Or would you prefer 30 minute increments?  It's up to you!</value>
+  </data>
+  <data name="SettingsPage_Settings_TimeGoalNote" xml:space="preserve">
+    <value>Enter your monthly goal (in hours)</value>
+  </data>
+  <data name="SettingsPage_Settings_TimeGoal" xml:space="preserve">
+    <value>GOAL</value>
+  </data>
+  <data name="ReportingPage_Report_GoalText1" xml:space="preserve">
+    <value>GOAL: </value>
+  </data>
+  <data name="ReportingPage_Report_GoalText2" xml:space="preserve">
+    <value>{0} HOUR(S) IN {1} MONTH(S)</value>
+  </data>
+  <data name="ReportingPage_Report_RemainingText1" xml:space="preserve">
+    <value>TIME REMAINING: </value>
+  </data>
+  <data name="ReportingPage_Report_RemainingText2" xml:space="preserve">
+    <value>{0} HOUR(S) &amp; {1} MINUTE(S)</value>
   </data>
 </root>

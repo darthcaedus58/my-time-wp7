@@ -1370,11 +1370,29 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FROM: {0}.
+        ///   Looks up a localized string similar to FROM: .
         /// </summary>
         public static string ReportingPage_Report_From {
             get {
                 return ResourceManager.GetString("ReportingPage_Report_From", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GOAL: .
+        /// </summary>
+        public static string ReportingPage_Report_GoalText1 {
+            get {
+                return ResourceManager.GetString("ReportingPage_Report_GoalText1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} HOUR(S) IN {1} MONTH(S).
+        /// </summary>
+        public static string ReportingPage_Report_GoalText2 {
+            get {
+                return ResourceManager.GetString("ReportingPage_Report_GoalText2", resourceCulture);
             }
         }
         
@@ -1451,6 +1469,24 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TIME REMAINING: .
+        /// </summary>
+        public static string ReportingPage_Report_RemainingText1 {
+            get {
+                return ResourceManager.GetString("ReportingPage_Report_RemainingText1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} HOUR(S) &amp; {1} MINUTE(S).
+        /// </summary>
+        public static string ReportingPage_Report_RemainingText2 {
+            get {
+                return ResourceManager.GetString("ReportingPage_Report_RemainingText2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TIME.
         /// </summary>
         public static string ReportingPage_Report_Time {
@@ -1469,7 +1505,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TO: {0}.
+        ///   Looks up a localized string similar to TO: .
         /// </summary>
         public static string ReportingPage_Report_To {
             get {
@@ -1478,7 +1514,7 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TOTAL: {0} Hour(s) and {1} Minute(s).
+        ///   Looks up a localized string similar to TOTAL: .
         /// </summary>
         public static string ReportingPage_Report_TotalHours {
             get {
@@ -2227,6 +2263,24 @@ namespace FieldService {
         public static string SettingsPage_Settings_SMS {
             get {
                 return ResourceManager.GetString("SettingsPage_Settings_SMS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GOAL.
+        /// </summary>
+        public static string SettingsPage_Settings_TimeGoal {
+            get {
+                return ResourceManager.GetString("SettingsPage_Settings_TimeGoal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your monthly goal (in hours).
+        /// </summary>
+        public static string SettingsPage_Settings_TimeGoalNote {
+            get {
+                return ResourceManager.GetString("SettingsPage_Settings_TimeGoalNote", resourceCulture);
             }
         }
         

@@ -15,11 +15,15 @@
     xmlns:input="clr-namespace:System.Windows.Input;assembly=System"
     xmlns:ec="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
     xmlns:commands="clr-namespace:FieldService.Commands"
-    x:Class="FieldService.App"
-	>
+    xmlns:view="clr-namespace:FieldService.View"
+    xmlns:telerikDataVisualization="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.DataVisualization"
+    x:Class="FieldService.App">
 
     <Application.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="View/TimeGoalGauge.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
             <FS:AppSettingsProvider x:Name="AppSettings"/>
             <FS:LocalizedStrings x:Key="LocalizedStrings" />
             <Color x:Key="AppForegroundColor">#FF4d4578</Color>
@@ -885,6 +889,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+           
             <commands:AddVisitToRVCommand x:Key="AddVisitToRVCommand" />
             <commands:DeleteReturnVisitCommand x:Key="DeleteReturnVisitCommand" />
             <commands:DeletePreviousCallCommand x:Key="DeletePreviousCallCommand" />

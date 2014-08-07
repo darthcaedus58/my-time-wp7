@@ -66,6 +66,8 @@
                         <telerikPrimitives:RadTextBox Text="{Binding nickname, Mode=TwoWay}" Watermark="{Binding StringResources.SettingsPage_Settings_NickName, Mode=OneWay, Source={StaticResource LocalizedStrings}}" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
                         <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_Settings_DefaultAge, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
                         <telerikPrimitives:RadTextBox Text="{Binding defaultAgeValue, Mode=TwoWay}" Watermark="{Binding StringResources.SettingsPage_Settings_DefaultAge, Mode=OneWay, Source={StaticResource LocalizedStrings}}" InputScope="Number" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
+                        <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_Settings_TimeGoalNote, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
+                        <telerikPrimitives:RadTextBox Text="{Binding TimeGoalPerMonth, Mode=TwoWay}" Watermark="{Binding StringResources.SettingsPage_Settings_TimeGoal, Mode=OneWay, Source={StaticResource LocalizedStrings}}" InputScope="Number" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
 
                         <fieldService:HeaderControl IconSource="/icons/RangeSlider.png" HeaderText="{Binding StringResources.SettingsPage_Settings_AppSettings, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
                         <toolkit:ToggleSwitch Header="{Binding StringResources.SettingsPage_Settings_UseLocServices, Mode=OneWay, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding useLocationServices, Mode=TwoWay}"/>

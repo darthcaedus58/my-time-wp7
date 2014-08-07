@@ -137,6 +137,8 @@ namespace FieldService.View
 					NavigationService.GoBack();
 				_fromDate = DateTime.ParseExact(fromStr, "MM-dd-yyyy", CultureInfo.InvariantCulture);
 				_toDate = DateTime.ParseExact(toStr, "MM-dd-yyyy", CultureInfo.InvariantCulture);
+			    ((TimeReportViewModel) DataContext).TimeReportPeriod = ((_toDate.Year - _fromDate.Year)*12) + _toDate.Month -
+			                                                           _fromDate.Month+1;
 			    try {
 			        string header = StringResources.ApplicationName;
 			        NavigationContext.QueryString.TryGetValue("header", out header);
@@ -150,8 +152,8 @@ namespace FieldService.View
 
 		private void RefreshTimeReport()
 		{
-                        tbFromDate.Text = string.Format(StringResources.ReportingPage_Report_From, _fromDate.ToShortDateString());
-                        tbToDate.Text = string.Format(StringResources.ReportingPage_Report_To, _toDate.ToShortDateString());
+                        tbFromDate.Text =  _fromDate.ToShortDateString();
+                        tbToDate.Text =  _toDate.ToShortDateString();
 
 		        var bw = new BackgroundWorker();
 		        bw.RunWorkerCompleted +=
@@ -159,6 +161,7 @@ namespace FieldService.View
 		                        ((TimeReportViewModel) this.DataContext).LoadTimeReport(Reporting.BuildTimeReport(_fromDate,
 		                                _toDate, SortOrder.DateOldestToNewest));
                         bw.RunWorkerAsync();
+		    
 
 		}
 

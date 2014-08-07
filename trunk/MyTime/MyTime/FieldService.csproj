@@ -295,6 +295,7 @@
     <Compile Include="View\TimeCalcControl.xaml.cs">
       <DependentUpon>TimeCalcControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\TimeGoalGauge.cs" />
     <Compile Include="View\TimeReport.xaml.cs">
       <DependentUpon>TimeReport.xaml</DependentUpon>
     </Compile>
@@ -374,6 +375,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Resource Include="View\TimeGoalGauge.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
     <Page Include="View\TimeReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

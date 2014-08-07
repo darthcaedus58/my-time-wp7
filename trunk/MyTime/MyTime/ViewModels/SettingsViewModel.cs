@@ -14,6 +14,7 @@ namespace FieldService.ViewModels
 {
     public class SettingsViewModel : INotifyPropertyChanged
     {
+
         public SettingsViewModel()
         {
             SendMethodCollection = new ObservableCollection<string>();
@@ -343,6 +344,31 @@ namespace FieldService.ViewModels
                     App.ToastMe(StringResources.SettingsPage_Settings_DailyTextErrorUrl);
                 }
 
+                OnPropertyChanged();
+            }
+        }
+
+        public double TimeGoalPerMonth
+        {
+            get {
+                try {
+                    return double.Parse(GetSetting("TimeGoalPerMonth"));
+                }
+                catch {
+                    SetSettingValue("TimeGoalPerMonth", 0);
+                    OnPropertyChanged();
+                    return 0.0;
+                }
+            }
+            set
+            {
+                if (value < 0.0) {
+                    value = 0.0;
+                } else if (value > 744) {
+                    value = 0;
+                    App.ToastMe("Nice try, very funny.");
+                }
+                SetSettingValue("TimeGoalPerMonth",(int)Math.Round(value));
                 OnPropertyChanged();
             }
         }
