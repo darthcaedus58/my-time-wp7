@@ -8,6 +8,8 @@
     <Language code="es" />
     <Language code="nl" />
     <Language code="pt" />
+    <Language code="fi" />
+    <Language code="hu" />
   </Languages>
   <App xmlns="" ProductID="{e9d44338-3c5e-4277-bdae-181591bf164c}" Title="Field Service" RuntimeType="Silverlight" Version="1.14.8.1" Genre="apps.normal" Author="Square.HipToBe" Description="Field Service Application for Jehovah's Witnesses to manage their ministry." Publisher="Square.HipToBe" PublisherID="{ab618fa0-d5d4-4ce8-bfc3-d5364a5db77e}">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>

@@ -12,9 +12,11 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Markup;
 using System.Windows.Navigation;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
@@ -36,6 +38,7 @@ namespace FieldService.View
 		/// </summary>
 		public SettingsPage()
 		{
+            this.Language = XmlLanguage.GetLanguage(CultureInfo.CurrentUICulture.Name);
 			DataContext = App.ViewModel;
 			InitializeComponent();
 			Loaded += Settings_Loaded;

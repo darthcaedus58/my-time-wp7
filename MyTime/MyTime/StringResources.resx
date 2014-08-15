@@ -563,7 +563,7 @@
   <data name="RVPage_Address_PostalCode" xml:space="preserve">
     <value>Postal Code</value>
   </data>
-  <data name="RVPage_Address_StateDistrict" xml:space="preserve">
+<data name="RVPage_Address_StateDistrict" xml:space="preserve">
     <value>State/Province/District</value>
   </data>
   <data name="RVPage_Address_Use" xml:space="preserve">
@@ -611,6 +611,15 @@
   <data name="RVPage_Messages_Saved" xml:space="preserve">
     <value>Return Visit Saved.</value>
   </data>
+  <data name="RVPage_Messages_SavedFailed" xml:space="preserve">
+    <value>Return Visit Saving Failed.</value>
+  </data>
+  <data name="RVPage_Messages_FillOutAddressBeforeSaving" xml:space="preserve">
+    <value>Please fill out the address before saving.</value>
+  </data>
+  <data name="RVPage_Messages_SaveBeforeAddingCall" xml:space="preserve">
+    <value>Please save before adding a call.</value>
+  </data>
   <data name="RVPage_Personal_Age" xml:space="preserve">
     <value>Age</value>
   </data>
@@ -638,14 +647,43 @@
   <data name="RVPage_Reminders_SelectDate" xml:space="preserve">
     <value>Select Date</value>
   </data>
+  <data name="RVPage_Contact_Notes" xml:space="preserve">
+    <value>Age: {0}
+Gender: {1}
+Physical Description: {2}
+Other Notes: {3}</value>
+  </data>
   <data name="RVPage_Reminders_SelectTime" xml:space="preserve">
     <value>Select Time</value>
+  </data>
+  <data name="RVPage_Reminders_Messages_ReminderPastNow" xml:space="preserve">
+    <value>Reminder must be past right now.</value>
+  </data>
+  <data name="RVPage_Reminders_ReminderAdded" xml:space="preserve">
+    <value>Reminder Added.</value>
+  </data>
+  <data name="RVPage_Reminders_ReminderTitle" xml:space="preserve">
+    <value>Field Service Reminder ({0})</value>
   </data>
   <data name="RVPage_Visits_DaysSince" xml:space="preserve">
     <value> day(s) since visit</value>
   </data>
   <data name="RVPage_Visits_Headline" xml:space="preserve">
     <value>visits</value>
+  </data>
+  <data name="RVPage_Share_Body" xml:space="preserve">
+    <value>Name: {0}
+Phone Number: {1}
+Address 1: {2}
+Address 2: {3}
+City/State/Zip: {4}, {5} {6}
+Country: {7}
+Loc Description: {8}
+
+Age: {9}
+Gender: {10}
+Physical Description: {11}
+</value>
   </data>
   <data name="SettingsPage_About_AppVersion" xml:space="preserve">
     <value>Application Version: </value>
@@ -880,9 +918,6 @@
   <data name="General_SelectTime" xml:space="preserve">
     <value>Select time</value>
   </data>
-  <data name="General_SelectDate" xml:space="preserve">
-    <value>Select date</value>
-  </data>
   <data name="HowTo_WhatsNew" xml:space="preserve">
     <value>What's New?</value>
   </data>
@@ -913,16 +948,6 @@
   <data name="SettingsPage_Settings_DailyTextErrorUrlNotSet" xml:space="preserve">
     <value>Please enter url first.</value>
   </data>
-  <data name="HowTo_WhatsNew_ContextMenus" xml:space="preserve">
-    <value>Context menus are now added on several pages.
-Hold down to show the menu.</value>
-  </data>
-  <data name="HowTo_WhatsNew_CustomDTUrl" xml:space="preserve">
-    <value>You can now set a custom url to view the daily text in any language available on jw.org!!</value>
-  </data>
-  <data name="HowTo_WhatsNew_RoundTimeInc" xml:space="preserve">
-    <value>You can now set the increment you want to use for saving your time.  Do you want to save your time in 1 minute increments? Or would you prefer 30 minute increments?  It's up to you!</value>
-  </data>
   <data name="SettingsPage_Settings_TimeGoalNote" xml:space="preserve">
     <value>Enter your monthly goal (in hours)</value>
   </data>
@@ -940,5 +965,61 @@ Hold down to show the menu.</value>
   </data>
   <data name="ReportingPage_Report_RemainingText2" xml:space="preserve">
     <value>{0} HOUR(S) &amp; {1} MINUTE(S)</value>
+  </data>
+  <data name="TelerikRadDatePicker_EmptyDateContent" xml:space="preserve">
+    <value>Select date</value>
+  </data>
+  <data name="TelerikRadDatePicker_DatePickerPopupHeader" xml:space="preserve">
+    <value>SELECT DATE</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimePickerPopupHeader" xml:space="preserve">
+    <value>SELECT TIME</value>
+  </data>
+  <data name="TelerikRadDatePicker_EmptyTimeContent" xml:space="preserve">
+    <value>Select time</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanPickerPopupHeader" xml:space="preserve">
+    <value>SELECT TIME PERIOD</value>
+  </data>
+  <data name="TelerikRadDatePicker_EmptyTimeSpanContent" xml:space="preserve">
+    <value>Select time period</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanSecond" xml:space="preserve">
+    <value>seconds</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanMinute" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanHour" xml:space="preserve">
+    <value>hours</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanDay" xml:space="preserve">
+    <value>days</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanWeek" xml:space="preserve">
+    <value>weeks</value>
+  </data>
+  <data name="TelerikRadDatePicker_LeapYear" xml:space="preserve">
+    <value>Leap Year</value>
+  </data>
+  <data name="TelerikRadDatePicker_CancelButttonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="TelerikRadDatePicker_OkButtonText" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="Sharing_Signature" xml:space="preserve">
+    <value>"
+    
+    
+P.S. - This report was generated by the "Field Service" App on my Windows Phone! If you would like to try this app you can download it from the Store!</value>
+  </data>
+  <data name="Sharing_Thanks" xml:space="preserve">
+    <value>
+      
+Thanks</value>
+  </data>
+  <data name="Sharing_Subject" xml:space="preserve">
+    <value>Field Service Report</value>
   </data>
 </root>

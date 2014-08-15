@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Globalization;
 using System.Threading;
 using System.Windows;
+using System.Windows.Markup;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -13,6 +15,7 @@ namespace FieldService.View
 		private AddModifyRBCTimeViewModel ViewModel { get { return ((AddModifyRBCTimeViewModel) DataContext); } }
 		public RBCTimePage()
 		{
+            this.Language = XmlLanguage.GetLanguage(CultureInfo.CurrentUICulture.Name);
 			DataContext = new AddModifyRBCTimeViewModel();
 			InitializeComponent();
 		}

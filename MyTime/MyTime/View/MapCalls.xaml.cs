@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 using System.Windows.Navigation;
 using FieldService.BingMapsGeocodeService;
 using FieldService.ViewModels;
@@ -25,6 +26,7 @@ namespace FieldService.View
 
                 public MapCalls()
                 {
+                        this.Language = XmlLanguage.GetLanguage(CultureInfo.CurrentUICulture.Name);
                         InitializeComponent();
                     ((MapCallsViewModel)DataContext).StartLocationService();
 

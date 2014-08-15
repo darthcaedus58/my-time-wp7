@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Markup;
 using Windows.Storage;
 using Coding4Fun.Phone.Controls.Converters;
 using ICSharpCode.SharpZipLib.Zip;
@@ -28,7 +29,11 @@ namespace FieldService.View
 	        private CancellationTokenSource _ctsUpload;
 	        private CancellationTokenSource _ctsDownload;
 
-	        public BackupAndRestorePage() { InitializeComponent(); }
+	    public BackupAndRestorePage()
+	    {
+            this.Language = XmlLanguage.GetLanguage(CultureInfo.CurrentUICulture.Name);
+	        InitializeComponent();
+	    }
 
 		private void ClearOldBackupFiles()
 		{

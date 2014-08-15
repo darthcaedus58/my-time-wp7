@@ -13,9 +13,11 @@
 // ***********************************************************************
 
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Navigation;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
@@ -36,6 +38,7 @@ namespace FieldService.View
 		/// </summary>
 		public PreviousCallPage()
 		{
+            this.Language = XmlLanguage.GetLanguage(CultureInfo.CurrentUICulture.Name);
 			DataContext = new PreviousVisitViewModel();
 			InitializeComponent();
 		}

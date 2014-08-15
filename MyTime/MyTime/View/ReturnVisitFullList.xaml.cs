@@ -16,9 +16,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 using FieldService.Model;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
@@ -37,6 +39,7 @@ namespace FieldService.View
 		/// </summary>
 		public ReturnVistFullList()
 		{
+            this.Language = XmlLanguage.GetLanguage(CultureInfo.CurrentUICulture.Name);
 		        //DataContext = new ReturnVisitFullListViewModel();
 			InitializeComponent();
 		}

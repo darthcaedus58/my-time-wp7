@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using FieldService.Annotations;
@@ -153,7 +154,7 @@ namespace FieldService.ViewModels
                     year = td.Date.Year;
                     summaryMinTotal = 0;
                 }
-                summary.Month = td.Date.ToString("MMMM").ToUpper();
+                summary.Month = td.Date.ToString("MMMM", CultureInfo.CurrentUICulture).ToUpper();
                 summary.Days++;
                 summaryMinTotal += td.Minutes;
                 summary.Magazines += td.Magazines;

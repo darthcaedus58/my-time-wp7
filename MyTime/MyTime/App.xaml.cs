@@ -14,12 +14,15 @@
 
 using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -54,6 +57,13 @@ namespace FieldService
 		/// </summary>
 		public App()
 		{
+            // Ensure the current culture passed into bindings 
+            // is the OS culture. By default, WPF uses en-US 
+            // as the culture, regardless of the system settings.
+            LocalizationManager.GlobalStringLoader = new TelerikStringLoader();
+		    Thread.CurrentThread.CurrentCulture = CultureInfo.CurrentUICulture;
+		    Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+
 			var radDiagnostics = new RadDiagnostics();
 			radDiagnostics.EmailTo = "help@square-hiptobe.com";
 			radDiagnostics.IncludeScreenshot = true;
@@ -139,6 +149,7 @@ namespace FieldService
 		/// <param name="e">The <see cref="ActivatedEventArgs" /> instance containing the event data.</param>
 		private void Application_Activated(object sender, ActivatedEventArgs e)
 		{
+
 			ApplicationUsageHelper.OnApplicationActivated();
 			// Ensure that application state is restored appropriately
 			if (!ViewModel.IsRvDataChanged) {

@@ -22,6 +22,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Threading;
 using System.Xml.Serialization;
 using FieldService.Model;
@@ -69,6 +70,7 @@ namespace FieldService.View
         /// </summary>
         public MainPage()
         {
+            this.Language = XmlLanguage.GetLanguage(CultureInfo.CurrentUICulture.Name);
             InitializeComponent();
 
             // Set the data context of the listbox control to the sample data
@@ -184,9 +186,9 @@ namespace FieldService.View
 
         private void StartDailyTextRetrieval()
         {
-            lblDailyTextDate.Text = DateTime.Now.ToLongDateString();
+            lblDailyTextDate.Text = DateTime.Today.ToString("D", CultureInfo.CurrentUICulture);
             if (lblDailyTextDate.Text.Length >= 26) {
-                lblDailyTextDate.Text = string.Format("{0:ddd} {0:MMM}. {0:dd}, {0:yyyy}", DateTime.Today);
+                lblDailyTextDate.Text = DateTime.Today.ToString("ddd MMM. dd, yyyy", CultureInfo.CurrentUICulture);
             }
             var ss = new DailyTextScraper();
 
@@ -523,7 +525,7 @@ namespace FieldService.View
         {
             string month = string.Format(
                     StringResources.MainPage_MainMenu_MonthReport,
-                    DateTime.Today.ToString("MMMM").ToLower());
+                    DateTime.Today.ToString("MMMM", CultureInfo.CurrentUICulture).ToLower());
             if (v == StringResources.MainPage_MainMenu_WtLib) {
                 var wbTask = new WebBrowserTask { Uri = new Uri("http://wol.jw.org", UriKind.RelativeOrAbsolute) };
                 wbTask.Show();
@@ -609,7 +611,7 @@ namespace FieldService.View
                                                              from.ToString("MM-dd-yyyy"), 
                                                              to.ToString("MM-dd-yyyy"),
                                                              string.Format(StringResources.MainPage_MainMenu_MonthReport,
-                                                                            DateTime.Today.ToString("MMMM").ToLower())), UriKind.Relative));
+                                                                            DateTime.Today.ToString("MMMM", CultureInfo.CurrentUICulture).ToLower())), UriKind.Relative));
         }
 
         /// <summary>

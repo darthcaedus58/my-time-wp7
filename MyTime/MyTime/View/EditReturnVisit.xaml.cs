@@ -8,6 +8,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Windows.Foundation.Metadata;
@@ -32,6 +33,7 @@ namespace FieldService
 
                 public EditReturnVisit()
                 {
+                        this.Language = XmlLanguage.GetLanguage(CultureInfo.CurrentUICulture.Name);
                         DataContext = App.ViewModel;
                         InitializeComponent();
                 }
@@ -338,14 +340,14 @@ namespace FieldService
                 {
                         UpdateViewModel();
                         if (!App.ViewModel.ReturnVisitData.IsAddressValid) {
-                                App.ToastMe("Please fill in address before saving.");
+                                App.ToastMe(StringResources.RVPage_Messages_FillOutAddressBeforeSaving);
                                 return;
                         }
                         if (App.ViewModel.ReturnVisitData.SaveOrUpdate()) {
-                                App.ToastMe("Return Visit Saved.");
+                                App.ToastMe(StringResources.RVPage_Messages_Saved);
                                 NavigationContext.QueryString["id"] = App.ViewModel.ReturnVisitData.ItemId.ToString();
                         } else {
-                                App.ToastMe("Return Visit Saving Failed.");
+                                App.ToastMe(StringResources.RVPage_Messages_SavedFailed);
                         }
                 }
 
@@ -368,7 +370,7 @@ namespace FieldService
                 private void ApplicationBarIconButton_Click_1(object sender, EventArgs e)
                 {
                         if (App.ViewModel.ReturnVisitData.ItemId < 0) {
-                                App.ToastMe("Save RV before adding call.");
+                                App.ToastMe(StringResources.RVPage_Messages_SaveBeforeAddingCall);
                                 return;
                         }
                         NavigationService.Navigate(new Uri(string.Format("/View/PreviousCall.xaml?rvid={0}", App.ViewModel.ReturnVisitData.ItemId), UriKind.Relative));
@@ -388,16 +390,7 @@ namespace FieldService
 
                 private void miShareContact_Click_1(object sender, EventArgs e)
                 {
-                        string body = string.Format("Name: {0}\n" +
-                                                                                "Phone Number: {1}\n" +
-                                                                                "Address 1: {2}\n" +
-                                                                                "Address 2: {3}\n" +
-                                                                                "City/State/Zip: {4}, {5} {6}\n" +
-                                                                                "Country: {7}\n" +
-                                                                                "Loc Description: {8}\n\n" +
-                                                                                "Age: {9}\n" +
-                                                                                "Gender: {10}\n" +
-                                                                                "Physical Description: {11}\n",
+                        string body = string.Format(StringResources.RVPage_Share_Body,
                                                                                 App.ViewModel.ReturnVisitData.FullName,
                                                                                 App.ViewModel.ReturnVisitData.PhoneNumber,
                                                                                 App.ViewModel.ReturnVisitData.Address1,
@@ -411,12 +404,12 @@ namespace FieldService
                                                                                 App.ViewModel.ReturnVisitData.Gender,
                                                                                 App.ViewModel.ReturnVisitData.PhysicalDescription);
 
-                        if (MessageBox.Show("Include All Visits?", "Field Service", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
+                        if (MessageBox.Show(StringResources.RVPage_Messages_IncludeAllVisits, StringResources.ApplicationName, MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
                                 body += GetVisitsListAsString();
                         }
                         body += "\n\n";
 
-                        var emailcomposer = new EmailComposeTask { Subject = "Return Visit", Body = body };
+                        var emailcomposer = new EmailComposeTask { Subject = StringResources.MainPage_Time_ReturnVisits, Body = body };
                         emailcomposer.Show();
                 }
 
@@ -427,7 +420,7 @@ namespace FieldService
                 private string GetVisitsListAsString()
                 {
                         string body = string.Empty;
-                        body += "\n\nVisits:\n";
+                        body += string.Format("\n\n{0}:\n",StringResources.RVPage_Visits_Headline);
                         return App.ViewModel.ReturnVisitData.PreviousVisits.Where(pp => pp != null).Select(pp => RvPreviousVisitsDataInterface.GetCall(pp.PreviousVisitItemId)).Where(pv => pv != null).Aggregate(body, (current, pv) => current + string.Format("Date: {0}\n" + "Placements: {1} Mg's, {2} Bk's, {3} Br's\n" + "Notes: {4}\n\n\n", pv.Date.ToShortDateString(), pv.Magazines, pv.Books, pv.Brochures, pv.Notes));
                 }
 
@@ -441,13 +434,13 @@ namespace FieldService
                         newContact.HomeAddressStreet = string.Format("{0} {1}", App.ViewModel.ReturnVisitData.Address1, App.ViewModel.ReturnVisitData.Address2);
                         newContact.HomeAddressZipCode = App.ViewModel.ReturnVisitData.PostalCode;
                         newContact.HomePhone = App.ViewModel.ReturnVisitData.PhoneNumber;
-                        newContact.Notes = string.Format("Age: {0}\nGender: {1}\nPhysical Description: {2}\nOther Notes: {3}",
+                        newContact.Notes = string.Format(StringResources.RVPage_Contact_Notes,
                                                                                          App.ViewModel.ReturnVisitData.Age,
                                                                                          App.ViewModel.ReturnVisitData.Gender,
                                                                                          App.ViewModel.ReturnVisitData.PhysicalDescription,
                                                                                          App.ViewModel.ReturnVisitData.LocationNotes);
 
-                        if (MessageBox.Show("Do you want to include all visits?", "FIELD SERVICE", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
+                        if (MessageBox.Show(StringResources.RVPage_Messages_IncludeAllVisits2,StringResources.ApplicationName, MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
                                 newContact.Notes += GetVisitsListAsString();
                         }
 
@@ -479,11 +472,11 @@ namespace FieldService
                         var reminderDtTm = new DateTime(dpReminderDate.Value.Value.Year, dpReminderDate.Value.Value.Month, dpReminderDate.Value.Value.Day,
                                                         tpReminderTime.Value.Value.Hour, tpReminderTime.Value.Value.Minute, tpReminderTime.Value.Value.Second);
                         if (DateTime.Now > reminderDtTm) {
-                                App.ToastMe("Reminder must be past right now.");
+                                App.ToastMe(StringResources.RVPage_Reminders_Messages_ReminderPastNow);
                                 return;
                         }
 
-                        var s = string.Format("Field Service Reminder ({0})", App.ViewModel.ReturnVisitData.FullName);
+                        var s = string.Format(StringResources.RVPage_Reminders_ReminderTitle, App.ViewModel.ReturnVisitData.FullName);
 
 
                         var r = new Microsoft.Phone.Scheduler.Reminder(Guid.NewGuid().ToString())
@@ -495,7 +488,7 @@ namespace FieldService
                         };
                         ScheduledActionService.Add(r);
                         tbReminderNotes.Text = "";
-                        App.ToastMe("Reminder Added.");
+                        App.ToastMe(StringResources.RVPage_Reminders_ReminderAdded);
                         RefreshRemindersList();
                 }
         }

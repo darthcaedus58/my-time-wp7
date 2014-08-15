@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 using System.Windows.Navigation;
 using FieldService.ViewModels;
 using Microsoft.Phone.Controls;
@@ -15,6 +17,7 @@ namespace FieldService.View
 	{
 		public ViewPreviousVisit()
 		{
+            this.Language = XmlLanguage.GetLanguage(CultureInfo.CurrentUICulture.Name);
 			InitializeComponent();
 		}
 

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 using System.Windows.Navigation;
 using Windows.Foundation.Metadata;
 using FieldService.Model;
@@ -19,6 +21,7 @@ namespace FieldService.View
             private TerritoryListPageViewModel ViewModel { get { return (TerritoryListPageViewModel) DataContext; } }
                 public TerritoryList()
                 {
+                        this.Language = XmlLanguage.GetLanguage(CultureInfo.CurrentUICulture.Name);
                         InitializeComponent();
                 }
 

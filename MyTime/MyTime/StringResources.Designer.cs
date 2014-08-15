@@ -835,15 +835,6 @@ namespace FieldService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select date.
-        /// </summary>
-        public static string General_SelectDate {
-            get {
-                return ResourceManager.GetString("General_SelectDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Select time.
         /// </summary>
         public static string General_SelectTime {
@@ -867,34 +858,6 @@ namespace FieldService {
         public static string HowTo_WhatsNew {
             get {
                 return ResourceManager.GetString("HowTo_WhatsNew", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Context menus are now added on several pages.
-        ///Hold down to show the menu..
-        /// </summary>
-        public static string HowTo_WhatsNew_ContextMenus {
-            get {
-                return ResourceManager.GetString("HowTo_WhatsNew_ContextMenus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You can now set a custom url to view the daily text in any language available on jw.org!!.
-        /// </summary>
-        public static string HowTo_WhatsNew_CustomDTUrl {
-            get {
-                return ResourceManager.GetString("HowTo_WhatsNew_CustomDTUrl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You can now set the increment you want to use for saving your time.  Do you want to save your time in 1 minute increments? Or would you prefer 30 minute increments?  It&apos;s up to you!.
-        /// </summary>
-        public static string HowTo_WhatsNew_RoundTimeInc {
-            get {
-                return ResourceManager.GetString("HowTo_WhatsNew_RoundTimeInc", resourceCulture);
             }
         }
         
@@ -1640,6 +1603,18 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Age: {0}
+        ///Gender: {1}
+        ///Physical Description: {2}
+        ///Other Notes: {3}.
+        /// </summary>
+        public static string RVPage_Contact_Notes {
+            get {
+                return ResourceManager.GetString("RVPage_Contact_Notes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ADD OR MODIFY RETURN VISIT.
         /// </summary>
         public static string RVPage_Headline {
@@ -1739,6 +1714,15 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please fill out the address before saving..
+        /// </summary>
+        public static string RVPage_Messages_FillOutAddressBeforeSaving {
+            get {
+                return ResourceManager.GetString("RVPage_Messages_FillOutAddressBeforeSaving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you want to include all visits?.
         /// </summary>
         public static string RVPage_Messages_IncludeAllVisits {
@@ -1757,11 +1741,29 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please save before adding a call..
+        /// </summary>
+        public static string RVPage_Messages_SaveBeforeAddingCall {
+            get {
+                return ResourceManager.GetString("RVPage_Messages_SaveBeforeAddingCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Return Visit Saved..
         /// </summary>
         public static string RVPage_Messages_Saved {
             get {
                 return ResourceManager.GetString("RVPage_Messages_Saved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return Visit Saving Failed..
+        /// </summary>
+        public static string RVPage_Messages_SavedFailed {
+            get {
+                return ResourceManager.GetString("RVPage_Messages_SavedFailed", resourceCulture);
             }
         }
         
@@ -1829,11 +1831,38 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reminder must be past right now..
+        /// </summary>
+        public static string RVPage_Reminders_Messages_ReminderPastNow {
+            get {
+                return ResourceManager.GetString("RVPage_Reminders_Messages_ReminderPastNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Notes.
         /// </summary>
         public static string RVPage_Reminders_Notes {
             get {
                 return ResourceManager.GetString("RVPage_Reminders_Notes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reminder Added..
+        /// </summary>
+        public static string RVPage_Reminders_ReminderAdded {
+            get {
+                return ResourceManager.GetString("RVPage_Reminders_ReminderAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Field Service Reminder ({0}).
+        /// </summary>
+        public static string RVPage_Reminders_ReminderTitle {
+            get {
+                return ResourceManager.GetString("RVPage_Reminders_ReminderTitle", resourceCulture);
             }
         }
         
@@ -1852,6 +1881,26 @@ namespace FieldService {
         public static string RVPage_Reminders_SelectTime {
             get {
                 return ResourceManager.GetString("RVPage_Reminders_SelectTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: {0}
+        ///Phone Number: {1}
+        ///Address 1: {2}
+        ///Address 2: {3}
+        ///City/State/Zip: {4}, {5} {6}
+        ///Country: {7}
+        ///Loc Description: {8}
+        ///
+        ///Age: {9}
+        ///Gender: {10}
+        ///Physical Description: {11}
+        ///.
+        /// </summary>
+        public static string RVPage_Share_Body {
+            get {
+                return ResourceManager.GetString("RVPage_Share_Body", resourceCulture);
             }
         }
         
@@ -2294,6 +2343,38 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;
+        ///    
+        ///    
+        ///P.S. - This report was generated by the &quot;Field Service&quot; App on my Windows Phone! If you would like to try this app you can download it from the Store!.
+        /// </summary>
+        public static string Sharing_Signature {
+            get {
+                return ResourceManager.GetString("Sharing_Signature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Field Service Report.
+        /// </summary>
+        public static string Sharing_Subject {
+            get {
+                return ResourceManager.GetString("Sharing_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///      
+        ///Thanks.
+        /// </summary>
+        public static string Sharing_Thanks {
+            get {
+                return ResourceManager.GetString("Sharing_Thanks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} Not at Homes.
         /// </summary>
         public static string StreetBuildingList_HouseCountFormatString {
@@ -2308,6 +2389,132 @@ namespace FieldService {
         public static string StreetBuildingList_PageName {
             get {
                 return ResourceManager.GetString("StreetBuildingList_PageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string TelerikRadDatePicker_CancelButttonText {
+            get {
+                return ResourceManager.GetString("TelerikRadDatePicker_CancelButttonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT DATE.
+        /// </summary>
+        public static string TelerikRadDatePicker_DatePickerPopupHeader {
+            get {
+                return ResourceManager.GetString("TelerikRadDatePicker_DatePickerPopupHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select date.
+        /// </summary>
+        public static string TelerikRadDatePicker_EmptyDateContent {
+            get {
+                return ResourceManager.GetString("TelerikRadDatePicker_EmptyDateContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select time.
+        /// </summary>
+        public static string TelerikRadDatePicker_EmptyTimeContent {
+            get {
+                return ResourceManager.GetString("TelerikRadDatePicker_EmptyTimeContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select time period.
+        /// </summary>
+        public static string TelerikRadDatePicker_EmptyTimeSpanContent {
+            get {
+                return ResourceManager.GetString("TelerikRadDatePicker_EmptyTimeSpanContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leap Year.
+        /// </summary>
+        public static string TelerikRadDatePicker_LeapYear {
+            get {
+                return ResourceManager.GetString("TelerikRadDatePicker_LeapYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Done.
+        /// </summary>
+        public static string TelerikRadDatePicker_OkButtonText {
+            get {
+                return ResourceManager.GetString("TelerikRadDatePicker_OkButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT TIME.
+        /// </summary>
+        public static string TelerikRadDatePicker_TimePickerPopupHeader {
+            get {
+                return ResourceManager.GetString("TelerikRadDatePicker_TimePickerPopupHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to days.
+        /// </summary>
+        public static string TelerikRadDatePicker_TimeSpanDay {
+            get {
+                return ResourceManager.GetString("TelerikRadDatePicker_TimeSpanDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to hours.
+        /// </summary>
+        public static string TelerikRadDatePicker_TimeSpanHour {
+            get {
+                return ResourceManager.GetString("TelerikRadDatePicker_TimeSpanHour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to minutes.
+        /// </summary>
+        public static string TelerikRadDatePicker_TimeSpanMinute {
+            get {
+                return ResourceManager.GetString("TelerikRadDatePicker_TimeSpanMinute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT TIME PERIOD.
+        /// </summary>
+        public static string TelerikRadDatePicker_TimeSpanPickerPopupHeader {
+            get {
+                return ResourceManager.GetString("TelerikRadDatePicker_TimeSpanPickerPopupHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to seconds.
+        /// </summary>
+        public static string TelerikRadDatePicker_TimeSpanSecond {
+            get {
+                return ResourceManager.GetString("TelerikRadDatePicker_TimeSpanSecond", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to weeks.
+        /// </summary>
+        public static string TelerikRadDatePicker_TimeSpanWeek {
+            get {
+                return ResourceManager.GetString("TelerikRadDatePicker_TimeSpanWeek", resourceCulture);
             }
         }
         
