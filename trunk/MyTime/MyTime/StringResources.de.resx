@@ -567,7 +567,7 @@
     <value>Besuche</value>
   </data>
   <data name="SettingsPage_About_AppVersion" xml:space="preserve">
-    <value>Application Version: </value>
+    <value>Anwendungsversion: </value>
   </data>
   <data name="SettingsPage_About_Copyright" xml:space="preserve">
     <value>Copyright 2014 Square.HipToBe</value>
@@ -840,7 +840,7 @@
     <value>neuen Version!</value>
   </data>
   <data name="ReportingPage_Report_TotalHours" xml:space="preserve">
-    <value>TOTAL: </value>
+    <value>GESAMT: </value>
   </data>
   <data name="StreetBuildingList_HouseCountFormatString" xml:space="preserve">
     <value>{0} Nicht bei Häuser</value>
@@ -866,7 +866,7 @@
   <data name="General_SelectTime" xml:space="preserve">
     <value>Wählen Sie Zeit</value>
   </data>
-  <data name="General_SelectDate" xml:space="preserve">
+  <data name="TelerikRadDatePicker_EmptyDateContent" xml:space="preserve">
     <value>Datum wählen</value>
   </data>
   <data name="HowTo_WhatsNext_I1" xml:space="preserve">
@@ -920,7 +920,7 @@ Halten Sie, um das Menü zu zeigen.</value>
     <value>letzten Dienstjahr</value>
   </data>
   <data name="SettingsPage_Settings_TimeGoalNote" xml:space="preserve">
-    <value>Enter your monthly goal (in hours)</value>
+    <value>EGeben Sie Ihre monatlichen Ziel (in Stunden)</value>
   </data>
   <data name="SettingsPage_Settings_TimeGoal" xml:space="preserve">
     <value>ZIEL</value>
@@ -936,5 +936,96 @@ Halten Sie, um das Menü zu zeigen.</value>
   </data>
   <data name="ReportingPage_Report_RemainingText2" xml:space="preserve">
     <value>{0} STUNDEN &amp; {1} MINUTEN</value>
+  </data>
+  <data name="RVPage_Messages_SavedFailed" xml:space="preserve">
+    <value>Rückbesuche Aufnahme fehlgeschlagen.</value>
+  </data>
+  <data name="RVPage_Messages_FillOutAddressBeforeSaving" xml:space="preserve">
+    <value>Bitte füllen Sie die Adresse vor dem Speichern.</value>
+  </data>
+  <data name="RVPage_Messages_SaveBeforeAddingCall" xml:space="preserve">
+    <value>Bitte speichern Rückbesuche bevor Sie einen Anruf hinzufügen.</value>
+  </data>
+  <data name="RVPage_Contact_Notes" xml:space="preserve">
+    <value>Alter: {0} 
+Geschlecht: {1} 
+Physische Beschreibung: {2} 
+Weitere Anmerkungen: {3}</value>
+  </data>
+  <data name="RVPage_Reminders_Messages_ReminderPastNow" xml:space="preserve">
+    <value>Erinnerungszeit muss größer als die aktuelle Zeit.</value>
+  </data>
+  <data name="RVPage_Reminders_ReminderAdded" xml:space="preserve">
+    <value>Aufgenommen.</value>
+  </data>
+  <data name="RVPage_Reminders_ReminderTitle" xml:space="preserve">
+    <value>Feld Ministerium Erinnerung ({0})</value>
+  </data>
+  <data name="RVPage_Share_Body" xml:space="preserve">
+    <value>Name: {0} 
+Telefonnummer: {1} 
+Adresse 1: {2} 
+Adresse 2: {3} 
+Stadt / Region / Postleitzahl: {4}, {5} {6} 
+Land: {7} 
+Loc Beschreibung: {8} 
+
+Alter: {9} 
+Geschlecht: {10} 
+Physikalische Beschreibung: {11}
+</value>
+  </data>
+  <data name="TelerikRadDatePicker_DatePickerPopupHeader" xml:space="preserve">
+    <value>DATUM WÄHLEN</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimePickerPopupHeader" xml:space="preserve">
+    <value>WÄHLEN SIE EINEN</value>
+  </data>
+  <data name="TelerikRadDatePicker_EmptyTimeContent" xml:space="preserve">
+    <value>Wählen Sie einen</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanPickerPopupHeader" xml:space="preserve">
+    <value>WÄHLEN SIE EINEN ZEITRAUM</value>
+  </data>
+  <data name="TelerikRadDatePicker_EmptyTimeSpanContent" xml:space="preserve">
+    <value>Wählen Sie einen Zeitraum</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanSecond" xml:space="preserve">
+    <value>Sekunden</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanMinute" xml:space="preserve">
+    <value>Minuten</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanHour" xml:space="preserve">
+    <value>Stunden</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanDay" xml:space="preserve">
+    <value>Tage</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanWeek" xml:space="preserve">
+    <value>Wochen</value>
+  </data>
+  <data name="TelerikRadDatePicker_LeapYear" xml:space="preserve">
+    <value>Schaltjahr</value>
+  </data>
+  <data name="TelerikRadDatePicker_CancelButttonText" xml:space="preserve">
+    <value>Streichen</value>
+  </data>
+  <data name="TelerikRadDatePicker_OkButtonText" xml:space="preserve">
+    <value>Fertig</value>
+  </data>
+  <data name="Sharing_Signature" xml:space="preserve">
+    <value>"
+    
+    
+P. S. - Dieser Bericht wurde von der "Field Service" App auf meinem Windows Phone erzeugt! Wenn Sie möchten, um diese App versuchen Sie es aus dem Store herunterladen!</value>
+  </data>
+  <data name="Sharing_Thanks" xml:space="preserve">
+    <value>
+      
+dank</value>
+  </data>
+  <data name="Sharing_Subject" xml:space="preserve">
+    <value>Feld Ministerium Bericht</value>
   </data>
 </root>

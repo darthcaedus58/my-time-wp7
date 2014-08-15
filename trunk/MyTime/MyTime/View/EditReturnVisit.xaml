@@ -148,7 +148,7 @@
                 <Grid>
                     <StackPanel>
                         <telerikPrimitives:RadTextBox x:Name="tbReminderNotes" InputScope="Text" TextWrapping="Wrap" AcceptsReturn="True" Height="125" Margin="0,-10" Watermark="{Binding StringResources.RVPage_Reminders_Notes, Source={StaticResource LocalizedStrings}}" Style="{StaticResource RadTextBoxAppDefaultStyle}"/>
-                        <telerikInput:RadDatePicker x:Name="dpReminderDate" EmptyContent="{Binding Path=StringResources.General_SelectDate, Source={StaticResource LocalizedStrings}}"  VerticalAlignment="Stretch" Margin="0,-10" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" Template="{StaticResource RadDatePickerControlTemplateApp}"/>
+                        <telerikInput:RadDatePicker x:Name="dpReminderDate" EmptyContent="{Binding Path=StringResources.TelerikRadDatePicker_EmptyDateContent, Source={StaticResource LocalizedStrings}}"  VerticalAlignment="Stretch" Margin="0,-10" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" Template="{StaticResource RadDatePickerControlTemplateApp}"/>
                         <telerikInput:RadTimePicker x:Name="tpReminderTime" EmptyContent="{Binding Path=StringResources.General_SelectTime, Source={StaticResource LocalizedStrings}}"  VerticalAlignment="Stretch" Margin="0,-10" PickerButtonStyle="{StaticResource PickerBoxToggleButtonAppDefaultStyle}" Style="{StaticResource RadTimePickerAppDefaultStyle}"/>
                         <Button Click="AddReminderButton_Click" Content="{Binding StringResources.RVPage_Reminders_AddReminder, Source={StaticResource LocalizedStrings}}" Style="{StaticResource SettingsButtonBaseControlTemplate}"/>
                         <ListBox x:Name="lbReminders" >

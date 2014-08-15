@@ -867,7 +867,7 @@
   <data name="General_SelectTime" xml:space="preserve">
     <value>Selecteer tijd</value>
   </data>
-  <data name="General_SelectDate" xml:space="preserve">
+  <data name="TelerikRadDatePicker_EmptyDateContent" xml:space="preserve">
     <value>Selecteer een datum</value>
   </data>
   <data name="HowTo_WhatsNext_I1" xml:space="preserve">
@@ -895,16 +895,6 @@
   <data name="SettingsPage_Settings_DailyTextUseCustom" xml:space="preserve">
     <value>Gebruik aangepaste URL dagtekst</value>
   </data>
-  <data name="HowTo_WhatsNew_ContextMenus" xml:space="preserve">
-    <value>Context menu's zijn nu toegevoegd op meerdere pagina's. 
-Ingedrukt om het menu te tonen.</value>
-  </data>
-  <data name="HowTo_WhatsNew_CustomDTUrl" xml:space="preserve">
-    <value>U kunt een aangepaste dagtekst url creëren. Bekijk de dagelijkse tekst in elke taal die beschikbaar is op de website jw.org!</value>
-  </data>
-  <data name="HowTo_WhatsNew_RoundTimeInc" xml:space="preserve">
-    <value>U kunt nu de stap die u wilt gebruiken voor het opslaan van uw tijd. Wilt u uw tijd te besparen in stappen van 1 minuut? Of wilt u liever blokken van 30 minuten? Het is aan jou!</value>
-  </data>
   <data name="SettingsPage_Settings_DailyTextSettings" xml:space="preserve">
     <value>DAGTEKST INSTELLINGEN</value>
   </data>
@@ -921,7 +911,7 @@ Ingedrukt om het menu te tonen.</value>
     <value>laatste dienstjaar</value>
   </data>
   <data name="SettingsPage_Settings_TimeGoalNote" xml:space="preserve">
-    <value>Enter your monthly goal (in hours)</value>
+    <value>Voer uw maandelijkse doel (in uren)</value>
   </data>
   <data name="SettingsPage_Settings_TimeGoal" xml:space="preserve">
     <value>DOEL</value>
@@ -937,5 +927,96 @@ Ingedrukt om het menu te tonen.</value>
   </data>
   <data name="ReportingPage_Report_RemainingText2" xml:space="preserve">
     <value>{0} UUR &amp; {1} MINUTEN</value>
+  </data>
+  <data name="RVPage_Messages_SavedFailed" xml:space="preserve">
+    <value>Nabezoek opslaan mislukt.</value>
+  </data>
+  <data name="RVPage_Messages_FillOutAddressBeforeSaving" xml:space="preserve">
+    <value>Vul het adres voordat u opslaat.</value>
+  </data>
+  <data name="RVPage_Messages_SaveBeforeAddingCall" xml:space="preserve">
+    <value>Sla voor het toevoegen van een bezoek.</value>
+  </data>
+  <data name="RVPage_Contact_Notes" xml:space="preserve">
+    <value>Leeftijd: {0} 
+Geslacht: {1} 
+Fysieke beschrijving: {2} 
+Andere opmerkingen: {3}</value>
+  </data>
+  <data name="RVPage_Reminders_Messages_ReminderPastNow" xml:space="preserve">
+    <value>Herinnering moet afgelopen zijn nu.</value>
+  </data>
+  <data name="RVPage_Reminders_ReminderAdded" xml:space="preserve">
+    <value>Herinnering toegevoegd.</value>
+  </data>
+  <data name="RVPage_Reminders_ReminderTitle" xml:space="preserve">
+    <value>Veld ministerie Herinnering ({0})</value>
+  </data>
+  <data name="RVPage_Share_Body" xml:space="preserve">
+    <value>NNaam: {0} 
+Telefoonnummer: {1} 
+Adres 1: {2} 
+Adres 2: {3} 
+Stad / Staat / Postcode: {4}, {5} {6} 
+Land: {7} 
+Loc Omschrijving: {8} 
+
+Leeftijd: {9} 
+Geslacht: {10} 
+Fysieke beschrijving: {11}
+</value>
+  </data>
+  <data name="TelerikRadDatePicker_DatePickerPopupHeader" xml:space="preserve">
+    <value>SELECTEER DATUM</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimePickerPopupHeader" xml:space="preserve">
+    <value>SELECTEER TIJD</value>
+  </data>
+  <data name="TelerikRadDatePicker_EmptyTimeContent" xml:space="preserve">
+    <value>Selecteer tijd</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanPickerPopupHeader" xml:space="preserve">
+    <value>SELECTEER TIJDSPERIODE</value>
+  </data>
+  <data name="TelerikRadDatePicker_EmptyTimeSpanContent" xml:space="preserve">
+    <value>Selecteer tijdsperiode</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanSecond" xml:space="preserve">
+    <value>seconden</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanMinute" xml:space="preserve">
+    <value>minuten</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanHour" xml:space="preserve">
+    <value>uur</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanDay" xml:space="preserve">
+    <value>dagen</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanWeek" xml:space="preserve">
+    <value>weken</value>
+  </data>
+  <data name="TelerikRadDatePicker_LeapYear" xml:space="preserve">
+    <value>schrikkeljaar</value>
+  </data>
+  <data name="TelerikRadDatePicker_CancelButttonText" xml:space="preserve">
+    <value>Terug</value>
+  </data>
+  <data name="TelerikRadDatePicker_OkButtonText" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="Sharing_Signature" xml:space="preserve">
+    <value>"
+    
+    
+P.S. - Dit rapport werd gegenereerd door de "Field Service" App op mijn Windows Phone! Als u graag om deze app te proberen je kunt het downloaden van de Store!</value>
+  </data>
+  <data name="Sharing_Thanks" xml:space="preserve">
+    <value>
+      
+dank</value>
+  </data>
+  <data name="Sharing_Subject" xml:space="preserve">
+    <value>Velddienst Verslag</value>
   </data>
 </root>

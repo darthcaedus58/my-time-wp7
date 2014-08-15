@@ -18,7 +18,7 @@
     </TargetFrameworkProfile>
     <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
-    <SupportedCultures>en%3bit%3bde%3bes%3bnl%3bpt</SupportedCultures>
+    <SupportedCultures>en%3bit%3bde%3bes%3bnl%3bpt%3bfi%3bhu</SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>FieldService_$(Configuration)_$(Platform).xap</XapFilename>
@@ -192,15 +192,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StringResources.es.resx</DependentUpon>
     </Compile>
-    <Compile Include="StringResources.es1.Designer.cs">
+    <Compile Include="StringResources.fi.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StringResources.es.resx</DependentUpon>
+      <DependentUpon>StringResources.fi.resx</DependentUpon>
     </Compile>
-    <Compile Include="StringResources.it2.Designer.cs">
+    <Compile Include="StringResources.hu.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StringResources.it.resx</DependentUpon>
+      <DependentUpon>StringResources.hu.resx</DependentUpon>
     </Compile>
     <Compile Include="StringResources.it.Designer.cs">
       <DependentUpon>StringResources.it.resx</DependentUpon>
@@ -211,11 +211,22 @@
       <DependentUpon>HeaderControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="LocalizedStrings.cs" />
-    <Compile Include="StringResources.it1.Designer.cs">
+    <Compile Include="StringResources.it2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StringResources.it.resx</DependentUpon>
     </Compile>
+    <Compile Include="StringResources.nl.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.nl.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StringResources.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.pt.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TelerikLocalizedStrings.cs" />
     <Compile Include="ValueConverters.cs" />
     <Compile Include="ViewModels\AddModifyRBCTimeViewModel.cs" />
     <Compile Include="ViewModels\AddModifyTimeViewModel.cs" />
@@ -586,6 +597,16 @@
       <LastGenOutput>StringResources.de2.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="StringResources.fi.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.fi.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StringResources.hu.resx">
+      <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.hu.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="StringResources.it.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StringResources.it2.Designer.cs</LastGenOutput>
@@ -593,9 +614,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StringResources.nl.resx">
       <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.nl.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="StringResources.pt.resx">
       <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.pt.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="StringResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

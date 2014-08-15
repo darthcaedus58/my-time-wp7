@@ -23,6 +23,7 @@ using System.Windows;
 using System.Windows.Controls;
 //using System.Windows.Controls.DataVisualization.Charting;
 //xmlns:charting="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
+using System.Windows.Markup;
 using System.Windows.Navigation;
 using Windows.Foundation.Metadata;
 using FieldService.Model;
@@ -50,6 +51,7 @@ namespace FieldService.View
 	        /// </summary>
 	        public TimeReport()
 	        {
+                this.Language = XmlLanguage.GetLanguage(CultureInfo.CurrentUICulture.Name);
 	                DataContext = new TimeReportViewModel();
 
                         ((TimeReportViewModel) DataContext).TimeReportMajorStep = ((TimeReportViewModel)DataContext).icReport.Count > 1 ? 10 : 2;

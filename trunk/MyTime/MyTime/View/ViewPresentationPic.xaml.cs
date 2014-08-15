@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -22,6 +24,7 @@ namespace FieldService.View
     {
         public ViewPresentationPic()
         {
+            this.Language = XmlLanguage.GetLanguage(CultureInfo.CurrentUICulture.Name);
             InitializeComponent();
         }
 

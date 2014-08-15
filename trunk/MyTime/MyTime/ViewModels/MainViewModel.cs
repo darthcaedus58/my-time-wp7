@@ -17,6 +17,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Linq;
@@ -298,7 +299,7 @@ namespace FieldService.ViewModels
             });
             lbMainMenuItems.Add(new MainMenuModel {
                 MenuText = string.Format(StringResources.MainPage_MainMenu_MonthReport,
-                                         DateTime.Today.ToString("MMMM").ToLower()),
+                                         DateTime.Today.ToString("MMMM", CultureInfo.CurrentUICulture).ToLower()),
                 IconUri = "/icons/Graph1.png",
                 NavigateToPage = ""
             });

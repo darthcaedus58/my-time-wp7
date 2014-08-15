@@ -630,10 +630,10 @@
     <value>Notas</value>
   </data>
   <data name="RVPage_Reminders_SelectDate" xml:space="preserve">
-    <value>Seleciona a Data</value>
+    <value>Escolha Data</value>
   </data>
   <data name="RVPage_Reminders_SelectTime" xml:space="preserve">
-    <value>Selecione a Hora</value>
+    <value>Escolha Hora</value>
   </data>
   <data name="RVPage_Visits_DaysSince" xml:space="preserve">
     <value> dia(s) desde a visita</value>
@@ -867,7 +867,7 @@
   <data name="General_SelectTime" xml:space="preserve">
     <value>Selecione o tempo</value>
   </data>
-  <data name="General_SelectDate" xml:space="preserve">
+  <data name="TelerikRadDatePicker_EmptyDateContent" xml:space="preserve">
     <value>Seleccionar data</value>
   </data>
   <data name="HowTo_WhatsNext_I1" xml:space="preserve">
@@ -895,16 +895,6 @@
   <data name="SettingsPage_Settings_DailyTextUseCustom" xml:space="preserve">
     <value>personalizado URL texto do dia</value>
   </data>
-  <data name="HowTo_WhatsNew_ContextMenus" xml:space="preserve">
-    <value>Os menus de contexto estão agora adicionados em várias páginas. 
-Mantenha pressionado para mostrar o menu.</value>
-  </data>
-  <data name="HowTo_WhatsNew_CustomDTUrl" xml:space="preserve">
-    <value>Agora você pode definir uma URL personalizada para exibir o texto do dia em qualquer idioma disponível em jw.org!</value>
-  </data>
-  <data name="HowTo_WhatsNew_RoundTimeInc" xml:space="preserve">
-    <value>Agora você pode definir o incremento que você deseja usar para salvar o seu tempo. Você quer salvar o seu tempo em incrementos de 1 minuto? Ou prefere incrementos de 30 minutos? Você decide!</value>
-  </data>
   <data name="SettingsPage_Settings_DailyTextSettings" xml:space="preserve">
     <value>CONFIGURAÇÕES DE TEXTO DIÁRIAS</value>
   </data>
@@ -921,7 +911,7 @@ Mantenha pressionado para mostrar o menu.</value>
     <value>último ano de serviço</value>
   </data>
   <data name="SettingsPage_Settings_TimeGoalNote" xml:space="preserve">
-    <value>Enter your monthly goal (in hours)</value>
+    <value>Digite sua meta mensal (em horas)</value>
   </data>
   <data name="SettingsPage_Settings_TimeGoal" xml:space="preserve">
     <value>OBJETIVO</value>
@@ -937,5 +927,96 @@ Mantenha pressionado para mostrar o menu.</value>
   </data>
   <data name="ReportingPage_Report_RemainingText2" xml:space="preserve">
     <value>{0} HORAS &amp; {1} MINUTO</value>
+  </data>
+  <data name="RVPage_Messages_SavedFailed" xml:space="preserve">
+    <value>Revisitas poupança falhou.</value>
+  </data>
+  <data name="RVPage_Messages_FillOutAddressBeforeSaving" xml:space="preserve">
+    <value>Por favor, preencha o endereço antes de salvar.</value>
+  </data>
+  <data name="RVPage_Messages_SaveBeforeAddingCall" xml:space="preserve">
+    <value>Por favor, salve antes de adicionar uma chamada.</value>
+  </data>
+  <data name="RVPage_Contact_Notes" xml:space="preserve">
+    <value>Idade: {0} 
+Sexo: {1} 
+Descrição Física: {2} 
+Outras Notas: {3}</value>
+  </data>
+  <data name="RVPage_Reminders_Messages_ReminderPastNow" xml:space="preserve">
+    <value>Lembrete tempo deve ser passado a hora atual.</value>
+  </data>
+  <data name="RVPage_Reminders_ReminderAdded" xml:space="preserve">
+    <value>Lembrete Adicionado.</value>
+  </data>
+  <data name="RVPage_Reminders_ReminderTitle" xml:space="preserve">
+    <value>Lembrete de serviço de campo ({0})</value>
+  </data>
+  <data name="RVPage_Share_Body" xml:space="preserve">
+    <value>Nome: {0} 
+Telefone: {1} 
+Endereço 1: {2} 
+Endereço 2: {3} 
+Cidade / Estado / CEP: {4}, {5} {6} 
+País: {7} 
+Loc Descrição: {8} 
+
+Idade: {9} 
+Sexo: {10} 
+Descrição Física: {11}
+</value>
+  </data>
+  <data name="TelerikRadDatePicker_DatePickerPopupHeader" xml:space="preserve">
+    <value>ESCOLHA DATA</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimePickerPopupHeader" xml:space="preserve">
+    <value>ESCOLHA HORA</value>
+  </data>
+  <data name="TelerikRadDatePicker_EmptyTimeContent" xml:space="preserve">
+    <value>Escolha hora</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanPickerPopupHeader" xml:space="preserve">
+    <value>ESCOLHA PERÍODO</value>
+  </data>
+  <data name="TelerikRadDatePicker_EmptyTimeSpanContent" xml:space="preserve">
+    <value>Escolha período</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanSecond" xml:space="preserve">
+    <value>segundos</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanMinute" xml:space="preserve">
+    <value>minutos</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanHour" xml:space="preserve">
+    <value>horas</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanDay" xml:space="preserve">
+    <value>dias</value>
+  </data>
+  <data name="TelerikRadDatePicker_TimeSpanWeek" xml:space="preserve">
+    <value>semanas</value>
+  </data>
+  <data name="TelerikRadDatePicker_LeapYear" xml:space="preserve">
+    <value>Ano Bissexto</value>
+  </data>
+  <data name="TelerikRadDatePicker_CancelButttonText" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="TelerikRadDatePicker_OkButtonText" xml:space="preserve">
+    <value>Concluído</value>
+  </data>
+  <data name="Sharing_Signature" xml:space="preserve">
+    <value>"
+    
+    
+P.S. - Este relatório foi gerado pelo aplicativo "Field Service" no meu Windows Phone! Se você gostaria de experimentar este aplicativo, você pode baixá-lo a partir da loja!</value>
+  </data>
+  <data name="Sharing_Thanks" xml:space="preserve">
+    <value>
+      
+graças</value>
+  </data>
+  <data name="Sharing_Subject" xml:space="preserve">
+    <value>Relatório de Campo Serviço</value>
   </data>
 </root>
