@@ -325,9 +325,15 @@ namespace FieldService.ViewModels
             }
             set
             {
-                if (string.IsNullOrEmpty(value)) return;
+                if (string.IsNullOrEmpty(value)) {
+                    SetSettingValue("CustomDT_Lang1", string.Empty);
+                    SetSettingValue("CustomDT_Lang2", string.Empty);
+                    SetSettingValue("CustomDT_RType", string.Empty);
+                    UseCustomDTUrl = false; 
+                    return;
+                }
                 string dtUrlPattern =
-                    @"^http\://(?:m\.)?wol\.jw\.org/(?<lang1>[\w\-]+)/wol/dt/(?<rtype>r\d+)/(?<lang2>lp\-\w+)/\d{4}/\d{1,2}/\d{1,2}$";
+                    @"^http(?:s)?\://(?:m\.)?wol\.jw\.org/(?<lang1>[\w\-]+)/wol/(?:dt|h)/(?<rtype>r\d+)/(?<lang2>lp\-\w+)/?(?:\d{4}/\d{1,2}/\d{1,2})?/?$";
 
                 var qry = Regex.Match(value, dtUrlPattern); 
 
