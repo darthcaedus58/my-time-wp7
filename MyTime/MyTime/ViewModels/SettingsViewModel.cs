@@ -333,7 +333,7 @@ namespace FieldService.ViewModels
                     return;
                 }
                 string dtUrlPattern =
-                    @"^http(?:s)?\://(?:m\.)?wol\.jw\.org/(?<lang1>[\w\-]+)/wol/(?:dt|h)/(?<rtype>r\d+)/(?<lang2>lp\-\w+)/?(?:\d{4}/\d{1,2}/\d{1,2})?/?$";
+                    @"^http(?:s)?\://(?:m\.)?wol\.jw\.org/(?<lang1>[\w\-]+)/wol/[\w\-]+?/(?<rtype>r\d+)/(?<lang2>lp\-\w+)/?";
 
                 var qry = Regex.Match(value, dtUrlPattern); 
 
