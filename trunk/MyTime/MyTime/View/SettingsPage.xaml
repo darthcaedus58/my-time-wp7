@@ -80,11 +80,11 @@
                         <toolkit:ToggleSwitch Header="{Binding StringResources.SettingsPage_Settings_DeleteCallsAndRv, Mode=OneWay, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding deleteCallsAndRv, Mode=TwoWay}"/>
                         <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_Settings_DeleteCallsRvNote, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
 
-                        <fieldService:HeaderControl IconSource="/icons/calendar.png" HeaderText="{Binding StringResources.SettingsPage_Settings_DailyTextSettings, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
+                        <!--<fieldService:HeaderControl IconSource="/icons/calendar.png" HeaderText="{Binding StringResources.SettingsPage_Settings_DailyTextSettings, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
                         <toolkit:ToggleSwitch Header="{Binding StringResources.SettingsPage_Settings_DailyTextUseCustom, Mode=OneWay, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding UseCustomDTUrl, Mode=TwoWay}"/>
                         <telerikPrimitives:RadTextBox Text="{Binding CustomDTUrl, Mode=TwoWay}" Watermark="{Binding StringResources.SettingsPage_Settings_DailyTextURL, Mode=OneWay, Source={StaticResource LocalizedStrings}}" InputScope="Url" Style="{StaticResource RadTextBoxAppDefaultStyle}" />
                         <TextBlock TextWrapping="Wrap" Text="{Binding StringResources.SettingsPage_Settings_DailyTextInstructions, Mode=OneWay, Source={StaticResource LocalizedStrings}}"/>
-                        <Image Source="/Images/daily_text_help_settings.png" Margin="0,0,0,50"/>
+                        <Image Source="/Images/daily_text_help_settings.png" Margin="0,0,0,50"/>-->
                     </StackPanel>
                 </ScrollViewer>
             </Grid>

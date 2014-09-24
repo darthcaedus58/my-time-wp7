@@ -13,7 +13,10 @@
                             xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives" 
                             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
                             xmlns:toolkitPrimitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone.Controls.Toolkit" 
-                            xmlns:ViewModels="clr-namespace:FieldService.ViewModels" x:Class="FieldService.View.MainPage" 
+                            xmlns:ViewModels="clr-namespace:FieldService.ViewModels"
+                            xmlns:primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone"
+                            xmlns:slideView="clr-namespace:Telerik.Windows.Controls.SlideView;assembly=Telerik.Windows.Controls.Primitives"
+                            x:Class="FieldService.View.MainPage" 
                             Orientation="Portrait" 
                             SupportedOrientations="Portrait" 
                             local:TiltEffect.IsTiltEnabled="True" 
@@ -34,12 +37,12 @@
 			<ColumnDefinition Width="26*" />
 			<ColumnDefinition Width="454*" />
 		</Grid.ColumnDefinitions>-->
-        <phone:Panorama Grid.Column="1" Margin="0,0,-26,0" Foreground="{StaticResource AppForegroundBrush}" Title="{Binding StringResources.MainPage_AppName, Source={StaticResource LocalizedStrings}}">
+        <phone:Panorama Grid.Column="1" Margin="0,0,-26,0" Foreground="{StaticResource AppForegroundBrush}" Title="{Binding StringResources.MainPage_AppName, Source={StaticResource LocalizedStrings}}" SelectionChanged="Panorama_SelectionChanged" ManipulationStarted="Panorama_ManipulationStarted">
             <phone:Panorama.Background>
                 <ImageBrush ImageSource="../PanoramaBackground.png" Opacity="0.6" />
             </phone:Panorama.Background>
 
-            <toolkit:WrapPanel x:Name="wpMainOptions" Height="Auto" MinHeight="522" Orientation="Vertical" Margin="0,-69,0,11">
+            <phone:PanoramaItem x:Name="wpMainOptions" Height="Auto" MinHeight="522" Orientation="Vertical" Margin="0,-69,0,11">
                 <ItemsControl x:Name="lbMainMenuItems" Margin="25,23,0,0" ItemsSource="{Binding lbMainMenuItems}" MinHeight="522">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
@@ -63,7 +66,7 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-            </toolkit:WrapPanel>
+            </phone:PanoramaItem>
             <phone:PanoramaItem Width="850" Orientation="Horizontal">
                 <phone:PanoramaItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -162,33 +165,13 @@
             <phone:PanoramaItem x:Name="piHeaderDT" >
                 <phone:PanoramaItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding StringResources.MainPage_DT_Headline, Source={StaticResource LocalizedStrings}}"/>
-                        <telerikPrimitives:RadImageButton Tap="ShowPresentation_Tap" RestStateImageSource="/icons/Login-Door.png" Margin="0,15,0,0"/>
+                        <TextBlock Text="{Binding StringResources.MainPage_Presentations_Headline, Source={StaticResource LocalizedStrings}}"/>
+                        <telerikPrimitives:RadImageButton Tap="TakePresentationPicButton_Tap" RestStateImageSource="/icons/camera.png" Margin="0,15,0,0" />
                     </StackPanel>
                 </phone:PanoramaItem.Header>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Margin="0,-30,0,0">
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Style="{StaticResource PhoneTextLargeStyle}" x:Name="lblDailyTextDate" Margin="0,0,0,0" Foreground="{StaticResource AppForegroundBrush}" />
-                            <TextBlock x:Name="lblDailyTextScripture" FontStyle="Italic" Foreground="Black" Text="{Binding StringResources.MainPage_DT_ErrorText, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" />
-                        </StackPanel>
-                    </Grid>
-                    <Grid Grid.Row="1">
-                        <Rectangle Grid.RowSpan="2" Fill="White" Opacity="0.5" />
-                        <ScrollViewer>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock x:Name="lblDTSummary" Margin="0,10,0,0" TextWrapping="Wrap" />
-                            </StackPanel>
-                        </ScrollViewer>
-                    </Grid>
-                    <Grid Grid.Row="2">
-                        <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" FontSize="{StaticResource PhoneFontSizeSmall}" Text="{Binding StringResources.MainPage_DT_Copyright, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" />
-                    </Grid>
+                <Grid x:Name="gMainContent" Background="Transparent" Margin="0,-30,0,0">
+                    <TextBlock Text="Take a photo" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <slideView:PanAndZoomImage Width="455" Height="540" Margin="3,0,-9,-3" ImageVerticalAlignment="Top" ZoomMode="None"  x:Name="imgPresentationPic" Stretch="UniformToFill" Background="Black"/>
                 </Grid>
             </phone:PanoramaItem>
             <phone:PanoramaItem Header="{Binding StringResources.MainPage_Time_Headline, Source={StaticResource LocalizedStrings}}">

@@ -360,8 +360,8 @@
   <data name="MainPage_DT_ErrorText" xml:space="preserve">
     <value>Je dient verbonden te zijn met het internet om de dagtekst op te kunnen halen.</value>
   </data>
-  <data name="MainPage_DT_Headline" xml:space="preserve">
-    <value>dagtekst</value>
+  <data name="MainPage_Presentations_Headline" xml:space="preserve">
+    <value>presentaties</value>
   </data>
   <data name="MainPage_MainMenu_AddAuxTime" xml:space="preserve">
     <value>bijzondere dienst tijd noteren</value>
@@ -1018,5 +1018,13 @@ dank</value>
   </data>
   <data name="Sharing_Subject" xml:space="preserve">
     <value>Velddienst Verslag</value>
+  </data>
+  <data name="HowTo_WhatsNew_Goal_1" xml:space="preserve">
+    <value>Uw rapport toont nu een meter met je doel (in uren) en uw werkelijke aantal gewerkte uren. 
+
+Deze gauge zal automatisch bijhouden of je aan het bekijken bent een maand of meerdere maanden en dan het doel aan te passen. </value>
+  </data>
+  <data name="HowTo_WhatsNew_Goal_2" xml:space="preserve">
+    <value>Stel uw maandelijkse doel in de instellingen van &gt; maandelijks doel.</value>
   </data>
 </root>

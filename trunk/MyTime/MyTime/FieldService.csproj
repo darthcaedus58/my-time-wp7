@@ -422,6 +422,7 @@
     <Content Include="icons\calendar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="icons\camera.png" />
     <Content Include="icons\ChartCustomization.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -508,12 +509,8 @@
     <Content Include="Images\DateTimePickerOK.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\whatsnew_contextmenu0.png" />
-    <Content Include="Images\whatsnew_contextmenu1.png" />
-    <Content Include="Images\whatsnew_contextmenu2.png" />
-    <Content Include="Images\whatsnew_contextmenu3.png" />
-    <Content Include="Images\whatsnew_custom_dt_url.png" />
-    <Content Include="Images\whatsnew_roundtimeinc.png" />
+    <Content Include="Images\whatsnew_goal_1.png" />
+    <Content Include="Images\whatsnew_goal_2.png" />
     <Content Include="Model\settings.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
