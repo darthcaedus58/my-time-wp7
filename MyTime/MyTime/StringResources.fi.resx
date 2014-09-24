@@ -362,8 +362,8 @@
   <data name="MainPage_DT_ErrorText" xml:space="preserve">
     <value>Tämän ominaisuuden käyttämiseen tarvitaan Internet yhteys.</value>
   </data>
-  <data name="MainPage_DT_Headline" xml:space="preserve">
-    <value>päivän teksti</value>
+  <data name="MainPage_Presentations_Headline" xml:space="preserve">
+    <value>esitykset</value>
   </data>
   <data name="MainPage_MainMenu_AddAuxTime" xml:space="preserve">
     <value>lisää muuta aikaa</value>
@@ -1033,5 +1033,13 @@ kiitos</value>
   </data>
   <data name="Sharing_Subject" xml:space="preserve">
     <value>Kenttä ministeriön raportti</value>
+  </data>
+  <data name="HowTo_WhatsNew_Goal_1" xml:space="preserve">
+    <value>Sinun raportti näyttää nyt mittari teidän tavoite (tunteina) ja todellisen työtuntien määrä. 
+
+Tämä mittari seuraa automaattisesti siitä katselet kuukausi tai useita kuukausia ja säädä maalin vastaavasti. </value>
+  </data>
+  <data name="HowTo_WhatsNew_Goal_2" xml:space="preserve">
+    <value>Aseta kuukausittain tavoite asetukset &gt; kuukausittain tavoite.</value>
   </data>
 </root>

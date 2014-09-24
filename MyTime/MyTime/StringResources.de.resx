@@ -309,8 +309,8 @@
   <data name="MainPage_DT_ErrorText" xml:space="preserve">
     <value>Sie müssen mit dem Internet verbunden sein, um den Tagestext zu lesen.</value>
   </data>
-  <data name="MainPage_DT_Headline" xml:space="preserve">
-    <value>Tagestext</value>
+  <data name="MainPage_Presentations_Headline" xml:space="preserve">
+    <value>darbietungen</value>
   </data>
   <data name="MainPage_MainMenu_AddRv" xml:space="preserve">
     <value>Neuer Rückbesuch</value>
@@ -894,16 +894,6 @@
   <data name="SettingsPage_Settings_DailyTextUseCustom" xml:space="preserve">
     <value>BBenutzerdefinierte tagestext URL</value>
   </data>
-  <data name="HowTo_WhatsNew_ContextMenus" xml:space="preserve">
-    <value>Kontextmenüs werden nun auf mehreren Seiten aufgenommen. 
-Halten Sie, um das Menü zu zeigen.</value>
-  </data>
-  <data name="HowTo_WhatsNew_CustomDTUrl" xml:space="preserve">
-    <value>Sie können jetzt eine individuelle URL für die tagestext gesetzt. Sie können die tagestext in jeder Sprache, die verfügbar ist auf der Website jw.org an!</value>
-  </data>
-  <data name="HowTo_WhatsNew_RoundTimeInc" xml:space="preserve">
-    <value>Sie können nun die Schrittweite, die Sie für das Speichern Ihrer Zeit verwenden möchten. Möchten Sie Ihre Zeit in Schritten von 1 Minute speichern? Oder möchten Sie lieber Schritten von 30 Minuten? Es liegt an Ihnen!</value>
-  </data>
   <data name="SettingsPage_Settings_DailyTextSettings" xml:space="preserve">
     <value>TAGESTEXT EINSTELLUNGEN</value>
   </data>
@@ -1027,5 +1017,13 @@ dank</value>
   </data>
   <data name="Sharing_Subject" xml:space="preserve">
     <value>Feld Ministerium Bericht</value>
+  </data>
+  <data name="HowTo_WhatsNew_Goal_1" xml:space="preserve">
+    <value>Ihr Bericht zeigt nun ein Messgerät mit Ihrem Ziel (in Stunden) und der tatsächlichen Zahl der geleisteten Arbeitsstunden. 
+
+Dieser che automatisch verfolgen, ob Sie sehen gerade ein Monat oder mehrere Monate und dann entsprechend anpassen das Ziel. </value>
+  </data>
+  <data name="HowTo_WhatsNew_Goal_2" xml:space="preserve">
+    <value>Stellen Sie Ihre monatlichen Ziel in den Einstellungen &gt; Monats Ziel.</value>
   </data>
 </root>

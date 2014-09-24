@@ -360,8 +360,8 @@
   <data name="MainPage_DT_ErrorText" xml:space="preserve">
     <value>Você deve estar conectado a internet para visualizar o texto diário.</value>
   </data>
-  <data name="MainPage_DT_Headline" xml:space="preserve">
-    <value>texto diário</value>
+  <data name="MainPage_Presentations_Headline" xml:space="preserve">
+    <value>apresentações</value>
   </data>
   <data name="MainPage_MainMenu_AddAuxTime" xml:space="preserve">
     <value>adicionar tempo auxiliar</value>
@@ -1018,5 +1018,13 @@ graças</value>
   </data>
   <data name="Sharing_Subject" xml:space="preserve">
     <value>Relatório de Campo Serviço</value>
+  </data>
+  <data name="HowTo_WhatsNew_Goal_1" xml:space="preserve">
+    <value>O relatório mostra agora um medidor com seu objetivo (em horas) e seu número real de horas trabalhadas. 
+
+Este medidor irá acompanhar automaticamente se você está vendo um mês ou vários meses e, em seguida, ajustar o objetivo de acordo. </value>
+  </data>
+  <data name="HowTo_WhatsNew_Goal_2" xml:space="preserve">
+    <value>Defina sua meta mensal em configurações &gt; meta mensal.</value>
   </data>
 </root>

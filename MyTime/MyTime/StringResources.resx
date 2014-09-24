@@ -366,8 +366,8 @@
   <data name="MainPage_DT_ErrorText" xml:space="preserve">
     <value>You must be connected to the internet to view.</value>
   </data>
-  <data name="MainPage_DT_Headline" xml:space="preserve">
-    <value>daily text</value>
+  <data name="MainPage_Presentations_Headline" xml:space="preserve">
+    <value>presentation</value>
   </data>
   <data name="MainPage_MainMenu_AddAuxTime" xml:space="preserve">
     <value>add auxiliary time</value>
@@ -920,6 +920,14 @@ Physical Description: {11}
   </data>
   <data name="HowTo_WhatsNew" xml:space="preserve">
     <value>What's New?</value>
+  </data>
+  <data name="HowTo_WhatsNew_Goal_1" xml:space="preserve">
+    <value>Your report now shows a gauge with your goal (in hours) and your actual number of hours worked. 
+
+  This guage will automatically track whether you are viewing one month or multiple months and then adjust the goal accordingly.</value>
+  </data>
+  <data name="HowTo_WhatsNew_Goal_2" xml:space="preserve">
+    <value>Set your monthly goal in settings &gt; monthly goal.</value>
   </data>
   <data name="FullRVListPage_NoVisitsSaved" xml:space="preserve">
     <value>No Previous Visits!</value>

@@ -318,8 +318,8 @@
   <data name="MainPage_DT_ErrorText" xml:space="preserve">
     <value>Es necesario estar conectado a Internet para leer el texto diario.</value>
   </data>
-  <data name="MainPage_DT_Headline" xml:space="preserve">
-    <value>Texto diario</value>
+  <data name="MainPage_Presentations_Headline" xml:space="preserve">
+    <value>presentaciones</value>
   </data>
   <data name="MainPage_MainMenu_AddAuxTime" xml:space="preserve">
     <value>Agregar tiempo auxiliar</value>
@@ -1017,5 +1017,13 @@ Gracias</value>
   </data>
   <data name="Sharing_Subject" xml:space="preserve">
     <value>Informe De Ministerio Del Campo</value>
+  </data>
+  <data name="HowTo_WhatsNew_Goal_1" xml:space="preserve">
+    <value>Su informe muestra ahora un medidor con su objetivo (en horas) y el número real de horas trabajadas. 
+
+Este calibre rastreará automáticamente si está visualizando un mes o varios meses y luego ajustar la meta de conformidad. </value>
+  </data>
+  <data name="HowTo_WhatsNew_Goal_2" xml:space="preserve">
+    <value>Fije su meta mensual en entornos &gt; meta mensual.</value>
   </data>
 </root>

@@ -862,6 +862,26 @@ namespace FieldService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your report now shows a gauge with your goal (in hours) and your actual number of hours worked. 
+        ///
+        ///  This guage will automatically track whether you are viewing one month or multiple months and then adjust the goal accordingly..
+        /// </summary>
+        public static string HowTo_WhatsNew_Goal_1 {
+            get {
+                return ResourceManager.GetString("HowTo_WhatsNew_Goal_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set your monthly goal in settings &gt; monthly goal..
+        /// </summary>
+        public static string HowTo_WhatsNew_Goal_2 {
+            get {
+                return ResourceManager.GetString("HowTo_WhatsNew_Goal_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 1.  House-to-House Record Tracking.
         ///2.  Record &quot;not at home&quot; visit for a return visit..
         /// </summary>
@@ -904,15 +924,6 @@ namespace FieldService {
         public static string MainPage_DT_ErrorText {
             get {
                 return ResourceManager.GetString("MainPage_DT_ErrorText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to daily text.
-        /// </summary>
-        public static string MainPage_DT_Headline {
-            get {
-                return ResourceManager.GetString("MainPage_DT_Headline", resourceCulture);
             }
         }
         
@@ -1048,6 +1059,15 @@ namespace FieldService {
         public static string MainPage_Messages_DonatePlease {
             get {
                 return ResourceManager.GetString("MainPage_Messages_DonatePlease", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to presentation.
+        /// </summary>
+        public static string MainPage_Presentations_Headline {
+            get {
+                return ResourceManager.GetString("MainPage_Presentations_Headline", resourceCulture);
             }
         }
         

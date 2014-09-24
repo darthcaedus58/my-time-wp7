@@ -309,8 +309,8 @@
   <data name="MainPage_DT_ErrorText" xml:space="preserve">
     <value>È necessario essere connessi a Internet per visualizzare il testo quotidiano</value>
   </data>
-  <data name="MainPage_DT_Headline" xml:space="preserve">
-    <value>Scrittura del giorno</value>
+  <data name="MainPage_Presentations_Headline" xml:space="preserve">
+    <value>presentazioni</value>
   </data>
   <data name="MainPage_MainMenu_AddRv" xml:space="preserve">
     <value>Aggiungi visita ulteriore</value>
@@ -1019,5 +1019,13 @@ Grazie</value>
   </data>
   <data name="Sharing_Subject" xml:space="preserve">
     <value>Servizio di Campo Relazione</value>
+  </data>
+  <data name="HowTo_WhatsNew_Goal_1" xml:space="preserve">
+    <value>Il vostro rapporto ora mostra un indicatore con il vostro obiettivo (in ore) e il numero effettivo di ore lavorate. 
+
+Questo calibro seguirà automaticamente se si sta visualizzando un mese o più mesi, e quindi regolare il gol di conseguenza. </value>
+  </data>
+  <data name="HowTo_WhatsNew_Goal_2" xml:space="preserve">
+    <value>Imposta il tuo obiettivo mensile impostazioni &gt; obiettivo mensile.</value>
   </data>
 </root>

@@ -23,6 +23,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using System.Xml.Serialization;
 using FieldService.Model;
@@ -62,6 +63,8 @@ namespace FieldService.View
         private TimerState _timerState = TimerState.Stopped;
 
         private BackgroundWorker _bwLoadRvs;
+        private int _panoramaSelectedIndex;
+        private bool _manipulationStarted;
 
 
         // Constructor
@@ -157,7 +160,7 @@ namespace FieldService.View
             if (IsolatedStorageFile.GetUserStoreForApplication().FileExists("restart.bin")) GetRestartTime();
 
             _bwLoadRvs.RunWorkerAsync();
-            StartDailyTextRetrieval();
+
             try {
                 //MessageBox.Show(CultureInfo.CurrentCulture.Name);
                 if (App.Settings.askForDonation) {
@@ -172,29 +175,26 @@ namespace FieldService.View
                     }
                     App.Settings.askForDonation = false;
                 }
+                using (IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication())
+                using (var isoFileStream = isoStore.OpenFile("Presentation.jpg", FileMode.Open, FileAccess.Read)) {
+                    var bi = new BitmapImage();
+                    bi.SetSource(isoFileStream);
+                    imgPresentationPic.Source = bi;
+                }
             } catch { }
 
-            //try {
-            //    if (!App.Settings.howToShownVer.Equals(App.GetVersion())) {
-            //        NavigationService.Navigate(new Uri("/View/HowTo.xaml", UriKind.Relative));
-            //        App.Settings.howToShownVer = App.GetVersion();
-            //    }
-            //} catch (Exception) {
-            //    NavigationService.Navigate(new Uri("/View/HowTo.xaml", UriKind.Relative));
-            //}
-        }
 
-        private void StartDailyTextRetrieval()
-        {
-            lblDailyTextDate.Text = DateTime.Today.ToString("D", CultureInfo.CurrentUICulture);
-            if (lblDailyTextDate.Text.Length >= 26) {
-                lblDailyTextDate.Text = DateTime.Today.ToString("ddd MMM. dd, yyyy", CultureInfo.CurrentUICulture);
+
+            try {
+                if (!App.Settings.howToShownVer.Equals(App.GetVersion())) {
+                    NavigationService.Navigate(new Uri("/View/HowTo.xaml", UriKind.Relative));
+                    App.Settings.howToShownVer = App.GetVersion();
+                }
+            } catch (Exception) {
+                NavigationService.Navigate(new Uri("/View/HowTo.xaml", UriKind.Relative));
             }
-            var ss = new DailyTextScraper();
 
-            ss.DailyTextRetrieved += ss_DailyTextRetrieved;
 
-            ss.StartDailyTextRetrieval(DateTime.Now);
         }
 
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -392,16 +392,6 @@ namespace FieldService.View
         private void imgShowAllReturnVisit_Tap(object sender, GestureEventArgs e)
         {
             NavigationService.Navigate(new Uri("/View/ReturnVisitFullList.xaml", UriKind.Relative));
-        }
-
-        /// <summary>
-        /// SS_s the daily text retrieved.
-        /// </summary>
-        /// <param name="dt">The dt.</param>
-        public void ss_DailyTextRetrieved(DailyText dt)
-        {
-            lblDailyTextScripture.Text = dt.Scripture;
-            lblDTSummary.Text = dt.SummaryText;
         }
 
         #endregion
@@ -675,9 +665,39 @@ namespace FieldService.View
             NavigationService.Navigate(new Uri(string.Format("/View/MapCalls.xaml"), UriKind.Relative));
         }
 
-        private void ShowPresentation_Tap(object sender, GestureEventArgs e)
+        private void TakePresentationPicButton_Tap(object sender, GestureEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/View/ViewPresentationPic.xaml", UriKind.Relative));
+            var cc = new CameraCaptureTask();
+            cc.Completed += (o, result) => {
+                var bmp = new BitmapImage();
+                if (result.ChosenPhoto == null) return;
+                bmp.SetSource(result.ChosenPhoto);
+                imgPresentationPic.Source = bmp;
+
+                using (var isoStore = IsolatedStorageFile.GetUserStoreForApplication()) {
+                    var wb = new WriteableBitmap(bmp);
+                    using (var isoFileStream = isoStore.CreateFile("Presentation.jpg"))
+                        Extensions.SaveJpeg(wb, isoFileStream, bmp.PixelWidth, wb.PixelHeight, 0, 100);
+                }
+            };
+            cc.Show();
+        }
+
+        private void Panorama_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var p = sender as Panorama;
+            if (p == null) return;
+
+            if (_manipulationStarted == false)
+                p.DefaultItem = p.Items[_panoramaSelectedIndex];
+
+            _panoramaSelectedIndex = p.SelectedIndex;
+            _manipulationStarted = false;
+        }
+
+        private void Panorama_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
+        {
+            _manipulationStarted = true;
         }
     }
 }
